@@ -1960,7 +1960,6 @@ namespace SUMEDCO
         }
         public void EnregistrerPatient(FormPatient p)
         {
-            p.idpatient = NouveauID("patient");
             con.Open();
             SqlTransaction tx = con.BeginTransaction();
             try
@@ -1994,23 +1993,8 @@ namespace SUMEDCO
         }
         public void Enregistrer(FormPatient p)
         {
-            if (p.cboTypePatient.Text == "abonné")
-            {
-                EnregistrerPatient(p);
-                cc.NouvelAbonne(p);
-                EnregistrerAgenda(p);
-                Annuler(p);
-                Afficher(p, "");
-            }
-            else if (p.cboTypePatient.Text == "employé")
-            {
-                EnregistrerPatient(p);
-                cc.NouvelEmploye(p);
-                EnregistrerAgenda(p);
-                Annuler(p);
-                Afficher(p, "");
-            }
-            else
+            p.idpatient = NouveauID("patient");
+            if (p.cboTypePatient.Text == "payant")
             {
                 FormFactureService f = new FormFactureService();
                 f.nouveau_patient = true;
@@ -2023,10 +2007,10 @@ namespace SUMEDCO
                 f.idpatient = p.idpatient;
                 f.cas = p.cas;
                 f.MaximumSize = f.Size;
-                f.ControlBox = false;               
+                f.ControlBox = false;
                 f.Text = "SSM - Facturation des services";
                 f.ShowDialog();
-                if(f.nouveau_patient)
+                if (f.nouveau_patient)
                 {
                     EnregistrerPatient(p);
                     EnregistrerAgenda(p);
@@ -2035,7 +2019,21 @@ namespace SUMEDCO
                 }
                 f.Close();
             }
-            
+            else
+            {
+                EnregistrerPatient(p);
+                if (p.cboTypePatient.Text == "abonné")
+                {
+                    cc.NouvelAbonne(p);
+                }
+                else if (p.cboTypePatient.Text == "employé")
+                {
+                    cc.NouvelEmploye(p);
+                }
+                EnregistrerAgenda(p);
+                Annuler(p);
+                Afficher(p, "");
+            }
         }
         public void Modifier(FormPatient p)
         {

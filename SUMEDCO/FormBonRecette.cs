@@ -101,7 +101,7 @@ namespace SUMEDCO
         }
         private void btnValiderBon_Click(object sender, EventArgs e)
         {
-            if(cboCaisseRecette.Text !="")
+            if(cboCaisseRecette.Text !="" && dgvFacture.RowCount != 0)
             {
                 if (cboCaisseRecette.Text == "CDF")
                     caisse = "Caisse en CDF Recettes";
@@ -120,7 +120,7 @@ namespace SUMEDCO
             }
             else
             {
-                MessageBox.Show("Aucune monnaie n'a été sélectionnée pour l'encaissement", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Sélectionnez le bon à encaisser dans la liste et/ou précisez la monnaie pour l'encaissement", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 cboCaisseRecette.Select();
             }
         }
@@ -146,6 +146,7 @@ namespace SUMEDCO
                 numbon = int.Parse(dgvBon.CurrentRow.Cells[0].Value.ToString());
                 idpatient = int.Parse(dgvBon.CurrentRow.Cells[4].Value.ToString());
                 payeur = dgvBon.CurrentRow.Cells[3].Value.ToString();
+                
                 cc.AfficherDetailsBon2(this);
                 if (poste == "reception")
                 {

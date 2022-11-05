@@ -912,10 +912,13 @@ namespace SUMEDCO
                         }
                     }
                     MessageBox.Show("Enregisté avec succès", "Enregistrement", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    if (b.dgvFacture.Rows[0].Cells[2].Value.ToString() == "consultation urgence" ||
+                    if(b.dgvFacture.RowCount == 1)
+                    {
+                        if (b.dgvFacture.Rows[0].Cells[2].Value.ToString() == "consultation urgence" ||
                         b.dgvFacture.Rows[0].Cells[2].Value.ToString() == "consultation nouveau cas" ||
                         b.dgvFacture.Rows[0].Cells[2].Value.ToString() == "consultation ancien cas")
-                        Agenda(new FormAgenda(), b);
+                            Agenda(new FormAgenda(), b);
+                    }
                 }
             }
             else
