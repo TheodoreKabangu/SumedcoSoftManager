@@ -23,14 +23,10 @@ namespace SUMEDCO
             cm.Annuler(this);
         }
         public int idmedecin = 0;
+        public string utilisateur;
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
-            if(cm.Enregistrer(this))
-            {
-                MessageBox.Show("Enregistré avec succès", "Enregistrement", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                cm.AfficherMedecin(this);
-                cm.Annuler(this);
-            }
+            cm.Enregistrer(this);
         }
 
         private void dgv1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -40,17 +36,12 @@ namespace SUMEDCO
 
         private void btnModifier_Click(object sender, EventArgs e)
         {
-            if (cm.Modifier(this))
-            {
-                MessageBox.Show("Modifié avec succès", "Mise à jour", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                cm.AfficherMedecin(this);
-                cm.Annuler(this);
-            }
+            cm.Modifier(this);
         }
 
         private void Medecin_Shown(object sender, EventArgs e)
         {
-            cm.AfficherMedecin(this);
+            
         }
 
         private void btnQuitter_Click(object sender, EventArgs e)
@@ -63,9 +54,9 @@ namespace SUMEDCO
             cm.Supprimer(this);
         }
 
-        private void cboUtilisateur_DropDown(object sender, EventArgs e)
+        private void btnAfficher_Click(object sender, EventArgs e)
         {
-            cs.Utilisateur(this);
+            cm.AfficherMedecin(this, "recherche");
         }
         
     }

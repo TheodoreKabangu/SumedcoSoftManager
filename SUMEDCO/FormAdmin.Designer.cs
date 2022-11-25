@@ -143,7 +143,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(255)))));
             this.panel2.Controls.Add(this.btnSigneVital);
             this.panel2.Controls.Add(this.btnMedecin);
             this.panel2.Controls.Add(this.btnService);

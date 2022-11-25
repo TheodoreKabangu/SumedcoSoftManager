@@ -111,23 +111,6 @@ namespace SUMEDCO
         #endregion
 
         #region CONNEXION
-        public void Utilisateur(FormMedecin m)
-        {
-            id = 0;
-            con.Open();
-            try
-            {
-                cmd = new SqlCommand("select specification from Utilisateur where poste = 'médecin'", con);
-                m.cboUtilisateur.Items.Clear();
-                dr = cmd.ExecuteReader();
-                while(dr.Read())
-                {
-                    m.cboUtilisateur.Items.Add(dr[0].ToString());
-                }
-            }
-            catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-            con.Close();
-        }
         public bool TestMotdePass(FormConnexionPass c)
         {
             cmdStatut = false;
@@ -2677,7 +2660,7 @@ namespace SUMEDCO
         #region UTILISATEUR
         public void Enregistrer(FormUtilisateur u)
         {
-            if(u.cboPoste.Text!="" && u.txtUtilisateur.Text !="")
+            if (u.cboPoste.Text != "" && u.txtUtilisateur.Text != "" && u.txtSpecification.Text != "")
             {
                 if (u.txtUtilisateur.Text.Length >= 5)
                 {
@@ -2691,7 +2674,7 @@ namespace SUMEDCO
                         cmd.Parameters.AddWithValue("@util", u.txtUtilisateur.Text);
                         cmd.Parameters.AddWithValue("@mot", "123456");
                         cmd.Parameters.AddWithValue("@poste", u.cboPoste.Text);
-                        cmd.Parameters.AddWithValue("@specification", "NULL");
+                        cmd.Parameters.AddWithValue("@specification", u.txtSpecification.Text);
                         cmd.Transaction = tx;
                         cmd.ExecuteNonQuery();
                         tx.Commit();
@@ -2703,8 +2686,16 @@ namespace SUMEDCO
                         MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     con.Close();
-                    Afficher(u);
-                    Annuler(u);
+                    if (u.nouveau_medecin)
+                    {
+                        u.fermeture_succes = true;
+                        u.Hide();
+                    }
+                    else
+                    {
+                        Afficher(u);
+                        Annuler(u);
+                    }
                 }
                 else
                 {
@@ -2746,7 +2737,7 @@ namespace SUMEDCO
                     con.Close();
                 }
                 MessageBox.Show("Enregistré avec succès", "Enregistrement", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                u.Close();
+                u.Hide();
             }
             else MessageBox.Show("Aucune ligne n'a été trouvée", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
@@ -2761,20 +2752,22 @@ namespace SUMEDCO
             c.idmedecin = 0;
             c.txtUtilisateur.Text = "";
             c.checkBox1.Checked = false;
+            c.txtSpecification.Enabled = false;
             c.cboPoste.Select();
         }
-        public void Modifier(FormUtilisateur c)
+        public void Modifier(FormUtilisateur u)
         {
-            if (c.cboPoste.Text != "" && c.txtUtilisateur.Text != "")
+            if (u.cboPoste.Text != "" && u.txtUtilisateur.Text != "" && u.txtSpecification.Text != "")
             {
                 con.Open();
                 SqlTransaction tx = con.BeginTransaction();
                 try
                 {
-                    cmd = new SqlCommand("update Utilisateur set utilisateur= @util, poste= @poste  where id= @id", con);
-                    cmd.Parameters.AddWithValue("@id", c.idutilisateur);
-                    cmd.Parameters.AddWithValue("@util", c.txtUtilisateur.Text);
-                    cmd.Parameters.AddWithValue("@poste", c.cboPoste.Text);
+                    cmd = new SqlCommand("update Utilisateur set utilisateur= @util, poste= @poste, specification= @specification  where id= @id", con);
+                    cmd.Parameters.AddWithValue("@id", u.idutilisateur);
+                    cmd.Parameters.AddWithValue("@specification", u.txtSpecification.Text);
+                    cmd.Parameters.AddWithValue("@util", u.txtUtilisateur.Text);
+                    cmd.Parameters.AddWithValue("@poste", u.cboPoste.Text);
                     cmd.Transaction = tx;
                     cmd.ExecuteNonQuery();
                     tx.Commit();
@@ -2786,8 +2779,8 @@ namespace SUMEDCO
                     MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 con.Close();
-                Afficher(c);
-                Annuler(c);
+                Afficher(u);
+                Annuler(u);
             }
             else
             {

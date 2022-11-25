@@ -19,7 +19,7 @@ namespace SUMEDCO
         ClassStock cs = new ClassStock();
         ClassMalade cm = new ClassMalade();
         public int idmedecin = 0, idutilisateur = 0;
-
+        public bool fermeture_succes, nouveau_medecin;
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
             cs.Enregistrer(this);
@@ -33,7 +33,7 @@ namespace SUMEDCO
 
         private void FormCompte_Shown(object sender, EventArgs e)
         {
-            cs.Afficher(this);
+            
         }
 
         private void dgvAgenda_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -45,17 +45,13 @@ namespace SUMEDCO
         {
             cs.Annuler(this);
         }
-        FormUtilisateurMulti u = new FormUtilisateurMulti();
         private void checkBox1_Click(object sender, EventArgs e)
         {
             if (checkBox1.Checked)
             {
                 if (cboPoste.Text != "")
                 {
-                    u.poste = cboPoste.Text;
-                    u.ShowDialog();
-                    cs.Annuler(this);
-                    cs.Afficher(this);
+                    txtSpecification.Enabled = true;
                 }
                 else
                     MessageBox.Show("Aucun poste n'est sélectionné dans la liste", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -70,6 +66,11 @@ namespace SUMEDCO
         private void btnModifier_Click(object sender, EventArgs e)
         {
             cs.Modifier(this);
+        }
+
+        private void btnAfficher_Click(object sender, EventArgs e)
+        {
+            cs.Afficher(this);
         }
     }
 }

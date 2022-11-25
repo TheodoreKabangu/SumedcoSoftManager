@@ -1042,33 +1042,7 @@ namespace SUMEDCO
             {
                 dgv.Rows[i].Cells[colonne].Value = i + 1;
             }
-        }
-        
-        DataGridView dgv = new DataGridView();
-        public void RecupererSigneVital(FormRenseignement r)
-        {
-            dgv.AllowUserToAddRows = false;
-            dgv.Columns.Clear();
-            dgv.Columns.Add("column0", "signe");
-            dgv.Columns.Add("column1", "valeur");
-            con.Open();
-            try
-            {
-                cmd = new SqlCommand("select idsigne, valeur from LigneSigneVital where idligneagenda= @id", con);
-                cmd.Parameters.AddWithValue("@id", r.idligneagenda);
-                dr = cmd.ExecuteReader();
-                dgv.Rows.Clear();
-                while (dr.Read())
-                {
-                    dgv.Rows.Add();
-                    dgv.Rows[dgv.RowCount - 1].Cells[0].Value = dr[0].ToString();
-                    dgv.Rows[dgv.RowCount - 1].Cells[1].Value = dr[1].ToString();
-                }
-            }
-            catch (Exception ex)
-            { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-            con.Close();
-        }
+        }        
         public void AjouterSigneVitalConsultation(FormConsulter r)
         {
             for (int i = 0; i < r.dgvSigneVital.RowCount; i++)
@@ -3714,9 +3688,10 @@ namespace SUMEDCO
                 m.btnEnregistrer.Enabled = false;
             }
         }
-        public void AfficherMedecin(FormMedecin m)
+        public void AfficherMedecin(FormMedecin m, string motif)
         {
-            cmd = new SqlCommand("select * from Medecin", con);
+            if (motif == "recherche") cmd = new SqlCommand("select * from Medecin", con);
+            else cmd = new SqlCommand("select * from Medecin where idmedecin = "+m.idmedecin+"", con);
             con.Open();
             try
             {
@@ -3744,78 +3719,85 @@ namespace SUMEDCO
             m.txtNumOrdre.Text = "";
             m.txtTel.Text = "";
             m.txtNom.Focus();
-            m.cboUtilisateur.Items.Clear();
         }
-        public bool Enregistrer(FormMedecin m)
+        
+
+        public void Enregistrer(FormMedecin m)
         {
-            cmdStatut = true;
-            if (m.txtNom.Text != "" && m.txtNumOrdre.Text != "" && m.txtTel.Text != "" && m.cboUtilisateur.Text != "")
+            if (m.txtNom.Text != "" && m.txtNumOrdre.Text != "" && m.txtTel.Text != "")
             {
-                m.idmedecin = NouveauID("medecin");
+                FormUtilisateur u = new FormUtilisateur();
+                u.cboPoste.Items.Clear();
+                u.cboPoste.Items.Add("médecin");
+                u.btnExit.Visible = false;
+                u.nouveau_medecin = true;
+                u.ShowDialog();
+                if (u.fermeture_succes)
+                {
+                    m.idmedecin = NouveauID("medecin");
+                    m.utilisateur = u.txtSpecification.Text;
+                    con.Open();
+                    SqlTransaction tx = con.BeginTransaction();
+                    try
+                    {
+                        cmd = new SqlCommand("insert into Medecin values (@id, @nom, @numordre, @tel, @util)", con);
+                        cmd.Parameters.AddWithValue("@id", m.idmedecin);
+                        cmd.Parameters.AddWithValue("@nom", m.txtNom.Text);
+                        cmd.Parameters.AddWithValue("@numordre", m.txtNumOrdre.Text);
+                        cmd.Parameters.AddWithValue("@tel", m.txtTel.Text);
+                        cmd.Parameters.AddWithValue("@util", m.utilisateur);
+                        cmd.Transaction = tx;
+                        cmd.ExecuteNonQuery();
+                        tx.Commit();
+                        MessageBox.Show("Enregistré avec succès", "Enregistrement", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        AfficherMedecin(m, "");
+                    }
+                    catch (Exception ex)
+                    {
+                        tx.Rollback();
+                        MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    con.Close();
+                    Annuler(m);
+                }
+                u.Close();
+            }
+            else
+            {
+                MessageBox.Show("Désolé! Champ(s) obligatoire(s) vide(s)\nRemplissez-le(s).", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        public void Modifier(FormMedecin m)
+        {
+            if (m.txtNom.Text != "Noms" && m.txtNumOrdre.Text != "" && m.txtTel.Text != "")
+            {
                 con.Open();
                 SqlTransaction tx = con.BeginTransaction();
                 try
                 {
-                    cmd = new SqlCommand("insert into Medecin values (@id, @nom, @numordre, @tel, @util)", con);
+                    cmd = new SqlCommand("update Medecin set nommedecin= @nom, numordre= @numordre, telmedecin= @tel where idmedecin= @id", con);
+                    cmd.Parameters.AddWithValue("@nom", m.txtNom.Text);
+                    cmd.Parameters.AddWithValue("@numordre", m.txtNumOrdre.Text);
+                    cmd.Parameters.AddWithValue("@tel", m.txtTel.Text);
                     cmd.Parameters.AddWithValue("@id", m.idmedecin);
-                    cmd.Parameters.AddWithValue("@nom", m.txtNom.Text);
-                    cmd.Parameters.AddWithValue("@numordre", m.txtNumOrdre.Text);
-                    cmd.Parameters.AddWithValue("@tel", m.txtTel.Text);
-                    cmd.Parameters.AddWithValue("@util", m.cboUtilisateur.Text);
                     cmd.Transaction = tx;
                     cmd.ExecuteNonQuery();
                     tx.Commit();
+                    MessageBox.Show("Modifié avec succès", "Mise à jour", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    AfficherMedecin(m, "");
                 }
                 catch (Exception ex)
                 {
                     tx.Rollback();
-                    cmdStatut = false;
                     MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 con.Close();
+                Annuler(m);
             }
             else
             {
                 MessageBox.Show("Désolé! Champ(s) obligatoire(s) vide(s)\nRemplissez-le(s).", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                cmdStatut = false;
             }
-            return cmdStatut;
-        }
-        public bool Modifier(FormMedecin m)
-        {
-            m.btnModifier.Enabled = false;
-            m.btnEnregistrer.Enabled = true;
-            cmdStatut = true;
-            if (m.txtNom.Text != "Noms" && m.txtNumOrdre.Text != "" && m.txtTel.Text != "" && m.cboUtilisateur.Text !="")
-            {
-                con.Open();
-                SqlTransaction tx = con.BeginTransaction();
-                try
-                {
-                    cmd = new SqlCommand("update Medecin set nommedecin= @nom, numordre= @numordre, telmedecin= @tel, utilisateur= @util where idmedecin= @id", con);
-                    cmd.Parameters.AddWithValue("@nom", m.txtNom.Text);
-                    cmd.Parameters.AddWithValue("@numordre", m.txtNumOrdre.Text);
-                    cmd.Parameters.AddWithValue("@tel", m.txtTel.Text);
-                    cmd.Parameters.AddWithValue("@util", m.cboUtilisateur.Text);
-                    cmd.Parameters.AddWithValue("@id", id);
-                    cmd.Transaction = tx;
-                    cmd.ExecuteNonQuery();
-                    tx.Commit();
-                }
-                catch (Exception ex)
-                {
-                    tx.Rollback();
-                    cmdStatut = false;
-                    MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                con.Close();
-            }
-            else
-            {
-                cmdStatut = false;
-                MessageBox.Show("Désolé! Champ(s) obligatoire(s) vide(s)\nRemplissez-le(s).", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            return cmdStatut;
         }
         public void Supprimer(FormMedecin m)
         {
@@ -3839,7 +3821,7 @@ namespace SUMEDCO
                 }
                 con.Close();
                 Annuler(m);
-                AfficherMedecin(m);
+                m.dgvMedecin.Rows.RemoveAt(m.dgvMedecin.CurrentRow.Index);
             }
             else
             {

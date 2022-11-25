@@ -20,6 +20,7 @@ namespace SUMEDCO
         ClassMalade cm = new ClassMalade();
         public int idutilisateur;
         public string poste;
+        public bool fermeture_succes;
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
             cs.EnregistrerMulti(this);
@@ -27,13 +28,33 @@ namespace SUMEDCO
 
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
         }
 
         private void btnAjouter_Click(object sender, EventArgs e)
         {
-            dgvAgenda.Rows.Add();
-            dgvAgenda.Rows[dgvAgenda.RowCount - 1].Cells[0].Value = dgvAgenda.RowCount;
+            if(dgvAgenda.RowCount != 0)
+            {
+                if (dgvAgenda.Rows[dgvAgenda.RowCount - 1].Cells[1].Value == "" ||
+                    dgvAgenda.Rows[dgvAgenda.RowCount - 1].Cells[1].Value == "NULL" ||
+                    dgvAgenda.Rows[dgvAgenda.RowCount - 1].Cells[2].Value == "" ||
+                    dgvAgenda.Rows[dgvAgenda.RowCount - 1].Cells[2].Value == "NULL")
+                    MessageBox.Show("Renseignez toutes les valeurs pour la derniere ligne", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                else
+                {
+                    dgvAgenda.Rows.Add();
+                    dgvAgenda.Rows[dgvAgenda.RowCount - 1].Cells[0].Value = dgvAgenda.RowCount;
+                    dgvAgenda.Rows[dgvAgenda.RowCount - 1].Cells[1].Value = "NULL";
+                    dgvAgenda.Rows[dgvAgenda.RowCount - 1].Cells[2].Value = "NULL";
+                }
+            }
+            else
+            {
+                dgvAgenda.Rows.Add();
+                dgvAgenda.Rows[dgvAgenda.RowCount - 1].Cells[0].Value = dgvAgenda.RowCount;
+                dgvAgenda.Rows[dgvAgenda.RowCount - 1].Cells[1].Value = "NULL";
+                dgvAgenda.Rows[dgvAgenda.RowCount - 1].Cells[2].Value = "NULL";
+            }
         }
 
         private void btnRetirer_Click(object sender, EventArgs e)
