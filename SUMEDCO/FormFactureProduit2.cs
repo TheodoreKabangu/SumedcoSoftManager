@@ -66,8 +66,11 @@ namespace SUMEDCO
 
         private void btnEnregistrerAutrePresc_Click(object sender, EventArgs e)
         {
-            fermeture_succes = true;
-            this.Hide();
+            if (dgvFacture.RowCount != 0)
+            {
+                fermeture_succes = true;
+                this.Hide();
+            }
         }
 
         private void dgvFacture_CellClick(object sender, DataGridViewCellEventArgs e)

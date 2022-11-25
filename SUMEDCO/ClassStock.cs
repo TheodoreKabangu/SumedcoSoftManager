@@ -526,9 +526,9 @@ namespace SUMEDCO
             {
                 con.Open();
                 if(motif=="produit")
-                    cmd = new SqlCommand("select nomproduit from Produit where nomproduit like '" + txt.Text + "%'", con);
+                    cmd = new SqlCommand("select distinct nomproduit from Produit, LigneStock where LigneStock.idproduit = Produit.idproduit and qtestock <> 0 and nomproduit like '" + txt.Text + "%'", con);
                 else
-                    cmd = new SqlCommand("select nomproduit from ProduitAutreStock where nomproduit like '" + txt.Text + "%'", con);
+                    cmd = new SqlCommand("select distinct nomproduit from ProduitAutreStock where qtestock <> 0 and nomproduit like '" + txt.Text + "%'", con);
                 dr = cmd.ExecuteReader();
                 list.Items.Clear();
                 while (dr.Read())
@@ -2707,40 +2707,6 @@ namespace SUMEDCO
             {
                 MessageBox.Show("Désolé! Champ(s) obligatoire(s) vide(s)\nRemplissez-le(s).", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-        }
-        public void EnregistrerMulti(FormUtilisateurMulti u)
-        {
-            if(u.dgvAgenda.RowCount != 0)
-            {
-                for (int i = 0; i < u.dgvAgenda.RowCount; i++)
-                {
-                    u.idutilisateur = NouveauID("user");
-                    con.Open();
-                    SqlTransaction tx = con.BeginTransaction();
-                    try
-                    {
-                        cmd = new SqlCommand("insert into Utilisateur values (@id, @util, @mot, @poste, @specification)", con);
-                        cmd.Parameters.AddWithValue("@id", u.idutilisateur);
-                        cmd.Parameters.AddWithValue("@util", u.dgvAgenda.Rows[i].Cells[1].Value.ToString());
-                        cmd.Parameters.AddWithValue("@mot", "123456");
-                        cmd.Parameters.AddWithValue("@poste", u.poste);
-                        cmd.Parameters.AddWithValue("@specification", u.dgvAgenda.Rows[i].Cells[2].Value.ToString());
-                        cmd.Transaction = tx;
-                        cmd.ExecuteNonQuery();
-                        tx.Commit();
-                    }
-                    catch (Exception ex)
-                    {
-                        tx.Rollback();
-                        MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    con.Close();
-                }
-                MessageBox.Show("Enregistré avec succès", "Enregistrement", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                u.Hide();
-            }
-            else MessageBox.Show("Aucune ligne n'a été trouvée", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
         }
         public void Annuler(FormUtilisateur c)
         {

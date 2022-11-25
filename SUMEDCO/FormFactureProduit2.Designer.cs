@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -55,11 +56,12 @@
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.btnEnregistrerAutrePresc = new System.Windows.Forms.Button();
+            this.btnValider = new System.Windows.Forms.Button();
             this.btnRetirer = new System.Windows.Forms.Button();
             this.txtProduit = new System.Windows.Forms.TextBox();
             this.listProduit = new System.Windows.Forms.ListBox();
             this.btnQuitter = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStock)).BeginInit();
             this.SuspendLayout();
@@ -96,13 +98,13 @@
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvFacture.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvFacture.Location = new System.Drawing.Point(12, 282);
+            this.dgvFacture.Location = new System.Drawing.Point(12, 259);
             this.dgvFacture.MultiSelect = false;
             this.dgvFacture.Name = "dgvFacture";
             this.dgvFacture.ReadOnly = true;
             this.dgvFacture.RowHeadersVisible = false;
             this.dgvFacture.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFacture.Size = new System.Drawing.Size(578, 149);
+            this.dgvFacture.Size = new System.Drawing.Size(578, 172);
             this.dgvFacture.TabIndex = 645;
             this.dgvFacture.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFacture_CellClick);
             // 
@@ -180,7 +182,7 @@
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvStock.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dgvStock.Location = new System.Drawing.Point(12, 92);
+            this.dgvStock.Location = new System.Drawing.Point(12, 69);
             this.dgvStock.Name = "dgvStock";
             this.dgvStock.ReadOnly = true;
             this.dgvStock.RowHeadersVisible = false;
@@ -263,18 +265,19 @@
             this.btnAjouter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAjouter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAjouter.Image = ((System.Drawing.Image)(resources.GetObject("btnAjouter.Image")));
-            this.btnAjouter.Location = new System.Drawing.Point(560, 253);
+            this.btnAjouter.Location = new System.Drawing.Point(560, 230);
             this.btnAjouter.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnAjouter.Name = "btnAjouter";
             this.btnAjouter.Size = new System.Drawing.Size(30, 21);
             this.btnAjouter.TabIndex = 724;
+            this.toolTip1.SetToolTip(this.btnAjouter, "Ajouter");
             this.btnAjouter.UseVisualStyleBackColor = false;
             this.btnAjouter.Click += new System.EventHandler(this.btnAjouter_Click);
             // 
             // txtQte
             // 
             this.txtQte.Enabled = false;
-            this.txtQte.Location = new System.Drawing.Point(450, 253);
+            this.txtQte.Location = new System.Drawing.Point(450, 230);
             this.txtQte.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtQte.MaxLength = 4;
             this.txtQte.Name = "txtQte";
@@ -286,7 +289,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(379, 256);
+            this.label13.Location = new System.Drawing.Point(379, 233);
             this.label13.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(59, 15);
@@ -319,52 +322,55 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(9, 66);
+            this.label8.Location = new System.Drawing.Point(9, 43);
             this.label8.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(98, 15);
             this.label8.TabIndex = 730;
             this.label8.Text = "Nom du produit :";
             // 
-            // btnEnregistrerAutrePresc
+            // btnValider
             // 
-            this.btnEnregistrerAutrePresc.BackColor = System.Drawing.Color.Transparent;
-            this.btnEnregistrerAutrePresc.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnEnregistrerAutrePresc.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnEnregistrerAutrePresc.FlatAppearance.BorderSize = 0;
-            this.btnEnregistrerAutrePresc.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnEnregistrerAutrePresc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEnregistrerAutrePresc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEnregistrerAutrePresc.Image = ((System.Drawing.Image)(resources.GetObject("btnEnregistrerAutrePresc.Image")));
-            this.btnEnregistrerAutrePresc.Location = new System.Drawing.Point(52, 438);
-            this.btnEnregistrerAutrePresc.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.btnEnregistrerAutrePresc.Name = "btnEnregistrerAutrePresc";
-            this.btnEnregistrerAutrePresc.Size = new System.Drawing.Size(30, 26);
-            this.btnEnregistrerAutrePresc.TabIndex = 758;
-            this.btnEnregistrerAutrePresc.UseVisualStyleBackColor = false;
-            this.btnEnregistrerAutrePresc.Click += new System.EventHandler(this.btnEnregistrerAutrePresc_Click);
+            this.btnValider.BackColor = System.Drawing.Color.Transparent;
+            this.btnValider.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnValider.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnValider.FlatAppearance.BorderSize = 0;
+            this.btnValider.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnValider.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnValider.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnValider.Image = ((System.Drawing.Image)(resources.GetObject("btnValider.Image")));
+            this.btnValider.Location = new System.Drawing.Point(92, 438);
+            this.btnValider.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnValider.Name = "btnValider";
+            this.btnValider.Size = new System.Drawing.Size(30, 26);
+            this.btnValider.TabIndex = 758;
+            this.toolTip1.SetToolTip(this.btnValider, "Valider la facture");
+            this.btnValider.UseVisualStyleBackColor = false;
+            this.btnValider.Click += new System.EventHandler(this.btnEnregistrerAutrePresc_Click);
             // 
             // btnRetirer
             // 
             this.btnRetirer.BackColor = System.Drawing.Color.Transparent;
             this.btnRetirer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnRetirer.Enabled = false;
             this.btnRetirer.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
             this.btnRetirer.FlatAppearance.BorderSize = 0;
             this.btnRetirer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
             this.btnRetirer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRetirer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRetirer.Image = ((System.Drawing.Image)(resources.GetObject("btnRetirer.Image")));
-            this.btnRetirer.Location = new System.Drawing.Point(12, 438);
+            this.btnRetirer.Location = new System.Drawing.Point(52, 438);
             this.btnRetirer.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnRetirer.Name = "btnRetirer";
             this.btnRetirer.Size = new System.Drawing.Size(30, 26);
             this.btnRetirer.TabIndex = 756;
+            this.toolTip1.SetToolTip(this.btnRetirer, "Retirer la ligne");
             this.btnRetirer.UseVisualStyleBackColor = false;
             this.btnRetirer.Click += new System.EventHandler(this.btnRetirer_Click);
             // 
             // txtProduit
             // 
-            this.txtProduit.Location = new System.Drawing.Point(153, 63);
+            this.txtProduit.Location = new System.Drawing.Point(153, 40);
             this.txtProduit.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtProduit.MaxLength = 75;
             this.txtProduit.Name = "txtProduit";
@@ -376,7 +382,7 @@
             // 
             this.listProduit.FormattingEnabled = true;
             this.listProduit.ItemHeight = 15;
-            this.listProduit.Location = new System.Drawing.Point(153, 86);
+            this.listProduit.Location = new System.Drawing.Point(153, 63);
             this.listProduit.Name = "listProduit";
             this.listProduit.Size = new System.Drawing.Size(436, 154);
             this.listProduit.TabIndex = 760;
@@ -393,11 +399,12 @@
             this.btnQuitter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuitter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuitter.Image = ((System.Drawing.Image)(resources.GetObject("btnQuitter.Image")));
-            this.btnQuitter.Location = new System.Drawing.Point(571, 28);
+            this.btnQuitter.Location = new System.Drawing.Point(12, 438);
             this.btnQuitter.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnQuitter.Name = "btnQuitter";
             this.btnQuitter.Size = new System.Drawing.Size(30, 26);
             this.btnQuitter.TabIndex = 758;
+            this.toolTip1.SetToolTip(this.btnQuitter, "Quitter");
             this.btnQuitter.UseVisualStyleBackColor = false;
             this.btnQuitter.Click += new System.EventHandler(this.btnQuitter_Click);
             // 
@@ -410,7 +417,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.txtProduit);
             this.Controls.Add(this.btnQuitter);
-            this.Controls.Add(this.btnEnregistrerAutrePresc);
+            this.Controls.Add(this.btnValider);
             this.Controls.Add(this.btnRetirer);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtTotal);
@@ -448,7 +455,7 @@
         public System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label8;
-        public System.Windows.Forms.Button btnEnregistrerAutrePresc;
+        public System.Windows.Forms.Button btnValider;
         public System.Windows.Forms.Button btnRetirer;
         public System.Windows.Forms.TextBox txtProduit;
         public System.Windows.Forms.ListBox listProduit;
@@ -466,5 +473,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
