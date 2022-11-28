@@ -41,6 +41,7 @@
             this.pnlLogo = new System.Windows.Forms.Panel();
             this.btnLogo = new System.Windows.Forms.Button();
             this.pnlChildForm = new System.Windows.Forms.Panel();
+            this.btnRapportStat = new System.Windows.Forms.Button();
             this.pnlSide.SuspendLayout();
             this.pnlSousMenu.SuspendLayout();
             this.pnlLogo.SuspendLayout();
@@ -50,8 +51,9 @@
             // 
             this.pnlSide.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.pnlSide.Controls.Add(this.pnlSousMenu);
-            this.pnlSide.Controls.Add(this.btnQuitter);
             this.pnlSide.Controls.Add(this.btnRapports);
+            this.pnlSide.Controls.Add(this.btnRapportStat);
+            this.pnlSide.Controls.Add(this.btnQuitter);
             this.pnlSide.Controls.Add(this.btnMiseAJour);
             this.pnlSide.Controls.Add(this.pnlLogo);
             this.pnlSide.Dock = System.Windows.Forms.DockStyle.Left;
@@ -67,9 +69,9 @@
             this.pnlSousMenu.Controls.Add(this.btnRecetteDepense);
             this.pnlSousMenu.Controls.Add(this.btnMaladeMedecin);
             this.pnlSousMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlSousMenu.Location = new System.Drawing.Point(0, 162);
+            this.pnlSousMenu.Location = new System.Drawing.Point(0, 207);
             this.pnlSousMenu.Name = "pnlSousMenu";
-            this.pnlSousMenu.Size = new System.Drawing.Size(180, 208);
+            this.pnlSousMenu.Size = new System.Drawing.Size(180, 147);
             this.pnlSousMenu.TabIndex = 586;
             // 
             // btnStock2
@@ -173,7 +175,7 @@
             this.btnRapports.ForeColor = System.Drawing.Color.Black;
             this.btnRapports.Image = ((System.Drawing.Image)(resources.GetObject("btnRapports.Image")));
             this.btnRapports.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRapports.Location = new System.Drawing.Point(0, 117);
+            this.btnRapports.Location = new System.Drawing.Point(0, 162);
             this.btnRapports.Name = "btnRapports";
             this.btnRapports.Size = new System.Drawing.Size(180, 45);
             this.btnRapports.TabIndex = 7;
@@ -239,6 +241,25 @@
             this.pnlChildForm.Size = new System.Drawing.Size(714, 471);
             this.pnlChildForm.TabIndex = 585;
             // 
+            // btnRapportStat
+            // 
+            this.btnRapportStat.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRapportStat.FlatAppearance.BorderSize = 0;
+            this.btnRapportStat.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.btnRapportStat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRapportStat.ForeColor = System.Drawing.Color.Black;
+            this.btnRapportStat.Image = ((System.Drawing.Image)(resources.GetObject("btnRapportStat.Image")));
+            this.btnRapportStat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRapportStat.Location = new System.Drawing.Point(0, 117);
+            this.btnRapportStat.Name = "btnRapportStat";
+            this.btnRapportStat.Size = new System.Drawing.Size(180, 45);
+            this.btnRapportStat.TabIndex = 587;
+            this.btnRapportStat.Text = "Statistiques par service";
+            this.btnRapportStat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRapportStat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRapportStat.UseVisualStyleBackColor = true;
+            this.btnRapportStat.Click += new System.EventHandler(this.btnRapportStat_Click);
+            // 
             // MFormAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -276,5 +297,6 @@
         public System.Windows.Forms.Button btnRecetteDepense;
         public System.Windows.Forms.Panel pnlChildForm;
         public System.Windows.Forms.Button btnStock2;
+        public System.Windows.Forms.Button btnRapportStat;
     }
 }

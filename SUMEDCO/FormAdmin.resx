@@ -177,10 +177,10 @@
   </data>
   <data name="btnQuitter.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAACESURBVDhP1ZRLCoAwDER7CK8g+Nn2/ocQD2SmMlAwxqR2oQ8GGkge9EPTrxgk87kMsUgwewGy
-        TbKWygd6MTOVSmGU7JJcKhv0oBczJh6pW0YsaVhGNGmzjNTS1zLCm4y+gFu6CuttamcaQjuzZql1AWGp
-        JSNuqUdGHqXdP4fu39cXSekAUZYhBf8T/dgAAAAASUVORK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAIRJREFUOE/V
+        lEsKgDAMRHsIryD42fb+hxAPZKYyUDDGpHahDwYaSB70Q9OvGCTzuQyxSDB7AbJNspbKB3oxM5VKYZTs
+        klwqG/SgFzMmHqlbRixpWEY0abOM1NLXMsKbjL6AW7oK621qZxpCO7NmqXUBYaklI26pR0Yepd0/h+7f
+        1xdJ6QBRliEF/xP92AAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="pnlChildForm.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

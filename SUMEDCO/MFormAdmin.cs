@@ -62,8 +62,20 @@ namespace SUMEDCO
 
         private void MFormAdmin_Shown(object sender, EventArgs e)
         {
-            if (utilisateur != "Représentant(e)")
+            if (utilisateur == "admin")
+            {
                 btnRapports.Enabled = false;
+                btnRapportStat.Enabled = false;
+            }
+            else if (utilisateur == "Numéro 1")
+                btnMiseAJour.Enabled = false;
+            else
+                btnRapports.Enabled = false;
+        }
+
+        private void btnRapportStat_Click(object sender, EventArgs e)
+        {
+            cs.AfficherSousForm(this, new FormAdminStatService());
         }
     }
 }

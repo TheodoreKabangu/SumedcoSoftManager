@@ -26,7 +26,7 @@ namespace SUMEDCO
         private void btnAdmin_Click(object sender, EventArgs e)
         {
             cn.poste = "admin";
-            cn.cboUtilisateur.Items.AddRange(new string[] { "AG", "Représentant(e)", "admin" });
+            cn.cboUtilisateur.Items.AddRange(new string[] { "AG", "Numéro 1", "admin" });
             cn.cboUtilisateur.Enabled = true;
             cn.Show();
             this.Hide();

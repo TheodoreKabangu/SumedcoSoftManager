@@ -4647,6 +4647,197 @@ namespace SUMEDCO
 
         #endregion
 
+        #region ADMIN
+        public int NombreConsultations()
+        {
+            id = 0;
+            con.Open();
+            cmd = new SqlCommand("select count(idservice) from Service where numcompte = '706101'", con);
+            try
+            {
+                dr = cmd.ExecuteReader();
+                if (dr.Read() == true)
+                {
+                    id = int.Parse(dr[0].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            con.Close();
+            return id;
+        }
+        public void RubriqueStatService(FormAdminStatService s)
+        {
+            int index = 0;
+            con.Open();
+            cmd = new SqlCommand("select numcompte, libellecompte from Compte where numcompte like '7061%'", con);
+            try
+            {
+                dr = cmd.ExecuteReader();
+                s.dgvRapport.Rows.Clear();
+                while (dr.Read())
+                {                 
+                    s.dgvRapport.Rows.Add();
+                    s.dgvRapport.Rows[s.dgvRapport.RowCount - 1].Cells[0].Value = s.dgvRapport.RowCount;
+                    s.dgvRapport.Rows[s.dgvRapport.RowCount - 1].Cells[1].Value = dr[0].ToString();
+                    s.dgvRapport.Rows[s.dgvRapport.RowCount - 1].Cells[2].Value = dr[1].ToString();
+                    if (dr[0].ToString() == "706101")
+                    {
+                        index = s.dgvRapport.Rows[s.dgvRapport.RowCount - 1].Index;
+                    }
+                } 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            con.Close();
+
+            //Ajouter les types de consultations
+            index += 1;
+            s.dgvRapport.Rows.Insert(index, NombreConsultations());
+            
+            con.Open();
+            cmd = new SqlCommand("select idservice, nomservice from Service where numcompte = '706101'", con);
+            try
+            {
+                dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    s.dgvRapport.Rows[index].Cells[0].Value = "";
+                    s.dgvRapport.Rows[index].Cells[1].Value = dr[0].ToString();
+                    s.dgvRapport.Rows[index].Cells[2].Value = dr[1].ToString();
+                    s.dgvRapport.Rows[index].DefaultCellStyle.ForeColor = Color.MediumBlue;
+                    index++;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            con.Close();
+        }
+        public void AjouterColonneMois(FormAdminStatService s)
+        {
+            id = 0;
+            TimeSpan t = s.dtpDateA.Value.Date - s.dtpDateDe.Value.Date;
+            if (t.TotalDays <= 0)
+                MessageBox.Show("La première date doit être inférieure ou égal à la deuxième");
+            else
+            {
+                //Ajuster les dates
+                if (s.dtpDateDe.Value.Day != 1)
+                    s.dtpDateDe.Value = s.dtpDateDe.Value.AddDays(-(s.dtpDateDe.Value.Day - 1));
+
+                s.nbjours = DateTime.DaysInMonth(s.dtpDateA.Value.Year, s.dtpDateA.Value.Month);
+                s.dtpDateA.Value = s.dtpDateA.Value.AddDays((s.nbjours - s.dtpDateA.Value.Day));
+
+                //Remove months columns and initialize the dgv to the first 3 columns
+                s.nbcolonne = s.dgvRapport.ColumnCount;
+                if (s.nbcolonne > 3)
+                {
+                    for (int i = s.nbcolonne - 1; i > 2; i--)
+                    {
+                        s.dgvRapport.Columns.RemoveAt(i);
+                    }
+                }
+
+                //Adding months columns
+                for (DateTime i = s.dtpDateDe.Value.Date; i < s.dtpDateA.Value.Date; i = i.AddMonths(1))
+                {
+                    id++;
+                    s.dgvRapport.Columns.Add("mois" + id, i.ToShortDateString().Substring(3));
+                    for (int j = 0; j < s.dgvRapport.RowCount; j++)
+                    {
+                        s.dgvRapport.Rows[j].Cells[s.dgvRapport.ColumnCount - 1].Value = 0;
+                    }
+                }
+                if (id > 12)
+                {
+                    MessageBox.Show("Le nombre total de mois a dépassé 12. Ainsi, il sera réduit à la valeur max de 12", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    s.nbcolonne = s.dgvRapport.ColumnCount;
+                    if (s.nbcolonne > 15)
+                    {
+                        for (int i = s.nbcolonne - 1; i > 14; i--)
+                        {
+                            s.dgvRapport.Columns.RemoveAt(i);
+                        }
+                    }
+                }
+            }
+        }
+        public void AfficherCasConsultation(FormAdminStatService s)
+        {
+            for (int i = 0; i < s.dgvRapport.RowCount; i++)
+            {
+                id = 0;
+                if (s.dgvRapport.Rows[i].Cells[1].Value.ToString() == "706101")
+                    id = s.dgvRapport.Rows[i].Index;
+                if(s.dgvRapport.Rows[i].Cells[0].Value.ToString() == "")
+                {
+                    for (int j = 3; j < s.dgvRapport.ColumnCount; j++)
+                    {
+                        s.colonne = s.dgvRapport.Columns[j].HeaderText;
+                        s.nbjours = DateTime.DaysInMonth(int.Parse(s.colonne.Substring(3)), int.Parse(s.colonne.Substring(0, 2)));
+                        con.Open();
+                        cmd = new SqlCommand("select count(idrecette) from RecetteService where idservice = @id and date_operation between @date_De and @date_A", con);
+                        cmd.Parameters.AddWithValue("@id", s.dgvRapport.Rows[i].Cells[1].Value.ToString());
+                        cmd.Parameters.AddWithValue("@date_De", "01/" + s.colonne);
+                        cmd.Parameters.AddWithValue("@date_A", s.nbjours + "/" + s.colonne);
+                        try
+                        {
+                            dr = cmd.ExecuteReader();
+                            while (dr.Read())
+                            {
+                                s.dgvRapport.Rows[i].Cells[j].Value = dr[0].ToString();
+                                s.dgvRapport.Rows[id].Cells[j].Value = int.Parse(s.dgvRapport.Rows[id].Cells[j].Value.ToString()) + int.Parse(s.dgvRapport.Rows[i].Cells[j].Value.ToString());
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        con.Close();
+                    }
+                }
+            }
+        }
+        public void AfficherCas(FormAdminStatService s)
+        {
+            for (int i = 0; i < s.dgvRapport.RowCount; i++)
+            {
+                if(s.dgvRapport.Rows[i].Cells[0].Value.ToString() != "" && s.dgvRapport.Rows[i].Cells[1].Value.ToString() != "706101")
+                {
+                    for (int j = 3; j < s.dgvRapport.ColumnCount; j++)
+                    {
+                        s.colonne = s.dgvRapport.Columns[j].HeaderText;
+                        s.nbjours = DateTime.DaysInMonth(int.Parse(s.colonne.Substring(3)), int.Parse(s.colonne.Substring(0, 2)));
+                        con.Open();
+                        cmd = new SqlCommand("select count(idrecette) from RecetteService, Service where RecetteService.idservice = Service.idservice and numcompte = @compte and date_operation between @date_De and @date_A", con);
+                        cmd.Parameters.AddWithValue("@compte", s.dgvRapport.Rows[i].Cells[1].Value.ToString());
+                        cmd.Parameters.AddWithValue("@date_De", "01/" + s.colonne);
+                        cmd.Parameters.AddWithValue("@date_A", s.nbjours + "/" + s.colonne);
+                        try
+                        {
+                            dr = cmd.ExecuteReader();
+                            while (dr.Read())
+                            {
+                                s.dgvRapport.Rows[i].Cells[j].Value = dr[0].ToString();
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        con.Close();
+                    }
+                }
+            }
+        }
+        #endregion
+
     }
     public class Bilan_Actif
     {
