@@ -18,7 +18,8 @@ namespace SUMEDCO
         }
         ClassCompta cc = new ClassCompta();
         public int nbjours,
-            nbcolonne;
+            nbcolonne,
+            sommeligne;
         public string colonne;
         private void FormRapportTrim_Shown(object sender, EventArgs e)
         {

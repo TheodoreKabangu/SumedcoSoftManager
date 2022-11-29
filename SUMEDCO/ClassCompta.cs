@@ -4766,18 +4766,26 @@ namespace SUMEDCO
                         }
                     }
                 }
+                //Colonne totaux
+                id++;
+                s.dgvRapport.Columns.Add("mois" + id, "Total");
+                for (int j = 0; j < s.dgvRapport.RowCount; j++)
+                {
+                    s.dgvRapport.Rows[j].Cells[s.dgvRapport.ColumnCount - 1].Value = 0;
+                }
             }
         }
         public void AfficherCasConsultation(FormAdminStatService s)
         {
             for (int i = 0; i < s.dgvRapport.RowCount; i++)
             {
+                s.sommeligne = 0;
                 id = 0;
                 if (s.dgvRapport.Rows[i].Cells[1].Value.ToString() == "706101")
                     id = s.dgvRapport.Rows[i].Index;
                 if(s.dgvRapport.Rows[i].Cells[0].Value.ToString() == "")
                 {
-                    for (int j = 3; j < s.dgvRapport.ColumnCount; j++)
+                    for (int j = 3; j < s.dgvRapport.ColumnCount-1; j++)
                     {
                         s.colonne = s.dgvRapport.Columns[j].HeaderText;
                         s.nbjours = DateTime.DaysInMonth(int.Parse(s.colonne.Substring(3)), int.Parse(s.colonne.Substring(0, 2)));
@@ -4793,6 +4801,7 @@ namespace SUMEDCO
                             {
                                 s.dgvRapport.Rows[i].Cells[j].Value = dr[0].ToString();
                                 s.dgvRapport.Rows[id].Cells[j].Value = int.Parse(s.dgvRapport.Rows[id].Cells[j].Value.ToString()) + int.Parse(s.dgvRapport.Rows[i].Cells[j].Value.ToString());
+                                s.sommeligne = s.sommeligne + int.Parse(s.dgvRapport.Rows[i].Cells[j].Value.ToString());
                             }
                         }
                         catch (Exception ex)
@@ -4801,6 +4810,8 @@ namespace SUMEDCO
                         }
                         con.Close();
                     }
+                    s.dgvRapport.Rows[i].Cells[s.dgvRapport.ColumnCount - 1].Value = s.sommeligne;
+                    s.dgvRapport.Rows[id].Cells[s.dgvRapport.ColumnCount - 1].Value = int.Parse(s.dgvRapport.Rows[id].Cells[s.dgvRapport.ColumnCount - 1].Value.ToString()) + s.sommeligne;
                 }
             }
         }
@@ -4808,9 +4819,10 @@ namespace SUMEDCO
         {
             for (int i = 0; i < s.dgvRapport.RowCount; i++)
             {
+                s.sommeligne = 0;
                 if(s.dgvRapport.Rows[i].Cells[0].Value.ToString() != "" && s.dgvRapport.Rows[i].Cells[1].Value.ToString() != "706101")
                 {
-                    for (int j = 3; j < s.dgvRapport.ColumnCount; j++)
+                    for (int j = 3; j < s.dgvRapport.ColumnCount-1; j++)
                     {
                         s.colonne = s.dgvRapport.Columns[j].HeaderText;
                         s.nbjours = DateTime.DaysInMonth(int.Parse(s.colonne.Substring(3)), int.Parse(s.colonne.Substring(0, 2)));
@@ -4825,6 +4837,7 @@ namespace SUMEDCO
                             while (dr.Read())
                             {
                                 s.dgvRapport.Rows[i].Cells[j].Value = dr[0].ToString();
+                                s.sommeligne = s.sommeligne + int.Parse(dr[0].ToString());
                             }
                         }
                         catch (Exception ex)
@@ -4833,6 +4846,7 @@ namespace SUMEDCO
                         }
                         con.Close();
                     }
+                    s.dgvRapport.Rows[i].Cells[s.dgvRapport.ColumnCount - 1].Value = s.sommeligne;
                 }
             }
         }
