@@ -4850,6 +4850,34 @@ namespace SUMEDCO
                 }
             }
         }
+        public void ImprimerRapportStat(FormAdminStatService s, FormImpression imp)
+        {
+            imp.Text = "SSM - Rapport Statistiques";
+            List<DataGridView> list = new List<DataGridView>();
+            list.Clear();
+            DataGridView dgv = new DataGridView();
+            for (int i = 0; i < s.dgvRapport.ColumnCount; i++)
+			{
+                dgv.Columns.Add(s.dgvRapport.Columns[i].Name, s.dgvRapport.Columns[i].HeaderText);
+			}
+          
+            for (int i = 0; i < s.dgvRapport.RowCount; i++)
+            {
+                dgv.Rows.Add();
+                for (int j = 0; j < s.dgvRapport.ColumnCount; j++)
+                {
+                    dgv.Rows[i].Cells[j].Value = dgv.Rows[i].Cells[j].Value;
+                }
+            }
+            list.Add(dgv);
+
+            rs.Name = "DataSet1";
+            rs.Value = list;
+            imp.reportViewer1.LocalReport.DataSources.Clear();
+            imp.reportViewer1.LocalReport.DataSources.Add(rs);
+            imp.reportViewer1.LocalReport.ReportEmbeddedResource = "SUMEDCO.BilanActif.rdlc";
+            imp.ShowDialog();
+        }
         #endregion
 
     }

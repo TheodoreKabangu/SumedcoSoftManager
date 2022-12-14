@@ -23,7 +23,8 @@ namespace SUMEDCO
 
         private void btnQuitter_Click(object sender, EventArgs e)
         {
-            this.Close();
+            fermeture_succes = false;
+            this.Hide();
         }
         private void btnRecherche_Click(object sender, EventArgs e)
         {
@@ -36,52 +37,23 @@ namespace SUMEDCO
             {
                 idconsultation = int.Parse(dgvPatient.CurrentRow.Cells[0].Value.ToString());
                 idpatient = int.Parse(dgvPatient.CurrentRow.Cells[3].Value.ToString());
+                btnDossier.Enabled = true;
             }
         }
 
         private void FormConsultation_Shown(object sender, EventArgs e)
         {
-            if (btnQuitter.Visible)
-            {
-                foreach (ToolStripItem item in contextMenuStrip1.Items)
-                {
-                    if (item.Name == "itemResultatExamen" || item.Name == "itemPrescrire")
-                        item.Enabled = false;
-                }
-            }
-            else
-            {
-                foreach (ToolStripItem item in contextMenuStrip1.Items)
-                {
-                    if (item.Name != "itemResultatExamen" && item.Name != "itemPrescrire")
-                        item.Enabled = false;
-                }
-            }
+            
+        }
+        private void txtPatient_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
-        private void itemResultatExamen_Click(object sender, EventArgs e)
+        private void btnDossier_Click(object sender, EventArgs e)
         {
-            if (dgvPatient.RowCount != 0)
-            {
-                fermeture_succes = true;
-                this.Hide();
-            }
-            else MessageBox.Show("Aucune ligne n'a été sélectionnée", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        }
-
-        private void itemPrescrire_Click(object sender, EventArgs e)
-        {
-            if (dgvPatient.RowCount != 0)
-            {
-                fermeture_succes = true;
-                this.Hide();
-            }
-            else MessageBox.Show("Aucune ligne n'a été sélectionnée", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        }
-
-        private void itemdossierMedical_Click(object sender, EventArgs e)
-        {
-            cm.DetailsConsultation(this, new FormConsultationDossier());
+            fermeture_succes = true;
+            this.Hide();
         }
 
     }

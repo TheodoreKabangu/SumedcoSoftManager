@@ -40,7 +40,7 @@ namespace SUMEDCO
         }
         private void btnIntervention_Click(object sender, EventArgs e)
         {
-            cm.AfficherSousForm(this, new FormConsultation());
+            cm.AfficherSousForm(this, new FormConsultationDossier());
         }
 
         private void btnChat_Click(object sender, EventArgs e)

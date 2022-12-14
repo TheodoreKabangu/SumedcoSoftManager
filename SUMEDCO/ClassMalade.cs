@@ -205,7 +205,7 @@ namespace SUMEDCO
         List<string> rubriques = new List<string>();
 
         #region CONSULTATIONN
-        public void AfficherSousForm(MFormConsultation c, FormConsultation childForm)
+        public void AfficherSousForm(MFormConsultation c, FormConsultationDossier childForm)
         {
             if (activeForm != null)
                 activeForm.Close();
@@ -218,6 +218,20 @@ namespace SUMEDCO
             childForm.BringToFront();
             childForm.idmedecin = c.idmedecin;
             childForm.Show();
+        }
+        public void RechercheConsultation(FormConsultationDossier cd, FormConsultation c)
+        {
+            c.idmedecin = cd.idmedecin;
+            c.ShowDialog();
+            if (!c.fermeture_succes)
+            {
+                cd.Close();
+                c.Close();
+            }
+            else
+            {
+                DetailsConsultation(c, cd);
+            }
         }
         public void AfficherSousForm(MFormConsultation c, FormAgenda childForm)
         {
@@ -413,8 +427,8 @@ namespace SUMEDCO
                 sv.MaximumSize = sv.Size;
                 sv.MinimumSize = sv.Size;
                 sv.panel2.Visible = true;
-                sv.lblNum.Visible = true;
-                sv.lblNom.Visible = true;
+                sv.lblNum.Visible = false;
+                sv.lblNom.Visible = false;
                 sv.btnValider.Enabled = false;
                 sv.btnMAJ.Enabled = true;
                 sv.Text = "SSM - Signes Vitaux";
@@ -769,11 +783,35 @@ namespace SUMEDCO
         }
         public void DetailsConsultation(FormConsultation c, FormConsultationDossier cd)
         {
-            cd.idmedecin = c.idmedecin;
-            cd.idconsultation = int.Parse(c.dgvPatient.CurrentRow.Cells[0].Value.ToString());
-            cd.idpatient = int.Parse(c.dgvPatient.CurrentRow.Cells[3].Value.ToString());
+            cd.idconsultation = c.idconsultation;
+            cd.idpatient = c.idpatient;
             cd.patient = TrouverNom("patient", cd.idpatient);
             cd.medecin = TrouverNom("medecin", cd.idmedecin);
+
+            con.Open();
+            try
+            {
+                cmd = new SqlCommand("select * from Patient where idpatient= @id", con);
+                cmd.Parameters.AddWithValue("@id", cd.idpatient);
+                dr = cmd.ExecuteReader();
+                cd.dgvPatient.Rows.Clear();
+
+                dr.Read();
+                cd.dgvPatient.Rows.Add();
+                cd.dgvPatient.Rows[cd.dgvPatient.RowCount - 1].Cells[0].Value = dr[0].ToString();
+                cd.dgvPatient.Rows[cd.dgvPatient.RowCount - 1].Cells[1].Value = dr[1].ToString();
+                cd.dgvPatient.Rows[cd.dgvPatient.RowCount - 1].Cells[2].Value = dr[2].ToString();
+                cd.dgvPatient.Rows[cd.dgvPatient.RowCount - 1].Cells[3].Value = dr[3].ToString();
+                cd.dgvPatient.Rows[cd.dgvPatient.RowCount - 1].Cells[4].Value = dr[4].ToString();
+                cd.dgvPatient.Rows[cd.dgvPatient.RowCount - 1].Cells[5].Value = dr[5].ToString();
+                cd.dgvPatient.Rows[cd.dgvPatient.RowCount - 1].Cells[6].Value = dr[6].ToString();
+                cd.dgvPatient.Rows[cd.dgvPatient.RowCount - 1].Cells[7].Value = dr[7].ToString();
+                cd.dgvPatient.Rows[cd.dgvPatient.RowCount - 1].Cells[8].Value = dr[8].ToString();
+                cd.dgvPatient.Rows[cd.dgvPatient.RowCount - 1].Cells[9].Value = dr[9].ToString();
+            }
+            catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            con.Close();
+            cd.dgvPatient.Rows[cd.dgvPatient.RowCount - 1].Cells[10].Value = TrouverNom("typepatient", int.Parse(cd.dgvPatient.Rows[cd.dgvPatient.RowCount - 1].Cells[9].Value.ToString()));
 
             cd.dgvDetail.Rows.Add();
             cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].DefaultCellStyle.ForeColor = Color.MediumBlue;
@@ -863,8 +901,6 @@ namespace SUMEDCO
             cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[3].Value = "Modifier";
             RenseignementConsultation(cd, "autre prescription");
 
-            cd.Text = "SSM - Dossier médical " + cd.patient;
-            cd.ShowDialog();
         }
         public void DetailsConsultation(FormConsultationDossier cd)
         {

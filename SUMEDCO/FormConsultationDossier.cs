@@ -49,7 +49,7 @@ namespace SUMEDCO
 
         private void FormConsultationDossier_Shown(object sender, EventArgs e)
         {
-            //MessageBox.Show(""+idconsultation);
+            cm.RechercheConsultation(this, new FormConsultation());
         }
 
         private void dgvDetail_CellClick(object sender, DataGridViewCellEventArgs e)
