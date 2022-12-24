@@ -773,6 +773,7 @@ namespace SUMEDCO
                     EnregistrerServiceBon(numbon, numbonS, dgv);
                 else
                     EnregistrerProduitBon(numbon, numbonS, dgv);
+                ArchiverBon("recette", numbon);
             }
             else
             {
@@ -842,7 +843,7 @@ namespace SUMEDCO
         {
             if (f.dgvFacture.RowCount > 0)
             {
-                //Enregistrer le bon et ses services
+                //Enregistrer le bon et ses services, archiver le bon
                 EnregistrerBon(f.numbon, f.numbonS, f.lblDateOperation.Text, f.cboTypeFacture.Text, f.txtPayeur.Text, "service",f.dgvFacture);
                              
                 if (f.cboTypeFacture.Text == "différé")
@@ -858,8 +859,7 @@ namespace SUMEDCO
                     }
                 }
                 MessageBox.Show("Bon enregistré avec succès", "Enregistrement", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Annuler(f);
-                ArchiverBon("recette", f.numbon);
+                Annuler(f);              
                 if (f.nouveau_patient) f.Close();
             }
             else

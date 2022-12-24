@@ -1999,7 +1999,6 @@ namespace SUMEDCO
                 cmd.Transaction = tx;
                 cmd.ExecuteNonQuery();
                 tx.Commit();
-                MessageBox.Show("Enregistré avec succès", "Enregistrement", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -2016,15 +2015,19 @@ namespace SUMEDCO
                 FormFactureService f = new FormFactureService();
                 f.nouveau_patient = true;
                 f.btnExit.Visible = false;
-                f.cboTypeFacture.Items.Remove("différé");
-                f.cboTypeFacture.DropDownStyle = ComboBoxStyle.DropDown;
-                f.cboTypeFacture.Text = "immédiat";
-                f.cboTypeFacture.DropDownStyle = ComboBoxStyle.DropDownList;
                 f.txtPayeur.Text = p.txtNom.Text;
                 f.idpatient = p.idpatient;
                 f.cas = p.cas;
                 f.MaximumSize = f.Size;
                 f.ControlBox = false;
+                f.btnService.Enabled = false;
+                f.dgvFacture.Rows.Add();
+                f.dgvFacture.Rows[0].Cells[0].Value = cc.TrouverId("service", p.service);
+                f.dgvFacture.Rows[0].Cells[1].Value = f.dgvFacture.RowCount;
+                f.dgvFacture.Rows[0].Cells[2].Value = p.service;
+                f.dgvFacture.Rows[0].Cells[3].Value = cc.PrixService(int.Parse(f.dgvFacture.Rows[0].Cells[0].Value.ToString()));
+                f.txtTotal.Text = (double.Parse(f.dgvFacture.Rows[0].Cells[3].Value.ToString())).ToString("0.00");
+
                 f.Text = "SSM - Facturation des services";
                 f.ShowDialog();
                 if (f.nouveau_patient)
@@ -2098,7 +2101,7 @@ namespace SUMEDCO
         }
         public void Supprimer(FormPatient p)
         {
-            if(CompterConsultation(p.idpatient)==0)
+            if (CompterConsultation(p.idpatient) == 0)
             {
                 con.Open();
                 SqlTransaction tx = con.BeginTransaction();
@@ -2203,7 +2206,6 @@ namespace SUMEDCO
                 p.cboSexe.Text = p.dgvPatient.CurrentRow.Cells[3].Value.ToString();
                 p.cboSexe.DropDownStyle = ComboBoxStyle.DropDownList;
 
-                p.txtAnnee.Text = p.dgvPatient.CurrentRow.Cells[4].Value.ToString();
                 p.txtAdresse.Text = p.dgvPatient.CurrentRow.Cells[5].Value.ToString();
                 p.txtTel.Text = p.dgvPatient.CurrentRow.Cells[6].Value.ToString();
                 p.txtPersonContact.Text = p.dgvPatient.CurrentRow.Cells[7].Value.ToString();
@@ -2232,6 +2234,8 @@ namespace SUMEDCO
             p.btnRetirer.Enabled = false;
             p.btnEnregistrer.Enabled = true;
             p.lblAge.Text = "Age :";
+            p.rbNouveau.Checked = false;
+            p.rbUrgence.Checked = false;
         }
         public string TrouverPatientPayant(FormFacture f)
         {
@@ -2250,7 +2254,7 @@ namespace SUMEDCO
             con.Close();
             return nom;
         }
-        public void Abonne(FormPatient p, FormAbonne a)
+        public void AjouterAbonne(FormPatient p, FormAbonne a)
         {
             a.btnModifier.Enabled = false;
             a.btnAfficher.Enabled = false;

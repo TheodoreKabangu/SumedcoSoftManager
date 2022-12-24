@@ -261,7 +261,6 @@
             this.btnRendezVous.BackColor = System.Drawing.Color.Transparent;
             this.btnRendezVous.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnRendezVous.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnRendezVous.Enabled = false;
             this.btnRendezVous.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
             this.btnRendezVous.FlatAppearance.BorderSize = 0;
             this.btnRendezVous.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;

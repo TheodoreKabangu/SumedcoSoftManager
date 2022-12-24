@@ -39,13 +39,13 @@ namespace SUMEDCO
 
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
-            this.Close();
+            cm.Annuler(this);
         }
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
-            if (cboTypePatient.Text != "" && cboMedecin.Text != "" && txtNom.Text != "" && cboSexe.Text != "" && txtAnnee.Text != "" && txtAdresse.Text != "")
+            if (cboTypePatient.Text != "" && cboMedecin.Text != "" && txtNom.Text != "" && cboSexe.Text != "" && txtAnnee.Text != "" && txtAdresse.Text != "" && service != "")
             {
-                if (MessageBox.Show("S'agit-il d'une consultation d'urgence", "Question sur le cas", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (service.ToLower().Contains("urgence"))
                     cas = "urgence";
                 else
                     cas = "nouveau";
@@ -53,7 +53,7 @@ namespace SUMEDCO
             }
             else
             {
-                MessageBox.Show("Désolé! Champ(s) obligatoire(s) vide(s)\nRemplissez-le(s).", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Désolé! Certaines informations obligatoire(s) vide(s)\nRenseignez-le(s).", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }            
         }
 
@@ -237,7 +237,7 @@ namespace SUMEDCO
             if(cboTypePatient.Text == "abonné")
             {
                 if(statut=="nouveau")
-                    cm.Abonne(this, new FormAbonne());
+                    cm.AjouterAbonne(this, new FormAbonne());
             }
         }
 
@@ -279,7 +279,8 @@ namespace SUMEDCO
 
         private void btnSupprimer_Click(object sender, EventArgs e)
         {
-            cm.Supprimer(this);
+            //Réflechir à quand un patient pourrait être supprimé
+            //cm.Supprimer(this);
         }
 
         private void cboMedecin_Enter(object sender, EventArgs e)
@@ -348,6 +349,16 @@ namespace SUMEDCO
             {
                 cboTypePatient.Items.Remove("payant");
             }
+        }
+        public string service;
+        private void rbNouveau_Click(object sender, EventArgs e)
+        {
+            service = string.Format("consultation {0}", rbNouveau.Text);
+        }
+
+        private void rbUrgence_Click(object sender, EventArgs e)
+        {
+            service = string.Format("consultation {0}", rbUrgence.Text);
         }
 
     }

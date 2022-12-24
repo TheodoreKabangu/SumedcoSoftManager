@@ -39,6 +39,10 @@
             this.btnRetirer = new System.Windows.Forms.Button();
             this.btnReaffecter = new System.Windows.Forms.Button();
             this.btnAffecter = new System.Windows.Forms.Button();
+            this.btnAnnuler = new System.Windows.Forms.Button();
+            this.btnModifier = new System.Windows.Forms.Button();
+            this.btnEnregistrer = new System.Windows.Forms.Button();
+            this.btnSupprimer = new System.Windows.Forms.Button();
             this.btnQuitter = new System.Windows.Forms.Button();
             this.cboMedecin = new System.Windows.Forms.ComboBox();
             this.dgvMedecin = new System.Windows.Forms.DataGridView();
@@ -58,9 +62,6 @@
             this.btnRecherche = new System.Windows.Forms.Button();
             this.dtpDateEntree = new System.Windows.Forms.DateTimePicker();
             this.lblDateEntree = new System.Windows.Forms.Label();
-            this.btnAnnuler = new System.Windows.Forms.Button();
-            this.btnModifier = new System.Windows.Forms.Button();
-            this.btnEnregistrer = new System.Windows.Forms.Button();
             this.lblAge = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtNom = new System.Windows.Forms.TextBox();
@@ -79,8 +80,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cboTypePatient = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnSupprimer = new System.Windows.Forms.Button();
             this.txtMois = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.rbNouveau = new System.Windows.Forms.RadioButton();
+            this.rbUrgence = new System.Windows.Forms.RadioButton();
             this.dataGridViewTextBoxColumn32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn33 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn34 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -108,7 +111,7 @@
             this.btnRetirer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRetirer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRetirer.Image = ((System.Drawing.Image)(resources.GetObject("btnRetirer.Image")));
-            this.btnRetirer.Location = new System.Drawing.Point(499, 293);
+            this.btnRetirer.Location = new System.Drawing.Point(499, 292);
             this.btnRetirer.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnRetirer.Name = "btnRetirer";
             this.btnRetirer.Size = new System.Drawing.Size(30, 21);
@@ -156,6 +159,88 @@
             this.toolTip1.SetToolTip(this.btnAffecter, "Affecter le cas");
             this.btnAffecter.UseVisualStyleBackColor = false;
             this.btnAffecter.Click += new System.EventHandler(this.btnAffecter_Click);
+            // 
+            // btnAnnuler
+            // 
+            this.btnAnnuler.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.btnAnnuler.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAnnuler.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnAnnuler.FlatAppearance.BorderSize = 0;
+            this.btnAnnuler.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAnnuler.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAnnuler.Image = ((System.Drawing.Image)(resources.GetObject("btnAnnuler.Image")));
+            this.btnAnnuler.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAnnuler.Location = new System.Drawing.Point(373, 252);
+            this.btnAnnuler.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btnAnnuler.Name = "btnAnnuler";
+            this.btnAnnuler.Size = new System.Drawing.Size(30, 23);
+            this.btnAnnuler.TabIndex = 12;
+            this.toolTip1.SetToolTip(this.btnAnnuler, "Annuler");
+            this.btnAnnuler.UseVisualStyleBackColor = false;
+            this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
+            // 
+            // btnModifier
+            // 
+            this.btnModifier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.btnModifier.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnModifier.Enabled = false;
+            this.btnModifier.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnModifier.FlatAppearance.BorderSize = 0;
+            this.btnModifier.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnModifier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModifier.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModifier.Image = ((System.Drawing.Image)(resources.GetObject("btnModifier.Image")));
+            this.btnModifier.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnModifier.Location = new System.Drawing.Point(457, 252);
+            this.btnModifier.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btnModifier.Name = "btnModifier";
+            this.btnModifier.Size = new System.Drawing.Size(30, 23);
+            this.btnModifier.TabIndex = 14;
+            this.toolTip1.SetToolTip(this.btnModifier, "Modifier");
+            this.btnModifier.UseVisualStyleBackColor = false;
+            this.btnModifier.Click += new System.EventHandler(this.btnModifier_Click);
+            // 
+            // btnEnregistrer
+            // 
+            this.btnEnregistrer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.btnEnregistrer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnEnregistrer.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnEnregistrer.FlatAppearance.BorderSize = 0;
+            this.btnEnregistrer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnEnregistrer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEnregistrer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEnregistrer.Image = ((System.Drawing.Image)(resources.GetObject("btnEnregistrer.Image")));
+            this.btnEnregistrer.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEnregistrer.Location = new System.Drawing.Point(415, 252);
+            this.btnEnregistrer.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btnEnregistrer.Name = "btnEnregistrer";
+            this.btnEnregistrer.Size = new System.Drawing.Size(30, 23);
+            this.btnEnregistrer.TabIndex = 13;
+            this.toolTip1.SetToolTip(this.btnEnregistrer, "Enregistrer");
+            this.btnEnregistrer.UseVisualStyleBackColor = false;
+            this.btnEnregistrer.Click += new System.EventHandler(this.btnEnregistrer_Click);
+            // 
+            // btnSupprimer
+            // 
+            this.btnSupprimer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.btnSupprimer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnSupprimer.Enabled = false;
+            this.btnSupprimer.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnSupprimer.FlatAppearance.BorderSize = 0;
+            this.btnSupprimer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnSupprimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSupprimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSupprimer.Image = ((System.Drawing.Image)(resources.GetObject("btnSupprimer.Image")));
+            this.btnSupprimer.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSupprimer.Location = new System.Drawing.Point(499, 252);
+            this.btnSupprimer.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btnSupprimer.Name = "btnSupprimer";
+            this.btnSupprimer.Size = new System.Drawing.Size(30, 23);
+            this.btnSupprimer.TabIndex = 15;
+            this.toolTip1.SetToolTip(this.btnSupprimer, "Supprimer");
+            this.btnSupprimer.UseVisualStyleBackColor = false;
+            this.btnSupprimer.Click += new System.EventHandler(this.btnSupprimer_Click);
             // 
             // btnQuitter
             // 
@@ -239,7 +324,7 @@
             this.txtRecherche.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtRecherche.MaxLength = 25;
             this.txtRecherche.Name = "txtRecherche";
-            this.txtRecherche.Size = new System.Drawing.Size(255, 21);
+            this.txtRecherche.Size = new System.Drawing.Size(249, 21);
             this.txtRecherche.TabIndex = 639;
             this.txtRecherche.Text = "Nom du patient";
             this.txtRecherche.Enter += new System.EventHandler(this.txtRecherche_Enter);
@@ -386,7 +471,7 @@
             this.btnRecherche.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRecherche.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRecherche.Image = ((System.Drawing.Image)(resources.GetObject("btnRecherche.Image")));
-            this.btnRecherche.Location = new System.Drawing.Point(379, 292);
+            this.btnRecherche.Location = new System.Drawing.Point(373, 292);
             this.btnRecherche.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnRecherche.Name = "btnRecherche";
             this.btnRecherche.Size = new System.Drawing.Size(30, 21);
@@ -412,58 +497,6 @@
             this.lblDateEntree.TabIndex = 636;
             this.lblDateEntree.Text = "Date d\'entrée :";
             // 
-            // btnAnnuler
-            // 
-            this.btnAnnuler.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.btnAnnuler.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnAnnuler.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnAnnuler.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAnnuler.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAnnuler.Location = new System.Drawing.Point(124, 254);
-            this.btnAnnuler.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.btnAnnuler.Name = "btnAnnuler";
-            this.btnAnnuler.Size = new System.Drawing.Size(80, 27);
-            this.btnAnnuler.TabIndex = 12;
-            this.btnAnnuler.Text = "Annuler";
-            this.btnAnnuler.UseVisualStyleBackColor = false;
-            this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
-            // 
-            // btnModifier
-            // 
-            this.btnModifier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.btnModifier.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnModifier.Enabled = false;
-            this.btnModifier.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnModifier.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnModifier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnModifier.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModifier.Location = new System.Drawing.Point(308, 254);
-            this.btnModifier.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.btnModifier.Name = "btnModifier";
-            this.btnModifier.Size = new System.Drawing.Size(80, 27);
-            this.btnModifier.TabIndex = 14;
-            this.btnModifier.Text = "Modifier";
-            this.btnModifier.UseVisualStyleBackColor = false;
-            this.btnModifier.Click += new System.EventHandler(this.btnModifier_Click);
-            // 
-            // btnEnregistrer
-            // 
-            this.btnEnregistrer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.btnEnregistrer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnEnregistrer.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnEnregistrer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnEnregistrer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEnregistrer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEnregistrer.Location = new System.Drawing.Point(216, 254);
-            this.btnEnregistrer.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.btnEnregistrer.Name = "btnEnregistrer";
-            this.btnEnregistrer.Size = new System.Drawing.Size(80, 27);
-            this.btnEnregistrer.TabIndex = 13;
-            this.btnEnregistrer.Text = "Enregistrer";
-            this.btnEnregistrer.UseVisualStyleBackColor = false;
-            this.btnEnregistrer.Click += new System.EventHandler(this.btnEnregistrer_Click);
-            // 
             // lblAge
             // 
             this.lblAge.AutoSize = true;
@@ -482,9 +515,9 @@
             this.label1.Location = new System.Drawing.Point(11, 111);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(108, 15);
+            this.label1.Size = new System.Drawing.Size(103, 15);
             this.label1.TabIndex = 624;
-            this.label1.Text = "Noms du malade :";
+            this.label1.Text = "Noms du patient :";
             // 
             // txtNom
             // 
@@ -627,9 +660,9 @@
             this.label6.Location = new System.Drawing.Point(11, 139);
             this.label6.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(103, 15);
+            this.label6.Size = new System.Drawing.Size(98, 15);
             this.label6.TabIndex = 630;
-            this.label6.Text = "Sexe du malade :";
+            this.label6.Text = "Sexe du patient :";
             // 
             // label2
             // 
@@ -663,24 +696,6 @@
             this.label3.TabIndex = 636;
             this.label3.Text = "Type patient :";
             // 
-            // btnSupprimer
-            // 
-            this.btnSupprimer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.btnSupprimer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnSupprimer.Enabled = false;
-            this.btnSupprimer.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnSupprimer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnSupprimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSupprimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSupprimer.Location = new System.Drawing.Point(400, 254);
-            this.btnSupprimer.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.btnSupprimer.Name = "btnSupprimer";
-            this.btnSupprimer.Size = new System.Drawing.Size(80, 27);
-            this.btnSupprimer.TabIndex = 15;
-            this.btnSupprimer.Text = "Supprimer";
-            this.btnSupprimer.UseVisualStyleBackColor = false;
-            this.btnSupprimer.Click += new System.EventHandler(this.btnSupprimer_Click);
-            // 
             // txtMois
             // 
             this.txtMois.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
@@ -692,6 +707,42 @@
             this.txtMois.TabIndex = 6;
             this.txtMois.TextChanged += new System.EventHandler(this.txtMois_TextChanged);
             this.txtMois.Enter += new System.EventHandler(this.txtMois_Enter);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(11, 255);
+            this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(81, 15);
+            this.label4.TabIndex = 648;
+            this.label4.Text = "Consultation :";
+            // 
+            // rbNouveau
+            // 
+            this.rbNouveau.AutoSize = true;
+            this.rbNouveau.ForeColor = System.Drawing.Color.MediumBlue;
+            this.rbNouveau.Location = new System.Drawing.Point(124, 256);
+            this.rbNouveau.Name = "rbNouveau";
+            this.rbNouveau.Size = new System.Drawing.Size(96, 19);
+            this.rbNouveau.TabIndex = 649;
+            this.rbNouveau.TabStop = true;
+            this.rbNouveau.Text = "Nouveau cas";
+            this.rbNouveau.UseVisualStyleBackColor = true;
+            this.rbNouveau.Click += new System.EventHandler(this.rbNouveau_Click);
+            // 
+            // rbUrgence
+            // 
+            this.rbUrgence.AutoSize = true;
+            this.rbUrgence.ForeColor = System.Drawing.Color.MediumBlue;
+            this.rbUrgence.Location = new System.Drawing.Point(226, 256);
+            this.rbUrgence.Name = "rbUrgence";
+            this.rbUrgence.Size = new System.Drawing.Size(72, 19);
+            this.rbUrgence.TabIndex = 649;
+            this.rbUrgence.TabStop = true;
+            this.rbUrgence.Text = "Urgence";
+            this.rbUrgence.UseVisualStyleBackColor = true;
+            this.rbUrgence.Click += new System.EventHandler(this.rbUrgence_Click);
             // 
             // dataGridViewTextBoxColumn32
             // 
@@ -712,6 +763,7 @@
             // dataGridViewTextBoxColumn34
             // 
             this.dataGridViewTextBoxColumn34.HeaderText = "Nbre";
+            this.dataGridViewTextBoxColumn34.MinimumWidth = 40;
             this.dataGridViewTextBoxColumn34.Name = "dataGridViewTextBoxColumn34";
             this.dataGridViewTextBoxColumn34.ReadOnly = true;
             this.dataGridViewTextBoxColumn34.Width = 40;
@@ -722,6 +774,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(703, 451);
+            this.Controls.Add(this.rbUrgence);
+            this.Controls.Add(this.rbNouveau);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.txtMois);
             this.Controls.Add(this.btnSupprimer);
             this.Controls.Add(this.dgvMedecin);
@@ -818,6 +873,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn31;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.Label label4;
+        public System.Windows.Forms.RadioButton rbNouveau;
+        public System.Windows.Forms.RadioButton rbUrgence;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn32;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn33;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn34;

@@ -41,26 +41,26 @@ namespace SUMEDCO
                 lblTaux.Text = cc.VerifierTaux(DateTime.Now.Date, "valeur").ToString() + " CDF";
                 cboTypeFacture.Select();
             }
-            if (nouveau_patient)
-            {
-                dgvFacture.Rows.Add();
-                if (cas == "urgence")
-                {
-                    dgvFacture.Rows[0].Cells[0].Value = cc.TrouverId("service", "consultation urgence");
-                    dgvFacture.Rows[0].Cells[1].Value = "1";
-                    dgvFacture.Rows[0].Cells[2].Value = "consultation urgence";
-                    dgvFacture.Rows[0].Cells[3].Value = cc.PrixService(int.Parse(dgvFacture.Rows[0].Cells[0].Value.ToString()));
-                    txtTotal.Text = (double.Parse(txtTotal.Text) + double.Parse(dgvFacture.Rows[0].Cells[3].Value.ToString())).ToString("0.00");
-                }
-                else
-                {
-                    dgvFacture.Rows[0].Cells[0].Value = cc.TrouverId("service", "consultation nouveau cas");
-                    dgvFacture.Rows[0].Cells[1].Value = "1";
-                    dgvFacture.Rows[0].Cells[2].Value = "consultation nouveau cas";
-                    dgvFacture.Rows[0].Cells[3].Value = cc.PrixService(int.Parse(dgvFacture.Rows[0].Cells[0].Value.ToString()));
-                    txtTotal.Text = (double.Parse(txtTotal.Text) + double.Parse(dgvFacture.Rows[0].Cells[3].Value.ToString())).ToString("0.00");
-                }
-            }
+            //if (nouveau_patient)
+            //{
+            //    dgvFacture.Rows.Add();
+            //    if (cas == "urgence")
+            //    {
+            //        dgvFacture.Rows[0].Cells[0].Value = cc.TrouverId("service", "consultation urgence");
+            //        dgvFacture.Rows[0].Cells[1].Value = "1";
+            //        dgvFacture.Rows[0].Cells[2].Value = "consultation urgence";
+            //        dgvFacture.Rows[0].Cells[3].Value = cc.PrixService(int.Parse(dgvFacture.Rows[0].Cells[0].Value.ToString()));
+            //        txtTotal.Text = (double.Parse(txtTotal.Text) + double.Parse(dgvFacture.Rows[0].Cells[3].Value.ToString())).ToString("0.00");
+            //    }
+            //    else
+            //    {
+            //        dgvFacture.Rows[0].Cells[0].Value = cc.TrouverId("service", "consultation nouveau cas");
+            //        dgvFacture.Rows[0].Cells[1].Value = "1";
+            //        dgvFacture.Rows[0].Cells[2].Value = "consultation nouveau cas";
+            //        dgvFacture.Rows[0].Cells[3].Value = cc.PrixService(int.Parse(dgvFacture.Rows[0].Cells[0].Value.ToString()));
+            //        txtTotal.Text = (double.Parse(txtTotal.Text) + double.Parse(dgvFacture.Rows[0].Cells[3].Value.ToString())).ToString("0.00");
+            //    }
+            //}
         }
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
