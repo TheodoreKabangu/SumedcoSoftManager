@@ -881,7 +881,7 @@ namespace SUMEDCO
             cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].DefaultCellStyle.ForeColor = Color.MediumBlue;
             cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].DefaultCellStyle.BackColor = Color.LightSteelBlue;
             cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[0].Value = "";
-            cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[2].Value = "MALADIES TROUVEES";
+            cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[2].Value = "DIAGNOSTICS";
             cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[3].Value = "Modifier";
             MaladieConsultation(cd);
 
@@ -972,7 +972,7 @@ namespace SUMEDCO
             cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].DefaultCellStyle.ForeColor = Color.MediumBlue;
             cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].DefaultCellStyle.BackColor = Color.LightSteelBlue;
             cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[0].Value = "";
-            cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[2].Value = "MALADIES TROUVEES";
+            cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[2].Value = "DIAGNOSTICS";
             cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[3].Value = "Modifier";
             MaladieConsultation(cd);
 
@@ -1012,7 +1012,7 @@ namespace SUMEDCO
                     break;
                 case "EXAMENS LABO & RESULTATS": VoirResultatExamenLabo(c.idconsultation, new FormConsulter(), "examen labo");
                     break;
-                case "MALADIES TROUVEES": VoirMaladieDiagnostic(c.idconsultation, new FormConsulter(), "diagnostic");
+                case "DIAGNOSTICS": VoirMaladieDiagnostic(c.idconsultation, new FormConsulter(), "diagnostic");
                     break;
                 case "PRESCRIPTIONS FAITES":
                     VoirPrescription(c.idconsultation, new FormConsulter(), "prescription");
@@ -1160,7 +1160,7 @@ namespace SUMEDCO
                         r.dgvExamPhys.Rows.Add();
                         r.dgvExamPhys.Rows[r.dgvExamPhys.RowCount - 1].Cells[0].Value = r.dgvExamPhys.RowCount;
                         r.dgvExamPhys.Rows[r.dgvExamPhys.RowCount - 1].Cells[1].Value = ex.dgv.Rows[i].Cells[1].Value.ToString();
-                        r.dgvExamPhys.Rows[r.dgvExamPhys.RowCount - 1].Cells[2].Value = "RAS";
+                        r.dgvExamPhys.Rows[r.dgvExamPhys.RowCount - 1].Cells[2].Value = "";
                     }
 
                 }
@@ -1229,35 +1229,42 @@ namespace SUMEDCO
             }
             else MessageBox.Show("Aucune ligne n'a été trouvée", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
-        public void AjouterExamenLabo(FormConsulter exa)
+        public void AjouterExamenConsultation(FormConsulter c)
         {
-            if (exa.dgvLabo.RowCount != 0)
+            if (c.dgvLabo.RowCount != 0)
             {
-                for (int i = 0; i < exa.dgvLabo.RowCount; i++)
+                for (int i = 0; i < c.dgvLabo.RowCount; i++)
                 {
-                    exa.idresultat = NouveauID("exa");
-                    con.Open();
-                    SqlTransaction tx = con.BeginTransaction();
-                    try
+                    if(c.dgvLabo.Rows[i].Cells[0].Value.ToString() != "")
                     {
-                        cmd = new SqlCommand("insert into ResultatExamen values(@idresult, @idconsult, @examen, @resultat)", con);
-                        cmd.Parameters.AddWithValue("@idresult", exa.idresultat);
-                        cmd.Parameters.AddWithValue("@idconsult", exa.idconsultation);
-                        cmd.Parameters.AddWithValue("@examen", exa.dgvLabo.Rows[i].Cells[1].Value.ToString());
-                        cmd.Parameters.AddWithValue("@resultat", exa.dgvLabo.Rows[i].Cells[2].Value.ToString());
-                        cmd.Transaction = tx;
-                        cmd.ExecuteNonQuery();
-                        tx.Commit();
+                        c.idresultat = NouveauID("exa");
+                        con.Open();
+                        SqlTransaction tx = con.BeginTransaction();
+                        try
+                        {
+                            cmd = new SqlCommand("insert into ResultatExamen(idresult, idconsult, idservice) values(@idresult, @idconsult, @idservice)", con);
+                            cmd.Parameters.AddWithValue("@idresult", c.idresultat);
+                            cmd.Parameters.AddWithValue("@idconsult", c.idconsultation);
+                            cmd.Parameters.AddWithValue("@idservice", c.dgvLabo.Rows[i].Cells[1].Value.ToString());
+                            //cmd.Parameters.AddWithValue("@resultat", c.dgvLabo.Rows[i].Cells[2].Value.ToString());
+                            cmd.Transaction = tx;
+                            cmd.ExecuteNonQuery();
+                            tx.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            tx.Rollback();
+                            MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        con.Close();
                     }
-                    catch (Exception ex)
-                    {
-                        tx.Rollback();
-                        MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    con.Close();
                 }
-                GenererBonExamen(exa, new FormImpression());
-                exa.dgvLabo.Rows.Clear();
+                //Enregister le bon de recettes
+                cc.EnregistrerBon(c.numbon, c.numbonS, c.dtpDate.Text, "immédiat", c.dgvAgenda.Rows[0].Cells[4].Value.ToString(), "service", c.dgvLabo);
+                
+                //Generer le bon d'examens
+                //GenererBonExamen(c, new FormImpression());
+                c.dgvLabo.Rows.Clear();
             }
             else MessageBox.Show("Aucune ligne de bon labo n'a été trouvée", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
@@ -1382,6 +1389,11 @@ namespace SUMEDCO
             {
                 MessageBox.Show("Aucune ligne de prescription n'a été trouvée", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+        public void AjouterRendezVous(FormConsulter c, FormConsulterRendezVous cr)
+        {
+            cr.idconsultation = c.idconsultation;
+            cr.ShowDialog();
         }
         public void ModifierRenseignement(DataGridView dgv, string label)
         {
@@ -1775,11 +1787,6 @@ namespace SUMEDCO
         #endregion
 
         #region RENDEZ-VOUS
-        public void NouveauRDV(int idconsultation, FormConsulterRendezVous r)
-        {
-            r.idconsultation = idconsultation;
-            r.ShowDialog();
-        }
         public void Afficher(FormConsulterRendezVous r)
         {
             con.Open();
@@ -2782,6 +2789,7 @@ namespace SUMEDCO
                             c.idligneagenda = int.Parse(c.dgvAgenda.CurrentRow.Cells[0].Value.ToString());
                             c.type_consultation = a.dgvAgenda.CurrentRow.Cells[1].Value.ToString();
                             c.idpatient = int.Parse(a.dgvAgenda.CurrentRow.Cells[2].Value.ToString());
+                            c.type_patient = a.dgvAgenda.CurrentRow.Cells[12].Value.ToString();
                             c.idmedecin = int.Parse(a.dgvAgenda.CurrentRow.Cells[3].Value.ToString());
 
                             ValeurSigneVitaux(c.dgvSigneVital, int.Parse(c.dgvAgenda.CurrentRow.Cells[0].Value.ToString()));

@@ -23,7 +23,7 @@ namespace SUMEDCO
         DataTable dt = new DataTable();
         bool cmdStatut;
         string chaine= "", cmdtxt = "", nom = "";
-        int id=0;
+        int id = 0;
         double valeur;
         #region METHODES GENERALES
         public int TrouverId(string motif, string nom)
@@ -355,18 +355,62 @@ namespace SUMEDCO
                     f.dgvFacture.Rows[i].Cells[1].Value = f.dgvFacture.RowCount;
                     f.dgvFacture.Rows[i].Cells[2].Value = fs.dgv3.Rows[i].Cells[1].Value.ToString();
                     f.dgvFacture.Rows[i].Cells[3].Value = fs.dgv3.Rows[i].Cells[2].Value.ToString();
-                    f.dgvFacture.Rows[i].Cells[4].Value = "1";
-                    f.dgvFacture.Rows[i].Cells[5].Value = f.dgvFacture.Rows[i].Cells[3].Value.ToString();                  
                 }
-                for (int i = 0; i < f.dgvFacture.RowCount; i++)
-                {
-                    f.txtTotal.Text = (double.Parse(f.txtTotal.Text) + double.Parse(f.dgvFacture.Rows[i].Cells[5].Value.ToString())).ToString("0.00");
-                }
+                // Calcul total
+                CalculerTotal(f.dgvFacture, 3, f.txtTotal);
             }
             fs.Close();
         }
-        public void ChargerService(FormFactureService2 f)
+        public void ChargerService(FormFactureService2 f, FormExamenPhysique exa)
         {
+            //chaine = c.dgvLabo.CurrentRow.Cells[1].Value.ToString();
+            //con.Open();
+            //try
+            //{
+            //    if (c.type_patient == "abonné")
+            //        cmd = new SqlCommand("select idservice, nomservice, prix_abonne from Service where numcompte like '70611%' and specification = '" + chaine + "'", con);
+            //    else
+            //        cmd = new SqlCommand("select idservice, nomservice, prixservice from Service where numcompte like '70611%' and specification = '" + chaine + "'", con);
+            //    dr = cmd.ExecuteReader();
+            //    while (dr.Read())
+            //    {
+            //        e.dgv.Rows.Add();
+            //        e.dgv.Rows[e.dgv.RowCount - 1].Cells[0].Value = dr[0].ToString();
+            //        e.dgv.Rows[e.dgv.RowCount - 1].Cells[1].Value = dr[1].ToString();
+            //        e.dgv.Rows[e.dgv.RowCount - 1].Cells[2].Value = dr[2].ToString();
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+            //con.Close();
+
+            //e.Text = string.Format("SSM - Examens ({0})", chaine);
+            //e.ShowDialog();
+            //if (e.fermeture_succes)
+            //{
+            //    id = c.dgvLabo.CurrentRow.Index;
+            //    for (int i = 0; i < e.dgv.RowCount; i++)
+            //    {
+            //        if (e.dgv.Rows[i].Selected)
+            //        {
+            //            id++;
+            //            c.dgvLabo.Rows.Insert(id, 1);
+            //            c.dgvLabo.Rows[id].Cells[0].Value = e.dgv.Rows[i].Cells[0].Value.ToString();
+            //            c.dgvLabo.Rows[id].Cells[1].Value = e.dgv.Rows[i].Cells[1].Value.ToString();
+            //            c.dgvLabo.Rows[id].Cells[2].Value = "RAS";
+            //            c.dgvLabo.Rows[id].Cells[3].Value = e.dgv.Rows[i].Cells[2].Value.ToString();
+            //        }
+
+            //    }
+            //}
+            //e.Close();
+            ////Calcul de total
+            //CalculerTotal(c.dgvLabo, 3, c.txtTotal);
+        }
+        public void ChargerService(FormFactureService2 f)
+        {           
             con.Open();
             try
             {
@@ -464,19 +508,70 @@ namespace SUMEDCO
             }
             con.Close();               
         }
-        public void ChargerExamenLabo(FormConsulter c, FormExamenPhysique e)
+        public void ChargerRubriqueExamen(FormConsulter c)
         {
             con.Open();
             try
             {
-                cmd = new SqlCommand("select nomservice from Service where numcompte like '70611%'", con);
+                cmd = new SqlCommand("select distinct specification from Service where numcompte like '70611%' and specification is NOT NULL", con);
                 dr = cmd.ExecuteReader();
-                e.dgv.Rows.Clear();
+                c.dgvLabo.Rows.Clear();
+                while (dr.Read())
+                {
+                    c.dgvLabo.Rows.Add();
+                    c.dgvLabo.Rows[c.dgvLabo.RowCount - 1].DefaultCellStyle.ForeColor = Color.MediumBlue;
+                    c.dgvLabo.Rows[c.dgvLabo.RowCount - 1].DefaultCellStyle.SelectionForeColor = Color.MediumBlue;
+                    c.dgvLabo.Rows[c.dgvLabo.RowCount - 1].DefaultCellStyle.BackColor = Color.LightSteelBlue;
+                    c.dgvLabo.Rows[c.dgvLabo.RowCount - 1].DefaultCellStyle.SelectionBackColor = Color.LightSteelBlue;
+                    c.dgvLabo.Rows[c.dgvLabo.RowCount - 1].Cells[0].Value = "";
+                    c.dgvLabo.Rows[c.dgvLabo.RowCount - 1].Cells[1].Value = dr[0].ToString().ToUpper();
+                    c.dgvLabo.Rows[c.dgvLabo.RowCount - 1].Cells[3].Value = "";
+                }
+                //Pour les examens en dehors de SUMEDCO
+                c.dgvLabo.Rows.Add();
+                c.dgvLabo.Rows[c.dgvLabo.RowCount - 1].DefaultCellStyle.ForeColor = Color.MediumBlue;
+                c.dgvLabo.Rows[c.dgvLabo.RowCount - 1].DefaultCellStyle.SelectionForeColor = Color.MediumBlue;
+                c.dgvLabo.Rows[c.dgvLabo.RowCount - 1].DefaultCellStyle.BackColor = Color.LightSteelBlue;
+                c.dgvLabo.Rows[c.dgvLabo.RowCount - 1].DefaultCellStyle.SelectionBackColor = Color.LightSteelBlue;
+                c.dgvLabo.Rows[c.dgvLabo.RowCount - 1].Cells[0].Value = "";
+                c.dgvLabo.Rows[c.dgvLabo.RowCount - 1].Cells[1].Value = "AUTRES";
+                c.dgvLabo.Rows[c.dgvLabo.RowCount - 1].Cells[3].Value = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            con.Close();
+        }
+        public void CalculerTotal(DataGridView dgv, int index_colonne, TextBox txt)
+        {
+            txt.Text = "0";
+            for (int i = 0; i < dgv.RowCount; i++)
+            {
+                if (dgv.Rows[i].Cells[index_colonne].Value.ToString() != "")
+                {
+                    txt.Text = (double.Parse(txt.Text) + double.Parse(dgv.Rows[i].Cells[index_colonne].Value.ToString())).ToString("0.00");
+                }
+
+            }
+        }
+        public void ChargerExamens(FormConsulter c, FormExamenPhysique e)
+        {
+            chaine = c.dgvLabo.CurrentRow.Cells[1].Value.ToString();
+            con.Open();
+            try
+            {
+                if (c.type_patient == "abonné")
+                    cmd = new SqlCommand("select idservice, nomservice, prix_abonne from Service where numcompte like '70611%' and specification = '" + chaine + "'", con);
+                else
+                    cmd = new SqlCommand("select idservice, nomservice, prixservice from Service where numcompte like '70611%' and specification = '" + chaine + "'", con);
+                dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
                     e.dgv.Rows.Add();
-                    e.dgv.Rows[e.dgv.RowCount - 1].Cells[0].Value = e.dgv.RowCount;
-                    e.dgv.Rows[e.dgv.RowCount - 1].Cells[1].Value = dr[0].ToString();
+                    e.dgv.Rows[e.dgv.RowCount - 1].Cells[0].Value = dr[0].ToString();
+                    e.dgv.Rows[e.dgv.RowCount - 1].Cells[1].Value = dr[1].ToString();
+                    e.dgv.Rows[e.dgv.RowCount - 1].Cells[2].Value = dr[2].ToString();
                 }
             }
             catch (Exception ex)
@@ -485,23 +580,56 @@ namespace SUMEDCO
             }
             con.Close();
 
-            e.Text = "SSM - Examens de labo";
+            e.Text = string.Format("SSM - Examens ({0})", chaine);
             e.ShowDialog();
             if (e.fermeture_succes)
             {
+                id = c.dgvLabo.CurrentRow.Index;
                 for (int i = 0; i < e.dgv.RowCount; i++)
                 {
                     if (e.dgv.Rows[i].Selected)
                     {
-                        c.dgvLabo.Rows.Add();
-                        c.dgvLabo.Rows[c.dgvLabo.RowCount - 1].Cells[0].Value = c.dgvLabo.RowCount;
-                        c.dgvLabo.Rows[c.dgvLabo.RowCount - 1].Cells[1].Value = e.dgv.Rows[i].Cells[1].Value.ToString();
-                        c.dgvLabo.Rows[c.dgvLabo.RowCount - 1].Cells[2].Value = "RAS";
+                        id++;
+                        c.dgvLabo.Rows.Insert(id, 1);
+                        c.dgvLabo.Rows[id].Cells[0].Value = e.dgv.Rows[i].Cells[0].Value.ToString();
+                        c.dgvLabo.Rows[id].Cells[1].Value = e.dgv.Rows[i].Cells[1].Value.ToString();
+                        c.dgvLabo.Rows[id].Cells[2].Value = "RAS";
+                        c.dgvLabo.Rows[id].Cells[3].Value = e.dgv.Rows[i].Cells[2].Value.ToString();
                     }
 
                 }
             }
             e.Close();
+            //Calcul de total
+            CalculerTotal(c.dgvLabo, 3, c.txtTotal);
+        }
+        public void AutresExamens(FormConsulter c, FormExamenPhysique ex)
+        {
+            ex.btnPlusExamPhys.Enabled = true;
+            ex.dgv.ReadOnly = false;
+            ex.dgv.Columns[0].ReadOnly = true;
+            ex.dgv.Columns[2].ReadOnly = true;
+            ex.dgv.SelectionMode = DataGridViewSelectionMode.CellSelect;
+            ex.Text = "SSM - Autres Examens";
+            ex.ShowDialog();
+            if (ex.fermeture_succes)
+            {
+                for (int i = 0; i < ex.dgv.RowCount; i++)
+                {
+                    if (ex.dgv.Rows[i].Cells[1].Value.ToString() != "")
+                    {
+                        c.dgvLabo.Rows.Add();
+                        c.dgvLabo.Rows[c.dgvLabo.RowCount - 1].Cells[0].Value = ex.dgv.Rows[i].Cells[0].Value.ToString();
+                        c.dgvLabo.Rows[c.dgvLabo.RowCount - 1].Cells[1].Value = ex.dgv.Rows[i].Cells[1].Value.ToString();
+                        c.dgvLabo.Rows[c.dgvLabo.RowCount - 1].Cells[2].Value = "RAS";
+                        c.dgvLabo.Rows[c.dgvLabo.RowCount - 1].Cells[3].Value = "0";
+                    }
+
+                }
+            }
+            ex.Close();
+            //Calcul total
+            CalculerTotal(c.dgvLabo, 3, c.txtTotal);
         }
         public double PrixService(int idservice)
         {
@@ -568,30 +696,27 @@ namespace SUMEDCO
                     f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[4].Value = f2.dgvFacture.Rows[i].Cells[4].Value;
                     f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[5].Value = f2.dgvFacture.Rows[i].Cells[5].Value;
                 }
+                f.txtTotal.Text = f2.txtTotal.Text;
             }
             f2.Close();
         }
         public void AjouterLigne(FormFactureProduit2 f)
         {
-            f.txtTotal.Text = "0";
             f.dgvFacture.Rows.Add();
-            chaine = string.Format("{0} {1} {2} {3} {4}", 
+            chaine = string.Format("{0} {1} {2} {3}", 
                 f.txtProduit.Text, 
                 f.dgvStock.CurrentRow.Cells[1].Value.ToString(), 
                 f.dgvStock.CurrentRow.Cells[2].Value.ToString(), 
-                f.dgvStock.CurrentRow.Cells[3].Value.ToString(), 
-                f.dgvStock.CurrentRow.Cells[4].Value.ToString());
+                f.dgvStock.CurrentRow.Cells[3].Value.ToString());
 
             f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[0].Value = f.dgvStock.CurrentRow.Cells[0].Value;
             f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[1].Value = f.dgvFacture.RowCount;
             f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[2].Value = chaine;
-            f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[3].Value = f.dgvStock.CurrentRow.Cells[6].Value;
+            f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[3].Value = f.dgvStock.CurrentRow.Cells[5].Value;
             f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[4].Value = f.txtQte.Text;
-            f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[5].Value = double.Parse(f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[3].Value.ToString()) * int.Parse(f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[4].Value.ToString());
-            for (int i = 0; i < f.dgvFacture.RowCount; i++)
-            {
-                f.txtTotal.Text = (double.Parse(f.txtTotal.Text) + double.Parse(f.dgvFacture.Rows[i].Cells[5].Value.ToString())).ToString("0.00");
-            }
+            f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[5].Value = double.Parse(f.dgvStock.CurrentRow.Cells[5].Value.ToString()) * int.Parse(f.txtQte.Text);
+
+            CalculerTotal(f.dgvFacture, 5, f.txtTotal);
         }
         public void Annuler(FormFactureService f)
         {
@@ -617,165 +742,154 @@ namespace SUMEDCO
             f.txtTotal.Text = "0";
             f.dgvFacture.Rows.Clear();
         }
-        public bool EnregistrerBon(FormFactureService f)
+        public void EnregistrerBon(int numbon, int numbonS, string date, string statut, string payeur, string categorie, DataGridView dgv)
         {
-            cmdStatut = true;
-            f.numbon = NouveauID("bonrecette");
-            con.Open();
-            SqlTransaction tx = con.BeginTransaction();
-            try
+            if(dgv.RowCount > 0)
             {
-                cmd = new SqlCommand("insert into BonRecette(numbon, statut, date_operation, payeur, idpatient, categorie) values (@numbon, @statut, @date, @payeur, @idpatient, @categorie)", con);
-                cmd.Parameters.AddWithValue("@numbon", f.numbon);
-                cmd.Parameters.AddWithValue("@date", f.lblDateOperation.Text);
-                cmd.Parameters.AddWithValue("@statut", f.cboTypeFacture.Text);
-                cmd.Parameters.AddWithValue("@payeur", f.txtPayeur.Text);
-                cmd.Parameters.AddWithValue("@idpatient", f.idpatient);
-                cmd.Parameters.AddWithValue("@categorie", "service");
-                cmd.Transaction = tx;
-                cmd.ExecuteNonQuery();
-                tx.Commit();
-                
-            }
-            catch (Exception ex)
-            {
-                tx.Rollback();
-                cmdStatut = false;
-                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            con.Close();
-            return cmdStatut;
-        }
-        public bool EnregistrerBon(FormFactureProduit f)
-        {
-            cmdStatut = true;
-            f.numbon = NouveauID("bonrecette");
-            con.Open();
-            SqlTransaction tx = con.BeginTransaction();
-            try
-            {
-                cmd = new SqlCommand("insert into BonRecette(numbon, statut, date_operation, payeur, idpatient, categorie) values (@numbon, @statut, @date, @payeur, @idpatient, @categorie)", con);
-                cmd.Parameters.AddWithValue("@numbon", f.numbon);
-                cmd.Parameters.AddWithValue("@date", f.lblDateOperation.Text);
-                cmd.Parameters.AddWithValue("@statut", f.cboTypeFacture.Text);
-                cmd.Parameters.AddWithValue("@payeur", f.txtPayeur.Text);
-                cmd.Parameters.AddWithValue("@idpatient", f.idpatient);
-                cmd.Parameters.AddWithValue("@categorie", "produit");
-                cmd.Transaction = tx;
-                cmd.ExecuteNonQuery();
-                tx.Commit();
-            }
-            catch (Exception ex)
-            {
-                tx.Rollback();
-                cmdStatut = false;
-                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            con.Close();
-            return cmdStatut;
-        }
-        public void Enregistrer(FormFactureProduit f)
-        {
-            if (f.dgvFacture.RowCount > 0)
-            {
-                if (EnregistrerBon(f))
+                numbon = NouveauID("bonrecette");
+                con.Open();
+                SqlTransaction tx = con.BeginTransaction();
+                try
                 {
-                    for (int i = 0; i < f.dgvFacture.RowCount; i++)
-                    {
-                        f.numbonP = NouveauID("bonrecetteproduit");
-                        con.Open();
-                        SqlTransaction tx = con.BeginTransaction();
-                        try
-                        {
-                            cmd = new SqlCommand("insert into BonRecetteProduit (numbonP, numbon, idstock, qtevendue, statut) values (@numbonP, @numbon, @idstock, @qte, @statut)", con);
-                            cmd.Parameters.AddWithValue("@numbonP", f.numbonP);
-                            cmd.Parameters.AddWithValue("@numbon", f.numbon);
-                            cmd.Parameters.AddWithValue("@idstock", f.dgvFacture.Rows[i].Cells[0].Value.ToString());
-                            cmd.Parameters.AddWithValue("@qte", f.dgvFacture.Rows[i].Cells[4].Value.ToString());
-                            cmd.Parameters.AddWithValue("@statut", "valide");
-                            cmd.Transaction = tx;
-                            cmd.ExecuteNonQuery();
-                            tx.Commit();
-                        }
-                        catch (Exception ex)
-                        {
-                            tx.Rollback();
-                            MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        con.Close();
-                    }
-                    if (f.cboTypeFacture.Text == "différé")
-                    {
-                        //Enregistrer la dette dans AgendaCaisse
-                        Enregistrer(f.numbon, double.Parse(f.txtTotal.Text), 0, f.lblDateOperation.Text);
-                        
-                        f.idoperation = NouveauID("operation");
-                        if (EnregistrerOperation(f.idoperation, f.lblDateOperation.Text, "Vente de produits à crédit - " + f.cboPayeurDiffere.Text, string.Format("BR_{0}", f.numbon), TrouverId("typejournal", "ventes")))
-                        {
-                            EnregistrerEcriture(f.id, f.idoperation, f.numcompteDiffere, double.Parse(f.txtTotal.Text), 0);
-                            EnregistrerEcriture(f.id, f.idoperation, f.numcompte, 0, double.Parse(f.txtTotal.Text));
-                        }
-                    }
-                    MessageBox.Show("Facture enregistrée avec succès", "Enregistrement", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Annuler(f);
-                    ArchiverBon("recette", f.numbon);
+                    cmd = new SqlCommand("insert into BonRecette(numbon, statut, date_operation, payeur, categorie) values (@numbon, @statut, @date, @payeur, @categorie)", con);
+                    cmd.Parameters.AddWithValue("@numbon", numbon);
+                    cmd.Parameters.AddWithValue("@statut", statut);
+                    cmd.Parameters.AddWithValue("@date", date);
+                    cmd.Parameters.AddWithValue("@payeur", payeur);
+                    cmd.Parameters.AddWithValue("@categorie", categorie);
+                    cmd.Transaction = tx;
+                    cmd.ExecuteNonQuery();
+                    tx.Commit();
+
                 }
+                catch (Exception ex)
+                {
+                    tx.Rollback();
+                    MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                con.Close();
+                //Enregistrer les services ou produits du bon
+                if (categorie == "service")
+                    EnregistrerServiceBon(numbon, numbonS, dgv);
+                else
+                    EnregistrerProduitBon(numbon, numbonS, dgv);
             }
             else
-            { 
-                MessageBox.Show("Aucune ligne de facture n'a été trouvée", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            {
+                MessageBox.Show("Aucune ligne n'est trouvée pour le bon de recette", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+        public void EnregistrerServiceBon(int numbon, int numbonS, DataGridView dgv)
+        {
+            for (int i = 0; i < dgv.RowCount; i++)
+            {
+                if (dgv.Rows[i].Cells[0].Value.ToString() != "")
+                {
+                    numbonS = NouveauID("bonrecetteservice");
+                    con.Open();
+                    SqlTransaction tx = con.BeginTransaction();
+                    try
+                    {
+                        cmd = new SqlCommand("insert into BonRecetteService (numbonS, numbon, idservice, statut) values (@numbonS, @numbon, @idservice, @statut)", con);
+                        cmd.Parameters.AddWithValue("@numbonS", numbonS);
+                        cmd.Parameters.AddWithValue("@numbon", numbon);
+                        cmd.Parameters.AddWithValue("@idservice", dgv.Rows[i].Cells[0].Value.ToString());
+                        cmd.Parameters.AddWithValue("@statut", "valide");
+                        cmd.Transaction = tx;
+                        cmd.ExecuteNonQuery();
+                        tx.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        tx.Rollback();
+                        MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    con.Close();
+                }
+            }
+        }
+        public void EnregistrerProduitBon(int numbon, int numbonS, DataGridView dgv)
+        {
+            for (int i = 0; i < dgv.RowCount; i++)
+            {
+                if (dgv.Rows[i].Cells[0].Value.ToString() != "")
+                {
+                    numbonS = NouveauID("bonrecetteproduit");
+                    con.Open();
+                    SqlTransaction tx = con.BeginTransaction();
+                    try
+                    {
+                        cmd = new SqlCommand("insert into BonRecetteProduit (numbonP, numbon, idstock, qtevendue, statut) values (@numbonP, @numbon, @idstock, @qte, @statut)", con);
+                        cmd.Parameters.AddWithValue("@numbonP", numbonS);
+                        cmd.Parameters.AddWithValue("@numbon", numbon);
+                        cmd.Parameters.AddWithValue("@idstock", dgv.Rows[i].Cells[0].Value.ToString());
+                        cmd.Parameters.AddWithValue("@qte", dgv.Rows[i].Cells[4].Value.ToString());
+                        cmd.Parameters.AddWithValue("@statut", "valide");
+                        cmd.Transaction = tx;
+                        cmd.ExecuteNonQuery();
+                        tx.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        tx.Rollback();
+                        MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    con.Close();
+                }
+            }           
         }
         public void Enregistrer(FormFactureService f)
         {
             if (f.dgvFacture.RowCount > 0)
             {
-                if (EnregistrerBon(f))
+                //Enregistrer le bon et ses services
+                EnregistrerBon(f.numbon, f.numbonS, f.lblDateOperation.Text, f.cboTypeFacture.Text, f.txtPayeur.Text, "service",f.dgvFacture);
+                             
+                if (f.cboTypeFacture.Text == "différé")
                 {
-                    for (int i = 0; i < f.dgvFacture.RowCount; i++)
+                    //Enregistrer la dette dans AgendaCaisse
+                    Enregistrer(f.numbon, double.Parse(f.txtTotal.Text), 0, f.lblDateOperation.Text);
+
+                    f.idoperation = NouveauID("operation");
+                    if (EnregistrerOperation(f.idoperation, f.lblDateOperation.Text, "Vente de services à crédit - " + f.cboPayeurDiffere.Text, string.Format("BR_{0}", f.numbon), TrouverId("typejournal", "ventes")))
                     {
-                        f.numbonS = NouveauID("bonrecetteservice");
-                        con.Open();
-                        SqlTransaction tx = con.BeginTransaction();
-                        try
-                        {
-                            cmd = new SqlCommand("insert into BonRecetteService (numbonS, numbon, idservice, qtevendue, statut) values (@numbonS, @numbon, @idservice, @qte, @statut)", con);
-                            cmd.Parameters.AddWithValue("@numbonS", f.numbonS);
-                            cmd.Parameters.AddWithValue("@numbon", f.numbon);
-                            cmd.Parameters.AddWithValue("@idservice", f.dgvFacture.Rows[i].Cells[0].Value.ToString());
-                            cmd.Parameters.AddWithValue("@qte", f.dgvFacture.Rows[i].Cells[4].Value.ToString());
-                            cmd.Parameters.AddWithValue("@statut", "valide");
-                            cmd.Transaction = tx;
-                            cmd.ExecuteNonQuery();
-                            tx.Commit();                          
-                        }
-                        catch (Exception ex)
-                        {
-                            tx.Rollback();
-                            MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        con.Close();
+                        EnregistrerEcriture(f.id, f.idoperation, f.numcompteDiffere, double.Parse(f.txtTotal.Text), 0);
+                        EnregistrerEcriture(f.id, f.idoperation, f.numcompte, 0, double.Parse(f.txtTotal.Text));
                     }
-                    if(f.cboTypeFacture.Text=="différé")
-                    {
-                        //Enregistrer la dette dans AgendaCaisse
-                        Enregistrer(f.numbon, double.Parse(f.txtTotal.Text), 0, f.lblDateOperation.Text);
-                        
-                        f.idoperation = NouveauID("operation");
-                        if (EnregistrerOperation(f.idoperation, f.lblDateOperation.Text, "Vente de services à crédit - "+f.cboPayeurDiffere.Text, string.Format("BR_{0}", f.numbon), TrouverId("typejournal", "ventes")))
-                        {
-                            EnregistrerEcriture(f.id, f.idoperation, f.numcompteDiffere, double.Parse(f.txtTotal.Text), 0);
-                            EnregistrerEcriture(f.id, f.idoperation, f.numcompte, 0, double.Parse(f.txtTotal.Text));
-                        }
-                    }
-                    MessageBox.Show("Facture enregistrée avec succès", "Enregistrement", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Annuler(f);
-                    ArchiverBon("recette", f.numbon);
-                    if (f.nouveau_patient) f.Close();
                 }
+                MessageBox.Show("Bon enregistré avec succès", "Enregistrement", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Annuler(f);
+                ArchiverBon("recette", f.numbon);
+                if (f.nouveau_patient) f.Close();
             }
             else
-            { MessageBox.Show("Aucune ligne de facture n'a été trouvée", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+            { MessageBox.Show("Aucune ligne de bon n'a été trouvée", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+        }
+        public void Enregistrer(FormFactureProduit f)
+        {
+            if (f.dgvFacture.RowCount > 0)
+            {
+                //Enregistrer le bon et ses produits
+                EnregistrerBon(f.numbon, f.numbonP, f.lblDateOperation.Text, f.cboTypeFacture.Text, f.txtPayeur.Text, "produit", f.dgvFacture);
+
+                if (f.cboTypeFacture.Text == "différé")
+                {
+                    //Enregistrer la dette dans AgendaCaisse
+                    Enregistrer(f.numbon, double.Parse(f.txtTotal.Text), 0, f.lblDateOperation.Text);
+
+                    f.idoperation = NouveauID("operation");
+                    if (EnregistrerOperation(f.idoperation, f.lblDateOperation.Text, "Vente de produits à crédit - " + f.cboPayeurDiffere.Text, string.Format("BR_{0}", f.numbon), TrouverId("typejournal", "ventes")))
+                    {
+                        EnregistrerEcriture(f.id, f.idoperation, f.numcompteDiffere, double.Parse(f.txtTotal.Text), 0);
+                        EnregistrerEcriture(f.id, f.idoperation, f.numcompte, 0, double.Parse(f.txtTotal.Text));
+                    }
+                }
+                MessageBox.Show("Bon enregistré avec succès", "Enregistrement", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Annuler(f);
+                ArchiverBon("recette", f.numbon);
+            }
+            else
+            { MessageBox.Show("Aucune ligne de bon n'a été trouvée", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
         }
         public bool EnregistrerBon(FormPrescription f)
         {
@@ -4123,7 +4237,7 @@ namespace SUMEDCO
             ActifUSD(c);
             for (int i = 4; i < 8; i++)
             {
-                c.dgvActif.Rows[c.dgvActif.RowCount - 1].Cells[i].Value = CalculerTotal(c.dgvActif, i);
+                c.dgvActif.Rows[c.dgvActif.RowCount - 1].Cells[i].Value = CalculerTotalBilan(c.dgvActif, i);
             }
         }
         public void ActifUSD(FormComptaBilan c)
@@ -4184,7 +4298,7 @@ namespace SUMEDCO
             con.Close();
             for (int i = 3; i < 5; i++)
             {
-                c.dgvPassif.Rows[c.dgvPassif.RowCount - 1].Cells[i].Value = CalculerTotal(c.dgvPassif, i);
+                c.dgvPassif.Rows[c.dgvPassif.RowCount - 1].Cells[i].Value = CalculerTotalBilan(c.dgvPassif, i);
             }
         }
         public void RubriquesActif(FormComptaBilan c)
@@ -4255,7 +4369,7 @@ namespace SUMEDCO
             c.dgvPassif.Rows[25].DefaultCellStyle.BackColor = Color.RosyBrown;
             c.dgvPassif.Rows[27].DefaultCellStyle.BackColor = Color.IndianRed;
         }
-        public double CalculerTotal(DataGridView dgv, int column)
+        public double CalculerTotalBilan(DataGridView dgv, int column)
         {
             valeur = 0;
             for (int i = 0; i < dgv.RowCount; i++)

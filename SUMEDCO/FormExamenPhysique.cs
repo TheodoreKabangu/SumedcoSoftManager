@@ -22,6 +22,7 @@ namespace SUMEDCO
             fermeture_succes = true;
             this.Hide();
         }
+        string chaine = "";
 
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
@@ -31,13 +32,39 @@ namespace SUMEDCO
 
         private void btnPlusExamPhys_Click(object sender, EventArgs e)
         {
-            dgv.Rows.Add();
-            dgv.Rows[dgv.RowCount - 1].Cells[0].Value = dgv.RowCount;
+            if (dgv.RowCount == 0)
+            {
+                dgv.Rows.Add();
+                dgv.Rows[dgv.RowCount - 1].Cells[0].Value = dgv.RowCount;
+                dgv.Rows[dgv.RowCount - 1].Cells[1].Value = "";
+                dgv.Rows[dgv.RowCount - 1].Cells[2].Value = "0";
+            }
+            else
+            {
+                if(dgv.Rows[dgv.RowCount - 1].Cells[1].Value.ToString() != "")
+                {
+                    dgv.Rows.Add();
+                    dgv.Rows[dgv.RowCount - 1].Cells[0].Value = dgv.RowCount;
+                    dgv.Rows[dgv.RowCount - 1].Cells[1].Value = "";
+                    dgv.Rows[dgv.RowCount - 1].Cells[2].Value = "0";
+                }
+            }
         }
 
         private void btnRetirerExamPhys_Click(object sender, EventArgs e)
         {
-            dgv.Rows.RemoveAt(dgv.CurrentRow.Index);
+            if(dgv.RowCount != 0)
+                dgv.Rows.RemoveAt(dgv.CurrentRow.Index);
+        }
+        ClassCompta cc = new ClassCompta();
+        private void FormExamenPhysique_Shown(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void dgv_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
         }
     }
 }

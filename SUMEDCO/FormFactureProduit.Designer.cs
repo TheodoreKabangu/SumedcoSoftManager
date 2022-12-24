@@ -30,11 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormFactureProduit));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnExit = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
@@ -62,6 +62,8 @@
             this.cboPayeurDiffere = new System.Windows.Forms.ComboBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnFacturier = new System.Windows.Forms.Button();
+            this.btnRetirer = new System.Windows.Forms.Button();
+            this.btnRetirerTout = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacture)).BeginInit();
             this.SuspendLayout();
             // 
@@ -265,14 +267,14 @@
             this.dgvFacture.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.dgvFacture.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvFacture.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFacture.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFacture.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvFacture.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFacture.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column4,
@@ -281,22 +283,22 @@
             this.Column1,
             this.Column2,
             this.Column5});
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.BackColor = System.Drawing.Color.Lavender;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvFacture.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Lavender;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvFacture.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvFacture.GridColor = System.Drawing.Color.RoyalBlue;
-            this.dgvFacture.Location = new System.Drawing.Point(117, 176);
+            this.dgvFacture.Location = new System.Drawing.Point(117, 178);
             this.dgvFacture.MultiSelect = false;
             this.dgvFacture.Name = "dgvFacture";
             this.dgvFacture.ReadOnly = true;
             this.dgvFacture.RowHeadersVisible = false;
             this.dgvFacture.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFacture.Size = new System.Drawing.Size(571, 226);
+            this.dgvFacture.Size = new System.Drawing.Size(571, 224);
             this.dgvFacture.TabIndex = 702;
             // 
             // Column4
@@ -325,9 +327,9 @@
             // 
             // Column1
             // 
-            dataGridViewCellStyle17.Format = "N2";
-            dataGridViewCellStyle17.NullValue = null;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle2;
             this.Column1.HeaderText = "PVU";
             this.Column1.MinimumWidth = 100;
             this.Column1.Name = "Column1";
@@ -335,9 +337,9 @@
             // 
             // Column2
             // 
-            dataGridViewCellStyle18.Format = "N2";
-            dataGridViewCellStyle18.NullValue = null;
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle3.Format = "N2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle3;
             this.Column2.HeaderText = "Quantité";
             this.Column2.MinimumWidth = 80;
             this.Column2.Name = "Column2";
@@ -346,10 +348,10 @@
             // 
             // Column5
             // 
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle19.Format = "N2";
-            dataGridViewCellStyle19.NullValue = null;
-            this.Column5.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.NullValue = null;
+            this.Column5.DefaultCellStyle = dataGridViewCellStyle4;
             this.Column5.HeaderText = "Total";
             this.Column5.MinimumWidth = 100;
             this.Column5.Name = "Column5";
@@ -360,15 +362,17 @@
             this.btnAnnuler.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.btnAnnuler.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnAnnuler.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnAnnuler.FlatAppearance.BorderSize = 0;
             this.btnAnnuler.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
             this.btnAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAnnuler.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAnnuler.Location = new System.Drawing.Point(117, 410);
+            this.btnAnnuler.Image = ((System.Drawing.Image)(resources.GetObject("btnAnnuler.Image")));
+            this.btnAnnuler.Location = new System.Drawing.Point(221, 143);
             this.btnAnnuler.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnAnnuler.Name = "btnAnnuler";
-            this.btnAnnuler.Size = new System.Drawing.Size(80, 27);
+            this.btnAnnuler.Size = new System.Drawing.Size(30, 27);
             this.btnAnnuler.TabIndex = 12;
-            this.btnAnnuler.Text = "Annuler";
+            this.toolTip1.SetToolTip(this.btnAnnuler, "Annuler le bon");
             this.btnAnnuler.UseVisualStyleBackColor = false;
             this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
             // 
@@ -377,15 +381,17 @@
             this.btnEnregistrer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.btnEnregistrer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnEnregistrer.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnEnregistrer.FlatAppearance.BorderSize = 0;
             this.btnEnregistrer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
             this.btnEnregistrer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEnregistrer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEnregistrer.Location = new System.Drawing.Point(209, 410);
+            this.btnEnregistrer.Image = ((System.Drawing.Image)(resources.GetObject("btnEnregistrer.Image")));
+            this.btnEnregistrer.Location = new System.Drawing.Point(263, 143);
             this.btnEnregistrer.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnEnregistrer.Name = "btnEnregistrer";
-            this.btnEnregistrer.Size = new System.Drawing.Size(80, 27);
+            this.btnEnregistrer.Size = new System.Drawing.Size(30, 27);
             this.btnEnregistrer.TabIndex = 13;
-            this.btnEnregistrer.Text = "Enregistrer";
+            this.toolTip1.SetToolTip(this.btnEnregistrer, "Enregistrer le bon");
             this.btnEnregistrer.UseVisualStyleBackColor = false;
             this.btnEnregistrer.Click += new System.EventHandler(this.btnEnregistrer_Click);
             // 
@@ -426,10 +432,48 @@
             this.btnFacturier.TabIndex = 706;
             this.btnFacturier.Text = "Facturier";
             this.btnFacturier.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.toolTip1.SetToolTip(this.btnFacturier, "Changer la date");
+            this.toolTip1.SetToolTip(this.btnFacturier, "Ajouter les produits");
             this.btnFacturier.UseVisualStyleBackColor = false;
             this.btnFacturier.Click += new System.EventHandler(this.btnFacturier_Click);
             this.btnFacturier.Enter += new System.EventHandler(this.btnFacturier_Enter);
+            // 
+            // btnRetirer
+            // 
+            this.btnRetirer.BackColor = System.Drawing.Color.Transparent;
+            this.btnRetirer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnRetirer.Enabled = false;
+            this.btnRetirer.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnRetirer.FlatAppearance.BorderSize = 0;
+            this.btnRetirer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnRetirer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRetirer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRetirer.Image = ((System.Drawing.Image)(resources.GetObject("btnRetirer.Image")));
+            this.btnRetirer.Location = new System.Drawing.Point(304, 142);
+            this.btnRetirer.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnRetirer.Name = "btnRetirer";
+            this.btnRetirer.Size = new System.Drawing.Size(30, 27);
+            this.btnRetirer.TabIndex = 707;
+            this.toolTip1.SetToolTip(this.btnRetirer, "Rétirer la ligne");
+            this.btnRetirer.UseVisualStyleBackColor = false;
+            // 
+            // btnRetirerTout
+            // 
+            this.btnRetirerTout.BackColor = System.Drawing.Color.Transparent;
+            this.btnRetirerTout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnRetirerTout.Enabled = false;
+            this.btnRetirerTout.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnRetirerTout.FlatAppearance.BorderSize = 0;
+            this.btnRetirerTout.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnRetirerTout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRetirerTout.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRetirerTout.Image = ((System.Drawing.Image)(resources.GetObject("btnRetirerTout.Image")));
+            this.btnRetirerTout.Location = new System.Drawing.Point(344, 142);
+            this.btnRetirerTout.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnRetirerTout.Name = "btnRetirerTout";
+            this.btnRetirerTout.Size = new System.Drawing.Size(30, 27);
+            this.btnRetirerTout.TabIndex = 708;
+            this.toolTip1.SetToolTip(this.btnRetirerTout, "Rétirer tout");
+            this.btnRetirerTout.UseVisualStyleBackColor = false;
             // 
             // FormFactureProduit
             // 
@@ -437,6 +481,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(703, 451);
+            this.Controls.Add(this.btnRetirer);
+            this.Controls.Add(this.btnRetirerTout);
             this.Controls.Add(this.btnFacturier);
             this.Controls.Add(this.cboPayeurDiffere);
             this.Controls.Add(this.txtTotal);
@@ -497,5 +543,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        public System.Windows.Forms.Button btnRetirer;
+        public System.Windows.Forms.Button btnRetirerTout;
     }
 }

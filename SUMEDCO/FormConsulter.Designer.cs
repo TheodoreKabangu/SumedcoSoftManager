@@ -162,17 +162,19 @@
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.txtTotal = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.btnSupprimerBonLabo = new System.Windows.Forms.Button();
             this.btnModifierBonLabo = new System.Windows.Forms.Button();
             this.btnDiagnostic2 = new System.Windows.Forms.Button();
             this.btnEnregistrerLabo = new System.Windows.Forms.Button();
             this.btnRetirerLabo = new System.Windows.Forms.Button();
-            this.btnPlusLabo = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.dgvLabo = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage9 = new System.Windows.Forms.TabPage();
             this.btnSupprimerDiagno = new System.Windows.Forms.Button();
             this.btnModifierDiagno = new System.Windows.Forms.Button();
@@ -331,7 +333,7 @@
             this.btnLaboratoire.Name = "btnLaboratoire";
             this.btnLaboratoire.Size = new System.Drawing.Size(30, 27);
             this.btnLaboratoire.TabIndex = 663;
-            this.toolTip1.SetToolTip(this.btnLaboratoire, "Examen(s) de laboratoire");
+            this.toolTip1.SetToolTip(this.btnLaboratoire, "Examen(s) paracliniques");
             this.btnLaboratoire.UseVisualStyleBackColor = false;
             this.btnLaboratoire.Click += new System.EventHandler(this.btnLaboratoire_Click);
             // 
@@ -489,10 +491,10 @@
             this.tabControl1.Controls.Add(this.tabPage9);
             this.tabControl1.Controls.Add(this.tabPage10);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 27);
+            this.tabControl1.Location = new System.Drawing.Point(0, 54);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(703, 424);
+            this.tabControl1.Size = new System.Drawing.Size(703, 397);
             this.tabControl1.TabIndex = 632;
             // 
             // tabPage1
@@ -783,7 +785,7 @@
             this.dgvSigneVital.ReadOnly = true;
             this.dgvSigneVital.RowHeadersVisible = false;
             this.dgvSigneVital.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSigneVital.Size = new System.Drawing.Size(672, 151);
+            this.dgvSigneVital.Size = new System.Drawing.Size(672, 124);
             this.dgvSigneVital.TabIndex = 653;
             // 
             // Column11
@@ -1917,7 +1919,7 @@
             this.btnLabo2.Name = "btnLabo2";
             this.btnLabo2.Size = new System.Drawing.Size(30, 26);
             this.btnLabo2.TabIndex = 666;
-            this.toolTip1.SetToolTip(this.btnLabo2, "Examen(s) de laboratoire");
+            this.toolTip1.SetToolTip(this.btnLabo2, "Examen(s) paracliniques");
             this.btnLabo2.UseVisualStyleBackColor = false;
             this.btnLabo2.Click += new System.EventHandler(this.btnLaboratoire_Click);
             // 
@@ -2047,12 +2049,13 @@
             // tabPage8
             // 
             this.tabPage8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.tabPage8.Controls.Add(this.txtTotal);
+            this.tabPage8.Controls.Add(this.label5);
             this.tabPage8.Controls.Add(this.btnSupprimerBonLabo);
             this.tabPage8.Controls.Add(this.btnModifierBonLabo);
             this.tabPage8.Controls.Add(this.btnDiagnostic2);
             this.tabPage8.Controls.Add(this.btnEnregistrerLabo);
             this.tabPage8.Controls.Add(this.btnRetirerLabo);
-            this.tabPage8.Controls.Add(this.btnPlusLabo);
             this.tabPage8.Controls.Add(this.label11);
             this.tabPage8.Controls.Add(this.dgvLabo);
             this.tabPage8.Location = new System.Drawing.Point(4, 27);
@@ -2061,6 +2064,31 @@
             this.tabPage8.Size = new System.Drawing.Size(695, 366);
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "tabPage8";
+            // 
+            // txtTotal
+            // 
+            this.txtTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.txtTotal.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtTotal.ForeColor = System.Drawing.Color.MediumBlue;
+            this.txtTotal.Location = new System.Drawing.Point(489, 342);
+            this.txtTotal.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Size = new System.Drawing.Size(128, 14);
+            this.txtTotal.TabIndex = 677;
+            this.txtTotal.Text = "0";
+            this.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(408, 342);
+            this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(69, 15);
+            this.label5.TabIndex = 676;
+            this.label5.Text = "Total Gén. :";
             // 
             // btnSupprimerBonLabo
             // 
@@ -2074,7 +2102,7 @@
             this.btnSupprimerBonLabo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSupprimerBonLabo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSupprimerBonLabo.Image = ((System.Drawing.Image)(resources.GetObject("btnSupprimerBonLabo.Image")));
-            this.btnSupprimerBonLabo.Location = new System.Drawing.Point(625, 231);
+            this.btnSupprimerBonLabo.Location = new System.Drawing.Point(625, 197);
             this.btnSupprimerBonLabo.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnSupprimerBonLabo.Name = "btnSupprimerBonLabo";
             this.btnSupprimerBonLabo.Size = new System.Drawing.Size(30, 26);
@@ -2095,7 +2123,7 @@
             this.btnModifierBonLabo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModifierBonLabo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModifierBonLabo.Image = ((System.Drawing.Image)(resources.GetObject("btnModifierBonLabo.Image")));
-            this.btnModifierBonLabo.Location = new System.Drawing.Point(625, 197);
+            this.btnModifierBonLabo.Location = new System.Drawing.Point(625, 163);
             this.btnModifierBonLabo.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnModifierBonLabo.Name = "btnModifierBonLabo";
             this.btnModifierBonLabo.Size = new System.Drawing.Size(30, 26);
@@ -2135,7 +2163,7 @@
             this.btnEnregistrerLabo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEnregistrerLabo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEnregistrerLabo.Image = ((System.Drawing.Image)(resources.GetObject("btnEnregistrerLabo.Image")));
-            this.btnEnregistrerLabo.Location = new System.Drawing.Point(625, 163);
+            this.btnEnregistrerLabo.Location = new System.Drawing.Point(625, 129);
             this.btnEnregistrerLabo.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnEnregistrerLabo.Name = "btnEnregistrerLabo";
             this.btnEnregistrerLabo.Size = new System.Drawing.Size(30, 26);
@@ -2155,7 +2183,7 @@
             this.btnRetirerLabo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRetirerLabo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRetirerLabo.Image = ((System.Drawing.Image)(resources.GetObject("btnRetirerLabo.Image")));
-            this.btnRetirerLabo.Location = new System.Drawing.Point(625, 129);
+            this.btnRetirerLabo.Location = new System.Drawing.Point(625, 95);
             this.btnRetirerLabo.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnRetirerLabo.Name = "btnRetirerLabo";
             this.btnRetirerLabo.Size = new System.Drawing.Size(30, 26);
@@ -2163,26 +2191,6 @@
             this.toolTip1.SetToolTip(this.btnRetirerLabo, "Retirer");
             this.btnRetirerLabo.UseVisualStyleBackColor = false;
             this.btnRetirerLabo.Click += new System.EventHandler(this.btnRetirerLabo_Click);
-            // 
-            // btnPlusLabo
-            // 
-            this.btnPlusLabo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPlusLabo.BackColor = System.Drawing.Color.Transparent;
-            this.btnPlusLabo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnPlusLabo.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnPlusLabo.FlatAppearance.BorderSize = 0;
-            this.btnPlusLabo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnPlusLabo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPlusLabo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPlusLabo.Image = ((System.Drawing.Image)(resources.GetObject("btnPlusLabo.Image")));
-            this.btnPlusLabo.Location = new System.Drawing.Point(625, 95);
-            this.btnPlusLabo.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.btnPlusLabo.Name = "btnPlusLabo";
-            this.btnPlusLabo.Size = new System.Drawing.Size(30, 26);
-            this.btnPlusLabo.TabIndex = 671;
-            this.toolTip1.SetToolTip(this.btnPlusLabo, "Ajouter");
-            this.btnPlusLabo.UseVisualStyleBackColor = false;
-            this.btnPlusLabo.Click += new System.EventHandler(this.btnPlusLabo_Click);
             // 
             // label11
             // 
@@ -2192,9 +2200,9 @@
             this.label11.Location = new System.Drawing.Point(5, 40);
             this.label11.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(174, 18);
+            this.label11.Size = new System.Drawing.Size(170, 18);
             this.label11.TabIndex = 667;
-            this.label11.Text = "Examen(s) de laboratoire";
+            this.label11.Text = "Examen(s) paracliniques";
             // 
             // dgvLabo
             // 
@@ -2218,7 +2226,8 @@
             this.dgvLabo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn12,
             this.dataGridViewTextBoxColumn13,
-            this.Column10});
+            this.Column10,
+            this.Column13});
             dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle18.BackColor = System.Drawing.Color.Lavender;
             dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2230,16 +2239,19 @@
             this.dgvLabo.Location = new System.Drawing.Point(8, 61);
             this.dgvLabo.MultiSelect = false;
             this.dgvLabo.Name = "dgvLabo";
+            this.dgvLabo.ReadOnly = true;
             this.dgvLabo.RowHeadersVisible = false;
             this.dgvLabo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvLabo.Size = new System.Drawing.Size(609, 297);
+            this.dgvLabo.Size = new System.Drawing.Size(609, 273);
             this.dgvLabo.TabIndex = 663;
+            this.dgvLabo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLabo_CellClick);
             // 
             // dataGridViewTextBoxColumn12
             // 
             this.dataGridViewTextBoxColumn12.HeaderText = "N°";
             this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
             this.dataGridViewTextBoxColumn12.ReadOnly = true;
+            this.dataGridViewTextBoxColumn12.Visible = false;
             this.dataGridViewTextBoxColumn12.Width = 40;
             // 
             // dataGridViewTextBoxColumn13
@@ -2256,6 +2268,15 @@
             this.Column10.HeaderText = "Résultat";
             this.Column10.MinimumWidth = 100;
             this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            this.Column10.Visible = false;
+            // 
+            // Column13
+            // 
+            this.Column13.HeaderText = "Prix";
+            this.Column13.MinimumWidth = 100;
+            this.Column13.Name = "Column13";
+            this.Column13.ReadOnly = true;
             // 
             // tabPage9
             // 
@@ -2490,7 +2511,7 @@
             this.tabPage10.Location = new System.Drawing.Point(4, 27);
             this.tabPage10.Name = "tabPage10";
             this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage10.Size = new System.Drawing.Size(695, 393);
+            this.tabPage10.Size = new System.Drawing.Size(695, 366);
             this.tabPage10.TabIndex = 9;
             this.tabPage10.Text = "tabPage10";
             // 
@@ -2856,8 +2877,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(703, 451);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -2981,7 +3002,6 @@
         public System.Windows.Forms.Button btnDiagnostic2;
         public System.Windows.Forms.Button btnEnregistrerLabo;
         public System.Windows.Forms.Button btnRetirerLabo;
-        public System.Windows.Forms.Button btnPlusLabo;
         public System.Windows.Forms.Button btnPrescription2;
         public System.Windows.Forms.Button btnEnregistrerDiagnostic;
         public System.Windows.Forms.Button btnRetirerDiagnostic;
@@ -3022,9 +3042,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
@@ -3057,5 +3074,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
+        public System.Windows.Forms.TextBox txtTotal;
+        private System.Windows.Forms.Label label5;
     }
 }

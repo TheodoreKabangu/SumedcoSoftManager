@@ -102,7 +102,9 @@ namespace SUMEDCO
         {
             if(dgv1.RowCount != 0)
             {
-                cc.ChargerService(this);
+                if (dgv1.CurrentRow.Cells[1].Selected)
+                    cc.ChargerService(this, new FormExamenPhysique());
+                //Editer la méthode ChargerService() et supprimer l'ancienne
             }
         }
     }

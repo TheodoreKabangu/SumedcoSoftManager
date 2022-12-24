@@ -50,8 +50,6 @@ namespace SUMEDCO
                     dgvFacture.Rows[0].Cells[1].Value = "1";
                     dgvFacture.Rows[0].Cells[2].Value = "consultation urgence";
                     dgvFacture.Rows[0].Cells[3].Value = cc.PrixService(int.Parse(dgvFacture.Rows[0].Cells[0].Value.ToString()));
-                    dgvFacture.Rows[0].Cells[4].Value = "1";
-                    dgvFacture.Rows[0].Cells[5].Value = dgvFacture.Rows[0].Cells[3].Value.ToString();
                     txtTotal.Text = (double.Parse(txtTotal.Text) + double.Parse(dgvFacture.Rows[0].Cells[3].Value.ToString())).ToString("0.00");
                 }
                 else
@@ -60,8 +58,6 @@ namespace SUMEDCO
                     dgvFacture.Rows[0].Cells[1].Value = "1";
                     dgvFacture.Rows[0].Cells[2].Value = "consultation nouveau cas";
                     dgvFacture.Rows[0].Cells[3].Value = cc.PrixService(int.Parse(dgvFacture.Rows[0].Cells[0].Value.ToString()));
-                    dgvFacture.Rows[0].Cells[4].Value = "1";
-                    dgvFacture.Rows[0].Cells[5].Value = dgvFacture.Rows[0].Cells[3].Value.ToString();
                     txtTotal.Text = (double.Parse(txtTotal.Text) + double.Parse(dgvFacture.Rows[0].Cells[3].Value.ToString())).ToString("0.00");
                 }
             }
@@ -79,7 +75,7 @@ namespace SUMEDCO
         {
             if (dgvFacture.RowCount != 0)
             {
-                txtTotal.Text = (int.Parse(txtTotal.Text) - int.Parse(dgvFacture.CurrentRow.Cells[5].Value.ToString())).ToString();
+                txtTotal.Text = (int.Parse(txtTotal.Text) - int.Parse(dgvFacture.CurrentRow.Cells[3].Value.ToString())).ToString("0.00");
                 dgvFacture.Rows.RemoveAt(dgvFacture.CurrentRow.Index);
                 cm.RemplirNumLigne(dgvFacture, 1);
             }

@@ -25,9 +25,6 @@ namespace SUMEDCO
         private void FormRapportTrim_Shown(object sender, EventArgs e)
         {
             cc.RubriqueStatService(this);
-            //colonne = "01/2022";
-            //nbjours = DateTime.DaysInMonth(int.Parse(colonne.Substring(3)), int.Parse(colonne.Substring(0, 2)));
-            //MessageBox.Show("" + nbjours);
         }
 
         private void btnRecherche_Click(object sender, EventArgs e)

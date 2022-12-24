@@ -24,9 +24,12 @@ namespace SUMEDCO
             idconsultation = 0,
             idprescription,
             idmedecin = 0,
-            idpatient = 0;
+            idpatient = 0,
+            numbon, numbonS;
 
-        public string motif = "", type_consultation = "";
+        public string motif = "", 
+            type_consultation = "",
+            type_patient= "";
         public bool ajoutvalide;
         ClassMalade cm = new ClassMalade();
         ClassCompta cc = new ClassCompta();
@@ -86,6 +89,7 @@ namespace SUMEDCO
         private void btnLaboratoire_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedTab = tabControl1.TabPages[7];
+            cc.ChargerRubriqueExamen(this);
             btnLabo2.Enabled = false;
         }
 
@@ -122,7 +126,7 @@ namespace SUMEDCO
 
         private void FormConsulter_Shown(object sender, EventArgs e)
         {
-
+            type_patient = "abonné";
         }
 
         private void btnProduit_Click(object sender, EventArgs e)
@@ -142,7 +146,8 @@ namespace SUMEDCO
 
         private void btnRetirerPlainte_Click(object sender, EventArgs e)
         {
-            dgvPlainte.Rows.RemoveAt(dgvPlainte.CurrentRow.Index);
+            if (dgvPlainte.RowCount != 0) 
+                dgvPlainte.Rows.RemoveAt(dgvPlainte.CurrentRow.Index);
         }
         public string label = "";
         private void btnEnregistrerPlainte_Click(object sender, EventArgs e)
@@ -184,7 +189,7 @@ namespace SUMEDCO
         private void btnEnregistrerLabo_Click(object sender, EventArgs e)
         {
             label = "examen labo";
-            cm.AjouterExamenLabo(this);
+            cm.AjouterExamenConsultation(this);
         }
 
         private void btnEnregistrerDiagnostic_Click(object sender, EventArgs e)
@@ -209,7 +214,8 @@ namespace SUMEDCO
 
         private void btnRetirerHisto_Click(object sender, EventArgs e)
         {
-            dgvHisto.Rows.RemoveAt(dgvHisto.CurrentRow.Index);
+            if (dgvHisto.RowCount != 0) 
+                dgvHisto.Rows.RemoveAt(dgvHisto.CurrentRow.Index);
         }
 
         private void btnPlusAntecedent_Click(object sender, EventArgs e)
@@ -222,7 +228,8 @@ namespace SUMEDCO
 
         private void btnRetirerAntecedent_Click(object sender, EventArgs e)
         {
-            dgvAntecedent.Rows.RemoveAt(dgvAntecedent.CurrentRow.Index);
+            if (dgvAntecedent.RowCount != 0) 
+                dgvAntecedent.Rows.RemoveAt(dgvAntecedent.CurrentRow.Index);
         }
 
         private void btnPlusComplement_Click(object sender, EventArgs e)
@@ -235,7 +242,8 @@ namespace SUMEDCO
 
         private void btnRetirerComplement_Click(object sender, EventArgs e)
         {
-            dgvComplement.Rows.RemoveAt(dgvComplement.CurrentRow.Index);
+            if (dgvComplement.RowCount != 0) 
+                dgvComplement.Rows.RemoveAt(dgvComplement.CurrentRow.Index);
         }
 
         private void btnPlusExamPhys_Click(object sender, EventArgs e)
@@ -247,7 +255,8 @@ namespace SUMEDCO
 
         private void btnRetirerExamPhys_Click(object sender, EventArgs e)
         {
-            dgvExamPhys.Rows.RemoveAt(dgvExamPhys.CurrentRow.Index);
+            if (dgvExamPhys.RowCount != 0) 
+                dgvExamPhys.Rows.RemoveAt(dgvExamPhys.CurrentRow.Index);
         }
 
         private void btnPlusPrediagnostic_Click(object sender, EventArgs e)
@@ -260,19 +269,14 @@ namespace SUMEDCO
 
         private void btnRetirerPrediagnostic_Click(object sender, EventArgs e)
         {
-            dgvPrediagnostic.Rows.RemoveAt(dgvPrediagnostic.CurrentRow.Index);
-        }
-
-        private void btnPlusLabo_Click(object sender, EventArgs e)
-        {
-            if (motif == "modifier")
-                dgvLabo.Rows.Clear();
-            cc.ChargerExamenLabo(this, new FormExamenPhysique());
+            if (dgvPrediagnostic.RowCount != 0)
+                dgvPrediagnostic.Rows.RemoveAt(dgvPrediagnostic.CurrentRow.Index);
         }
 
         private void btnRetirerLabo_Click(object sender, EventArgs e)
         {
-            dgvLabo.Rows.RemoveAt(dgvLabo.CurrentRow.Index);
+            if(dgvLabo.RowCount != 0)
+                dgvLabo.Rows.RemoveAt(dgvLabo.CurrentRow.Index);
         }
 
         private void btnPlusDiagnostic_Click(object sender, EventArgs e)
@@ -284,7 +288,8 @@ namespace SUMEDCO
 
         private void btnRetirerDiagnostic_Click(object sender, EventArgs e)
         {
-            dgvDiagnostic.Rows.RemoveAt(dgvDiagnostic.CurrentRow.Index);
+            if (dgvDiagnostic.RowCount != 0) 
+                dgvDiagnostic.Rows.RemoveAt(dgvDiagnostic.CurrentRow.Index);
         }
 
         private void btnPlusAutrePresc_Click(object sender, EventArgs e)
@@ -297,12 +302,14 @@ namespace SUMEDCO
 
         private void btnRetirerAutrePresc_Click(object sender, EventArgs e)
         {
-            dgvAutrePresc.Rows.RemoveAt(dgvAutrePresc.CurrentRow.Index);
+            if (dgvAutrePresc.RowCount != 0) 
+                dgvAutrePresc.Rows.RemoveAt(dgvAutrePresc.CurrentRow.Index);
         }
 
         private void btnRetirerPrescription_Click(object sender, EventArgs e)
         {
-            dgvPresc.Rows.RemoveAt(dgvPresc.CurrentRow.Index);
+            if (dgvPresc.RowCount != 0) 
+                dgvPresc.Rows.RemoveAt(dgvPresc.CurrentRow.Index);
         }
 
         private void btnEnregistrerPresc_Click(object sender, EventArgs e)
@@ -313,8 +320,7 @@ namespace SUMEDCO
 
         private void btnRendezVous_Click(object sender, EventArgs e)
         {
-            btnRendezVous.Enabled = false;
-            
+            cm.AjouterRendezVous(this, new FormConsulterRendezVous());
         }
 
         private void btnModifierPlainte_Click(object sender, EventArgs e)
@@ -422,6 +428,21 @@ namespace SUMEDCO
         private void btnSupprimerAutrePresc_Click(object sender, EventArgs e)
         {
             cm.SupprimerRenseignement(dgvAutrePresc);
+        }
+
+        private void dgvLabo_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvLabo.CurrentRow.Cells[1].Selected && dgvLabo.CurrentRow.Cells[0].Value.ToString() == "")
+            {
+                if (motif == "modifier")
+                {
+                    cc.ChargerRubriqueExamen(this);
+                }
+                if (dgvLabo.CurrentRow.Cells[1].Value.ToString() == "AUTRES")
+                    cc.AutresExamens(this, new FormExamenPhysique());
+                else
+                    cc.ChargerExamens(this, new FormExamenPhysique());
+            }
         }
     }
 }

@@ -39,10 +39,6 @@ namespace SUMEDCO
         }
         private void btnValider_Click(object sender, EventArgs e)
         {
-            //Comme un patient ne peut être qu'ne fois dans l'agenda
-            //on peut utiliser l'idpatient depuis l'interface de FormBon 
-            //pour valider les consultations de l'agenda patient.
-            // On viendra les invalider dans FormAgenda ou là même.
             cm.ValiderStatutCaisse(this);
         }
         private void btnInvalider_Click(object sender, EventArgs e)

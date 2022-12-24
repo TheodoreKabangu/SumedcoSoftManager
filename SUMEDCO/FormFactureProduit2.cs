@@ -24,7 +24,10 @@ namespace SUMEDCO
             ajoutvalide;
         private void txtProduit_TextChanged(object sender, EventArgs e)
         {
-            cs.ChargerCompte(txtProduit, listProduit, "produit");
+            if (txtProduit.Text != "Nom du produit")
+                cs.ChargerCompte(txtProduit, listProduit, "produit");
+            if (txtProduit.Text == "")
+                txtProduit.Text = "Nom du produit";
         }
 
         private void listProduit_SelectedIndexChanged(object sender, EventArgs e)
@@ -91,6 +94,17 @@ namespace SUMEDCO
                     txtTotal.Text = (double.Parse(txtTotal.Text) + double.Parse(dgvFacture.Rows[i].Cells[5].Value.ToString())).ToString();
                 }
             }
+        }
+
+        private void txtProduit_Enter(object sender, EventArgs e)
+        {
+            //if (txtProduit.Text == "Nom du produit")
+            //    txtProduit.Text = "";
+        }
+
+        private void FormFactureProduit2_Shown(object sender, EventArgs e)
+        {
+            txtProduit.Focus();
         }
     }
 }
