@@ -1959,13 +1959,17 @@ namespace SUMEDCO
             for (int i = 0; i < p.dgvMedecin.RowCount; i++)
                 p.dgvMedecin.Rows[i].Cells[1].Value = TrouverNom("medecin", int.Parse(p.dgvMedecin.Rows[i].Cells[0].Value.ToString()));
         }
-        public int CompterConsultation(int idpatient)
+        public int RechercherPatient(int idpatient, string motif)
         {
             id = 0;
             con.Open();
             try
             {
-                cmd = new SqlCommand("select count(idconsultation) from Consultation where idpatient = @idpatient", con);
+                if (motif == "Consultation") 
+                    cmd = new SqlCommand("select count(idconsultation) from Consultation where idpatient = @idpatient", con);
+                else
+                    cmd = new SqlCommand("select count(id) from LigneAgendaPatient where idpatient = @idpatient", con);
+
                 cmd.Parameters.AddWithValue("@idpatient", idpatient);
                 dr = cmd.ExecuteReader();
                 dr.Read();
@@ -2007,16 +2011,14 @@ namespace SUMEDCO
             }
             con.Close();
         }
-        public void Enregistrer(FormPatient p)
+        public void Enregistrer(FormPatient p, FormFactureService f, FormAbonneService ab)
         {
-            p.idpatient = NouveauID("patient");
             if (p.cboTypePatient.Text == "payant")
             {
-                FormFactureService f = new FormFactureService();
                 f.nouveau_patient = true;
                 f.btnExit.Visible = false;
                 f.txtPayeur.Text = p.txtNom.Text;
-                f.idpatient = p.idpatient;
+                //f.idpatient = p.idpatient;
                 f.cas = p.cas;
                 f.MaximumSize = f.Size;
                 f.ControlBox = false;
@@ -2032,29 +2034,69 @@ namespace SUMEDCO
                 f.ShowDialog();
                 if (f.nouveau_patient)
                 {
-                    EnregistrerPatient(p);
+                    if (p.statut == "nouveau")
+                    {
+                        p.idpatient = NouveauID("patient");
+                        EnregistrerPatient(p);
+                        Annuler(p);
+                        Afficher(p, "");
+                    }
                     EnregistrerAgenda(p);
-                    Annuler(p);
-                    Afficher(p, "");
                 }
                 f.Close();
             }
             else
             {
-                EnregistrerPatient(p);
-                if (p.cboTypePatient.Text == "abonné")
+                ab.txtAbonne.Text = p.txtNom.Text;
+                ab.typepatient = p.cboTypePatient.Text;
+                ab.dgvService.Rows.Add();
+                ab.dgvService.Rows[0].Cells[0].Value = cc.TrouverId("service", p.service);
+                ab.dgvService.Rows[0].Cells[1].Value = p.service;
+                ab.consulte = true;
+                ab.btnAfficher.Enabled = false;
+                ab.btnPlus.Enabled = false;
+                ab.btnRetirer.Enabled = false;
+
+                if (p.statut == "nouveau")
                 {
-                    cc.NouvelAbonne(p);
+                    p.idpatient = NouveauID("patient");
+                    EnregistrerPatient(p);
+                    if (p.cboTypePatient.Text != "employé")
+                    {
+                        cc.NouvelAbonne(p);
+                        ab.Text = "SSM - Services aux abonnés";
+                        ab.idabonne = p.idabonne;
+                    }
+                    else //if (p.cboTypePatient.Text == "employé")
+                    {
+                        cc.NouvelEmploye(p);
+                        ab.Text = "SSM - Services aux employés";
+                        ab.idabonne = p.idemploye;
+                    }
+                    ab.ShowDialog();
                 }
-                else if (p.cboTypePatient.Text == "employé")
+                else
                 {
-                    cc.NouvelEmploye(p);
-                }
+                    if (p.cboTypePatient.Text != "employé")
+                    {
+                        ab.Text = "SSM - Services aux abonnés";
+                        ab.idabonne = cc.TrouverId("abonneconsulte", p.idpatient.ToString());
+                        ab.ShowDialog();
+                    }
+                    else //if (p.cboTypePatient.Text == "employé")
+                    {
+                        cc.NouvelEmploye(p);
+                        ab.Text = "SSM - Services aux employés";
+                        ab.idabonne = cc.TrouverId("employeconsulte", p.idpatient.ToString());
+                        ab.ShowDialog();
+                    }
+                }               
                 EnregistrerAgenda(p);
                 Annuler(p);
                 Afficher(p, "");
             }
         }
+
         public void Modifier(FormPatient p)
         {
             if (p.txtNom.Text != "" && p.cboSexe.Text != "" && p.txtMois.Text !="" && p.txtAnnee.Text != "" && p.txtAdresse.Text != "")
@@ -2101,7 +2143,7 @@ namespace SUMEDCO
         }
         public void Supprimer(FormPatient p)
         {
-            if (CompterConsultation(p.idpatient) == 0)
+            if (RechercherPatient(p.idpatient, "Consultation") == 0 && RechercherPatient(p.idpatient, "Agenda") == 0)
             {
                 con.Open();
                 SqlTransaction tx = con.BeginTransaction();
@@ -2228,7 +2270,7 @@ namespace SUMEDCO
             p.txtTel.Text = "";
             p.txtPersonContact.Text = "";
             p.txtTelContact.Text = "";
-            p.txtRecherche.Text = "";
+            p.txtRecherche.Text = "Nom du patient";
             p.btnAffecter.Enabled = false;
             p.btnReaffecter.Enabled = false;
             p.btnRetirer.Enabled = false;
@@ -2277,10 +2319,10 @@ namespace SUMEDCO
                 p.idtypeabonne = a.idtypeabonne;
                 p.refabonne = a.txtReference.Text;
             }
-            else
-            {
-                p.cboTypePatient.Items.Clear();
-            }
+            //else
+            //{
+            //    p.cboTypePatient.Items.Clear();
+            //}
             a.Close();
         }
         public void AfficherPatient(DataGridView dgv, int idpatient, int start)
@@ -2310,25 +2352,6 @@ namespace SUMEDCO
         #endregion
 
         #region AGENDA
-        public int VerifierCasAgenda(FormPatient p)
-        {
-            id = 0;
-            con.Open();
-            try
-            {
-                cmd = new SqlCommand("select count(id) from LigneAgendaPatient where idpatient= @id", con);
-                cmd.Parameters.AddWithValue("@id", p.idpatient);
-                dr = cmd.ExecuteReader();
-                dr.Read();
-                id = int.Parse(dr[0].ToString());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            con.Close();
-            return id;
-        }
         public void EnregistrerAgenda(FormPatient p)
         {
             p.idligneagenda = NouveauID("agenda");
@@ -2360,25 +2383,6 @@ namespace SUMEDCO
             }
             con.Close();
             CompterCasMedecin(p);
-            //if(p.poste == "infirmerie")
-            //{
-            //    con.Open();
-            //    SqlTransaction tx2 = con.BeginTransaction();
-            //    try
-            //    {
-            //        cmd = new SqlCommand("update LigneAgendaPatient set caisse = 'OK'  where id = @id", con);
-            //        cmd.Parameters.AddWithValue("@id", p.idligneagenda);
-            //        cmd.Transaction = tx2;
-            //        cmd.ExecuteNonQuery();
-            //        tx2.Commit();
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        tx2.Rollback();
-            //        MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    }
-            //    con.Close();
-            //}
         }
         public bool ModifierAgenda(FormPatient p, string motif)
         {
@@ -2402,6 +2406,7 @@ namespace SUMEDCO
                     MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 con.Close();
+                Supprimer(p);
             }
             else
             {
@@ -2683,39 +2688,7 @@ namespace SUMEDCO
         }
         public void AjouterServicePourNonPayant(FormAgenda a, FormSigneVital s, FormAbonneService ab)
         {
-            ab.txtAbonne.Text = a.dgvAgenda.CurrentRow.Cells[4].Value.ToString();
-            ab.typepatient = a.dgvAgenda.CurrentRow.Cells[12].Value.ToString();
-            if (ab.typepatient == "abonné")
-            {
-                ab.Text = "SSM - Services aux abonnés";
-                ab.idabonne = cc.TrouverId("abonneconsulte", a.dgvAgenda.CurrentRow.Cells[2].Value.ToString());
-            }
-            else
-            {
-                ab.Text = "SSM - Services aux employés";
-                ab.idabonne = cc.TrouverId("employeconsulte", a.dgvAgenda.CurrentRow.Cells[2].Value.ToString());
-            }
-            ab.dgvService.Rows.Add();
-            if (a.dgvAgenda.CurrentRow.Cells[1].Value.ToString() == "nouveau")
-            {
-                ab.dgvService.Rows[0].Cells[0].Value = cc.TrouverId("service", "consultation nouveau cas");
-                ab.dgvService.Rows[0].Cells[1].Value = "consultation nouveau cas";
-            }
-            else if (a.dgvAgenda.CurrentRow.Cells[1].Value.ToString() == "ancien")
-            {
-                ab.dgvService.Rows[0].Cells[0].Value = cc.TrouverId("service", "consultation ancien cas");
-                ab.dgvService.Rows[0].Cells[1].Value = "consultation ancien cas";
-            }
-            else
-            {
-                ab.dgvService.Rows[0].Cells[0].Value = cc.TrouverId("service", "consultation urgence");
-                ab.dgvService.Rows[0].Cells[1].Value = "consultation urgence";
-            }
-            ab.consulte = true;
-            ab.btnAfficher.Enabled = false;
-            ab.btnPlus.Enabled = false;
-            ab.btnRetirer.Enabled = false;
-            ab.ShowDialog();
+            
             if (ab.fermeture_succes)
                 SignesVitaux(a, s);
         }

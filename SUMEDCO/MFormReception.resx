@@ -153,18 +153,18 @@
   </data>
   <data name="btnConsultation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        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
+        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
 </value>
   </data>
   <data name="btnFactureService.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

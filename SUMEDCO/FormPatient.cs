@@ -39,17 +39,17 @@ namespace SUMEDCO
 
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
-            cm.Annuler(this);
+            if(statut == "nouveau") cm.Annuler(this);
         }
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
             if (cboTypePatient.Text != "" && cboMedecin.Text != "" && txtNom.Text != "" && cboSexe.Text != "" && txtAnnee.Text != "" && txtAdresse.Text != "" && service != "")
             {
-                if (service.ToLower().Contains("urgence"))
+                if (service.Contains("urgence"))
                     cas = "urgence";
                 else
                     cas = "nouveau";
-                cm.Enregistrer(this);
+                cm.Enregistrer(this, new FormFactureService(), new FormAbonneService());
             }
             else
             {
@@ -125,29 +125,29 @@ namespace SUMEDCO
 
         private void btnAffecter_Click(object sender, EventArgs e)
         {
-            if (cboMedecin.Text != "")
+            if (cboMedecin.Text != "" && service != "")
             {
                 cm.Annuler(this);
-                if (cm.VerifierCasAgenda(this) == 0)
+                if (cm.RechercherPatient(idpatient, "Agenda") == 0)
                 {
-                    if (MessageBox.Show("S'agit-il d'une consultation d'urgence", "Question sur le cas", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    //On peut ajouter la contrainte heure système pour détecter le cas comme urgence
+                    if (service.Contains("urgence"))
                         cas = "urgence";
                     else
                     {
-                        if (cm.CompterConsultation(idpatient) != 0)
+                        if (cm.RechercherPatient(idpatient, "Consultation") != 0)
                             cas = "ancien"; //un ancien cas doit avoir au moins une consultation dan le système
                         else
                         {
-                            MessageBox.Show("Aucune consultation n'a été trouvée pour ce patient.\nLe système le considère comme un cas d'urgence");
+                            MessageBox.Show("Aucune consultation trouvée pour ce patient.\nLe système le considère comme un cas d'urgence");
                             cas = "urgence";
                         }
                     }
-                    cm.EnregistrerAgenda(this);
+                    cm.Enregistrer(this, new FormFactureService(), new FormAbonneService());
                     MessageBox.Show("Affectation effectuée avec succès", "Mise à jour", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                     MessageBox.Show("Ce cas est déjà affecté", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                dgvPatient.Rows.RemoveAt(dgvPatient.CurrentRow.Index);
 
             }
             else
@@ -197,16 +197,15 @@ namespace SUMEDCO
 
         private void btnReaffecter_Click(object sender, EventArgs e)
         {
-            if (cboMedecin.Text != "")
+            if (cboMedecin.Text != "" && service != "")
             {
-                if (MessageBox.Show("S'agit-il d'une consultation d'urgence", "Question sur le cas", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (service.Contains("urgence"))
                     cas = "urgence";
                 else cas = cm.TrouverNom("casconsultation", idpatient);
                 if (cm.ModifierAgenda(this, ""))
                 {
                     cm.Annuler(this);
                     MessageBox.Show("Affectation modifiée avec succès", "Mise à jour", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    dgvPatient.Rows.RemoveAt(dgvPatient.CurrentRow.Index);
                 }
             }
             else
@@ -222,7 +221,6 @@ namespace SUMEDCO
             {
                 cm.Annuler(this);
                 MessageBox.Show("Affectation retirée avec succès", "Mise à jour", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                dgvPatient.Rows.RemoveAt(dgvPatient.CurrentRow.Index);
             }
         }
 
@@ -234,7 +232,7 @@ namespace SUMEDCO
         private void cboTypePatient_SelectedIndexChanged(object sender, EventArgs e)
         {
             idtypepatient = cm.TrouverId("typepatient", cboTypePatient.Text);
-            if(cboTypePatient.Text == "abonné")
+            if (cboTypePatient.Text != "payant" && cboTypePatient.Text != "employé")
             {
                 if(statut=="nouveau")
                     cm.AjouterAbonne(this, new FormAbonne());
@@ -279,8 +277,7 @@ namespace SUMEDCO
 
         private void btnSupprimer_Click(object sender, EventArgs e)
         {
-            //Réflechir à quand un patient pourrait être supprimé
-            //cm.Supprimer(this);
+            cm.Supprimer(this);
         }
 
         private void cboMedecin_Enter(object sender, EventArgs e)
@@ -353,12 +350,12 @@ namespace SUMEDCO
         public string service;
         private void rbNouveau_Click(object sender, EventArgs e)
         {
-            service = string.Format("consultation {0}", rbNouveau.Text);
+            service = string.Format("consultation {0}", rbNouveau.Text).ToLower();
         }
 
         private void rbUrgence_Click(object sender, EventArgs e)
         {
-            service = string.Format("consultation {0}", rbUrgence.Text);
+            service = string.Format("consultation {0}", rbUrgence.Text).ToLower();
         }
 
     }

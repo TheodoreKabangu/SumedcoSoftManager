@@ -84,7 +84,7 @@ namespace SUMEDCO
 
         private void FormFactureService2_Shown(object sender, EventArgs e)
         {
-            cc.ChargerCategorie(this);
+            
         }
 
         private void btnValider_Click(object sender, EventArgs e)
@@ -100,12 +100,7 @@ namespace SUMEDCO
 
         private void dgv1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(dgv1.RowCount != 0)
-            {
-                if (dgv1.CurrentRow.Cells[1].Selected)
-                    cc.ChargerService(this, new FormExamenPhysique());
-                //Editer la méthode ChargerService() et supprimer l'ancienne
-            }
+            //cc.ChargerService(this, new FormExamenPhysique());
         }
     }
 }

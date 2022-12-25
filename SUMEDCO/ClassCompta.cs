@@ -214,7 +214,14 @@ namespace SUMEDCO
                 childForm.btnRecherche.Enabled = false;
             }
             else
+            {
                 childForm.btnEnregistrer.Enabled = false;
+                childForm.cboTypePatient.DropDownStyle = ComboBoxStyle.DropDown;
+                childForm.cboTypePatient.SelectedText = "payant";
+                childForm.cboTypePatient.DropDownStyle = ComboBoxStyle.DropDownList;
+                childForm.cboTypePatient.Enabled = false;
+                childForm.rbNouveau.Text = "Ancien cas";
+            }
             childForm.statut = r.statut;
             childForm.Show();
         }
@@ -361,69 +368,20 @@ namespace SUMEDCO
             }
             fs.Close();
         }
-        public void ChargerService(FormFactureService2 f, FormExamenPhysique exa)
+        public void ChargerService(FormFactureService f, FormExamenPhysique exa)
         {
-            //chaine = c.dgvLabo.CurrentRow.Cells[1].Value.ToString();
-            //con.Open();
-            //try
-            //{
-            //    if (c.type_patient == "abonné")
-            //        cmd = new SqlCommand("select idservice, nomservice, prix_abonne from Service where numcompte like '70611%' and specification = '" + chaine + "'", con);
-            //    else
-            //        cmd = new SqlCommand("select idservice, nomservice, prixservice from Service where numcompte like '70611%' and specification = '" + chaine + "'", con);
-            //    dr = cmd.ExecuteReader();
-            //    while (dr.Read())
-            //    {
-            //        e.dgv.Rows.Add();
-            //        e.dgv.Rows[e.dgv.RowCount - 1].Cells[0].Value = dr[0].ToString();
-            //        e.dgv.Rows[e.dgv.RowCount - 1].Cells[1].Value = dr[1].ToString();
-            //        e.dgv.Rows[e.dgv.RowCount - 1].Cells[2].Value = dr[2].ToString();
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
-            //con.Close();
-
-            //e.Text = string.Format("SSM - Examens ({0})", chaine);
-            //e.ShowDialog();
-            //if (e.fermeture_succes)
-            //{
-            //    id = c.dgvLabo.CurrentRow.Index;
-            //    for (int i = 0; i < e.dgv.RowCount; i++)
-            //    {
-            //        if (e.dgv.Rows[i].Selected)
-            //        {
-            //            id++;
-            //            c.dgvLabo.Rows.Insert(id, 1);
-            //            c.dgvLabo.Rows[id].Cells[0].Value = e.dgv.Rows[i].Cells[0].Value.ToString();
-            //            c.dgvLabo.Rows[id].Cells[1].Value = e.dgv.Rows[i].Cells[1].Value.ToString();
-            //            c.dgvLabo.Rows[id].Cells[2].Value = "RAS";
-            //            c.dgvLabo.Rows[id].Cells[3].Value = e.dgv.Rows[i].Cells[2].Value.ToString();
-            //        }
-
-            //    }
-            //}
-            //e.Close();
-            ////Calcul de total
-            //CalculerTotal(c.dgvLabo, 3, c.txtTotal);
-        }
-        public void ChargerService(FormFactureService2 f)
-        {           
             con.Open();
             try
             {
                 cmd = new SqlCommand("select idservice, nomservice, prixservice from Service where numcompte = @id", con);
                 cmd.Parameters.AddWithValue("@id", f.dgv1.CurrentRow.Cells[0].Value.ToString());
                 dr = cmd.ExecuteReader();
-                f.dgv2.Rows.Clear();
                 while (dr.Read())
                 {
-                    f.dgv2.Rows.Add();
-                    f.dgv2.Rows[f.dgv2.RowCount - 1].Cells[0].Value = dr[0].ToString();
-                    f.dgv2.Rows[f.dgv2.RowCount - 1].Cells[1].Value = dr[1].ToString();
-                    f.dgv2.Rows[f.dgv2.RowCount - 1].Cells[2].Value = dr[2].ToString();
+                    exa.dgv.Rows.Add();
+                    exa.dgv.Rows[exa.dgv.RowCount - 1].Cells[0].Value = dr[0].ToString();
+                    exa.dgv.Rows[exa.dgv.RowCount - 1].Cells[1].Value = dr[1].ToString();
+                    exa.dgv.Rows[exa.dgv.RowCount - 1].Cells[2].Value = dr[2].ToString();
                 }
             }
             catch (Exception ex)
@@ -431,8 +389,42 @@ namespace SUMEDCO
                 MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             con.Close();
+
+            exa.Text = string.Format("SSM - Service à facturer", chaine);
+            exa.ShowDialog();
+            if (exa.fermeture_succes)
+            {
+                for (int i = 0; i < exa.dgv.RowCount; i++)
+                {
+                    f.ajoutvalide = true;
+                    if (exa.dgv.Rows[i].Selected)
+                    {
+                        for (int j = 0; j < f.dgvFacture.RowCount; j++)
+                        {
+                            if(exa.dgv.Rows[i].Cells[0].Value.ToString() == f.dgvFacture.Rows[j].Cells[0].Value.ToString())
+                            {
+                                f.ajoutvalide = false;
+                                MessageBox.Show("Le service sur la ligne "+(i+1)+" existe déjà sur la facture", "Attention!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                j += f.dgvFacture.RowCount;
+                            }
+                        }
+                        if(f.ajoutvalide)
+                        {
+                            f.dgvFacture.Rows.Add();
+                            f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[0].Value = exa.dgv.Rows[i].Cells[0].Value.ToString();
+                            f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[1].Value = f.dgvFacture.RowCount;
+                            f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[2].Value = exa.dgv.Rows[i].Cells[1].Value.ToString();
+                            f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[3].Value = exa.dgv.Rows[i].Cells[2].Value.ToString();
+                        }
+                    }
+
+                }
+            }
+            exa.Close();
+            //Calcul de total
+            CalculerTotal(f.dgvFacture, 3, f.txtTotal);
         }
-        public void ChargerCategorie(FormFactureService2 f)
+        public void ChargerCategorie(FormFactureService f)
         {
             con.Open();
             cmd = new SqlCommand("select numcompte, libellecompte from Compte Where numcompte like '7061%' and numcompte <> '706101' or numcompte like '7078%'", con);
@@ -2393,7 +2385,10 @@ namespace SUMEDCO
                 childForm.btnRecherche.Enabled = false;
             }
             else
+            {
                 childForm.btnEnregistrer.Enabled = false;
+                childForm.rbNouveau.Text = "Ancien cas";
+            }
             childForm.statut = a.statut;
             childForm.Show();
         }

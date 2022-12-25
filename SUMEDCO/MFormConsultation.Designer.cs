@@ -31,13 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MFormConsultation));
             this.pnlSide = new System.Windows.Forms.Panel();
             this.btnChat = new System.Windows.Forms.Button();
+            this.btnRendezVous = new System.Windows.Forms.Button();
             this.btnQuitter = new System.Windows.Forms.Button();
             this.btnIntervention = new System.Windows.Forms.Button();
             this.btnConsultation = new System.Windows.Forms.Button();
             this.pnlLogo = new System.Windows.Forms.Panel();
             this.btnLogo = new System.Windows.Forms.Button();
             this.pnlChildForm = new System.Windows.Forms.Panel();
-            this.btnRendezVous = new System.Windows.Forms.Button();
             this.pnlSide.SuspendLayout();
             this.pnlLogo.SuspendLayout();
             this.SuspendLayout();
@@ -75,6 +75,24 @@
             this.btnChat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnChat.UseVisualStyleBackColor = true;
             this.btnChat.Click += new System.EventHandler(this.btnChat_Click);
+            // 
+            // btnRendezVous
+            // 
+            this.btnRendezVous.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRendezVous.FlatAppearance.BorderSize = 0;
+            this.btnRendezVous.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.btnRendezVous.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRendezVous.ForeColor = System.Drawing.Color.Black;
+            this.btnRendezVous.Image = ((System.Drawing.Image)(resources.GetObject("btnRendezVous.Image")));
+            this.btnRendezVous.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRendezVous.Location = new System.Drawing.Point(0, 162);
+            this.btnRendezVous.Name = "btnRendezVous";
+            this.btnRendezVous.Size = new System.Drawing.Size(180, 45);
+            this.btnRendezVous.TabIndex = 587;
+            this.btnRendezVous.Text = "Mes rendez-vous";
+            this.btnRendezVous.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRendezVous.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRendezVous.UseVisualStyleBackColor = true;
             // 
             // btnQuitter
             // 
@@ -174,24 +192,6 @@
             this.pnlChildForm.Name = "pnlChildForm";
             this.pnlChildForm.Size = new System.Drawing.Size(714, 471);
             this.pnlChildForm.TabIndex = 584;
-            // 
-            // btnRendezVous
-            // 
-            this.btnRendezVous.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnRendezVous.FlatAppearance.BorderSize = 0;
-            this.btnRendezVous.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.btnRendezVous.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRendezVous.ForeColor = System.Drawing.Color.Black;
-            this.btnRendezVous.Image = ((System.Drawing.Image)(resources.GetObject("btnRendezVous.Image")));
-            this.btnRendezVous.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRendezVous.Location = new System.Drawing.Point(0, 162);
-            this.btnRendezVous.Name = "btnRendezVous";
-            this.btnRendezVous.Size = new System.Drawing.Size(180, 45);
-            this.btnRendezVous.TabIndex = 587;
-            this.btnRendezVous.Text = "Mes rendez-vous";
-            this.btnRendezVous.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRendezVous.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnRendezVous.UseVisualStyleBackColor = true;
             // 
             // MFormConsultation
             // 

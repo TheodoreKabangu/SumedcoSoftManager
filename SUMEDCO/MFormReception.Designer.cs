@@ -112,7 +112,7 @@
             this.btnAncien.Name = "btnAncien";
             this.btnAncien.Size = new System.Drawing.Size(180, 45);
             this.btnAncien.TabIndex = 587;
-            this.btnAncien.Text = "Ancien malade";
+            this.btnAncien.Text = "Ancien cas";
             this.btnAncien.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAncien.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAncien.UseVisualStyleBackColor = true;
@@ -131,7 +131,7 @@
             this.btnConsultation.Name = "btnConsultation";
             this.btnConsultation.Size = new System.Drawing.Size(180, 45);
             this.btnConsultation.TabIndex = 1;
-            this.btnConsultation.Text = "Nouveau malade";
+            this.btnConsultation.Text = "Nouveau cas";
             this.btnConsultation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnConsultation.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnConsultation.UseVisualStyleBackColor = true;
