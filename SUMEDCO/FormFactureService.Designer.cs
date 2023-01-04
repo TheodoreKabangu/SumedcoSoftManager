@@ -57,14 +57,15 @@
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.btnRecherche = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
-            this.btnService = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.cboPayeurDiffere = new System.Windows.Forms.ComboBox();
+            this.cboPayeur = new System.Windows.Forms.ComboBox();
             this.dgv1 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtContacts = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv1)).BeginInit();
             this.SuspendLayout();
@@ -76,7 +77,7 @@
             this.txtPayeur.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtPayeur.MaxLength = 75;
             this.txtPayeur.Name = "txtPayeur";
-            this.txtPayeur.Size = new System.Drawing.Size(422, 21);
+            this.txtPayeur.Size = new System.Drawing.Size(452, 21);
             this.txtPayeur.TabIndex = 2;
             this.txtPayeur.Enter += new System.EventHandler(this.txtPayeur_Enter);
             // 
@@ -113,6 +114,7 @@
             // 
             // btnAnnuler
             // 
+            this.btnAnnuler.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnAnnuler.BackColor = System.Drawing.Color.Transparent;
             this.btnAnnuler.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnAnnuler.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
@@ -121,7 +123,7 @@
             this.btnAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAnnuler.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAnnuler.Image = ((System.Drawing.Image)(resources.GetObject("btnAnnuler.Image")));
-            this.btnAnnuler.Location = new System.Drawing.Point(219, 138);
+            this.btnAnnuler.Location = new System.Drawing.Point(119, 410);
             this.btnAnnuler.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(30, 27);
@@ -132,6 +134,7 @@
             // 
             // btnEnregistrer
             // 
+            this.btnEnregistrer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnEnregistrer.BackColor = System.Drawing.Color.Transparent;
             this.btnEnregistrer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnEnregistrer.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
@@ -140,7 +143,7 @@
             this.btnEnregistrer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEnregistrer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEnregistrer.Image = ((System.Drawing.Image)(resources.GetObject("btnEnregistrer.Image")));
-            this.btnEnregistrer.Location = new System.Drawing.Point(261, 138);
+            this.btnEnregistrer.Location = new System.Drawing.Point(161, 410);
             this.btnEnregistrer.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnEnregistrer.Name = "btnEnregistrer";
             this.btnEnregistrer.Size = new System.Drawing.Size(30, 27);
@@ -230,8 +233,9 @@
             this.dgvFacture.AllowUserToAddRows = false;
             this.dgvFacture.AllowUserToDeleteRows = false;
             this.dgvFacture.AllowUserToOrderColumns = true;
-            this.dgvFacture.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dgvFacture.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvFacture.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.dgvFacture.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvFacture.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -258,13 +262,13 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvFacture.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvFacture.GridColor = System.Drawing.Color.RoyalBlue;
-            this.dgvFacture.Location = new System.Drawing.Point(297, 173);
+            this.dgvFacture.Location = new System.Drawing.Point(297, 167);
             this.dgvFacture.MultiSelect = false;
             this.dgvFacture.Name = "dgvFacture";
             this.dgvFacture.ReadOnly = true;
             this.dgvFacture.RowHeadersVisible = false;
             this.dgvFacture.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFacture.Size = new System.Drawing.Size(394, 246);
+            this.dgvFacture.Size = new System.Drawing.Size(394, 239);
             this.dgvFacture.TabIndex = 595;
             this.dgvFacture.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFacture_CellClick);
             // 
@@ -301,6 +305,7 @@
             // 
             // btnRetirer
             // 
+            this.btnRetirer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnRetirer.BackColor = System.Drawing.Color.Transparent;
             this.btnRetirer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnRetirer.Enabled = false;
@@ -310,7 +315,7 @@
             this.btnRetirer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRetirer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRetirer.Image = ((System.Drawing.Image)(resources.GetObject("btnRetirer.Image")));
-            this.btnRetirer.Location = new System.Drawing.Point(302, 137);
+            this.btnRetirer.Location = new System.Drawing.Point(202, 409);
             this.btnRetirer.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnRetirer.Name = "btnRetirer";
             this.btnRetirer.Size = new System.Drawing.Size(30, 27);
@@ -321,6 +326,7 @@
             // 
             // btnRetirerTout
             // 
+            this.btnRetirerTout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnRetirerTout.BackColor = System.Drawing.Color.Transparent;
             this.btnRetirerTout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnRetirerTout.Enabled = false;
@@ -330,7 +336,7 @@
             this.btnRetirerTout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRetirerTout.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRetirerTout.Image = ((System.Drawing.Image)(resources.GetObject("btnRetirerTout.Image")));
-            this.btnRetirerTout.Location = new System.Drawing.Point(342, 137);
+            this.btnRetirerTout.Location = new System.Drawing.Point(242, 409);
             this.btnRetirerTout.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnRetirerTout.Name = "btnRetirerTout";
             this.btnRetirerTout.Size = new System.Drawing.Size(30, 27);
@@ -341,11 +347,11 @@
             // 
             // txtTotal
             // 
-            this.txtTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.txtTotal.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTotal.ForeColor = System.Drawing.Color.MediumBlue;
-            this.txtTotal.Location = new System.Drawing.Point(563, 427);
+            this.txtTotal.Location = new System.Drawing.Point(563, 423);
             this.txtTotal.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(128, 14);
@@ -355,32 +361,14 @@
             // 
             // label7
             // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(482, 427);
+            this.label7.Location = new System.Drawing.Point(482, 423);
             this.label7.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(69, 15);
             this.label7.TabIndex = 614;
             this.label7.Text = "Total Gén. :";
-            // 
-            // btnRecherche
-            // 
-            this.btnRecherche.BackColor = System.Drawing.Color.Transparent;
-            this.btnRecherche.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnRecherche.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnRecherche.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnRecherche.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRecherche.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRecherche.Image = ((System.Drawing.Image)(resources.GetObject("btnRecherche.Image")));
-            this.btnRecherche.Location = new System.Drawing.Point(541, 107);
-            this.btnRecherche.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.btnRecherche.Name = "btnRecherche";
-            this.btnRecherche.Size = new System.Drawing.Size(30, 21);
-            this.btnRecherche.TabIndex = 618;
-            this.toolTip1.SetToolTip(this.btnRecherche, "Attacher à un malade");
-            this.btnRecherche.UseVisualStyleBackColor = false;
-            this.btnRecherche.Click += new System.EventHandler(this.btnRecherche_Click);
             // 
             // btnExit
             // 
@@ -402,56 +390,31 @@
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // btnService
+            // cboPayeur
             // 
-            this.btnService.BackColor = System.Drawing.Color.Transparent;
-            this.btnService.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnService.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnService.FlatAppearance.BorderSize = 0;
-            this.btnService.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnService.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnService.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnService.ForeColor = System.Drawing.Color.MediumBlue;
-            this.btnService.Image = ((System.Drawing.Image)(resources.GetObject("btnService.Image")));
-            this.btnService.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnService.Location = new System.Drawing.Point(119, 138);
-            this.btnService.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.btnService.Name = "btnService";
-            this.btnService.Size = new System.Drawing.Size(88, 27);
-            this.btnService.TabIndex = 707;
-            this.btnService.Text = "Facturier";
-            this.btnService.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.toolTip1.SetToolTip(this.btnService, "Ajouter les services");
-            this.btnService.UseVisualStyleBackColor = false;
-            this.btnService.Click += new System.EventHandler(this.btnService_Click);
-            this.btnService.Enter += new System.EventHandler(this.btnService_Enter);
-            // 
-            // cboPayeurDiffere
-            // 
-            this.cboPayeurDiffere.DropDownHeight = 150;
-            this.cboPayeurDiffere.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboPayeurDiffere.Enabled = false;
-            this.cboPayeurDiffere.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboPayeurDiffere.FormattingEnabled = true;
-            this.cboPayeurDiffere.IntegralHeight = false;
-            this.cboPayeurDiffere.Items.AddRange(new object[] {
-            "immédiat",
-            "différé"});
-            this.cboPayeurDiffere.Location = new System.Drawing.Point(297, 76);
-            this.cboPayeurDiffere.MaxDropDownItems = 10;
-            this.cboPayeurDiffere.Name = "cboPayeurDiffere";
-            this.cboPayeurDiffere.Size = new System.Drawing.Size(274, 23);
-            this.cboPayeurDiffere.TabIndex = 706;
-            this.cboPayeurDiffere.SelectedIndexChanged += new System.EventHandler(this.cboPayeurDiffere_SelectedIndexChanged);
+            this.cboPayeur.DropDownHeight = 150;
+            this.cboPayeur.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPayeur.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboPayeur.FormattingEnabled = true;
+            this.cboPayeur.IntegralHeight = false;
+            this.cboPayeur.Items.AddRange(new object[] {
+            "passant",
+            "patient"});
+            this.cboPayeur.Location = new System.Drawing.Point(405, 76);
+            this.cboPayeur.MaxDropDownItems = 10;
+            this.cboPayeur.Name = "cboPayeur";
+            this.cboPayeur.Size = new System.Drawing.Size(166, 23);
+            this.cboPayeur.TabIndex = 706;
+            this.cboPayeur.SelectedIndexChanged += new System.EventHandler(this.cboPayeur_SelectedIndexChanged);
+            this.cboPayeur.Enter += new System.EventHandler(this.cboPayeur_Enter);
             // 
             // dgv1
             // 
             this.dgv1.AllowUserToAddRows = false;
             this.dgv1.AllowUserToDeleteRows = false;
             this.dgv1.AllowUserToOrderColumns = true;
-            this.dgv1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgv1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.dgv1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.dgv1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -476,13 +439,13 @@
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgv1.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgv1.GridColor = System.Drawing.Color.RoyalBlue;
-            this.dgv1.Location = new System.Drawing.Point(119, 173);
+            this.dgv1.Location = new System.Drawing.Point(119, 167);
             this.dgv1.MultiSelect = false;
             this.dgv1.Name = "dgv1";
             this.dgv1.ReadOnly = true;
             this.dgv1.RowHeadersVisible = false;
             this.dgv1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv1.Size = new System.Drawing.Size(172, 269);
+            this.dgv1.Size = new System.Drawing.Size(172, 239);
             this.dgv1.TabIndex = 708;
             this.dgv1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv1_CellClick);
             // 
@@ -503,16 +466,48 @@
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(300, 79);
+            this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(96, 15);
+            this.label5.TabIndex = 709;
+            this.label5.Text = "Type de payeur :";
+            // 
+            // txtContacts
+            // 
+            this.txtContacts.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
+            this.txtContacts.Location = new System.Drawing.Point(119, 138);
+            this.txtContacts.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.txtContacts.MaxLength = 75;
+            this.txtContacts.Name = "txtContacts";
+            this.txtContacts.Size = new System.Drawing.Size(452, 21);
+            this.txtContacts.TabIndex = 710;
+            this.txtContacts.Enter += new System.EventHandler(this.txtContacts_Enter);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(15, 141);
+            this.label6.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(60, 15);
+            this.label6.TabIndex = 711;
+            this.label6.Text = "Contacts :";
+            // 
             // FormFactureService
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(703, 451);
+            this.Controls.Add(this.txtContacts);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.dgv1);
-            this.Controls.Add(this.btnService);
-            this.Controls.Add(this.cboPayeurDiffere);
-            this.Controls.Add(this.btnRecherche);
+            this.Controls.Add(this.cboPayeur);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.txtTotal);
             this.Controls.Add(this.label7);
@@ -565,11 +560,9 @@
         public System.Windows.Forms.Label lblDateOperation;
         public System.Windows.Forms.Button btnAnnuler;
         public System.Windows.Forms.Button btnEnregistrer;
-        public System.Windows.Forms.Button btnRecherche;
         public System.Windows.Forms.SaveFileDialog saveFileDialog1;
         public System.Windows.Forms.Label lblTaux;
-        public System.Windows.Forms.ComboBox cboPayeurDiffere;
-        public System.Windows.Forms.Button btnService;
+        public System.Windows.Forms.ComboBox cboPayeur;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
@@ -577,5 +570,8 @@
         public System.Windows.Forms.DataGridView dgv1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.Label label5;
+        public System.Windows.Forms.TextBox txtContacts;
+        private System.Windows.Forms.Label label6;
     }
 }

@@ -175,6 +175,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
+            this.checkBox1.ForeColor = System.Drawing.Color.MediumBlue;
             this.checkBox1.Location = new System.Drawing.Point(127, 153);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(137, 19);
@@ -186,6 +187,8 @@
             // linkModifier
             // 
             this.linkModifier.AutoSize = true;
+            this.linkModifier.DisabledLinkColor = System.Drawing.Color.MediumBlue;
+            this.linkModifier.LinkColor = System.Drawing.Color.MediumBlue;
             this.linkModifier.Location = new System.Drawing.Point(74, 294);
             this.linkModifier.Name = "linkModifier";
             this.linkModifier.Size = new System.Drawing.Size(142, 15);

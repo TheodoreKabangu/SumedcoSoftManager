@@ -20,7 +20,7 @@ namespace SUMEDCO
         ClassMalade cm = new ClassMalade();
         ClassCompta cc = new ClassCompta();
         public string statut = "";
-        
+        public int idutilisateur;
         public Form activeForm = null;
         private void btnConsultation_Click(object sender, EventArgs e)
         {

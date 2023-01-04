@@ -59,12 +59,13 @@ namespace SUMEDCO
             nom = "";
             switch (motif)
             {
-                case "catservice": cmdtxt = "select libellecatservice from CategorieService where idcatservice = @id"; break;
+                case "numcompte_service": cmdtxt = "select numcompte from Service where idservice = @id"; break;
                 case "service": cmdtxt = "select nomservice from Service where idservice = @id"; break;
                 case "entreprise": cmdtxt = "select nomentreprise from Entreprise where identreprise = @id"; break;
                 case "typeabonne": cmdtxt = "select typeabonne from TypeAbonne where idtypeabonne = @id"; break;
                 case "abonne": cmdtxt = "select nomabonne from Abonne where idabonne = @id"; break;
                 case "compte": cmdtxt = "select libellecompte from Compte where numcompte = @id"; break;
+                case "poste": cmdtxt = "select poste from Utilisateur where id= @id"; break;
             }
             try
             {
@@ -89,11 +90,10 @@ namespace SUMEDCO
                 case "bonrecetteservice": cmdtxt = "select max(numbonS) from BonRecetteService"; break;
                 case "bonrecetteproduit": cmdtxt = "select max(numbonP) from BonRecetteProduit"; break;
                 case "service": cmdtxt = "select max(idservice) from Service"; break;
-                case "bonrecette": cmdtxt = "select max(numbon) from BonRecette"; break;
-                case "bondepense": cmdtxt = "select max(numbon) from BonDepense"; break;
+                case "recette": cmdtxt = "select max(idrecette) from Recette"; break;
                 case "depense": cmdtxt = "select max(iddepense) from Depense"; break;
                 case "catdepense": cmdtxt = "select max(idcatdepense) from CategorieDepense"; break;
-                case "abonne": cmdtxt = "select max(idabonne) from Abonne"; break;
+                case "payeur": cmdtxt = "select max(idpayeur) from Payeur"; break;
                 case "abonneservice": cmdtxt = "select max(id) from AbonneService"; break;
                 case "abonneproduit": cmdtxt = "select max(id) from AbonneProduit"; break;
                 case "operation": cmdtxt = "select max(idoperation) from Operation"; break;
@@ -169,7 +169,7 @@ namespace SUMEDCO
             childForm.BringToFront();
             childForm.Show();
         }
-        public void AfficherSousForm(MFormReception r, Form childForm)
+        public void AfficherSousForm(MFormReception r, FormFactureProduit childForm)
         {
             if (r.activeForm != null)
                 r.activeForm.Close();
@@ -180,6 +180,21 @@ namespace SUMEDCO
             r.pnlChildForm.Controls.Add(childForm);
             r.pnlChildForm.Tag = childForm;
             childForm.BringToFront();
+            childForm.idutilisateur = r.idutilisateur;
+            childForm.Show();
+        }
+        public void AfficherSousForm(MFormReception r, FormFactureService childForm)
+        {
+            if (r.activeForm != null)
+                r.activeForm.Close();
+            r.activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            r.pnlChildForm.Controls.Add(childForm);
+            r.pnlChildForm.Tag = childForm;
+            childForm.BringToFront();
+            childForm.idutilisateur = r.idutilisateur;
             childForm.Show();
         }
         public void AfficherSousForm(MFormReception r, FormBonRecette childForm)
@@ -207,7 +222,10 @@ namespace SUMEDCO
             r.pnlChildForm.Controls.Add(childForm);
             r.pnlChildForm.Tag = childForm;
             childForm.BringToFront();
-            childForm.poste = "reception";
+            childForm.poste = TrouverNom("poste",r.idutilisateur);
+            childForm.dgvPatient.Columns[11].Visible = false;
+            childForm.dgvPatient.Columns[12].Visible = false;
+            childForm.dgvPatient.Columns[13].Visible = false;
             if (r.statut == "nouveau")
             {
                 childForm.txtRecherche.Enabled = false;
@@ -216,10 +234,6 @@ namespace SUMEDCO
             else
             {
                 childForm.btnEnregistrer.Enabled = false;
-                childForm.cboTypePatient.DropDownStyle = ComboBoxStyle.DropDown;
-                childForm.cboTypePatient.SelectedText = "payant";
-                childForm.cboTypePatient.DropDownStyle = ComboBoxStyle.DropDownList;
-                childForm.cboTypePatient.Enabled = false;
                 childForm.rbNouveau.Text = "Ancien cas";
             }
             childForm.statut = r.statut;
@@ -300,6 +314,179 @@ namespace SUMEDCO
         #endregion
 
         #region FACTURATION
+
+        public int AjouterRecette(int idrecette, string statut_facture, string date, string type_payeur, int idpayeur, string categorie)
+        {
+            idrecette = NouveauID("recette");
+            con.Open();
+            SqlTransaction tx = con.BeginTransaction();
+            try
+            {
+                if (statut_facture == "différé")
+                {
+                    cmd = new SqlCommand("insert into Recette(idrecette, statut_facture, date_operation, type_payeur, idpayeur, categorie, statut_caisse) values (@idrecette, @statut_facture, @date_operation, @type_payeur, @idpayeur, @categorie, @statut_caisse)", con);
+                    cmd.Parameters.AddWithValue("@statut_caisse", "OK");
+                }
+                else
+                    cmd = new SqlCommand("insert into Recette(idrecette, statut_facture, date_operation, type_payeur, idpayeur, categorie) values (@idrecette, @statut_facture, @date_operation, @type_payeur, @idpayeur, @categorie)", con);
+                cmd.Parameters.AddWithValue("@idrecette", idrecette);
+                cmd.Parameters.AddWithValue("@statut_facture", statut_facture);
+                cmd.Parameters.AddWithValue("@date_operation", date);
+                cmd.Parameters.AddWithValue("@type_payeur", type_payeur);
+                cmd.Parameters.AddWithValue("@idpayeur", idpayeur);
+                cmd.Parameters.AddWithValue("@categorie", categorie);
+                cmd.Transaction = tx;
+                cmd.ExecuteNonQuery();
+                tx.Commit();
+            }
+            catch (Exception ex)
+            {
+                tx.Rollback();
+                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            con.Close();
+            return idrecette;
+        }
+        public void AjouterServiceRecette(int idrecette, int idservice)
+        {
+            con.Open();
+            SqlTransaction tx = con.BeginTransaction();
+            try
+            {
+                cmd = new SqlCommand("insert into RecetteService (idrecette, idservice) values (@idrecette, @idservice)", con);
+                cmd.Parameters.AddWithValue("@idrecette", idrecette);
+                cmd.Parameters.AddWithValue("@idservice", idservice);
+                cmd.Transaction = tx;
+                cmd.ExecuteNonQuery();
+                tx.Commit();
+            }
+            catch (Exception ex)
+            {
+                tx.Rollback();
+                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            con.Close();
+        }
+        public void AjouterProduitRecette(int idrecette, int idstock, int qte)
+        {
+            con.Open();
+            SqlTransaction tx = con.BeginTransaction();
+            try
+            {
+                cmd = new SqlCommand("insert into RecetteProduit (idrecette, idstock, qtevendue) values (@idrecette, @idstock, @qtevendue)", con);
+                cmd.Parameters.AddWithValue("@idrecette", idrecette);
+                cmd.Parameters.AddWithValue("@idstock", idstock);
+                cmd.Parameters.AddWithValue("@qtevendue", qte);
+                cmd.Transaction = tx;
+                cmd.ExecuteNonQuery();
+                tx.Commit();
+            }
+            catch (Exception ex)
+            {
+                tx.Rollback();
+                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            con.Close();
+        }
+
+        public bool AjouterPayeur(FormFactureService f)
+        {
+            cmdStatut = false;
+            f.idpayeur = NouveauID("payeur");
+            con.Open();
+            SqlTransaction tx = con.BeginTransaction();
+            try
+            {
+                cmd = new SqlCommand("insert into Payeur (idpayeur, nompayeur, contacts) values (@idpayeur, @nompayeur, @contacts)", con);
+                cmd.Parameters.AddWithValue("@idpayeur", f.idpayeur);
+                cmd.Parameters.AddWithValue("@nompayeur", f.txtPayeur.Text);
+                cmd.Parameters.AddWithValue("@contacts", f.txtContacts.Text);
+                cmd.Transaction = tx;
+                cmd.ExecuteNonQuery();
+                tx.Commit();
+                cmdStatut = true;
+            }
+            catch (Exception ex)
+            {
+                tx.Rollback();
+                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            con.Close();
+            return cmdStatut;
+        }
+        public int AjouterPayeur(int idpayeur, string nompayeur, string contact)
+        {
+            idpayeur = NouveauID("payeur");
+            con.Open();
+            SqlTransaction tx = con.BeginTransaction();
+            try
+            {
+                cmd = new SqlCommand("insert into Payeur (idpayeur, nompayeur, contacts) values (@idpayeur, @nompayeur, @contacts)", con);
+                cmd.Parameters.AddWithValue("@idpayeur", idpayeur);
+                cmd.Parameters.AddWithValue("@nompayeur", nompayeur);
+                cmd.Parameters.AddWithValue("@contacts", contact);
+                cmd.Transaction = tx;
+                cmd.ExecuteNonQuery();
+                tx.Commit();
+                cmdStatut = true;
+            }
+            catch (Exception ex)
+            {
+                tx.Rollback();
+                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            con.Close();
+            return idpayeur;
+        }
+        public void Enregistrer(FormFactureService f)
+        {
+            if (f.dgvFacture.RowCount > 0)
+            {
+                if (f.cboPayeur.Text == "passant")
+                {
+                    //Ajouter le payeur
+                    f.idpayeur = AjouterPayeur(f.idpayeur, f.txtPayeur.Text, f.txtContacts.Text);
+                    //Ajout recette
+                    f.idrecette = AjouterRecette(f.idrecette, f.cboTypeFacture.Text, f.lblDateOperation.Text, f.cboPayeur.Text, f.idpayeur, "service");
+                    //Ajout de services de la recette
+                    for (int i = 0; i < f.dgvFacture.RowCount; i++)
+                    {
+                        AjouterServiceRecette(f.idrecette, int.Parse(f.dgvFacture.Rows[i].Cells[0].Value.ToString()));
+                    }
+                }
+                else
+                {
+                    //Ajout recette
+                    f.idrecette = AjouterRecette(f.idrecette, f.cboTypeFacture.Text, f.lblDateOperation.Text, f.cboPayeur.Text, f.idpayeur, "service");
+                    //Ajout de services de la recette
+                    for (int i = 0; i < f.dgvFacture.RowCount; i++)
+                    {
+                        AjouterServiceRecette(f.idrecette, int.Parse(f.dgvFacture.Rows[i].Cells[0].Value.ToString()));
+                    }
+                }
+                //Cas de facture différé
+                if (f.cboTypeFacture.Text == "différé")
+                {
+                    f.idoperation = NouveauID("operation");
+                    if (EnregistrerOperation(f.idoperation, f.lblDateOperation.Text, "Vente de services à crédit", string.Format("R_{0}", f.idrecette), TrouverId("typejournal", "ventes")))
+                    {
+                        for (int i = 0; i < f.dgvFacture.RowCount; i++)
+                        {
+                            EnregistrerEcriture(f.id, f.idoperation, f.numcomptediffere, double.Parse(f.dgvFacture.Rows[i].Cells[3].Value.ToString()), 0);
+                            f.numcompte = TrouverNom("numcompte_service", int.Parse(f.dgvFacture.Rows[i].Cells[0].Value.ToString()));
+                            EnregistrerEcriture(f.id, f.idoperation, f.numcompte, 0, double.Parse(f.dgvFacture.Rows[i].Cells[3].Value.ToString()));
+                        }
+                    }
+                }
+                MessageBox.Show("Enregistré avec succès", "Enregistrement", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Annuler(f);
+            }
+            else
+            { MessageBox.Show("Aucune ligne n'a été trouvée", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+        }
+
+        
+        
         public void Generer()
         {
             string filecontent = "texte à enregistrer";
@@ -373,8 +560,8 @@ namespace SUMEDCO
             con.Open();
             try
             {
-                cmd = new SqlCommand("select idservice, nomservice, prixservice from Service where numcompte = @id", con);
-                cmd.Parameters.AddWithValue("@id", f.dgv1.CurrentRow.Cells[0].Value.ToString());
+                cmd = new SqlCommand("select idservice, nomservice, prixservice from Service where numcompte = @num and nomservice <> 'consultation ancien cas' and nomservice <> 'consultation nouveau cas' and nomservice <> 'consultation urgence'", con);
+                cmd.Parameters.AddWithValue("@num", f.dgv1.CurrentRow.Cells[0].Value.ToString());
                 dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
@@ -427,7 +614,7 @@ namespace SUMEDCO
         public void ChargerCategorie(FormFactureService f)
         {
             con.Open();
-            cmd = new SqlCommand("select numcompte, libellecompte from Compte Where numcompte like '7061%' and numcompte <> '706101' or numcompte like '7078%'", con);
+            cmd = new SqlCommand("select numcompte, libellecompte from Compte Where numcompte like '7061%' or numcompte like '7078%' order by libellecompte", con);
             try
             {
                 dr = cmd.ExecuteReader();
@@ -462,7 +649,7 @@ namespace SUMEDCO
             }
             else if(motif =="typeabonne")
             {
-                cmd = new SqlCommand("select typeabonne from TypeAbonne, EntrepriseTypeAbonne, Entreprise where TypeAbonne.idtypeabonne= EntrepriseTypeAbonne.idtypeabonne and EntrepriseTypeAbonne.identreprise= Entreprise.identreprise and  Entreprise.identreprise= @id", con);
+                cmd = new SqlCommand("select typeabonne from TypeAbonne, EntrepriseTypeAbonne, Entreprise where TypeAbonne.idtypeabonne = EntrepriseTypeAbonne.idtypeabonne and EntrepriseTypeAbonne.identreprise= Entreprise.identreprise and  Entreprise.identreprise= @id", con);
                 cmd.Parameters.AddWithValue("@id", id);
             }
             else if(motif == "depense")
@@ -639,75 +826,95 @@ namespace SUMEDCO
             con.Close();
             return valeur;
         }
-        public void ValiderLigne(FormFactureProduit2 f)
+        public void ChargerProduit(FormFactureProduit f, string motif)
         {
-            if(f.dgvStock.RowCount != 0)
+            con.Open();
+            if (motif == "recherche") 
+                cmd = new SqlCommand("select idproduit, nomproduit from Produit where nomproduit like '"+f.txtRecherche.Text+"%' order by nomproduit", con);
+            else
+                cmd = new SqlCommand("select idproduit, nomproduit from Produit order by nomproduit", con);
+            try
             {
-                if (int.Parse(f.txtQte.Text) >= 1)
+                dr = cmd.ExecuteReader();
+                f.dgv1.Rows.Clear();
+                while (dr.Read())
+                {
+                    f.dgv1.Rows.Add();
+                    f.dgv1.Rows[f.dgv1.RowCount - 1].Cells[0].Value = dr[0].ToString();
+                    f.dgv1.Rows[f.dgv1.RowCount - 1].Cells[1].Value = dr[1].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            con.Close();
+        }
+        public void ChargerStockProduit(FormFactureProduit f, FormFactureProduit2 fp)
+        {
+            con.Open();
+            try
+            {
+                cmd = new SqlCommand("select idstock, forme, dosage, numlot, expiration, prixunitaire from LigneStock where idproduit = @id and qtestock > 0", con);
+                cmd.Parameters.AddWithValue("@id", f.dgv1.CurrentRow.Cells[0].Value.ToString());
+                dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    fp.dgvStock.Rows.Add();
+                    fp.dgvStock.Rows[fp.dgvStock.RowCount - 1].Cells[0].Value = dr[0].ToString();
+                    fp.dgvStock.Rows[fp.dgvStock.RowCount - 1].Cells[1].Value = dr[1].ToString();
+                    fp.dgvStock.Rows[fp.dgvStock.RowCount - 1].Cells[2].Value = dr[2].ToString();
+                    fp.dgvStock.Rows[fp.dgvStock.RowCount - 1].Cells[3].Value = dr[3].ToString();
+                    fp.dgvStock.Rows[fp.dgvStock.RowCount - 1].Cells[4].Value = dr[4].ToString();
+                    fp.dgvStock.Rows[fp.dgvStock.RowCount - 1].Cells[5].Value = dr[5].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            con.Close();
+
+            fp.Text = string.Format("SSM - Produits à facturer", chaine);
+            fp.ShowDialog();
+            if (fp.fermeture_succes)
+            {
+                for (int i = 0; i < fp.dgvStock.RowCount; i++)
                 {
                     f.ajoutvalide = true;
-                    if (f.dgvFacture.RowCount > 0)
+                    try
                     {
-                        for (int i = 0; i < f.dgvFacture.RowCount; i++)
+                        if (fp.dgvStock.Rows[i].Selected && int.Parse(fp.dgvStock.Rows[i].Cells[6].Value.ToString()) > 0)
                         {
-                            if (f.dgvFacture.Rows[i].Cells[0].Value.ToString() == f.dgvStock.CurrentRow.Cells[0].Value.ToString())
+                            for (int j = 0; j < f.dgvFacture.RowCount; j++)
                             {
-                                MessageBox.Show("Ce stock est déjà affecté à la liste", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                i += f.dgvFacture.RowCount;
-                                f.ajoutvalide = false;
+                                if (fp.dgvStock.Rows[i].Cells[0].Value.ToString() == f.dgvFacture.Rows[j].Cells[0].Value.ToString())
+                                {
+                                    f.ajoutvalide = false;
+                                    MessageBox.Show("La ligne " + (i + 1) + " existe déjà sur la facture", "Attention!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    j += f.dgvFacture.RowCount;
+                                }
+                            }
+                            if (f.ajoutvalide)
+                            {
+                                f.dgvFacture.Rows.Add();
+                                f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[0].Value = fp.dgvStock.Rows[i].Cells[0].Value.ToString();
+                                f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[1].Value = f.dgvFacture.RowCount;
+                                f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[2].Value = string.Format("{0} {1}", fp.dgvStock.Rows[i].Cells[1].Value.ToString(), fp.dgvStock.Rows[i].Cells[2].Value.ToString());
+                                f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[3].Value = fp.dgvStock.Rows[i].Cells[5].Value.ToString();
+                                f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[4].Value = fp.dgvStock.Rows[i].Cells[6].Value.ToString();
+                                f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[5].Value = (double.Parse(fp.dgvStock.Rows[i].Cells[5].Value.ToString()) * int.Parse(fp.dgvStock.Rows[i].Cells[6].Value.ToString())).ToString("0.00");
                             }
                         }
-                        if (f.ajoutvalide)
-                            AjouterLigne(f);
                     }
-                    else
-                        AjouterLigne(f);
-                }
-                else
-                {
-                    MessageBox.Show("La quanitié doit être supérieure ou égale à 1", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    f.txtQte.Focus();
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Vérifiez que la quantité sur la ligne " + (i + 1) + " est un entier supérieur à 0", "Attention!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
             }
-            else
-                MessageBox.Show("Aucune ligne de stock n'a été sélectionnée", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        }
-        public void Facturier(FormFactureProduit f, FormFactureProduit2 f2)
-        {
-            f2.ShowDialog();
-            f.dgvFacture.Rows.Clear();
-            if(f2.fermeture_succes)
-            {
-                for (int i = 0; i < f2.dgvFacture.RowCount; i++)
-                {
-                    f.dgvFacture.Rows.Add();
-                    f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[0].Value = f2.dgvFacture.Rows[i].Cells[0].Value;
-                    f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[1].Value = f2.dgvFacture.Rows[i].Cells[1].Value;
-                    f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[2].Value = f2.dgvFacture.Rows[i].Cells[2].Value;
-                    f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[3].Value = f2.dgvFacture.Rows[i].Cells[3].Value;
-                    f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[4].Value = f2.dgvFacture.Rows[i].Cells[4].Value;
-                    f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[5].Value = f2.dgvFacture.Rows[i].Cells[5].Value;
-                }
-                f.txtTotal.Text = f2.txtTotal.Text;
-            }
-            f2.Close();
-        }
-        public void AjouterLigne(FormFactureProduit2 f)
-        {
-            f.dgvFacture.Rows.Add();
-            chaine = string.Format("{0} {1} {2} {3}", 
-                f.txtProduit.Text, 
-                f.dgvStock.CurrentRow.Cells[1].Value.ToString(), 
-                f.dgvStock.CurrentRow.Cells[2].Value.ToString(), 
-                f.dgvStock.CurrentRow.Cells[3].Value.ToString());
-
-            f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[0].Value = f.dgvStock.CurrentRow.Cells[0].Value;
-            f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[1].Value = f.dgvFacture.RowCount;
-            f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[2].Value = chaine;
-            f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[3].Value = f.dgvStock.CurrentRow.Cells[5].Value;
-            f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[4].Value = f.txtQte.Text;
-            f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[5].Value = double.Parse(f.dgvStock.CurrentRow.Cells[5].Value.ToString()) * int.Parse(f.txtQte.Text);
-
+            fp.Close();
+            //Calcul de total
             CalculerTotal(f.dgvFacture, 5, f.txtTotal);
         }
         public void Annuler(FormFactureService f)
@@ -715,9 +922,11 @@ namespace SUMEDCO
             f.cboTypeFacture.DropDownStyle = ComboBoxStyle.DropDown;
             f.cboTypeFacture.SelectedText = "";
             f.cboTypeFacture.DropDownStyle = ComboBoxStyle.DropDownList;
-            f.cboPayeurDiffere.Items.Clear();
-            f.cboPayeurDiffere.Enabled = false;
+            f.cboPayeur.DropDownStyle = ComboBoxStyle.DropDown;
+            f.cboPayeur.SelectedText = "";
+            f.cboPayeur.DropDownStyle = ComboBoxStyle.DropDownList;
             f.txtPayeur.Text = "";
+            f.txtContacts.Text = "";
             f.txtTotal.Text = "0";
             f.dgvFacture.Rows.Clear();
             f.btnRetirer.Enabled = false;
@@ -728,26 +937,31 @@ namespace SUMEDCO
             f.cboTypeFacture.DropDownStyle = ComboBoxStyle.DropDown;
             f.cboTypeFacture.SelectedText = "";
             f.cboTypeFacture.DropDownStyle = ComboBoxStyle.DropDownList;
-            f.cboPayeurDiffere.Items.Clear();
-            f.cboPayeurDiffere.Enabled = false;
+            f.cboPayeur.DropDownStyle = ComboBoxStyle.DropDown;
+            f.cboPayeur.SelectedText = "";
+            f.cboPayeur.DropDownStyle = ComboBoxStyle.DropDownList;
             f.txtPayeur.Text = "";
+            f.txtContacts.Text = "";
             f.txtTotal.Text = "0";
             f.dgvFacture.Rows.Clear();
+            f.btnRetirer.Enabled = false;
+            f.btnRetirerTout.Enabled = false;
         }
-        public void EnregistrerBon(int numbon, int numbonS, string date, string statut, string payeur, string categorie, DataGridView dgv)
+        public void EnregistrerBon(int idrecette, string statut_facture, string date, string type_payeur, int idpayeur, string categorie, DataGridView dgv)
         {
             if(dgv.RowCount > 0)
             {
-                numbon = NouveauID("bonrecette");
+                idrecette = NouveauID("recette");
                 con.Open();
                 SqlTransaction tx = con.BeginTransaction();
                 try
                 {
-                    cmd = new SqlCommand("insert into BonRecette(numbon, statut, date_operation, payeur, categorie) values (@numbon, @statut, @date, @payeur, @categorie)", con);
-                    cmd.Parameters.AddWithValue("@numbon", numbon);
-                    cmd.Parameters.AddWithValue("@statut", statut);
-                    cmd.Parameters.AddWithValue("@date", date);
-                    cmd.Parameters.AddWithValue("@payeur", payeur);
+                    cmd = new SqlCommand("insert into Recette(idrecette, statut_facture, date_operation, type_payeur, idpayeur, categorie) values (@idrecette, @statut_facture, @date_operation, @type_payeur, @idpayeur, @categorie)", con);
+                    cmd.Parameters.AddWithValue("@idrecette", idrecette);
+                    cmd.Parameters.AddWithValue("@statut_facture", statut_facture);
+                    cmd.Parameters.AddWithValue("@date_operation", date);
+                    cmd.Parameters.AddWithValue("@type_payeur", type_payeur);
+                    cmd.Parameters.AddWithValue("@idpayeur", idpayeur);
                     cmd.Parameters.AddWithValue("@categorie", categorie);
                     cmd.Transaction = tx;
                     cmd.ExecuteNonQuery();
@@ -762,32 +976,29 @@ namespace SUMEDCO
                 con.Close();
                 //Enregistrer les services ou produits du bon
                 if (categorie == "service")
-                    EnregistrerServiceBon(numbon, numbonS, dgv);
+                    EnregistrerRecetteService(idrecette, dgv);
                 else
-                    EnregistrerProduitBon(numbon, numbonS, dgv);
-                ArchiverBon("recette", numbon);
+                    EnregistrerRecetteProduit(idrecette, dgv);
+                //ArchiverBon("recette", idrecette);
             }
             else
             {
                 MessageBox.Show("Aucune ligne n'est trouvée pour le bon de recette", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        public void EnregistrerServiceBon(int numbon, int numbonS, DataGridView dgv)
+        public void EnregistrerRecetteService(int idrecette, DataGridView dgv)
         {
             for (int i = 0; i < dgv.RowCount; i++)
             {
                 if (dgv.Rows[i].Cells[0].Value.ToString() != "")
                 {
-                    numbonS = NouveauID("bonrecetteservice");
                     con.Open();
                     SqlTransaction tx = con.BeginTransaction();
                     try
                     {
-                        cmd = new SqlCommand("insert into BonRecetteService (numbonS, numbon, idservice, statut) values (@numbonS, @numbon, @idservice, @statut)", con);
-                        cmd.Parameters.AddWithValue("@numbonS", numbonS);
-                        cmd.Parameters.AddWithValue("@numbon", numbon);
+                        cmd = new SqlCommand("insert into RecetteService (idrecette, idservice) values (@idrecette, @idservice)", con);
+                        cmd.Parameters.AddWithValue("@idrecette", idrecette);
                         cmd.Parameters.AddWithValue("@idservice", dgv.Rows[i].Cells[0].Value.ToString());
-                        cmd.Parameters.AddWithValue("@statut", "valide");
                         cmd.Transaction = tx;
                         cmd.ExecuteNonQuery();
                         tx.Commit();
@@ -801,23 +1012,20 @@ namespace SUMEDCO
                 }
             }
         }
-        public void EnregistrerProduitBon(int numbon, int numbonS, DataGridView dgv)
+        public void EnregistrerRecetteProduit(int idrecette, DataGridView dgv)
         {
             for (int i = 0; i < dgv.RowCount; i++)
             {
                 if (dgv.Rows[i].Cells[0].Value.ToString() != "")
                 {
-                    numbonS = NouveauID("bonrecetteproduit");
                     con.Open();
                     SqlTransaction tx = con.BeginTransaction();
                     try
                     {
-                        cmd = new SqlCommand("insert into BonRecetteProduit (numbonP, numbon, idstock, qtevendue, statut) values (@numbonP, @numbon, @idstock, @qte, @statut)", con);
-                        cmd.Parameters.AddWithValue("@numbonP", numbonS);
-                        cmd.Parameters.AddWithValue("@numbon", numbon);
+                        cmd = new SqlCommand("insert into BonRecetteProduit (idrecette, idstock, qtevendue) values (@idrecette, @idstock, @qtevendue)", con);
+                        cmd.Parameters.AddWithValue("@idrecette", idrecette);
                         cmd.Parameters.AddWithValue("@idstock", dgv.Rows[i].Cells[0].Value.ToString());
-                        cmd.Parameters.AddWithValue("@qte", dgv.Rows[i].Cells[4].Value.ToString());
-                        cmd.Parameters.AddWithValue("@statut", "valide");
+                        cmd.Parameters.AddWithValue("@qtevendue", dgv.Rows[i].Cells[4].Value.ToString());
                         cmd.Transaction = tx;
                         cmd.ExecuteNonQuery();
                         tx.Commit();
@@ -831,57 +1039,53 @@ namespace SUMEDCO
                 }
             }           
         }
-        public void Enregistrer(FormFactureService f)
-        {
-            if (f.dgvFacture.RowCount > 0)
-            {
-                //Enregistrer le bon et ses services, archiver le bon
-                EnregistrerBon(f.numbon, f.numbonS, f.lblDateOperation.Text, f.cboTypeFacture.Text, f.txtPayeur.Text, "service",f.dgvFacture);
-                             
-                if (f.cboTypeFacture.Text == "différé")
-                {
-                    //Enregistrer la dette dans AgendaCaisse
-                    Enregistrer(f.numbon, double.Parse(f.txtTotal.Text), 0, f.lblDateOperation.Text);
-
-                    f.idoperation = NouveauID("operation");
-                    if (EnregistrerOperation(f.idoperation, f.lblDateOperation.Text, "Vente de services à crédit - " + f.cboPayeurDiffere.Text, string.Format("BR_{0}", f.numbon), TrouverId("typejournal", "ventes")))
-                    {
-                        EnregistrerEcriture(f.id, f.idoperation, f.numcompteDiffere, double.Parse(f.txtTotal.Text), 0);
-                        EnregistrerEcriture(f.id, f.idoperation, f.numcompte, 0, double.Parse(f.txtTotal.Text));
-                    }
-                }
-                MessageBox.Show("Bon enregistré avec succès", "Enregistrement", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Annuler(f);              
-                if (f.nouveau_patient) f.Close();
-            }
-            else
-            { MessageBox.Show("Aucune ligne de bon n'a été trouvée", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
-        }
+        
+        
         public void Enregistrer(FormFactureProduit f)
         {
             if (f.dgvFacture.RowCount > 0)
             {
-                //Enregistrer le bon et ses produits
-                EnregistrerBon(f.numbon, f.numbonP, f.lblDateOperation.Text, f.cboTypeFacture.Text, f.txtPayeur.Text, "produit", f.dgvFacture);
-
-                if (f.cboTypeFacture.Text == "différé")
+                if (f.cboPayeur.Text == "passant")
                 {
-                    //Enregistrer la dette dans AgendaCaisse
-                    Enregistrer(f.numbon, double.Parse(f.txtTotal.Text), 0, f.lblDateOperation.Text);
-
-                    f.idoperation = NouveauID("operation");
-                    if (EnregistrerOperation(f.idoperation, f.lblDateOperation.Text, "Vente de produits à crédit - " + f.cboPayeurDiffere.Text, string.Format("BR_{0}", f.numbon), TrouverId("typejournal", "ventes")))
+                    //Ajouter le payeur
+                    f.idpayeur = AjouterPayeur(f.idpayeur, f.txtPayeur.Text, f.txtContacts.Text);
+                    //Ajout recette
+                    f.idrecette = AjouterRecette(f.idrecette, f.cboTypeFacture.Text, f.lblDateOperation.Text, f.cboPayeur.Text, f.idpayeur, "produit");
+                    //Ajout de services de la recette
+                    for (int i = 0; i < f.dgvFacture.RowCount; i++)
                     {
-                        EnregistrerEcriture(f.id, f.idoperation, f.numcompteDiffere, double.Parse(f.txtTotal.Text), 0);
-                        EnregistrerEcriture(f.id, f.idoperation, f.numcompte, 0, double.Parse(f.txtTotal.Text));
+                        AjouterProduitRecette(f.idrecette, int.Parse(f.dgvFacture.Rows[i].Cells[0].Value.ToString()), int.Parse(f.dgvFacture.Rows[i].Cells[4].Value.ToString()));
                     }
                 }
-                MessageBox.Show("Bon enregistré avec succès", "Enregistrement", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else
+                {
+                    //Ajout recette
+                    f.idrecette = AjouterRecette(f.idrecette, f.cboTypeFacture.Text, f.lblDateOperation.Text, f.cboPayeur.Text, f.idpayeur, "produit");
+                    //Ajout de services de la recette
+                    for (int i = 0; i < f.dgvFacture.RowCount; i++)
+                    {
+                        AjouterProduitRecette(f.idrecette, int.Parse(f.dgvFacture.Rows[i].Cells[0].Value.ToString()), int.Parse(f.dgvFacture.Rows[i].Cells[4].Value.ToString()));
+                    }
+                }
+                //Cas de facture différé
+                if (f.cboTypeFacture.Text == "différé")
+                {
+                    f.idoperation = NouveauID("operation");
+                    if (EnregistrerOperation(f.idoperation, f.lblDateOperation.Text, "Vente de produits à crédit", string.Format("R_{0}", f.idrecette), TrouverId("typejournal", "ventes")))
+                    {
+                        for (int i = 0; i < f.dgvFacture.RowCount; i++)
+                        {
+                            EnregistrerEcriture(f.id, f.idoperation, f.numcomptediffere, double.Parse(f.dgvFacture.Rows[i].Cells[5].Value.ToString()), 0);
+                            f.numcompte = TrouverNom("numcompte_service", int.Parse(f.dgvFacture.Rows[i].Cells[0].Value.ToString()));
+                            EnregistrerEcriture(f.id, f.idoperation, f.numcompte, 0, double.Parse(f.dgvFacture.Rows[i].Cells[5].Value.ToString()));
+                        }
+                    }
+                }
+                MessageBox.Show("Enregistré avec succès", "Enregistrement", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Annuler(f);
-                ArchiverBon("recette", f.numbon);
             }
             else
-            { MessageBox.Show("Aucune ligne de bon n'a été trouvée", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+            { MessageBox.Show("Aucune ligne n'a été trouvée", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
         }
         public bool EnregistrerBon(FormPrescription f)
         {
@@ -974,7 +1178,7 @@ namespace SUMEDCO
             if (CompterRecetteBon("service", b.numbon) == 0)
             {
                 int i = 0;
-                for (i = 0; i < b.dgvFacture.RowCount; i++)
+                for (i = 0; i < b.dgvPayement.RowCount; i++)
                 {
                     b.idrecette = NouveauID("recetteservice");
                     con.Open();
@@ -984,8 +1188,8 @@ namespace SUMEDCO
                         cmd = new SqlCommand("insert into RecetteService values(@idrecette, @date_operation, @idservice, @qte, @numbon)", con);
                         cmd.Parameters.AddWithValue("@idrecette", b.idrecette);
                         cmd.Parameters.AddWithValue("@date_operation", b.lblDateOperation.Text);
-                        cmd.Parameters.AddWithValue("@idservice", b.dgvFacture.Rows[i].Cells[1].Value.ToString());
-                        cmd.Parameters.AddWithValue("@qte", b.dgvFacture.Rows[i].Cells[4].Value.ToString());
+                        cmd.Parameters.AddWithValue("@idservice", b.dgvPayement.Rows[i].Cells[1].Value.ToString());
+                        cmd.Parameters.AddWithValue("@qte", b.dgvPayement.Rows[i].Cells[4].Value.ToString());
                         cmd.Parameters.AddWithValue("@numbon", b.numbon);
                         cmd.Transaction = tx;
                         cmd.ExecuteNonQuery();
@@ -994,35 +1198,35 @@ namespace SUMEDCO
                     catch (Exception ex)
                     {
                         tx.Rollback();
-                        i += b.dgvFacture.RowCount;
+                        i += b.dgvPayement.RowCount;
                         MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     con.Close();
                 }
-                if (i == b.dgvFacture.RowCount)
+                if (i == b.dgvPayement.RowCount)
                 {
-                    for (i = 0; i < b.dgvFacture.RowCount; i++)
+                    for (i = 0; i < b.dgvPayement.RowCount; i++)
                     {
                         b.idoperation = NouveauID("operation");
                         if (EnregistrerOperation(b.idoperation, b.lblDateOperation.Text, "Vente des services au payant cash", string.Format("BR_{0}", b.numbon), TrouverId("typejournal", b.caisse)))
                         {
                             if (b.caisse == "Caisse en CDF Recettes")
-                                valeur= double.Parse(b.dgvFacture.Rows[i].Cells[5].Value.ToString());
+                                valeur= double.Parse(b.dgvPayement.Rows[i].Cells[5].Value.ToString());
                             else
-                                valeur = double.Parse(b.dgvFacture.Rows[i].Cells[5].Value.ToString())/b.taux;
+                                valeur = double.Parse(b.dgvPayement.Rows[i].Cells[5].Value.ToString())/b.taux;
 
                             EnregistrerEcriture(b.id, b.idoperation, b.numcompte, valeur, 0);
-                            EnregistrerEcriture(b.id, b.idoperation, CompteService(int.Parse(b.dgvFacture.Rows[i].Cells[1].Value.ToString())), 0, valeur);
+                            EnregistrerEcriture(b.id, b.idoperation, CompteService(int.Parse(b.dgvPayement.Rows[i].Cells[1].Value.ToString())), 0, valeur);
                             MiseAjourMontant(b.numcompte, valeur, "debit");
-                            MiseAjourMontant(CompteService(int.Parse(b.dgvFacture.Rows[i].Cells[1].Value.ToString())), valeur, "credit");
+                            MiseAjourMontant(CompteService(int.Parse(b.dgvPayement.Rows[i].Cells[1].Value.ToString())), valeur, "credit");
                         }
                     }
                     MessageBox.Show("Enregisté avec succès", "Enregistrement", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    if(b.dgvFacture.RowCount == 1)
+                    if(b.dgvPayement.RowCount == 1)
                     {
-                        if (b.dgvFacture.Rows[0].Cells[2].Value.ToString() == "consultation urgence" ||
-                        b.dgvFacture.Rows[0].Cells[2].Value.ToString() == "consultation nouveau cas" ||
-                        b.dgvFacture.Rows[0].Cells[2].Value.ToString() == "consultation ancien cas")
+                        if (b.dgvPayement.Rows[0].Cells[2].Value.ToString() == "consultation urgence" ||
+                        b.dgvPayement.Rows[0].Cells[2].Value.ToString() == "consultation nouveau cas" ||
+                        b.dgvPayement.Rows[0].Cells[2].Value.ToString() == "consultation ancien cas")
                             Agenda(new FormAgenda(), b);
                     }
                 }
@@ -1035,7 +1239,7 @@ namespace SUMEDCO
             if (CompterRecetteBon("produit", b.numbon) == 0)
             {
                 int i = 0;
-                for (i = 0; i < b.dgvFacture.RowCount; i++)
+                for (i = 0; i < b.dgvPayement.RowCount; i++)
                 {
                     b.idrecette = NouveauID("recetteproduit");
                     con.Open();
@@ -1045,8 +1249,8 @@ namespace SUMEDCO
                         cmd = new SqlCommand("insert into RecetteProduit values(@idrecette, @date_operation, @idstock, @qte, @numbon)", con);
                         cmd.Parameters.AddWithValue("@idrecette", b.idrecette);
                         cmd.Parameters.AddWithValue("@date_operation", b.lblDateOperation.Text);
-                        cmd.Parameters.AddWithValue("@idstock", b.dgvFacture.Rows[i].Cells[1].Value.ToString());
-                        cmd.Parameters.AddWithValue("@qte", b.dgvFacture.Rows[i].Cells[4].Value.ToString());
+                        cmd.Parameters.AddWithValue("@idstock", b.dgvPayement.Rows[i].Cells[1].Value.ToString());
+                        cmd.Parameters.AddWithValue("@qte", b.dgvPayement.Rows[i].Cells[4].Value.ToString());
                         cmd.Parameters.AddWithValue("@numbon", b.numbon);
                         cmd.Transaction = tx;
                         cmd.ExecuteNonQuery();
@@ -1055,22 +1259,22 @@ namespace SUMEDCO
                     catch (Exception ex)
                     {
                         tx.Rollback();
-                        i += b.dgvFacture.RowCount;
+                        i += b.dgvPayement.RowCount;
                         MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     con.Close();
                 }
-                if (i == b.dgvFacture.RowCount)
+                if (i == b.dgvPayement.RowCount)
                 {
-                    for (i = 0; i < b.dgvFacture.RowCount; i++)
+                    for (i = 0; i < b.dgvPayement.RowCount; i++)
                     {
                         b.idoperation = NouveauID("operation");
                         if (EnregistrerOperation(b.idoperation, b.lblDateOperation.Text, "Vente des médicaments au payant cash", string.Format("BR_{0}", b.numbon), TrouverId("typejournal", b.caisse)))
                         {
                             if (b.caisse == "Caisse en CDF Recettes")
-                                valeur = double.Parse(b.dgvFacture.Rows[i].Cells[5].Value.ToString());
+                                valeur = double.Parse(b.dgvPayement.Rows[i].Cells[5].Value.ToString());
                             else
-                                valeur = double.Parse(b.dgvFacture.Rows[i].Cells[5].Value.ToString()) / b.taux;
+                                valeur = double.Parse(b.dgvPayement.Rows[i].Cells[5].Value.ToString()) / b.taux;
 
                             EnregistrerEcriture(b.id, b.idoperation, b.numcompte, valeur, 0);
                             EnregistrerEcriture(b.id, b.idoperation, "701100", 0, valeur);
@@ -1089,7 +1293,7 @@ namespace SUMEDCO
         }
         public void Enregistrer(FormBonRecette b)
         {
-            if (b.dgvBon.CurrentRow.Cells[5].Value.ToString() == "service")
+            if (b.dgvRecette.CurrentRow.Cells[5].Value.ToString() == "service")
                 RecetteService(b);
             else
                 RecetteProduit(b);
@@ -1115,80 +1319,153 @@ namespace SUMEDCO
             con.Close();
         }
         public void ActualiserBon(FormBonRecette b, string motif)
-        {
-            if(b.poste=="pharmacie")
-            {
-                if (motif == "recherche")
-                {
-                    cmd = new SqlCommand("select distinct BonRecette.numbon, statut, BonRecette.date_operation, payeur, idpatient, categorie from BonRecette, RecetteProduit  where BonRecette.numbon = RecetteProduit.numbon and categorie= @categ and BonRecette.date_operation between @date_op1 and @date_op2 and raisonretrait is NULL", con);
-                    cmd.Parameters.AddWithValue("@categ", "produit");
-                    cmd.Parameters.AddWithValue("@date_op1", b.dtpDateDe.Text);
-                    cmd.Parameters.AddWithValue("@date_op2", b.dtpDateA.Text);
-                }
-                else
-                {
-                    cmd = new SqlCommand("select distinct BonRecette.numbon, statut, BonRecette.date_operation, payeur, idpatient, categorie from BonRecette, RecetteProduit  where BonRecette.numbon = RecetteProduit.numbon and categorie= @categ and BonRecette.date_operation= @date_operation and raisonretrait is NULL", con);
-                    cmd.Parameters.AddWithValue("@categ", "produit");
-                    cmd.Parameters.AddWithValue("@date_operation", b.lblDateOperation.Text);
-                }
-            }
-            else
-            {
-                if (motif == "recherche")
-                {
-                    cmd = new SqlCommand("select * from BonRecette where date_operation between @date_op1 and @date_op2 and raisonretrait is NULL", con);
-                    cmd.Parameters.AddWithValue("@date_op1", b.dtpDateDe.Text);
-                    cmd.Parameters.AddWithValue("@date_op2", b.dtpDateA.Text);
-                }
-                else
-                {
-                    cmd = new SqlCommand("select * from BonRecette where date_operation= @date_operation and raisonretrait is NULL", con);
-                    cmd.Parameters.AddWithValue("@date_operation", b.lblDateOperation.Text);
-                }
-            }
+        {         
+            //if(b.poste=="pharmacie")
+            //{
+            //    if (motif == "recherche")
+            //    {
+            //        cmd = new SqlCommand("SELECT RecetteService.idrecette, SUM(prixservice) FROM Recette, RecetteService, Service WHERE RecetteService.idrecette = Recette.idrecette and RecetteService.idservice = Service.idservice GROUP BY RecetteService.idrecette", con);
+            //        cmd.Parameters.AddWithValue("@categ", "produit");
+            //        cmd.Parameters.AddWithValue("@date_op1", b.dtpDateDe.Text);
+            //        cmd.Parameters.AddWithValue("@date_op2", b.dtpDateA.Text);
+            //    }
+            //    else
+            //    {
+            //        cmd = new SqlCommand("select distinct BonRecette.numbon, statut, BonRecette.date_operation, payeur, idpatient, categorie from BonRecette, RecetteProduit  where BonRecette.numbon = RecetteProduit.numbon and categorie= @categ and BonRecette.date_operation= @date_operation and raisonretrait is NULL", con);
+            //        cmd.Parameters.AddWithValue("@categ", "produit");
+            //        cmd.Parameters.AddWithValue("@date_operation", b.lblDateOperation.Text);
+            //    }
+            //}
+            //else
+            //{
+            //    if (motif == "recherche")
+            //    {
+            //        cmd = new SqlCommand("select * from BonRecette where date_operation between @date_op1 and @date_op2 and raisonretrait is NULL", con);
+            //        cmd.Parameters.AddWithValue("@date_op1", b.dtpDateDe.Text);
+            //        cmd.Parameters.AddWithValue("@date_op2", b.dtpDateA.Text);
+            //    }
+            //    else
+            //    {
+            //        cmd = new SqlCommand("select * from BonRecette where date_operation= @date_operation and raisonretrait is NULL", con);
+            //        cmd.Parameters.AddWithValue("@date_operation", b.lblDateOperation.Text);
+            //    }
+            //}
+
+            con.Open();
             try
             {
-                con.Open();
+                cmd = new SqlCommand("SELECT RecetteService.idrecette, SUM(prixservice) FROM Recette, RecetteService, Service WHERE RecetteService.idrecette = Recette.idrecette and RecetteService.idservice = Service.idservice GROUP BY RecetteService.idrecette", con);
                 dr = cmd.ExecuteReader();
-                b.dgvBon.Rows.Clear();
+                b.dgvRecette.Rows.Clear();
                 while(dr.Read())
                 {
-                    b.dgvBon.Rows.Add();
-                    b.dgvBon.Rows[b.dgvBon.RowCount - 1].Cells[0].Value = dr[0].ToString();
-                    b.dgvBon.Rows[b.dgvBon.RowCount - 1].Cells[1].Value = dr[1].ToString();
-                    b.dgvBon.Rows[b.dgvBon.RowCount - 1].Cells[2].Value = dr[2].ToString();
-                    b.dgvBon.Rows[b.dgvBon.RowCount - 1].Cells[3].Value = dr[3].ToString();
-                    b.dgvBon.Rows[b.dgvBon.RowCount - 1].Cells[4].Value = dr[4].ToString();
-                    b.dgvBon.Rows[b.dgvBon.RowCount - 1].Cells[5].Value = dr[5].ToString();
+                    b.dgvRecette.Rows.Add();
+                    b.dgvRecette.Rows[b.dgvRecette.RowCount - 1].Cells[0].Value = dr[0].ToString();
+                    b.dgvRecette.Rows[b.dgvRecette.RowCount - 1].Cells[5].Value = dr[1].ToString();
+                    
                 }
+            }
+            catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            con.Close();
+        }
+
+        public void AfficherRecette(FormBonRecette r, string motif)
+        {
+            con.Open();
+            try
+            {
+                if(motif == "recherche")
+                    cmd = new SqlCommand("SELECT idrecette, statut_facture, statut_caisse, categorie, type_payeur FROM Recette WHERE date_operation BETWEEN '"+r.dtpDateDe.Text+"' AND '"+r.dtpDateA.Text+"'", con);
+                else if (motif == "tout")
+                    cmd = new SqlCommand("SELECT idrecette, statut_facture, statut_caisse, categorie, type_payeur FROM Recette", con);
+                else
+                    cmd = new SqlCommand("SELECT idrecette, statut_facture, statut_caisse, categorie, type_payeur FROM Recette WHERE statut_caisse is NULL AND date_operation = '" + r.dtpDateDe.Text + "'", con);
+                dr = cmd.ExecuteReader();
+                r.dgvRecette.Rows.Clear();
+                while (dr.Read())
+                {
+                    r.dgvRecette.Rows.Add();
+                    r.dgvRecette.Rows[r.dgvRecette.RowCount - 1].Cells[0].Value = dr[0].ToString();
+                    r.dgvRecette.Rows[r.dgvRecette.RowCount - 1].Cells[1].Value = dr[1].ToString();
+                    r.dgvRecette.Rows[r.dgvRecette.RowCount - 1].Cells[3].Value = dr[2].ToString();
+                    r.dgvRecette.Rows[r.dgvRecette.RowCount - 1].Cells[4].Value = dr[3].ToString();
+                    r.dgvRecette.Rows[r.dgvRecette.RowCount - 1].Cells[5].Value = dr[4].ToString();
+
+                }
+            }
+            catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            con.Close();
+            PayeurRecette(r.dgvRecette);
+            MontantRecette(r.dgvRecette);
+        }
+        public void MontantRecette(DataGridView dgv)
+        {
+            for (int i = 0; i < dgv.RowCount; i++)
+            {
+                con.Open();
+                try
+                {
+                    if (dgv.Rows[i].Cells[4].Value.ToString()=="service")
+                        cmd = new SqlCommand("SELECT SUM(prixservice) FROM RecetteService, Service WHERE RecetteService.idservice = Service.idservice AND idrecette = '" + dgv.Rows[i].Cells[0].Value.ToString() + "'", con);
+                    else
+                        cmd = new SqlCommand("SELECT SUM(prixunitaire * qtevendue) FROM RecetteProduit, LigneStock WHERE RecetteProduit.idstock = LigneStock.idstock AND idrecette = '" + dgv.Rows[i].Cells[0].Value.ToString() + "'", con);
+                    dr = cmd.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        dgv.Rows[i].Cells[2].Value = dr[0].ToString();
+                    }
+                }
+                catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                 con.Close();
             }
-            catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }           
         }
+        public void PayeurRecette(DataGridView dgv)
+        {
+            for (int i = 0; i < dgv.RowCount; i++)
+            {
+                if (dgv.Rows[i].Cells[5].Value.ToString() == "passant")
+                    cmd = new SqlCommand("SELECT nompayeur FROM Payeur, Recette WHERE Recette.idpayeur = Payeur.idpayeur AND idrecette = '" + dgv.Rows[i].Cells[0].Value.ToString() + "'", con);
+                else
+                    cmd = new SqlCommand("SELECT noms FROM Patient, Payeur, Recette WHERE Patient.idpatient = Payeur.idpatient AND Payeur.idpayeur = Recette.idpayeur AND idrecette = '" + dgv.Rows[i].Cells[0].Value.ToString() + "'", con);
+
+                con.Open();
+                try
+                {
+                    dr = cmd.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        dgv.Rows[i].Cells[6].Value = dr[0].ToString();
+                    }
+                }
+                catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                con.Close();
+            }
+        }
+        
         public void DetailsService(FormBonRecette b)
         {
             cmd = new SqlCommand("select numbonS, idservice, qtevendue from BonRecetteService where numbon = @numbon", con);
-            cmd.Parameters.AddWithValue("@numbon", b.dgvBon.CurrentRow.Cells[0].Value.ToString());
+            cmd.Parameters.AddWithValue("@numbon", b.dgvRecette.CurrentRow.Cells[0].Value.ToString());
             try
             {
                 con.Open();
                 dr = cmd.ExecuteReader();
-                b.dgvFacture.Rows.Clear();
+                b.dgvPayement.Rows.Clear();
                 while (dr.Read())
                 {
-                    b.dgvFacture.Rows.Add();
-                    b.dgvFacture.Rows[b.dgvFacture.RowCount - 1].Cells[0].Value = dr[0].ToString();
-                    b.dgvFacture.Rows[b.dgvFacture.RowCount - 1].Cells[1].Value = dr[1].ToString();
-                    b.dgvFacture.Rows[b.dgvFacture.RowCount - 1].Cells[4].Value = dr[2].ToString();
+                    b.dgvPayement.Rows.Add();
+                    b.dgvPayement.Rows[b.dgvPayement.RowCount - 1].Cells[0].Value = dr[0].ToString();
+                    b.dgvPayement.Rows[b.dgvPayement.RowCount - 1].Cells[1].Value = dr[1].ToString();
+                    b.dgvPayement.Rows[b.dgvPayement.RowCount - 1].Cells[4].Value = dr[2].ToString();
                 }
                 con.Close();
                 b.txtTotal.Text = 0.ToString();
-                for (int i = 0; i < b.dgvFacture.RowCount; i++)
+                for (int i = 0; i < b.dgvPayement.RowCount; i++)
                 {
-                    b.dgvFacture.Rows[i].Cells[2].Value = TrouverNom("service", int.Parse(b.dgvFacture.Rows[i].Cells[1].Value.ToString()));
-                    b.dgvFacture.Rows[i].Cells[3].Value = PrixService(int.Parse(b.dgvFacture.Rows[i].Cells[1].Value.ToString()));
-                    b.dgvFacture.Rows[i].Cells[5].Value = double.Parse(b.dgvFacture.Rows[i].Cells[3].Value.ToString()) * int.Parse(b.dgvFacture.Rows[i].Cells[4].Value.ToString());
-                    b.txtTotal.Text = (double.Parse(b.txtTotal.Text) + double.Parse(b.dgvFacture.Rows[i].Cells[5].Value.ToString())).ToString();
+                    b.dgvPayement.Rows[i].Cells[2].Value = TrouverNom("service", int.Parse(b.dgvPayement.Rows[i].Cells[1].Value.ToString()));
+                    b.dgvPayement.Rows[i].Cells[3].Value = PrixService(int.Parse(b.dgvPayement.Rows[i].Cells[1].Value.ToString()));
+                    b.dgvPayement.Rows[i].Cells[5].Value = double.Parse(b.dgvPayement.Rows[i].Cells[3].Value.ToString()) * int.Parse(b.dgvPayement.Rows[i].Cells[4].Value.ToString());
+                    b.txtTotal.Text = (double.Parse(b.txtTotal.Text) + double.Parse(b.dgvPayement.Rows[i].Cells[5].Value.ToString())).ToString();
                 }
             }
             catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
@@ -1196,33 +1473,33 @@ namespace SUMEDCO
         public void DetailsProduit(FormBonRecette b)
         {
             cmd = new SqlCommand("select idstock, qtevendue from BonRecetteProduit where numbon = @numbon", con);
-            cmd.Parameters.AddWithValue("@numbon", b.dgvBon.CurrentRow.Cells[0].Value.ToString());
+            cmd.Parameters.AddWithValue("@numbon", b.dgvRecette.CurrentRow.Cells[0].Value.ToString());
             try
             {
                 con.Open();
                 dr = cmd.ExecuteReader();
-                b.dgvFacture.Rows.Clear();
+                b.dgvPayement.Rows.Clear();
                 while (dr.Read())
                 {
-                    b.dgvFacture.Rows.Add();
-                    b.dgvFacture.Rows[b.dgvFacture.RowCount - 1].Cells[0].Value = dr[0].ToString();
-                    b.dgvFacture.Rows[b.dgvFacture.RowCount - 1].Cells[3].Value = dr[1].ToString();
+                    b.dgvPayement.Rows.Add();
+                    b.dgvPayement.Rows[b.dgvPayement.RowCount - 1].Cells[0].Value = dr[0].ToString();
+                    b.dgvPayement.Rows[b.dgvPayement.RowCount - 1].Cells[3].Value = dr[1].ToString();
                 }
                 con.Close();
                 b.txtTotal.Text = 0.ToString();
-                for (int i = 0; i < b.dgvFacture.RowCount; i++)
+                for (int i = 0; i < b.dgvPayement.RowCount; i++)
                 {
-                    b.dgvFacture.Rows[i].Cells[1].Value = cs.TrouverLibelleStock(int.Parse(b.dgvFacture.Rows[i].Cells[1].Value.ToString()));
-                    b.dgvFacture.Rows[i].Cells[2].Value = cs.PrixStock(int.Parse(b.dgvFacture.Rows[i].Cells[1].Value.ToString()));
-                    b.dgvFacture.Rows[i].Cells[4].Value = double.Parse(b.dgvFacture.Rows[i].Cells[2].Value.ToString()) * int.Parse(b.dgvFacture.Rows[i].Cells[3].Value.ToString());
-                    b.txtTotal.Text = (double.Parse(b.txtTotal.Text) + double.Parse(b.dgvFacture.Rows[i].Cells[4].Value.ToString())).ToString();
+                    b.dgvPayement.Rows[i].Cells[1].Value = cs.TrouverLibelleStock(int.Parse(b.dgvPayement.Rows[i].Cells[1].Value.ToString()));
+                    b.dgvPayement.Rows[i].Cells[2].Value = cs.PrixStock(int.Parse(b.dgvPayement.Rows[i].Cells[1].Value.ToString()));
+                    b.dgvPayement.Rows[i].Cells[4].Value = double.Parse(b.dgvPayement.Rows[i].Cells[2].Value.ToString()) * int.Parse(b.dgvPayement.Rows[i].Cells[3].Value.ToString());
+                    b.txtTotal.Text = (double.Parse(b.txtTotal.Text) + double.Parse(b.dgvPayement.Rows[i].Cells[4].Value.ToString())).ToString();
                 }
             }
             catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
         public void AfficherDetailsBon(FormBonRecette b)
         {
-            if(b.dgvBon.CurrentRow.Cells[5].Value.ToString()=="service")
+            if(b.dgvRecette.CurrentRow.Cells[5].Value.ToString()=="service")
             {
                 DetailsService(b);
             }
@@ -1234,27 +1511,27 @@ namespace SUMEDCO
         public void DetailsService2(FormBonRecette b)
         {
             cmd = new SqlCommand("select numbonS, idservice, qtevendue from BonRecetteService where statut= 'valide' and numbon = @numbon", con);
-            cmd.Parameters.AddWithValue("@numbon", b.dgvBon.CurrentRow.Cells[0].Value.ToString());
+            cmd.Parameters.AddWithValue("@numbon", b.dgvRecette.CurrentRow.Cells[0].Value.ToString());
             try
             {
                 con.Open();
                 dr = cmd.ExecuteReader();
-                b.dgvFacture.Rows.Clear();
+                b.dgvPayement.Rows.Clear();
                 while (dr.Read())
                 {
-                    b.dgvFacture.Rows.Add();
-                    b.dgvFacture.Rows[b.dgvFacture.RowCount - 1].Cells[0].Value = dr[0].ToString();
-                    b.dgvFacture.Rows[b.dgvFacture.RowCount - 1].Cells[1].Value = dr[1].ToString();
-                    b.dgvFacture.Rows[b.dgvFacture.RowCount - 1].Cells[4].Value = dr[2].ToString();
+                    b.dgvPayement.Rows.Add();
+                    b.dgvPayement.Rows[b.dgvPayement.RowCount - 1].Cells[0].Value = dr[0].ToString();
+                    b.dgvPayement.Rows[b.dgvPayement.RowCount - 1].Cells[1].Value = dr[1].ToString();
+                    b.dgvPayement.Rows[b.dgvPayement.RowCount - 1].Cells[4].Value = dr[2].ToString();
                 }
                 con.Close();
                 b.txtTotal.Text = 0.ToString();
-                for (int i = 0; i < b.dgvFacture.RowCount; i++)
+                for (int i = 0; i < b.dgvPayement.RowCount; i++)
                 {
-                    b.dgvFacture.Rows[i].Cells[2].Value = TrouverNom("service", int.Parse(b.dgvFacture.Rows[i].Cells[1].Value.ToString()));
-                    b.dgvFacture.Rows[i].Cells[3].Value = PrixService(int.Parse(b.dgvFacture.Rows[i].Cells[1].Value.ToString()));
-                    b.dgvFacture.Rows[i].Cells[5].Value = double.Parse(b.dgvFacture.Rows[i].Cells[3].Value.ToString()) * int.Parse(b.dgvFacture.Rows[i].Cells[4].Value.ToString());
-                    b.txtTotal.Text = (double.Parse(b.txtTotal.Text) + double.Parse(b.dgvFacture.Rows[i].Cells[5].Value.ToString())).ToString();
+                    b.dgvPayement.Rows[i].Cells[2].Value = TrouverNom("service", int.Parse(b.dgvPayement.Rows[i].Cells[1].Value.ToString()));
+                    b.dgvPayement.Rows[i].Cells[3].Value = PrixService(int.Parse(b.dgvPayement.Rows[i].Cells[1].Value.ToString()));
+                    b.dgvPayement.Rows[i].Cells[5].Value = double.Parse(b.dgvPayement.Rows[i].Cells[3].Value.ToString()) * int.Parse(b.dgvPayement.Rows[i].Cells[4].Value.ToString());
+                    b.txtTotal.Text = (double.Parse(b.txtTotal.Text) + double.Parse(b.dgvPayement.Rows[i].Cells[5].Value.ToString())).ToString();
                 }
             }
             catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
@@ -1262,34 +1539,34 @@ namespace SUMEDCO
         public void DetailsProduit2(FormBonRecette b)
         {
             cmd = new SqlCommand("select numbonP, idstock, qtevendue from BonRecetteProduit where statut= 'valide' and numbon = @numbon", con);
-            cmd.Parameters.AddWithValue("@numbon", b.dgvBon.CurrentRow.Cells[0].Value.ToString());
+            cmd.Parameters.AddWithValue("@numbon", b.dgvRecette.CurrentRow.Cells[0].Value.ToString());
             try
             {
                 con.Open();
                 dr = cmd.ExecuteReader();
-                b.dgvFacture.Rows.Clear();
+                b.dgvPayement.Rows.Clear();
                 while (dr.Read())
                 {
-                    b.dgvFacture.Rows.Add();
-                    b.dgvFacture.Rows[b.dgvFacture.RowCount - 1].Cells[0].Value = dr[0].ToString();
-                    b.dgvFacture.Rows[b.dgvFacture.RowCount - 1].Cells[1].Value = dr[1].ToString();
-                    b.dgvFacture.Rows[b.dgvFacture.RowCount - 1].Cells[4].Value = dr[2].ToString();
+                    b.dgvPayement.Rows.Add();
+                    b.dgvPayement.Rows[b.dgvPayement.RowCount - 1].Cells[0].Value = dr[0].ToString();
+                    b.dgvPayement.Rows[b.dgvPayement.RowCount - 1].Cells[1].Value = dr[1].ToString();
+                    b.dgvPayement.Rows[b.dgvPayement.RowCount - 1].Cells[4].Value = dr[2].ToString();
                 }
                 con.Close();
                 b.txtTotal.Text = 0.ToString();
-                for (int i = 0; i < b.dgvFacture.RowCount; i++)
+                for (int i = 0; i < b.dgvPayement.RowCount; i++)
                 {
-                    b.dgvFacture.Rows[i].Cells[2].Value = cs.TrouverLibelleStock(int.Parse(b.dgvFacture.Rows[i].Cells[1].Value.ToString()));
-                    b.dgvFacture.Rows[i].Cells[3].Value = cs.PrixStock(int.Parse(b.dgvFacture.Rows[i].Cells[1].Value.ToString()));
-                    b.dgvFacture.Rows[i].Cells[5].Value = double.Parse(b.dgvFacture.Rows[i].Cells[3].Value.ToString()) * int.Parse(b.dgvFacture.Rows[i].Cells[4].Value.ToString());
-                    b.txtTotal.Text = (double.Parse(b.txtTotal.Text) + double.Parse(b.dgvFacture.Rows[i].Cells[5].Value.ToString())).ToString();
+                    b.dgvPayement.Rows[i].Cells[2].Value = cs.TrouverLibelleStock(int.Parse(b.dgvPayement.Rows[i].Cells[1].Value.ToString()));
+                    b.dgvPayement.Rows[i].Cells[3].Value = cs.PrixStock(int.Parse(b.dgvPayement.Rows[i].Cells[1].Value.ToString()));
+                    b.dgvPayement.Rows[i].Cells[5].Value = double.Parse(b.dgvPayement.Rows[i].Cells[3].Value.ToString()) * int.Parse(b.dgvPayement.Rows[i].Cells[4].Value.ToString());
+                    b.txtTotal.Text = (double.Parse(b.txtTotal.Text) + double.Parse(b.dgvPayement.Rows[i].Cells[5].Value.ToString())).ToString();
                 }
             }
             catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
         public void AfficherDetailsBon2(FormBonRecette b)
         {
-            if (b.dgvBon.CurrentRow.Cells[5].Value.ToString() == "service")
+            if (b.dgvRecette.CurrentRow.Cells[5].Value.ToString() == "service")
             {
                 DetailsService2(b);
             }
@@ -1318,7 +1595,7 @@ namespace SUMEDCO
         public void Agenda(FormAgenda a, FormBonRecette b)
         {
             a.idpatient = b.idpatient;
-            a.btnValider.Enabled = true;
+            a.btnAffecter.Enabled = true;
             a.btnInvalider.Enabled = true;
             a.MaximumSize = a.Size;
             a.MaximizeBox = false;
@@ -1329,7 +1606,7 @@ namespace SUMEDCO
         }
         public void RetirerLigne(FormBonRecette b)
         {
-            if (b.dgvBon.CurrentRow.Cells[5].Value.ToString() == "produit")
+            if (b.dgvRecette.CurrentRow.Cells[5].Value.ToString() == "produit")
             {
                 if (CompterRecetteBon("produit", b.numbon) == 0)
                 {
@@ -1338,16 +1615,16 @@ namespace SUMEDCO
                     try
                     {
                         cmd = new SqlCommand("update BonRecetteProduit set statut = 'invalide', raisonretrait = @raison where numbon = @numbon and numbonP = @numbonP", con);
-                        cmd.Parameters.AddWithValue("@numbon", b.dgvBon.CurrentRow.Cells[0].Value.ToString());
-                        cmd.Parameters.AddWithValue("@numbonP", b.dgvFacture.CurrentRow.Cells[0].Value.ToString());
-                        cmd.Parameters.AddWithValue("@raison", b.txtMotif.Text);
+                        cmd.Parameters.AddWithValue("@numbon", b.dgvRecette.CurrentRow.Cells[0].Value.ToString());
+                        cmd.Parameters.AddWithValue("@numbonP", b.dgvPayement.CurrentRow.Cells[0].Value.ToString());
+                        //cmd.Parameters.AddWithValue("@raison", b.txtMotif.Text);
                         cmd.Transaction = tx;
                         cmd.ExecuteNonQuery();
                         tx.Commit();
-                        b.dgvFacture.Rows.RemoveAt(b.dgvFacture.CurrentRow.Index);
-                        b.txtMotif.Text = "";
-                        b.txtMotif.Enabled = false;
-                        b.btnValider.Enabled = false;
+                        b.dgvPayement.Rows.RemoveAt(b.dgvPayement.CurrentRow.Index);
+                        //b.txtMotif.Text = "";
+                        //b.txtMotif.Enabled = false;
+                        //b.btnValide.Enabled = false;
                     }
                     catch (Exception ex)
                     {
@@ -1356,9 +1633,9 @@ namespace SUMEDCO
                     }
                     con.Close();
                     b.txtTotal.Text = 0.ToString();
-                    for (int i = 0; i < b.dgvFacture.RowCount; i++)
+                    for (int i = 0; i < b.dgvPayement.RowCount; i++)
                     {
-                        b.txtTotal.Text = (long.Parse(b.txtTotal.Text) + int.Parse(b.dgvFacture.Rows[i].Cells[4].Value.ToString())).ToString();
+                        b.txtTotal.Text = (long.Parse(b.txtTotal.Text) + int.Parse(b.dgvPayement.Rows[i].Cells[4].Value.ToString())).ToString();
                     }
                 }
                 else
@@ -1373,16 +1650,16 @@ namespace SUMEDCO
                     try
                     {
                         cmd = new SqlCommand("update BonRecetteService set statut = 'invalide', raisonretrait = @raison where numbon = @numbon and numbonS = @numbonS", con);
-                        cmd.Parameters.AddWithValue("@numbon", b.dgvBon.CurrentRow.Cells[0].Value.ToString());
-                        cmd.Parameters.AddWithValue("@numbonS", b.dgvFacture.CurrentRow.Cells[0].Value.ToString());
-                        cmd.Parameters.AddWithValue("@raison", b.txtMotif.Text);
+                        cmd.Parameters.AddWithValue("@numbon", b.dgvRecette.CurrentRow.Cells[0].Value.ToString());
+                        cmd.Parameters.AddWithValue("@numbonS", b.dgvPayement.CurrentRow.Cells[0].Value.ToString());
+                        //cmd.Parameters.AddWithValue("@raison", b.txtMotif.Text);
                         cmd.Transaction = tx;
                         cmd.ExecuteNonQuery();
                         tx.Commit();
-                        b.dgvFacture.Rows.RemoveAt(b.dgvFacture.CurrentRow.Index);
-                        b.txtMotif.Text = "";
-                        b.txtMotif.Enabled = false;
-                        b.btnValider.Enabled = false;
+                        b.dgvPayement.Rows.RemoveAt(b.dgvPayement.CurrentRow.Index);
+                        //b.txtMotif.Text = "";
+                        //b.txtMotif.Enabled = false;
+                        //b.btnValide.Enabled = false;
                     }
                     catch (Exception ex)
                     {
@@ -1391,9 +1668,9 @@ namespace SUMEDCO
                     }
                     con.Close();
                     b.txtTotal.Text = 0.ToString();
-                    for (int i = 0; i < b.dgvFacture.RowCount; i++)
+                    for (int i = 0; i < b.dgvPayement.RowCount; i++)
                     {
-                        b.txtTotal.Text = (long.Parse(b.txtTotal.Text) + int.Parse(b.dgvFacture.Rows[i].Cells[4].Value.ToString())).ToString();
+                        b.txtTotal.Text = (long.Parse(b.txtTotal.Text) + int.Parse(b.dgvPayement.Rows[i].Cells[4].Value.ToString())).ToString();
                     }
                 }
                 else
@@ -1402,7 +1679,7 @@ namespace SUMEDCO
         }
         public void RetirerBon(FormBonRecette b)
         {
-            if (b.dgvBon.CurrentRow.Cells[5].Value.ToString() == "produit")
+            if (b.dgvRecette.CurrentRow.Cells[5].Value.ToString() == "produit")
             {
                 if (CompterRecetteBon("produit", b.numbon) == 0)
                 {
@@ -1411,17 +1688,17 @@ namespace SUMEDCO
                     try
                     {
                         cmd = new SqlCommand("update BonRecette set raisonretrait = @raison where numbon = @numbon", con);
-                        cmd.Parameters.AddWithValue("@numbon", b.dgvBon.CurrentRow.Cells[0].Value.ToString());
-                        cmd.Parameters.AddWithValue("@raison", b.txtMotif.Text);
+                        cmd.Parameters.AddWithValue("@numbon", b.dgvRecette.CurrentRow.Cells[0].Value.ToString());
+                        //cmd.Parameters.AddWithValue("@raison", b.txtMotif.Text);
                         cmd.Transaction = tx;
                         cmd.ExecuteNonQuery();
                         tx.Commit();
-                        b.dgvBon.Rows.RemoveAt(b.dgvBon.CurrentRow.Index);
-                        b.dgvFacture.Rows.Clear();
+                        b.dgvRecette.Rows.RemoveAt(b.dgvRecette.CurrentRow.Index);
+                        b.dgvPayement.Rows.Clear();
                         b.txtTotal.Text = 0.ToString();
-                        b.txtMotif.Text = "";
-                        b.txtMotif.Enabled = false;
-                        b.btnValider.Enabled = false;
+                        //b.txtMotif.Text = "";
+                        //b.txtMotif.Enabled = false;
+                        //b.btnValide.Enabled = false;
                     }
                     catch (Exception ex)
                     {
@@ -1442,17 +1719,17 @@ namespace SUMEDCO
                     try
                     {
                         cmd = new SqlCommand("update BonRecette set raisonretrait = @raison where numbon = @numbon", con);
-                        cmd.Parameters.AddWithValue("@numbon", b.dgvBon.CurrentRow.Cells[0].Value.ToString());
-                        cmd.Parameters.AddWithValue("@raison", b.txtMotif.Text);
+                        cmd.Parameters.AddWithValue("@numbon", b.dgvRecette.CurrentRow.Cells[0].Value.ToString());
+                        //cmd.Parameters.AddWithValue("@raison", b.txtMotif.Text);
                         cmd.Transaction = tx;
                         cmd.ExecuteNonQuery();
                         tx.Commit();
-                        b.dgvBon.Rows.RemoveAt(b.dgvBon.CurrentRow.Index);
-                        b.dgvFacture.Rows.Clear();
+                        b.dgvRecette.Rows.RemoveAt(b.dgvRecette.CurrentRow.Index);
+                        b.dgvPayement.Rows.Clear();
                         b.txtTotal.Text = 0.ToString();
-                        b.txtMotif.Text = "";
-                        b.txtMotif.Enabled = false;
-                        b.btnValider.Enabled = false;
+                        //b.txtMotif.Text = "";
+                        //b.txtMotif.Enabled = false;
+                        //b.btnValide.Enabled = false;
                     }
                     catch (Exception ex)
                     {
@@ -1473,7 +1750,7 @@ namespace SUMEDCO
             imp.montantlettre = imp.montantlettre.Substring(0, 1).ToUpper() + imp.montantlettre.Substring(1);
             imp.montantchiffre = b.txtTotal.Text;
             imp.monnaie = b.cboCaisseRecette.Text;
-            if(b.dgvBon.CurrentRow.Cells[5].Value.ToString() == "service")
+            if(b.dgvRecette.CurrentRow.Cells[5].Value.ToString() == "service")
                 imp.motif = "Ventes de services";
             else
                 imp.motif = "Ventes de produits";
@@ -1594,8 +1871,8 @@ namespace SUMEDCO
             a.numcompte = TrouverId("numcompte", b.caisse).ToString();
             a.lblDateOperation.Text = b.lblDateOperation.Text;
             a.lblTaux.Text = b.lblTaux.Text;
-            a.txtPayeur.Text = b.dgvBon.CurrentRow.Cells[3].Value.ToString();
-            a.txtNumBon.Text = b.dgvBon.CurrentRow.Cells[0].Value.ToString();
+            a.txtPayeur.Text = b.dgvRecette.CurrentRow.Cells[3].Value.ToString();
+            a.txtNumBon.Text = b.dgvRecette.CurrentRow.Cells[0].Value.ToString();
             a.txtMontantTotal.Text = b.txtTotal.Text;
             a.txtReste.Text = (double.Parse(a.txtMontantTotal.Text) - MontantAgendaCaisse(int.Parse(a.txtNumBon.Text))).ToString();
             a.ShowDialog();
@@ -2378,7 +2655,7 @@ namespace SUMEDCO
             a.pnlChildForm.Controls.Add(childForm);
             a.pnlChildForm.Tag = childForm;
             childForm.BringToFront();
-            childForm.poste = "abonne";
+            childForm.poste = TrouverNom("poste", a.idutilisateur);
             if (a.statut == "nouveau")
             {
                 childForm.txtRecherche.Enabled = false;
@@ -2406,6 +2683,20 @@ namespace SUMEDCO
             childForm.btnEnregistrer.Enabled = false;
             childForm.Show();
         }
+        public void AfficherSousForm(MFormAbonne r, FormFactureService childForm)
+        {
+            if (r.activeForm != null)
+                r.activeForm.Close();
+            r.activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            r.pnlChildForm.Controls.Add(childForm);
+            r.pnlChildForm.Tag = childForm;
+            childForm.BringToFront();
+            childForm.idutilisateur = r.idutilisateur;
+            childForm.Show();
+        }
         public void AfficherSousForm(MFormAbonne a, Form childForm)
         {
             if (a.activeForm != null)
@@ -2421,9 +2712,9 @@ namespace SUMEDCO
         }
         public void Services(FormAbonne a, FormAbonneService s)
         {
-            s.idabonne = int.Parse(a.dgvAbonne.CurrentRow.Cells[0].Value.ToString());
-            s.txtAbonne.Text = a.dgvAbonne.CurrentRow.Cells[6].Value.ToString();
-            s.typepatient = a.cboTypePatient.Text;
+            //s.idabonne = int.Parse(a.dgvAbonne.CurrentRow.Cells[0].Value.ToString());
+            //s.txtAbonne.Text = a.dgvAbonne.CurrentRow.Cells[6].Value.ToString();
+            //s.typepatient = a.cboTypePatient.Text;
             if(s.typepatient=="abonné")
                 s.Text = "SSM - Services aux abonnés";
             else
@@ -2432,18 +2723,18 @@ namespace SUMEDCO
         }
         public void Produits(FormAbonne a, FormAbonneProduit p)
         {
-            p.idabonne = int.Parse(a.dgvAbonne.CurrentRow.Cells[0].Value.ToString());
-            p.txtAbonne.Text = a.dgvAbonne.CurrentRow.Cells[6].Value.ToString();
-            p.typepatient = a.cboTypePatient.Text;
-            if (p.typepatient == "abonné")
-                p.Text = "SSM - Produits aux abonnés";
-            else
-                p.Text = "SSM - Produits aux employés";
-            p.ShowDialog();
+            //p.idabonne = int.Parse(a.dgvAbonne.CurrentRow.Cells[0].Value.ToString());
+            //p.txtAbonne.Text = a.dgvAbonne.CurrentRow.Cells[6].Value.ToString();
+            //p.typepatient = a.cboTypePatient.Text;
+            //if (p.typepatient == "abonné")
+            //    p.Text = "SSM - Produits aux abonnés";
+            //else
+            //    p.Text = "SSM - Produits aux employés";
+            //p.ShowDialog();
         }
         public void Annuler(FormAbonne a)
         {
-            a.dgvAbonne.Rows.Clear();
+            //a.dgvAbonne.Rows.Clear();
             a.cboEntreprise.Items.Clear();
             a.cboTypeAbonne.Items.Clear();
             a.txtReference.Text = "";
@@ -2475,130 +2766,30 @@ namespace SUMEDCO
             }
             else MessageBox.Show("Désolé! Vous devez fournir l'entreprise et le numéro de référence pour cette recherche", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
-        public void Afficher(FormAbonne a)
-        {
-            if (a.cboEntreprise.Text != "" && a.txtReference.Text == "")
-            {
-                cmd = new SqlCommand("select * from Abonne where identreprise= @identreprise", con);
-                a.recherche_valide = true;
-            }
-            else if (a.cboEntreprise.Text != "" && a.txtReference.Text != "")
-            {
-                cmd = new SqlCommand("select * from Abonne where identreprise= @identreprise and refabonne= @reference", con);
-                cmd.Parameters.AddWithValue("@reference", a.txtReference.Text);
-                a.recherche_valide = true;
-            }
-            else a.recherche_valide = false;
-            
-            if(a.recherche_valide)
-            {
-                cmd.Parameters.AddWithValue("@identreprise", a.identreprise);
-                con.Open();
-                try
-                {
-                    dr = cmd.ExecuteReader();
-                    a.dgvAbonne.Rows.Clear();
-                    while (dr.Read())
-                    {
-                        a.dgvAbonne.Rows.Add();
-                        a.dgvAbonne.Rows[a.dgvAbonne.RowCount - 1].Cells[0].Value = dr[0].ToString();
-                        a.dgvAbonne.Rows[a.dgvAbonne.RowCount - 1].Cells[1].Value = dr[1].ToString();
-                        a.dgvAbonne.Rows[a.dgvAbonne.RowCount - 1].Cells[2].Value = dr[2].ToString();
-
-                        a.dgvAbonne.Rows[a.dgvAbonne.RowCount - 1].Cells[5].Value = dr[3].ToString();
-                        a.dgvAbonne.Rows[a.dgvAbonne.RowCount - 1].Cells[9].Value = dr[4].ToString();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                con.Close();
-                if (a.dgvAbonne.RowCount != 0)
-                {
-                    for (int i = 0; i < a.dgvAbonne.RowCount; i++)
-                    {
-                        a.dgvAbonne.Rows[i].Cells[3].Value = TrouverNom("entreprise", int.Parse(a.dgvAbonne.Rows[i].Cells[1].Value.ToString()));
-                        a.dgvAbonne.Rows[i].Cells[4].Value = TrouverNom("typeabonne", int.Parse(a.dgvAbonne.Rows[i].Cells[2].Value.ToString()));
-                    }
-                }
-            }
-            else MessageBox.Show("Désolé! Vous devez fournir l'entreprise et le numéro de référence pour cette recherche", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        }
         public void NouvelAbonne(FormPatient a)
         {
-            a.idabonne = NouveauID("abonne");
-            con.Open();
-            SqlTransaction tx = con.BeginTransaction();
-            try
-            {
-                cmd = new SqlCommand("insert into Abonne values (@id, @identreprise, @idtypeabonne, @reference, @idpatient)", con);
-                cmd.Parameters.AddWithValue("@id", a.idabonne);
-                cmd.Parameters.AddWithValue("@identreprise", a.identreprise);
-                cmd.Parameters.AddWithValue("@idtypeabonne", a.idtypeabonne);
-                cmd.Parameters.AddWithValue("@reference", a.refabonne);
-                cmd.Parameters.AddWithValue("@idpatient", a.idpatient);
+            //a.idabonne = NouveauID("abonne");
+            //con.Open();
+            //SqlTransaction tx = con.BeginTransaction();
+            //try
+            //{
+            //    cmd = new SqlCommand("insert into Abonne values (@id, @identreprise, @idtypeabonne, @reference, @idpatient)", con);
+            //    cmd.Parameters.AddWithValue("@id", a.idabonne);
+            //    cmd.Parameters.AddWithValue("@identreprise", a.identreprise);
+            //    cmd.Parameters.AddWithValue("@idtypeabonne", a.idtypeabonne);
+            //    cmd.Parameters.AddWithValue("@reference", a.refabonne);
+            //    cmd.Parameters.AddWithValue("@idpatient", a.idpatient);
 
-                cmd.Transaction = tx;
-                cmd.ExecuteNonQuery();
-                tx.Commit();
-            }
-            catch (Exception ex)
-            {
-                tx.Rollback();
-                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            con.Close();
-        }
-        public void Recuperer(FormAbonne a)
-        {
-            a.btnService.Enabled = true;
-            a.btnProduit.Enabled = true;
-            a.btnEnregistrer.Enabled = false;
-            if(a.cboTypePatient.Text == "abonné")
-            {
-                a.btnModifier.Enabled = true;
-                a.btnSupprimer.Enabled = true;
-
-                a.idabonne = int.Parse(a.dgvAbonne.CurrentRow.Cells[0].Value.ToString());
-                a.identreprise = int.Parse(a.dgvAbonne.CurrentRow.Cells[1].Value.ToString());
-                a.idtypeabonne = int.Parse(a.dgvAbonne.CurrentRow.Cells[2].Value.ToString());
-
-                a.cboEntreprise.DropDownStyle = ComboBoxStyle.DropDown;
-                a.cboEntreprise.Text = a.dgvAbonne.CurrentRow.Cells[3].Value.ToString();
-                a.cboEntreprise.DropDownStyle = ComboBoxStyle.DropDownList;
-
-                a.cboTypeAbonne.DropDownStyle = ComboBoxStyle.DropDown;
-                a.cboTypeAbonne.Text = a.dgvAbonne.CurrentRow.Cells[4].Value.ToString(); ;
-                a.cboTypeAbonne.DropDownStyle = ComboBoxStyle.DropDownList;
-
-                a.txtReference.Text = a.dgvAbonne.CurrentRow.Cells[5].Value.ToString();
-            }
-        }
-        public void Modifier(FormAbonne a)
-        {
-            con.Open();
-            SqlTransaction tx = con.BeginTransaction();
-            try
-            {
-                cmd = new SqlCommand("update Abonne set identreprise= @identreprise, idtypeabonne= @idtypeabonne, refabonne= @reference where idabonne = @id", con);
-                cmd.Parameters.AddWithValue("@id", a.idabonne);
-                cmd.Parameters.AddWithValue("@identreprise", a.identreprise);
-                cmd.Parameters.AddWithValue("@idtypeabonne", a.idtypeabonne);
-                cmd.Parameters.AddWithValue("@reference", a.txtReference.Text);
-
-                cmd.Transaction = tx;
-                cmd.ExecuteNonQuery();
-                tx.Commit();
-                MessageBox.Show("Modifié avec succès", "Mise à jour", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                tx.Rollback();
-                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            con.Close();
-            Annuler(a);
+            //    cmd.Transaction = tx;
+            //    cmd.ExecuteNonQuery();
+            //    tx.Commit();
+            //}
+            //catch (Exception ex)
+            //{
+            //    tx.Rollback();
+            //    MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+            //con.Close();
         }
         private int CompterServiceAbonne(int idabonne)
         {
@@ -3061,46 +3252,46 @@ namespace SUMEDCO
         #region EMPLOYE
         public void NouvelEmploye(FormPatient p)
         {
-            p.idemploye = NouveauID("employe");
-            con.Open();
-            SqlTransaction tx = con.BeginTransaction();
-            try
-            {
-                cmd = new SqlCommand("insert into Employe values (@id, @idpatient)", con);
-                cmd.Parameters.AddWithValue("@id", p.idemploye);
-                cmd.Parameters.AddWithValue("@idpatient", p.idpatient);
+            //p.idemploye = NouveauID("employe");
+            //con.Open();
+            //SqlTransaction tx = con.BeginTransaction();
+            //try
+            //{
+            //    cmd = new SqlCommand("insert into Employe values (@id, @idpatient)", con);
+            //    cmd.Parameters.AddWithValue("@id", p.idemploye);
+            //    cmd.Parameters.AddWithValue("@idpatient", p.idpatient);
 
-                cmd.Transaction = tx;
-                cmd.ExecuteNonQuery();
-                tx.Commit();
-            }
-            catch (Exception ex)
-            {
-                tx.Rollback();
-                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            con.Close();
+            //    cmd.Transaction = tx;
+            //    cmd.ExecuteNonQuery();
+            //    tx.Commit();
+            //}
+            //catch (Exception ex)
+            //{
+            //    tx.Rollback();
+            //    MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+            //con.Close();
         }       
         public void AfficherEmploye(FormAbonne a)
         {
-            con.Open();
-            cmd = new SqlCommand("select * from Employe", con);
-            try
-            {
-                dr = cmd.ExecuteReader();
-                a.dgvAbonne.Rows.Clear();
-                while (dr.Read())
-                {
-                    a.dgvAbonne.Rows.Add();
-                    a.dgvAbonne.Rows[a.dgvAbonne.RowCount - 1].Cells[0].Value = dr[0].ToString();
-                    a.dgvAbonne.Rows[a.dgvAbonne.RowCount - 1].Cells[9].Value = dr[1].ToString();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            con.Close();
+            //con.Open();
+            //cmd = new SqlCommand("select * from Employe", con);
+            //try
+            //{
+            //    dr = cmd.ExecuteReader();
+            //    a.dgvAbonne.Rows.Clear();
+            //    while (dr.Read())
+            //    {
+            //        a.dgvAbonne.Rows.Add();
+            //        a.dgvAbonne.Rows[a.dgvAbonne.RowCount - 1].Cells[0].Value = dr[0].ToString();
+            //        a.dgvAbonne.Rows[a.dgvAbonne.RowCount - 1].Cells[9].Value = dr[1].ToString();
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+            //con.Close();
         }
         #endregion
 
@@ -3337,21 +3528,21 @@ namespace SUMEDCO
         }
         public void Facturier(FormAbonneProduit f, FormFactureProduit2 f2)
         {
-            f2.ShowDialog();
-            f.dgvFacture.Rows.Clear();
-            if (f2.fermeture_succes)
-            {
-                for (int i = 0; i < f2.dgvFacture.RowCount; i++)
-                {
-                    f.dgvFacture.Rows.Add();
-                    f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[0].Value = f2.dgvFacture.Rows[i].Cells[0].Value;
-                    f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[1].Value = f2.dgvFacture.Rows[i].Cells[1].Value;
-                    f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[2].Value = f2.dgvFacture.Rows[i].Cells[2].Value;
-                    f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[3].Value = f2.dgvFacture.Rows[i].Cells[3].Value;
-                    f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[4].Value = f2.dgvFacture.Rows[i].Cells[4].Value;
-                }
-            }
-            f2.Close();
+            //f2.ShowDialog();
+            //f.dgvFacture.Rows.Clear();
+            //if (f2.fermeture_succes)
+            //{
+            //    for (int i = 0; i < f2.dgvFacture.RowCount; i++)
+            //    {
+            //        f.dgvFacture.Rows.Add();
+            //        f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[0].Value = f2.dgvFacture.Rows[i].Cells[0].Value;
+            //        f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[1].Value = f2.dgvFacture.Rows[i].Cells[1].Value;
+            //        f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[2].Value = f2.dgvFacture.Rows[i].Cells[2].Value;
+            //        f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[3].Value = f2.dgvFacture.Rows[i].Cells[3].Value;
+            //        f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[4].Value = f2.dgvFacture.Rows[i].Cells[4].Value;
+            //    }
+            //}
+            //f2.Close();
         }
         public void Afficher(FormAbonneProduit a, string motif)
         {
@@ -3430,59 +3621,59 @@ namespace SUMEDCO
         }
         public void Modifier(FormAbonneProduit f, FormFactureProduit2 f2)
         {
-            if (f.txtAbonne.Text != "")
-            {
-                f2.ShowDialog();
-                if (f2.dgvFacture.RowCount == 1)
-                {
-                    f.dgvFacture.Rows.Clear();
-                    if (f2.fermeture_succes)
-                    {
-                        for (int i = 0; i < f2.dgvFacture.RowCount; i++)
-                        {
-                            f.dgvFacture.Rows.Add();
-                            f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[0].Value = f2.dgvFacture.Rows[i].Cells[0].Value;
-                            f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[1].Value = f2.dgvFacture.Rows[i].Cells[1].Value;
-                            f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[2].Value = f2.dgvFacture.Rows[i].Cells[2].Value;
-                            f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[3].Value = f2.dgvFacture.Rows[i].Cells[3].Value;
-                            f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[4].Value = f2.dgvFacture.Rows[i].Cells[4].Value;
-                        }
+            //if (f.txtAbonne.Text != "")
+            //{
+            //    f2.ShowDialog();
+            //    if (f2.dgvFacture.RowCount == 1)
+            //    {
+            //        f.dgvFacture.Rows.Clear();
+            //        if (f2.fermeture_succes)
+            //        {
+            //            for (int i = 0; i < f2.dgvFacture.RowCount; i++)
+            //            {
+            //                f.dgvFacture.Rows.Add();
+            //                f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[0].Value = f2.dgvFacture.Rows[i].Cells[0].Value;
+            //                f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[1].Value = f2.dgvFacture.Rows[i].Cells[1].Value;
+            //                f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[2].Value = f2.dgvFacture.Rows[i].Cells[2].Value;
+            //                f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[3].Value = f2.dgvFacture.Rows[i].Cells[3].Value;
+            //                f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[4].Value = f2.dgvFacture.Rows[i].Cells[4].Value;
+            //            }
                         
-                        if (f.typepatient == "abonné")
-                            cmd = new SqlCommand("update AbonneProduit set date_jour= @date_jour, idstock = @idstock, qteprise = @qte, prixstock= @prix where id = @id", con);
-                        else
-                            cmd = new SqlCommand("update EmployeProduit set date_jour= @date_jour, idstock = @idstock, qteprise = @qte, prixstock= @prix where id = @id", con);
+            //            if (f.typepatient == "abonné")
+            //                cmd = new SqlCommand("update AbonneProduit set date_jour= @date_jour, idstock = @idstock, qteprise = @qte, prixstock= @prix where id = @id", con);
+            //            else
+            //                cmd = new SqlCommand("update EmployeProduit set date_jour= @date_jour, idstock = @idstock, qteprise = @qte, prixstock= @prix where id = @id", con);
 
-                        cmd.Parameters.AddWithValue("@id", f.id);
-                        cmd.Parameters.AddWithValue("@date_jour", f.dtpDateAbonne.Value.Date);
-                        cmd.Parameters.AddWithValue("@idstock", f.dgvFacture.Rows[0].Cells[0].Value.ToString());
-                        cmd.Parameters.AddWithValue("@qte", f.dgvFacture.Rows[0].Cells[3].Value.ToString());
-                        cmd.Parameters.AddWithValue("@prix", f.dgvFacture.Rows[0].Cells[4].Value.ToString());
-                        con.Open();
-                        SqlTransaction tx = con.BeginTransaction();
-                        try
-                        {
-                            cmd.Transaction = tx;
-                            cmd.ExecuteNonQuery();
-                            tx.Commit();
-                            MessageBox.Show("Modifié avec succès", "Mise à jour", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Annuler(f);
-                        }
-                        catch (Exception ex)
-                        {
-                            tx.Rollback();
-                            MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        con.Close();
-                    }
-                }
-                else
-                    MessageBox.Show("Vous devez valider une seule ligne pour la mise à jour", "Mise à jour", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                MessageBox.Show("Désolé! Champ(s) obligatoire(s) vide(s)\nRemplissez-le(s).", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            //            cmd.Parameters.AddWithValue("@id", f.id);
+            //            cmd.Parameters.AddWithValue("@date_jour", f.dtpDateAbonne.Value.Date);
+            //            cmd.Parameters.AddWithValue("@idstock", f.dgvFacture.Rows[0].Cells[0].Value.ToString());
+            //            cmd.Parameters.AddWithValue("@qte", f.dgvFacture.Rows[0].Cells[3].Value.ToString());
+            //            cmd.Parameters.AddWithValue("@prix", f.dgvFacture.Rows[0].Cells[4].Value.ToString());
+            //            con.Open();
+            //            SqlTransaction tx = con.BeginTransaction();
+            //            try
+            //            {
+            //                cmd.Transaction = tx;
+            //                cmd.ExecuteNonQuery();
+            //                tx.Commit();
+            //                MessageBox.Show("Modifié avec succès", "Mise à jour", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //                Annuler(f);
+            //            }
+            //            catch (Exception ex)
+            //            {
+            //                tx.Rollback();
+            //                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //            }
+            //            con.Close();
+            //        }
+            //    }
+            //    else
+            //        MessageBox.Show("Vous devez valider une seule ligne pour la mise à jour", "Mise à jour", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Désolé! Champ(s) obligatoire(s) vide(s)\nRemplissez-le(s).", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
         }
         public void Supprimer(FormAbonneProduit a)
         {

@@ -33,6 +33,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormExamenPhysique));
             this.dgv = new System.Windows.Forms.DataGridView();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnEnregistrer = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnAnnuler = new System.Windows.Forms.Button();
@@ -40,9 +43,6 @@
             this.btnPlusExamPhys = new System.Windows.Forms.Button();
             this.cboExamenPhysique = new System.Windows.Forms.ComboBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,6 +85,28 @@
             this.dgv.Size = new System.Drawing.Size(346, 371);
             this.dgv.TabIndex = 649;
             this.dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellClick);
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "N°";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Visible = false;
+            this.Column3.Width = 40;
+            // 
+            // Column8
+            // 
+            this.Column8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column8.HeaderText = "Examen";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Prix";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Visible = false;
             // 
             // btnEnregistrer
             // 
@@ -195,28 +217,6 @@
             this.cboExamenPhysique.TabIndex = 667;
             this.cboExamenPhysique.Visible = false;
             // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "N°";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Visible = false;
-            this.Column3.Width = 40;
-            // 
-            // Column8
-            // 
-            this.Column8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column8.HeaderText = "Examen";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Prix";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Visible = false;
-            // 
             // FormExamenPhysique
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -234,8 +234,9 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(386, 512);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(302, 489);
+            this.MinimumSize = new System.Drawing.Size(386, 512);
             this.Name = "FormExamenPhysique";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SSM - Examens physiques";

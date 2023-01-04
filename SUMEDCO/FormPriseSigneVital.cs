@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace SUMEDCO
 {
-    public partial class FormExamen : Form
+    public partial class FormPriseSigneVital : Form
     {
-        public FormExamen()
+        public FormPriseSigneVital()
         {
             InitializeComponent();
         }
@@ -21,20 +21,19 @@ namespace SUMEDCO
         public int idlignedoublon = 0,
             idpatient = 0,
             idmedecin = 0,
-            idcatservice = 0,
+            idprise = 0,
             idconsultation = 0,
             nbligne_trouve=0;
-        public bool ajoutvalide;
+        public bool fermeture_succes;
         public string numcompte = "";
         private void cboCatService_DropDown(object sender, EventArgs e)
         {
-            cc.ChargerCombo("catservice2", cboCatService, 0);
+            
         }
 
         private void cboCatService_SelectedIndexChanged(object sender, EventArgs e)
         {
-            numcompte = cc.TrouverId("numcompte", cboCatService.Text).ToString();
-            cc.ChargerCombo("service", cboService, int.Parse(numcompte));
+            
         }
 
         private void cboService_SelectedIndexChanged(object sender, EventArgs e)
@@ -42,29 +41,22 @@ namespace SUMEDCO
             cm.ValiderLigne(this);
         }
 
-        private void btnRetirer_Click(object sender, EventArgs e)
-        {
-            btnRetirer.Enabled = false;
-            dgv1.Rows.RemoveAt(dgv1.CurrentRow.Index);
-            cm.RemplirNumLigne(dgv1, 0);
-            //
-        }
 
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
-            //cm.Enregistrer(this);
+            /*
+             * si affecter alors nouvel enregistrement dans PriseSigneVital
+             * si reaffecter alors update idmedecin = le nouveau idmedecin
+             */
+            fermeture_succes = false;
+            this.Hide();
         }
 
         private void dgv1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgv1.RowCount != 0)
             {
-                if (cboService.Enabled) 
-                {
-                    btnRetirer.Enabled = true;
-                }
-                else txtLibelle.Text = dgv1.CurrentRow.Cells[2].Value.ToString();
-                txtLibelle.Select();
+                
             }
         }
 
@@ -75,20 +67,23 @@ namespace SUMEDCO
 
         private void FormExamen_Shown(object sender, EventArgs e)
         {
-            if (!cboService.Enabled)
-            {
-                cm.MesConsultations(this, new FormConsultation());
-            }
+            
         }
 
         private void btnQuitter_Click(object sender, EventArgs e)
         {
-            this.Close();
+            fermeture_succes = false;
+            this.Hide();
         }
 
         private void btnNouveau_Click(object sender, EventArgs e)
         {
-            cm.ExamenPhysique(this, new FormExamenPhysique());
+            
+        }
+
+        private void cboMedecin_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            idmedecin = cm.TrouverId("medecin", cboMedecin.Text);
         }
     }
 

@@ -20,6 +20,7 @@ namespace SUMEDCO
         public Form activeForm = null;
         ClassCompta cc = new ClassCompta();
         ClassStock cs = new ClassStock();
+        public int idutilisateur;
         private void btnEntreeSortie_Click(object sender, EventArgs e)
         {
             cc.AfficherSousMenu(pnlSousMenu);

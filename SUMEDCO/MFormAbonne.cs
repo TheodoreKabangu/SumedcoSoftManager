@@ -19,6 +19,7 @@ namespace SUMEDCO
         ClassCompta cc = new ClassCompta();
         public Form activeForm = null;
         public string statut = "";
+        public int idutilisateur;
         private void btnAbonne_Click(object sender, EventArgs e)
         {
             statut = "nouveau";
@@ -37,13 +38,18 @@ namespace SUMEDCO
 
         private void btnVoirAbonne_Click(object sender, EventArgs e)
         {
-            cc.AfficherSousForm(this, new FormAbonne());
+            cc.AfficherSousForm(this, new FormFactureService());
         }
 
         private void btnAncien_Click(object sender, EventArgs e)
         {
             statut = "ancien";
             cc.AfficherSousForm(this, new FormPatient());
+        }
+
+        private void btnProduitConsomme_Click(object sender, EventArgs e)
+        {
+            cc.AfficherSousForm(this, new FormFactureProduit());
         }
     }
 }

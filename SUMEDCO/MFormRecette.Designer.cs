@@ -55,7 +55,7 @@
             this.pnlSide.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlSide.Location = new System.Drawing.Point(0, 0);
             this.pnlSide.Name = "pnlSide";
-            this.pnlSide.Size = new System.Drawing.Size(180, 471);
+            this.pnlSide.Size = new System.Drawing.Size(180, 491);
             this.pnlSide.TabIndex = 584;
             // 
             // pnlSousMenu
@@ -115,7 +115,7 @@
             this.btnQuitter.ForeColor = System.Drawing.Color.Black;
             this.btnQuitter.Image = ((System.Drawing.Image)(resources.GetObject("btnQuitter.Image")));
             this.btnQuitter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnQuitter.Location = new System.Drawing.Point(0, 441);
+            this.btnQuitter.Location = new System.Drawing.Point(0, 461);
             this.btnQuitter.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnQuitter.Name = "btnQuitter";
             this.btnQuitter.Size = new System.Drawing.Size(180, 30);
@@ -158,7 +158,7 @@
             this.btnRecette.Name = "btnRecette";
             this.btnRecette.Size = new System.Drawing.Size(180, 45);
             this.btnRecette.TabIndex = 1;
-            this.btnRecette.Text = "Bon à encaisser";
+            this.btnRecette.Text = "Bons à encaisser";
             this.btnRecette.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRecette.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRecette.UseVisualStyleBackColor = true;
@@ -198,7 +198,7 @@
             this.pnlChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlChildForm.Location = new System.Drawing.Point(180, 0);
             this.pnlChildForm.Name = "pnlChildForm";
-            this.pnlChildForm.Size = new System.Drawing.Size(714, 471);
+            this.pnlChildForm.Size = new System.Drawing.Size(714, 491);
             this.pnlChildForm.TabIndex = 585;
             // 
             // MFormRecette
@@ -206,12 +206,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(894, 471);
+            this.ClientSize = new System.Drawing.Size(894, 491);
             this.Controls.Add(this.pnlChildForm);
             this.Controls.Add(this.pnlSide);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(910, 510);
+            this.MinimumSize = new System.Drawing.Size(910, 530);
             this.Name = "MFormRecette";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SSM - Recette";

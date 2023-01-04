@@ -14,7 +14,7 @@ namespace SUMEDCO
 {
     class ClassStock
     {
-        static string conString = ConfigurationManager.ConnectionStrings["SUMEDCO.Properties.Settings.conString3"].ConnectionString;
+        static string conString = ConfigurationManager.ConnectionStrings["SUMEDCO.Properties.Settings.conString1"].ConnectionString;
         SqlConnection con = new SqlConnection(conString);
         SqlCommand cmd;
         SqlDataAdapter da;
@@ -138,7 +138,7 @@ namespace SUMEDCO
             con.Open();
             try
             {
-                cmd = new SqlCommand("select utilisateur, motdepasse, poste, specification from Utilisateur where utilisateur = @utilisateur and motdepasse = @mot and poste = @poste", con);
+                cmd = new SqlCommand("select id, utilisateur, motdepasse, poste, specification from Utilisateur where utilisateur = @utilisateur and motdepasse = @mot and poste = @poste", con);
                 cmd.Parameters.AddWithValue("@utilisateur", c.txtUtilisateur.Text);
                 cmd.Parameters.AddWithValue("@mot", c.txtMotdePass.Text);
                 cmd.Parameters.AddWithValue("@poste", c.poste);
@@ -146,7 +146,8 @@ namespace SUMEDCO
                 if(dr.Read() == true)
                 {
                     c.access_autorise = true;
-                    chaine = dr[3].ToString();
+                    id = int.Parse(dr[0].ToString());
+                    chaine = dr[4].ToString();
                 }
                 else
                     MessageBox.Show("Vérifiez que l'utilisateur et le mot de passe correspondent au poste sélectionné ", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -171,15 +172,21 @@ namespace SUMEDCO
                     }
                     else if (c.poste == "réception")
                     {
-                        new MFormReception().Show();
+                        MFormReception r = new MFormReception();
+                        r.idutilisateur = id;
+                        r.Show();
                     }
                     else if (c.poste == "recette")
                     {
-                        new MFormRecette().Show();
+                        MFormRecette rec = new MFormRecette();
+                        rec.idutilisateur = id;
+                        rec.Show();
                     }
                     else if (c.poste == "infirmier")
                     {
-                        new MFormInfirmerie().Show();
+                        MFormInfirmerie inf = new MFormInfirmerie();
+                        inf.idutilisateur = id;
+                        inf.Show();
                     }
                     else if (c.poste == "médecin")
                     {
@@ -197,23 +204,33 @@ namespace SUMEDCO
                     }
                     else if (c.poste == "abonné")
                     {
-                        new MFormAbonne().Show();
+                        MFormAbonne ab = new MFormAbonne();
+                        ab.idutilisateur = id;
+                        ab.Show();
                     }
                     else if (c.poste == "dépense")
                     {
-                        new MFormDepense().Show();
+                        MFormDepense d = new MFormDepense();
+                        d.idutilisateur = id;
+                        d.Show();
                     }
                     else if (c.poste == "comptable")
                     {
-                        new MFormComptabilite().Show();
+                        MFormComptabilite co = new MFormComptabilite();
+                        co.idutilisateur = id;
+                        co.Show();
                     }
                     else if (c.poste == "pharmacie")
                     {
-                        new MFormPharmacie().Show();
+                        MFormPharmacie ph = new MFormPharmacie();
+                        ph.idutilisateur = id;
+                        ph.Show();
                     }
                     else if (c.poste == "stock")
                     {
-                        new MFormStock().Show();
+                        MFormStock s = new MFormStock();
+                        s.idutilisateur = id;
+                        s.Show();
                     }
                     
                     if (c.access_autorise)

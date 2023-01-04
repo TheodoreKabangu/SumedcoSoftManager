@@ -14,6 +14,7 @@ namespace SUMEDCO
     {
         ClassCompta cc = new ClassCompta();
         public Form activeForm = null;
+        public int idutilisateur;
         public MFormDepense()
         {
             InitializeComponent();

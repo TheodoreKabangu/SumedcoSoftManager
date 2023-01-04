@@ -20,7 +20,7 @@ namespace SUMEDCO
         ClassCompta cc = new ClassCompta();
         ClassStock cs = new ClassStock();
         public Form activeForm = null;
-
+        public int idutilisateur;
         private void btnQuitter_Click(object sender, EventArgs e)
         {
             Application.Exit();          

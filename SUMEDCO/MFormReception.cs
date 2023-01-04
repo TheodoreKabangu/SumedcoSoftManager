@@ -14,6 +14,8 @@ namespace SUMEDCO
     {
         ClassCompta cc = new ClassCompta();
         public string statut = "";
+        public int idutilisateur;
+
         public MFormReception()
         {
             InitializeComponent();

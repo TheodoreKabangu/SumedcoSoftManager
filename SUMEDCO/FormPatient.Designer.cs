@@ -32,36 +32,31 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPatient));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.btnRetirer = new System.Windows.Forms.Button();
-            this.btnReaffecter = new System.Windows.Forms.Button();
             this.btnAffecter = new System.Windows.Forms.Button();
             this.btnAnnuler = new System.Windows.Forms.Button();
             this.btnModifier = new System.Windows.Forms.Button();
             this.btnEnregistrer = new System.Windows.Forms.Button();
             this.btnSupprimer = new System.Windows.Forms.Button();
             this.btnQuitter = new System.Windows.Forms.Button();
-            this.cboMedecin = new System.Windows.Forms.ComboBox();
-            this.dgvMedecin = new System.Windows.Forms.DataGridView();
             this.txtRecherche = new System.Windows.Forms.TextBox();
             this.dgvPatient = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnRecherche = new System.Windows.Forms.Button();
-            this.dtpDateEntree = new System.Windows.Forms.DateTimePicker();
-            this.lblDateEntree = new System.Windows.Forms.Label();
             this.lblAge = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtNom = new System.Windows.Forms.TextBox();
@@ -75,7 +70,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.cboSexe = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.cboTypePatient = new System.Windows.Forms.ComboBox();
@@ -84,11 +78,15 @@
             this.label4 = new System.Windows.Forms.Label();
             this.rbNouveau = new System.Windows.Forms.RadioButton();
             this.rbUrgence = new System.Windows.Forms.RadioButton();
-            this.dataGridViewTextBoxColumn32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn33 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn34 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMedecin)).BeginInit();
+            this.cboTypeFacture = new System.Windows.Forms.ComboBox();
+            this.lblDateOperation = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblTaux = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatient)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -99,46 +97,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(703, 30);
             this.panel2.TabIndex = 558;
-            // 
-            // btnRetirer
-            // 
-            this.btnRetirer.BackColor = System.Drawing.Color.Transparent;
-            this.btnRetirer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnRetirer.Enabled = false;
-            this.btnRetirer.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnRetirer.FlatAppearance.BorderSize = 0;
-            this.btnRetirer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnRetirer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRetirer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRetirer.Image = ((System.Drawing.Image)(resources.GetObject("btnRetirer.Image")));
-            this.btnRetirer.Location = new System.Drawing.Point(499, 292);
-            this.btnRetirer.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.btnRetirer.Name = "btnRetirer";
-            this.btnRetirer.Size = new System.Drawing.Size(30, 21);
-            this.btnRetirer.TabIndex = 645;
-            this.toolTip1.SetToolTip(this.btnRetirer, "Retirer le cas");
-            this.btnRetirer.UseVisualStyleBackColor = false;
-            this.btnRetirer.Click += new System.EventHandler(this.btnRetirer_Click);
-            // 
-            // btnReaffecter
-            // 
-            this.btnReaffecter.BackColor = System.Drawing.Color.Transparent;
-            this.btnReaffecter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnReaffecter.Enabled = false;
-            this.btnReaffecter.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnReaffecter.FlatAppearance.BorderSize = 0;
-            this.btnReaffecter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnReaffecter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReaffecter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReaffecter.Image = ((System.Drawing.Image)(resources.GetObject("btnReaffecter.Image")));
-            this.btnReaffecter.Location = new System.Drawing.Point(459, 292);
-            this.btnReaffecter.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.btnReaffecter.Name = "btnReaffecter";
-            this.btnReaffecter.Size = new System.Drawing.Size(30, 21);
-            this.btnReaffecter.TabIndex = 644;
-            this.toolTip1.SetToolTip(this.btnReaffecter, "Reaffecter le cas");
-            this.btnReaffecter.UseVisualStyleBackColor = false;
-            this.btnReaffecter.Click += new System.EventHandler(this.btnReaffecter_Click);
             // 
             // btnAffecter
             // 
@@ -151,12 +109,12 @@
             this.btnAffecter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAffecter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAffecter.Image = ((System.Drawing.Image)(resources.GetObject("btnAffecter.Image")));
-            this.btnAffecter.Location = new System.Drawing.Point(419, 292);
+            this.btnAffecter.Location = new System.Drawing.Point(501, 308);
             this.btnAffecter.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnAffecter.Name = "btnAffecter";
             this.btnAffecter.Size = new System.Drawing.Size(30, 21);
             this.btnAffecter.TabIndex = 642;
-            this.toolTip1.SetToolTip(this.btnAffecter, "Affecter le cas");
+            this.toolTip1.SetToolTip(this.btnAffecter, "Ajouter ce cas");
             this.btnAffecter.UseVisualStyleBackColor = false;
             this.btnAffecter.Click += new System.EventHandler(this.btnAffecter_Click);
             // 
@@ -171,7 +129,7 @@
             this.btnAnnuler.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAnnuler.Image = ((System.Drawing.Image)(resources.GetObject("btnAnnuler.Image")));
             this.btnAnnuler.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAnnuler.Location = new System.Drawing.Point(373, 252);
+            this.btnAnnuler.Location = new System.Drawing.Point(95, 275);
             this.btnAnnuler.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(30, 23);
@@ -192,7 +150,7 @@
             this.btnModifier.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModifier.Image = ((System.Drawing.Image)(resources.GetObject("btnModifier.Image")));
             this.btnModifier.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnModifier.Location = new System.Drawing.Point(457, 252);
+            this.btnModifier.Location = new System.Drawing.Point(179, 275);
             this.btnModifier.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnModifier.Name = "btnModifier";
             this.btnModifier.Size = new System.Drawing.Size(30, 23);
@@ -212,7 +170,7 @@
             this.btnEnregistrer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEnregistrer.Image = ((System.Drawing.Image)(resources.GetObject("btnEnregistrer.Image")));
             this.btnEnregistrer.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEnregistrer.Location = new System.Drawing.Point(415, 252);
+            this.btnEnregistrer.Location = new System.Drawing.Point(137, 275);
             this.btnEnregistrer.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnEnregistrer.Name = "btnEnregistrer";
             this.btnEnregistrer.Size = new System.Drawing.Size(30, 23);
@@ -233,7 +191,7 @@
             this.btnSupprimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSupprimer.Image = ((System.Drawing.Image)(resources.GetObject("btnSupprimer.Image")));
             this.btnSupprimer.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSupprimer.Location = new System.Drawing.Point(499, 252);
+            this.btnSupprimer.Location = new System.Drawing.Point(221, 275);
             this.btnSupprimer.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnSupprimer.Name = "btnSupprimer";
             this.btnSupprimer.Size = new System.Drawing.Size(30, 23);
@@ -261,70 +219,13 @@
             this.btnQuitter.UseVisualStyleBackColor = false;
             this.btnQuitter.Click += new System.EventHandler(this.btnQuitter_Click);
             // 
-            // cboMedecin
-            // 
-            this.cboMedecin.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboMedecin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboMedecin.FormattingEnabled = true;
-            this.cboMedecin.Items.AddRange(new object[] {
-            ""});
-            this.cboMedecin.Location = new System.Drawing.Point(124, 78);
-            this.cboMedecin.Name = "cboMedecin";
-            this.cboMedecin.Size = new System.Drawing.Size(405, 23);
-            this.cboMedecin.Sorted = true;
-            this.cboMedecin.TabIndex = 3;
-            this.cboMedecin.DropDown += new System.EventHandler(this.cboMedecin_DropDown);
-            this.cboMedecin.SelectedIndexChanged += new System.EventHandler(this.cboMedecin_SelectedIndexChanged);
-            this.cboMedecin.Enter += new System.EventHandler(this.cboMedecin_Enter);
-            // 
-            // dgvMedecin
-            // 
-            this.dgvMedecin.AllowUserToAddRows = false;
-            this.dgvMedecin.AllowUserToDeleteRows = false;
-            this.dgvMedecin.AllowUserToOrderColumns = true;
-            this.dgvMedecin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvMedecin.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.dgvMedecin.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvMedecin.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMedecin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvMedecin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMedecin.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn32,
-            this.dataGridViewTextBoxColumn33,
-            this.dataGridViewTextBoxColumn34});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Lavender;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvMedecin.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvMedecin.GridColor = System.Drawing.Color.RoyalBlue;
-            this.dgvMedecin.Location = new System.Drawing.Point(537, 49);
-            this.dgvMedecin.MultiSelect = false;
-            this.dgvMedecin.Name = "dgvMedecin";
-            this.dgvMedecin.ReadOnly = true;
-            this.dgvMedecin.RowHeadersVisible = false;
-            this.dgvMedecin.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMedecin.Size = new System.Drawing.Size(124, 264);
-            this.dgvMedecin.TabIndex = 641;
-            // 
             // txtRecherche
             // 
-            this.txtRecherche.Location = new System.Drawing.Point(124, 292);
+            this.txtRecherche.Location = new System.Drawing.Point(95, 308);
             this.txtRecherche.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtRecherche.MaxLength = 25;
             this.txtRecherche.Name = "txtRecherche";
-            this.txtRecherche.Size = new System.Drawing.Size(249, 21);
+            this.txtRecherche.Size = new System.Drawing.Size(366, 21);
             this.txtRecherche.TabIndex = 639;
             this.txtRecherche.Text = "Nom du patient";
             this.txtRecherche.Enter += new System.EventHandler(this.txtRecherche_Enter);
@@ -340,43 +241,46 @@
             this.dgvPatient.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.dgvPatient.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvPatient.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPatient.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPatient.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPatient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPatient.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn24,
-            this.Column1,
+            this.Column6,
             this.dataGridViewTextBoxColumn25,
             this.dataGridViewTextBoxColumn26,
             this.dataGridViewTextBoxColumn27,
             this.dataGridViewTextBoxColumn28,
+            this.Column1,
             this.dataGridViewTextBoxColumn29,
             this.dataGridViewTextBoxColumn30,
             this.dataGridViewTextBoxColumn31,
+            this.Column2,
             this.Column3,
-            this.Column2});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Lavender;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPatient.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Column4,
+            this.Column5});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Lavender;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPatient.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvPatient.GridColor = System.Drawing.Color.RoyalBlue;
-            this.dgvPatient.Location = new System.Drawing.Point(14, 320);
+            this.dgvPatient.Location = new System.Drawing.Point(14, 336);
             this.dgvPatient.MultiSelect = false;
             this.dgvPatient.Name = "dgvPatient";
             this.dgvPatient.ReadOnly = true;
             this.dgvPatient.RowHeadersVisible = false;
             this.dgvPatient.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPatient.Size = new System.Drawing.Size(676, 119);
+            this.dgvPatient.Size = new System.Drawing.Size(676, 103);
             this.dgvPatient.TabIndex = 646;
             this.dgvPatient.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPatient_CellClick);
             // 
@@ -387,12 +291,12 @@
             this.dataGridViewTextBoxColumn24.ReadOnly = true;
             this.dataGridViewTextBoxColumn24.Width = 50;
             // 
-            // Column1
+            // Column6
             // 
-            this.Column1.HeaderText = "D. entrée";
-            this.Column1.MinimumWidth = 100;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
+            this.Column6.HeaderText = "idpayeur";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Visible = false;
             // 
             // dataGridViewTextBoxColumn25
             // 
@@ -426,6 +330,14 @@
             this.dataGridViewTextBoxColumn28.Name = "dataGridViewTextBoxColumn28";
             this.dataGridViewTextBoxColumn28.ReadOnly = true;
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "ZS/HZS";
+            this.Column1.MinimumWidth = 60;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 60;
+            // 
             // dataGridViewTextBoxColumn29
             // 
             this.dataGridViewTextBoxColumn29.HeaderText = "Tél.";
@@ -448,19 +360,34 @@
             this.dataGridViewTextBoxColumn31.Name = "dataGridViewTextBoxColumn31";
             this.dataGridViewTextBoxColumn31.ReadOnly = true;
             // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "idtype";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Visible = false;
-            // 
             // Column2
             // 
             this.Column2.HeaderText = "Type";
             this.Column2.MinimumWidth = 100;
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "T. abonné";
+            this.Column3.MinimumWidth = 100;
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Entreprise";
+            this.Column4.MinimumWidth = 150;
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 150;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "N° service";
+            this.Column5.MinimumWidth = 100;
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
             // 
             // btnRecherche
             // 
@@ -471,7 +398,7 @@
             this.btnRecherche.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRecherche.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRecherche.Image = ((System.Drawing.Image)(resources.GetObject("btnRecherche.Image")));
-            this.btnRecherche.Location = new System.Drawing.Point(373, 292);
+            this.btnRecherche.Location = new System.Drawing.Point(461, 308);
             this.btnRecherche.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnRecherche.Name = "btnRecherche";
             this.btnRecherche.Size = new System.Drawing.Size(30, 21);
@@ -479,30 +406,12 @@
             this.btnRecherche.UseVisualStyleBackColor = false;
             this.btnRecherche.Click += new System.EventHandler(this.btnRecherche_Click);
             // 
-            // dtpDateEntree
-            // 
-            this.dtpDateEntree.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDateEntree.Location = new System.Drawing.Point(417, 49);
-            this.dtpDateEntree.Name = "dtpDateEntree";
-            this.dtpDateEntree.Size = new System.Drawing.Size(112, 21);
-            this.dtpDateEntree.TabIndex = 2;
-            // 
-            // lblDateEntree
-            // 
-            this.lblDateEntree.AutoSize = true;
-            this.lblDateEntree.Location = new System.Drawing.Point(322, 54);
-            this.lblDateEntree.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.lblDateEntree.Name = "lblDateEntree";
-            this.lblDateEntree.Size = new System.Drawing.Size(87, 15);
-            this.lblDateEntree.TabIndex = 636;
-            this.lblDateEntree.Text = "Date d\'entrée :";
-            // 
             // lblAge
             // 
             this.lblAge.AutoSize = true;
             this.lblAge.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAge.ForeColor = System.Drawing.Color.MediumBlue;
-            this.lblAge.Location = new System.Drawing.Point(362, 139);
+            this.lblAge.Location = new System.Drawing.Point(413, 94);
             this.lblAge.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblAge.Name = "lblAge";
             this.lblAge.Size = new System.Drawing.Size(39, 16);
@@ -512,39 +421,39 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 111);
+            this.label1.Location = new System.Drawing.Point(242, 64);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 15);
+            this.label1.Size = new System.Drawing.Size(46, 15);
             this.label1.TabIndex = 624;
-            this.label1.Text = "Noms du patient :";
+            this.label1.Text = "Noms :";
             // 
             // txtNom
             // 
             this.txtNom.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtNom.Location = new System.Drawing.Point(124, 108);
+            this.txtNom.Location = new System.Drawing.Point(307, 62);
             this.txtNom.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtNom.MaxLength = 75;
             this.txtNom.Name = "txtNom";
-            this.txtNom.Size = new System.Drawing.Size(405, 21);
+            this.txtNom.Size = new System.Drawing.Size(327, 21);
             this.txtNom.TabIndex = 4;
             this.txtNom.Enter += new System.EventHandler(this.txtNom_Enter);
             // 
             // txtAdresse
             // 
             this.txtAdresse.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.txtAdresse.Location = new System.Drawing.Point(124, 166);
+            this.txtAdresse.Location = new System.Drawing.Point(307, 120);
             this.txtAdresse.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtAdresse.MaxLength = 75;
             this.txtAdresse.Name = "txtAdresse";
-            this.txtAdresse.Size = new System.Drawing.Size(405, 21);
+            this.txtAdresse.Size = new System.Drawing.Size(327, 21);
             this.txtAdresse.TabIndex = 8;
             this.txtAdresse.Enter += new System.EventHandler(this.txtTel_Enter);
             // 
             // txtTel
             // 
             this.txtTel.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtTel.Location = new System.Drawing.Point(124, 195);
+            this.txtTel.Location = new System.Drawing.Point(95, 120);
             this.txtTel.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtTel.MaxLength = 15;
             this.txtTel.Name = "txtTel";
@@ -556,22 +465,22 @@
             // txtPersonContact
             // 
             this.txtPersonContact.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtPersonContact.Location = new System.Drawing.Point(124, 224);
+            this.txtPersonContact.Location = new System.Drawing.Point(95, 166);
             this.txtPersonContact.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtPersonContact.MaxLength = 75;
             this.txtPersonContact.Name = "txtPersonContact";
-            this.txtPersonContact.Size = new System.Drawing.Size(405, 21);
+            this.txtPersonContact.Size = new System.Drawing.Size(288, 21);
             this.txtPersonContact.TabIndex = 11;
             this.txtPersonContact.Enter += new System.EventHandler(this.txtTel_Enter);
             // 
             // txtTelContact
             // 
             this.txtTelContact.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtTelContact.Location = new System.Drawing.Point(413, 195);
+            this.txtTelContact.Location = new System.Drawing.Point(415, 166);
             this.txtTelContact.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtTelContact.MaxLength = 15;
             this.txtTelContact.Name = "txtTelContact";
-            this.txtTelContact.Size = new System.Drawing.Size(116, 21);
+            this.txtTelContact.Size = new System.Drawing.Size(143, 21);
             this.txtTelContact.TabIndex = 10;
             this.txtTelContact.TextChanged += new System.EventHandler(this.txtTelContact_TextChanged);
             this.txtTelContact.Enter += new System.EventHandler(this.txtTel_Enter);
@@ -579,7 +488,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(11, 169);
+            this.label5.Location = new System.Drawing.Point(242, 123);
             this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(57, 15);
@@ -589,7 +498,7 @@
             // txtAnnee
             // 
             this.txtAnnee.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtAnnee.Location = new System.Drawing.Point(298, 136);
+            this.txtAnnee.Location = new System.Drawing.Point(349, 91);
             this.txtAnnee.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtAnnee.MaxLength = 4;
             this.txtAnnee.Name = "txtAnnee";
@@ -602,7 +511,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(11, 198);
+            this.label7.Location = new System.Drawing.Point(11, 123);
             this.label7.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(72, 15);
@@ -612,22 +521,22 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(11, 227);
+            this.label8.Location = new System.Drawing.Point(11, 169);
             this.label8.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(111, 15);
+            this.label8.Size = new System.Drawing.Size(86, 15);
             this.label8.TabIndex = 627;
-            this.label8.Text = "Personne contact : ";
+            this.label8.Text = "Pers. contact : ";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(266, 198);
+            this.label9.Location = new System.Drawing.Point(385, 169);
             this.label9.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(147, 15);
+            this.label9.Size = new System.Drawing.Size(33, 15);
             this.label9.TabIndex = 628;
-            this.label9.Text = "Tél. personne de contact :";
+            this.label9.Text = "Tél. :";
             // 
             // cboSexe
             // 
@@ -637,37 +546,27 @@
             this.cboSexe.Items.AddRange(new object[] {
             "F",
             "M"});
-            this.cboSexe.Location = new System.Drawing.Point(124, 136);
+            this.cboSexe.Location = new System.Drawing.Point(95, 90);
             this.cboSexe.Name = "cboSexe";
-            this.cboSexe.Size = new System.Drawing.Size(53, 23);
+            this.cboSexe.Size = new System.Drawing.Size(141, 23);
             this.cboSexe.TabIndex = 5;
             this.cboSexe.SelectedIndexChanged += new System.EventHandler(this.cboSexe_SelectedIndexChanged);
             this.cboSexe.Enter += new System.EventHandler(this.cboSexe_Enter);
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(11, 81);
-            this.label10.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(61, 15);
-            this.label10.TabIndex = 629;
-            this.label10.Text = "Médecin :";
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(11, 139);
+            this.label6.Location = new System.Drawing.Point(11, 94);
             this.label6.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(98, 15);
+            this.label6.Size = new System.Drawing.Size(41, 15);
             this.label6.TabIndex = 630;
-            this.label6.Text = "Sexe du patient :";
+            this.label6.Text = "Sexe :";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(185, 139);
+            this.label2.Location = new System.Drawing.Point(242, 94);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 15);
@@ -679,9 +578,9 @@
             this.cboTypePatient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTypePatient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cboTypePatient.FormattingEnabled = true;
-            this.cboTypePatient.Location = new System.Drawing.Point(124, 49);
+            this.cboTypePatient.Location = new System.Drawing.Point(95, 61);
             this.cboTypePatient.Name = "cboTypePatient";
-            this.cboTypePatient.Size = new System.Drawing.Size(191, 23);
+            this.cboTypePatient.Size = new System.Drawing.Size(141, 23);
             this.cboTypePatient.TabIndex = 1;
             this.cboTypePatient.DropDown += new System.EventHandler(this.cboTypePatient_DropDown);
             this.cboTypePatient.SelectedIndexChanged += new System.EventHandler(this.cboTypePatient_SelectedIndexChanged);
@@ -689,17 +588,17 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 52);
+            this.label3.Location = new System.Drawing.Point(11, 65);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 15);
+            this.label3.Size = new System.Drawing.Size(39, 15);
             this.label3.TabIndex = 636;
-            this.label3.Text = "Type patient :";
+            this.label3.Text = "Type :";
             // 
             // txtMois
             // 
             this.txtMois.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtMois.Location = new System.Drawing.Point(256, 136);
+            this.txtMois.Location = new System.Drawing.Point(307, 91);
             this.txtMois.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtMois.MaxLength = 2;
             this.txtMois.Name = "txtMois";
@@ -711,7 +610,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(11, 255);
+            this.label4.Location = new System.Drawing.Point(8, 17);
             this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(81, 15);
@@ -722,7 +621,7 @@
             // 
             this.rbNouveau.AutoSize = true;
             this.rbNouveau.ForeColor = System.Drawing.Color.MediumBlue;
-            this.rbNouveau.Location = new System.Drawing.Point(124, 256);
+            this.rbNouveau.Location = new System.Drawing.Point(97, 15);
             this.rbNouveau.Name = "rbNouveau";
             this.rbNouveau.Size = new System.Drawing.Size(96, 19);
             this.rbNouveau.TabIndex = 649;
@@ -735,7 +634,7 @@
             // 
             this.rbUrgence.AutoSize = true;
             this.rbUrgence.ForeColor = System.Drawing.Color.MediumBlue;
-            this.rbUrgence.Location = new System.Drawing.Point(226, 256);
+            this.rbUrgence.Location = new System.Drawing.Point(97, 40);
             this.rbUrgence.Name = "rbUrgence";
             this.rbUrgence.Size = new System.Drawing.Size(72, 19);
             this.rbUrgence.TabIndex = 649;
@@ -744,29 +643,92 @@
             this.rbUrgence.UseVisualStyleBackColor = true;
             this.rbUrgence.Click += new System.EventHandler(this.rbUrgence_Click);
             // 
-            // dataGridViewTextBoxColumn32
+            // cboTypeFacture
             // 
-            this.dataGridViewTextBoxColumn32.HeaderText = "N°";
-            this.dataGridViewTextBoxColumn32.Name = "dataGridViewTextBoxColumn32";
-            this.dataGridViewTextBoxColumn32.ReadOnly = true;
-            this.dataGridViewTextBoxColumn32.Visible = false;
-            this.dataGridViewTextBoxColumn32.Width = 50;
+            this.cboTypeFacture.DropDownHeight = 50;
+            this.cboTypeFacture.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTypeFacture.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboTypeFacture.FormattingEnabled = true;
+            this.cboTypeFacture.IntegralHeight = false;
+            this.cboTypeFacture.Items.AddRange(new object[] {
+            "immédiat",
+            "différé"});
+            this.cboTypeFacture.Location = new System.Drawing.Point(288, 17);
+            this.cboTypeFacture.MaxDropDownItems = 10;
+            this.cboTypeFacture.Name = "cboTypeFacture";
+            this.cboTypeFacture.Size = new System.Drawing.Size(142, 23);
+            this.cboTypeFacture.TabIndex = 650;
             // 
-            // dataGridViewTextBoxColumn33
+            // lblDateOperation
             // 
-            this.dataGridViewTextBoxColumn33.HeaderText = "Médecin";
-            this.dataGridViewTextBoxColumn33.MinimumWidth = 150;
-            this.dataGridViewTextBoxColumn33.Name = "dataGridViewTextBoxColumn33";
-            this.dataGridViewTextBoxColumn33.ReadOnly = true;
-            this.dataGridViewTextBoxColumn33.Width = 150;
+            this.lblDateOperation.ForeColor = System.Drawing.Color.IndianRed;
+            this.lblDateOperation.Location = new System.Drawing.Point(285, 44);
+            this.lblDateOperation.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lblDateOperation.Name = "lblDateOperation";
+            this.lblDateOperation.Size = new System.Drawing.Size(80, 15);
+            this.lblDateOperation.TabIndex = 651;
+            this.lblDateOperation.Text = "jj/mm/aaaa";
+            this.lblDateOperation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // dataGridViewTextBoxColumn34
+            // label11
             // 
-            this.dataGridViewTextBoxColumn34.HeaderText = "Nbre";
-            this.dataGridViewTextBoxColumn34.MinimumWidth = 40;
-            this.dataGridViewTextBoxColumn34.Name = "dataGridViewTextBoxColumn34";
-            this.dataGridViewTextBoxColumn34.ReadOnly = true;
-            this.dataGridViewTextBoxColumn34.Width = 40;
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(202, 42);
+            this.label11.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(39, 15);
+            this.label11.TabIndex = 652;
+            this.label11.Text = "Date :";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(202, 20);
+            this.label12.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(79, 15);
+            this.label12.TabIndex = 653;
+            this.label12.Text = "Type facture :";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.lblTaux);
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.rbUrgence);
+            this.groupBox1.Controls.Add(this.cboTypeFacture);
+            this.groupBox1.Controls.Add(this.rbNouveau);
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.lblDateOperation);
+            this.groupBox1.Location = new System.Drawing.Point(95, 194);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(436, 73);
+            this.groupBox1.TabIndex = 654;
+            this.groupBox1.TabStop = false;
+            // 
+            // lblTaux
+            // 
+            this.lblTaux.ForeColor = System.Drawing.Color.IndianRed;
+            this.lblTaux.Location = new System.Drawing.Point(375, 44);
+            this.lblTaux.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lblTaux.Name = "lblTaux";
+            this.lblTaux.Size = new System.Drawing.Size(55, 15);
+            this.lblTaux.TabIndex = 654;
+            this.lblTaux.Text = "0000";
+            this.lblTaux.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblTaux.Visible = false;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.ForeColor = System.Drawing.Color.MediumBlue;
+            this.checkBox1.Location = new System.Drawing.Point(566, 168);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(68, 19);
+            this.checkBox1.TabIndex = 655;
+            this.checkBox1.Text = "ZS/HZS";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.Click += new System.EventHandler(this.checkBox1_Click);
             // 
             // FormPatient
             // 
@@ -774,24 +736,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(703, 451);
-            this.Controls.Add(this.rbUrgence);
-            this.Controls.Add(this.rbNouveau);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtMois);
             this.Controls.Add(this.btnSupprimer);
-            this.Controls.Add(this.dgvMedecin);
             this.Controls.Add(this.cboTypePatient);
             this.Controls.Add(this.btnQuitter);
-            this.Controls.Add(this.btnRetirer);
-            this.Controls.Add(this.btnReaffecter);
-            this.Controls.Add(this.cboMedecin);
             this.Controls.Add(this.btnAffecter);
             this.Controls.Add(this.txtRecherche);
             this.Controls.Add(this.dgvPatient);
             this.Controls.Add(this.btnRecherche);
-            this.Controls.Add(this.dtpDateEntree);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.lblDateEntree);
             this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.btnModifier);
             this.Controls.Add(this.btnEnregistrer);
@@ -808,7 +763,6 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.cboSexe);
-            this.Controls.Add(this.label10);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel2);
@@ -817,8 +771,9 @@
             this.ShowIcon = false;
             this.Text = "FormPatient";
             this.Shown += new System.EventHandler(this.FormPatient_Shown);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMedecin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatient)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -829,17 +784,10 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ToolTip toolTip1;
         public System.Windows.Forms.Button btnQuitter;
-        public System.Windows.Forms.Button btnRetirer;
-        public System.Windows.Forms.Button btnReaffecter;
-        public System.Windows.Forms.ComboBox cboMedecin;
         public System.Windows.Forms.Button btnAffecter;
-        public System.Windows.Forms.DataGridView dgvMedecin;
         public System.Windows.Forms.TextBox txtRecherche;
         public System.Windows.Forms.DataGridView dgvPatient;
         public System.Windows.Forms.Button btnRecherche;
-        public System.Windows.Forms.DateTimePicker dtpDateEntree;
-        public System.Windows.Forms.Label lblDateEntree;
-        private System.Windows.Forms.Button btnAnnuler;
         public System.Windows.Forms.Button btnEnregistrer;
         public System.Windows.Forms.Label lblAge;
         private System.Windows.Forms.Label label1;
@@ -854,7 +802,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         public System.Windows.Forms.ComboBox cboSexe;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label2;
         public System.Windows.Forms.ComboBox cboTypePatient;
@@ -862,23 +809,31 @@
         public System.Windows.Forms.Button btnModifier;
         public System.Windows.Forms.Button btnSupprimer;
         public System.Windows.Forms.TextBox txtMois;
+        private System.Windows.Forms.Label label4;
+        public System.Windows.Forms.RadioButton rbNouveau;
+        public System.Windows.Forms.RadioButton rbUrgence;
+        public System.Windows.Forms.ComboBox cboTypeFacture;
+        public System.Windows.Forms.Label lblDateOperation;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.GroupBox groupBox1;
+        public System.Windows.Forms.Label lblTaux;
+        public System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn24;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn25;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn26;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn27;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn28;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn29;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn30;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn31;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.Label label4;
-        public System.Windows.Forms.RadioButton rbNouveau;
-        public System.Windows.Forms.RadioButton rbUrgence;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn32;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn33;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn34;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        public System.Windows.Forms.Button btnAnnuler;
 
     }
 }

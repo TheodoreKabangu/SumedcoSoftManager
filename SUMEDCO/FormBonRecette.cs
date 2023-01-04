@@ -34,10 +34,12 @@ namespace SUMEDCO
 
         private void FormBon_Shown(object sender, EventArgs e)
         {
+            cc.AfficherRecette(this, "");
+
             if (poste == "pharmacie")
             {
-                txtMotif.Enabled = false;
-                btnValider.Enabled = false;
+                //txtMotif.Enabled = false;
+                //btnValide.Enabled = false;
                 btnSupprimer.Enabled = false;
                 btnValiderBon.Enabled = false;
                 cboCaisseRecette.Enabled = false;
@@ -62,8 +64,8 @@ namespace SUMEDCO
                 }
                 else if (poste == "recette")
                 {
-                    txtMotif.Enabled = false;
-                    btnValider.Enabled = false;
+                    //txtMotif.Enabled = false;
+                    //btnValide.Enabled = false;
                     btnSupprimer.Enabled = false;
                     btnValiderBon.Enabled = true;
                     lblCaisseUSD.Text = string.Format("{0} USD", cc.MontantCompte("571101"));
@@ -75,7 +77,7 @@ namespace SUMEDCO
 
         private void dgvFacture_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(dgvFacture.RowCount !=0)
+            if(dgvPayement.RowCount !=0)
             {
                 if (poste == "reception")
                 {
@@ -86,28 +88,28 @@ namespace SUMEDCO
 
         private void btnRetirer_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Rassurez-vous de renseigner la cause de ce retrait", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            txtMotif.Enabled = true;
-            btnValider.Enabled = true;
-            txtMotif.Focus();
-            btnRetirer.Enabled = false;
-            supprimer_ligne = true;
-            supprimer_bon = false;
+            //MessageBox.Show("Rassurez-vous de renseigner la cause de ce retrait", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //txtMotif.Enabled = true;
+            //btnValide.Enabled = true;
+            //txtMotif.Focus();
+            //btnRetirer.Enabled = false;
+            //supprimer_ligne = true;
+            //supprimer_bon = false;
         }
 
         private void btnActualiser_Click(object sender, EventArgs e)
         {
-            cc.ActualiserBon(this, "");
+            cc.AfficherRecette(this, "");
         }
         private void btnValiderBon_Click(object sender, EventArgs e)
         {
-            if(cboCaisseRecette.Text !="" && dgvFacture.RowCount != 0)
+            if(cboCaisseRecette.Text !="" && dgvPayement.RowCount != 0)
             {
                 if (cboCaisseRecette.Text == "CDF")
                     caisse = "Caisse en CDF Recettes";
                 else
                     caisse = "Caisse en USD Recettes";
-                if (dgvBon.CurrentRow.Cells[1].Value.ToString() == "immédiat")
+                if (dgvRecette.CurrentRow.Cells[1].Value.ToString() == "immédiat")
                 {
                     MessageBox.Show("Rassurez-vous d'avoir bien compté : " + txtTotal.Text + " CDF", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     numcompte = cc.TrouverId("numcompte", caisse).ToString();
@@ -129,23 +131,13 @@ namespace SUMEDCO
         {
             this.Close();
         }
-
-        private void btnValider_Click(object sender, EventArgs e)
-        {
-            if (txtMotif.Text != "")
-            {
-                if(supprimer_ligne) cc.RetirerLigne(this);
-                if (supprimer_bon) cc.RetirerBon(this);
-            }
-        }
-
         private void dgvBon_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(dgvBon.RowCount !=0)
+            if(dgvRecette.RowCount !=0)
             {
-                numbon = int.Parse(dgvBon.CurrentRow.Cells[0].Value.ToString());
-                idpatient = int.Parse(dgvBon.CurrentRow.Cells[4].Value.ToString());
-                payeur = dgvBon.CurrentRow.Cells[3].Value.ToString();
+                numbon = int.Parse(dgvRecette.CurrentRow.Cells[0].Value.ToString());
+                idpatient = int.Parse(dgvRecette.CurrentRow.Cells[4].Value.ToString());
+                payeur = dgvRecette.CurrentRow.Cells[3].Value.ToString();
                 
                 cc.AfficherDetailsBon2(this);
                 if (poste == "reception")
@@ -162,8 +154,8 @@ namespace SUMEDCO
 
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
-            dgvBon.Rows.Clear();
-            dgvFacture.Rows.Clear();
+            dgvRecette.Rows.Clear();
+            dgvPayement.Rows.Clear();
         }
 
         private void btnAfficherTout_Click(object sender, EventArgs e)
@@ -174,36 +166,27 @@ namespace SUMEDCO
 
         private void btnSupprimer_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Rassurez-vous de renseigner la cause de cette suppression", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            txtMotif.Enabled = true;
-            btnValider.Enabled = true;
-            txtMotif.Focus();
-            btnSupprimer.Enabled = false;
-            supprimer_bon = true;
-            supprimer_ligne = false;
+            //MessageBox.Show("Rassurez-vous de renseigner la cause de cette suppression", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //txtMotif.Enabled = true;
+            //btnValide.Enabled = true;
+            //txtMotif.Focus();
+            //btnSupprimer.Enabled = false;
+            //supprimer_bon = true;
+            //supprimer_ligne = false;
         }
 
         private void btnDate_Click(object sender, EventArgs e)
         {
             cc.ChangerDate(new DateTaux(), this, lblDateOperation, lblTaux);
         }
-
-        private void btnCacherDiffere_Click(object sender, EventArgs e)
-        {
-            if(dgvBon.RowCount > 0)
-            {
-                for (int i = 0; i < dgvBon.RowCount; i++)
-                {
-                    if (dgvBon.Rows[i].Cells[1].Value.ToString() == "différé")
-                        dgvBon.Rows.RemoveAt(i);
-                }
-            }
-            
-        }
-
         private void btnRecherche_Click(object sender, EventArgs e)
         {
-            cc.ActualiserBon(this, "recherche");
+            cc.AfficherRecette(this, "recherche");
+        }
+
+        private void btnTouteRecette_Click(object sender, EventArgs e)
+        {
+            cc.AfficherRecette(this, "tout");
         }
     }
 }
