@@ -20,7 +20,7 @@ namespace SUMEDCO
         public int numbon=0,
             idmedecin = 0,
             idconsultation = 0;
-        public string patient = "",
+        public string patient = "", age="", sexe="",
             medecin = "",
             numfiche= "",
             beneficiaire,

@@ -52,7 +52,7 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 329);
+            this.panel2.Location = new System.Drawing.Point(0, 317);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(289, 46);
             this.panel2.TabIndex = 152;
@@ -93,7 +93,7 @@
             this.btnAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAnnuler.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAnnuler.ForeColor = System.Drawing.Color.Navy;
-            this.btnAnnuler.Location = new System.Drawing.Point(21, 252);
+            this.btnAnnuler.Location = new System.Drawing.Point(21, 246);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(243, 27);
             this.btnAnnuler.TabIndex = 5;
@@ -125,7 +125,7 @@
             this.btnConnexion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConnexion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConnexion.ForeColor = System.Drawing.Color.Navy;
-            this.btnConnexion.Location = new System.Drawing.Point(21, 219);
+            this.btnConnexion.Location = new System.Drawing.Point(21, 213);
             this.btnConnexion.Name = "btnConnexion";
             this.btnConnexion.Size = new System.Drawing.Size(243, 27);
             this.btnConnexion.TabIndex = 4;
@@ -189,7 +189,7 @@
             this.linkModifier.AutoSize = true;
             this.linkModifier.DisabledLinkColor = System.Drawing.Color.MediumBlue;
             this.linkModifier.LinkColor = System.Drawing.Color.MediumBlue;
-            this.linkModifier.Location = new System.Drawing.Point(74, 294);
+            this.linkModifier.Location = new System.Drawing.Point(74, 288);
             this.linkModifier.Name = "linkModifier";
             this.linkModifier.Size = new System.Drawing.Size(142, 15);
             this.linkModifier.TabIndex = 6;
@@ -215,7 +215,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(289, 375);
+            this.ClientSize = new System.Drawing.Size(289, 363);
             this.Controls.Add(this.cboUtilisateur);
             this.Controls.Add(this.linkModifier);
             this.Controls.Add(this.checkBox1);

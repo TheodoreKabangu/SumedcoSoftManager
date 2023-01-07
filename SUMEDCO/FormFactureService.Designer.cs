@@ -128,7 +128,7 @@
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(30, 27);
             this.btnAnnuler.TabIndex = 7;
-            this.toolTip1.SetToolTip(this.btnAnnuler, "Annuler le bon");
+            this.toolTip1.SetToolTip(this.btnAnnuler, "Annuler la recette");
             this.btnAnnuler.UseVisualStyleBackColor = false;
             this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
             // 
@@ -148,7 +148,7 @@
             this.btnEnregistrer.Name = "btnEnregistrer";
             this.btnEnregistrer.Size = new System.Drawing.Size(30, 27);
             this.btnEnregistrer.TabIndex = 8;
-            this.toolTip1.SetToolTip(this.btnEnregistrer, "Enregistrer le bon");
+            this.toolTip1.SetToolTip(this.btnEnregistrer, "Enregistrer la recette");
             this.btnEnregistrer.UseVisualStyleBackColor = false;
             this.btnEnregistrer.Click += new System.EventHandler(this.btnEnregistrer_Click);
             // 

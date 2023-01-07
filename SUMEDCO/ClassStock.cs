@@ -36,6 +36,7 @@ namespace SUMEDCO
                 case "produit": cmdtxt = "select idproduit from Produit where nomproduit = @nom"; break;
                 case "produitstock": cmdtxt = "select idproduit from LigneStock where idstock = @nom"; break;
                 case "autreproduit": cmdtxt = "select idproduit from ProduitAutreStock where nomproduit = @nom"; break;
+                case "utilisateur": cmdtxt = "select id from Utilisateur where poste = @nom"; break;
             }
             con.Open();
             try
@@ -162,6 +163,10 @@ namespace SUMEDCO
                         {
                             MFormAdmin ad = new MFormAdmin();
                             ad.utilisateur = c.cboUtilisateur.Text;
+                            RefuserAutorisation("infirmier - réception");
+                            RefuserAutorisation("infirmier - abonné");
+                            RefuserAutorisation("infirmier - médecin");
+                            RefuserAutorisation("pharmacie - caisse");
                             ad.Show();
                         }
                         else
@@ -174,19 +179,23 @@ namespace SUMEDCO
                     {
                         MFormReception r = new MFormReception();
                         r.idutilisateur = id;
+                        RefuserAutorisation("infirmier - réception");
                         r.Show();
                     }
                     else if (c.poste == "recette")
                     {
                         MFormRecette rec = new MFormRecette();
                         rec.idutilisateur = id;
+                        RefuserAutorisation("pharmacie - caisse");
                         rec.Show();
                     }
                     else if (c.poste == "infirmier")
                     {
-                        MFormInfirmerie inf = new MFormInfirmerie();
-                        inf.idutilisateur = id;
-                        inf.Show();
+                        FormAutorisation aut = new FormAutorisation();
+                        aut.idutilisateur = id;
+                        aut.poste = "infirmier";
+                        aut.Show();
+
                     }
                     else if (c.poste == "médecin")
                     {
@@ -194,6 +203,7 @@ namespace SUMEDCO
                         {
                             MFormConsultation cons = new MFormConsultation();
                             cons.idmedecin = c.idmedecin;
+                            RefuserAutorisation("infirmier - médecin");
                             cons.Show();
                         }
                         else
@@ -206,6 +216,7 @@ namespace SUMEDCO
                     {
                         MFormAbonne ab = new MFormAbonne();
                         ab.idutilisateur = id;
+                        RefuserAutorisation("infirmier - abonné");
                         ab.Show();
                     }
                     else if (c.poste == "dépense")
@@ -218,13 +229,18 @@ namespace SUMEDCO
                     {
                         MFormComptabilite co = new MFormComptabilite();
                         co.idutilisateur = id;
+                        RefuserAutorisation("infirmier - réception");
+                        RefuserAutorisation("infirmier - abonné");
+                        RefuserAutorisation("infirmier - médecin");
+                        RefuserAutorisation("pharmacie - caisse");
                         co.Show();
                     }
                     else if (c.poste == "pharmacie")
                     {
-                        MFormPharmacie ph = new MFormPharmacie();
-                        ph.idutilisateur = id;
-                        ph.Show();
+                        FormAutorisation aut = new FormAutorisation();
+                        aut.idutilisateur = id;
+                        aut.poste = "pharmacie";
+                        aut.Show();
                     }
                     else if (c.poste == "stock")
                     {
@@ -236,6 +252,59 @@ namespace SUMEDCO
                     if (c.access_autorise)
                         c.Close();
             }
+        }
+        public void ChargerAutorisation(ComboBox combo, string motif)
+        {
+            switch (motif)
+            {
+                case "infirmier": cmd = new SqlCommand("select libelle from Autorisations where libelle LIKE 'infirmier%'", con); break;
+                case "pharmacie": cmd = new SqlCommand("select libelle from Autorisations where libelle LIKE 'pharmacie%'", con); break;
+                case "Admin": cmd = new SqlCommand("select libelle from Autorisations", con); break;
+            }
+            con.Open();
+            try
+            {
+                dr = cmd.ExecuteReader();
+                combo.Items.Clear();
+                while (dr.Read())
+                {
+                    combo.Items.Add(dr[0].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            con.Close();
+        }
+        public void RefuserAutorisation(string compte)
+        {
+            con.Open();
+            SqlTransaction tx = con.BeginTransaction();
+            try
+            {
+                cmd = new SqlCommand("update Autorisations set etat = 'refusé' where libelle = '"+compte+"'", con);
+                cmd.Transaction = tx;
+                cmd.ExecuteNonQuery();
+                tx.Commit();
+            }
+            catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            con.Close();
+        }
+        public void ActiverAutorisation(string compte)
+        {
+            con.Open();
+            SqlTransaction tx = con.BeginTransaction();
+            try
+            {
+                cmd = new SqlCommand("update Autorisations set etat = 'autorisé' where libelle = '" + compte + "'", con);
+                cmd.Transaction = tx;
+                cmd.ExecuteNonQuery();
+                tx.Commit();
+                MessageBox.Show("Autorisation accordée", "Poste utilisqteur", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            con.Close();
         }
         public void ModifierMotdePasse(FormConnexion c, FormConnexionPass cp)
         {

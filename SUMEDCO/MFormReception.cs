@@ -15,7 +15,7 @@ namespace SUMEDCO
         ClassCompta cc = new ClassCompta();
         public string statut = "";
         public int idutilisateur;
-
+        public bool infirmier_autorise;
         public MFormReception()
         {
             InitializeComponent();
@@ -61,6 +61,11 @@ namespace SUMEDCO
         {
             statut = "ancien";
             cc.AfficherSousForm(this, new FormPatient());
+        }
+
+        private void btnChat_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

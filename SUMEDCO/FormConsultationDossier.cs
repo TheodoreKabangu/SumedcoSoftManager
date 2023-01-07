@@ -18,7 +18,7 @@ namespace SUMEDCO
         }
         public int idconsultation = 0,
             idpatient = 0,
-            idmedecin = 0;
+            idmedecin = 0, idprise;
         public string patient, medecin;
         ClassMalade cm = new ClassMalade();
         private void cboCategorie_SelectedIndexChanged(object sender, EventArgs e)
@@ -33,9 +33,10 @@ namespace SUMEDCO
                 case "complément": cm.RenseignementConsultation(this, "complément"); break;
                 case "examen physique": cm.RenseignementConsultation(this, "examen physique"); break;
                 case "prédiagnostic": cm.RenseignementConsultation(this, "prédiagnostic"); break;
-                case "examen labo": cm.ResultatExamenConsultation(this); break;
+                case "examen para": cm.PrescriptionService(this, "examen para"); break;
                 case "diagnostic": cm.MaladieConsultation(this); break;
-                case "prescription": cm.PrescriptionConsultation(this); break;
+                case "prescription produit": cm.PrescriptionProduit(this); break;
+                case "prescription service": cm.PrescriptionService(this, "autre prescription"); break;
                 case "autre prescription": cm.RenseignementConsultation(this, "autre prescription"); break;
                 case "rendez-vous": cm.AfficherRDVConsultation(idconsultation, new FormConsulterRendezVous()); break;
                 case "tout": cm.DetailsConsultation(this); break;
@@ -59,10 +60,10 @@ namespace SUMEDCO
                 if (dgvDetail.CurrentRow.Cells[0].Value.ToString() != "")
                     dgvDetail.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.Silver;
                 
-                if(dgvDetail.CurrentRow.Cells[3].Selected)
-                {
-                    cm.ModifierDossier(this);
-                }
+                //if(dgvDetail.CurrentRow.Cells[3].Selected)
+                //{
+                //    cm.ModifierDossier(this);
+                //}
             }
         }
     }

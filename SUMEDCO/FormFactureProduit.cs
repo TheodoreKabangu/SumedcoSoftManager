@@ -30,8 +30,8 @@ namespace SUMEDCO
             idpayeur,
             idrecette;
         public double prixunitaire=0;
-        public bool ajoutvalide;
-        public string numcompte = "",
+        public bool ajoutvalide, recettePatientConsulte, fermeture_succes;
+        public string poste, numcompte = "",
             numcomptediffere = "411100";
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -84,6 +84,11 @@ namespace SUMEDCO
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
             cc.Enregistrer(this);
+            if (recettePatientConsulte)
+            {
+                fermeture_succes = true;
+                this.Hide();
+            }
         }
         private void btnDate_Click(object sender, EventArgs e)
         {

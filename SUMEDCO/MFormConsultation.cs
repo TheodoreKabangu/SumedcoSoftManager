@@ -23,16 +23,7 @@ namespace SUMEDCO
 
         private void btnConsultation_Click(object sender, EventArgs e)
         {
-            cm.AfficherSousForm(this, new FormAgenda());
-            
-            //cm.AfficherSousForm(this, new FormAgenda());
-            //cc.CacherSousMenu(pnlSousMenu);
-
-            //cm.AfficherSousForm(this, new FormExamen());
-            //cc.CacherSousMenu(pnlSousMenu);
-
-            //cm.AfficherSousForm(this, new FormPrescription());
-            //cc.CacherSousMenu(pnlSousMenu);
+            cm.AfficherSousForm(this, new FormConsulterPrise());            
         }
         private void btnQuitter_Click(object sender, EventArgs e)
         {
@@ -40,12 +31,22 @@ namespace SUMEDCO
         }
         private void btnIntervention_Click(object sender, EventArgs e)
         {
-            cm.AfficherSousForm(this, new FormConsultationDossier());
+            
         }
 
         private void btnChat_Click(object sender, EventArgs e)
         {
             cm.AfficherSousForm(this, new FormMedecinHistoChat());
+        }
+
+        private void btnRendezVous_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDossier_Click(object sender, EventArgs e)
+        {
+            cm.AfficherSousForm(this, new FormConsultationDossier());
         }
     }
 }

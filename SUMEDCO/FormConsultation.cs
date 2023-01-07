@@ -28,7 +28,7 @@ namespace SUMEDCO
         }
         private void btnRecherche_Click(object sender, EventArgs e)
         {
-            cm.Afficher(this);
+            cm.Afficher(this, "recherche");
         }
 
         private void dgvPatient_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -36,24 +36,27 @@ namespace SUMEDCO
             if (dgvPatient.RowCount != 0)
             {
                 idconsultation = int.Parse(dgvPatient.CurrentRow.Cells[0].Value.ToString());
-                idpatient = int.Parse(dgvPatient.CurrentRow.Cells[3].Value.ToString());
+                idpatient = cm.TrouverId("patient", dgvPatient.CurrentRow.Cells[1].Value.ToString());
                 btnDossier.Enabled = true;
+                btnConsultation.Enabled = true;
             }
         }
 
         private void FormConsultation_Shown(object sender, EventArgs e)
         {
-            
-        }
-        private void txtPatient_TextChanged(object sender, EventArgs e)
-        {
-
+            cm.Afficher(this, "");
         }
 
         private void btnDossier_Click(object sender, EventArgs e)
         {
             fermeture_succes = true;
             this.Hide();
+        }
+
+        private void btnConsultation_Click(object sender, EventArgs e)
+        {
+            cm.Afficher(this, "patient");
+            btnConsultation.Enabled = false;
         }
 
     }

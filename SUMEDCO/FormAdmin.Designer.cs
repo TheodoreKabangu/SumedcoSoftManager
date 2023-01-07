@@ -35,6 +35,7 @@
             this.btnService = new System.Windows.Forms.Button();
             this.btnUtilisateur = new System.Windows.Forms.Button();
             this.btnSigneVital = new System.Windows.Forms.Button();
+            this.btnActiver = new System.Windows.Forms.Button();
             this.btnQuitter = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -122,6 +123,26 @@
             this.btnSigneVital.UseVisualStyleBackColor = false;
             this.btnSigneVital.Click += new System.EventHandler(this.btnSigneVital_Click);
             // 
+            // btnActiver
+            // 
+            this.btnActiver.BackColor = System.Drawing.Color.Transparent;
+            this.btnActiver.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnActiver.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnActiver.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnActiver.FlatAppearance.BorderSize = 0;
+            this.btnActiver.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.btnActiver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActiver.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActiver.Image = ((System.Drawing.Image)(resources.GetObject("btnActiver.Image")));
+            this.btnActiver.Location = new System.Drawing.Point(120, 0);
+            this.btnActiver.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnActiver.Name = "btnActiver";
+            this.btnActiver.Size = new System.Drawing.Size(30, 30);
+            this.btnActiver.TabIndex = 720;
+            this.toolTip1.SetToolTip(this.btnActiver, "Activer les autorisations des comptes");
+            this.btnActiver.UseVisualStyleBackColor = false;
+            this.btnActiver.Click += new System.EventHandler(this.btnActiver_Click);
+            // 
             // btnQuitter
             // 
             this.btnQuitter.BackColor = System.Drawing.Color.Transparent;
@@ -144,6 +165,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(255)))));
+            this.panel2.Controls.Add(this.btnActiver);
             this.panel2.Controls.Add(this.btnSigneVital);
             this.panel2.Controls.Add(this.btnMedecin);
             this.panel2.Controls.Add(this.btnService);
@@ -203,6 +225,7 @@
         public System.Windows.Forms.Button btnUtilisateur;
         public System.Windows.Forms.Button btnSigneVital;
         public System.Windows.Forms.Panel pnlChildForm;
+        public System.Windows.Forms.Button btnActiver;
 
 
 

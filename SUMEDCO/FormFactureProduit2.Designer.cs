@@ -46,7 +46,16 @@
             this.btnRetirer = new System.Windows.Forms.Button();
             this.btnQuitter = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtNbfois = new System.Windows.Forms.TextBox();
+            this.txtQte = new System.Windows.Forms.TextBox();
+            this.txtNbjour = new System.Windows.Forms.TextBox();
+            this.btnAffecter = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStock)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvStock
@@ -86,11 +95,11 @@
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvStock.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvStock.GridColor = System.Drawing.Color.RoyalBlue;
-            this.dgvStock.Location = new System.Drawing.Point(12, 33);
+            this.dgvStock.Location = new System.Drawing.Point(12, 43);
             this.dgvStock.Name = "dgvStock";
             this.dgvStock.RowHeadersVisible = false;
             this.dgvStock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvStock.Size = new System.Drawing.Size(601, 238);
+            this.dgvStock.Size = new System.Drawing.Size(601, 207);
             this.dgvStock.TabIndex = 643;
             this.dgvStock.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStock_CellClick);
             // 
@@ -168,7 +177,7 @@
             this.btnValider.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnValider.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnValider.Image = ((System.Drawing.Image)(resources.GetObject("btnValider.Image")));
-            this.btnValider.Location = new System.Drawing.Point(583, 278);
+            this.btnValider.Location = new System.Drawing.Point(583, 281);
             this.btnValider.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnValider.Name = "btnValider";
             this.btnValider.Size = new System.Drawing.Size(30, 26);
@@ -189,7 +198,7 @@
             this.btnRetirer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRetirer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRetirer.Image = ((System.Drawing.Image)(resources.GetObject("btnRetirer.Image")));
-            this.btnRetirer.Location = new System.Drawing.Point(543, 278);
+            this.btnRetirer.Location = new System.Drawing.Point(543, 281);
             this.btnRetirer.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnRetirer.Name = "btnRetirer";
             this.btnRetirer.Size = new System.Drawing.Size(30, 26);
@@ -209,7 +218,7 @@
             this.btnQuitter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuitter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuitter.Image = ((System.Drawing.Image)(resources.GetObject("btnQuitter.Image")));
-            this.btnQuitter.Location = new System.Drawing.Point(494, 278);
+            this.btnQuitter.Location = new System.Drawing.Point(494, 281);
             this.btnQuitter.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnQuitter.Name = "btnQuitter";
             this.btnQuitter.Size = new System.Drawing.Size(30, 26);
@@ -218,13 +227,108 @@
             this.btnQuitter.UseVisualStyleBackColor = false;
             this.btnQuitter.Click += new System.EventHandler(this.btnQuitter_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.txtNbfois);
+            this.groupBox1.Controls.Add(this.txtQte);
+            this.groupBox1.Controls.Add(this.txtNbjour);
+            this.groupBox1.Controls.Add(this.btnAffecter);
+            this.groupBox1.Location = new System.Drawing.Point(12, 256);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(474, 52);
+            this.groupBox1.TabIndex = 759;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Posologie";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(216, 24);
+            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(56, 15);
+            this.label3.TabIndex = 768;
+            this.label3.Text = "Nb. jours";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(131, 24);
+            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(26, 15);
+            this.label2.TabIndex = 769;
+            this.label2.Text = "Qté";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(14, 24);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(48, 15);
+            this.label1.TabIndex = 770;
+            this.label1.Text = "Nb. fois";
+            // 
+            // txtNbfois
+            // 
+            this.txtNbfois.Location = new System.Drawing.Point(74, 21);
+            this.txtNbfois.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.txtNbfois.MaxLength = 75;
+            this.txtNbfois.Name = "txtNbfois";
+            this.txtNbfois.Size = new System.Drawing.Size(45, 21);
+            this.txtNbfois.TabIndex = 767;
+            this.txtNbfois.TextChanged += new System.EventHandler(this.txtNbfois_TextChanged);
+            // 
+            // txtQte
+            // 
+            this.txtQte.Location = new System.Drawing.Point(169, 21);
+            this.txtQte.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.txtQte.MaxLength = 75;
+            this.txtQte.Name = "txtQte";
+            this.txtQte.Size = new System.Drawing.Size(40, 21);
+            this.txtQte.TabIndex = 766;
+            this.txtQte.TextChanged += new System.EventHandler(this.txtQte_TextChanged);
+            // 
+            // txtNbjour
+            // 
+            this.txtNbjour.Location = new System.Drawing.Point(284, 21);
+            this.txtNbjour.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.txtNbjour.MaxLength = 75;
+            this.txtNbjour.Name = "txtNbjour";
+            this.txtNbjour.Size = new System.Drawing.Size(69, 21);
+            this.txtNbjour.TabIndex = 765;
+            this.txtNbjour.TextChanged += new System.EventHandler(this.txtNbjour_TextChanged);
+            // 
+            // btnAffecter
+            // 
+            this.btnAffecter.BackColor = System.Drawing.Color.Transparent;
+            this.btnAffecter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAffecter.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnAffecter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnAffecter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAffecter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAffecter.Image = ((System.Drawing.Image)(resources.GetObject("btnAffecter.Image")));
+            this.btnAffecter.Location = new System.Drawing.Point(353, 21);
+            this.btnAffecter.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btnAffecter.Name = "btnAffecter";
+            this.btnAffecter.Size = new System.Drawing.Size(30, 21);
+            this.btnAffecter.TabIndex = 764;
+            this.toolTip1.SetToolTip(this.btnAffecter, "Attacher à un patient");
+            this.btnAffecter.UseVisualStyleBackColor = false;
+            this.btnAffecter.Click += new System.EventHandler(this.btnAffecter_Click);
+            // 
             // FormFactureProduit2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(625, 317);
+            this.ClientSize = new System.Drawing.Size(625, 320);
             this.ControlBox = false;
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnQuitter);
             this.Controls.Add(this.btnValider);
             this.Controls.Add(this.btnRetirer);
@@ -238,7 +342,10 @@
             this.Name = "FormFactureProduit2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SSM - Facture de produits";
+            this.Shown += new System.EventHandler(this.FormFactureProduit2_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvStock)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -258,5 +365,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.TextBox txtNbfois;
+        public System.Windows.Forms.TextBox txtQte;
+        public System.Windows.Forms.TextBox txtNbjour;
+        public System.Windows.Forms.Button btnAffecter;
     }
 }

@@ -45,7 +45,7 @@ namespace SUMEDCO
         {
             if (dgvAbonne.RowCount != 0)
             {
-                cc.Modifier(this, new FormFactureService2());
+                cc.Modifier(this, new FormPayement());
                 dgvAbonne.Rows[dgvAbonne.RowCount - 1].Cells[4].Value = cm.TrouverNom("patient", int.Parse(dgvAbonne.Rows[dgvAbonne.RowCount - 1].Cells[2].Value.ToString()));
             }
         }
@@ -87,7 +87,7 @@ namespace SUMEDCO
 
         private void btnPlusPlainte_Click(object sender, EventArgs e)
         {
-            cc.SelectionService(this, new FormFactureService2());
+            //cc.SelectionService(this, new FormPayement());
         }
 
         private void btnRetirerPlainte_Click(object sender, EventArgs e)

@@ -15,7 +15,6 @@ namespace SUMEDCO
         public MFormInfirmerie()
         {
             InitializeComponent();
-            cc.ActualiserDesign(pnlSousMenu);
         }
         ClassMalade cm = new ClassMalade();
         ClassCompta cc = new ClassCompta();
@@ -35,42 +34,6 @@ namespace SUMEDCO
         private void btnQuitter_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-        private void btnPatient_Click(object sender, EventArgs e)
-        {
-            statut = "nouveau";
-            cm.AfficherSousForm(this, new FormPatient());
-        }
-
-        private void btnIntervention_Click(object sender, EventArgs e)
-        {
-            cm.AfficherSousForm(this, new FormTraitement());
-        }
-
-        private void btnPatientAncien_Click(object sender, EventArgs e)
-        {
-            statut = "ancien";
-            cm.AfficherSousForm(this, new FormPatient());
-        }
-
-        private void btnEncaisser_Click(object sender, EventArgs e)
-        {
-            cc.AfficherSousMenu(pnlSousMenu);
-        }
-
-        private void btnBonEncaisser_Click(object sender, EventArgs e)
-        {
-            cm.AfficherSousForm(this, new FormBonRecette());
-        }
-
-        private void btnFactureService_Click(object sender, EventArgs e)
-        {
-            cm.AfficherSousForm(this, new FormFactureService());
-        }
-
-        private void btnFactureProduit_Click(object sender, EventArgs e)
-        {
-            cm.AfficherSousForm(this, new FormFactureProduit());
         }
     }
 }

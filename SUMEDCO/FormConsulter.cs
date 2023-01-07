@@ -45,7 +45,7 @@ namespace SUMEDCO
                 if (MessageBox.Show("Le malade est-il le répondant lui-même ?", "Consultation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     cm.EnregistrerConsultation(this);
                 else
-                    cboLienRepondant.Select();
+                    checkBox1.Select();
             }
             else
             {
@@ -78,6 +78,7 @@ namespace SUMEDCO
         {
             tabControl1.SelectedTab = tabControl1.TabPages[5];
             btnExamPhys.Enabled = false;
+            cm.ExamenPhysique(this);
         }
 
         private void btnPrediagnostic_Click(object sender, EventArgs e)
@@ -133,7 +134,7 @@ namespace SUMEDCO
         {
             if (motif == "modifier")
                 dgvPresc.Rows.Clear();
-            cm.Prescrire(this, new FormFactureProduit2());
+            cm.Prescrire(this, new FormFactureProduit());
         }
 
         private void btnPlusPlainte_Click(object sender, EventArgs e)
@@ -177,7 +178,7 @@ namespace SUMEDCO
         private void btnEnregistrerExamPhys_Click(object sender, EventArgs e)
         {
             label = "examen physique";
-            cm.AjouterRenseignement(dgvExamPhys, label, idconsultation);
+            cm.AjouterValeurExamenPhysique(this);
         }
 
         private void btnEnregistrerPrediagnostic_Click(object sender, EventArgs e)
@@ -188,20 +189,24 @@ namespace SUMEDCO
 
         private void btnEnregistrerLabo_Click(object sender, EventArgs e)
         {
-            label = "examen labo";
-            cm.AjouterExamenConsultation(this);
+            label = "examen para";
+            cm.AjouterExamenPara(this, new FormFactureService());
         }
 
         private void btnEnregistrerDiagnostic_Click(object sender, EventArgs e)
         {
             label = "diagnostic";
-            cm.AjouterMaladieDiagnostic(this);
+            cm.AjouterDiagnostics(this);
         }
 
         private void btnEnregistrerAutrePresc_Click(object sender, EventArgs e)
         {
             label = "autre prescription";
             cm.AjouterRenseignement(dgvAutrePresc, label, idconsultation);
+            if(dgvAutrePrescS.RowCount != 0)
+            {
+                cm.AjouterPrescriptionService(this);
+            }
         }
 
         private void btnPlusHisto_Click(object sender, EventArgs e)
@@ -246,13 +251,6 @@ namespace SUMEDCO
                 dgvComplement.Rows.RemoveAt(dgvComplement.CurrentRow.Index);
         }
 
-        private void btnPlusExamPhys_Click(object sender, EventArgs e)
-        {
-            if (motif == "modifier")
-                dgvExamPhys.Rows.Clear();
-            cm.ExamenPhysique(this, new FormExamenPhysique());
-        }
-
         private void btnRetirerExamPhys_Click(object sender, EventArgs e)
         {
             if (dgvExamPhys.RowCount != 0) 
@@ -269,14 +267,25 @@ namespace SUMEDCO
 
         private void btnRetirerPrediagnostic_Click(object sender, EventArgs e)
         {
-            if (dgvPrediagnostic.RowCount != 0)
-                dgvPrediagnostic.Rows.RemoveAt(dgvPrediagnostic.CurrentRow.Index);
+            if (dgvLabo.RowCount != 0)
+                dgvLabo.Rows.RemoveAt(dgvLabo.CurrentRow.Index);
         }
 
         private void btnRetirerLabo_Click(object sender, EventArgs e)
         {
-            if(dgvLabo.RowCount != 0)
-                dgvLabo.Rows.RemoveAt(dgvLabo.CurrentRow.Index);
+            if (dgvLabo.RowCount != 0)
+            {
+                if (dgvLabo.CurrentRow.Cells[0].Value.ToString() != "")
+                {
+                    dgvLabo.Rows.RemoveAt(dgvLabo.CurrentRow.Index);
+                    cc.CalculerTotal(dgvLabo, 2, txtTotal);
+                }
+                else
+                {
+                    if (dgvLabo.Rows[dgvLabo.CurrentRow.Index + 1].Cells[0].Value.ToString() == "")
+                        dgvLabo.Rows.RemoveAt(dgvLabo.CurrentRow.Index); 
+                }
+            }
         }
 
         private void btnPlusDiagnostic_Click(object sender, EventArgs e)
@@ -432,17 +441,27 @@ namespace SUMEDCO
 
         private void dgvLabo_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvLabo.CurrentRow.Cells[1].Selected && dgvLabo.CurrentRow.Cells[0].Value.ToString() == "")
+            
+        }
+
+        private void dgv1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgv1.RowCount != 0)
             {
-                if (motif == "modifier")
-                {
-                    cc.ChargerRubriqueExamen(this);
-                }
-                if (dgvLabo.CurrentRow.Cells[1].Value.ToString() == "AUTRES")
+                //if (motif == "modifier")
+                //{
+                //    cc.ChargerRubriqueExamen(this);
+                //}
+                if (dgv1.CurrentRow.Cells[1].Value.ToString() == "AUTRES")
                     cc.AutresExamens(this, new FormExamenPhysique());
                 else
                     cc.ChargerExamens(this, new FormExamenPhysique());
             }
+        }
+
+        private void btnService_Click(object sender, EventArgs e)
+        {
+            cm.AutrePrescription(this, new FormFactureService());
         }
     }
 }

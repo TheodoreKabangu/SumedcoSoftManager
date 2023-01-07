@@ -81,6 +81,30 @@
                   <FontStyle>Italic</FontStyle>
                 </Style>
               </TextRun>
+              <TextRun>
+                <Value xml:space="preserve">                                              </Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Parameters!age.Value</Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve">                                             </Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Parameters!sexe.Value</Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                </Style>
+              </TextRun>
             </TextRuns>
             <Style />
           </Paragraph>
@@ -89,7 +113,7 @@
         <Top>1.66043cm</Top>
         <Left>0.33778cm</Left>
         <Height>0.6cm</Height>
-        <Width>8.46667cm</Width>
+        <Width>13.93243cm</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -569,6 +593,14 @@
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="medecin">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="age">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="sexe">
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>

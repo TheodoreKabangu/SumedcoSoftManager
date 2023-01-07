@@ -39,14 +39,13 @@ namespace SUMEDCO
                 case "service": cmdtxt = "select max(idservice) from ServiceDemande"; break;
                 case "medecin": cmdtxt = "select max(idmedecin) from Medecin"; break;
                 case "maladie": cmdtxt = "select max(idmaladie) from Maladie"; break;
-                case "message": cmdtxt = "select max(idmessage) from MedecinMessage"; break;
-                case "agenda": cmdtxt = "select max(id) from LigneAgendaPatient"; break;
+                case "message": cmdtxt = "select max(idmessage) from Message"; break;
+                case "examenphysique": cmdtxt = "select max(idexamen) from ExamenPhysique"; break;
                 case "sv": cmdtxt = "select max(id) from LigneSigneVital"; break;
                 case "svc": cmdtxt = "select max(id) from SigneVitalConsultation"; break;
                 case "s": cmdtxt = "select max(idsigne) from SigneVital"; break;
-                case "exa": cmdtxt = "select max(idresultat) from ResultatExamen"; break;
-                case "maladiediagnostic": cmdtxt = "select max(id) from MaladieConsultation"; break;
                 case "rdv": cmdtxt = "select max(idrendezvous) from Rendezvous"; break;
+                case "prise": cmdtxt = "select max(idprise) from PriseSigneVitaux"; break;
             }
             cmd = new SqlCommand(cmdtxt, con);
             con.Open();
@@ -93,8 +92,11 @@ namespace SUMEDCO
             {
                 case "medecin": cmdtxt = "select idmedecin from Medecin where nommedecin = @nom"; break;
                 case "typepatient": cmdtxt = "select idtype from TypePatient where nomtype = @nom"; break;
+                case "typepatient2": cmdtxt = "select idtype from Patient where noms = @nom"; break;
                 case "maladie": cmdtxt = "select idmaladie from Maladie where nommaladie = @nom"; break;
+                case "patient": cmdtxt = "select idpatient from Patient where noms = @nom"; break;
                 case "entreprise": cmdtxt = "select identreprise from Entreprise where nomentreprise = @nom"; break;
+                case "autorisation": cmdtxt = "select id from Autorisations where libelle = @nom"; break;
             }
             con.Open();
             try
@@ -121,6 +123,7 @@ namespace SUMEDCO
                 case "maladie": cmdtxt = "select nommaladie from Maladie where idmaladie= @id"; break;
                 case "signevital": cmdtxt = "select nomsigne from SigneVital where idsigne= @id"; break;
                 case "poste": cmdtxt = "select poste from Utilisateur where id= @id"; break;
+                case "autorisation": cmdtxt = "select etat from Autorisations where id= @id"; break;
             }
             try
             {
@@ -207,6 +210,106 @@ namespace SUMEDCO
         List<string> rubriques = new List<string>();
 
         #region CONSULTATIONN
+        
+        public void ChargerPriseSigneVitaux(FormConsulterPrise c, string motif)
+        {
+            con.Open();
+            try
+            {
+
+                if (motif == "recherche")
+                {
+                    cmd = new SqlCommand("SELECT idprise, idrecette, noms FROM PriseSigneVitaux, Patient WHERE PriseSigneVitaux.idpatient = Patient.idpatient AND date_prise between @dtpdateDe and @dtpdateA", con);
+                    cmd.Parameters.AddWithValue("@dtpdateDe", c.dtpDateDe.Text);
+                    cmd.Parameters.AddWithValue("@dtpdateA", c.dtpDateA.Text);
+                }
+                else
+                    cmd = new SqlCommand("SELECT idprise, idrecette, noms FROM PriseSigneVitaux, Patient WHERE PriseSigneVitaux.idpatient = Patient.idpatient AND date_prise = '" + DateTime.Now.ToShortDateString() + "'", con);
+                dr = cmd.ExecuteReader();
+                c.dgvPrise.Rows.Clear();
+                while (dr.Read())
+                {
+                    c.dgvPrise.Rows.Add();
+                    c.dgvPrise.Rows[c.dgvPrise.RowCount - 1].Cells[0].Value = dr[0].ToString();
+                    c.dgvPrise.Rows[c.dgvPrise.RowCount - 1].Cells[1].Value = dr[1].ToString();
+                    c.dgvPrise.Rows[c.dgvPrise.RowCount - 1].Cells[2].Value = dr[2].ToString();
+                }
+            }
+            catch (Exception ex)
+            { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            con.Close();
+        }
+        public int NbConsultationPrise(int idprise)
+        {
+            id = 0;
+            con.Open();
+            try
+            {
+                cmd = new SqlCommand("select count(idconsultation) from Consultation WHERE idprise = '"+idprise+"'", con);
+                dr = cmd.ExecuteReader();
+                dr.Read();
+                id = int.Parse(dr[0].ToString());
+            }
+            catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            con.Close();
+            return id;
+        }
+        public void PatientConsulte(FormConsulter c)
+        {
+            con.Open();
+            try
+            {
+                cmd = new SqlCommand("SELECT noms, sexe, age, adresse, situation, telephone, pers_contact, tel_contact, nomtype, idpayeur FROM Patient, TypePatient, Payeur WHERE Patient.idtype = TypePatient.idtype AND Patient.idpatient = Payeur.idpatient AND Patient.idpatient = '" + c.idpatient + "'", con);
+                dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    c.dgvPatient.Rows[0].Cells[1].Value = dr[0].ToString();
+                    c.dgvPatient.Rows[1].Cells[1].Value = dr[1].ToString();
+                    c.dgvPatient.Rows[2].Cells[1].Value = dr[2].ToString();
+                    c.dgvPatient.Rows[3].Cells[1].Value = dr[3].ToString();
+                    c.dgvPatient.Rows[4].Cells[1].Value = dr[4].ToString();
+                    c.dgvPatient.Rows[5].Cells[1].Value = dr[5].ToString();
+                    c.dgvPatient.Rows[6].Cells[1].Value = dr[6].ToString();
+                    c.dgvPatient.Rows[7].Cells[1].Value = dr[7].ToString();
+                    c.dgvPatient.Rows[8].Cells[1].Value = dr[8].ToString();
+                    c.dgvPatient.Rows[9].Cells[1].Value = dr[9].ToString();
+                }
+            }
+            catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            con.Close();
+        }
+        public void Consultation(FormConsulterPrise cp, FormConsulter c)
+        {
+            cp.btnConsulter.Enabled = false;
+            if (NbConsultationPrise(int.Parse(cp.dgvPrise.CurrentRow.Cells[0].Value.ToString())) == 0)
+            {
+                if (!listConsulte.Contains(cp.dgvPrise.CurrentRow.Cells[0].Value.ToString()))
+                {
+                    c.idpatient = TrouverId("patient", cp.dgvPrise.CurrentRow.Cells[2].Value.ToString());
+                    c.idmedecin = cp.idmedecin;
+
+                    c.dgvPatient.Rows.Add(10);
+                    c.dgvPatient.Rows[0].Cells[0].Value = "Noms";
+                    c.dgvPatient.Rows[1].Cells[0].Value = "Sexe";
+                    c.dgvPatient.Rows[2].Cells[0].Value = "Age";
+                    c.dgvPatient.Rows[3].Cells[0].Value = "Adresse";
+                    c.dgvPatient.Rows[4].Cells[0].Value = "Situation";
+                    c.dgvPatient.Rows[5].Cells[0].Value = "Téléphone";
+                    c.dgvPatient.Rows[6].Cells[0].Value = "Pers. contact";
+                    c.dgvPatient.Rows[7].Cells[0].Value = "Tél. pers. contact";
+                    c.dgvPatient.Rows[8].Cells[0].Value = "Type";
+                    c.dgvPatient.Rows[9].Cells[0].Value = "Payeur";
+                    PatientConsulte(c);
+
+                    ValeurSigneVitaux(c.dgvSigneVital, int.Parse(cp.dgvPrise.CurrentRow.Cells[0].Value.ToString()));
+                    c.Text = "SSM - Dossier " + cp.dgvPrise.CurrentRow.Cells[2].Value.ToString();
+
+                    listConsulte.Add(cp.dgvPrise.CurrentRow.Cells[0].Value.ToString());
+                    c.Show();
+                }
+            }
+            else MessageBox.Show("Le patient sélectionné est déjà consulté", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
         public void AfficherSousForm(MFormConsultation c, FormConsultationDossier childForm)
         {
             if (activeForm != null)
@@ -233,9 +336,10 @@ namespace SUMEDCO
             else
             {
                 DetailsConsultation(c, cd);
+                c.Close();
             }
         }
-        public void AfficherSousForm(MFormConsultation c, FormAgenda childForm)
+        public void AfficherSousForm(MFormConsultation c, FormConsulterPrise childForm)
         {
             if (activeForm != null)
                 activeForm.Close();
@@ -291,22 +395,31 @@ namespace SUMEDCO
             childForm.idexpediteur = c.idmedecin;
             childForm.Show();
         }
-        public void AfficherPourDate(FormConsultation c)
+        public void Afficher(FormConsultation c, string motif)
         {
             con.Open();
             try
             {
-                if (c.idmedecin != 0)
+                if (motif == "recherche")
                 {
-                    cmd = new SqlCommand("select * from Consultation where date_consultation between @dtpdateDe and @dtpdateA and idmedecin= @idmedecin", con);
+                    cmd = new SqlCommand("select idconsultation, noms, repondant, lienrepondnant, Consultation.idprise from Consultation, PriseSigneVitaux, Patient where Consultation.idprise = PriseSigneVitaux.idprise and PriseSigneVitaux.idpatient = Patient.idpatient and date_consultation between @dtpdateDe and @dtpdateA and idmedecin= @idmedecin", con);
                     cmd.Parameters.AddWithValue("@idmedecin", c.idmedecin);
+                    cmd.Parameters.AddWithValue("@dtpdateDe", c.dtpDateDe.Text);
+                    cmd.Parameters.AddWithValue("@dtpdateA", c.dtpDateA.Text);
+
+                }
+                else if (motif == "patient")
+                {
+                    cmd = new SqlCommand("select idconsultation, noms, repondant, lienrepondnant, Consultation.idprise from Consultation, PriseSigneVitaux, Patient where Consultation.idprise = PriseSigneVitaux.idprise and PriseSigneVitaux.idpatient = Patient.idpatient and date_consultation between @dtpdateDe and @dtpdateA and Patient.idpatient = @idpatient", con);
+                    cmd.Parameters.AddWithValue("@idpatient", c.idpatient);
+                    cmd.Parameters.AddWithValue("@dtpdateDe", c.dtpDateDe.Text);
+                    cmd.Parameters.AddWithValue("@dtpdateA", c.dtpDateA.Text);
                 }
                 else
                 {
-                    cmd = new SqlCommand("select * from Consultation where date_consultation between @dtpdateDe and @dtpdateA", con);
+                    cmd = new SqlCommand("select idconsultation, noms, repondant, lienrepondnant, Consultation.idprise from Consultation, PriseSigneVitaux, Patient where Consultation.idprise = PriseSigneVitaux.idprise and PriseSigneVitaux.idpatient = Patient.idpatient and date_consultation = '" + DateTime.Now.ToShortDateString() + "' and idmedecin= @idmedecin", con);
+                    cmd.Parameters.AddWithValue("@idmedecin", c.idmedecin);
                 }
-                cmd.Parameters.AddWithValue("@dtpdateDe", c.dtpDateDe.Text);
-                cmd.Parameters.AddWithValue("@dtpdateA", c.dtpDateA.Text);
                 dr = cmd.ExecuteReader();
                 c.dgvPatient.Rows.Clear();
                 while (dr.Read())
@@ -315,59 +428,13 @@ namespace SUMEDCO
                     c.dgvPatient.Rows[c.dgvPatient.RowCount - 1].Cells[0].Value = dr[0].ToString();
                     c.dgvPatient.Rows[c.dgvPatient.RowCount - 1].Cells[1].Value = dr[1].ToString();
                     c.dgvPatient.Rows[c.dgvPatient.RowCount - 1].Cells[2].Value = dr[2].ToString();
-                    c.dgvPatient.Rows[c.dgvPatient.RowCount - 1].Cells[3].Value = dr[4].ToString();                  
-                }
-            }
-            catch (Exception ex)
-            {MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-            con.Close();
-            for (int i = 0; i < c.dgvPatient.RowCount; i++)
-            {
-                c.dgvPatient.Rows[i].Cells[4].Value = TrouverNom("patient", int.Parse(c.dgvPatient.Rows[i].Cells[3].Value.ToString()));
-            }
-        }
-        public void AfficherPourPatient(FormConsultation c)
-        {
-            con.Open();
-            try
-            {
-                if (c.idmedecin != 0)
-                {
-                    cmd = new SqlCommand("select * from Consultation, Patient where date_consultation between @dtpdateDe and @dtpdateA and idmedecin= @idmedecin and Consultation.idpatient = Patient.idpatient and noms like '" + c.txtPatient.Text + "%'", con);
-                    cmd.Parameters.AddWithValue("@idmedecin", c.idmedecin);
-                }
-                else
-                {
-                    cmd = new SqlCommand("select * from Consultation, Patient where date_consultation between @dtpdateDe and @dtpdateA and Consultation.idpatient = Patient.idpatient and noms like '" + c.txtPatient.Text + "%'", con);
-                }
-                cmd.Parameters.AddWithValue("@dtpdateDe", c.dtpDateDe.Text);
-                cmd.Parameters.AddWithValue("@dtpdateA", c.dtpDateA.Text);
-                
-                dr = cmd.ExecuteReader();
-                c.dgvPatient.Rows.Clear();
-                while (dr.Read())
-                {
-                    c.dgvPatient.Rows.Add();
-                    c.dgvPatient.Rows[c.dgvPatient.RowCount - 1].Cells[0].Value = dr[0].ToString();
-                    c.dgvPatient.Rows[c.dgvPatient.RowCount - 1].Cells[1].Value = dr[1].ToString();
-                    c.dgvPatient.Rows[c.dgvPatient.RowCount - 1].Cells[2].Value = dr[2].ToString();
-                    c.dgvPatient.Rows[c.dgvPatient.RowCount - 1].Cells[3].Value = dr[4].ToString();
+                    c.dgvPatient.Rows[c.dgvPatient.RowCount - 1].Cells[3].Value = dr[3].ToString();
+                    c.dgvPatient.Rows[c.dgvPatient.RowCount - 1].Cells[4].Value = dr[4].ToString();
                 }
             }
             catch (Exception ex)
             { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
             con.Close();
-            for (int i = 0; i < c.dgvPatient.RowCount; i++)
-            {
-                c.dgvPatient.Rows[i].Cells[4].Value = TrouverNom("patient", int.Parse(c.dgvPatient.Rows[i].Cells[3].Value.ToString()));
-            }
-        }
-        public void Afficher(FormConsultation c)
-        {
-            if (c.txtPatient.Text == "")
-                AfficherPourDate(c);
-            else if (c.txtPatient.Text != "")
-                AfficherPourPatient(c);
         }
         public void SigneVitalConsultation(FormConsultationDossier cd)
         {
@@ -375,8 +442,7 @@ namespace SUMEDCO
             try
             {
                 id = 0;
-                cmd = new SqlCommand("select SigneVital.idsigne, nomsigne, valeur from SigneVital, SigneVitalConsultation where SigneVital.idsigne = SigneVitalConsultation.idsigne and idconsultation = @id", con);
-                cmd.Parameters.AddWithValue("@id", cd.idconsultation);
+                cmd = new SqlCommand("select SigneVital.idsigne, nomsigne, valeur from ValeurSigneVitaux, SigneVital where ValeurSigneVitaux.idprise = '" + cd.idprise + "' and SigneVital.idsigne = ValeurSigneVitaux.idsigne", con);
                 dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
@@ -450,6 +516,30 @@ namespace SUMEDCO
                     cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[0].Value = id;
                     cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[1].Value = dr[0].ToString();
                     cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[2].Value = dr[1].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            con.Close();
+        }
+        public void ExamenPhysiqueConsultation(FormConsultationDossier cd)
+        {
+            con.Open();
+            try
+            {
+                id = 0;
+                cmd = new SqlCommand("select ExamenPhysique.idexamen, examen, valeur from ValeurExamenPhysique, ExamenPhysique where idconsultation = @id and ExamenPhysique.idexamen = ValeurExamenPhysique.idexamen", con);
+                cmd.Parameters.AddWithValue("@id", cd.idconsultation);
+                dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    cd.dgvDetail.Rows.Add();
+                    id++;
+                    cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[0].Value = id;
+                    cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[1].Value = dr[0].ToString();
+                    cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[2].Value = dr[1].ToString() + ": " + dr[2].ToString();
                 }
             }
             catch (Exception ex)
@@ -708,11 +798,15 @@ namespace SUMEDCO
         }
         public void ResultatExamenConsultation(FormConsultationDossier cd)
         {
+            
+        }
+        public void PrescriptionService(FormConsultationDossier cd, string motif)
+        {
             con.Open();
             try
             {
                 id = 0;
-                cmd = new SqlCommand("select idresultat, nomexamen, resultat from ResultatExamen where idconsultation = @id", con);
+                cmd = new SqlCommand("select idservice, nomservice, observation from PrescriptionService, Service where PrescriptionService.idservice = Service.idservice and categorie = '"+motif+"' and idconsultation = @id", con);
                 cmd.Parameters.AddWithValue("@id", cd.idconsultation);
                 dr = cmd.ExecuteReader();
                 while (dr.Read())
@@ -736,31 +830,7 @@ namespace SUMEDCO
             try
             {
                 id=0;
-                cmd = new SqlCommand("select id, nommaladie, observation from MaladieConsultation, Maladie where MaladieConsultation.idmaladie = Maladie.idmaladie and idconsultation = @id", con);
-                cmd.Parameters.AddWithValue("@id", cd.idconsultation);
-                dr = cmd.ExecuteReader();
-                while (dr.Read())
-                {
-                    cd.dgvDetail.Rows.Add();
-                    id++;
-                    cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[0].Value = dr[0].ToString();
-                    cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[1].Value = dr[1].ToString();
-                    cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[2].Value = dr[2].ToString();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            con.Close();
-        }
-        public void PrescriptionConsultation(FormConsultationDossier cd)
-        {
-            con.Open();
-            try
-            {
-                id = 0;
-                cmd = new SqlCommand("select idpresc, produit, qteprescrite, detail from Prescription where idconsultation = @id", con);
+                cmd = new SqlCommand("select idmaladie, nommaladie, observation from MaladieConsultation, Maladie where MaladieConsultation.idmaladie = Maladie.idmaladie and idconsultation = @id", con);
                 cmd.Parameters.AddWithValue("@id", cd.idconsultation);
                 dr = cmd.ExecuteReader();
                 while (dr.Read())
@@ -769,7 +839,31 @@ namespace SUMEDCO
                     id++;
                     cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[0].Value = id;
                     cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[1].Value = dr[0].ToString();
-                    cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[2].Value = string.Format("{0}: {1}: {2}", dr[1].ToString(), dr[2].ToString(), dr[3].ToString());
+                    cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[2].Value = dr[1].ToString() + ": " + dr[2].ToString(); ;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            con.Close();
+        }
+        public void PrescriptionProduit(FormConsultationDossier cd)
+        {
+            con.Open();
+            try
+            {
+                id = 0;
+                cmd = new SqlCommand("select PrescriptionProduit.idstock, nomproduit, forme, dosage, quantite, posologie from PrescriptionProduit, LigneStock, Produit where PrescriptionProduit.idstock = LigneStock.idstock and LigneStock.idproduit = Produit.idproduit and idconsultation = @id", con);
+                cmd.Parameters.AddWithValue("@id", cd.idconsultation);
+                dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    cd.dgvDetail.Rows.Add();
+                    id++;
+                    cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[0].Value = id;
+                    cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[1].Value = dr[0].ToString();
+                    cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[2].Value = string.Format("{0}: {1}: {2}: {3}: {4}", dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dr[5].ToString());
                 }
             }
             catch (Exception ex)
@@ -781,34 +875,36 @@ namespace SUMEDCO
         public void DetailsConsultation(FormConsultation c, FormConsultationDossier cd)
         {
             cd.idconsultation = c.idconsultation;
-            cd.idpatient = c.idpatient;
-            cd.patient = TrouverNom("patient", cd.idpatient);
+            cd.patient = c.dgvPatient.CurrentRow.Cells[1].Value.ToString();
+            cd.idprise = int.Parse(c.dgvPatient.CurrentRow.Cells[4].Value.ToString());
+            cd.idpatient = TrouverId("patient", cd.patient);
             cd.medecin = TrouverNom("medecin", cd.idmedecin);
+            AfficherPatientAbonne(cd.dgvPatient, cd.idpatient);
 
-            con.Open();
-            try
-            {
-                cmd = new SqlCommand("select * from Patient where idpatient= @id", con);
-                cmd.Parameters.AddWithValue("@id", cd.idpatient);
-                dr = cmd.ExecuteReader();
-                cd.dgvPatient.Rows.Clear();
+            //con.Open();
+            //try
+            //{
+            //    cmd = new SqlCommand("select * from Patient where idpatient= @id", con);
+            //    cmd.Parameters.AddWithValue("@id", cd.idpatient);
+            //    dr = cmd.ExecuteReader();
+            //    cd.dgvPatient.Rows.Clear();
 
-                dr.Read();
-                cd.dgvPatient.Rows.Add();
-                cd.dgvPatient.Rows[cd.dgvPatient.RowCount - 1].Cells[0].Value = dr[0].ToString();
-                cd.dgvPatient.Rows[cd.dgvPatient.RowCount - 1].Cells[1].Value = dr[1].ToString();
-                cd.dgvPatient.Rows[cd.dgvPatient.RowCount - 1].Cells[2].Value = dr[2].ToString();
-                cd.dgvPatient.Rows[cd.dgvPatient.RowCount - 1].Cells[3].Value = dr[3].ToString();
-                cd.dgvPatient.Rows[cd.dgvPatient.RowCount - 1].Cells[4].Value = dr[4].ToString();
-                cd.dgvPatient.Rows[cd.dgvPatient.RowCount - 1].Cells[5].Value = dr[5].ToString();
-                cd.dgvPatient.Rows[cd.dgvPatient.RowCount - 1].Cells[6].Value = dr[6].ToString();
-                cd.dgvPatient.Rows[cd.dgvPatient.RowCount - 1].Cells[7].Value = dr[7].ToString();
-                cd.dgvPatient.Rows[cd.dgvPatient.RowCount - 1].Cells[8].Value = dr[8].ToString();
-                cd.dgvPatient.Rows[cd.dgvPatient.RowCount - 1].Cells[9].Value = dr[9].ToString();
-            }
-            catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-            con.Close();
-            cd.dgvPatient.Rows[cd.dgvPatient.RowCount - 1].Cells[10].Value = TrouverNom("typepatient", int.Parse(cd.dgvPatient.Rows[cd.dgvPatient.RowCount - 1].Cells[9].Value.ToString()));
+            //    dr.Read();
+            //    cd.dgvPatient.Rows.Add();
+            //    cd.dgvPatient.Rows[cd.dgvPatient.RowCount - 1].Cells[0].Value = dr[0].ToString();
+            //    cd.dgvPatient.Rows[cd.dgvPatient.RowCount - 1].Cells[1].Value = dr[1].ToString();
+            //    cd.dgvPatient.Rows[cd.dgvPatient.RowCount - 1].Cells[2].Value = dr[2].ToString();
+            //    cd.dgvPatient.Rows[cd.dgvPatient.RowCount - 1].Cells[3].Value = dr[3].ToString();
+            //    cd.dgvPatient.Rows[cd.dgvPatient.RowCount - 1].Cells[4].Value = dr[4].ToString();
+            //    cd.dgvPatient.Rows[cd.dgvPatient.RowCount - 1].Cells[5].Value = dr[5].ToString();
+            //    cd.dgvPatient.Rows[cd.dgvPatient.RowCount - 1].Cells[6].Value = dr[6].ToString();
+            //    cd.dgvPatient.Rows[cd.dgvPatient.RowCount - 1].Cells[7].Value = dr[7].ToString();
+            //    cd.dgvPatient.Rows[cd.dgvPatient.RowCount - 1].Cells[8].Value = dr[8].ToString();
+            //    cd.dgvPatient.Rows[cd.dgvPatient.RowCount - 1].Cells[9].Value = dr[9].ToString();
+            //}
+            //catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            //con.Close();
+            //cd.dgvPatient.Rows[cd.dgvPatient.RowCount - 1].Cells[10].Value = TrouverNom("typepatient", int.Parse(cd.dgvPatient.Rows[cd.dgvPatient.RowCount - 1].Cells[9].Value.ToString()));
 
             cd.dgvDetail.Rows.Add();
             cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].DefaultCellStyle.ForeColor = Color.MediumBlue;
@@ -856,7 +952,7 @@ namespace SUMEDCO
             cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[0].Value = "";
             cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[2].Value = "EXAMENS PHYSIQUES";
             cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[3].Value = "Modifier";
-            RenseignementConsultation(cd, "examen physique");
+            ExamenPhysiqueConsultation(cd);
 
             cd.dgvDetail.Rows.Add();
             cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].DefaultCellStyle.ForeColor = Color.MediumBlue;
@@ -870,9 +966,9 @@ namespace SUMEDCO
             cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].DefaultCellStyle.ForeColor = Color.MediumBlue;
             cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].DefaultCellStyle.BackColor = Color.LightSteelBlue;
             cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[0].Value = "";
-            cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[2].Value = "EXAMENS LABO & RESULTATS";
+            cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[2].Value = "EXAMENS PARACL. & RESULTATS";
             cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[3].Value = "Modifier";
-            ResultatExamenConsultation(cd);
+            PrescriptionService(cd, "examen para");
 
             cd.dgvDetail.Rows.Add();
             cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].DefaultCellStyle.ForeColor = Color.MediumBlue;
@@ -888,7 +984,15 @@ namespace SUMEDCO
             cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[0].Value = "";
             cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[2].Value = "PRESCRIPTIONS PRODUITS";
             cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[3].Value = "Modifier";
-            PrescriptionConsultation(cd);
+            PrescriptionProduit(cd);
+
+            cd.dgvDetail.Rows.Add();
+            cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].DefaultCellStyle.ForeColor = Color.MediumBlue;
+            cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].DefaultCellStyle.BackColor = Color.LightSteelBlue;
+            cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[0].Value = "";
+            cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[2].Value = "PRESCRIPTIONS SERVICES";
+            cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[3].Value = "Modifier";
+            PrescriptionService(cd, "autre prescription");
 
             cd.dgvDetail.Rows.Add();
             cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].DefaultCellStyle.ForeColor = Color.MediumBlue;
@@ -947,7 +1051,7 @@ namespace SUMEDCO
             cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[0].Value = "";
             cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[2].Value = "EXAMENS PHYSIQUES";
             cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[3].Value = "Modifier";
-            RenseignementConsultation(cd, "examen physique");
+            ExamenPhysiqueConsultation(cd);
 
             cd.dgvDetail.Rows.Add();
             cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].DefaultCellStyle.ForeColor = Color.MediumBlue;
@@ -961,9 +1065,9 @@ namespace SUMEDCO
             cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].DefaultCellStyle.ForeColor = Color.MediumBlue;
             cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].DefaultCellStyle.BackColor = Color.LightSteelBlue;
             cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[0].Value = "";
-            cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[2].Value = "EXAMENS LABO & RESULTATS";
+            cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[2].Value = "EXAMENS PARACL. & RESULTATS";
             cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[3].Value = "Modifier";
-            ResultatExamenConsultation(cd);
+            PrescriptionService(cd, "examen para");
 
             cd.dgvDetail.Rows.Add();
             cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].DefaultCellStyle.ForeColor = Color.MediumBlue;
@@ -979,7 +1083,15 @@ namespace SUMEDCO
             cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[0].Value = "";
             cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[2].Value = "PRESCRIPTIONS PRODUITS";
             cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[3].Value = "Modifier";
-            PrescriptionConsultation(cd);
+            PrescriptionProduit(cd);
+
+            cd.dgvDetail.Rows.Add();
+            cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].DefaultCellStyle.ForeColor = Color.MediumBlue;
+            cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].DefaultCellStyle.BackColor = Color.LightSteelBlue;
+            cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[0].Value = "";
+            cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[2].Value = "PRESCRIPTIONS SERVICES";
+            cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].Cells[3].Value = "Modifier";
+            PrescriptionService(cd, "autre prescription");
 
             cd.dgvDetail.Rows.Add();
             cd.dgvDetail.Rows[cd.dgvDetail.RowCount - 1].DefaultCellStyle.ForeColor = Color.MediumBlue;
@@ -1102,27 +1214,26 @@ namespace SUMEDCO
                 con.Close();
             }
         }
-        public void EnregistrerConsultation(FormConsulter r)
+        public void EnregistrerConsultation(FormConsulter c)
         {
-            r.idconsultation = NouveauID("consultation");
+            c.idconsultation = NouveauID("consultation");
             con.Open();
             SqlTransaction tx = con.BeginTransaction();
             try
             {
-                if (r.txtRepondant.Enabled)
+                if (c.txtRepondant.Text != "" && c.cboLienRepondant.Text != "")
                 {
-                    cmd = new SqlCommand("insert into Consultation values (@id, @date, @type, @idmedecin, @idpatient, @repondant, @lien)", con);
-                    cmd.Parameters.AddWithValue("@repondant", r.txtRepondant.Text);
-                    cmd.Parameters.AddWithValue("@lien", r.cboLienRepondant.Text);
+                    cmd = new SqlCommand("insert into Consultation values (@id, @date, @idmedecin, @idprise, @repondant, @lien)", con);
+                    cmd.Parameters.AddWithValue("@repondant", c.txtRepondant.Text);
+                    cmd.Parameters.AddWithValue("@lien", c.cboLienRepondant.Text);
                 }
                 else
-                    cmd = new SqlCommand("insert into Consultation(idconsultation, date_consultation, type, idmedecin, idpatient) values (@id, @date, @type, @idmedecin, @idpatient)", con);
+                    cmd = new SqlCommand("insert into Consultation(idconsultation, date_consultation, idmedecin, idprise) values (@id, @date, @idmedecin, @idprise)", con);
 
-                cmd.Parameters.AddWithValue("@id", r.idconsultation);
-                cmd.Parameters.AddWithValue("@date", r.dtpDate.Value);
-                cmd.Parameters.AddWithValue("@type", r.type_consultation);
-                cmd.Parameters.AddWithValue("@idmedecin", r.idmedecin);
-                cmd.Parameters.AddWithValue("@idpatient", r.idpatient);
+                cmd.Parameters.AddWithValue("@id", c.idconsultation);
+                cmd.Parameters.AddWithValue("@date", c.dtpDate.Value);
+                cmd.Parameters.AddWithValue("@idmedecin", c.idmedecin);
+                cmd.Parameters.AddWithValue("@idprise", c.idpatient);
                 cmd.Transaction = tx;
                 cmd.ExecuteNonQuery();
                 tx.Commit();
@@ -1133,137 +1244,158 @@ namespace SUMEDCO
                 MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             con.Close();
-            AjouterSigneVitalConsultation(r);
-            //ValiderStatutConsultation(r.idligneagenda);
-            r.btnRendezVous.Enabled = true;
-            r.tabControl1.SelectedTab = r.tabControl1.TabPages[1];
+            c.btnRendezVous.Enabled = true;
+            c.tabControl1.SelectedTab = c.tabControl1.TabPages[1];
         }
-        public void ExamenPhysique(FormConsulter r, FormExamenPhysique ex)
+        public void ExamenPhysique(FormConsulter r)
         {
-            foreach (string item in ex.cboExamenPhysique.Items)
+            con.Open();
+            SqlTransaction tx = con.BeginTransaction();
+            try
             {
-                ex.dgv.Rows.Add();
-                ex.dgv.Rows[ex.dgv.RowCount - 1].Cells[0].Value = ex.dgv.RowCount;
-                ex.dgv.Rows[ex.dgv.RowCount - 1].Cells[1].Value = item;
-            }
-            ex.Text = "SSM - Examens physiques";
-            ex.ShowDialog();
-            if (ex.fermeture_succes)
-            {
-                for (int i = 0; i < ex.dgv.RowCount; i++)
+                cmd = new SqlCommand("select * into ExamenPhysique", con);
+                dr = cmd.ExecuteReader();
+                while (dr.Read())
                 {
-                    if (ex.dgv.Rows[i].Selected)
-                    {
-                        r.dgvExamPhys.Rows.Add();
-                        r.dgvExamPhys.Rows[r.dgvExamPhys.RowCount - 1].Cells[0].Value = r.dgvExamPhys.RowCount;
-                        r.dgvExamPhys.Rows[r.dgvExamPhys.RowCount - 1].Cells[1].Value = ex.dgv.Rows[i].Cells[1].Value.ToString();
-                        r.dgvExamPhys.Rows[r.dgvExamPhys.RowCount - 1].Cells[2].Value = "";
-                    }
-
+                    r.dgvExamPhys.Rows.Add();
+                    r.dgvExamPhys.Rows[r.dgvExamPhys.RowCount -1].Cells[0].Value = dr[0].ToString();
+                    r.dgvExamPhys.Rows[r.dgvExamPhys.RowCount - 1].Cells[1].Value = dr[1].ToString();
+                    r.dgvExamPhys.Rows[r.dgvExamPhys.RowCount - 1].Cells[2].Value = "";
                 }
             }
-            ex.Close();
+            catch (Exception ex)
+            {
+                tx.Rollback();
+                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            con.Close();
+        }
+        public void AjouterValeurExamenPhysique(FormConsulter c)
+        {
+            if (c.dgvExamPhys.RowCount != 0)
+            {
+                for (int i = 0; i < c.dgvExamPhys.RowCount; i++)
+                {
+                    con.Open();
+                    SqlTransaction tx = con.BeginTransaction();
+                    try
+                    {
+                        cmd = new SqlCommand("insert into ValeurExamenPhysique values (@idconsultation, @idexamen, @valeur)", con);
+                        cmd.Parameters.AddWithValue("@idconsultation", c.idconsultation);
+                        cmd.Parameters.AddWithValue("@idexamen", c.dgvExamPhys.Rows[i].Cells[0].Value.ToString());
+                        cmd.Parameters.AddWithValue("@valeur", c.dgvExamPhys.Rows[i].Cells[2].Value.ToString());
+                        cmd.Transaction = tx;
+                        cmd.ExecuteNonQuery();
+                        tx.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        tx.Rollback();
+                        MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    con.Close();
+                }
+                MessageBox.Show("Enregistré(s) avec succès", "Enregistrement", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else MessageBox.Show("Aucune ligne n'a été trouvée", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
         public void AjouterRenseignement(DataGridView dgv, string label, int idconsultation)
         {
             if (dgv.RowCount != 0)
             {
                 id = 0;
-                if (label != "examen physique")
+                for (int i = 0; i < dgv.RowCount; i++)
                 {
-                    for (int i = 0; i < dgv.RowCount; i++)
+                    id = NouveauID("renseignement");
+                    con.Open();
+                    SqlTransaction tx = con.BeginTransaction();
+                    try
                     {
-                        id = NouveauID("renseignement");
-                        con.Open();
-                        SqlTransaction tx = con.BeginTransaction();
-                        try
-                        {
-                            cmd = new SqlCommand("insert into Renseignement(id,label,idconsultation,libelle) values (@id, @label, @idconsultation, @libelle)", con);
-                            cmd.Parameters.AddWithValue("@id", id);
-                            cmd.Parameters.AddWithValue("@label", label);
-                            cmd.Parameters.AddWithValue("@idconsultation", idconsultation);
-                            cmd.Parameters.AddWithValue("@libelle", dgv.Rows[i].Cells[1].Value.ToString());
-                            cmd.Transaction = tx;
-                            cmd.ExecuteNonQuery();
-                            tx.Commit();
-                        }
-                        catch (Exception ex)
-                        {
-                            tx.Rollback();
-                            MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        con.Close();
+                        cmd = new SqlCommand("insert into Renseignement values (@id, @label, @idconsultation, @libelle)", con);
+                        cmd.Parameters.AddWithValue("@id", id);
+                        cmd.Parameters.AddWithValue("@label", label);
+                        cmd.Parameters.AddWithValue("@idconsultation", idconsultation);
+                        cmd.Parameters.AddWithValue("@libelle", dgv.Rows[i].Cells[1].Value.ToString());
+                        cmd.Transaction = tx;
+                        cmd.ExecuteNonQuery();
+                        tx.Commit();
                     }
-                }
-                else
-                {
-                    for (int i = 0; i < dgv.RowCount; i++)
+                    catch (Exception ex)
                     {
-                        id = NouveauID("renseignement");
-                        con.Open();
-                        SqlTransaction tx = con.BeginTransaction();
-                        try
-                        {
-                            cmd = new SqlCommand("insert into Renseignement(id,label,idconsultation,libelle) values (@id, @label, @idconsultation, @libelle)", con);
-                            cmd.Parameters.AddWithValue("@id", id);
-                            cmd.Parameters.AddWithValue("@label", label);
-                            cmd.Parameters.AddWithValue("@idconsultation", idconsultation);
-                            cmd.Parameters.AddWithValue("@libelle", string.Format("{0}: {1}", dgv.Rows[i].Cells[1].Value.ToString(), dgv.Rows[i].Cells[2].Value.ToString()));
-                            cmd.Transaction = tx;
-                            cmd.ExecuteNonQuery();
-                            tx.Commit();
-                        }
-                        catch (Exception ex)
-                        {
-                            tx.Rollback();
-                            MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        con.Close();
+                        tx.Rollback();
+                        MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                    con.Close();
                 }
                 MessageBox.Show("Enregistré(s) avec succès", "Enregistrement", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dgv.Rows.Clear();
             }
             else MessageBox.Show("Aucune ligne n'a été trouvée", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
-        public void AjouterExamenConsultation(FormConsulter c)
+        public void AjouterPrescriptionService(FormConsulter c)
+        {
+            for (int i = 0; i < c.dgvLabo.RowCount; i++)
+            {
+                if (c.dgvLabo.Rows[i].Cells[0].Value.ToString() != "")
+                {
+                    con.Open();
+                    SqlTransaction tx = con.BeginTransaction();
+                    try
+                    {
+                        cmd = new SqlCommand("insert into PrescriptionService (idconsultation, idservice, categorie) values (@idconsult, @idservice, @categorie)", con);
+                        cmd.Parameters.AddWithValue("@idconsult", c.idconsultation);
+                        cmd.Parameters.AddWithValue("@idservice", c.dgvLabo.Rows[i].Cells[1].Value.ToString());
+                        cmd.Parameters.AddWithValue("@categorie", c.label);
+                        cmd.Transaction = tx;
+                        cmd.ExecuteNonQuery();
+                        tx.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        tx.Rollback();
+                        MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    con.Close();
+                }
+            }
+        }
+        public void AjouterExamenPara(FormConsulter c, FormFactureService f)
         {
             if (c.dgvLabo.RowCount != 0)
             {
+                f.idpayeur = int.Parse(c.dgvPatient.Rows[9].Cells[1].Value.ToString());
+                f.cboPayeur.Enabled = false;
+                f.btnAnnuler.Enabled = false;
+                f.txtPayeur.Text = c.dgvPatient.Rows[0].Cells[1].Value.ToString();
+                f.txtPayeur.Enabled = false;
+                f.txtContacts.Enabled = false;
+                f.btnExit.Visible = false;
+                f.Text = "Facturation Examens";
+                f.recettePatientConsulte = true;
                 for (int i = 0; i < c.dgvLabo.RowCount; i++)
                 {
-                    if(c.dgvLabo.Rows[i].Cells[0].Value.ToString() != "")
+                    if (c.dgvLabo.Rows[i].Cells[0].Value.ToString() != "")
                     {
-                        c.idresultat = NouveauID("exa");
-                        con.Open();
-                        SqlTransaction tx = con.BeginTransaction();
-                        try
-                        {
-                            cmd = new SqlCommand("insert into ResultatExamen(idresult, idconsult, idservice) values(@idresult, @idconsult, @idservice)", con);
-                            cmd.Parameters.AddWithValue("@idresult", c.idresultat);
-                            cmd.Parameters.AddWithValue("@idconsult", c.idconsultation);
-                            cmd.Parameters.AddWithValue("@idservice", c.dgvLabo.Rows[i].Cells[1].Value.ToString());
-                            //cmd.Parameters.AddWithValue("@resultat", c.dgvLabo.Rows[i].Cells[2].Value.ToString());
-                            cmd.Transaction = tx;
-                            cmd.ExecuteNonQuery();
-                            tx.Commit();
-                        }
-                        catch (Exception ex)
-                        {
-                            tx.Rollback();
-                            MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        con.Close();
+                        f.dgvFacture.Rows.Add();
+                        f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[0].Value = c.dgvLabo.Rows[i].Cells[0].Value;
+                        f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[1].Value = f.dgvFacture.RowCount;
+                        f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[2].Value = c.dgvLabo.Rows[i].Cells[1].Value;
+                        f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[3].Value = c.dgvLabo.Rows[i].Cells[2].Value;
                     }
                 }
-                //Enregister le bon de recettes
-                //cc.EnregistrerBon(c.numbon, c.numbonS, c.dtpDate.Text, "immédiat", c.dgvAgenda.Rows[0].Cells[4].Value.ToString(), "service", c.dgvLabo);
-                
-                //Generer le bon d'examens
-                //GenererBonExamen(c, new FormImpression());
-                c.dgvLabo.Rows.Clear();
+                cc.CalculerTotal(f.dgvFacture, 3, f.txtTotal);
+                f.ShowDialog();
+                if (f.fermeture_succes)
+                {
+                    AjouterPrescriptionService(c);
+                    MessageBox.Show("Enregistrée(s) avec succès", "Enregistrement", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    //Generer le bon d'examens
+                    GenererBonExamen(c, new FormImpression());
+                    c.dgvLabo.Rows.Clear();
+                }
             }
-            else MessageBox.Show("Aucune ligne de bon labo n'a été trouvée", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else MessageBox.Show("Aucune ligne n'a été trouvée", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
         public void MaladieDiagnostic(FormConsulter c, FormMaladie m)
         {
@@ -1303,19 +1435,17 @@ namespace SUMEDCO
             }
             m.Close();
         }
-        public void AjouterMaladieDiagnostic(FormConsulter c)
+        public void AjouterDiagnostics(FormConsulter c)
         {
             if (c.dgvDiagnostic.RowCount != 0)
             {
                 for (int i = 0; i < c.dgvDiagnostic.RowCount; i++)
                 {
-                    c.idmaladie = NouveauID("maladiediagnostic");
                     con.Open();
                     SqlTransaction tx = con.BeginTransaction();
                     try
                     {
-                        cmd = new SqlCommand("insert into MaladieConsultation values (@id, @idmaladie, @idconsultation, @observation)", con);
-                        cmd.Parameters.AddWithValue("@id", c.idmaladie);
+                        cmd = new SqlCommand("insert into MaladieConsultation values (@idmaladie, @idconsultation, @observation)", con);
                         cmd.Parameters.AddWithValue("@idmaladie", c.dgvDiagnostic.Rows[i].Cells[0].Value.ToString());
                         cmd.Parameters.AddWithValue("@idconsultation", c.idconsultation);
                         cmd.Parameters.AddWithValue("@observation", c.dgvDiagnostic.Rows[i].Cells[2].Value.ToString());
@@ -1335,39 +1465,71 @@ namespace SUMEDCO
             }
             else MessageBox.Show("Aucune ligne n'a été trouvée", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
-        public void Prescrire(FormConsulter c, FormFactureProduit2 f)
+        public void Prescrire(FormConsulter c, FormFactureProduit f)
         {
-            //f.ShowDialog();
-            //if (f.fermeture_succes)
-            //{
-            //    for (int i = 0; i < f.dgvFacture.RowCount; i++)
-            //    {
-            //        c.dgvPresc.Rows.Add();
-            //        c.dgvPresc.Rows[c.dgvPresc.RowCount - 1].Cells[0].Value = f.dgvFacture.Rows[i].Cells[0].Value;
-            //        c.dgvPresc.Rows[c.dgvPresc.RowCount - 1].Cells[1].Value = f.dgvFacture.Rows[i].Cells[2].Value;
-            //        c.dgvPresc.Rows[c.dgvPresc.RowCount - 1].Cells[2].Value = f.dgvFacture.Rows[i].Cells[4].Value;
-            //        c.dgvPresc.Rows[c.dgvPresc.RowCount - 1].Cells[3].Value = "";
-            //    }
-            //}
-            //f.Close();
-        }
-        public void AjouterPrescription(FormConsulter p)
-        {
-            if (p.dgvPresc.RowCount > 0)
+            f.idpayeur = int.Parse(c.dgvPatient.Rows[9].Cells[1].Value.ToString());
+            f.cboPayeur.Enabled = false;
+            f.btnAnnuler.Enabled = false;
+            f.txtPayeur.Text = c.dgvPatient.Rows[0].Cells[1].Value.ToString();
+            f.txtPayeur.Enabled = false;
+            f.txtContacts.Enabled = false;
+            f.btnExit.Visible = false;
+            f.Text = "Facturation Produits";
+            f.recettePatientConsulte = true;
+            f.ShowDialog();
+            if (f.fermeture_succes)
             {
-                for (int i = 0; i < p.dgvPresc.RowCount; i++)
+                for (int i = 0; i < f.dgvFacture.RowCount; i++)
                 {
-                    p.idprescription = NouveauID("prescription");
+                    c.dgvPresc.Rows.Add();
+                    c.dgvPresc.Rows[c.dgvPresc.RowCount - 1].Cells[0].Value = f.dgvFacture.Rows[i].Cells[0].Value;
+                    c.dgvPresc.Rows[c.dgvPresc.RowCount - 1].Cells[1].Value = f.dgvFacture.Rows[i].Cells[2].Value;
+                    c.dgvPresc.Rows[c.dgvPresc.RowCount - 1].Cells[2].Value = f.dgvFacture.Rows[i].Cells[4].Value;
+                    c.dgvPresc.Rows[c.dgvPresc.RowCount - 1].Cells[3].Value = "";
+                }
+            }
+            f.Close();
+        }
+        public void AutrePrescription(FormConsulter c, FormFactureService f)
+        {
+            f.idpayeur = int.Parse(c.dgvPatient.Rows[9].Cells[1].Value.ToString());
+            f.cboPayeur.Enabled = false;
+            f.btnAnnuler.Enabled = false;
+            f.txtPayeur.Text = c.dgvPatient.Rows[0].Cells[1].Value.ToString();
+            f.txtPayeur.Enabled = false;
+            f.txtContacts.Enabled = false;
+            f.btnExit.Visible = false;
+            f.Text = "Facturation Service";
+            f.recettePatientConsulte = true;
+            cc.ChargerCategorie(f);
+            f.ShowDialog();
+            if (f.fermeture_succes)
+            {
+                for (int i = 0; i < f.dgvFacture.RowCount; i++)
+                {
+                    c.dgvAutrePresc.Rows.Add();
+                    c.dgvAutrePresc.Rows[c.dgvAutrePresc.RowCount - 1].Cells[0].Value = f.dgvFacture.Rows[i].Cells[0].Value;
+                    c.dgvAutrePresc.Rows[c.dgvAutrePresc.RowCount - 1].Cells[1].Value = f.dgvFacture.Rows[i].Cells[2].Value;
+                }
+            }
+            f.Close();
+        }
+
+        public void AjouterPrescription(FormConsulter c)
+        {
+            if (c.dgvPresc.RowCount > 0)
+            {
+                for (int i = 0; i < c.dgvPresc.RowCount; i++)
+                {
                     con.Open();
                     SqlTransaction tx = con.BeginTransaction();
                     try
                     {
-                        cmd = new SqlCommand("insert into Prescription values (@id, @produit, @qte, @detail, @idconsultation)", con);
-                        cmd.Parameters.AddWithValue("@id", p.idprescription);
-                        cmd.Parameters.AddWithValue("@produit", p.dgvPresc.Rows[i].Cells[1].Value.ToString());
-                        cmd.Parameters.AddWithValue("@qte", p.dgvPresc.Rows[i].Cells[2].Value.ToString());
-                        cmd.Parameters.AddWithValue("@detail", p.dgvPresc.Rows[i].Cells[3].Value.ToString());
-                        cmd.Parameters.AddWithValue("@idconsultation", p.idconsultation);
+                        cmd = new SqlCommand("insert into PrescriptionProduit (idconsultation, idstock, quantite, posologie) values (@idconsultation, @idstock, @quantite, @posologie)", con);
+                        cmd.Parameters.AddWithValue("@idconsultation", c.idconsultation);
+                        cmd.Parameters.AddWithValue("@idstock", c.dgvPresc.Rows[i].Cells[0].Value.ToString());
+                        cmd.Parameters.AddWithValue("@quantite", c.dgvPresc.Rows[i].Cells[2].Value.ToString());
+                        cmd.Parameters.AddWithValue("@posologie", c.dgvPresc.Rows[i].Cells[3].Value.ToString());
                         cmd.Transaction = tx;
                         cmd.ExecuteNonQuery();
                         tx.Commit();
@@ -1380,7 +1542,7 @@ namespace SUMEDCO
                     con.Close();
                 }
                 MessageBox.Show("Enregistrée(s) avec succès", "Enregistrement", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                p.dgvPresc.Rows.Clear();
+                c.dgvPresc.Rows.Clear();
             }
             else
             {
@@ -1632,7 +1794,7 @@ namespace SUMEDCO
                 // AjouterRenseignement(r);
                 if (r.cboMotif.Text == "prédiagnostic")
                 {
-                    ValiderStatutConsultation(r.idligneagenda);
+                    //ValiderStatutConsultation(r.idligneagenda);
                     r.Hide();
                 }
                 else if (r.cboMotif.Text == "plainte")
@@ -1748,7 +1910,7 @@ namespace SUMEDCO
                 imp.patient = d.patient;
                 imp.idmedecin = d.idmedecin;
                 imp.medecin = d.medecin;
-                imp.numfiche = string.Format("{0}-{1}-{2}", DateConsultation(imp.idconsultation).Substring(0, 10), imp.idconsultation, imp.idmedecin);
+                imp.numfiche = string.Format("{0}-{1}-{2}", DateConsultation(imp.idconsultation), imp.idconsultation, imp.idmedecin);
                 imp.Text = "SSM - Dossier patient";
 
                 List<DossierPatient> list = new List<DossierPatient>();
@@ -1909,7 +2071,7 @@ namespace SUMEDCO
                 chaine = "Age :";
             else
             {
-                chaine = (DateTime.Now.Year - int.Parse(chaineDate.Substring(chaineDate.IndexOf("/") + 1)))+" ans et " + Math.Abs(DateTime.Now.Month - int.Parse(chaineDate.Substring(0, chaineDate.IndexOf("/"))))+" mois";
+                chaine = (DateTime.Now.Year - int.Parse(chaineDate.Substring(chaineDate.IndexOf("/") + 1))- 1)+" ans et " + (12 - Math.Abs(DateTime.Now.Month - int.Parse(chaineDate.Substring(0, chaineDate.IndexOf("/")))))+" mois";
             }
             return chaine;
         }
@@ -1919,6 +2081,7 @@ namespace SUMEDCO
 	        {
                 case "médecin": cmd = new SqlCommand("select nommedecin from Medecin", con); break;
                 case "typepatient": cmd = new SqlCommand("select nomtype from TypePatient", con); break;
+                case "autorisation": cmd = new SqlCommand("select libelle from Autorisations", con); break;
 	        }
             con.Open();
             try
@@ -1936,25 +2099,42 @@ namespace SUMEDCO
             }
             con.Close();
         }
-        public void CompterCasMedecin(FormPatient p)
+        public void CompterCasMedecin(FormPriseSigneVital p)
         {
-            //cmd = new SqlCommand("select idmedecin, count(id) from LigneAgendaPatient group by idmedecin", con);
-            //con.Open();
-            //try
-            //{
-            //    dr = cmd.ExecuteReader();
-            //    p.dgvMedecin.Rows.Clear();
-            //    while (dr.Read())
-            //    {
-            //        p.dgvMedecin.Rows.Add();
-            //        p.dgvMedecin.Rows[p.dgvMedecin.RowCount - 1].Cells[0].Value = dr[0].ToString();
-            //        p.dgvMedecin.Rows[p.dgvMedecin.RowCount - 1].Cells[2].Value = dr[1].ToString();
-            //    }
-            //}
-            //catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);}
-            //con.Close();
-            //for (int i = 0; i < p.dgvMedecin.RowCount; i++)
-            //    p.dgvMedecin.Rows[i].Cells[1].Value = TrouverNom("medecin", int.Parse(p.dgvMedecin.Rows[i].Cells[0].Value.ToString()));
+            con.Open();
+            try
+            {
+                cmd = new SqlCommand("SELECT idmedecin, nommedecin FROM Medecin", con);
+                dr = cmd.ExecuteReader();
+                p.dgvMedecin.Rows.Clear();
+                while (dr.Read())
+                {
+                    p.dgvMedecin.Rows.Add();
+                    p.dgvMedecin.Rows[p.dgvMedecin.RowCount - 1].Cells[0].Value = dr[0].ToString();
+                    p.dgvMedecin.Rows[p.dgvMedecin.RowCount - 1].Cells[1].Value = dr[1].ToString();
+                }
+            }
+            catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            con.Close();
+
+            if(p.dgvMedecin.RowCount != 0)
+            {
+                for (int i = 0; i < p.dgvMedecin.RowCount; i++)
+                {
+                    con.Open();
+                    try
+                    {
+                        cmd = new SqlCommand("SELECT COUNT(idconsultation) FROM Consultation, PriseSigneVitaux WHERE Consultation.idprise = PriseSigneVitaux.idprise AND date_prise = '"+DateTime.Now.ToShortDateString()+"' AND idmedecin = '" + p.dgvMedecin.Rows[i].Cells[0].Value.ToString() + "'", con);
+                        dr = cmd.ExecuteReader();
+                        while (dr.Read())
+                        {
+                            p.dgvMedecin.Rows[i].Cells[2].Value = dr[0].ToString();
+                        }
+                    }
+                    catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                    con.Close();
+                }
+            }
         }
         public int NbConsultationPatient(int idpatient)
         {
@@ -2160,8 +2340,33 @@ namespace SUMEDCO
             //    MessageBox.Show("Ce patient est déjà impliqué dans au moins une consultation ,\npour raison de cohérence, il ne peut être supprimé", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
         }
+        public void AfficherPatientAbonne(DataGridView dgv, int idpatient)
+        {
+            cmd = new SqlCommand("select Patient.idpatient,idpayeur,noms,sexe,age,adresse,situation,telephone,pers_contact,tel_contact,nomtype,typeabonne,nomentreprise,num_service from Patient, Payeur, TypePatient, TypeAbonne, Entreprise where Patient.idpatient = Payeur.idpatient and Patient.idtype = TypePatient.idtype and Patient.idtypeabonne = TypeAbonne.idtypeabonne and Patient.identreprise = Entreprise.identreprise and Patient.idpatient = '" + idpatient + "'", con);
+            dr = cmd.ExecuteReader();
+            dgv.Rows.Clear();
+            while (dr.Read())
+            {
+                dgv.Rows.Add();
+                dgv.Rows[dgv.RowCount - 1].Cells[0].Value = dr[0].ToString();
+                dgv.Rows[dgv.RowCount - 1].Cells[1].Value = dr[1].ToString();
+                dgv.Rows[dgv.RowCount - 1].Cells[2].Value = dr[2].ToString();
+                dgv.Rows[dgv.RowCount - 1].Cells[3].Value = dr[3].ToString();
+                dgv.Rows[dgv.RowCount - 1].Cells[4].Value = dr[4].ToString();
+                dgv.Rows[dgv.RowCount - 1].Cells[5].Value = dr[5].ToString();
+                dgv.Rows[dgv.RowCount - 1].Cells[6].Value = dr[6].ToString();
+                dgv.Rows[dgv.RowCount - 1].Cells[7].Value = dr[7].ToString();
+                dgv.Rows[dgv.RowCount - 1].Cells[8].Value = dr[8].ToString();
+                dgv.Rows[dgv.RowCount - 1].Cells[9].Value = dr[9].ToString();
+                dgv.Rows[dgv.RowCount - 1].Cells[10].Value = dr[10].ToString();
+                dgv.Rows[dgv.RowCount - 1].Cells[11].Value = dr[11].ToString();
+                dgv.Rows[dgv.RowCount - 1].Cells[12].Value = dr[12].ToString();
+                dgv.Rows[dgv.RowCount - 1].Cells[13].Value = dr[13].ToString();
+            }
+        }
         public void AfficherPatient(DataGridView dgv, TextBox txt, string motif, string poste, int idpatient)
         {
+            //A revoir pour les colonnes abonnés
             if(motif =="recherche")
             {
                 if (txt.Text != "" && txt.Text != "Nom du patient" && txt.Text != "Numéro service")
@@ -2318,7 +2523,7 @@ namespace SUMEDCO
         }
         public void TrouverPatient(FormFactureService f, FormFacturePatient p)
         {
-            p.poste = TrouverNom("poste", f.idutilisateur);
+            p.poste = f.poste;
             p.ShowDialog();
             if(p.fermeture_succes)
             {
@@ -2333,7 +2538,7 @@ namespace SUMEDCO
         }
         public void TrouverPatient(FormFactureProduit f, FormFacturePatient p)
         {
-            p.poste = TrouverNom("poste", f.idutilisateur);
+            p.poste = f.poste;
             p.ShowDialog();
             if (p.fermeture_succes)
             {
@@ -2387,148 +2592,19 @@ namespace SUMEDCO
         #endregion
 
         #region AGENDA
-        public bool ModifierAgenda(FormPatient p, string motif)
-        {
-            cmdStatut = true;
-            if (motif == "retirer")
-            {
-                con.Open();
-                SqlTransaction tx = con.BeginTransaction();
-                try
-                {
-                    cmd = new SqlCommand("delete from LigneAgendaPatient where idpatient = @idpatient", con);
-                    cmd.Parameters.AddWithValue("@idpatient", p.idpatient);
-                    cmd.Transaction = tx;
-                    cmd.ExecuteNonQuery();
-                    tx.Commit();
-                }
-                catch (Exception ex)
-                {
-                    tx.Rollback();
-                    cmdStatut = false;
-                    MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                con.Close();
-                Supprimer(p);
-            }
-            else
-            {
-                con.Open();
-                SqlTransaction tx = con.BeginTransaction();
-                try
-                {
-                    cmd = new SqlCommand("update LigneAgendaPatient set cas = @cas, idmedecin = @idmedecin where idpatient = @idpatient", con);
-                    cmd.Parameters.AddWithValue("@idpatient", p.idpatient);
-                    cmd.Parameters.AddWithValue("@cas", p.cas);
-                    cmd.Parameters.AddWithValue("@idmedecin", p.idmedecin);
-                    cmd.Transaction = tx;
-                    cmd.ExecuteNonQuery();
-                    tx.Commit();
-                }
-                catch (Exception ex)
-                {
-                    tx.Rollback();
-                    cmdStatut = false;
-                    MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                con.Close();
-            }
-            return cmdStatut;
-        }
-        public void ChargerAgendaPatient(FormAgenda a)
-        {
-            cmd = new SqlCommand("select * from LigneAgendaPatient where idpatient= @idpatient", con);
-            cmd.Parameters.AddWithValue("@idpatient", a.idpatient);
-            con.Open();
-            try
-            {
-                dr = cmd.ExecuteReader();
-                a.dgvAgenda.Rows.Clear();
-                while (dr.Read())
-                {
-                    a.dgvAgenda.Rows.Add();
-                    a.dgvAgenda.Rows[a.dgvAgenda.RowCount - 1].Cells[0].Value = dr[0].ToString();
-                    a.dgvAgenda.Rows[a.dgvAgenda.RowCount - 1].Cells[1].Value = dr[1].ToString();
-                    a.dgvAgenda.Rows[a.dgvAgenda.RowCount - 1].Cells[2].Value = dr[2].ToString();
-                    a.dgvAgenda.Rows[a.dgvAgenda.RowCount - 1].Cells[3].Value = dr[3].ToString();
-                    a.dgvAgenda.Rows[a.dgvAgenda.RowCount - 1].Cells[6].Value = dr[4].ToString();
-                    a.dgvAgenda.Rows[a.dgvAgenda.RowCount - 1].Cells[7].Value = dr[5].ToString();
-                    a.dgvAgenda.Rows[a.dgvAgenda.RowCount - 1].Cells[8].Value = dr[6].ToString();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            con.Close();
-            for (int i = 0; i < a.dgvAgenda.RowCount; i++)
-            {
-                a.dgvAgenda.Rows[i].Cells[4].Value = TrouverNom("patient", int.Parse(a.dgvAgenda.Rows[i].Cells[2].Value.ToString()));
-                a.dgvAgenda.Rows[i].Cells[5].Value = TrouverNom("medecin", int.Parse(a.dgvAgenda.Rows[i].Cells[3].Value.ToString()));
-                AgeSexeDatePatient(a, i);
-                a.dgvAgenda.Rows[i].Cells[12].Value = TrouverNom("typepatient", int.Parse(a.dgvAgenda.Rows[i].Cells[12].Value.ToString()));
-            }
-        }
-        public void AgeSexeDatePatient(FormAgenda a, int idligne)
+        public void ChargerAgenda(FormAgenda a, string motif)
         {
             con.Open();
             try
             {
-                cmd = new SqlCommand("select date_entree, sexe, age, idtype from Patient where idpatient= @id", con);
-                cmd.Parameters.AddWithValue("@id", a.dgvAgenda.Rows[idligne].Cells[2].Value.ToString());
-                dr = cmd.ExecuteReader();
-                dr.Read();
-                a.dgvAgenda.Rows[idligne].Cells[9].Value = dr[0].ToString().Substring(0, 10);
-                a.dgvAgenda.Rows[idligne].Cells[10].Value = dr[1].ToString();
-                a.dgvAgenda.Rows[idligne].Cells[11].Value = dr[2].ToString();
-                a.dgvAgenda.Rows[idligne].Cells[12].Value = dr[3].ToString();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            con.Close();
-        }
-        public void ChargerAgendaMedecin(FormAgenda a)
-        {
-            con.Open();
-            try
-            {
-                cmd = new SqlCommand("select * from LigneAgendaPatient where idmedecin = @id", con);
-                cmd.Parameters.AddWithValue("@id", a.idmedecin);
-                dr = cmd.ExecuteReader();
-                a.dgvAgenda.Rows.Clear();
-                while (dr.Read())
+                if (motif == "recherche")
                 {
-                    a.dgvAgenda.Rows.Add();
-                    a.dgvAgenda.Rows[a.dgvAgenda.RowCount - 1].Cells[0].Value = dr[0].ToString();
-                    a.dgvAgenda.Rows[a.dgvAgenda.RowCount - 1].Cells[1].Value = dr[1].ToString();
-                    a.dgvAgenda.Rows[a.dgvAgenda.RowCount - 1].Cells[2].Value = dr[2].ToString();
-                    a.dgvAgenda.Rows[a.dgvAgenda.RowCount - 1].Cells[3].Value = dr[3].ToString();
-                    a.dgvAgenda.Rows[a.dgvAgenda.RowCount - 1].Cells[6].Value = dr[4].ToString();
-                    a.dgvAgenda.Rows[a.dgvAgenda.RowCount - 1].Cells[7].Value = dr[5].ToString();
-                    a.dgvAgenda.Rows[a.dgvAgenda.RowCount - 1].Cells[8].Value = dr[6].ToString();
+                    cmd = new SqlCommand("select Recette.idrecette, date_operation, nomservice, noms from Recette, RecetteService, Service, Patient, Payeur where Recette.idpayeur = Payeur.idpayeur and Payeur.idpatient = Patient.idpatient and Recette.idrecette = RecetteService.idrecette and RecetteService.idservice = Service.idservice and Service.idservice between 41 and 43 and date_operation between @dateDe and @dateA", con);
+                    cmd.Parameters.AddWithValue("@dateDe", a.dtpDateDe.Text);
+                    cmd.Parameters.AddWithValue("@dateA", a.dtpDateA.Text);
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            con.Close();
-            for (int i = 0; i < a.dgvAgenda.RowCount; i++)
-            {
-                a.dgvAgenda.Rows[i].Cells[4].Value = TrouverNom("patient", int.Parse(a.dgvAgenda.Rows[i].Cells[2].Value.ToString()));
-                a.dgvAgenda.Rows[i].Cells[5].Value = TrouverNom("medecin", int.Parse(a.dgvAgenda.Rows[i].Cells[3].Value.ToString()));
-                AgeSexeDatePatient(a, i);
-                a.dgvAgenda.Rows[i].Cells[12].Value = TrouverNom("typepatient", int.Parse(a.dgvAgenda.Rows[i].Cells[12].Value.ToString()));
-            }
-        }
-        public void ChargerAgenda(FormAgenda a)
-        {
-            con.Open();
-            try
-            {
-                cmd = new SqlCommand("select Recette.idrecette, date_operation, nomservice, noms from Recette, RecetteService, Service, Patient, Payeur where Recette.idpayeur = Payeur.idpayeur and Payeur.idpatient = Patient.idpatient and Recette.idrecette = RecetteService.idrecette and RecetteService.idservice = Service.idservice and Service.idservice between 41 and 43 and date_operation = '" + DateTime.Now.ToShortDateString() + "'", con);
+                else
+                    cmd = new SqlCommand("select Recette.idrecette, date_operation, nomservice, noms from Recette, RecetteService, Service, Patient, Payeur where Recette.idpayeur = Payeur.idpayeur and Payeur.idpatient = Patient.idpatient and Recette.idrecette = RecetteService.idrecette and RecetteService.idservice = Service.idservice and Service.idservice between 41 and 43 and date_operation = '" + DateTime.Now.ToShortDateString() + "'", con);
                 dr = cmd.ExecuteReader();
                 a.dgvAgenda.Rows.Clear();
                 while (dr.Read())
@@ -2575,114 +2651,43 @@ namespace SUMEDCO
                 }
             }
         }
-        public void ActualiserLigneAgenda(FormAgenda a)
+        public void AjouterPrise(FormPriseSigneVital p)
         {
-            con.Open();
-            try
+            if (p.cboMedecin.Text != "" && p.dgvSigne.Rows[p.dgvSigne.RowCount - 1].Cells[2].Value.ToString() != "")
             {
-                cmd = new SqlCommand("select caisse, signev, consultation from LigneAgendaPatient where id= @id", con);
-                cmd.Parameters.AddWithValue("@id", a.idligne);
-                dr = cmd.ExecuteReader();
-                dr.Read();
-                a.dgvAgenda.CurrentRow.Cells[6].Value = dr[0].ToString();
-                a.dgvAgenda.CurrentRow.Cells[7].Value = dr[1].ToString();
-                a.dgvAgenda.CurrentRow.Cells[8].Value = dr[2].ToString();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            con.Close();
-        }
-        public void AffecterCas(FormAgenda a, FormPriseSigneVital p)
-        {
-            a.btnAffecter.Enabled = false;
-            p.idpatient = TrouverId("patient", a.dgvAgenda.CurrentRow.Cells[3].Value.ToString());
-            p.txtPatient.Text = a.dgvAgenda.CurrentRow.Cells[3].Value.ToString();
-            p.ShowDialog();
-            if (p.fermeture_succes)
-            {
-                a.dgvAgenda.CurrentRow.Cells[4].Value = p.cboMedecin.Text;
-                a.dgvAgenda.CurrentRow.Cells[5].Value = p.idprise;
-                a.dgvAgenda.CurrentRow.Cells[6].Value = p.idpatient;
-                a.dgvAgenda.CurrentRow.Cells[7].Value = p.idmedecin;
-            }
-            else
-            {
-                MessageBox.Show("Consultation déjà validée", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-        public void ValiderStatutSignesVitaux(int idligneagenda)
-        {
-            con.Open();
-            SqlTransaction tx = con.BeginTransaction();
-            try
-            {
-                cmd = new SqlCommand("update LigneAgendaPatient set signev = 'OK' where id = @id", con);
-                cmd.Parameters.AddWithValue("@id", idligneagenda);
-                cmd.Transaction = tx;
-                cmd.ExecuteNonQuery();
-                tx.Commit();
-            }
-            catch (Exception ex)
-            {
-                tx.Rollback();
-                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            con.Close();
-        }
-        public void ValiderStatutConsultation(int idligneagenda)
-        {
-            con.Open();
-            SqlTransaction tx = con.BeginTransaction();
-            try
-            {
-                cmd = new SqlCommand("update LigneAgendaPatient set consultation = 'OK' where id = @id", con);
-                cmd.Parameters.AddWithValue("@id", idligneagenda);
-                cmd.Transaction = tx;
-                cmd.ExecuteNonQuery();
-                tx.Commit();
-            }
-            catch (Exception ex)
-            {
-                tx.Rollback();
-                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            con.Close();
-            RetirerPatientAgenda(idligneagenda);
-        }
-        public void RetirerPatientAgenda(int idligneagenda)
-        {
-            con.Open();
-            SqlTransaction tx = con.BeginTransaction();
-            try
-            {
-                cmd = new SqlCommand("delete from LigneAgendaPatient where id = @id and consultation = 'OK'", con);
-                cmd.Parameters.AddWithValue("@id", idligneagenda);
-                cmd.Transaction = tx;
-                cmd.ExecuteNonQuery();
-                tx.Commit();
-            }
-            catch (Exception ex)
-            {
-                tx.Rollback();
-                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            con.Close();
-        }
-        public void InvaliderStatutCaisse(FormAgenda a)
-        {
-            a.btnInvalider.Enabled = false;
-            if (a.dgvAgenda.CurrentRow.Cells[7].Value.ToString() != "OK")
-            {
-                if (a.dgvAgenda.CurrentRow.Cells[6].Value.ToString() == "OK")
+                p.idprise = NouveauID("prise");
+                con.Open();
+                SqlTransaction tx = con.BeginTransaction();
+                try
+                {
+                    cmd = new SqlCommand("INSERT INTO PriseSigneVitaux VALUES (@idprise, @date_prise, @idpatient, @idrecette, @idmedecin)", con);
+                    cmd.Parameters.AddWithValue("@idprise", p.idprise);
+                    cmd.Parameters.AddWithValue("@date_prise", p.dtpDateDe.Text);
+                    cmd.Parameters.AddWithValue("@idpatient", p.idpatient);
+                    cmd.Parameters.AddWithValue("@idrecette", p.idrecette);
+                    cmd.Parameters.AddWithValue("@idmedecin", p.idmedecin);
+                    cmd.Transaction = tx;
+                    cmd.ExecuteNonQuery();
+                    tx.Commit();
+                }
+                catch (Exception ex)
+                {
+                    tx.Rollback();
+                    MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                con.Close();
+
+                //Ajout des valeurs
+                for (int i = 0; i < p.dgvSigne.RowCount; i++)
                 {
                     con.Open();
-                    SqlTransaction tx = con.BeginTransaction();
+                    tx = con.BeginTransaction();
                     try
                     {
-                        cmd = new SqlCommand("update LigneAgendaPatient set caisse = NULL  where id = @id", con);
-                        cmd.Parameters.AddWithValue("@id", a.idligne);
+                        cmd = new SqlCommand("INSERT INTO ValeurSigneVitaux VALUES (@idprise, @idsigne, @valeur)", con);
+                        cmd.Parameters.AddWithValue("@idprise", p.idprise);
+                        cmd.Parameters.AddWithValue("@idsigne", p.dgvSigne.Rows[i].Cells[0].Value.ToString());
+                        cmd.Parameters.AddWithValue("@valeur", p.dgvSigne.Rows[i].Cells[2].Value.ToString());
                         cmd.Transaction = tx;
                         cmd.ExecuteNonQuery();
                         tx.Commit();
@@ -2693,110 +2698,37 @@ namespace SUMEDCO
                         MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     con.Close();
-                    ActualiserLigneAgenda(a);
+                    MessageBox.Show("Enregistré avec succès", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                else MessageBox.Show("Consultation non encore validée", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else MessageBox.Show("Le cas sélectionné est déjà impliqué dans le prélèvement des signes vitaux, pour garder la cohérence, il ne peut être invalidé", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        }
-        public void AjouterServicePourNonPayant(FormAgenda a, FormSigneVital s, FormAbonneService ab)
-        {
-            
-            if (ab.fermeture_succes)
-                SignesVitaux(a, s);
-        }
-        public void SignesVitaux(FormAgenda a, FormSigneVital sv)
-        {
-            if (a.dgvAgenda.RowCount != 0)
-            {
-                if (a.dgvAgenda.CurrentRow.Cells[6].Value.ToString() == "OK")
-                {
-                    if (a.dgvAgenda.CurrentRow.Cells[7].Value.ToString() != "OK")
-                    {
-                        sv.motif = "soin";
-                        sv.lblNum.Text = a.dgvAgenda.CurrentRow.Cells[0].Value.ToString();
-                        sv.lblNom.Text = a.dgvAgenda.CurrentRow.Cells[4].Value.ToString();
-                        sv.MaximizeBox = false;
-                        sv.MinimizeBox = false;
-                        sv.MaximumSize = sv.Size;
-                        sv.MinimumSize = sv.Size;
-                        sv.panel2.Visible = true;
-                        sv.lblNum.Visible = true;
-                        sv.lblNom.Visible = true;
-                        sv.Text = "SSM - Signes Vitaux";
-                        ChargerSignesVitaux(sv);
-                        sv.ShowDialog();
-                        ActualiserLigneAgenda(a);
-                    }
-                    else if(MessageBox.Show("Valeurs déjà enregistrées pour ce patient\n\nVoulez-vous les modifier ?", "Valeur", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)== DialogResult.Yes)
-                    {
-                        sv.motif = "soin";
-                        sv.lblNum.Text = a.dgvAgenda.CurrentRow.Cells[0].Value.ToString();
-                        sv.lblNom.Text = a.dgvAgenda.CurrentRow.Cells[4].Value.ToString();
-                        sv.MaximizeBox = false;
-                        sv.MinimizeBox = false;
-                        sv.MaximumSize = sv.Size;
-                        sv.MinimumSize = sv.Size;
-                        sv.panel2.Visible = true;
-                        sv.lblNum.Visible = true;
-                        sv.lblNom.Visible = true;
-                        sv.btnValider.Enabled = false;
-                        sv.btnMAJ.Enabled = true;
-                        sv.Text = "SSM - Signes Vitaux";
-                        ValeurSigneVitaux(sv.dgvSigne, int.Parse(sv.lblNum.Text));
-                        sv.ShowDialog();
-                    }
-                }
-                else MessageBox.Show("Le patient sélectionné n'a pas encore payé", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
-                MessageBox.Show("Aucune ligne n'a été trouvée", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            {
+                MessageBox.Show("Au moins une valeur manque", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        public void AffecterCas(FormAgenda a, FormPriseSigneVital p)
+        {
+            a.btnAffecter.Enabled = false;
+            p.idpatient = TrouverId("patient", a.dgvAgenda.CurrentRow.Cells[3].Value.ToString());
+            p.txtPatient.Text = a.dgvAgenda.CurrentRow.Cells[3].Value.ToString();
+            p.idrecette = int.Parse(a.dgvAgenda.CurrentRow.Cells[0].Value.ToString());
+            CompterCasMedecin(p);
+
+            p.ShowDialog();
+            if (p.fermeture_succes)
+            {
+                a.dgvAgenda.CurrentRow.Cells[4].Value = p.cboMedecin.Text;
+                a.dgvAgenda.CurrentRow.Cells[5].Value = p.idprise;
+                a.dgvAgenda.CurrentRow.Cells[6].Value = p.idpatient;
+                a.dgvAgenda.CurrentRow.Cells[7].Value = p.idmedecin;
+            }
+            //else
+            //{
+            //    MessageBox.Show("Consultation déjà validée", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
         }
         
-        List<string> numagenda = new List<string>();
-        public void Consultation(FormAgenda a, FormConsulter c)
-        {           
-            if(a.dgvAgenda.RowCount != 0)
-            {
-                if (a.dgvAgenda.CurrentRow.Cells[7].Value.ToString() == "OK")
-                {
-                    if (a.dgvAgenda.CurrentRow.Cells[8].Value.ToString() != "OK")
-                    {
-                        if (!numagenda.Contains(a.dgvAgenda.CurrentRow.Cells[0].Value.ToString()))
-                        {
-                            c.dgvAgenda.Rows.Add();
-                            c.dgvAgenda.Rows[0].Cells[0].Value = a.dgvAgenda.CurrentRow.Cells[0].Value.ToString();
-                            c.dgvAgenda.Rows[0].Cells[1].Value = a.dgvAgenda.CurrentRow.Cells[1].Value.ToString();
-                            c.dgvAgenda.Rows[0].Cells[2].Value = a.dgvAgenda.CurrentRow.Cells[2].Value.ToString();
-                            c.dgvAgenda.Rows[0].Cells[3].Value = a.dgvAgenda.CurrentRow.Cells[3].Value.ToString();
-                            c.dgvAgenda.Rows[0].Cells[4].Value = a.dgvAgenda.CurrentRow.Cells[4].Value.ToString();
-                            c.dgvAgenda.Rows[0].Cells[5].Value = a.dgvAgenda.CurrentRow.Cells[5].Value.ToString();
-                            c.dgvAgenda.Rows[0].Cells[6].Value = a.dgvAgenda.CurrentRow.Cells[9].Value.ToString();
-                            c.dgvAgenda.Rows[0].Cells[7].Value = a.dgvAgenda.CurrentRow.Cells[10].Value.ToString();
-                            c.dgvAgenda.Rows[0].Cells[8].Value = a.dgvAgenda.CurrentRow.Cells[11].Value.ToString();
-                            c.dgvAgenda.Rows[0].Cells[9].Value = a.dgvAgenda.CurrentRow.Cells[12].Value.ToString();
-
-                            c.idligneagenda = int.Parse(c.dgvAgenda.CurrentRow.Cells[0].Value.ToString());
-                            c.type_consultation = a.dgvAgenda.CurrentRow.Cells[1].Value.ToString();
-                            c.idpatient = int.Parse(a.dgvAgenda.CurrentRow.Cells[2].Value.ToString());
-                            c.type_patient = a.dgvAgenda.CurrentRow.Cells[12].Value.ToString();
-                            c.idmedecin = int.Parse(a.dgvAgenda.CurrentRow.Cells[3].Value.ToString());
-
-                            ValeurSigneVitaux(c.dgvSigneVital, int.Parse(c.dgvAgenda.CurrentRow.Cells[0].Value.ToString()));
-                            c.Text = "SSM - Dossier " + c.dgvAgenda.CurrentRow.Cells[4].Value.ToString();
-
-                            numagenda.Add(a.dgvAgenda.CurrentRow.Cells[0].Value.ToString());
-                            c.Show();
-                        }
-                    }
-                    else MessageBox.Show("Le patient sélectionné est déjà consulté", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                }
-                else MessageBox.Show("Valeurs des signes vitaux manquantes pour le patient sélectionné", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-                MessageBox.Show("Aucune ligne n'a été trouvée", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        }
+        List<string> listConsulte = new List<string>();
         public void ImprimerAgenda(FormAgenda a, FormImpression imp)
         {
             if (a.dgvAgenda.RowCount != 0)
@@ -2838,8 +2770,8 @@ namespace SUMEDCO
         {
             exa.txtPatient.Text = r.txtPatient.Text;
             exa.idmedecin = r.idmedecin;
-            exa.idconsultation = r.idconsultation;
-            exa.dgv1.Columns[2].Visible = false;
+            exa.idrecette = r.idconsultation;
+            exa.dgvSigne.Columns[2].Visible = false;
             exa.btnQuitter.Visible = false;
             exa.MaximizeBox = false;
             exa.MinimizeBox = false;
@@ -2861,7 +2793,7 @@ namespace SUMEDCO
             c.ShowDialog();
             if (c.fermeture_succes)
             {
-                exa.idconsultation = c.idconsultation;
+                exa.idrecette = c.idconsultation;
                 exa.txtPatient.Text = TrouverNom("patient", c.idpatient);
                 ChargerExamen(exa);
             }
@@ -2929,24 +2861,26 @@ namespace SUMEDCO
             con.Close();
             return chaine.Substring(0, 10);
         }
-        public void GenererBonExamen(FormConsulter exa, FormImpression imp)
+        public void GenererBonExamen(FormConsulter c, FormImpression imp)
         {
-            imp.idconsultation = exa.idconsultation;
-            imp.patient = exa.dgvAgenda.Rows[0].Cells[4].Value.ToString();
-            imp.idmedecin = exa.idmedecin;
-            imp.medecin = exa.dgvAgenda.Rows[0].Cells[5].Value.ToString();
-            imp.numfiche = string.Format("{0}-{1}-{2}", DateConsultation(imp.idconsultation).Substring(0, 10), imp.idconsultation, imp.idmedecin);
+            imp.idconsultation = c.idconsultation;
+            imp.patient = c.dgvPatient.Rows[0].Cells[1].Value.ToString();
+            imp.idmedecin = c.idmedecin;
+            imp.age = c.dgvPatient.Rows[2].Cells[1].Value.ToString();
+            imp.sexe = c.dgvPatient.Rows[1].Cells[1].Value.ToString();
+            imp.medecin = TrouverNom("medecin", imp.idmedecin);
+            imp.numfiche = string.Format("{0}-{1}-{2}", DateConsultation(imp.idconsultation), imp.idconsultation, imp.idmedecin);
             imp.Text = "SSM - Bon d'examens";
 
             List<BonExamen> list = new List<BonExamen>();
             list.Clear();
 
-            for (int i = 0; i < exa.dgvLabo.RowCount; i++)
+            for (int i = 0; i < c.dgvLabo.RowCount; i++)
             {
                 BonExamen be = new BonExamen
                 {
-                    numexamen = exa.dgvLabo.Rows[i].Cells[0].Value.ToString(),
-                    examen = exa.dgvLabo.Rows[i].Cells[1].Value.ToString(),
+                    numexamen = c.dgvLabo.Rows[i].Cells[0].Value.ToString(),
+                    examen = c.dgvLabo.Rows[i].Cells[1].Value.ToString(),
                 };
                 list.Add(be);
             }
@@ -2955,7 +2889,9 @@ namespace SUMEDCO
             {
                 new ReportParameter("numfiche", imp.numfiche),
                 new ReportParameter("patient", imp.patient),
-                new ReportParameter("medecin", imp.medecin)
+                new ReportParameter("medecin", imp.medecin),
+                new ReportParameter("age", imp.age),
+                new ReportParameter("sexe", imp.sexe)
             };
             rs.Name = "DataSet1";
             rs.Value = list;
@@ -2995,17 +2931,17 @@ namespace SUMEDCO
         public void ChargerExamen(FormPriseSigneVital exa)
         {
             cmd = new SqlCommand("select idresultat, nomexamen, resultat from ResultatExamen where idconsultation= @id", con);
-            cmd.Parameters.AddWithValue("@id", exa.idconsultation);
+            cmd.Parameters.AddWithValue("@id", exa.idrecette);
             con.Open();
             try
             {
                 dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    exa.dgv1.Rows.Add();
-                    exa.dgv1.Rows[exa.dgv1.RowCount - 1].Cells[0].Value = dr[0].ToString();
-                    exa.dgv1.Rows[exa.dgv1.RowCount - 1].Cells[1].Value = dr[1].ToString();
-                    exa.dgv1.Rows[exa.dgv1.RowCount - 1].Cells[2].Value = dr[2].ToString();
+                    exa.dgvSigne.Rows.Add();
+                    exa.dgvSigne.Rows[exa.dgvSigne.RowCount - 1].Cells[0].Value = dr[0].ToString();
+                    exa.dgvSigne.Rows[exa.dgvSigne.RowCount - 1].Cells[1].Value = dr[1].ToString();
+                    exa.dgvSigne.Rows[exa.dgvSigne.RowCount - 1].Cells[2].Value = dr[2].ToString();
                 }
             }
             catch (Exception ex)
@@ -3013,35 +2949,35 @@ namespace SUMEDCO
                 MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             con.Close();
-            exa.dgv1.SelectionMode = DataGridViewSelectionMode.CellSelect;
-            exa.dgv1.Columns[2].Visible = true;
+            exa.dgvSigne.SelectionMode = DataGridViewSelectionMode.CellSelect;
+            exa.dgvSigne.Columns[2].Visible = true;
         }
         public void ExamenPhysique(FormPriseSigneVital exa, FormExamenPhysique exp)
         {
             exp.fermeture_succes = false;
             exp.dgv.Rows.Add();
-            exp.dgv.Rows[0].Cells[0].Value = exa.dgv1.RowCount + 1;
+            exp.dgv.Rows[0].Cells[0].Value = exa.dgvSigne.RowCount + 1;
             exp.dgv.Rows[0].Cells[1].Value = "";
             exp.dgv.Rows[0].Cells[2].Value = "";
             exp.ShowDialog();
             if (exp.fermeture_succes)
             {
                 exa.fermeture_succes = true;
-                for (int i = 0; i < exa.dgv1.RowCount; i++)
+                for (int i = 0; i < exa.dgvSigne.RowCount; i++)
                 {
-                    if (exa.dgv1.Rows[i].Cells[1].Value.ToString() == exp.dgv.Rows[0].Cells[1].Value.ToString())
+                    if (exa.dgvSigne.Rows[i].Cells[1].Value.ToString() == exp.dgv.Rows[0].Cells[1].Value.ToString())
                     {
                         MessageBox.Show("Cet examen est déjà affecté à la liste", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        i += exa.dgv1.RowCount;
+                        i += exa.dgvSigne.RowCount;
                         exa.fermeture_succes = false;
                     }
                 }
                 if(exa.fermeture_succes)
                 {
-                    exa.dgv1.Rows.Add();
-                    exa.dgv1.Rows[exa.dgv1.RowCount - 1].Cells[0].Value = exp.dgv.Rows[0].Cells[0].Value;
-                    exa.dgv1.Rows[exa.dgv1.RowCount - 1].Cells[1].Value = exp.dgv.Rows[0].Cells[1].Value;
-                    exa.dgv1.Rows[exa.dgv1.RowCount - 1].Cells[2].Value = "";
+                    exa.dgvSigne.Rows.Add();
+                    exa.dgvSigne.Rows[exa.dgvSigne.RowCount - 1].Cells[0].Value = exp.dgv.Rows[0].Cells[0].Value;
+                    exa.dgvSigne.Rows[exa.dgvSigne.RowCount - 1].Cells[1].Value = exp.dgv.Rows[0].Cells[1].Value;
+                    exa.dgvSigne.Rows[exa.dgvSigne.RowCount - 1].Cells[2].Value = "";
                 }
             }
             exp.Close();
@@ -3182,7 +3118,7 @@ namespace SUMEDCO
         #region MALADIE_DIAGNOSTIC
         public void MaladieDiagnostic(FormPriseSigneVital exa, FormMaladieDiagnostic md)
         {
-            md.idconsultation = exa.idconsultation;
+            md.idconsultation = exa.idrecette;
             md.ShowDialog();
         }
         public void Annuler(FormMaladie m)
@@ -3469,7 +3405,7 @@ namespace SUMEDCO
         #endregion
 
         #region SIGNES VITAUX
-        public void ChargerSignesVitaux(FormSigneVital sv)
+        public void ChargerSignesVitaux(FormPriseSigneVital sv)
         {
             cmd = new SqlCommand("select * from SigneVital", con);
             con.Open();
@@ -3480,9 +3416,10 @@ namespace SUMEDCO
                 while (dr.Read())
                 {
                     sv.dgvSigne.Rows.Add();
-                    sv.dgvSigne.Rows[sv.dgvSigne.RowCount - 1].Cells[1].Value = dr[0].ToString();
-                    sv.dgvSigne.Rows[sv.dgvSigne.RowCount - 1].Cells[2].Value = dr[1].ToString();
-                    sv.dgvSigne.Rows[sv.dgvSigne.RowCount - 1].Cells[3].Value = "";
+                    sv.dgvSigne.Rows[sv.dgvSigne.RowCount - 1].Cells[0].Value = dr[0].ToString();
+                    sv.dgvSigne.Rows[sv.dgvSigne.RowCount - 1].Cells[1].Value = dr[1].ToString();
+                    sv.dgvSigne.Rows[sv.dgvSigne.RowCount - 1].Cells[2].Value = "";
+                    sv.dgvSigne.Rows[sv.dgvSigne.RowCount - 1].Cells[3].Value = dr[2].ToString();
                 }
             }
             catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
@@ -3552,7 +3489,7 @@ namespace SUMEDCO
                     MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 con.Close();
-                ChargerSignesVitaux(sv);
+                //ChargerSignesVitaux(sv);
                 Annuler(sv);
             }
             else
@@ -3588,7 +3525,7 @@ namespace SUMEDCO
                     con.Close();
                 }
                 MessageBox.Show("Enregistré avec succès", "Enregistrement", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ValiderStatutSignesVitaux(int.Parse(sv.lblNum.Text));
+                //ValiderStatutSignesVitaux(int.Parse(sv.lblNum.Text));
                 sv.Close();
             }
             else
@@ -3619,7 +3556,7 @@ namespace SUMEDCO
                 }
                 con.Close();
                 MessageBox.Show("Enregistré avec succès", "Enregistrement", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ChargerSignesVitaux(sv);
+                //ChargerSignesVitaux(sv);
                 Annuler(sv);
             }
             else
@@ -3664,19 +3601,19 @@ namespace SUMEDCO
                     MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 con.Close();
-                ChargerSignesVitaux(sv);
+                //ChargerSignesVitaux(sv);
             }
             else
                 MessageBox.Show("Ce signe est déjà impliqué dans les consultations effectuées,\npour raison de cohérence, il ne peut être supprimé", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             Annuler(sv);
         }
-        public void ValeurSigneVitaux(DataGridView dgv, int idligneagenda)
+        public void ValeurSigneVitaux(DataGridView dgv, int idprise)
         {
             con.Open();
             try
             {
-                cmd = new SqlCommand("select id, idsigne, valeur from LigneSigneVital where idligneagenda = @id", con);
-                cmd.Parameters.AddWithValue("@id", idligneagenda);
+                cmd = new SqlCommand("select SigneVital.idsigne, nomsigne, valeur, unite from ValeurSigneVitaux, SigneVital where ValeurSigneVitaux.idsigne = SigneVital.idsigne AND ValeurSigneVitaux.idprise = '"+idprise+"'", con);
+                cmd.Parameters.AddWithValue("@id", idprise);
                 dr = cmd.ExecuteReader();
                 id = 0;
                 while (dr.Read())
@@ -3684,16 +3621,13 @@ namespace SUMEDCO
                     dgv.Rows.Add();
                     dgv.Rows[dgv.RowCount - 1].Cells[0].Value = dr[0].ToString();
                     dgv.Rows[dgv.RowCount - 1].Cells[1].Value = dr[1].ToString();
-					dgv.Rows[dgv.RowCount - 1].Cells[3].Value = dr[2].ToString();
+					dgv.Rows[dgv.RowCount - 1].Cells[2].Value = dr[2].ToString();
+                    dgv.Rows[dgv.RowCount - 1].Cells[3].Value = dr[3].ToString();
                 }
             }
             catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
             con.Close();
-            for (int i = 0; i < dgv.RowCount; i++)
-            {
-                dgv.Rows[i].Cells[2].Value = TrouverNom("signevital", int.Parse(dgv.Rows[i].Cells[1].Value.ToString()));
-            }
-        }
+		}
         public void Annuler(FormSigneVital sv)
         {
             sv.btnEnregistrer.Enabled = true;

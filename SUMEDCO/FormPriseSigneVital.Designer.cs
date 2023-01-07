@@ -31,12 +31,12 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPriseSigneVital));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPriseSigneVital));
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnEnregistrer = new System.Windows.Forms.Button();
-            this.dgv1 = new System.Windows.Forms.DataGridView();
+            this.dgvSigne = new System.Windows.Forms.DataGridView();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,14 +46,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnQuitter = new System.Windows.Forms.Button();
-            this.lblDateOperation = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.cboMedecin = new System.Windows.Forms.ComboBox();
             this.dgvMedecin = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn33 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn34 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv1)).BeginInit();
+            this.dtpDateDe = new System.Windows.Forms.DateTimePicker();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSigne)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMedecin)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,11 +63,12 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(488, 27);
+            this.panel2.Size = new System.Drawing.Size(462, 27);
             this.panel2.TabIndex = 631;
             // 
             // btnEnregistrer
             // 
+            this.btnEnregistrer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEnregistrer.BackColor = System.Drawing.Color.Transparent;
             this.btnEnregistrer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnEnregistrer.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
@@ -84,13 +85,13 @@
             this.btnEnregistrer.UseVisualStyleBackColor = false;
             this.btnEnregistrer.Click += new System.EventHandler(this.btnEnregistrer_Click);
             // 
-            // dgv1
+            // dgvSigne
             // 
-            this.dgv1.AllowUserToAddRows = false;
-            this.dgv1.AllowUserToDeleteRows = false;
-            this.dgv1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.dgv1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgv1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgvSigne.AllowUserToAddRows = false;
+            this.dgvSigne.AllowUserToDeleteRows = false;
+            this.dgvSigne.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.dgvSigne.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvSigne.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSteelBlue;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -98,9 +99,9 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgv1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvSigne.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvSigne.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSigne.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column3,
             this.Column8,
             this.Column1,
@@ -112,16 +113,16 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgv1.GridColor = System.Drawing.Color.RoyalBlue;
-            this.dgv1.Location = new System.Drawing.Point(18, 234);
-            this.dgv1.MultiSelect = false;
-            this.dgv1.Name = "dgv1";
-            this.dgv1.RowHeadersVisible = false;
-            this.dgv1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv1.Size = new System.Drawing.Size(429, 169);
-            this.dgv1.TabIndex = 636;
-            this.dgv1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv1_CellClick);
+            this.dgvSigne.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvSigne.GridColor = System.Drawing.Color.RoyalBlue;
+            this.dgvSigne.Location = new System.Drawing.Point(18, 253);
+            this.dgvSigne.MultiSelect = false;
+            this.dgvSigne.Name = "dgvSigne";
+            this.dgvSigne.RowHeadersVisible = false;
+            this.dgvSigne.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvSigne.Size = new System.Drawing.Size(429, 150);
+            this.dgvSigne.TabIndex = 636;
+            this.dgvSigne.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSigne_CellClick);
             // 
             // Column3
             // 
@@ -141,7 +142,7 @@
             // Column1
             // 
             this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.HeaderText = "Résultat";
+            this.Column1.HeaderText = "Valeur";
             this.Column1.Name = "Column1";
             // 
             // Column2
@@ -154,7 +155,7 @@
             // txtPatient
             // 
             this.txtPatient.Enabled = false;
-            this.txtPatient.Location = new System.Drawing.Point(90, 176);
+            this.txtPatient.Location = new System.Drawing.Point(90, 195);
             this.txtPatient.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtPatient.MaxLength = 75;
             this.txtPatient.Name = "txtPatient";
@@ -164,7 +165,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 208);
+            this.label2.Location = new System.Drawing.Point(15, 227);
             this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 15);
@@ -174,7 +175,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 179);
+            this.label4.Location = new System.Drawing.Point(15, 198);
             this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(51, 15);
@@ -183,38 +184,26 @@
             // 
             // btnQuitter
             // 
-            this.btnQuitter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnQuitter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnQuitter.BackColor = System.Drawing.Color.Transparent;
             this.btnQuitter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnQuitter.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnQuitter.FlatAppearance.BorderSize = 0;
             this.btnQuitter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
             this.btnQuitter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuitter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQuitter.Image = ((System.Drawing.Image)(resources.GetObject("btnQuitter.Image")));
-            this.btnQuitter.Location = new System.Drawing.Point(458, 28);
+            this.btnQuitter.Location = new System.Drawing.Point(275, 411);
             this.btnQuitter.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnQuitter.Name = "btnQuitter";
-            this.btnQuitter.Size = new System.Drawing.Size(30, 30);
+            this.btnQuitter.Size = new System.Drawing.Size(80, 26);
             this.btnQuitter.TabIndex = 646;
+            this.btnQuitter.Text = "Annuler";
             this.btnQuitter.UseVisualStyleBackColor = false;
             this.btnQuitter.Click += new System.EventHandler(this.btnQuitter_Click);
-            // 
-            // lblDateOperation
-            // 
-            this.lblDateOperation.ForeColor = System.Drawing.Color.IndianRed;
-            this.lblDateOperation.Location = new System.Drawing.Point(87, 156);
-            this.lblDateOperation.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.lblDateOperation.Name = "lblDateOperation";
-            this.lblDateOperation.Size = new System.Drawing.Size(80, 15);
-            this.lblDateOperation.TabIndex = 656;
-            this.lblDateOperation.Text = "jj/mm/aaaa";
-            this.lblDateOperation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 156);
+            this.label3.Location = new System.Drawing.Point(15, 171);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(69, 15);
@@ -228,11 +217,12 @@
             this.cboMedecin.FormattingEnabled = true;
             this.cboMedecin.Items.AddRange(new object[] {
             ""});
-            this.cboMedecin.Location = new System.Drawing.Point(90, 205);
+            this.cboMedecin.Location = new System.Drawing.Point(90, 224);
             this.cboMedecin.Name = "cboMedecin";
             this.cboMedecin.Size = new System.Drawing.Size(357, 23);
             this.cboMedecin.Sorted = true;
             this.cboMedecin.TabIndex = 658;
+            this.cboMedecin.DropDown += new System.EventHandler(this.cboMedecin_DropDown);
             this.cboMedecin.SelectedIndexChanged += new System.EventHandler(this.cboMedecin_SelectedIndexChanged);
             // 
             // dgvMedecin
@@ -271,7 +261,7 @@
             this.dgvMedecin.ReadOnly = true;
             this.dgvMedecin.RowHeadersVisible = false;
             this.dgvMedecin.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMedecin.Size = new System.Drawing.Size(429, 107);
+            this.dgvMedecin.Size = new System.Drawing.Size(429, 114);
             this.dgvMedecin.TabIndex = 659;
             // 
             // dataGridViewTextBoxColumn32
@@ -297,31 +287,42 @@
             this.dataGridViewTextBoxColumn34.Name = "dataGridViewTextBoxColumn34";
             this.dataGridViewTextBoxColumn34.ReadOnly = true;
             // 
+            // dtpDateDe
+            // 
+            this.dtpDateDe.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDateDe.Location = new System.Drawing.Point(90, 166);
+            this.dtpDateDe.Name = "dtpDateDe";
+            this.dtpDateDe.Size = new System.Drawing.Size(87, 21);
+            this.dtpDateDe.TabIndex = 660;
+            // 
             // FormPriseSigneVital
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(488, 451);
+            this.ClientSize = new System.Drawing.Size(462, 451);
+            this.ControlBox = false;
+            this.Controls.Add(this.dtpDateDe);
             this.Controls.Add(this.dgvMedecin);
             this.Controls.Add(this.cboMedecin);
-            this.Controls.Add(this.lblDateOperation);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnQuitter);
             this.Controls.Add(this.txtPatient);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnEnregistrer);
-            this.Controls.Add(this.dgv1);
+            this.Controls.Add(this.dgvSigne);
             this.Controls.Add(this.panel2);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(478, 490);
+            this.MinimumSize = new System.Drawing.Size(478, 490);
             this.Name = "FormPriseSigneVital";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormExamen";
+            this.Text = "SSM - Prise des signes vitaux";
             this.Shown += new System.EventHandler(this.FormExamen_Shown);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSigne)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMedecin)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -332,22 +333,22 @@
 
         private System.Windows.Forms.Panel panel2;
         public System.Windows.Forms.Button btnEnregistrer;
-        public System.Windows.Forms.DataGridView dgv1;
+        public System.Windows.Forms.DataGridView dgvSigne;
         private System.Windows.Forms.ToolTip toolTip1;
         public System.Windows.Forms.TextBox txtPatient;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         public System.Windows.Forms.Button btnQuitter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        public System.Windows.Forms.Label lblDateOperation;
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.ComboBox cboMedecin;
         public System.Windows.Forms.DataGridView dgvMedecin;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn32;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn33;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn34;
+        public System.Windows.Forms.DateTimePicker dtpDateDe;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
     }
 }

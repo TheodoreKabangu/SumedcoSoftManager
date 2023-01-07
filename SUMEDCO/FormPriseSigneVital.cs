@@ -22,7 +22,7 @@ namespace SUMEDCO
             idpatient = 0,
             idmedecin = 0,
             idprise = 0,
-            idconsultation = 0,
+            idrecette = 0,
             nbligne_trouve=0;
         public bool fermeture_succes;
         public string numcompte = "";
@@ -48,26 +48,13 @@ namespace SUMEDCO
              * si affecter alors nouvel enregistrement dans PriseSigneVital
              * si reaffecter alors update idmedecin = le nouveau idmedecin
              */
-            fermeture_succes = false;
+            cm.AjouterPrise(this);
+            fermeture_succes = true;
             this.Hide();
         }
-
-        private void dgv1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dgv1.RowCount != 0)
-            {
-                
-            }
-        }
-
-        private void btnValider_Click(object sender, EventArgs e)
-        {
-            cm.ValiderLigne(this);
-        }
-
         private void FormExamen_Shown(object sender, EventArgs e)
         {
-            
+            cm.ChargerSignesVitaux(this);
         }
 
         private void btnQuitter_Click(object sender, EventArgs e)
@@ -75,15 +62,33 @@ namespace SUMEDCO
             fermeture_succes = false;
             this.Hide();
         }
-
-        private void btnNouveau_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void cboMedecin_SelectedIndexChanged(object sender, EventArgs e)
         {
             idmedecin = cm.TrouverId("medecin", cboMedecin.Text);
+        }
+
+        private void cboMedecin_DropDown(object sender, EventArgs e)
+        {
+            cm.ChargerCombo(cboMedecin, "médecin");
+        }
+
+        private void dgvSigne_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvSigne.RowCount != 0)
+            {
+                if (dgvSigne.CurrentRow.Cells[2].Selected && dgvSigne.CurrentRow.Index > 0)
+                {
+                    for (int i = 0; i < dgvSigne.CurrentRow.Index; i++)
+                    {
+                        if (dgvSigne.Rows[i].Cells[2].Value.ToString() == "")
+                        {
+                            MessageBox.Show("Au moins une valeur manquante dans les lignes précédentes", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            dgvSigne.Rows[0].Cells[2].Selected = true;
+                            i += dgvSigne.RowCount;
+                        }
+                    }
+                }
+            }
         }
     }
 

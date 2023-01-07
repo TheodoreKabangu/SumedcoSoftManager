@@ -42,5 +42,14 @@ namespace SUMEDCO
         {
             cs.AfficherSousForm(this, new FormSigneVital());
         }
+
+        private void btnActiver_Click(object sender, EventArgs e)
+        {
+            FormAutorisation aut = new FormAutorisation();
+            aut.poste = "Admin";
+            aut.btnConnexion.Enabled = false;
+            aut.btnActiver.Visible = true;
+            aut.ShowDialog();
+        }
     }
 }

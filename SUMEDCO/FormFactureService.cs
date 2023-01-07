@@ -24,7 +24,7 @@ namespace SUMEDCO
             idoperation = 0,
             id = 0,
             idutilisateur;
-        public bool ajoutvalide;
+        public bool ajoutvalide, recettePatientConsulte, fermeture_succes;
         public string poste,
             numcompte = "", 
             numcomptediffere = "411100";
@@ -42,17 +42,25 @@ namespace SUMEDCO
                 lblTaux.Text = cc.VerifierTaux(DateTime.Now.Date, "valeur").ToString() + " CDF";
                 cboTypeFacture.Select();
             }
-            poste = cm.TrouverNom("poste", idutilisateur);
-            if (poste == "abonné")
+            
+            if (!recettePatientConsulte)
             {
-                cboTypeFacture.Items.Remove("immédiat");
-                cboPayeur.Items.Remove("passant");
+                if (poste == "abonné")
+                {
+                    cboTypeFacture.Items.Remove("immédiat");
+                    cboPayeur.Items.Remove("passant");
+                }
+                cc.ChargerCategorie(this);
             }
-            cc.ChargerCategorie(this);
         }
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
             cc.Enregistrer(this);
+            if(recettePatientConsulte)
+            {
+                fermeture_succes = true;
+                this.Hide();
+            }
         }
 
         private void btnRetirer_Click(object sender, EventArgs e)

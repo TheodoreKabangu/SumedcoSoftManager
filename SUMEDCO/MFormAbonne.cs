@@ -20,6 +20,7 @@ namespace SUMEDCO
         public Form activeForm = null;
         public string statut = "";
         public int idutilisateur;
+        public bool infirmier_autorise;
         private void btnAbonne_Click(object sender, EventArgs e)
         {
             statut = "nouveau";

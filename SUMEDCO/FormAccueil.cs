@@ -12,7 +12,7 @@ namespace SUMEDCO
 {
     public partial class FormAccueil : Form
     {
-        ClassCompta cc = new ClassCompta();
+        ClassStock cs = new ClassStock();
         ClassMalade cm = new ClassMalade();
         public FormAccueil()
         {

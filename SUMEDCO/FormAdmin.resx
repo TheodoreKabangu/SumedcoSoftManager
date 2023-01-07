@@ -175,6 +175,18 @@
         6B5dUGY41e3jV6MdGmTQATtPo6TyNfh8f9yiRAYoUO7zAAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="btnActiver.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAYVJREFUOE9j
+        oCtoaGhg8l4XqOO90c8RjIFskBhUmnjgvcVb0Hd9QI/P+oCXQPwfDb/02eDfFbA+QACqHD/w2uhnB9aE
+        aRAq3uD/3HddoA1UG3bgvcHfFqj4J4Zm3Pin39oga6h2VADyAlDBCzQNBDEwaJ65rArlhxqDAEAvtGPT
+        gA1H74j4P/9x5f/gzSFgPtDrrVBjIMBhvwMLUOI1siZcGGTY7i8d/0/96/9fcDQJJv4idFUoM9Q4Bga/
+        jX56yJpw4bhdkf/3fev8f+Jv3/+CY3DDwNh3k6821DgGBmA4eKJIbgj8X3wiBUUDssvKT6WhyIGw17pA
+        D6hxmAZ2X8//f+b/hP9dV/PBfJhhp4GGVWAxDIRRDET3ctDm4P/r3zaBDZ10uwhh2GnshoEwipcZ/jMw
+        AgUfIysI3BT8f/XrerChJ//2/y87iRoEaPgRyAyoaRCALdmADF31sp6QYZjJBgRwJWzfDah8dIwzYYMA
+        VbMeDFC1cIABqhZfyIBqBSz5gIEBAIsWOZF8EijHAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="btnQuitter.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAIRJREFUOE/V

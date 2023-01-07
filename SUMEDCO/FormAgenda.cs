@@ -22,18 +22,13 @@ namespace SUMEDCO
         public int idligne = 0, idmedecin = 0, idpatient = 0;
         private void FormAgenda_Shown(object sender, EventArgs e)
         {
-            cm.ChargerAgenda(this);
+            cm.ChargerAgenda(this, "");
         }
 
         private void btnValider_Click(object sender, EventArgs e)
         {
             cm.AffecterCas(this, new FormPriseSigneVital());
         }
-        private void btnInvalider_Click(object sender, EventArgs e)
-        {
-            cm.InvaliderStatutCaisse(this);
-        }
-
         private void btnQuitter_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -47,6 +42,34 @@ namespace SUMEDCO
                 btnAffecter.Enabled = true;
                 btnInvalider.Enabled = true;
             }
+        }
+
+        private void checkBox1_Click(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                timer1.Start();
+                progress = 0;
+            }
+            else
+            {
+                timer1.Stop();
+            }
+        }
+        int progress = 0;
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            progress += 1;
+            if (progress == 60)
+            {
+                cm.ChargerAgenda(this, "");
+                progress = 0;
+            }
+        }
+
+        private void btnRecherche_Click(object sender, EventArgs e)
+        {
+            cm.ChargerAgenda(this, "recherche");
         }
 
     }

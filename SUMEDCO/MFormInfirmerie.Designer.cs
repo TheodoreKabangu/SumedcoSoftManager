@@ -30,31 +30,21 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MFormInfirmerie));
             this.pnlSide = new System.Windows.Forms.Panel();
-            this.btnEncaisser = new System.Windows.Forms.Button();
-            this.btnPatientAncien = new System.Windows.Forms.Button();
-            this.btnPatient = new System.Windows.Forms.Button();
             this.btnIntervention = new System.Windows.Forms.Button();
             this.btnConsultation = new System.Windows.Forms.Button();
             this.btnQuitter = new System.Windows.Forms.Button();
             this.pnlLogo = new System.Windows.Forms.Panel();
             this.btnLogo = new System.Windows.Forms.Button();
             this.pnlChildForm = new System.Windows.Forms.Panel();
-            this.pnlSousMenu = new System.Windows.Forms.Panel();
-            this.btnFactureProduit = new System.Windows.Forms.Button();
-            this.btnFactureService = new System.Windows.Forms.Button();
-            this.btnBonEncaisser = new System.Windows.Forms.Button();
+            this.btnChat = new System.Windows.Forms.Button();
             this.pnlSide.SuspendLayout();
             this.pnlLogo.SuspendLayout();
-            this.pnlSousMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlSide
             // 
             this.pnlSide.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            this.pnlSide.Controls.Add(this.pnlSousMenu);
-            this.pnlSide.Controls.Add(this.btnEncaisser);
-            this.pnlSide.Controls.Add(this.btnPatientAncien);
-            this.pnlSide.Controls.Add(this.btnPatient);
+            this.pnlSide.Controls.Add(this.btnChat);
             this.pnlSide.Controls.Add(this.btnIntervention);
             this.pnlSide.Controls.Add(this.btnConsultation);
             this.pnlSide.Controls.Add(this.btnQuitter);
@@ -62,65 +52,8 @@
             this.pnlSide.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlSide.Location = new System.Drawing.Point(0, 0);
             this.pnlSide.Name = "pnlSide";
-            this.pnlSide.Size = new System.Drawing.Size(180, 471);
+            this.pnlSide.Size = new System.Drawing.Size(180, 491);
             this.pnlSide.TabIndex = 584;
-            // 
-            // btnEncaisser
-            // 
-            this.btnEncaisser.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnEncaisser.FlatAppearance.BorderSize = 0;
-            this.btnEncaisser.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.btnEncaisser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEncaisser.ForeColor = System.Drawing.Color.Black;
-            this.btnEncaisser.Image = ((System.Drawing.Image)(resources.GetObject("btnEncaisser.Image")));
-            this.btnEncaisser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEncaisser.Location = new System.Drawing.Point(0, 252);
-            this.btnEncaisser.Name = "btnEncaisser";
-            this.btnEncaisser.Size = new System.Drawing.Size(180, 45);
-            this.btnEncaisser.TabIndex = 588;
-            this.btnEncaisser.Text = "Bons de caisse";
-            this.btnEncaisser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEncaisser.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnEncaisser.UseVisualStyleBackColor = true;
-            this.btnEncaisser.Click += new System.EventHandler(this.btnEncaisser_Click);
-            // 
-            // btnPatientAncien
-            // 
-            this.btnPatientAncien.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnPatientAncien.FlatAppearance.BorderSize = 0;
-            this.btnPatientAncien.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.btnPatientAncien.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPatientAncien.ForeColor = System.Drawing.Color.Black;
-            this.btnPatientAncien.Image = ((System.Drawing.Image)(resources.GetObject("btnPatientAncien.Image")));
-            this.btnPatientAncien.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPatientAncien.Location = new System.Drawing.Point(0, 207);
-            this.btnPatientAncien.Name = "btnPatientAncien";
-            this.btnPatientAncien.Size = new System.Drawing.Size(180, 45);
-            this.btnPatientAncien.TabIndex = 587;
-            this.btnPatientAncien.Text = "Ancien malade";
-            this.btnPatientAncien.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPatientAncien.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnPatientAncien.UseVisualStyleBackColor = true;
-            this.btnPatientAncien.Click += new System.EventHandler(this.btnPatientAncien_Click);
-            // 
-            // btnPatient
-            // 
-            this.btnPatient.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnPatient.FlatAppearance.BorderSize = 0;
-            this.btnPatient.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.btnPatient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPatient.ForeColor = System.Drawing.Color.Black;
-            this.btnPatient.Image = ((System.Drawing.Image)(resources.GetObject("btnPatient.Image")));
-            this.btnPatient.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPatient.Location = new System.Drawing.Point(0, 162);
-            this.btnPatient.Name = "btnPatient";
-            this.btnPatient.Size = new System.Drawing.Size(180, 45);
-            this.btnPatient.TabIndex = 586;
-            this.btnPatient.Text = "Nouveau malade";
-            this.btnPatient.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPatient.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnPatient.UseVisualStyleBackColor = true;
-            this.btnPatient.Click += new System.EventHandler(this.btnPatient_Click);
             // 
             // btnIntervention
             // 
@@ -139,7 +72,6 @@
             this.btnIntervention.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnIntervention.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnIntervention.UseVisualStyleBackColor = true;
-            this.btnIntervention.Click += new System.EventHandler(this.btnIntervention_Click);
             // 
             // btnConsultation
             // 
@@ -173,7 +105,7 @@
             this.btnQuitter.ForeColor = System.Drawing.Color.Black;
             this.btnQuitter.Image = ((System.Drawing.Image)(resources.GetObject("btnQuitter.Image")));
             this.btnQuitter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnQuitter.Location = new System.Drawing.Point(0, 441);
+            this.btnQuitter.Location = new System.Drawing.Point(0, 461);
             this.btnQuitter.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnQuitter.Name = "btnQuitter";
             this.btnQuitter.Size = new System.Drawing.Size(180, 30);
@@ -218,89 +150,45 @@
             this.pnlChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlChildForm.Location = new System.Drawing.Point(180, 0);
             this.pnlChildForm.Name = "pnlChildForm";
-            this.pnlChildForm.Size = new System.Drawing.Size(714, 471);
+            this.pnlChildForm.Size = new System.Drawing.Size(714, 491);
             this.pnlChildForm.TabIndex = 585;
             // 
-            // pnlSousMenu
+            // btnChat
             // 
-            this.pnlSousMenu.Controls.Add(this.btnBonEncaisser);
-            this.pnlSousMenu.Controls.Add(this.btnFactureProduit);
-            this.pnlSousMenu.Controls.Add(this.btnFactureService);
-            this.pnlSousMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlSousMenu.Location = new System.Drawing.Point(0, 297);
-            this.pnlSousMenu.Name = "pnlSousMenu";
-            this.pnlSousMenu.Size = new System.Drawing.Size(180, 125);
-            this.pnlSousMenu.TabIndex = 589;
-            // 
-            // btnFactureProduit
-            // 
-            this.btnFactureProduit.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnFactureProduit.FlatAppearance.BorderSize = 0;
-            this.btnFactureProduit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.btnFactureProduit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFactureProduit.ForeColor = System.Drawing.Color.MediumBlue;
-            this.btnFactureProduit.Location = new System.Drawing.Point(0, 40);
-            this.btnFactureProduit.Name = "btnFactureProduit";
-            this.btnFactureProduit.Padding = new System.Windows.Forms.Padding(39, 0, 0, 0);
-            this.btnFactureProduit.Size = new System.Drawing.Size(180, 40);
-            this.btnFactureProduit.TabIndex = 2;
-            this.btnFactureProduit.Text = "Facturer les produits";
-            this.btnFactureProduit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFactureProduit.UseVisualStyleBackColor = true;
-            this.btnFactureProduit.Click += new System.EventHandler(this.btnFactureProduit_Click);
-            // 
-            // btnFactureService
-            // 
-            this.btnFactureService.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnFactureService.FlatAppearance.BorderSize = 0;
-            this.btnFactureService.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.btnFactureService.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFactureService.ForeColor = System.Drawing.Color.MediumBlue;
-            this.btnFactureService.Location = new System.Drawing.Point(0, 0);
-            this.btnFactureService.Name = "btnFactureService";
-            this.btnFactureService.Padding = new System.Windows.Forms.Padding(39, 0, 0, 0);
-            this.btnFactureService.Size = new System.Drawing.Size(180, 40);
-            this.btnFactureService.TabIndex = 0;
-            this.btnFactureService.Text = "Facturer les services";
-            this.btnFactureService.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFactureService.UseVisualStyleBackColor = true;
-            this.btnFactureService.Click += new System.EventHandler(this.btnFactureService_Click);
-            // 
-            // btnBonEncaisser
-            // 
-            this.btnBonEncaisser.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnBonEncaisser.FlatAppearance.BorderSize = 0;
-            this.btnBonEncaisser.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.btnBonEncaisser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBonEncaisser.ForeColor = System.Drawing.Color.MediumBlue;
-            this.btnBonEncaisser.Location = new System.Drawing.Point(0, 80);
-            this.btnBonEncaisser.Name = "btnBonEncaisser";
-            this.btnBonEncaisser.Padding = new System.Windows.Forms.Padding(39, 0, 0, 0);
-            this.btnBonEncaisser.Size = new System.Drawing.Size(180, 40);
-            this.btnBonEncaisser.TabIndex = 3;
-            this.btnBonEncaisser.Text = "Bons à encaisser";
-            this.btnBonEncaisser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBonEncaisser.UseVisualStyleBackColor = true;
-            this.btnBonEncaisser.Click += new System.EventHandler(this.btnBonEncaisser_Click);
+            this.btnChat.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnChat.Enabled = false;
+            this.btnChat.FlatAppearance.BorderSize = 0;
+            this.btnChat.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.btnChat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChat.ForeColor = System.Drawing.Color.Black;
+            this.btnChat.Image = ((System.Drawing.Image)(resources.GetObject("btnChat.Image")));
+            this.btnChat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnChat.Location = new System.Drawing.Point(0, 162);
+            this.btnChat.Name = "btnChat";
+            this.btnChat.Size = new System.Drawing.Size(180, 45);
+            this.btnChat.TabIndex = 586;
+            this.btnChat.Text = "Nouveau malade";
+            this.btnChat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnChat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnChat.UseVisualStyleBackColor = true;
             // 
             // MFormInfirmerie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(894, 471);
+            this.ClientSize = new System.Drawing.Size(894, 491);
             this.Controls.Add(this.pnlChildForm);
             this.Controls.Add(this.pnlSide);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(910, 510);
+            this.MinimumSize = new System.Drawing.Size(910, 530);
             this.Name = "MFormInfirmerie";
             this.Text = "SSM - Infirmerie";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormInfirmerie_Load);
             this.pnlSide.ResumeLayout(false);
             this.pnlLogo.ResumeLayout(false);
-            this.pnlSousMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -314,13 +202,7 @@
         private System.Windows.Forms.Panel pnlLogo;
         public System.Windows.Forms.Button btnLogo;
         public System.Windows.Forms.Panel pnlChildForm;
-        public System.Windows.Forms.Button btnPatient;
-        public System.Windows.Forms.Button btnPatientAncien;
-        public System.Windows.Forms.Button btnEncaisser;
-        public System.Windows.Forms.Panel pnlSousMenu;
-        public System.Windows.Forms.Button btnFactureProduit;
-        public System.Windows.Forms.Button btnFactureService;
-        public System.Windows.Forms.Button btnBonEncaisser;
+        public System.Windows.Forms.Button btnChat;
 
 
     }
