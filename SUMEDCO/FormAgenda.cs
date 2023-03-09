@@ -40,7 +40,7 @@ namespace SUMEDCO
             {
                 idligne = int.Parse(dgvAgenda.CurrentRow.Cells[0].Value.ToString());
                 btnAffecter.Enabled = true;
-                btnInvalider.Enabled = true;
+                btnReaffecter.Enabled = true;
             }
         }
 
@@ -70,6 +70,23 @@ namespace SUMEDCO
         private void btnRecherche_Click(object sender, EventArgs e)
         {
             cm.ChargerAgenda(this, "recherche");
+        }
+
+        private void btnReaffecter_Click(object sender, EventArgs e)
+        {
+            cm.ReaffecterCas(this, new FormPriseSigneVital());
+        }
+
+        private void checkBox2_Click(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                cm.ChargerAgenda(this, "recherche");
+            }
+            else
+            {
+                cm.ChargerAgenda(this, "recherche");
+            }
         }
 
     }

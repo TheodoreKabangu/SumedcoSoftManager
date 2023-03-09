@@ -34,7 +34,7 @@ namespace SUMEDCO
 
         private void btnRapport_Click(object sender, EventArgs e)
         {
-            cc.AfficherSousForm(this, new FormAbonnePersoRapport());
+            //cc.AfficherSousForm(this, new FormAbonnePersoRapport());
         }
 
         private void btnVoirAbonne_Click(object sender, EventArgs e)

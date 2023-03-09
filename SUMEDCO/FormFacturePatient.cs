@@ -28,10 +28,10 @@ namespace SUMEDCO
             
         }
 
-        public string poste;
+        public string type_patient;
         private void btnRecherche_Click(object sender, EventArgs e)
         {
-            cm.AfficherPatient(dgvPatient, txtPatient, "recherche", poste, 0);
+            cm.AfficherPatient(dgvPatient, txtPatient, "recherche", type_patient, 0);
         }
 
         private void btnAnnuler_Click(object sender, EventArgs e)
@@ -46,7 +46,7 @@ namespace SUMEDCO
 
         private void FormFacturePatient_Shown(object sender, EventArgs e)
         {
-            if (poste == "abonné")
+            if (type_patient == "abonné")
                 txtPatient.Text = "Numéro service";
             else
             {

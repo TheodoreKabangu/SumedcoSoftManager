@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormConsultation));
             this.panel2 = new System.Windows.Forms.Panel();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,6 +53,8 @@
             this.btnDossier = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnConsultation = new System.Windows.Forms.Button();
+            this.btnHospitaliser = new System.Windows.Forms.Button();
+            this.btnDeces = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatient)).BeginInit();
             this.SuspendLayout();
             // 
@@ -106,19 +108,17 @@
             this.dgvPatient.AllowUserToAddRows = false;
             this.dgvPatient.AllowUserToDeleteRows = false;
             this.dgvPatient.AllowUserToOrderColumns = true;
-            this.dgvPatient.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.dgvPatient.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.dgvPatient.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvPatient.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPatient.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPatient.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvPatient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPatient.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn24,
@@ -126,14 +126,14 @@
             this.Column5,
             this.Column7,
             this.Column1});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Lavender;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPatient.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Lavender;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPatient.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvPatient.GridColor = System.Drawing.Color.RoyalBlue;
             this.dgvPatient.Location = new System.Drawing.Point(70, 81);
             this.dgvPatient.MultiSelect = false;
@@ -141,7 +141,7 @@
             this.dgvPatient.ReadOnly = true;
             this.dgvPatient.RowHeadersVisible = false;
             this.dgvPatient.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPatient.Size = new System.Drawing.Size(491, 335);
+            this.dgvPatient.Size = new System.Drawing.Size(491, 358);
             this.dgvPatient.TabIndex = 592;
             this.dgvPatient.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPatient_CellClick);
             // 
@@ -203,6 +203,7 @@
             // 
             // btnQuitter
             // 
+            this.btnQuitter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnQuitter.BackColor = System.Drawing.Color.Transparent;
             this.btnQuitter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnQuitter.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
@@ -295,6 +296,46 @@
             this.btnConsultation.UseVisualStyleBackColor = false;
             this.btnConsultation.Click += new System.EventHandler(this.btnConsultation_Click);
             // 
+            // btnHospitaliser
+            // 
+            this.btnHospitaliser.BackColor = System.Drawing.Color.Transparent;
+            this.btnHospitaliser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnHospitaliser.Enabled = false;
+            this.btnHospitaliser.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnHospitaliser.FlatAppearance.BorderSize = 0;
+            this.btnHospitaliser.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnHospitaliser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHospitaliser.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHospitaliser.Image = ((System.Drawing.Image)(resources.GetObject("btnHospitaliser.Image")));
+            this.btnHospitaliser.Location = new System.Drawing.Point(460, 53);
+            this.btnHospitaliser.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnHospitaliser.Name = "btnHospitaliser";
+            this.btnHospitaliser.Size = new System.Drawing.Size(30, 21);
+            this.btnHospitaliser.TabIndex = 651;
+            this.toolTip1.SetToolTip(this.btnHospitaliser, "Hospitaliser ce cas");
+            this.btnHospitaliser.UseVisualStyleBackColor = false;
+            this.btnHospitaliser.Click += new System.EventHandler(this.btnHospitaliser_Click);
+            // 
+            // btnDeces
+            // 
+            this.btnDeces.BackColor = System.Drawing.Color.Transparent;
+            this.btnDeces.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnDeces.Enabled = false;
+            this.btnDeces.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnDeces.FlatAppearance.BorderSize = 0;
+            this.btnDeces.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnDeces.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeces.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeces.Image = ((System.Drawing.Image)(resources.GetObject("btnDeces.Image")));
+            this.btnDeces.Location = new System.Drawing.Point(500, 53);
+            this.btnDeces.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnDeces.Name = "btnDeces";
+            this.btnDeces.Size = new System.Drawing.Size(30, 21);
+            this.btnDeces.TabIndex = 652;
+            this.toolTip1.SetToolTip(this.btnDeces, "Déclarer comme décès");
+            this.btnDeces.UseVisualStyleBackColor = false;
+            this.btnDeces.Click += new System.EventHandler(this.btnDeces_Click);
+            // 
             // FormConsultation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -302,7 +343,9 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(575, 451);
             this.ControlBox = false;
+            this.Controls.Add(this.btnDeces);
             this.Controls.Add(this.btnConsultation);
+            this.Controls.Add(this.btnHospitaliser);
             this.Controls.Add(this.btnDossier);
             this.Controls.Add(this.dtpDateA);
             this.Controls.Add(this.label2);
@@ -349,6 +392,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         public System.Windows.Forms.Button btnConsultation;
+        public System.Windows.Forms.Button btnHospitaliser;
+        public System.Windows.Forms.Button btnDeces;
 
     }
 }

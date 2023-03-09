@@ -17,6 +17,7 @@ namespace SUMEDCO
             InitializeComponent();
         }
         ClassCompta cc = new ClassCompta();
+        public double sommeRef = 0, sommeSoldeAnte = 0;
         private void btnQuitter_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -29,6 +30,7 @@ namespace SUMEDCO
 
         private void btnRecherche_Click(object sender, EventArgs e)
         {
+            cc.CalculerResultat(this);
             btnImprimer.Enabled = true;
         }
 

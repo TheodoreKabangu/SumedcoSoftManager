@@ -18,6 +18,7 @@ namespace SUMEDCO
         }
         ClassCompta cc = new ClassCompta();
         public int idtypejournal = 0;
+        public double sommeDebit = 0, sommeCredit = 0;
         private void cboTypeJournal_DropDown(object sender, EventArgs e)
         {
             cc.ChargerCombo("typejournal", cboTypeJournal, 0);
@@ -36,6 +37,16 @@ namespace SUMEDCO
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnRecherche2_Click(object sender, EventArgs e)
+        {
+            //cc.AfficherGdLivre(this, txtRecherche.Text);
+        }
+
+        private void btnGdLivre_Click(object sender, EventArgs e)
+        {
+            cc.AfficherGdLivre(this);
         }
     }
 }

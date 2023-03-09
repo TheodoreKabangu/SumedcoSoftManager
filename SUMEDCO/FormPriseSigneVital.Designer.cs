@@ -68,7 +68,6 @@
             // 
             // btnEnregistrer
             // 
-            this.btnEnregistrer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEnregistrer.BackColor = System.Drawing.Color.Transparent;
             this.btnEnregistrer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnEnregistrer.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
@@ -119,6 +118,7 @@
             this.dgvSigne.MultiSelect = false;
             this.dgvSigne.Name = "dgvSigne";
             this.dgvSigne.RowHeadersVisible = false;
+            this.dgvSigne.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvSigne.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvSigne.Size = new System.Drawing.Size(429, 150);
             this.dgvSigne.TabIndex = 636;
@@ -143,6 +143,7 @@
             // 
             this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column1.HeaderText = "Valeur";
+            this.Column1.MaxInputLength = 30;
             this.Column1.Name = "Column1";
             // 
             // Column2
@@ -184,7 +185,6 @@
             // 
             // btnQuitter
             // 
-            this.btnQuitter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnQuitter.BackColor = System.Drawing.Color.Transparent;
             this.btnQuitter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnQuitter.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;

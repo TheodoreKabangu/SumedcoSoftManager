@@ -43,7 +43,6 @@ namespace SUMEDCO
         private void cboStock_SelectedIndexChanged(object sender, EventArgs e)
         {
             idstock = int.Parse(cboStock.Text);
-            cs.DetailsStock(this);
             txtQte.Focus();
         }
 

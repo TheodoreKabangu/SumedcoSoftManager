@@ -95,5 +95,11 @@ namespace SUMEDCO
             cn.Show();
             this.Hide();
         }
+
+        private void FormAccueil_Shown(object sender, EventArgs e)
+        {
+            //MessageBox.Show("" + (int)(double.Parse("2025000,00") / 2000.00));
+            //MessageBox.Show("" + ((int)(double.Parse("2025000,00") / 2000.00) * 2000.00).ToString());
+        }
     }
 }

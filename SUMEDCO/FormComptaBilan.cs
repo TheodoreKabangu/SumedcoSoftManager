@@ -19,7 +19,7 @@ namespace SUMEDCO
         ClassCompta cc = new ClassCompta();
         public string typeItem = "";
         public int taux = 0;
-
+        public double sommeRef = 0, sommeSoldeAnte = 0;
         private void btnQuitter_Click(object sender, EventArgs e)
         {
             this.Close();

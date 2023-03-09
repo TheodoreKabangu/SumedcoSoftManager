@@ -32,13 +32,13 @@
             this.pnlSide = new System.Windows.Forms.Panel();
             this.btnChat = new System.Windows.Forms.Button();
             this.btnRendezVous = new System.Windows.Forms.Button();
-            this.btnQuitter = new System.Windows.Forms.Button();
             this.btnIntervention = new System.Windows.Forms.Button();
+            this.btnDossier = new System.Windows.Forms.Button();
+            this.btnQuitter = new System.Windows.Forms.Button();
             this.btnConsultation = new System.Windows.Forms.Button();
             this.pnlLogo = new System.Windows.Forms.Panel();
             this.btnLogo = new System.Windows.Forms.Button();
             this.pnlChildForm = new System.Windows.Forms.Panel();
-            this.btnDossier = new System.Windows.Forms.Button();
             this.pnlSide.SuspendLayout();
             this.pnlLogo.SuspendLayout();
             this.SuspendLayout();
@@ -47,8 +47,8 @@
             // 
             this.pnlSide.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.pnlSide.Controls.Add(this.btnChat);
-            this.pnlSide.Controls.Add(this.btnRendezVous);
             this.pnlSide.Controls.Add(this.btnIntervention);
+            this.pnlSide.Controls.Add(this.btnRendezVous);
             this.pnlSide.Controls.Add(this.btnDossier);
             this.pnlSide.Controls.Add(this.btnQuitter);
             this.pnlSide.Controls.Add(this.btnConsultation);
@@ -87,15 +87,53 @@
             this.btnRendezVous.ForeColor = System.Drawing.Color.Black;
             this.btnRendezVous.Image = ((System.Drawing.Image)(resources.GetObject("btnRendezVous.Image")));
             this.btnRendezVous.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRendezVous.Location = new System.Drawing.Point(0, 207);
+            this.btnRendezVous.Location = new System.Drawing.Point(0, 162);
             this.btnRendezVous.Name = "btnRendezVous";
             this.btnRendezVous.Size = new System.Drawing.Size(180, 45);
             this.btnRendezVous.TabIndex = 587;
-            this.btnRendezVous.Text = "Mes rendez-vous";
+            this.btnRendezVous.Text = "Mes cas et Rendez-vous";
             this.btnRendezVous.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRendezVous.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRendezVous.UseVisualStyleBackColor = true;
             this.btnRendezVous.Click += new System.EventHandler(this.btnRendezVous_Click);
+            // 
+            // btnIntervention
+            // 
+            this.btnIntervention.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnIntervention.FlatAppearance.BorderSize = 0;
+            this.btnIntervention.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.btnIntervention.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnIntervention.ForeColor = System.Drawing.Color.Black;
+            this.btnIntervention.Image = ((System.Drawing.Image)(resources.GetObject("btnIntervention.Image")));
+            this.btnIntervention.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnIntervention.Location = new System.Drawing.Point(0, 207);
+            this.btnIntervention.Name = "btnIntervention";
+            this.btnIntervention.Size = new System.Drawing.Size(180, 45);
+            this.btnIntervention.TabIndex = 3;
+            this.btnIntervention.Text = "Hospitalisations";
+            this.btnIntervention.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnIntervention.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnIntervention.UseVisualStyleBackColor = true;
+            this.btnIntervention.Click += new System.EventHandler(this.btnIntervention_Click);
+            // 
+            // btnDossier
+            // 
+            this.btnDossier.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDossier.FlatAppearance.BorderSize = 0;
+            this.btnDossier.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.btnDossier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDossier.ForeColor = System.Drawing.Color.Black;
+            this.btnDossier.Image = ((System.Drawing.Image)(resources.GetObject("btnDossier.Image")));
+            this.btnDossier.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDossier.Location = new System.Drawing.Point(0, 117);
+            this.btnDossier.Name = "btnDossier";
+            this.btnDossier.Size = new System.Drawing.Size(180, 45);
+            this.btnDossier.TabIndex = 588;
+            this.btnDossier.Text = "Dossier patient";
+            this.btnDossier.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDossier.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDossier.UseVisualStyleBackColor = true;
+            this.btnDossier.Click += new System.EventHandler(this.btnDossier_Click);
             // 
             // btnQuitter
             // 
@@ -120,25 +158,6 @@
             this.btnQuitter.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnQuitter.UseVisualStyleBackColor = false;
             this.btnQuitter.Click += new System.EventHandler(this.btnQuitter_Click);
-            // 
-            // btnIntervention
-            // 
-            this.btnIntervention.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnIntervention.FlatAppearance.BorderSize = 0;
-            this.btnIntervention.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.btnIntervention.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnIntervention.ForeColor = System.Drawing.Color.Black;
-            this.btnIntervention.Image = ((System.Drawing.Image)(resources.GetObject("btnIntervention.Image")));
-            this.btnIntervention.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnIntervention.Location = new System.Drawing.Point(0, 162);
-            this.btnIntervention.Name = "btnIntervention";
-            this.btnIntervention.Size = new System.Drawing.Size(180, 45);
-            this.btnIntervention.TabIndex = 3;
-            this.btnIntervention.Text = "Mes interventions";
-            this.btnIntervention.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnIntervention.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnIntervention.UseVisualStyleBackColor = true;
-            this.btnIntervention.Click += new System.EventHandler(this.btnIntervention_Click);
             // 
             // btnConsultation
             // 
@@ -195,25 +214,6 @@
             this.pnlChildForm.Name = "pnlChildForm";
             this.pnlChildForm.Size = new System.Drawing.Size(714, 491);
             this.pnlChildForm.TabIndex = 584;
-            // 
-            // btnDossier
-            // 
-            this.btnDossier.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnDossier.FlatAppearance.BorderSize = 0;
-            this.btnDossier.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.btnDossier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDossier.ForeColor = System.Drawing.Color.Black;
-            this.btnDossier.Image = ((System.Drawing.Image)(resources.GetObject("btnDossier.Image")));
-            this.btnDossier.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDossier.Location = new System.Drawing.Point(0, 117);
-            this.btnDossier.Name = "btnDossier";
-            this.btnDossier.Size = new System.Drawing.Size(180, 45);
-            this.btnDossier.TabIndex = 588;
-            this.btnDossier.Text = "Dossier patient";
-            this.btnDossier.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDossier.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnDossier.UseVisualStyleBackColor = true;
-            this.btnDossier.Click += new System.EventHandler(this.btnDossier_Click);
             // 
             // MFormConsultation
             // 

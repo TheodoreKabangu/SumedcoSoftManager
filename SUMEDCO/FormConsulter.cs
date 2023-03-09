@@ -25,7 +25,7 @@ namespace SUMEDCO
             idprescription,
             idmedecin = 0,
             idpatient = 0,
-            numbon, numbonS;
+            idprise;
 
         public string motif = "", 
             type_consultation = "",
@@ -40,20 +40,7 @@ namespace SUMEDCO
 
         private void btnPlainte_Click(object sender, EventArgs e)
         {
-            if (txtRepondant.Text == "")
-            {
-                if (MessageBox.Show("Le malade est-il le répondant lui-même ?", "Consultation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    cm.EnregistrerConsultation(this);
-                else
-                    checkBox1.Select();
-            }
-            else
-            {
-                if (cboLienRepondant.Text != "")
-                    cm.EnregistrerConsultation(this);
-                else
-                    MessageBox.Show("Renseignez le lien entre le répondant et le malade", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            tabControl1.SelectedTab = tabControl1.TabPages[1];
         }
 
         private void btnHistorique_Click(object sender, EventArgs e)
@@ -106,41 +93,13 @@ namespace SUMEDCO
             btnPrescription2.Enabled = false;
         }
 
-        private void checkBox1_Click(object sender, EventArgs e)
-        {
-            if (checkBox1.Checked)
-            {
-                txtRepondant.Enabled = true;
-                cboLienRepondant.Enabled = true;
-                txtRepondant.Select();
-            }
-            else
-            {
-                txtRepondant.Text = "";
-                txtRepondant.Enabled = false;
-                cboLienRepondant.DropDownStyle = ComboBoxStyle.DropDown;
-                cboLienRepondant.SelectedText = "";
-                cboLienRepondant.DropDownStyle = ComboBoxStyle.DropDownList;
-                cboLienRepondant.Enabled = false;
-            }
-        }
-
-        private void FormConsulter_Shown(object sender, EventArgs e)
-        {
-            type_patient = "abonné";
-        }
-
         private void btnProduit_Click(object sender, EventArgs e)
         {
-            if (motif == "modifier")
-                dgvPresc.Rows.Clear();
             cm.Prescrire(this, new FormFactureProduit());
         }
 
         private void btnPlusPlainte_Click(object sender, EventArgs e)
         {
-            if (motif == "modifier")
-                dgvPlainte.Rows.Clear();
             dgvPlainte.Rows.Add();
             dgvPlainte.Rows[dgvPlainte.RowCount - 1].Cells[0].Value = dgvPlainte.RowCount;
         }
@@ -153,66 +112,51 @@ namespace SUMEDCO
         public string label = "";
         private void btnEnregistrerPlainte_Click(object sender, EventArgs e)
         {
-            label = "plainte";
-            cm.AjouterRenseignement(dgvPlainte, label, idconsultation);
+            cm.AjouterRenseignement(dgvPlainte, "plainte", idconsultation);
         }
 
         private void btnEnregistrerHisto_Click(object sender, EventArgs e)
         {
-            label = "historique";
-            cm.AjouterRenseignement(dgvHisto, label, idconsultation);
+            cm.AjouterRenseignement(dgvHisto, "historique", idconsultation);
         }
 
         private void btnEnregistrerAntecedent_Click(object sender, EventArgs e)
         {
-            label = "antécédent";
-            cm.AjouterRenseignement(dgvAntecedent, label, idconsultation);
+            cm.AjouterRenseignement(dgvAntecedent, "antécédent", idconsultation);
         }
 
         private void btnEnregistrerComplement_Click(object sender, EventArgs e)
         {
-            label = "complément";
-            cm.AjouterRenseignement(dgvComplement, label, idconsultation);
+            cm.AjouterRenseignement(dgvComplement, "complément", idconsultation);
         }
 
         private void btnEnregistrerExamPhys_Click(object sender, EventArgs e)
         {
-            label = "examen physique";
             cm.AjouterValeurExamenPhysique(this);
         }
 
         private void btnEnregistrerPrediagnostic_Click(object sender, EventArgs e)
         {
-            label = "prédiagnostic";
-            cm.AjouterRenseignement(dgvPrediagnostic, label, idconsultation);
+            cm.AjouterRenseignement(dgvPrediagnostic, "prédiagnostic", idconsultation);
         }
 
         private void btnEnregistrerLabo_Click(object sender, EventArgs e)
         {
-            label = "examen para";
             cm.AjouterExamenPara(this, new FormFactureService());
         }
 
         private void btnEnregistrerDiagnostic_Click(object sender, EventArgs e)
         {
-            label = "diagnostic";
             cm.AjouterDiagnostics(this);
         }
 
         private void btnEnregistrerAutrePresc_Click(object sender, EventArgs e)
         {
-            label = "autre prescription";
-            cm.AjouterRenseignement(dgvAutrePresc, label, idconsultation);
-            if(dgvAutrePrescS.RowCount != 0)
-            {
-                cm.AjouterPrescriptionService(this);
-            }
+            cm.AjouterRenseignement(dgvAutrePresc, "autre", idconsultation);           
         }
 
         private void btnPlusHisto_Click(object sender, EventArgs e)
         {
-            if (motif == "modifier")
-                dgvHisto.Rows.Clear();
             dgvHisto.Rows.Add();
             dgvHisto.Rows[dgvHisto.RowCount - 1].Cells[0].Value = dgvHisto.RowCount;
         }
@@ -225,8 +169,6 @@ namespace SUMEDCO
 
         private void btnPlusAntecedent_Click(object sender, EventArgs e)
         {
-            if (motif == "modifier")
-                dgvAntecedent.Rows.Clear();
             dgvAntecedent.Rows.Add();
             dgvAntecedent.Rows[dgvAntecedent.RowCount - 1].Cells[0].Value = dgvAntecedent.RowCount;
         }
@@ -239,8 +181,6 @@ namespace SUMEDCO
 
         private void btnPlusComplement_Click(object sender, EventArgs e)
         {
-            if(motif == "modifier")
-                dgvComplement.Rows.Clear();
             dgvComplement.Rows.Add();
             dgvComplement.Rows[dgvComplement.RowCount - 1].Cells[0].Value = dgvComplement.RowCount;
         }
@@ -259,8 +199,6 @@ namespace SUMEDCO
 
         private void btnPlusPrediagnostic_Click(object sender, EventArgs e)
         {
-            if (motif == "modifier")
-                dgvPrediagnostic.Rows.Clear();
             dgvPrediagnostic.Rows.Add();
             dgvPrediagnostic.Rows[dgvPrediagnostic.RowCount - 1].Cells[0].Value = dgvPrediagnostic.RowCount;
         }
@@ -290,8 +228,6 @@ namespace SUMEDCO
 
         private void btnPlusDiagnostic_Click(object sender, EventArgs e)
         {
-            if (motif == "modifier")
-                dgvDiagnostic.Rows.Clear();
             cm.MaladieDiagnostic(this, new FormMaladie());
         }
 
@@ -303,8 +239,6 @@ namespace SUMEDCO
 
         private void btnPlusAutrePresc_Click(object sender, EventArgs e)
         {
-            if (motif == "modifier")
-                dgvAutrePresc.Rows.Clear();
             dgvAutrePresc.Rows.Add();
             dgvAutrePresc.Rows[dgvAutrePresc.RowCount - 1].Cells[0].Value = dgvAutrePresc.RowCount;
         }
@@ -323,7 +257,6 @@ namespace SUMEDCO
 
         private void btnEnregistrerPresc_Click(object sender, EventArgs e)
         {
-            label = "prescription";
             cm.AjouterPrescription(this);
         }
 
@@ -334,108 +267,125 @@ namespace SUMEDCO
 
         private void btnModifierPlainte_Click(object sender, EventArgs e)
         {
-            label = "plainte";
-            cm.ModifierRenseignement(dgvPlainte, label);
+            btnModifierPlainte.Enabled = false;
+            btnSupprimerPlainte.Enabled = false;
+            cm.ModifierRenseignement(dgvPlainte);
         }
 
         private void btnSupprimerPlainte_Click(object sender, EventArgs e)
         {
+            btnModifierPlainte.Enabled = false;
+            btnSupprimerPlainte.Enabled = false;
             cm.SupprimerRenseignement(dgvPlainte);
         }
 
         private void btnModifierHisto_Click(object sender, EventArgs e)
         {
-            label = "historique";
-            cm.ModifierRenseignement(dgvHisto, label);
+            btnModifierHisto.Enabled = false;
+            btnSupprimerHisto.Enabled = false;
+            cm.ModifierRenseignement(dgvHisto);
         }
 
         private void btnSupprimerHisto_Click(object sender, EventArgs e)
         {
+            btnModifierHisto.Enabled = false;
+            btnSupprimerHisto.Enabled = false;
             cm.SupprimerRenseignement(dgvHisto);
         }
 
         private void btnModifierAntecedent_Click(object sender, EventArgs e)
         {
-            label = "antécédent";
-            cm.ModifierRenseignement(dgvAntecedent, label);
+            btnModifierAntecedent.Enabled = false;
+            btnSupprimerAntecedent.Enabled = false;
+            cm.ModifierRenseignement(dgvAntecedent);
         }
 
         private void btnSupprimerAntecedent_Click(object sender, EventArgs e)
         {
+            btnModifierAntecedent.Enabled = false;
+            btnSupprimerAntecedent.Enabled = false;
             cm.SupprimerRenseignement(dgvAntecedent);
         }
 
         private void btnModifierComplement_Click(object sender, EventArgs e)
         {
-            label = "complément";
-            cm.ModifierRenseignement(dgvComplement, label);
+            btnModifierComplement.Enabled = false;
+            btnSupprimerComplement.Enabled = false;
+            cm.ModifierRenseignement(dgvComplement);
         }
 
         private void btnSupprimerComplement_Click(object sender, EventArgs e)
         {
+            btnModifierComplement.Enabled = false;
+            btnSupprimerComplement.Enabled = false;
             cm.SupprimerRenseignement(dgvComplement);
         }
 
         private void btnModifierExamPhys_Click(object sender, EventArgs e)
         {
-            label = "examen physique";
-            cm.ModifierRenseignement(dgvExamPhys, label);
+            btnModifierExamPhys.Enabled = false;
+            btnSupprimerExamPhys.Enabled = false;
+            cm.ModifierExamenPhysique(this);
         }
 
         private void btnSupprimerExamPhys_Click(object sender, EventArgs e)
         {
-            cm.SupprimerRenseignement(dgvExamPhys);
+            btnModifierExamPhys.Enabled = false;
+            btnSupprimerExamPhys.Enabled = false;
+            cm.SupprimerExamenPhysique(this);
         }
 
         private void btnModifierPrediag_Click(object sender, EventArgs e)
         {
-            label = "prédiagnostic";
-            cm.ModifierRenseignement(dgvPrediagnostic, label);
+            btnModifierPrediag.Enabled = false;
+            btnSupprimerPrediag.Enabled = false;
+            cm.ModifierRenseignement(dgvPrediagnostic);
         }
 
         private void btnSupprimerPrediag_Click(object sender, EventArgs e)
         {
+            btnModifierPrediag.Enabled = false;
+            btnSupprimerPrediag.Enabled = false;
             cm.SupprimerRenseignement(dgvPrediagnostic);
         }
-
-        private void btnModifierBonLabo_Click(object sender, EventArgs e)
-        {
-            cm.ModifierExamenLabo(this);
-        }
-
         private void btnModifierDiagno_Click(object sender, EventArgs e)
         {
+            btnModifierDiagno.Enabled = false;
+            btnSupprimerDiagno.Enabled = false;
             cm.ModifierMaladieDiagnostic(this);
         }
-
-        private void btnSupprimerBonLabo_Click(object sender, EventArgs e)
-        {
-            cm.SupprimerExamenLabo(this);
-        }
-
         private void btnSupprimerDiagno_Click(object sender, EventArgs e)
         {
+            btnModifierDiagno.Enabled = false;
+            btnSupprimerDiagno.Enabled = false;
             cm.SupprimerMaladieDiagnostic(this);
         }
 
         private void btnModifierPresc_Click(object sender, EventArgs e)
         {
+            btnModifierPresc.Enabled = false;
+            btnSupprimerPresc.Enabled = false;
             cm.ModifierPrescription(this);
         }
 
         private void btnSupprimerPresc_Click(object sender, EventArgs e)
         {
+            btnModifierPresc.Enabled = false;
+            btnSupprimerPresc.Enabled = false;
             cm.SupprimerPrescription(this);
         }
 
         private void btnModifierAutrePresc_Click(object sender, EventArgs e)
         {
-            label = "autre prescription";
-            cm.ModifierRenseignement(dgvAutrePresc, label);
+            btnModifierAutrePresc.Enabled = false;
+            btnSupprimerAutrePresc.Enabled = false;
+            cm.ModifierRenseignement(dgvAutrePresc);
         }
 
         private void btnSupprimerAutrePresc_Click(object sender, EventArgs e)
         {
+            btnModifierAutrePresc.Enabled = false;
+            btnSupprimerAutrePresc.Enabled = false;
             cm.SupprimerRenseignement(dgvAutrePresc);
         }
 
@@ -448,20 +398,82 @@ namespace SUMEDCO
         {
             if (dgv1.RowCount != 0)
             {
-                //if (motif == "modifier")
-                //{
-                //    cc.ChargerRubriqueExamen(this);
-                //}
                 if (dgv1.CurrentRow.Cells[1].Value.ToString() == "AUTRES")
-                    cc.AutresExamens(this, new FormExamenPhysique());
+                    cc.AutresExamens(this, new FormFacture());
                 else
-                    cc.ChargerExamens(this, new FormExamenPhysique());
+                    cc.ChargerExamens(this, new FormFacture());
             }
         }
 
         private void btnService_Click(object sender, EventArgs e)
         {
             cm.AutrePrescription(this, new FormFactureService());
+        }
+
+        private void btnResultat_Click(object sender, EventArgs e)
+        {
+            if (idconsultation != 0)
+            {
+                cm.AjouterResultatExamen(this, "examen para", new FormResultatExamen());
+            }
+        }
+
+        private void btnAfficherPlainte_Click(object sender, EventArgs e)
+        {
+            cm.VoirRenseignement(this, "plainte");
+        }
+
+        private void btnAfficherHisto_Click(object sender, EventArgs e)
+        {
+            cm.VoirRenseignement(this, "historique");
+        }
+
+        private void btnAfficherAntecedent_Click(object sender, EventArgs e)
+        {
+            cm.VoirRenseignement(this, "antécédent");
+        }
+
+        private void btnAfficherComplement_Click(object sender, EventArgs e)
+        {
+            cm.VoirRenseignement(this, "complément");
+        }
+
+        private void btnAfficherExamenPhysique_Click(object sender, EventArgs e)
+        {
+            cm.VoirExamenPhysique(this);
+        }
+
+        private void btnAfficherPrediag_Click(object sender, EventArgs e)
+        {
+            cm.VoirRenseignement(this, "prédiagnostic");
+        }
+
+        private void btnAfficherDiagno_Click(object sender, EventArgs e)
+        {
+            cm.VoirMaladieDiagnostic(this);
+        }
+
+        private void btnAfficherPresc_Click(object sender, EventArgs e)
+        {
+            cm.VoirPrescriptionProduit(this);
+        }
+
+        private void btnAutrePrescS_Click(object sender, EventArgs e)
+        {
+            cm.AjouterResultatExamen(this, "autre", new FormResultatExamen());
+        }
+
+        private void btnAfficherAutrePresc_Click(object sender, EventArgs e)
+        {
+            cm.VoirRenseignement(this, "autre");
+        }
+
+        private void btnEnregistrerAutrePrescS_Click(object sender, EventArgs e)
+        {
+            if (dgvAutrePrescS.RowCount != 0)
+            {
+                cm.AjouterPrescriptionService(this, "autre", dgvAutrePrescS);
+            }
         }
     }
 }

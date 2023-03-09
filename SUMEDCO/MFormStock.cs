@@ -22,16 +22,36 @@ namespace SUMEDCO
 
         private void btnStocks_Click(object sender, EventArgs e)
         {
-            cs.AfficherSousForm(this, new FormStockPharma());
+            cs.AfficherSousForm(this, new FormStockProduit());
         }
         private void btnQuitter_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void btnAutreStock_Click(object sender, EventArgs e)
+        private void btnAlertes_Click(object sender, EventArgs e)
         {
-            cs.AfficherSousForm(this, new FormStockAutreProduit());
+            cs.AfficherSousForm(this, new FormStockAlerte());
+        }
+
+        private void btnHistoCommande_Click(object sender, EventArgs e)
+        {
+            cs.AfficherSousForm(this, new FormHistoCommande());
+        }
+
+        private void btnComPharma_Click(object sender, EventArgs e)
+        {
+            cs.AfficherSousForm(this, new FormApproCommande());
+        }
+
+        private void btnSortieStock_Click(object sender, EventArgs e)
+        {
+            cs.AfficherSousForm(this, new FormFicheStock());
+        }
+
+        private void btnRapport_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -196,6 +196,31 @@
         bJKysPh8FevU1gMWEbIFd7CL8KX542TZDxxUW3YSCHASAAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="btnHospitaliser.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAiFJREFUOE/V
+        1D1oU1EYxvFXZ3fnOAjFL/IhSdPa1pgPbWpS06bQSBVBB8FBQZzsVFycRRdBKbg4FSSpMdWY2tpqlIoi
+        wU1oweQm7clNKDG36X0853IqSUxqoYse+MGF+5x/yHLp/zgA7clOkin3hA40U57SPjnb+Vl+RA85tLG+
+        /JiG5HRnJ3OPkhy2oeVjtqia8sTaiK6+cHpljih9l5Ic2lmZMgOZy9sqz59VZI4oF+teKc8NoJX1xUHg
+        68W/Ks0NMJkjKs36GL5E0MpmPALtAXd/1HhutRFEQ+Z4MOVm+BxGg6UwKuMjKPtHUAqeRynAL/UPo3J7
+        2HjXvBcNmePB130Mn/hfq/PzTgiqbwiqNwRtOoFqLIGiexDFU0FUJoINW0E0ZI4Hk90MS37+y1LaD/VM
+        EEVXAOxkANXpGQPr9WOtxw/m6Tc29XdEQ+aI1FedTP/ow5Za/LRxUUvNo/lUk29QsLux8dz7ey+Ihszx
+        4Esb0z+4sGVz1oWC0wMWuQL12i1oi2loC2kUr97EWvgSFEufsam/Ixoyx4MJM9Pfn0C94lgvFDN3rAeV
+        qZghd7gL2UNOsFFnw1YQDZkTwSNMf+dAvY2oA0pXJ7IdDqyGLqBwbgw/Dh6HYrfxd/aGrSAaMseD8Q6m
+        L1jRrJawonTDirzHgrzbAvW6GbWZP3eCaMgcUeGZ6Zv+9ih2gzcyMmd8vvZ+n9xv2g3RkLl/+hD9AgII
+        6ZwmTzVEAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="btnDeces.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAARBJREFUOE+1
+        1D1KxEAchvG09tqpjYiFdpaKeoBtLQRrL+AxvIDWWokr3kG0EnbXTxQP4/NMJmF33Gw2ib7wgz/J8m4y
+        MyT7r2ziZMwRFtAqS3jE4ZhT3KFVtnGejxM5wwBPc/L3IVWFTXMFly4UjjDtX5sYwq6wZl8OHWOHXdkx
+        3hw6xg67Zhau4gbef0cfa5iW2sIVPGMHy9EuXuKcpizs4d4hiU+zn4/lgTcHuM7HidhhV+WxcZF9Eosu
+        I2evfSKNHWGXqwo/4Gu7cxeRs9e8l6a28BZ7+fjrld2oNLWFG3AD3BSfSm7KK9aRprbQFMfmO5p1bOYq
+        bJKysPh8FevU1gMWEbIFd7CL8KX542TZDxxUW3YSCHASAAAAAElFTkSuQmCC
+</value>
+  </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>35</value>
   </metadata>

@@ -30,18 +30,19 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MFormAdmin));
             this.pnlSide = new System.Windows.Forms.Panel();
+            this.btnRapportMed = new System.Windows.Forms.Button();
             this.pnlSousMenu = new System.Windows.Forms.Panel();
             this.btnStock2 = new System.Windows.Forms.Button();
             this.btnStock = new System.Windows.Forms.Button();
             this.btnRecetteDepense = new System.Windows.Forms.Button();
             this.btnMaladeMedecin = new System.Windows.Forms.Button();
-            this.btnQuitter = new System.Windows.Forms.Button();
             this.btnRapports = new System.Windows.Forms.Button();
+            this.btnRapportStat = new System.Windows.Forms.Button();
+            this.btnQuitter = new System.Windows.Forms.Button();
             this.btnMiseAJour = new System.Windows.Forms.Button();
             this.pnlLogo = new System.Windows.Forms.Panel();
             this.btnLogo = new System.Windows.Forms.Button();
             this.pnlChildForm = new System.Windows.Forms.Panel();
-            this.btnRapportStat = new System.Windows.Forms.Button();
             this.pnlSide.SuspendLayout();
             this.pnlSousMenu.SuspendLayout();
             this.pnlLogo.SuspendLayout();
@@ -50,6 +51,7 @@
             // pnlSide
             // 
             this.pnlSide.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            this.pnlSide.Controls.Add(this.btnRapportMed);
             this.pnlSide.Controls.Add(this.pnlSousMenu);
             this.pnlSide.Controls.Add(this.btnRapports);
             this.pnlSide.Controls.Add(this.btnRapportStat);
@@ -61,6 +63,25 @@
             this.pnlSide.Name = "pnlSide";
             this.pnlSide.Size = new System.Drawing.Size(180, 471);
             this.pnlSide.TabIndex = 584;
+            // 
+            // btnRapportMed
+            // 
+            this.btnRapportMed.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRapportMed.FlatAppearance.BorderSize = 0;
+            this.btnRapportMed.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.btnRapportMed.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRapportMed.ForeColor = System.Drawing.Color.Black;
+            this.btnRapportMed.Image = ((System.Drawing.Image)(resources.GetObject("btnRapportMed.Image")));
+            this.btnRapportMed.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRapportMed.Location = new System.Drawing.Point(0, 354);
+            this.btnRapportMed.Name = "btnRapportMed";
+            this.btnRapportMed.Size = new System.Drawing.Size(180, 45);
+            this.btnRapportMed.TabIndex = 588;
+            this.btnRapportMed.Text = "Rapport coûts";
+            this.btnRapportMed.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRapportMed.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRapportMed.UseVisualStyleBackColor = true;
+            this.btnRapportMed.Click += new System.EventHandler(this.btnRapportMed_Click);
             // 
             // pnlSousMenu
             // 
@@ -142,6 +163,44 @@
             this.btnMaladeMedecin.UseVisualStyleBackColor = true;
             this.btnMaladeMedecin.Click += new System.EventHandler(this.btnMaladeMedecin_Click);
             // 
+            // btnRapports
+            // 
+            this.btnRapports.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRapports.FlatAppearance.BorderSize = 0;
+            this.btnRapports.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.btnRapports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRapports.ForeColor = System.Drawing.Color.Black;
+            this.btnRapports.Image = ((System.Drawing.Image)(resources.GetObject("btnRapports.Image")));
+            this.btnRapports.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRapports.Location = new System.Drawing.Point(0, 162);
+            this.btnRapports.Name = "btnRapports";
+            this.btnRapports.Size = new System.Drawing.Size(180, 45);
+            this.btnRapports.TabIndex = 7;
+            this.btnRapports.Text = "Rapport consom.";
+            this.btnRapports.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRapports.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRapports.UseVisualStyleBackColor = true;
+            this.btnRapports.Click += new System.EventHandler(this.btnRapports_Click);
+            // 
+            // btnRapportStat
+            // 
+            this.btnRapportStat.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRapportStat.FlatAppearance.BorderSize = 0;
+            this.btnRapportStat.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.btnRapportStat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRapportStat.ForeColor = System.Drawing.Color.Black;
+            this.btnRapportStat.Image = ((System.Drawing.Image)(resources.GetObject("btnRapportStat.Image")));
+            this.btnRapportStat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRapportStat.Location = new System.Drawing.Point(0, 117);
+            this.btnRapportStat.Name = "btnRapportStat";
+            this.btnRapportStat.Size = new System.Drawing.Size(180, 45);
+            this.btnRapportStat.TabIndex = 587;
+            this.btnRapportStat.Text = "Statistiques par service";
+            this.btnRapportStat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRapportStat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRapportStat.UseVisualStyleBackColor = true;
+            this.btnRapportStat.Click += new System.EventHandler(this.btnRapportStat_Click);
+            // 
             // btnQuitter
             // 
             this.btnQuitter.BackColor = System.Drawing.Color.Transparent;
@@ -165,25 +224,6 @@
             this.btnQuitter.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnQuitter.UseVisualStyleBackColor = false;
             this.btnQuitter.Click += new System.EventHandler(this.btnQuitter_Click);
-            // 
-            // btnRapports
-            // 
-            this.btnRapports.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnRapports.FlatAppearance.BorderSize = 0;
-            this.btnRapports.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.btnRapports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRapports.ForeColor = System.Drawing.Color.Black;
-            this.btnRapports.Image = ((System.Drawing.Image)(resources.GetObject("btnRapports.Image")));
-            this.btnRapports.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRapports.Location = new System.Drawing.Point(0, 162);
-            this.btnRapports.Name = "btnRapports";
-            this.btnRapports.Size = new System.Drawing.Size(180, 45);
-            this.btnRapports.TabIndex = 7;
-            this.btnRapports.Text = "Rapports";
-            this.btnRapports.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRapports.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnRapports.UseVisualStyleBackColor = true;
-            this.btnRapports.Click += new System.EventHandler(this.btnRapports_Click);
             // 
             // btnMiseAJour
             // 
@@ -241,25 +281,6 @@
             this.pnlChildForm.Size = new System.Drawing.Size(714, 471);
             this.pnlChildForm.TabIndex = 585;
             // 
-            // btnRapportStat
-            // 
-            this.btnRapportStat.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnRapportStat.FlatAppearance.BorderSize = 0;
-            this.btnRapportStat.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.btnRapportStat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRapportStat.ForeColor = System.Drawing.Color.Black;
-            this.btnRapportStat.Image = ((System.Drawing.Image)(resources.GetObject("btnRapportStat.Image")));
-            this.btnRapportStat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRapportStat.Location = new System.Drawing.Point(0, 117);
-            this.btnRapportStat.Name = "btnRapportStat";
-            this.btnRapportStat.Size = new System.Drawing.Size(180, 45);
-            this.btnRapportStat.TabIndex = 587;
-            this.btnRapportStat.Text = "Statistiques par service";
-            this.btnRapportStat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRapportStat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnRapportStat.UseVisualStyleBackColor = true;
-            this.btnRapportStat.Click += new System.EventHandler(this.btnRapportStat_Click);
-            // 
             // MFormAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -298,5 +319,6 @@
         public System.Windows.Forms.Panel pnlChildForm;
         public System.Windows.Forms.Button btnStock2;
         public System.Windows.Forms.Button btnRapportStat;
+        public System.Windows.Forms.Button btnRapportMed;
     }
 }

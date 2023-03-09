@@ -18,7 +18,7 @@ namespace SUMEDCO
         }
         ClassCompta cc = new ClassCompta();
         ClassMalade cm = new ClassMalade();
-        public int taux, id = 0, 
+        public int id = 0, 
             idoperation = 0,
             idtypejournal = 0;
         public string numcompteJournal = "",
@@ -27,22 +27,22 @@ namespace SUMEDCO
             numcompte = "",
             intituleCompte="",
             classe = "";
-        public double montantdebit = 0;
+        public double montantdebit = 0, taux=0;
         public bool operation_plurielle;
         private void FormComptabilite_Shown(object sender, EventArgs e)
         {
             if (cc.VerifierTaux(DateTime.Now.Date, "") == 0)
             {
-                cc.ChangerDate(new DateTaux(), this, lblDateOperation, lblTaux);
-                txtLibelle.Select();
+                cc.ChangerDate(this, new DateTaux());
+                txtNumPiece.Select();
             }
             else
             {
                 lblDateOperation.Text = DateTime.Now.ToShortDateString();
                 lblTaux.Text = cc.VerifierTaux(DateTime.Now.Date, "valeur").ToString() + " CDF";
-                txtLibelle.Select();
+                taux = double.Parse(lblTaux.Text.Substring(0, lblTaux.Text.IndexOf(" ")));
+                txtNumPiece.Select();
             }
-            taux = int.Parse(lblTaux.Text.Substring(0, lblTaux.Text.IndexOf(" ")));
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -52,28 +52,7 @@ namespace SUMEDCO
 
         private void cboMonnaie_SelectedIndexChanged(object sender, EventArgs e)
         {
-            /*
-             * code du changement d'item dans cboOperation supprimé
-             *             //if (cboOperation.Text == "Entrée")
-            {
-                txtDebit.Text = numcompteJournal;
-                txtDebit.Enabled = false;
-                txtCredit.Text = "";
-                txtCredit.Enabled = true;
-                txtCredit.Select();
-            }
-            else
-            {
-                txtCredit.Text = numcompteJournal;
-                txtCredit.Enabled = false;
-                txtDebit.Text = "";
-                txtDebit.Enabled = true;
-                txtDebit.Select();
-            }
-             */
-            
-            //cboMonnaie.Enabled = false;
-            txtMontant.Focus();
+            txtMotif.Focus();
         }
 
         private void cboTypeJournal_DropDown(object sender, EventArgs e)
@@ -96,30 +75,21 @@ namespace SUMEDCO
             //Programmer les opérations sur ce form
             new FormComptaJournal().ShowDialog();
         }
-        private void txtNumPiece_Enter(object sender, EventArgs e)
-        {
-            if(txtLibelle.Text=="")
-            {
-                MessageBox.Show("Aucun libellé n'est fourni pour cette opération", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtLibelle.Select();
-            }
-        }
-
         private void cboTypeJournal_Enter(object sender, EventArgs e)
         {
             if (txtNumPiece.Text == "")
             {
                 MessageBox.Show("Aucun numéro de pièce n'est fourni pour cette opération", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtLibelle.Select();
+                txtNumPiece.Focus();
             }
         }
 
         private void txtMontant_Enter(object sender, EventArgs e)
         {
-            if (cboTypeJournal.Text == "")
+            if (txtCompte2.Text == "")
             {
-                MessageBox.Show("Aucun type de journal n'est choisi pour cette opération", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtLibelle.Select();
+                MessageBox.Show("Fournissez d'abord le compte concerné", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtNumPiece.Select();
             }
         }
 
@@ -128,7 +98,7 @@ namespace SUMEDCO
             if (txtMontant.Text == "")
             {
                 MessageBox.Show("Le montant n'est fourni pour cette opération", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtLibelle.Select();
+                txtMotif.Select();
             }
         }
         private void btnAnnuler_Click(object sender, EventArgs e)
@@ -154,8 +124,18 @@ namespace SUMEDCO
         {
             btnRetirer.Enabled = false;
             btnRetirerTout.Enabled = false;
-            if(dgvEcriture.RowCount != 0)
-                dgvEcriture.Rows.RemoveAt(dgvEcriture.CurrentRow.Index);
+            if (dgvEcriture.CurrentRow.Index < dgvEcriture.RowCount - 1)
+            {
+                if (dgvEcriture.RowCount > 2)
+                {
+                    dgvEcriture.Rows.RemoveAt(dgvEcriture.CurrentRow.Index);
+                    if(double.Parse(dgvEcriture.Rows[dgvEcriture.RowCount-1].Cells[2].Value.ToString())==0)
+                        cc.ContrePartie(dgvEcriture, 2, 3);
+                    else
+                        cc.ContrePartie(dgvEcriture, 3, 2);
+                }
+                else dgvEcriture.Rows.Clear();
+            }
         }
 
         private void btnRetirerTout_Click(object sender, EventArgs e)
@@ -167,77 +147,53 @@ namespace SUMEDCO
 
         private void btnDate_Click(object sender, EventArgs e)
         {
-            cc.ChangerDate(new DateTaux(), this, lblDateOperation, lblTaux);
-            txtLibelle.Select();
+            cc.ChangerDate(this, new DateTaux());
+            txtNumPiece.Select();
         }
-
-
-        private void listCompteExp_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void listCompteExp2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //numcompte = cc.TrouverId("numcompte", listCompteExp2.Text).ToString();
-            //if (bilan_actif)
-            //    txtCredit.Text = numcompteExp;
-            //else
-            //    txtCompteExp2.Text = numcompteExp;
-            //listCompteExp2.Visible = false;
-        }
-        bool debit_actif;
-        private void txtDebit_TextChanged(object sender, EventArgs e)
-        {
-            debit_actif= true;
-            cc.ChargerCompte(txtDebit, listCompte);
-        }
-
-        private void txtCredit_TextChanged(object sender, EventArgs e)
-        {
-            debit_actif = false;
-            cc.ChargerCompte(txtCredit, listCompte);
-        }
-
         private void btnValider_Click(object sender, EventArgs e)
         {
-            cc.ValiderEcriture(this);
-        }
-        private void txtDebit_Enter(object sender, EventArgs e)
-        {
-            debit_actif = true;
-        }
-
-        private void txtCredit_Enter(object sender, EventArgs e)
-        {
-            debit_actif = true;
-        }
-
-        private void txtCompteExp1_Enter(object sender, EventArgs e)
-        {
-            debit_actif = false;
-        }
-
-        private void txtCompteExp2_Enter(object sender, EventArgs e)
-        {
-            debit_actif = false;
-        }
-
-        private void listCompte_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            intituleCompte = listCompte.Text;
-            intituleCompte = intituleCompte.Replace("'", " ");
-            numcompte = cc.TrouverId("numcompte", listCompte.Text).ToString();
-            if (debit_actif)
-                txtDebit.Text = numcompte;
-            else
-                txtCredit.Text = numcompte;
-            if (numcompte.StartsWith("31"))
+            if (txtMotif.Text == "")
             {
-                numcompteAchat = cc.TrouverId("numcompteAchat", intituleCompte).ToString();
-                numcompteVariation = cc.TrouverId("numcompteVariation", intituleCompte).ToString();
+                MessageBox.Show("Aucun libellé n'est fourni", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtNumPiece.Select();
             }
-            listCompte.Visible = false;
+            else
+                cc.ValiderEcriture(this);
+        }
+        private void cboDebitCredit_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cboDebitCredit.Enabled = false;
+            btnCompte1.Select();
+            lblCompte1.Text = cboDebitCredit.Text+" :";
+            if (cboDebitCredit.Text == "Crédit")
+                lblCompte2.Text = "Débit :";
+            else
+                lblCompte2.Text = "Crédit :";
+        }
+
+        private void btnCompte1_Click(object sender, EventArgs e)
+        {
+            txtCompte1.Text = cc.CompteDepense(new FormComptaPlan(), "comptable");
+        }
+
+        private void btnCompte2_Click(object sender, EventArgs e)
+        {
+            if (txtCompte1.Text == "")
+            {
+                MessageBox.Show("Fournissez d'abord le compte concerné ci-haut", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtNumPiece.Select();
+            }
+            else
+                txtCompte2.Text = cc.CompteDepense(new FormComptaPlan(), "comptable");
+        }
+
+        private void cboMonnaie_Enter(object sender, EventArgs e)
+        {
+            if (txtMontant.Text == "")
+            {
+                MessageBox.Show("Aucun montant n'est fourni", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtNumPiece.Select();
+            }
         }
     }
 }

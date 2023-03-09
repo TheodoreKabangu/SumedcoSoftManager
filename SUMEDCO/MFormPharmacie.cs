@@ -15,35 +15,38 @@ namespace SUMEDCO
         public MFormPharmacie()
         {
             InitializeComponent();
-            cc.ActualiserDesign(pnlSousMenu);
         }
         public Form activeForm = null;
         ClassCompta cc = new ClassCompta();
         ClassStock cs = new ClassStock();
         public int idutilisateur;
-        private void btnEntreeSortie_Click(object sender, EventArgs e)
-        {
-            cc.AfficherSousMenu(pnlSousMenu);
-        }
         private void btnQuitter_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-
-        private void btnVente_Click(object sender, EventArgs e)
-        {
-            cs.AfficherSousForm(this, new FormBonRecette());
-        }
-
-        private void btnStock_Click(object sender, EventArgs e)
-        {
-            cs.AfficherSousForm(this, new FormStockPharma());
-            cc.CacherSousMenu(pnlSousMenu);
-        }
-
         private void btnEncaisser_Click(object sender, EventArgs e)
         {
-            cs.Encaisser(this, new FormBonRecette());
+            cs.AfficherSousForm(this, new FormPharmaVente());
+        }
+
+        private void btnStockPh_Click(object sender, EventArgs e)
+        {
+            cs.AfficherSousForm(this, new FormStockProduit());
+        }
+
+        private void btnCommande_Click(object sender, EventArgs e)
+        {
+            cs.AfficherSousForm(this, new FormHistoCommande());
+        }
+
+        private void btnAlertes_Click(object sender, EventArgs e)
+        {
+			cs.AfficherSousForm(this, new FormStockAlerte());
+        }
+
+        private void btnUtilisation_Click(object sender, EventArgs e)
+        {
+            cs.AfficherSousForm(this, new FormUtilisation());
         }
 
     }

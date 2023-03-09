@@ -30,26 +30,21 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MFormComptabilite));
             this.pnlSide = new System.Windows.Forms.Panel();
-            this.pnlSousMenu2 = new System.Windows.Forms.Panel();
             this.btnResultat = new System.Windows.Forms.Button();
-            this.btnFlux = new System.Windows.Forms.Button();
-            this.btnBalance = new System.Windows.Forms.Button();
-            this.btnBilan = new System.Windows.Forms.Button();
-            this.btnOperations = new System.Windows.Forms.Button();
+            this.btnTabFluxT = new System.Windows.Forms.Button();
+            this.btnBalance_ = new System.Windows.Forms.Button();
+            this.btnBilan_ = new System.Windows.Forms.Button();
+            this.btnGrandLivre = new System.Windows.Forms.Button();
             this.btnVisualisation = new System.Windows.Forms.Button();
             this.btnEcriture = new System.Windows.Forms.Button();
-            this.btnCompte = new System.Windows.Forms.Button();
+            this.btnRapportDepense = new System.Windows.Forms.Button();
+            this.btnRapportRecette = new System.Windows.Forms.Button();
             this.btnQuitter = new System.Windows.Forms.Button();
-            this.pnlSousMenu = new System.Windows.Forms.Panel();
-            this.btnAutreStock = new System.Windows.Forms.Button();
-            this.btnStockPharma = new System.Windows.Forms.Button();
             this.btnAppro = new System.Windows.Forms.Button();
             this.pnlLogo = new System.Windows.Forms.Panel();
             this.btnLogo = new System.Windows.Forms.Button();
             this.pnlChildForm = new System.Windows.Forms.Panel();
             this.pnlSide.SuspendLayout();
-            this.pnlSousMenu2.SuspendLayout();
-            this.pnlSousMenu.SuspendLayout();
             this.pnlLogo.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,32 +52,23 @@
             // 
             this.pnlSide.AutoScroll = true;
             this.pnlSide.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            this.pnlSide.Controls.Add(this.pnlSousMenu2);
+            this.pnlSide.Controls.Add(this.btnResultat);
+            this.pnlSide.Controls.Add(this.btnTabFluxT);
+            this.pnlSide.Controls.Add(this.btnBalance_);
+            this.pnlSide.Controls.Add(this.btnBilan_);
+            this.pnlSide.Controls.Add(this.btnGrandLivre);
             this.pnlSide.Controls.Add(this.btnVisualisation);
             this.pnlSide.Controls.Add(this.btnEcriture);
-            this.pnlSide.Controls.Add(this.btnCompte);
+            this.pnlSide.Controls.Add(this.btnRapportDepense);
+            this.pnlSide.Controls.Add(this.btnRapportRecette);
             this.pnlSide.Controls.Add(this.btnQuitter);
-            this.pnlSide.Controls.Add(this.pnlSousMenu);
             this.pnlSide.Controls.Add(this.btnAppro);
             this.pnlSide.Controls.Add(this.pnlLogo);
             this.pnlSide.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlSide.Location = new System.Drawing.Point(0, 0);
             this.pnlSide.Name = "pnlSide";
-            this.pnlSide.Size = new System.Drawing.Size(180, 471);
+            this.pnlSide.Size = new System.Drawing.Size(180, 474);
             this.pnlSide.TabIndex = 584;
-            // 
-            // pnlSousMenu2
-            // 
-            this.pnlSousMenu2.Controls.Add(this.btnResultat);
-            this.pnlSousMenu2.Controls.Add(this.btnFlux);
-            this.pnlSousMenu2.Controls.Add(this.btnBalance);
-            this.pnlSousMenu2.Controls.Add(this.btnBilan);
-            this.pnlSousMenu2.Controls.Add(this.btnOperations);
-            this.pnlSousMenu2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlSousMenu2.Location = new System.Drawing.Point(0, 324);
-            this.pnlSousMenu2.Name = "pnlSousMenu2";
-            this.pnlSousMenu2.Size = new System.Drawing.Size(163, 178);
-            this.pnlSousMenu2.TabIndex = 586;
             // 
             // btnResultat
             // 
@@ -90,84 +76,94 @@
             this.btnResultat.FlatAppearance.BorderSize = 0;
             this.btnResultat.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.btnResultat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnResultat.ForeColor = System.Drawing.Color.MediumBlue;
-            this.btnResultat.Location = new System.Drawing.Point(0, 140);
+            this.btnResultat.ForeColor = System.Drawing.Color.Black;
+            this.btnResultat.Image = ((System.Drawing.Image)(resources.GetObject("btnResultat.Image")));
+            this.btnResultat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnResultat.Location = new System.Drawing.Point(0, 477);
             this.btnResultat.Name = "btnResultat";
-            this.btnResultat.Padding = new System.Windows.Forms.Padding(39, 0, 0, 0);
-            this.btnResultat.Size = new System.Drawing.Size(163, 35);
-            this.btnResultat.TabIndex = 2;
-            this.btnResultat.Text = "Comptes de résultat";
+            this.btnResultat.Size = new System.Drawing.Size(154, 45);
+            this.btnResultat.TabIndex = 595;
+            this.btnResultat.Text = "Tab. résultat";
             this.btnResultat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnResultat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnResultat.UseVisualStyleBackColor = true;
             this.btnResultat.Click += new System.EventHandler(this.btnResultat_Click);
             // 
-            // btnFlux
+            // btnTabFluxT
             // 
-            this.btnFlux.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnFlux.FlatAppearance.BorderSize = 0;
-            this.btnFlux.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.btnFlux.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFlux.ForeColor = System.Drawing.Color.MediumBlue;
-            this.btnFlux.Location = new System.Drawing.Point(0, 105);
-            this.btnFlux.Name = "btnFlux";
-            this.btnFlux.Padding = new System.Windows.Forms.Padding(39, 0, 0, 0);
-            this.btnFlux.Size = new System.Drawing.Size(163, 35);
-            this.btnFlux.TabIndex = 3;
-            this.btnFlux.Text = "Flux de trrésorerie";
-            this.btnFlux.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFlux.UseVisualStyleBackColor = true;
-            this.btnFlux.Click += new System.EventHandler(this.btnFlux_Click);
+            this.btnTabFluxT.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnTabFluxT.FlatAppearance.BorderSize = 0;
+            this.btnTabFluxT.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.btnTabFluxT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTabFluxT.ForeColor = System.Drawing.Color.Black;
+            this.btnTabFluxT.Image = ((System.Drawing.Image)(resources.GetObject("btnTabFluxT.Image")));
+            this.btnTabFluxT.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTabFluxT.Location = new System.Drawing.Point(0, 432);
+            this.btnTabFluxT.Name = "btnTabFluxT";
+            this.btnTabFluxT.Size = new System.Drawing.Size(154, 45);
+            this.btnTabFluxT.TabIndex = 594;
+            this.btnTabFluxT.Text = "TFT";
+            this.btnTabFluxT.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTabFluxT.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnTabFluxT.UseVisualStyleBackColor = true;
+            this.btnTabFluxT.Click += new System.EventHandler(this.btnTabFluxT_Click);
             // 
-            // btnBalance
+            // btnBalance_
             // 
-            this.btnBalance.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnBalance.FlatAppearance.BorderSize = 0;
-            this.btnBalance.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.btnBalance.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBalance.ForeColor = System.Drawing.Color.MediumBlue;
-            this.btnBalance.Location = new System.Drawing.Point(0, 70);
-            this.btnBalance.Name = "btnBalance";
-            this.btnBalance.Padding = new System.Windows.Forms.Padding(39, 0, 0, 0);
-            this.btnBalance.Size = new System.Drawing.Size(163, 35);
-            this.btnBalance.TabIndex = 588;
-            this.btnBalance.Text = "Balance";
-            this.btnBalance.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBalance.UseVisualStyleBackColor = true;
-            this.btnBalance.Click += new System.EventHandler(this.btnBalance_Click);
+            this.btnBalance_.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnBalance_.FlatAppearance.BorderSize = 0;
+            this.btnBalance_.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.btnBalance_.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBalance_.ForeColor = System.Drawing.Color.Black;
+            this.btnBalance_.Image = ((System.Drawing.Image)(resources.GetObject("btnBalance_.Image")));
+            this.btnBalance_.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBalance_.Location = new System.Drawing.Point(0, 387);
+            this.btnBalance_.Name = "btnBalance_";
+            this.btnBalance_.Size = new System.Drawing.Size(154, 45);
+            this.btnBalance_.TabIndex = 593;
+            this.btnBalance_.Text = "Balance";
+            this.btnBalance_.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBalance_.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnBalance_.UseVisualStyleBackColor = true;
+            this.btnBalance_.Click += new System.EventHandler(this.btnBalance__Click);
             // 
-            // btnBilan
+            // btnBilan_
             // 
-            this.btnBilan.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnBilan.FlatAppearance.BorderSize = 0;
-            this.btnBilan.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.btnBilan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBilan.ForeColor = System.Drawing.Color.MediumBlue;
-            this.btnBilan.Location = new System.Drawing.Point(0, 35);
-            this.btnBilan.Name = "btnBilan";
-            this.btnBilan.Padding = new System.Windows.Forms.Padding(39, 0, 0, 0);
-            this.btnBilan.Size = new System.Drawing.Size(163, 35);
-            this.btnBilan.TabIndex = 1;
-            this.btnBilan.Text = "Bilan";
-            this.btnBilan.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBilan.UseVisualStyleBackColor = true;
-            this.btnBilan.Click += new System.EventHandler(this.btnBilan_Click);
+            this.btnBilan_.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnBilan_.FlatAppearance.BorderSize = 0;
+            this.btnBilan_.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.btnBilan_.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBilan_.ForeColor = System.Drawing.Color.Black;
+            this.btnBilan_.Image = ((System.Drawing.Image)(resources.GetObject("btnBilan_.Image")));
+            this.btnBilan_.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBilan_.Location = new System.Drawing.Point(0, 342);
+            this.btnBilan_.Name = "btnBilan_";
+            this.btnBilan_.Size = new System.Drawing.Size(154, 45);
+            this.btnBilan_.TabIndex = 592;
+            this.btnBilan_.Text = "Bilan";
+            this.btnBilan_.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBilan_.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnBilan_.UseVisualStyleBackColor = true;
+            this.btnBilan_.Click += new System.EventHandler(this.btnBilan__Click);
             // 
-            // btnOperations
+            // btnGrandLivre
             // 
-            this.btnOperations.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnOperations.FlatAppearance.BorderSize = 0;
-            this.btnOperations.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.btnOperations.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOperations.ForeColor = System.Drawing.Color.MediumBlue;
-            this.btnOperations.Location = new System.Drawing.Point(0, 0);
-            this.btnOperations.Name = "btnOperations";
-            this.btnOperations.Padding = new System.Windows.Forms.Padding(39, 0, 0, 0);
-            this.btnOperations.Size = new System.Drawing.Size(163, 35);
-            this.btnOperations.TabIndex = 0;
-            this.btnOperations.Text = "Opérations";
-            this.btnOperations.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOperations.UseVisualStyleBackColor = true;
-            this.btnOperations.Click += new System.EventHandler(this.btnOperations_Click);
+            this.btnGrandLivre.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnGrandLivre.FlatAppearance.BorderSize = 0;
+            this.btnGrandLivre.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.btnGrandLivre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGrandLivre.ForeColor = System.Drawing.Color.Black;
+            this.btnGrandLivre.Image = ((System.Drawing.Image)(resources.GetObject("btnGrandLivre.Image")));
+            this.btnGrandLivre.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGrandLivre.Location = new System.Drawing.Point(0, 297);
+            this.btnGrandLivre.Name = "btnGrandLivre";
+            this.btnGrandLivre.Size = new System.Drawing.Size(154, 45);
+            this.btnGrandLivre.TabIndex = 591;
+            this.btnGrandLivre.Text = "Grand livre";
+            this.btnGrandLivre.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGrandLivre.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGrandLivre.UseVisualStyleBackColor = true;
+            this.btnGrandLivre.Click += new System.EventHandler(this.btnGrandLivre_Click);
             // 
             // btnVisualisation
             // 
@@ -178,15 +174,15 @@
             this.btnVisualisation.ForeColor = System.Drawing.Color.Black;
             this.btnVisualisation.Image = ((System.Drawing.Image)(resources.GetObject("btnVisualisation.Image")));
             this.btnVisualisation.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVisualisation.Location = new System.Drawing.Point(0, 279);
+            this.btnVisualisation.Location = new System.Drawing.Point(0, 252);
             this.btnVisualisation.Name = "btnVisualisation";
-            this.btnVisualisation.Size = new System.Drawing.Size(163, 45);
+            this.btnVisualisation.Size = new System.Drawing.Size(154, 45);
             this.btnVisualisation.TabIndex = 3;
-            this.btnVisualisation.Text = "Visualisation";
+            this.btnVisualisation.Text = "Opérations";
             this.btnVisualisation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnVisualisation.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnVisualisation.UseVisualStyleBackColor = true;
-            this.btnVisualisation.Click += new System.EventHandler(this.btnIntervention_Click);
+            this.btnVisualisation.Click += new System.EventHandler(this.btnVisualisation_Click);
             // 
             // btnEcriture
             // 
@@ -197,9 +193,9 @@
             this.btnEcriture.ForeColor = System.Drawing.Color.Black;
             this.btnEcriture.Image = ((System.Drawing.Image)(resources.GetObject("btnEcriture.Image")));
             this.btnEcriture.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEcriture.Location = new System.Drawing.Point(0, 234);
+            this.btnEcriture.Location = new System.Drawing.Point(0, 207);
             this.btnEcriture.Name = "btnEcriture";
-            this.btnEcriture.Size = new System.Drawing.Size(163, 45);
+            this.btnEcriture.Size = new System.Drawing.Size(154, 45);
             this.btnEcriture.TabIndex = 588;
             this.btnEcriture.Text = "Ecriture comptable";
             this.btnEcriture.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -207,24 +203,43 @@
             this.btnEcriture.UseVisualStyleBackColor = true;
             this.btnEcriture.Click += new System.EventHandler(this.btnEcriture_Click);
             // 
-            // btnCompte
+            // btnRapportDepense
             // 
-            this.btnCompte.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnCompte.FlatAppearance.BorderSize = 0;
-            this.btnCompte.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.btnCompte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCompte.ForeColor = System.Drawing.Color.Black;
-            this.btnCompte.Image = ((System.Drawing.Image)(resources.GetObject("btnCompte.Image")));
-            this.btnCompte.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCompte.Location = new System.Drawing.Point(0, 189);
-            this.btnCompte.Name = "btnCompte";
-            this.btnCompte.Size = new System.Drawing.Size(163, 45);
-            this.btnCompte.TabIndex = 587;
-            this.btnCompte.Text = "Comptes";
-            this.btnCompte.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCompte.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCompte.UseVisualStyleBackColor = true;
-            this.btnCompte.Click += new System.EventHandler(this.btnCompte_Click);
+            this.btnRapportDepense.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRapportDepense.FlatAppearance.BorderSize = 0;
+            this.btnRapportDepense.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.btnRapportDepense.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRapportDepense.ForeColor = System.Drawing.Color.Black;
+            this.btnRapportDepense.Image = ((System.Drawing.Image)(resources.GetObject("btnRapportDepense.Image")));
+            this.btnRapportDepense.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRapportDepense.Location = new System.Drawing.Point(0, 162);
+            this.btnRapportDepense.Name = "btnRapportDepense";
+            this.btnRapportDepense.Size = new System.Drawing.Size(154, 45);
+            this.btnRapportDepense.TabIndex = 590;
+            this.btnRapportDepense.Text = "Rapport dépenses";
+            this.btnRapportDepense.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRapportDepense.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRapportDepense.UseVisualStyleBackColor = true;
+            this.btnRapportDepense.Click += new System.EventHandler(this.btnRapportDepense_Click);
+            // 
+            // btnRapportRecette
+            // 
+            this.btnRapportRecette.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRapportRecette.FlatAppearance.BorderSize = 0;
+            this.btnRapportRecette.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.btnRapportRecette.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRapportRecette.ForeColor = System.Drawing.Color.Black;
+            this.btnRapportRecette.Image = ((System.Drawing.Image)(resources.GetObject("btnRapportRecette.Image")));
+            this.btnRapportRecette.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRapportRecette.Location = new System.Drawing.Point(0, 117);
+            this.btnRapportRecette.Name = "btnRapportRecette";
+            this.btnRapportRecette.Size = new System.Drawing.Size(154, 45);
+            this.btnRapportRecette.TabIndex = 587;
+            this.btnRapportRecette.Text = "Rapport recettes";
+            this.btnRapportRecette.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRapportRecette.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRapportRecette.UseVisualStyleBackColor = true;
+            this.btnRapportRecette.Click += new System.EventHandler(this.btnCompte_Click);
             // 
             // btnQuitter
             // 
@@ -239,60 +254,16 @@
             this.btnQuitter.ForeColor = System.Drawing.Color.Black;
             this.btnQuitter.Image = ((System.Drawing.Image)(resources.GetObject("btnQuitter.Image")));
             this.btnQuitter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnQuitter.Location = new System.Drawing.Point(0, 502);
+            this.btnQuitter.Location = new System.Drawing.Point(0, 522);
             this.btnQuitter.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnQuitter.Name = "btnQuitter";
-            this.btnQuitter.Size = new System.Drawing.Size(163, 30);
+            this.btnQuitter.Size = new System.Drawing.Size(154, 30);
             this.btnQuitter.TabIndex = 585;
             this.btnQuitter.Text = "Quitter";
             this.btnQuitter.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnQuitter.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnQuitter.UseVisualStyleBackColor = false;
             this.btnQuitter.Click += new System.EventHandler(this.btnQuitter_Click);
-            // 
-            // pnlSousMenu
-            // 
-            this.pnlSousMenu.Controls.Add(this.btnAutreStock);
-            this.pnlSousMenu.Controls.Add(this.btnStockPharma);
-            this.pnlSousMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlSousMenu.Location = new System.Drawing.Point(0, 117);
-            this.pnlSousMenu.Name = "pnlSousMenu";
-            this.pnlSousMenu.Size = new System.Drawing.Size(163, 72);
-            this.pnlSousMenu.TabIndex = 589;
-            // 
-            // btnAutreStock
-            // 
-            this.btnAutreStock.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAutreStock.FlatAppearance.BorderSize = 0;
-            this.btnAutreStock.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.btnAutreStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAutreStock.ForeColor = System.Drawing.Color.MediumBlue;
-            this.btnAutreStock.Location = new System.Drawing.Point(0, 35);
-            this.btnAutreStock.Name = "btnAutreStock";
-            this.btnAutreStock.Padding = new System.Windows.Forms.Padding(39, 0, 0, 0);
-            this.btnAutreStock.Size = new System.Drawing.Size(163, 35);
-            this.btnAutreStock.TabIndex = 1;
-            this.btnAutreStock.Text = "Autres produits";
-            this.btnAutreStock.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAutreStock.UseVisualStyleBackColor = true;
-            this.btnAutreStock.Click += new System.EventHandler(this.btnAutreStock_Click);
-            // 
-            // btnStockPharma
-            // 
-            this.btnStockPharma.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnStockPharma.FlatAppearance.BorderSize = 0;
-            this.btnStockPharma.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.btnStockPharma.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStockPharma.ForeColor = System.Drawing.Color.MediumBlue;
-            this.btnStockPharma.Location = new System.Drawing.Point(0, 0);
-            this.btnStockPharma.Name = "btnStockPharma";
-            this.btnStockPharma.Padding = new System.Windows.Forms.Padding(39, 0, 0, 0);
-            this.btnStockPharma.Size = new System.Drawing.Size(163, 35);
-            this.btnStockPharma.TabIndex = 0;
-            this.btnStockPharma.Text = "Produits pharma";
-            this.btnStockPharma.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStockPharma.UseVisualStyleBackColor = true;
-            this.btnStockPharma.Click += new System.EventHandler(this.btnStockPharma_Click);
             // 
             // btnAppro
             // 
@@ -305,7 +276,7 @@
             this.btnAppro.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAppro.Location = new System.Drawing.Point(0, 72);
             this.btnAppro.Name = "btnAppro";
-            this.btnAppro.Size = new System.Drawing.Size(163, 45);
+            this.btnAppro.Size = new System.Drawing.Size(154, 45);
             this.btnAppro.TabIndex = 1;
             this.btnAppro.Text = "Approvisionner stocks";
             this.btnAppro.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -319,7 +290,7 @@
             this.pnlLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlLogo.Location = new System.Drawing.Point(0, 0);
             this.pnlLogo.Name = "pnlLogo";
-            this.pnlLogo.Size = new System.Drawing.Size(163, 72);
+            this.pnlLogo.Size = new System.Drawing.Size(154, 72);
             this.pnlLogo.TabIndex = 0;
             // 
             // btnLogo
@@ -335,7 +306,7 @@
             this.btnLogo.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.btnLogo.Location = new System.Drawing.Point(0, 0);
             this.btnLogo.Name = "btnLogo";
-            this.btnLogo.Size = new System.Drawing.Size(163, 72);
+            this.btnLogo.Size = new System.Drawing.Size(154, 72);
             this.btnLogo.TabIndex = 1;
             this.btnLogo.Text = "F.F.L.\r\nSUMEDCO";
             this.btnLogo.UseVisualStyleBackColor = false;
@@ -347,27 +318,25 @@
             this.pnlChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlChildForm.Location = new System.Drawing.Point(180, 0);
             this.pnlChildForm.Name = "pnlChildForm";
-            this.pnlChildForm.Size = new System.Drawing.Size(714, 471);
+            this.pnlChildForm.Size = new System.Drawing.Size(708, 474);
             this.pnlChildForm.TabIndex = 585;
             // 
             // MFormComptabilite
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(894, 471);
+            this.ClientSize = new System.Drawing.Size(888, 474);
             this.Controls.Add(this.pnlChildForm);
             this.Controls.Add(this.pnlSide);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(910, 510);
+            this.MinimumSize = new System.Drawing.Size(910, 530);
             this.Name = "MFormComptabilite";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SSM - Comptabilite";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.pnlSide.ResumeLayout(false);
-            this.pnlSousMenu2.ResumeLayout(false);
-            this.pnlSousMenu.ResumeLayout(false);
             this.pnlLogo.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -382,16 +351,13 @@
         private System.Windows.Forms.Panel pnlLogo;
         public System.Windows.Forms.Button btnLogo;
         public System.Windows.Forms.Panel pnlChildForm;
-        public System.Windows.Forms.Panel pnlSousMenu2;
-        public System.Windows.Forms.Button btnFlux;
-        public System.Windows.Forms.Button btnResultat;
-        public System.Windows.Forms.Button btnBilan;
-        public System.Windows.Forms.Button btnOperations;
-        public System.Windows.Forms.Button btnBalance;
         public System.Windows.Forms.Button btnEcriture;
-        public System.Windows.Forms.Button btnCompte;
-        public System.Windows.Forms.Panel pnlSousMenu;
-        public System.Windows.Forms.Button btnAutreStock;
-        public System.Windows.Forms.Button btnStockPharma;
+        public System.Windows.Forms.Button btnRapportRecette;
+        public System.Windows.Forms.Button btnRapportDepense;
+        public System.Windows.Forms.Button btnGrandLivre;
+        public System.Windows.Forms.Button btnResultat;
+        public System.Windows.Forms.Button btnTabFluxT;
+        public System.Windows.Forms.Button btnBalance_;
+        public System.Windows.Forms.Button btnBilan_;
     }
 }

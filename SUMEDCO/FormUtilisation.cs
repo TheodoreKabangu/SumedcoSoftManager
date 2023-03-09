@@ -17,10 +17,18 @@ namespace SUMEDCO
             InitializeComponent();
         }
         ClassStock cs = new ClassStock();
-        public int idstock = 0, idutilisation = 0;
+        public int idstock = 0, 
+            idutilisateur = 0,
+            idpharma = 0;
+        public string poste = "";
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnRecherche_Click(object sender, EventArgs e)
+        {
+            cs.ChargerProduit(this);
         }
         
     }

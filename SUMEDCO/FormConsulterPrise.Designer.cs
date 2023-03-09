@@ -32,11 +32,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormConsulterPrise));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvPrise = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtpDateA = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.dtpDateDe = new System.Windows.Forms.DateTimePicker();
@@ -44,11 +46,22 @@
             this.btnRecherche = new System.Windows.Forms.Button();
             this.btnQuitter = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnConsulter = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.btnPlainte2 = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.dtpDate = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.txtRepondant = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cboLienRepondant = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.dgvPatient = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrise)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPatient)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvPrise
@@ -56,8 +69,9 @@
             this.dgvPrise.AllowUserToAddRows = false;
             this.dgvPrise.AllowUserToDeleteRows = false;
             this.dgvPrise.AllowUserToOrderColumns = true;
-            this.dgvPrise.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dgvPrise.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvPrise.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.dgvPrise.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvPrise.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -72,9 +86,9 @@
             this.dgvPrise.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPrise.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
-            this.Column2,
             this.Column5,
-            this.Column3});
+            this.Column2,
+            this.Column4});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Lavender;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -89,7 +103,7 @@
             this.dgvPrise.ReadOnly = true;
             this.dgvPrise.RowHeadersVisible = false;
             this.dgvPrise.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPrise.Size = new System.Drawing.Size(679, 365);
+            this.dgvPrise.Size = new System.Drawing.Size(273, 365);
             this.dgvPrise.TabIndex = 654;
             this.dgvPrise.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPrise_CellClick);
             // 
@@ -100,13 +114,6 @@
             this.Column1.ReadOnly = true;
             this.Column1.Width = 40;
             // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "idrecette";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Visible = false;
-            // 
             // Column5
             // 
             this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -115,12 +122,19 @@
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
             // 
-            // Column3
+            // Column2
             // 
-            this.Column3.HeaderText = "NbConsultation";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Visible = false;
+            this.Column2.HeaderText = "idrecette";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Visible = false;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "idservice";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Visible = false;
             // 
             // dtpDateA
             // 
@@ -205,38 +219,13 @@
             this.panel2.Size = new System.Drawing.Size(703, 27);
             this.panel2.TabIndex = 661;
             // 
-            // btnConsulter
-            // 
-            this.btnConsulter.BackColor = System.Drawing.Color.Transparent;
-            this.btnConsulter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnConsulter.Enabled = false;
-            this.btnConsulter.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnConsulter.FlatAppearance.BorderSize = 0;
-            this.btnConsulter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnConsulter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConsulter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConsulter.Image = ((System.Drawing.Image)(resources.GetObject("btnConsulter.Image")));
-            this.btnConsulter.Location = new System.Drawing.Point(292, 46);
-            this.btnConsulter.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.btnConsulter.Name = "btnConsulter";
-            this.btnConsulter.Size = new System.Drawing.Size(30, 21);
-            this.btnConsulter.TabIndex = 662;
-            this.toolTip1.SetToolTip(this.btnConsulter, "Consulter");
-            this.btnConsulter.UseVisualStyleBackColor = false;
-            this.btnConsulter.Click += new System.EventHandler(this.btnConsulter_Click);
-            // 
-            // timer1
-            // 
-            this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
             // checkBox1
             // 
             this.checkBox1.FlatAppearance.BorderSize = 0;
             this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkBox1.ForeColor = System.Drawing.Color.MediumBlue;
             this.checkBox1.Image = ((System.Drawing.Image)(resources.GetObject("checkBox1.Image")));
-            this.checkBox1.Location = new System.Drawing.Point(343, 41);
+            this.checkBox1.Location = new System.Drawing.Point(292, 42);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(40, 26);
             this.checkBox1.TabIndex = 678;
@@ -244,14 +233,188 @@
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.Click += new System.EventHandler(this.checkBox1_Click);
             // 
+            // btnPlainte2
+            // 
+            this.btnPlainte2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPlainte2.BackColor = System.Drawing.Color.Transparent;
+            this.btnPlainte2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnPlainte2.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnPlainte2.FlatAppearance.BorderSize = 0;
+            this.btnPlainte2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnPlainte2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPlainte2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPlainte2.Image = ((System.Drawing.Image)(resources.GetObject("btnPlainte2.Image")));
+            this.btnPlainte2.Location = new System.Drawing.Point(659, 129);
+            this.btnPlainte2.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnPlainte2.Name = "btnPlainte2";
+            this.btnPlainte2.Size = new System.Drawing.Size(30, 26);
+            this.btnPlainte2.TabIndex = 684;
+            this.toolTip1.SetToolTip(this.btnPlainte2, "Aller à la plainte");
+            this.btnPlainte2.UseVisualStyleBackColor = false;
+            this.btnPlainte2.Click += new System.EventHandler(this.btnPlainte2_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // dtpDate
+            // 
+            this.dtpDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDate.Location = new System.Drawing.Point(375, 74);
+            this.dtpDate.Name = "dtpDate";
+            this.dtpDate.Size = new System.Drawing.Size(94, 21);
+            this.dtpDate.TabIndex = 683;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(289, 79);
+            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(74, 15);
+            this.label4.TabIndex = 682;
+            this.label4.Text = "Consulté le :";
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.ForeColor = System.Drawing.Color.MediumBlue;
+            this.checkBox2.Location = new System.Drawing.Point(475, 74);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(162, 19);
+            this.checkBox2.TabIndex = 681;
+            this.checkBox2.Text = "Renseigner le répondant";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.Click += new System.EventHandler(this.checkBox2_Click);
+            // 
+            // txtRepondant
+            // 
+            this.txtRepondant.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRepondant.Enabled = false;
+            this.txtRepondant.Location = new System.Drawing.Point(375, 103);
+            this.txtRepondant.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.txtRepondant.MaxLength = 75;
+            this.txtRepondant.Name = "txtRepondant";
+            this.txtRepondant.Size = new System.Drawing.Size(314, 21);
+            this.txtRepondant.TabIndex = 679;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(289, 106);
+            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(74, 15);
+            this.label3.TabIndex = 680;
+            this.label3.Text = "Répondant :";
+            // 
+            // cboLienRepondant
+            // 
+            this.cboLienRepondant.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboLienRepondant.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboLienRepondant.Enabled = false;
+            this.cboLienRepondant.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboLienRepondant.FormattingEnabled = true;
+            this.cboLienRepondant.Items.AddRange(new object[] {
+            "autre",
+            "épouse",
+            "époux",
+            "parent",
+            "parenté"});
+            this.cboLienRepondant.Location = new System.Drawing.Point(375, 132);
+            this.cboLienRepondant.Name = "cboLienRepondant";
+            this.cboLienRepondant.Size = new System.Drawing.Size(276, 23);
+            this.cboLienRepondant.Sorted = true;
+            this.cboLienRepondant.TabIndex = 685;
+            // 
+            // label14
+            // 
+            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(289, 135);
+            this.label14.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(37, 15);
+            this.label14.TabIndex = 686;
+            this.label14.Text = "Lien :";
+            // 
+            // dgvPatient
+            // 
+            this.dgvPatient.AllowUserToAddRows = false;
+            this.dgvPatient.AllowUserToDeleteRows = false;
+            this.dgvPatient.AllowUserToOrderColumns = true;
+            this.dgvPatient.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvPatient.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.dgvPatient.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvPatient.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPatient.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvPatient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPatient.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn24,
+            this.Column7});
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Lavender;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPatient.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvPatient.GridColor = System.Drawing.Color.RoyalBlue;
+            this.dgvPatient.Location = new System.Drawing.Point(292, 162);
+            this.dgvPatient.MultiSelect = false;
+            this.dgvPatient.Name = "dgvPatient";
+            this.dgvPatient.ReadOnly = true;
+            this.dgvPatient.RowHeadersVisible = false;
+            this.dgvPatient.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPatient.Size = new System.Drawing.Size(397, 277);
+            this.dgvPatient.TabIndex = 687;
+            // 
+            // dataGridViewTextBoxColumn24
+            // 
+            this.dataGridViewTextBoxColumn24.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn24.HeaderText = "Détails patient";
+            this.dataGridViewTextBoxColumn24.MinimumWidth = 100;
+            this.dataGridViewTextBoxColumn24.Name = "dataGridViewTextBoxColumn24";
+            this.dataGridViewTextBoxColumn24.ReadOnly = true;
+            // 
+            // Column7
+            // 
+            this.Column7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column7.HeaderText = "Valeur";
+            this.Column7.MinimumWidth = 100;
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            // 
             // FormConsulterPrise
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(703, 451);
+            this.Controls.Add(this.dgvPatient);
+            this.Controls.Add(this.cboLienRepondant);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.btnPlainte2);
+            this.Controls.Add(this.dtpDate);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.checkBox2);
+            this.Controls.Add(this.txtRepondant);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.btnConsulter);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.btnQuitter);
             this.Controls.Add(this.dtpDateA);
@@ -266,6 +429,7 @@
             this.Text = "FormConsulterPrise";
             this.Shown += new System.EventHandler(this.FormConsulterPrise_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrise)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPatient)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -281,13 +445,23 @@
         public System.Windows.Forms.Button btnRecherche;
         public System.Windows.Forms.Button btnQuitter;
         private System.Windows.Forms.Panel panel2;
-        public System.Windows.Forms.Button btnConsulter;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.Timer timer1;
         public System.Windows.Forms.CheckBox checkBox1;
+        public System.Windows.Forms.DateTimePicker dtpDate;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.CheckBox checkBox2;
+        public System.Windows.Forms.TextBox txtRepondant;
+        private System.Windows.Forms.Label label3;
+        public System.Windows.Forms.ComboBox cboLienRepondant;
+        private System.Windows.Forms.Label label14;
+        public System.Windows.Forms.Button btnPlainte2;
+        public System.Windows.Forms.DataGridView dgvPatient;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn24;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
     }
 }

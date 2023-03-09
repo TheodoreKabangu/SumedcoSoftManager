@@ -30,9 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MFormRecette));
             this.pnlSide = new System.Windows.Forms.Panel();
-            this.pnlSousMenu = new System.Windows.Forms.Panel();
-            this.btnAgenda = new System.Windows.Forms.Button();
-            this.btnBonService = new System.Windows.Forms.Button();
             this.btnQuitter = new System.Windows.Forms.Button();
             this.btnRapport = new System.Windows.Forms.Button();
             this.btnRecette = new System.Windows.Forms.Button();
@@ -40,14 +37,12 @@
             this.btnLogo = new System.Windows.Forms.Button();
             this.pnlChildForm = new System.Windows.Forms.Panel();
             this.pnlSide.SuspendLayout();
-            this.pnlSousMenu.SuspendLayout();
             this.pnlLogo.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlSide
             // 
             this.pnlSide.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            this.pnlSide.Controls.Add(this.pnlSousMenu);
             this.pnlSide.Controls.Add(this.btnQuitter);
             this.pnlSide.Controls.Add(this.btnRapport);
             this.pnlSide.Controls.Add(this.btnRecette);
@@ -55,52 +50,8 @@
             this.pnlSide.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlSide.Location = new System.Drawing.Point(0, 0);
             this.pnlSide.Name = "pnlSide";
-            this.pnlSide.Size = new System.Drawing.Size(180, 491);
+            this.pnlSide.Size = new System.Drawing.Size(180, 474);
             this.pnlSide.TabIndex = 584;
-            // 
-            // pnlSousMenu
-            // 
-            this.pnlSousMenu.Controls.Add(this.btnAgenda);
-            this.pnlSousMenu.Controls.Add(this.btnBonService);
-            this.pnlSousMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlSousMenu.Location = new System.Drawing.Point(0, 162);
-            this.pnlSousMenu.Name = "pnlSousMenu";
-            this.pnlSousMenu.Size = new System.Drawing.Size(180, 86);
-            this.pnlSousMenu.TabIndex = 586;
-            // 
-            // btnAgenda
-            // 
-            this.btnAgenda.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAgenda.FlatAppearance.BorderSize = 0;
-            this.btnAgenda.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.btnAgenda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgenda.ForeColor = System.Drawing.Color.MediumBlue;
-            this.btnAgenda.Location = new System.Drawing.Point(0, 40);
-            this.btnAgenda.Name = "btnAgenda";
-            this.btnAgenda.Padding = new System.Windows.Forms.Padding(39, 0, 0, 0);
-            this.btnAgenda.Size = new System.Drawing.Size(180, 40);
-            this.btnAgenda.TabIndex = 2;
-            this.btnAgenda.Text = "Agenda débiteurs";
-            this.btnAgenda.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgenda.UseVisualStyleBackColor = true;
-            this.btnAgenda.Click += new System.EventHandler(this.btnAgenda_Click);
-            // 
-            // btnBonService
-            // 
-            this.btnBonService.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnBonService.FlatAppearance.BorderSize = 0;
-            this.btnBonService.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.btnBonService.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBonService.ForeColor = System.Drawing.Color.MediumBlue;
-            this.btnBonService.Location = new System.Drawing.Point(0, 0);
-            this.btnBonService.Name = "btnBonService";
-            this.btnBonService.Padding = new System.Windows.Forms.Padding(39, 0, 0, 0);
-            this.btnBonService.Size = new System.Drawing.Size(180, 40);
-            this.btnBonService.TabIndex = 0;
-            this.btnBonService.Text = "Journal recettes";
-            this.btnBonService.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBonService.UseVisualStyleBackColor = true;
-            this.btnBonService.Click += new System.EventHandler(this.btnBonService_Click);
             // 
             // btnQuitter
             // 
@@ -115,7 +66,7 @@
             this.btnQuitter.ForeColor = System.Drawing.Color.Black;
             this.btnQuitter.Image = ((System.Drawing.Image)(resources.GetObject("btnQuitter.Image")));
             this.btnQuitter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnQuitter.Location = new System.Drawing.Point(0, 461);
+            this.btnQuitter.Location = new System.Drawing.Point(0, 444);
             this.btnQuitter.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnQuitter.Name = "btnQuitter";
             this.btnQuitter.Size = new System.Drawing.Size(180, 30);
@@ -198,15 +149,15 @@
             this.pnlChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlChildForm.Location = new System.Drawing.Point(180, 0);
             this.pnlChildForm.Name = "pnlChildForm";
-            this.pnlChildForm.Size = new System.Drawing.Size(714, 491);
+            this.pnlChildForm.Size = new System.Drawing.Size(708, 474);
             this.pnlChildForm.TabIndex = 585;
             // 
             // MFormRecette
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(894, 491);
+            this.ClientSize = new System.Drawing.Size(888, 474);
             this.Controls.Add(this.pnlChildForm);
             this.Controls.Add(this.pnlSide);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -217,7 +168,6 @@
             this.Text = "SSM - Recette";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.pnlSide.ResumeLayout(false);
-            this.pnlSousMenu.ResumeLayout(false);
             this.pnlLogo.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -232,8 +182,5 @@
         private System.Windows.Forms.Panel pnlLogo;
         public System.Windows.Forms.Button btnLogo;
         public System.Windows.Forms.Panel pnlChildForm;
-        public System.Windows.Forms.Panel pnlSousMenu;
-        public System.Windows.Forms.Button btnAgenda;
-        public System.Windows.Forms.Button btnBonService;
     }
 }

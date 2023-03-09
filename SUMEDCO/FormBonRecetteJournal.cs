@@ -17,6 +17,7 @@ namespace SUMEDCO
             InitializeComponent();
         }
         ClassCompta cc = new ClassCompta();
+        public string numcompte = "";
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -24,12 +25,24 @@ namespace SUMEDCO
 
         private void btnRecherche_Click(object sender, EventArgs e)
         {
-            cc.JournalCaisseRecette(this);
+            cc.TotauxProduitService(this);
+            cc.TotalPayementCategorie(this);
         }
 
         private void btnImprimer_Click(object sender, EventArgs e)
         {
+            cc.ImprimerRapportRecette(this, new FormImpression());
+        }
 
+        private void FormBonRecetteJournal_Shown(object sender, EventArgs e)
+        {
+            cc.ChargerRubriquesRecette(this);
+        }
+
+        private void checkBox1_Click(object sender, EventArgs e)
+        {
+            if(checkBox1.Checked)
+                cc.AfficherRapport(this, new FormBonRecetteRapport());
         }
     }
 }

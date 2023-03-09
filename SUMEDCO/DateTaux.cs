@@ -37,6 +37,8 @@ namespace SUMEDCO
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
             cm.Enregistrer(this);
+            fermeture_succes = true;
+            Hide();
         }
     }
 }

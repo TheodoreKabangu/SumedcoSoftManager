@@ -24,7 +24,7 @@ namespace SUMEDCO
             idprise = 0,
             idrecette = 0,
             nbligne_trouve=0;
-        public bool fermeture_succes;
+        public bool fermeture_succes, reaffecter;
         public string numcompte = "";
         private void cboCatService_DropDown(object sender, EventArgs e)
         {
@@ -44,17 +44,11 @@ namespace SUMEDCO
 
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
-            /*
-             * si affecter alors nouvel enregistrement dans PriseSigneVital
-             * si reaffecter alors update idmedecin = le nouveau idmedecin
-             */
-            cm.AjouterPrise(this);
-            fermeture_succes = true;
-            this.Hide();
+            cm.AjouterPrise(this);           
         }
         private void FormExamen_Shown(object sender, EventArgs e)
         {
-            cm.ChargerSignesVitaux(this);
+            if(!reaffecter) cm.ChargerSignesVitaux(this);
         }
 
         private void btnQuitter_Click(object sender, EventArgs e)

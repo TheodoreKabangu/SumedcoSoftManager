@@ -76,12 +76,12 @@ namespace SUMEDCO
 
         private void btnEditerCommande_Click(object sender, EventArgs e)
         {
-            cs.EditerCommande(this, new FormCommandeAutre(), "commande");
+            cs.EditerCommande(this, new FormCommandePharma(), "commande");
         }
 
         private void btnEditerRequisition_Click(object sender, EventArgs e)
         {
-            cs.EditerCommande(this, new FormCommandeAutre(), "requisition");
+            cs.EditerCommande(this, new FormCommandePharma(), "requisition");
         }
 
         private void btnCommandes_Click(object sender, EventArgs e)

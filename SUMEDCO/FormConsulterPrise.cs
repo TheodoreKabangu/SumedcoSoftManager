@@ -18,7 +18,11 @@ namespace SUMEDCO
         }
         ClassMalade cm = new ClassMalade();
 
-        public int idmedecin;
+        public int idutilisateur,
+            idmedecin,
+            idpatient,
+            idconsultation,
+            idprise, idrecette, idservice;
         private void btnQuitter_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -34,15 +38,16 @@ namespace SUMEDCO
             cm.ChargerPriseSigneVitaux(this, "recherche");
         }
 
-        private void btnConsulter_Click(object sender, EventArgs e)
-        {
-            cm.Consultation(this, new FormConsulter());
-        }
-
         private void dgvPrise_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvPrise.RowCount != 0)
-                btnConsulter.Enabled = true;
+            {
+                idprise = int.Parse(dgvPrise.CurrentRow.Cells[0].Value.ToString());
+                idpatient = cm.TrouverId("patient", dgvPrise.CurrentRow.Cells[1].Value.ToString());
+                idrecette = int.Parse(dgvPrise.CurrentRow.Cells[2].Value.ToString());
+                idservice = int.Parse(dgvPrise.CurrentRow.Cells[3].Value.ToString());
+                cm.PatientConsulte(dgvPatient, idpatient);
+            }
         }
         int progress = 0;
         private void timer1_Tick(object sender, EventArgs e)
@@ -65,6 +70,52 @@ namespace SUMEDCO
             else
             {
                 timer1.Stop();
+            }
+        }
+
+        private void btnPlainte2_Click(object sender, EventArgs e)
+        {
+            idconsultation = cm.IdConsultationPrise(int.Parse(dgvPrise.CurrentRow.Cells[0].Value.ToString()));
+            if (idconsultation == 0)
+            {
+                if (txtRepondant.Text == "")
+                {
+                    if (MessageBox.Show("Le malade est-il le répondant lui-même ?", "Consultation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        cm.AjouterConsultation(this);
+                    else
+                        checkBox1.Select();
+                }
+                else
+                {
+                    if (cboLienRepondant.Text != "")
+                        cm.AjouterConsultation(this);
+                    else
+                        MessageBox.Show("Renseignez le lien entre le répondant et le malade", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                if(MessageBox.Show("Voulez-vous continuer la consultation de ce patient ?", "Consultation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)== DialogResult.Yes)
+                    cm.Consultation(this, new FormConsulter());
+            }
+        }
+
+        private void checkBox2_Click(object sender, EventArgs e)
+        {
+            if (checkBox2.Checked)
+            {
+                txtRepondant.Enabled = true;
+                cboLienRepondant.Enabled = true;
+                txtRepondant.Select();
+            }
+            else
+            {
+                txtRepondant.Text = "";
+                txtRepondant.Enabled = false;
+                cboLienRepondant.DropDownStyle = ComboBoxStyle.DropDown;
+                cboLienRepondant.SelectedText = "";
+                cboLienRepondant.DropDownStyle = ComboBoxStyle.DropDownList;
+                cboLienRepondant.Enabled = false;
             }
         }
     }

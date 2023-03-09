@@ -41,12 +41,13 @@
             this.label20 = new System.Windows.Forms.Label();
             this.dgvEcriture = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label4 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtLibelle = new System.Windows.Forms.TextBox();
+            this.lblCompte1 = new System.Windows.Forms.Label();
+            this.txtMotif = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.cboMonnaie = new System.Windows.Forms.ComboBox();
             this.cboTypeJournal = new System.Windows.Forms.ComboBox();
@@ -56,19 +57,20 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnNouveauJournal = new System.Windows.Forms.Button();
-            this.txtTotalDebit = new System.Windows.Forms.TextBox();
-            this.txtTotalCredit = new System.Windows.Forms.TextBox();
             this.btnRetirer = new System.Windows.Forms.Button();
             this.btnRetirerTout = new System.Windows.Forms.Button();
             this.btnEnregistrer = new System.Windows.Forms.Button();
             this.btnAnnuler = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnValider = new System.Windows.Forms.Button();
-            this.txtDebit = new System.Windows.Forms.TextBox();
-            this.txtCredit = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.txtCompte1 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.listCompte = new System.Windows.Forms.ListBox();
+            this.btnCompte1 = new System.Windows.Forms.Button();
+            this.cboDebitCredit = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblCompte2 = new System.Windows.Forms.Label();
+            this.txtCompte2 = new System.Windows.Forms.TextBox();
+            this.btnCompte2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEcriture)).BeginInit();
             this.SuspendLayout();
             // 
@@ -103,32 +105,31 @@
             // txtMontant
             // 
             this.txtMontant.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.txtMontant.Location = new System.Drawing.Point(338, 175);
+            this.txtMontant.Location = new System.Drawing.Point(300, 154);
             this.txtMontant.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtMontant.MaxLength = 10;
             this.txtMontant.Name = "txtMontant";
-            this.txtMontant.Size = new System.Drawing.Size(129, 21);
-            this.txtMontant.TabIndex = 5;
+            this.txtMontant.Size = new System.Drawing.Size(125, 28);
+            this.txtMontant.TabIndex = 6;
             this.txtMontant.Enter += new System.EventHandler(this.txtMontant_Enter);
             this.txtMontant.Leave += new System.EventHandler(this.txtMontant_Leave);
             // 
             // txtNumPiece
             // 
-            this.txtNumPiece.Location = new System.Drawing.Point(132, 113);
+            this.txtNumPiece.Location = new System.Drawing.Point(109, 94);
             this.txtNumPiece.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtNumPiece.MaxLength = 30;
             this.txtNumPiece.Name = "txtNumPiece";
-            this.txtNumPiece.Size = new System.Drawing.Size(335, 21);
-            this.txtNumPiece.TabIndex = 2;
-            this.txtNumPiece.Enter += new System.EventHandler(this.txtNumPiece_Enter);
+            this.txtNumPiece.Size = new System.Drawing.Size(171, 28);
+            this.txtNumPiece.TabIndex = 1;
             // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(15, 116);
+            this.label20.Location = new System.Drawing.Point(16, 94);
             this.label20.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(90, 15);
+            this.label20.Size = new System.Drawing.Size(132, 22);
             this.label20.TabIndex = 642;
             this.label20.Text = "N° de la pièce :";
             // 
@@ -137,8 +138,9 @@
             this.dgvEcriture.AllowUserToAddRows = false;
             this.dgvEcriture.AllowUserToDeleteRows = false;
             this.dgvEcriture.AllowUserToOrderColumns = true;
-            this.dgvEcriture.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dgvEcriture.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvEcriture.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.dgvEcriture.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvEcriture.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -153,6 +155,7 @@
             this.dgvEcriture.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEcriture.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn3,
+            this.Column1,
             this.dataGridViewTextBoxColumn10,
             this.Column3});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -164,94 +167,104 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvEcriture.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvEcriture.GridColor = System.Drawing.Color.RoyalBlue;
-            this.dgvEcriture.Location = new System.Drawing.Point(132, 290);
+            this.dgvEcriture.Location = new System.Drawing.Point(109, 254);
             this.dgvEcriture.MultiSelect = false;
             this.dgvEcriture.Name = "dgvEcriture";
             this.dgvEcriture.ReadOnly = true;
             this.dgvEcriture.RowHeadersVisible = false;
+            this.dgvEcriture.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvEcriture.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEcriture.Size = new System.Drawing.Size(556, 125);
+            this.dgvEcriture.Size = new System.Drawing.Size(580, 185);
             this.dgvEcriture.TabIndex = 638;
             this.dgvEcriture.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEcriture_CellClick);
             // 
             // dataGridViewTextBoxColumn3
             // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dataGridViewTextBoxColumn3.HeaderText = "Compte";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 100;
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.HeaderText = "Libellé";
+            this.Column1.MaxInputLength = 250;
+            this.Column1.MinimumWidth = 200;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
             // dataGridViewTextBoxColumn10
             // 
-            this.dataGridViewTextBoxColumn10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle2.Format = "N2";
             dataGridViewCellStyle2.NullValue = null;
             this.dataGridViewTextBoxColumn10.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewTextBoxColumn10.HeaderText = "Débit";
+            this.dataGridViewTextBoxColumn10.MinimumWidth = 100;
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             this.dataGridViewTextBoxColumn10.ReadOnly = true;
             // 
             // Column3
             // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle3.Format = "N2";
             dataGridViewCellStyle3.NullValue = null;
             this.Column3.DefaultCellStyle = dataGridViewCellStyle3;
             this.Column3.HeaderText = "Crédit";
+            this.Column3.MinimumWidth = 100;
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 145);
+            this.label4.Location = new System.Drawing.Point(287, 97);
             this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(97, 15);
+            this.label4.Size = new System.Drawing.Size(79, 22);
             this.label4.TabIndex = 627;
-            this.label4.Text = "Type de journal :";
+            this.label4.Text = "Journal :";
             // 
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(273, 178);
+            this.label22.Location = new System.Drawing.Point(238, 157);
             this.label22.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(58, 15);
+            this.label22.Size = new System.Drawing.Size(84, 22);
             this.label22.TabIndex = 625;
             this.label22.Text = "Montant :";
             // 
-            // label2
+            // lblCompte1
             // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(15, 209);
-            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 15);
-            this.label2.TabIndex = 623;
-            this.label2.Text = "Débit :";
+            this.lblCompte1.AutoSize = true;
+            this.lblCompte1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblCompte1.Location = new System.Drawing.Point(238, 125);
+            this.lblCompte1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lblCompte1.Name = "lblCompte1";
+            this.lblCompte1.Size = new System.Drawing.Size(62, 22);
+            this.lblCompte1.TabIndex = 623;
+            this.lblCompte1.Text = "Débit :";
             // 
-            // txtLibelle
+            // txtMotif
             // 
-            this.txtLibelle.Location = new System.Drawing.Point(132, 82);
-            this.txtLibelle.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.txtLibelle.MaxLength = 100;
-            this.txtLibelle.Name = "txtLibelle";
-            this.txtLibelle.Size = new System.Drawing.Size(556, 21);
-            this.txtLibelle.TabIndex = 1;
+            this.txtMotif.Location = new System.Drawing.Point(109, 184);
+            this.txtMotif.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.txtMotif.MaxLength = 25;
+            this.txtMotif.Name = "txtMotif";
+            this.txtMotif.Size = new System.Drawing.Size(286, 28);
+            this.txtMotif.TabIndex = 8;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(15, 85);
+            this.label10.Location = new System.Drawing.Point(16, 185);
             this.label10.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(105, 15);
+            this.label10.Size = new System.Drawing.Size(58, 22);
             this.label10.TabIndex = 628;
-            this.label10.Text = "Libellé opération :";
+            this.label10.Text = "Motif :";
             // 
             // cboMonnaie
             // 
@@ -263,13 +276,14 @@
             this.cboMonnaie.Items.AddRange(new object[] {
             "CDF",
             "USD"});
-            this.cboMonnaie.Location = new System.Drawing.Point(132, 175);
+            this.cboMonnaie.Location = new System.Drawing.Point(492, 154);
             this.cboMonnaie.MaxDropDownItems = 10;
             this.cboMonnaie.Name = "cboMonnaie";
-            this.cboMonnaie.Size = new System.Drawing.Size(129, 23);
+            this.cboMonnaie.Size = new System.Drawing.Size(60, 30);
             this.cboMonnaie.Sorted = true;
-            this.cboMonnaie.TabIndex = 4;
+            this.cboMonnaie.TabIndex = 7;
             this.cboMonnaie.SelectedIndexChanged += new System.EventHandler(this.cboMonnaie_SelectedIndexChanged);
+            this.cboMonnaie.Enter += new System.EventHandler(this.cboMonnaie_Enter);
             // 
             // cboTypeJournal
             // 
@@ -278,12 +292,12 @@
             this.cboTypeJournal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cboTypeJournal.FormattingEnabled = true;
             this.cboTypeJournal.IntegralHeight = false;
-            this.cboTypeJournal.Location = new System.Drawing.Point(132, 142);
+            this.cboTypeJournal.Location = new System.Drawing.Point(350, 92);
             this.cboTypeJournal.MaxDropDownItems = 10;
             this.cboTypeJournal.Name = "cboTypeJournal";
-            this.cboTypeJournal.Size = new System.Drawing.Size(335, 23);
+            this.cboTypeJournal.Size = new System.Drawing.Size(202, 30);
             this.cboTypeJournal.Sorted = true;
-            this.cboTypeJournal.TabIndex = 3;
+            this.cboTypeJournal.TabIndex = 2;
             this.cboTypeJournal.DropDown += new System.EventHandler(this.cboTypeJournal_DropDown);
             this.cboTypeJournal.SelectedIndexChanged += new System.EventHandler(this.cboTypeJournal_SelectedIndexChanged);
             this.cboTypeJournal.Enter += new System.EventHandler(this.cboTypeJournal_Enter);
@@ -298,7 +312,7 @@
             this.btnDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDate.Image = ((System.Drawing.Image)(resources.GetObject("btnDate.Image")));
-            this.btnDate.Location = new System.Drawing.Point(215, 54);
+            this.btnDate.Location = new System.Drawing.Point(192, 64);
             this.btnDate.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnDate.Name = "btnDate";
             this.btnDate.Size = new System.Drawing.Size(30, 21);
@@ -310,7 +324,7 @@
             // lblTaux
             // 
             this.lblTaux.ForeColor = System.Drawing.Color.IndianRed;
-            this.lblTaux.Location = new System.Drawing.Point(376, 56);
+            this.lblTaux.Location = new System.Drawing.Point(318, 66);
             this.lblTaux.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblTaux.Name = "lblTaux";
             this.lblTaux.Size = new System.Drawing.Size(91, 15);
@@ -321,7 +335,7 @@
             // lblDateOperation
             // 
             this.lblDateOperation.ForeColor = System.Drawing.Color.IndianRed;
-            this.lblDateOperation.Location = new System.Drawing.Point(129, 56);
+            this.lblDateOperation.Location = new System.Drawing.Point(106, 66);
             this.lblDateOperation.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblDateOperation.Name = "lblDateOperation";
             this.lblDateOperation.Size = new System.Drawing.Size(80, 15);
@@ -332,20 +346,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(256, 56);
+            this.label1.Location = new System.Drawing.Point(233, 66);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 15);
+            this.label1.Size = new System.Drawing.Size(121, 22);
             this.label1.TabIndex = 651;
             this.label1.Text = "Taux du jour :";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 56);
+            this.label3.Location = new System.Drawing.Point(16, 63);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 15);
+            this.label3.Size = new System.Drawing.Size(118, 22);
             this.label3.TabIndex = 652;
             this.label3.Text = "Date du jour :";
             // 
@@ -359,41 +373,13 @@
             this.btnNouveauJournal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNouveauJournal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNouveauJournal.Image = ((System.Drawing.Image)(resources.GetObject("btnNouveauJournal.Image")));
-            this.btnNouveauJournal.Location = new System.Drawing.Point(473, 142);
+            this.btnNouveauJournal.Location = new System.Drawing.Point(556, 92);
             this.btnNouveauJournal.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnNouveauJournal.Name = "btnNouveauJournal";
             this.btnNouveauJournal.Size = new System.Drawing.Size(30, 23);
             this.btnNouveauJournal.TabIndex = 655;
             this.btnNouveauJournal.UseVisualStyleBackColor = false;
             this.btnNouveauJournal.Click += new System.EventHandler(this.btnNouveauJournal_Click);
-            // 
-            // txtTotalDebit
-            // 
-            this.txtTotalDebit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtTotalDebit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.txtTotalDebit.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtTotalDebit.ForeColor = System.Drawing.Color.MediumBlue;
-            this.txtTotalDebit.Location = new System.Drawing.Point(326, 423);
-            this.txtTotalDebit.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.txtTotalDebit.Name = "txtTotalDebit";
-            this.txtTotalDebit.Size = new System.Drawing.Size(177, 14);
-            this.txtTotalDebit.TabIndex = 660;
-            this.txtTotalDebit.Text = "0";
-            this.txtTotalDebit.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTotalCredit
-            // 
-            this.txtTotalCredit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtTotalCredit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.txtTotalCredit.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtTotalCredit.ForeColor = System.Drawing.Color.MediumBlue;
-            this.txtTotalCredit.Location = new System.Drawing.Point(511, 423);
-            this.txtTotalCredit.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.txtTotalCredit.Name = "txtTotalCredit";
-            this.txtTotalCredit.Size = new System.Drawing.Size(177, 14);
-            this.txtTotalCredit.TabIndex = 660;
-            this.txtTotalCredit.Text = "0";
-            this.txtTotalCredit.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btnRetirer
             // 
@@ -406,11 +392,11 @@
             this.btnRetirer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRetirer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRetirer.Image = ((System.Drawing.Image)(resources.GetObject("btnRetirer.Image")));
-            this.btnRetirer.Location = new System.Drawing.Point(253, 262);
+            this.btnRetirer.Location = new System.Drawing.Point(192, 215);
             this.btnRetirer.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnRetirer.Name = "btnRetirer";
-            this.btnRetirer.Size = new System.Drawing.Size(30, 21);
-            this.btnRetirer.TabIndex = 11;
+            this.btnRetirer.Size = new System.Drawing.Size(30, 30);
+            this.btnRetirer.TabIndex = 12;
             this.toolTip1.SetToolTip(this.btnRetirer, "Retirer");
             this.btnRetirer.UseVisualStyleBackColor = false;
             this.btnRetirer.Click += new System.EventHandler(this.btnRetirer_Click);
@@ -426,11 +412,11 @@
             this.btnRetirerTout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRetirerTout.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRetirerTout.Image = ((System.Drawing.Image)(resources.GetObject("btnRetirerTout.Image")));
-            this.btnRetirerTout.Location = new System.Drawing.Point(293, 262);
+            this.btnRetirerTout.Location = new System.Drawing.Point(232, 215);
             this.btnRetirerTout.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnRetirerTout.Name = "btnRetirerTout";
-            this.btnRetirerTout.Size = new System.Drawing.Size(30, 21);
-            this.btnRetirerTout.TabIndex = 12;
+            this.btnRetirerTout.Size = new System.Drawing.Size(30, 30);
+            this.btnRetirerTout.TabIndex = 13;
             this.toolTip1.SetToolTip(this.btnRetirerTout, "Retirer tout");
             this.btnRetirerTout.UseVisualStyleBackColor = false;
             this.btnRetirerTout.Click += new System.EventHandler(this.btnRetirerTout_Click);
@@ -445,11 +431,11 @@
             this.btnEnregistrer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEnregistrer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEnregistrer.Image = ((System.Drawing.Image)(resources.GetObject("btnEnregistrer.Image")));
-            this.btnEnregistrer.Location = new System.Drawing.Point(212, 261);
+            this.btnEnregistrer.Location = new System.Drawing.Point(151, 216);
             this.btnEnregistrer.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnEnregistrer.Name = "btnEnregistrer";
-            this.btnEnregistrer.Size = new System.Drawing.Size(30, 21);
-            this.btnEnregistrer.TabIndex = 10;
+            this.btnEnregistrer.Size = new System.Drawing.Size(30, 30);
+            this.btnEnregistrer.TabIndex = 11;
             this.toolTip1.SetToolTip(this.btnEnregistrer, "Enregistrer");
             this.btnEnregistrer.UseVisualStyleBackColor = false;
             this.btnEnregistrer.Click += new System.EventHandler(this.btnEnregistrer_Click);
@@ -464,11 +450,11 @@
             this.btnAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAnnuler.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAnnuler.Image = ((System.Drawing.Image)(resources.GetObject("btnAnnuler.Image")));
-            this.btnAnnuler.Location = new System.Drawing.Point(170, 261);
+            this.btnAnnuler.Location = new System.Drawing.Point(109, 216);
             this.btnAnnuler.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnAnnuler.Name = "btnAnnuler";
-            this.btnAnnuler.Size = new System.Drawing.Size(30, 21);
-            this.btnAnnuler.TabIndex = 9;
+            this.btnAnnuler.Size = new System.Drawing.Size(30, 30);
+            this.btnAnnuler.TabIndex = 10;
             this.toolTip1.SetToolTip(this.btnAnnuler, "Annuler");
             this.btnAnnuler.UseVisualStyleBackColor = false;
             this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
@@ -478,91 +464,141 @@
             this.btnValider.BackColor = System.Drawing.Color.Transparent;
             this.btnValider.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnValider.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnValider.FlatAppearance.BorderSize = 0;
             this.btnValider.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
             this.btnValider.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnValider.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnValider.Image = ((System.Drawing.Image)(resources.GetObject("btnValider.Image")));
-            this.btnValider.Location = new System.Drawing.Point(132, 261);
+            this.btnValider.Location = new System.Drawing.Point(395, 184);
             this.btnValider.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnValider.Name = "btnValider";
             this.btnValider.Size = new System.Drawing.Size(30, 21);
-            this.btnValider.TabIndex = 671;
+            this.btnValider.TabIndex = 9;
             this.toolTip1.SetToolTip(this.btnValider, "Valider");
             this.btnValider.UseVisualStyleBackColor = false;
             this.btnValider.Click += new System.EventHandler(this.btnValider_Click);
             // 
-            // txtDebit
+            // txtCompte1
             // 
-            this.txtDebit.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.txtDebit.Location = new System.Drawing.Point(132, 206);
-            this.txtDebit.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.txtDebit.MaxLength = 10;
-            this.txtDebit.Name = "txtDebit";
-            this.txtDebit.Size = new System.Drawing.Size(335, 21);
-            this.txtDebit.TabIndex = 7;
-            this.txtDebit.TextChanged += new System.EventHandler(this.txtDebit_TextChanged);
-            this.txtDebit.Enter += new System.EventHandler(this.txtDebit_Enter);
-            // 
-            // txtCredit
-            // 
-            this.txtCredit.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.txtCredit.Location = new System.Drawing.Point(132, 231);
-            this.txtCredit.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.txtCredit.MaxLength = 10;
-            this.txtCredit.Name = "txtCredit";
-            this.txtCredit.Size = new System.Drawing.Size(335, 21);
-            this.txtCredit.TabIndex = 8;
-            this.txtCredit.TextChanged += new System.EventHandler(this.txtCredit_TextChanged);
-            this.txtCredit.Enter += new System.EventHandler(this.txtCredit_Enter);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label6.Location = new System.Drawing.Point(15, 234);
-            this.label6.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(45, 15);
-            this.label6.TabIndex = 623;
-            this.label6.Text = "Crédit :";
+            this.txtCompte1.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
+            this.txtCompte1.Enabled = false;
+            this.txtCompte1.Location = new System.Drawing.Point(300, 123);
+            this.txtCompte1.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.txtCompte1.MaxLength = 10;
+            this.txtCompte1.Name = "txtCompte1";
+            this.txtCompte1.Size = new System.Drawing.Size(95, 28);
+            this.txtCompte1.TabIndex = 678;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(15, 178);
+            this.label7.Location = new System.Drawing.Point(428, 157);
             this.label7.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(66, 15);
+            this.label7.Size = new System.Drawing.Size(100, 22);
             this.label7.TabIndex = 623;
             this.label7.Text = "CDF/USD :";
             // 
-            // listCompte
+            // btnCompte1
             // 
-            this.listCompte.FormattingEnabled = true;
-            this.listCompte.ItemHeight = 15;
-            this.listCompte.Location = new System.Drawing.Point(132, 253);
-            this.listCompte.Name = "listCompte";
-            this.listCompte.Size = new System.Drawing.Size(335, 124);
-            this.listCompte.TabIndex = 668;
-            this.listCompte.Visible = false;
-            this.listCompte.SelectedIndexChanged += new System.EventHandler(this.listCompte_SelectedIndexChanged);
+            this.btnCompte1.BackColor = System.Drawing.Color.Transparent;
+            this.btnCompte1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnCompte1.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnCompte1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnCompte1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCompte1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCompte1.Image = ((System.Drawing.Image)(resources.GetObject("btnCompte1.Image")));
+            this.btnCompte1.Location = new System.Drawing.Point(395, 123);
+            this.btnCompte1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnCompte1.Name = "btnCompte1";
+            this.btnCompte1.Size = new System.Drawing.Size(30, 21);
+            this.btnCompte1.TabIndex = 4;
+            this.btnCompte1.UseVisualStyleBackColor = false;
+            this.btnCompte1.Click += new System.EventHandler(this.btnCompte1_Click);
+            // 
+            // cboDebitCredit
+            // 
+            this.cboDebitCredit.DropDownHeight = 150;
+            this.cboDebitCredit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboDebitCredit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboDebitCredit.FormattingEnabled = true;
+            this.cboDebitCredit.IntegralHeight = false;
+            this.cboDebitCredit.Items.AddRange(new object[] {
+            "Crédit",
+            "Débit"});
+            this.cboDebitCredit.Location = new System.Drawing.Point(109, 123);
+            this.cboDebitCredit.MaxDropDownItems = 10;
+            this.cboDebitCredit.Name = "cboDebitCredit";
+            this.cboDebitCredit.Size = new System.Drawing.Size(125, 30);
+            this.cboDebitCredit.Sorted = true;
+            this.cboDebitCredit.TabIndex = 3;
+            this.cboDebitCredit.SelectedIndexChanged += new System.EventHandler(this.cboDebitCredit_SelectedIndexChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(16, 126);
+            this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(115, 22);
+            this.label5.TabIndex = 681;
+            this.label5.Text = "Débit/Crédit :";
+            // 
+            // lblCompte2
+            // 
+            this.lblCompte2.AutoSize = true;
+            this.lblCompte2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblCompte2.Location = new System.Drawing.Point(16, 157);
+            this.lblCompte2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lblCompte2.Name = "lblCompte2";
+            this.lblCompte2.Size = new System.Drawing.Size(68, 22);
+            this.lblCompte2.TabIndex = 623;
+            this.lblCompte2.Text = "Crédit :";
+            // 
+            // txtCompte2
+            // 
+            this.txtCompte2.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
+            this.txtCompte2.Enabled = false;
+            this.txtCompte2.Location = new System.Drawing.Point(109, 154);
+            this.txtCompte2.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.txtCompte2.MaxLength = 10;
+            this.txtCompte2.Name = "txtCompte2";
+            this.txtCompte2.Size = new System.Drawing.Size(95, 28);
+            this.txtCompte2.TabIndex = 7;
+            // 
+            // btnCompte2
+            // 
+            this.btnCompte2.BackColor = System.Drawing.Color.Transparent;
+            this.btnCompte2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnCompte2.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnCompte2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnCompte2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCompte2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCompte2.Image = ((System.Drawing.Image)(resources.GetObject("btnCompte2.Image")));
+            this.btnCompte2.Location = new System.Drawing.Point(204, 154);
+            this.btnCompte2.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnCompte2.Name = "btnCompte2";
+            this.btnCompte2.Size = new System.Drawing.Size(30, 21);
+            this.btnCompte2.TabIndex = 5;
+            this.btnCompte2.UseVisualStyleBackColor = false;
+            this.btnCompte2.Click += new System.EventHandler(this.btnCompte2_Click);
             // 
             // FormComptabilite
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(703, 451);
+            this.Controls.Add(this.cboDebitCredit);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.btnCompte2);
+            this.Controls.Add(this.btnCompte1);
             this.Controls.Add(this.btnValider);
-            this.Controls.Add(this.txtCredit);
-            this.Controls.Add(this.txtDebit);
+            this.Controls.Add(this.txtCompte2);
+            this.Controls.Add(this.txtCompte1);
             this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.btnEnregistrer);
             this.Controls.Add(this.btnRetirer);
             this.Controls.Add(this.btnRetirerTout);
-            this.Controls.Add(this.txtTotalCredit);
-            this.Controls.Add(this.txtTotalDebit);
             this.Controls.Add(this.btnNouveauJournal);
             this.Controls.Add(this.btnDate);
             this.Controls.Add(this.lblTaux);
@@ -577,16 +613,16 @@
             this.Controls.Add(this.dgvEcriture);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label22);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.lblCompte2);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtLibelle);
+            this.Controls.Add(this.lblCompte1);
+            this.Controls.Add(this.txtMotif);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.listCompte);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(719, 490);
             this.Name = "FormComptabilite";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -608,8 +644,8 @@
         public System.Windows.Forms.DataGridView dgvEcriture;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label2;
-        public System.Windows.Forms.TextBox txtLibelle;
+        private System.Windows.Forms.Label lblCompte1;
+        public System.Windows.Forms.TextBox txtMotif;
         private System.Windows.Forms.Label label10;
         public System.Windows.Forms.ComboBox cboMonnaie;
         public System.Windows.Forms.ComboBox cboTypeJournal;
@@ -619,21 +655,23 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.Button btnNouveauJournal;
-        public System.Windows.Forms.TextBox txtTotalDebit;
-        public System.Windows.Forms.TextBox txtTotalCredit;
         public System.Windows.Forms.Button btnRetirer;
         public System.Windows.Forms.Button btnRetirerTout;
         public System.Windows.Forms.Button btnEnregistrer;
         public System.Windows.Forms.Button btnAnnuler;
         private System.Windows.Forms.ToolTip toolTip1;
+        public System.Windows.Forms.TextBox txtCompte1;
+        private System.Windows.Forms.Label label7;
+        public System.Windows.Forms.Button btnValider;
+        public System.Windows.Forms.Button btnCompte1;
+        public System.Windows.Forms.ComboBox cboDebitCredit;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblCompte2;
+        public System.Windows.Forms.TextBox txtCompte2;
+        public System.Windows.Forms.Button btnCompte2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        public System.Windows.Forms.TextBox txtDebit;
-        public System.Windows.Forms.TextBox txtCredit;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        public System.Windows.Forms.ListBox listCompte;
-        public System.Windows.Forms.Button btnValider;
     }
 }

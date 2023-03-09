@@ -55,19 +55,12 @@ namespace SUMEDCO
 
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
-           if(txtRepondant.Enabled)
-           {
-               if (txtRepondant.Text != "" && cboLienRepondant.Text != "")
-                   cm.Enregistrer(this);
-               else
-                   MessageBox.Show("Renseignez le répondant et/ou son lien avec le malade", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-           }
-           else cm.Enregistrer(this);
+
         }
 
         private void btnNouveau_Click(object sender, EventArgs e)
         {
-            cm.ExamenPhysique(this, new FormExamenPhysique());
+            
         }
 
         private void checkBox1_Click(object sender, EventArgs e)

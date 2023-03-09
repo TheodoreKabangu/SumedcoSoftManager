@@ -31,13 +31,13 @@ namespace SUMEDCO
                 case "historique": cm.RenseignementConsultation(this, "historique"); break;
                 case "antécédent": cm.RenseignementConsultation(this, "antécédent"); break;
                 case "complément": cm.RenseignementConsultation(this, "complément"); break;
-                case "examen physique": cm.RenseignementConsultation(this, "examen physique"); break;
+                case "examen physique": cm.ExamenPhysiqueConsultation(this); break;
                 case "prédiagnostic": cm.RenseignementConsultation(this, "prédiagnostic"); break;
                 case "examen para": cm.PrescriptionService(this, "examen para"); break;
                 case "diagnostic": cm.MaladieConsultation(this); break;
                 case "prescription produit": cm.PrescriptionProduit(this); break;
-                case "prescription service": cm.PrescriptionService(this, "autre prescription"); break;
-                case "autre prescription": cm.RenseignementConsultation(this, "autre prescription"); break;
+                case "prescription service": cm.PrescriptionService(this, "autre"); break;
+                case "autre prescription": cm.RenseignementConsultation(this, "autre"); break;
                 case "rendez-vous": cm.AfficherRDVConsultation(idconsultation, new FormConsulterRendezVous()); break;
                 case "tout": cm.DetailsConsultation(this); break;
             }
@@ -59,11 +59,6 @@ namespace SUMEDCO
             {
                 if (dgvDetail.CurrentRow.Cells[0].Value.ToString() != "")
                     dgvDetail.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.Silver;
-                
-                //if(dgvDetail.CurrentRow.Cells[3].Selected)
-                //{
-                //    cm.ModifierDossier(this);
-                //}
             }
         }
     }

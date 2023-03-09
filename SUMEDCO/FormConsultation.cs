@@ -39,6 +39,8 @@ namespace SUMEDCO
                 idpatient = cm.TrouverId("patient", dgvPatient.CurrentRow.Cells[1].Value.ToString());
                 btnDossier.Enabled = true;
                 btnConsultation.Enabled = true;
+                btnHospitaliser.Enabled = true;
+                btnDeces.Enabled = true;
             }
         }
 
@@ -57,6 +59,16 @@ namespace SUMEDCO
         {
             cm.Afficher(this, "patient");
             btnConsultation.Enabled = false;
+        }
+
+        private void btnHospitaliser_Click(object sender, EventArgs e)
+        {
+            btnHospitaliser.Enabled = false;
+        }
+
+        private void btnDeces_Click(object sender, EventArgs e)
+        {
+            btnDeces.Enabled = false;
         }
 
     }

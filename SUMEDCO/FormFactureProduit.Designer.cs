@@ -117,7 +117,7 @@
             this.btnRecherche.Name = "btnRecherche";
             this.btnRecherche.Size = new System.Drawing.Size(30, 21);
             this.btnRecherche.TabIndex = 3;
-            this.toolTip1.SetToolTip(this.btnRecherche, "Attacher à un patient");
+            this.toolTip1.SetToolTip(this.btnRecherche, "Rechercher");
             this.btnRecherche.UseVisualStyleBackColor = false;
             this.btnRecherche.Click += new System.EventHandler(this.btnRecherche_Click);
             // 

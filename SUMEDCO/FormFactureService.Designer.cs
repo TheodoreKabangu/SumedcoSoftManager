@@ -58,6 +58,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnExit = new System.Windows.Forms.Button();
+            this.btnRecherche = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.cboPayeur = new System.Windows.Forms.ComboBox();
             this.dgv1 = new System.Windows.Forms.DataGridView();
@@ -66,6 +67,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtContacts = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.txtRecherche = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv1)).BeginInit();
             this.SuspendLayout();
@@ -390,6 +392,24 @@
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // btnRecherche
+            // 
+            this.btnRecherche.BackColor = System.Drawing.Color.Transparent;
+            this.btnRecherche.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnRecherche.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnRecherche.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnRecherche.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRecherche.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRecherche.Image = ((System.Drawing.Image)(resources.GetObject("btnRecherche.Image")));
+            this.btnRecherche.Location = new System.Drawing.Point(661, 138);
+            this.btnRecherche.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btnRecherche.Name = "btnRecherche";
+            this.btnRecherche.Size = new System.Drawing.Size(30, 21);
+            this.btnRecherche.TabIndex = 715;
+            this.toolTip1.SetToolTip(this.btnRecherche, "Rechercher");
+            this.btnRecherche.UseVisualStyleBackColor = false;
+            this.btnRecherche.Click += new System.EventHandler(this.btnRecherche_Click);
+            // 
             // cboPayeur
             // 
             this.cboPayeur.DropDownHeight = 150;
@@ -497,12 +517,23 @@
             this.label6.TabIndex = 711;
             this.label6.Text = "Contacts :";
             // 
+            // txtRecherche
+            // 
+            this.txtRecherche.Location = new System.Drawing.Point(576, 138);
+            this.txtRecherche.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.txtRecherche.MaxLength = 75;
+            this.txtRecherche.Name = "txtRecherche";
+            this.txtRecherche.Size = new System.Drawing.Size(85, 21);
+            this.txtRecherche.TabIndex = 716;
+            // 
             // FormFactureService
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(703, 451);
+            this.Controls.Add(this.txtRecherche);
+            this.Controls.Add(this.btnRecherche);
             this.Controls.Add(this.txtContacts);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -573,5 +604,7 @@
         private System.Windows.Forms.Label label5;
         public System.Windows.Forms.TextBox txtContacts;
         private System.Windows.Forms.Label label6;
+        public System.Windows.Forms.TextBox txtRecherche;
+        public System.Windows.Forms.Button btnRecherche;
     }
 }

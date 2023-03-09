@@ -33,12 +33,13 @@ namespace SUMEDCO
 
         private void btnRapports_Click(object sender, EventArgs e)
         {
-            cc.AfficherSousMenu(pnlSousMenu);
+            cs.AfficherSousForm(this, new FormAdminRapport());
+            //cc.AfficherSousMenu(pnlSousMenu);
         }
 
         private void btnStock_Click(object sender, EventArgs e)
         {
-            cs.AfficherSousForm(this, new FormStockPharma());
+            cs.AfficherSousForm(this, new FormStockProduit());
             cc.CacherSousMenu(pnlSousMenu);
         }
 
@@ -76,6 +77,11 @@ namespace SUMEDCO
         private void btnRapportStat_Click(object sender, EventArgs e)
         {
             cs.AfficherSousForm(this, new FormAdminStatService());
+        }
+
+        private void btnRapportMed_Click(object sender, EventArgs e)
+        {
+            cs.AfficherSousForm(this, new FormDepenseJournal());
         }
     }
 }

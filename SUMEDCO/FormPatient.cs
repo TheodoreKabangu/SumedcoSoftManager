@@ -26,9 +26,9 @@ namespace SUMEDCO
             idrecette,
             idservice,
             idpayeur;
-        public string statut= "", cas = "", 
+        public string statut= "",
             poste= "",
-            num_service;
+            num_service="";
         private void FormPatient_Shown(object sender, EventArgs e)
         {
             if (cc.VerifierTaux(DateTime.Now.Date, "") == 0)
@@ -55,17 +55,18 @@ namespace SUMEDCO
         }
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
-            if (cboTypePatient.Text != "" && cboTypeFacture.Text != "" && txtNom.Text != "" && cboSexe.Text != "" && txtAnnee.Text != "" && txtAdresse.Text != "" && service != "")
+            if (cboTypePatient.Text.Contains("abonné"))
             {
-                //if (service.Contains("urgence"))
-                //    cas = "urgence";
-                //else
-                //    cas = "nouveau";
-                cm.EnregistrerPatient(this);
+                if (idtypepatient != 0 && identreprise != 0 && idtypeabonne != 0 && num_service != "")
+                {
+                    cm.EnregistrerPatient(this);
+                }
+                else
+                    MessageBox.Show("Renseignez la relation entre le patient et son entreprise abonnée", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                MessageBox.Show("Désolé! Certaines informations obligatoire(s) sont vide(s)\nRenseignez-le(s).", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cm.EnregistrerPatient(this);
             }            
         }
 
@@ -127,27 +128,13 @@ namespace SUMEDCO
 
         private void btnAffecter_Click(object sender, EventArgs e)
         {
-            if (service != "")
+            if (service != "" && cboTypeFacture.Text != "")
             {
-                if (service.Contains("urgence"))
-                    cas = "urgence";
-                else
-                {
-                    cas = "ancien";
-                    //if (cm.NbConsultationPatient(idpatient, "Consultation") != 0)
-                    //    cas = "ancien"; //un ancien cas doit avoir au moins une consultation dan le système
-                    //else
-                    //{
-                    //    MessageBox.Show("Aucune consultation trouvée pour ce patient.\nC'est un cas d'urgence pour le système");
-                    //    cas = "urgence";
-                    //}
-                }
-                //Ajout ancien cas
                 cm.AjouterRecetteCas(this);
             }
             else
             {
-                MessageBox.Show("Aucune consultation n'a été sélectionnée", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Type de consultation et/ou type de facture non renseignés", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -155,11 +142,14 @@ namespace SUMEDCO
         {
             if(dgvPatient.RowCount !=0)
             {
-                btnAffecter.Enabled = true;
-                btnModifier.Enabled = true;
-                btnSupprimer.Enabled = true;
-                idpatient = int.Parse(dgvPatient.CurrentRow.Cells[0].Value.ToString());
-                idpayeur = int.Parse(dgvPatient.CurrentRow.Cells[1].Value.ToString());
+                if (statut == "ancien")
+                {
+                    btnAffecter.Enabled = true;
+                    btnModifier.Enabled = true;
+                    btnSupprimer.Enabled = true;
+                    idpatient = int.Parse(dgvPatient.CurrentRow.Cells[0].Value.ToString());
+                    idpayeur = int.Parse(dgvPatient.CurrentRow.Cells[1].Value.ToString());
+                }
             }
         }
 
@@ -185,7 +175,19 @@ namespace SUMEDCO
             }
             else
             {
-                cm.Modifier(this);
+                if (cboTypePatient.Text.Contains("abonné"))
+                {
+                    if (idtypepatient != 0 && identreprise != 0 && idtypeabonne != 0 && num_service != "")
+                    {
+                        cm.Modifier(this);
+                    }
+                    else
+                        MessageBox.Show("Renseignez la relation entre le patient et son entreprise abonnée", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    cm.Modifier(this);
+                }
             }
         }
 
@@ -199,10 +201,9 @@ namespace SUMEDCO
             idtypepatient = cm.TrouverId("typepatient", cboTypePatient.Text);
             if (cboTypePatient.Text.Contains("abonné"))
             {
-                if(statut=="nouveau")
-                    cm.AjouterAbonne(this, new FormAbonne());
+                cm.AjouterAbonne(this, new FormAbonne());
             }
-            txtNom.Focus();
+            if (cboTypePatient.Text != "") txtNom.Focus();
         }
 
         private void txtNom_Enter(object sender, EventArgs e)
@@ -306,7 +307,7 @@ namespace SUMEDCO
                 cboTypePatient.Items.Remove("cas social");
             }
         }
-        public string service;
+        public string service= "";
         private void rbNouveau_Click(object sender, EventArgs e)
         {
             service = string.Format("consultation {0}", rbNouveau.Text).ToLower();

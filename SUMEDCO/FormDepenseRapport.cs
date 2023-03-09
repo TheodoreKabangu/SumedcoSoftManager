@@ -32,46 +32,12 @@ namespace SUMEDCO
 
         private void dgvBon_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(dgvBon.RowCount > 0)
-            {
-                btnSupprimer.Enabled = true;
-                numbon = int.Parse(dgvBon.CurrentRow.Cells[0].Value.ToString());
-            }
+            
         }
 
-        private void btnModifier_Click(object sender, EventArgs e)
+        private void btnDepenseCompte_Click(object sender, EventArgs e)
         {
-            //cc.ModifierDepense(this, new FormDepense());
-        }
-
-        private void btnSupprimer_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Rassurez-vous de renseigner la cause de cette suppression", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            txtMotif.Enabled = true;
-            btnValider.Enabled = true;
-            txtMotif.Focus();
-            btnSupprimer.Enabled = false;
-        }
-
-        private void btnValider_Click(object sender, EventArgs e)
-        {
-            if (txtMotif.Text != "")
-            {
-                cc.RetirerBon(this);
-            }
-        }
-
-        private void btnSomme_Click(object sender, EventArgs e)
-        {
-            if(dgvBon.RowCount>0)
-            {
-                if (cboMonnaie.Text != "")
-                {
-                    cc.SommeDepense(this);
-                }
-                else
-                    MessageBox.Show("Sélectionnez une monnaie unique pour tous les bons", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            new FormDepenseJournal().ShowDialog();
         }
     }
 }

@@ -16,5 +16,22 @@ namespace SUMEDCO
         {
             InitializeComponent();
         }
+        ClassCompta cc = new ClassCompta();
+        public double sommeRef = 0, sommeSoldeAnte = 0;
+        private void btnRecherche_Click(object sender, EventArgs e)
+        {
+            cc.RubriquesResultat(this);
+            cc.CalculerResultat(this);
+        }
+
+        private void btnImprimer_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void FormComptaTableauFlux_Shown(object sender, EventArgs e)
+        {
+            cc.RubriquesTFT(this);
+        }
     }
 }

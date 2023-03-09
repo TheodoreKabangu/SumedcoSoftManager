@@ -73,16 +73,11 @@
             this.btnSignes = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.dtpDate = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.dgvPatient = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cboLienRepondant = new System.Windows.Forms.ComboBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.txtRepondant = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.btnPlainte2 = new System.Windows.Forms.Button();
             this.dgvSigneVital = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -90,6 +85,7 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnAfficherPlainte = new System.Windows.Forms.Button();
             this.btnSupprimerPlainte = new System.Windows.Forms.Button();
             this.btnModifierPlainte = new System.Windows.Forms.Button();
             this.btnHisto2 = new System.Windows.Forms.Button();
@@ -101,6 +97,7 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnPlusPlainte = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnAfficherHisto = new System.Windows.Forms.Button();
             this.btnSupprimerHisto = new System.Windows.Forms.Button();
             this.btnModifierHisto = new System.Windows.Forms.Button();
             this.btnAntecedent2 = new System.Windows.Forms.Button();
@@ -112,6 +109,7 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.btnAfficherAntecedent = new System.Windows.Forms.Button();
             this.btnSupprimerAntecedent = new System.Windows.Forms.Button();
             this.btnModifierAntecedent = new System.Windows.Forms.Button();
             this.btnComplement2 = new System.Windows.Forms.Button();
@@ -123,6 +121,7 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.btnAfficherComplement = new System.Windows.Forms.Button();
             this.btnSupprimerComplement = new System.Windows.Forms.Button();
             this.btnModifierComplement = new System.Windows.Forms.Button();
             this.btnExamPhys = new System.Windows.Forms.Button();
@@ -134,6 +133,7 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.btnAfficherExamenPhysique = new System.Windows.Forms.Button();
             this.btnSupprimerExamPhys = new System.Windows.Forms.Button();
             this.btnModifierExamPhys = new System.Windows.Forms.Button();
             this.btnPrediagnostic2 = new System.Windows.Forms.Button();
@@ -145,6 +145,7 @@
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.btnAfficherPrediag = new System.Windows.Forms.Button();
             this.btnSupprimerPrediag = new System.Windows.Forms.Button();
             this.btnModifierPrediag = new System.Windows.Forms.Button();
             this.btnLabo2 = new System.Windows.Forms.Button();
@@ -161,8 +162,7 @@
             this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.btnSupprimerBonLabo = new System.Windows.Forms.Button();
-            this.btnModifierBonLabo = new System.Windows.Forms.Button();
+            this.btnResultat = new System.Windows.Forms.Button();
             this.btnDiagnostic2 = new System.Windows.Forms.Button();
             this.btnEnregistrerLabo = new System.Windows.Forms.Button();
             this.btnRetirerLabo = new System.Windows.Forms.Button();
@@ -172,6 +172,7 @@
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.btnAfficherDiagno = new System.Windows.Forms.Button();
             this.btnSupprimerDiagno = new System.Windows.Forms.Button();
             this.btnModifierDiagno = new System.Windows.Forms.Button();
             this.btnPrescription2 = new System.Windows.Forms.Button();
@@ -184,6 +185,10 @@
             this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage10 = new System.Windows.Forms.TabPage();
+            this.btnEnregistrerAutrePrescS = new System.Windows.Forms.Button();
+            this.btnAutrePrescS = new System.Windows.Forms.Button();
+            this.btnAfficherAutrePresc = new System.Windows.Forms.Button();
+            this.btnAfficherPresc = new System.Windows.Forms.Button();
             this.btnService = new System.Windows.Forms.Button();
             this.dgvAutrePrescS = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -263,7 +268,6 @@
             this.btnRendezVous.BackColor = System.Drawing.Color.Transparent;
             this.btnRendezVous.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnRendezVous.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnRendezVous.Enabled = false;
             this.btnRendezVous.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
             this.btnRendezVous.FlatAppearance.BorderSize = 0;
             this.btnRendezVous.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
@@ -502,48 +506,47 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.tabPage1.Controls.Add(this.dtpDate);
-            this.tabPage1.Controls.Add(this.label4);
-            this.tabPage1.Controls.Add(this.dgvPatient);
-            this.tabPage1.Controls.Add(this.cboLienRepondant);
-            this.tabPage1.Controls.Add(this.label14);
-            this.tabPage1.Controls.Add(this.checkBox1);
-            this.tabPage1.Controls.Add(this.txtRepondant);
             this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Controls.Add(this.dgvPatient);
             this.tabPage1.Controls.Add(this.btnPlainte2);
             this.tabPage1.Controls.Add(this.dgvSigneVital);
             this.tabPage1.Location = new System.Drawing.Point(4, 27);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(695, 366);
+            this.tabPage1.Size = new System.Drawing.Size(695, 393);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             // 
-            // dtpDate
+            // label3
             // 
-            this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDate.Location = new System.Drawing.Point(86, 23);
-            this.dtpDate.Name = "dtpDate";
-            this.dtpDate.Size = new System.Drawing.Size(94, 21);
-            this.dtpDate.TabIndex = 675;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.MediumBlue;
+            this.label3.Location = new System.Drawing.Point(292, 17);
+            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(187, 20);
+            this.label3.TabIndex = 674;
+            this.label3.Text = "Valeurs des signes vitaux";
             // 
-            // label4
+            // label1
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(5, 28);
-            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(74, 15);
-            this.label4.TabIndex = 674;
-            this.label4.Text = "Consulté le :";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.MediumBlue;
+            this.label1.Location = new System.Drawing.Point(4, 17);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(138, 20);
+            this.label1.TabIndex = 674;
+            this.label1.Text = "Identité du patient";
             // 
             // dgvPatient
             // 
             this.dgvPatient.AllowUserToAddRows = false;
             this.dgvPatient.AllowUserToDeleteRows = false;
             this.dgvPatient.AllowUserToOrderColumns = true;
-            this.dgvPatient.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.dgvPatient.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.dgvPatient.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvPatient.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -568,13 +571,13 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvPatient.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvPatient.GridColor = System.Drawing.Color.RoyalBlue;
-            this.dgvPatient.Location = new System.Drawing.Point(8, 81);
+            this.dgvPatient.Location = new System.Drawing.Point(8, 40);
             this.dgvPatient.MultiSelect = false;
             this.dgvPatient.Name = "dgvPatient";
             this.dgvPatient.ReadOnly = true;
             this.dgvPatient.RowHeadersVisible = false;
             this.dgvPatient.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPatient.Size = new System.Drawing.Size(282, 277);
+            this.dgvPatient.Size = new System.Drawing.Size(282, 318);
             this.dgvPatient.TabIndex = 673;
             // 
             // dataGridViewTextBoxColumn24
@@ -593,66 +596,6 @@
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
             // 
-            // cboLienRepondant
-            // 
-            this.cboLienRepondant.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboLienRepondant.Enabled = false;
-            this.cboLienRepondant.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboLienRepondant.FormattingEnabled = true;
-            this.cboLienRepondant.Items.AddRange(new object[] {
-            "autre",
-            "épouse",
-            "époux",
-            "parent",
-            "parenté"});
-            this.cboLienRepondant.Location = new System.Drawing.Point(458, 52);
-            this.cboLienRepondant.Name = "cboLienRepondant";
-            this.cboLienRepondant.Size = new System.Drawing.Size(172, 23);
-            this.cboLienRepondant.Sorted = true;
-            this.cboLienRepondant.TabIndex = 670;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(412, 55);
-            this.label14.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(37, 15);
-            this.label14.TabIndex = 671;
-            this.label14.Text = "Lien :";
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.ForeColor = System.Drawing.Color.MediumBlue;
-            this.checkBox1.Location = new System.Drawing.Point(186, 23);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(162, 19);
-            this.checkBox1.TabIndex = 668;
-            this.checkBox1.Text = "Renseigner le répondant";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.Click += new System.EventHandler(this.checkBox1_Click);
-            // 
-            // txtRepondant
-            // 
-            this.txtRepondant.Enabled = false;
-            this.txtRepondant.Location = new System.Drawing.Point(86, 52);
-            this.txtRepondant.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.txtRepondant.MaxLength = 75;
-            this.txtRepondant.Name = "txtRepondant";
-            this.txtRepondant.Size = new System.Drawing.Size(314, 21);
-            this.txtRepondant.TabIndex = 666;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(5, 55);
-            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(74, 15);
-            this.label3.TabIndex = 667;
-            this.label3.Text = "Répondant :";
-            // 
             // btnPlainte2
             // 
             this.btnPlainte2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -664,7 +607,7 @@
             this.btnPlainte2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPlainte2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPlainte2.Image = ((System.Drawing.Image)(resources.GetObject("btnPlainte2.Image")));
-            this.btnPlainte2.Location = new System.Drawing.Point(655, 49);
+            this.btnPlainte2.Location = new System.Drawing.Point(655, 7);
             this.btnPlainte2.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnPlainte2.Name = "btnPlainte2";
             this.btnPlainte2.Size = new System.Drawing.Size(30, 26);
@@ -678,9 +621,6 @@
             this.dgvSigneVital.AllowUserToAddRows = false;
             this.dgvSigneVital.AllowUserToDeleteRows = false;
             this.dgvSigneVital.AllowUserToOrderColumns = true;
-            this.dgvSigneVital.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvSigneVital.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.dgvSigneVital.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvSigneVital.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -706,13 +646,13 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvSigneVital.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvSigneVital.Location = new System.Drawing.Point(296, 81);
+            this.dgvSigneVital.Location = new System.Drawing.Point(296, 40);
             this.dgvSigneVital.MultiSelect = false;
             this.dgvSigneVital.Name = "dgvSigneVital";
             this.dgvSigneVital.ReadOnly = true;
             this.dgvSigneVital.RowHeadersVisible = false;
             this.dgvSigneVital.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSigneVital.Size = new System.Drawing.Size(389, 277);
+            this.dgvSigneVital.Size = new System.Drawing.Size(389, 318);
             this.dgvSigneVital.TabIndex = 653;
             // 
             // Column1
@@ -748,6 +688,7 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.tabPage2.Controls.Add(this.btnAfficherPlainte);
             this.tabPage2.Controls.Add(this.btnSupprimerPlainte);
             this.tabPage2.Controls.Add(this.btnModifierPlainte);
             this.tabPage2.Controls.Add(this.btnHisto2);
@@ -763,6 +704,26 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             // 
+            // btnAfficherPlainte
+            // 
+            this.btnAfficherPlainte.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAfficherPlainte.BackColor = System.Drawing.Color.Transparent;
+            this.btnAfficherPlainte.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAfficherPlainte.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnAfficherPlainte.FlatAppearance.BorderSize = 0;
+            this.btnAfficherPlainte.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnAfficherPlainte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAfficherPlainte.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAfficherPlainte.Image = ((System.Drawing.Image)(resources.GetObject("btnAfficherPlainte.Image")));
+            this.btnAfficherPlainte.Location = new System.Drawing.Point(625, 195);
+            this.btnAfficherPlainte.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnAfficherPlainte.Name = "btnAfficherPlainte";
+            this.btnAfficherPlainte.Size = new System.Drawing.Size(30, 26);
+            this.btnAfficherPlainte.TabIndex = 674;
+            this.toolTip1.SetToolTip(this.btnAfficherPlainte, "Afficher");
+            this.btnAfficherPlainte.UseVisualStyleBackColor = false;
+            this.btnAfficherPlainte.Click += new System.EventHandler(this.btnAfficherPlainte_Click);
+            // 
             // btnSupprimerPlainte
             // 
             this.btnSupprimerPlainte.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -775,7 +736,7 @@
             this.btnSupprimerPlainte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSupprimerPlainte.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSupprimerPlainte.Image = ((System.Drawing.Image)(resources.GetObject("btnSupprimerPlainte.Image")));
-            this.btnSupprimerPlainte.Location = new System.Drawing.Point(625, 229);
+            this.btnSupprimerPlainte.Location = new System.Drawing.Point(625, 263);
             this.btnSupprimerPlainte.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnSupprimerPlainte.Name = "btnSupprimerPlainte";
             this.btnSupprimerPlainte.Size = new System.Drawing.Size(30, 26);
@@ -796,7 +757,7 @@
             this.btnModifierPlainte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModifierPlainte.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModifierPlainte.Image = ((System.Drawing.Image)(resources.GetObject("btnModifierPlainte.Image")));
-            this.btnModifierPlainte.Location = new System.Drawing.Point(625, 195);
+            this.btnModifierPlainte.Location = new System.Drawing.Point(625, 229);
             this.btnModifierPlainte.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnModifierPlainte.Name = "btnModifierPlainte";
             this.btnModifierPlainte.Size = new System.Drawing.Size(30, 26);
@@ -880,8 +841,7 @@
             // dgvPlainte
             // 
             this.dgvPlainte.AllowUserToAddRows = false;
-            this.dgvPlainte.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgvPlainte.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvPlainte.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.dgvPlainte.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -951,6 +911,7 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.tabPage3.Controls.Add(this.btnAfficherHisto);
             this.tabPage3.Controls.Add(this.btnSupprimerHisto);
             this.tabPage3.Controls.Add(this.btnModifierHisto);
             this.tabPage3.Controls.Add(this.btnAntecedent2);
@@ -966,6 +927,26 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "tabPage3";
             // 
+            // btnAfficherHisto
+            // 
+            this.btnAfficherHisto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAfficherHisto.BackColor = System.Drawing.Color.Transparent;
+            this.btnAfficherHisto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAfficherHisto.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnAfficherHisto.FlatAppearance.BorderSize = 0;
+            this.btnAfficherHisto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnAfficherHisto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAfficherHisto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAfficherHisto.Image = ((System.Drawing.Image)(resources.GetObject("btnAfficherHisto.Image")));
+            this.btnAfficherHisto.Location = new System.Drawing.Point(625, 198);
+            this.btnAfficherHisto.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnAfficherHisto.Name = "btnAfficherHisto";
+            this.btnAfficherHisto.Size = new System.Drawing.Size(30, 26);
+            this.btnAfficherHisto.TabIndex = 673;
+            this.toolTip1.SetToolTip(this.btnAfficherHisto, "Afficher");
+            this.btnAfficherHisto.UseVisualStyleBackColor = false;
+            this.btnAfficherHisto.Click += new System.EventHandler(this.btnAfficherHisto_Click);
+            // 
             // btnSupprimerHisto
             // 
             this.btnSupprimerHisto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -978,7 +959,7 @@
             this.btnSupprimerHisto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSupprimerHisto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSupprimerHisto.Image = ((System.Drawing.Image)(resources.GetObject("btnSupprimerHisto.Image")));
-            this.btnSupprimerHisto.Location = new System.Drawing.Point(625, 232);
+            this.btnSupprimerHisto.Location = new System.Drawing.Point(625, 266);
             this.btnSupprimerHisto.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnSupprimerHisto.Name = "btnSupprimerHisto";
             this.btnSupprimerHisto.Size = new System.Drawing.Size(30, 26);
@@ -999,7 +980,7 @@
             this.btnModifierHisto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModifierHisto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModifierHisto.Image = ((System.Drawing.Image)(resources.GetObject("btnModifierHisto.Image")));
-            this.btnModifierHisto.Location = new System.Drawing.Point(625, 198);
+            this.btnModifierHisto.Location = new System.Drawing.Point(625, 232);
             this.btnModifierHisto.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnModifierHisto.Name = "btnModifierHisto";
             this.btnModifierHisto.Size = new System.Drawing.Size(30, 26);
@@ -1105,8 +1086,7 @@
             this.dgvHisto.AllowUserToAddRows = false;
             this.dgvHisto.AllowUserToDeleteRows = false;
             this.dgvHisto.AllowUserToOrderColumns = true;
-            this.dgvHisto.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgvHisto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvHisto.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.dgvHisto.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -1155,6 +1135,7 @@
             // tabPage4
             // 
             this.tabPage4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.tabPage4.Controls.Add(this.btnAfficherAntecedent);
             this.tabPage4.Controls.Add(this.btnSupprimerAntecedent);
             this.tabPage4.Controls.Add(this.btnModifierAntecedent);
             this.tabPage4.Controls.Add(this.btnComplement2);
@@ -1170,6 +1151,26 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "tabPage4";
             // 
+            // btnAfficherAntecedent
+            // 
+            this.btnAfficherAntecedent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAfficherAntecedent.BackColor = System.Drawing.Color.Transparent;
+            this.btnAfficherAntecedent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAfficherAntecedent.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnAfficherAntecedent.FlatAppearance.BorderSize = 0;
+            this.btnAfficherAntecedent.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnAfficherAntecedent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAfficherAntecedent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAfficherAntecedent.Image = ((System.Drawing.Image)(resources.GetObject("btnAfficherAntecedent.Image")));
+            this.btnAfficherAntecedent.Location = new System.Drawing.Point(625, 196);
+            this.btnAfficherAntecedent.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnAfficherAntecedent.Name = "btnAfficherAntecedent";
+            this.btnAfficherAntecedent.Size = new System.Drawing.Size(30, 26);
+            this.btnAfficherAntecedent.TabIndex = 675;
+            this.toolTip1.SetToolTip(this.btnAfficherAntecedent, "Afficher");
+            this.btnAfficherAntecedent.UseVisualStyleBackColor = false;
+            this.btnAfficherAntecedent.Click += new System.EventHandler(this.btnAfficherAntecedent_Click);
+            // 
             // btnSupprimerAntecedent
             // 
             this.btnSupprimerAntecedent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -1182,7 +1183,7 @@
             this.btnSupprimerAntecedent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSupprimerAntecedent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSupprimerAntecedent.Image = ((System.Drawing.Image)(resources.GetObject("btnSupprimerAntecedent.Image")));
-            this.btnSupprimerAntecedent.Location = new System.Drawing.Point(625, 230);
+            this.btnSupprimerAntecedent.Location = new System.Drawing.Point(625, 264);
             this.btnSupprimerAntecedent.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnSupprimerAntecedent.Name = "btnSupprimerAntecedent";
             this.btnSupprimerAntecedent.Size = new System.Drawing.Size(30, 26);
@@ -1203,7 +1204,7 @@
             this.btnModifierAntecedent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModifierAntecedent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModifierAntecedent.Image = ((System.Drawing.Image)(resources.GetObject("btnModifierAntecedent.Image")));
-            this.btnModifierAntecedent.Location = new System.Drawing.Point(625, 196);
+            this.btnModifierAntecedent.Location = new System.Drawing.Point(625, 230);
             this.btnModifierAntecedent.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnModifierAntecedent.Name = "btnModifierAntecedent";
             this.btnModifierAntecedent.Size = new System.Drawing.Size(30, 26);
@@ -1358,6 +1359,7 @@
             // tabPage5
             // 
             this.tabPage5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.tabPage5.Controls.Add(this.btnAfficherComplement);
             this.tabPage5.Controls.Add(this.btnSupprimerComplement);
             this.tabPage5.Controls.Add(this.btnModifierComplement);
             this.tabPage5.Controls.Add(this.btnExamPhys);
@@ -1373,6 +1375,26 @@
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "tabPage5";
             // 
+            // btnAfficherComplement
+            // 
+            this.btnAfficherComplement.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAfficherComplement.BackColor = System.Drawing.Color.Transparent;
+            this.btnAfficherComplement.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAfficherComplement.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnAfficherComplement.FlatAppearance.BorderSize = 0;
+            this.btnAfficherComplement.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnAfficherComplement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAfficherComplement.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAfficherComplement.Image = ((System.Drawing.Image)(resources.GetObject("btnAfficherComplement.Image")));
+            this.btnAfficherComplement.Location = new System.Drawing.Point(625, 196);
+            this.btnAfficherComplement.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnAfficherComplement.Name = "btnAfficherComplement";
+            this.btnAfficherComplement.Size = new System.Drawing.Size(30, 26);
+            this.btnAfficherComplement.TabIndex = 676;
+            this.toolTip1.SetToolTip(this.btnAfficherComplement, "Afficher");
+            this.btnAfficherComplement.UseVisualStyleBackColor = false;
+            this.btnAfficherComplement.Click += new System.EventHandler(this.btnAfficherComplement_Click);
+            // 
             // btnSupprimerComplement
             // 
             this.btnSupprimerComplement.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -1385,7 +1407,7 @@
             this.btnSupprimerComplement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSupprimerComplement.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSupprimerComplement.Image = ((System.Drawing.Image)(resources.GetObject("btnSupprimerComplement.Image")));
-            this.btnSupprimerComplement.Location = new System.Drawing.Point(625, 230);
+            this.btnSupprimerComplement.Location = new System.Drawing.Point(625, 264);
             this.btnSupprimerComplement.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnSupprimerComplement.Name = "btnSupprimerComplement";
             this.btnSupprimerComplement.Size = new System.Drawing.Size(30, 26);
@@ -1406,7 +1428,7 @@
             this.btnModifierComplement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModifierComplement.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModifierComplement.Image = ((System.Drawing.Image)(resources.GetObject("btnModifierComplement.Image")));
-            this.btnModifierComplement.Location = new System.Drawing.Point(625, 196);
+            this.btnModifierComplement.Location = new System.Drawing.Point(625, 230);
             this.btnModifierComplement.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnModifierComplement.Name = "btnModifierComplement";
             this.btnModifierComplement.Size = new System.Drawing.Size(30, 26);
@@ -1561,6 +1583,7 @@
             // tabPage6
             // 
             this.tabPage6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.tabPage6.Controls.Add(this.btnAfficherExamenPhysique);
             this.tabPage6.Controls.Add(this.btnSupprimerExamPhys);
             this.tabPage6.Controls.Add(this.btnModifierExamPhys);
             this.tabPage6.Controls.Add(this.btnPrediagnostic2);
@@ -1575,6 +1598,26 @@
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "tabPage6";
             // 
+            // btnAfficherExamenPhysique
+            // 
+            this.btnAfficherExamenPhysique.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAfficherExamenPhysique.BackColor = System.Drawing.Color.Transparent;
+            this.btnAfficherExamenPhysique.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAfficherExamenPhysique.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnAfficherExamenPhysique.FlatAppearance.BorderSize = 0;
+            this.btnAfficherExamenPhysique.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnAfficherExamenPhysique.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAfficherExamenPhysique.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAfficherExamenPhysique.Image = ((System.Drawing.Image)(resources.GetObject("btnAfficherExamenPhysique.Image")));
+            this.btnAfficherExamenPhysique.Location = new System.Drawing.Point(625, 162);
+            this.btnAfficherExamenPhysique.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnAfficherExamenPhysique.Name = "btnAfficherExamenPhysique";
+            this.btnAfficherExamenPhysique.Size = new System.Drawing.Size(30, 26);
+            this.btnAfficherExamenPhysique.TabIndex = 677;
+            this.toolTip1.SetToolTip(this.btnAfficherExamenPhysique, "Afficher");
+            this.btnAfficherExamenPhysique.UseVisualStyleBackColor = false;
+            this.btnAfficherExamenPhysique.Click += new System.EventHandler(this.btnAfficherExamenPhysique_Click);
+            // 
             // btnSupprimerExamPhys
             // 
             this.btnSupprimerExamPhys.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -1587,7 +1630,7 @@
             this.btnSupprimerExamPhys.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSupprimerExamPhys.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSupprimerExamPhys.Image = ((System.Drawing.Image)(resources.GetObject("btnSupprimerExamPhys.Image")));
-            this.btnSupprimerExamPhys.Location = new System.Drawing.Point(625, 196);
+            this.btnSupprimerExamPhys.Location = new System.Drawing.Point(625, 230);
             this.btnSupprimerExamPhys.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnSupprimerExamPhys.Name = "btnSupprimerExamPhys";
             this.btnSupprimerExamPhys.Size = new System.Drawing.Size(30, 26);
@@ -1608,7 +1651,7 @@
             this.btnModifierExamPhys.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModifierExamPhys.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModifierExamPhys.Image = ((System.Drawing.Image)(resources.GetObject("btnModifierExamPhys.Image")));
-            this.btnModifierExamPhys.Location = new System.Drawing.Point(625, 162);
+            this.btnModifierExamPhys.Location = new System.Drawing.Point(625, 196);
             this.btnModifierExamPhys.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnModifierExamPhys.Name = "btnModifierExamPhys";
             this.btnModifierExamPhys.Size = new System.Drawing.Size(30, 26);
@@ -1747,13 +1790,14 @@
             // 
             this.Column9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column9.HeaderText = "Résultat";
-            this.Column9.MaxInputLength = 30;
+            this.Column9.MaxInputLength = 200;
             this.Column9.MinimumWidth = 100;
             this.Column9.Name = "Column9";
             // 
             // tabPage7
             // 
             this.tabPage7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.tabPage7.Controls.Add(this.btnAfficherPrediag);
             this.tabPage7.Controls.Add(this.btnSupprimerPrediag);
             this.tabPage7.Controls.Add(this.btnModifierPrediag);
             this.tabPage7.Controls.Add(this.btnLabo2);
@@ -1769,6 +1813,26 @@
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "tabPage7";
             // 
+            // btnAfficherPrediag
+            // 
+            this.btnAfficherPrediag.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAfficherPrediag.BackColor = System.Drawing.Color.Transparent;
+            this.btnAfficherPrediag.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAfficherPrediag.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnAfficherPrediag.FlatAppearance.BorderSize = 0;
+            this.btnAfficherPrediag.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnAfficherPrediag.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAfficherPrediag.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAfficherPrediag.Image = ((System.Drawing.Image)(resources.GetObject("btnAfficherPrediag.Image")));
+            this.btnAfficherPrediag.Location = new System.Drawing.Point(625, 196);
+            this.btnAfficherPrediag.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnAfficherPrediag.Name = "btnAfficherPrediag";
+            this.btnAfficherPrediag.Size = new System.Drawing.Size(30, 26);
+            this.btnAfficherPrediag.TabIndex = 678;
+            this.toolTip1.SetToolTip(this.btnAfficherPrediag, "Afficher");
+            this.btnAfficherPrediag.UseVisualStyleBackColor = false;
+            this.btnAfficherPrediag.Click += new System.EventHandler(this.btnAfficherPrediag_Click);
+            // 
             // btnSupprimerPrediag
             // 
             this.btnSupprimerPrediag.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -1781,7 +1845,7 @@
             this.btnSupprimerPrediag.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSupprimerPrediag.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSupprimerPrediag.Image = ((System.Drawing.Image)(resources.GetObject("btnSupprimerPrediag.Image")));
-            this.btnSupprimerPrediag.Location = new System.Drawing.Point(625, 230);
+            this.btnSupprimerPrediag.Location = new System.Drawing.Point(625, 264);
             this.btnSupprimerPrediag.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnSupprimerPrediag.Name = "btnSupprimerPrediag";
             this.btnSupprimerPrediag.Size = new System.Drawing.Size(30, 26);
@@ -1802,7 +1866,7 @@
             this.btnModifierPrediag.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModifierPrediag.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModifierPrediag.Image = ((System.Drawing.Image)(resources.GetObject("btnModifierPrediag.Image")));
-            this.btnModifierPrediag.Location = new System.Drawing.Point(625, 196);
+            this.btnModifierPrediag.Location = new System.Drawing.Point(625, 230);
             this.btnModifierPrediag.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnModifierPrediag.Name = "btnModifierPrediag";
             this.btnModifierPrediag.Size = new System.Drawing.Size(30, 26);
@@ -1960,8 +2024,7 @@
             this.tabPage8.Controls.Add(this.dgv1);
             this.tabPage8.Controls.Add(this.txtTotal);
             this.tabPage8.Controls.Add(this.label5);
-            this.tabPage8.Controls.Add(this.btnSupprimerBonLabo);
-            this.tabPage8.Controls.Add(this.btnModifierBonLabo);
+            this.tabPage8.Controls.Add(this.btnResultat);
             this.tabPage8.Controls.Add(this.btnDiagnostic2);
             this.tabPage8.Controls.Add(this.btnEnregistrerLabo);
             this.tabPage8.Controls.Add(this.btnRetirerLabo);
@@ -1979,8 +2042,8 @@
             this.dgv1.AllowUserToAddRows = false;
             this.dgv1.AllowUserToDeleteRows = false;
             this.dgv1.AllowUserToOrderColumns = true;
-            this.dgv1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dgv1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.dgv1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -2055,47 +2118,25 @@
             this.label5.TabIndex = 676;
             this.label5.Text = "Total Gén. :";
             // 
-            // btnSupprimerBonLabo
+            // btnResultat
             // 
-            this.btnSupprimerBonLabo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSupprimerBonLabo.BackColor = System.Drawing.Color.Transparent;
-            this.btnSupprimerBonLabo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnSupprimerBonLabo.Enabled = false;
-            this.btnSupprimerBonLabo.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnSupprimerBonLabo.FlatAppearance.BorderSize = 0;
-            this.btnSupprimerBonLabo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnSupprimerBonLabo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSupprimerBonLabo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSupprimerBonLabo.Image = ((System.Drawing.Image)(resources.GetObject("btnSupprimerBonLabo.Image")));
-            this.btnSupprimerBonLabo.Location = new System.Drawing.Point(655, 197);
-            this.btnSupprimerBonLabo.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.btnSupprimerBonLabo.Name = "btnSupprimerBonLabo";
-            this.btnSupprimerBonLabo.Size = new System.Drawing.Size(30, 26);
-            this.btnSupprimerBonLabo.TabIndex = 675;
-            this.toolTip1.SetToolTip(this.btnSupprimerBonLabo, "Supprimer");
-            this.btnSupprimerBonLabo.UseVisualStyleBackColor = false;
-            this.btnSupprimerBonLabo.Click += new System.EventHandler(this.btnSupprimerBonLabo_Click);
-            // 
-            // btnModifierBonLabo
-            // 
-            this.btnModifierBonLabo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnModifierBonLabo.BackColor = System.Drawing.Color.Transparent;
-            this.btnModifierBonLabo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnModifierBonLabo.Enabled = false;
-            this.btnModifierBonLabo.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnModifierBonLabo.FlatAppearance.BorderSize = 0;
-            this.btnModifierBonLabo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnModifierBonLabo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnModifierBonLabo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModifierBonLabo.Image = ((System.Drawing.Image)(resources.GetObject("btnModifierBonLabo.Image")));
-            this.btnModifierBonLabo.Location = new System.Drawing.Point(655, 163);
-            this.btnModifierBonLabo.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.btnModifierBonLabo.Name = "btnModifierBonLabo";
-            this.btnModifierBonLabo.Size = new System.Drawing.Size(30, 26);
-            this.btnModifierBonLabo.TabIndex = 674;
-            this.toolTip1.SetToolTip(this.btnModifierBonLabo, "Modifier");
-            this.btnModifierBonLabo.UseVisualStyleBackColor = false;
-            this.btnModifierBonLabo.Click += new System.EventHandler(this.btnModifierBonLabo_Click);
+            this.btnResultat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnResultat.BackColor = System.Drawing.Color.Transparent;
+            this.btnResultat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnResultat.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnResultat.FlatAppearance.BorderSize = 0;
+            this.btnResultat.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnResultat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResultat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResultat.Image = ((System.Drawing.Image)(resources.GetObject("btnResultat.Image")));
+            this.btnResultat.Location = new System.Drawing.Point(655, 163);
+            this.btnResultat.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnResultat.Name = "btnResultat";
+            this.btnResultat.Size = new System.Drawing.Size(30, 26);
+            this.btnResultat.TabIndex = 674;
+            this.toolTip1.SetToolTip(this.btnResultat, "Afficher les examens");
+            this.btnResultat.UseVisualStyleBackColor = false;
+            this.btnResultat.Click += new System.EventHandler(this.btnResultat_Click);
             // 
             // btnDiagnostic2
             // 
@@ -2174,8 +2215,7 @@
             this.dgvLabo.AllowUserToAddRows = false;
             this.dgvLabo.AllowUserToDeleteRows = false;
             this.dgvLabo.AllowUserToOrderColumns = true;
-            this.dgvLabo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgvLabo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvLabo.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.dgvLabo.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -2236,6 +2276,7 @@
             // tabPage9
             // 
             this.tabPage9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.tabPage9.Controls.Add(this.btnAfficherDiagno);
             this.tabPage9.Controls.Add(this.btnSupprimerDiagno);
             this.tabPage9.Controls.Add(this.btnModifierDiagno);
             this.tabPage9.Controls.Add(this.btnPrescription2);
@@ -2251,6 +2292,26 @@
             this.tabPage9.TabIndex = 8;
             this.tabPage9.Text = "tabPage9";
             // 
+            // btnAfficherDiagno
+            // 
+            this.btnAfficherDiagno.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAfficherDiagno.BackColor = System.Drawing.Color.Transparent;
+            this.btnAfficherDiagno.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAfficherDiagno.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnAfficherDiagno.FlatAppearance.BorderSize = 0;
+            this.btnAfficherDiagno.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnAfficherDiagno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAfficherDiagno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAfficherDiagno.Image = ((System.Drawing.Image)(resources.GetObject("btnAfficherDiagno.Image")));
+            this.btnAfficherDiagno.Location = new System.Drawing.Point(625, 196);
+            this.btnAfficherDiagno.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnAfficherDiagno.Name = "btnAfficherDiagno";
+            this.btnAfficherDiagno.Size = new System.Drawing.Size(30, 26);
+            this.btnAfficherDiagno.TabIndex = 680;
+            this.toolTip1.SetToolTip(this.btnAfficherDiagno, "Afficher les diagnostics");
+            this.btnAfficherDiagno.UseVisualStyleBackColor = false;
+            this.btnAfficherDiagno.Click += new System.EventHandler(this.btnAfficherDiagno_Click);
+            // 
             // btnSupprimerDiagno
             // 
             this.btnSupprimerDiagno.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -2263,7 +2324,7 @@
             this.btnSupprimerDiagno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSupprimerDiagno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSupprimerDiagno.Image = ((System.Drawing.Image)(resources.GetObject("btnSupprimerDiagno.Image")));
-            this.btnSupprimerDiagno.Location = new System.Drawing.Point(625, 230);
+            this.btnSupprimerDiagno.Location = new System.Drawing.Point(625, 264);
             this.btnSupprimerDiagno.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnSupprimerDiagno.Name = "btnSupprimerDiagno";
             this.btnSupprimerDiagno.Size = new System.Drawing.Size(30, 26);
@@ -2284,7 +2345,7 @@
             this.btnModifierDiagno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModifierDiagno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModifierDiagno.Image = ((System.Drawing.Image)(resources.GetObject("btnModifierDiagno.Image")));
-            this.btnModifierDiagno.Location = new System.Drawing.Point(625, 196);
+            this.btnModifierDiagno.Location = new System.Drawing.Point(625, 230);
             this.btnModifierDiagno.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnModifierDiagno.Name = "btnModifierDiagno";
             this.btnModifierDiagno.Size = new System.Drawing.Size(30, 26);
@@ -2390,8 +2451,7 @@
             this.dgvDiagnostic.AllowUserToAddRows = false;
             this.dgvDiagnostic.AllowUserToDeleteRows = false;
             this.dgvDiagnostic.AllowUserToOrderColumns = true;
-            this.dgvDiagnostic.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgvDiagnostic.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvDiagnostic.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.dgvDiagnostic.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -2444,12 +2504,17 @@
             // 
             this.Column12.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column12.HeaderText = "Observation";
+            this.Column12.MaxInputLength = 200;
             this.Column12.MinimumWidth = 100;
             this.Column12.Name = "Column12";
             // 
             // tabPage10
             // 
             this.tabPage10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.tabPage10.Controls.Add(this.btnEnregistrerAutrePrescS);
+            this.tabPage10.Controls.Add(this.btnAutrePrescS);
+            this.tabPage10.Controls.Add(this.btnAfficherAutrePresc);
+            this.tabPage10.Controls.Add(this.btnAfficherPresc);
             this.tabPage10.Controls.Add(this.btnService);
             this.tabPage10.Controls.Add(this.dgvAutrePrescS);
             this.tabPage10.Controls.Add(this.btnSupprimerAutrePresc);
@@ -2469,9 +2534,87 @@
             this.tabPage10.Location = new System.Drawing.Point(4, 27);
             this.tabPage10.Name = "tabPage10";
             this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage10.Size = new System.Drawing.Size(695, 393);
+            this.tabPage10.Size = new System.Drawing.Size(695, 366);
             this.tabPage10.TabIndex = 9;
             this.tabPage10.Text = "tabPage10";
+            // 
+            // btnEnregistrerAutrePrescS
+            // 
+            this.btnEnregistrerAutrePrescS.BackColor = System.Drawing.Color.Transparent;
+            this.btnEnregistrerAutrePrescS.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnEnregistrerAutrePrescS.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnEnregistrerAutrePrescS.FlatAppearance.BorderSize = 0;
+            this.btnEnregistrerAutrePrescS.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnEnregistrerAutrePrescS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEnregistrerAutrePrescS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEnregistrerAutrePrescS.Image = ((System.Drawing.Image)(resources.GetObject("btnEnregistrerAutrePrescS.Image")));
+            this.btnEnregistrerAutrePrescS.Location = new System.Drawing.Point(330, 202);
+            this.btnEnregistrerAutrePrescS.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnEnregistrerAutrePrescS.Name = "btnEnregistrerAutrePrescS";
+            this.btnEnregistrerAutrePrescS.Size = new System.Drawing.Size(30, 26);
+            this.btnEnregistrerAutrePrescS.TabIndex = 768;
+            this.toolTip1.SetToolTip(this.btnEnregistrerAutrePrescS, "Enregistrer");
+            this.btnEnregistrerAutrePrescS.UseVisualStyleBackColor = false;
+            this.btnEnregistrerAutrePrescS.Click += new System.EventHandler(this.btnEnregistrerAutrePrescS_Click);
+            // 
+            // btnAutrePrescS
+            // 
+            this.btnAutrePrescS.BackColor = System.Drawing.Color.Transparent;
+            this.btnAutrePrescS.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAutrePrescS.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnAutrePrescS.FlatAppearance.BorderSize = 0;
+            this.btnAutrePrescS.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnAutrePrescS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAutrePrescS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAutrePrescS.Image = ((System.Drawing.Image)(resources.GetObject("btnAutrePrescS.Image")));
+            this.btnAutrePrescS.Location = new System.Drawing.Point(250, 202);
+            this.btnAutrePrescS.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnAutrePrescS.Name = "btnAutrePrescS";
+            this.btnAutrePrescS.Size = new System.Drawing.Size(30, 26);
+            this.btnAutrePrescS.TabIndex = 767;
+            this.toolTip1.SetToolTip(this.btnAutrePrescS, "Afficher");
+            this.btnAutrePrescS.UseVisualStyleBackColor = false;
+            this.btnAutrePrescS.Click += new System.EventHandler(this.btnAutrePrescS_Click);
+            // 
+            // btnAfficherAutrePresc
+            // 
+            this.btnAfficherAutrePresc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAfficherAutrePresc.BackColor = System.Drawing.Color.Transparent;
+            this.btnAfficherAutrePresc.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAfficherAutrePresc.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnAfficherAutrePresc.FlatAppearance.BorderSize = 0;
+            this.btnAfficherAutrePresc.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnAfficherAutrePresc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAfficherAutrePresc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAfficherAutrePresc.Image = ((System.Drawing.Image)(resources.GetObject("btnAfficherAutrePresc.Image")));
+            this.btnAfficherAutrePresc.Location = new System.Drawing.Point(454, 202);
+            this.btnAfficherAutrePresc.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnAfficherAutrePresc.Name = "btnAfficherAutrePresc";
+            this.btnAfficherAutrePresc.Size = new System.Drawing.Size(30, 26);
+            this.btnAfficherAutrePresc.TabIndex = 766;
+            this.toolTip1.SetToolTip(this.btnAfficherAutrePresc, "Afficher");
+            this.btnAfficherAutrePresc.UseVisualStyleBackColor = false;
+            this.btnAfficherAutrePresc.Click += new System.EventHandler(this.btnAfficherAutrePresc_Click);
+            // 
+            // btnAfficherPresc
+            // 
+            this.btnAfficherPresc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAfficherPresc.BackColor = System.Drawing.Color.Transparent;
+            this.btnAfficherPresc.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAfficherPresc.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnAfficherPresc.FlatAppearance.BorderSize = 0;
+            this.btnAfficherPresc.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnAfficherPresc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAfficherPresc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAfficherPresc.Image = ((System.Drawing.Image)(resources.GetObject("btnAfficherPresc.Image")));
+            this.btnAfficherPresc.Location = new System.Drawing.Point(454, 16);
+            this.btnAfficherPresc.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnAfficherPresc.Name = "btnAfficherPresc";
+            this.btnAfficherPresc.Size = new System.Drawing.Size(30, 26);
+            this.btnAfficherPresc.TabIndex = 765;
+            this.toolTip1.SetToolTip(this.btnAfficherPresc, "Afficher");
+            this.btnAfficherPresc.UseVisualStyleBackColor = false;
+            this.btnAfficherPresc.Click += new System.EventHandler(this.btnAfficherPresc_Click);
             // 
             // btnService
             // 
@@ -2483,7 +2626,7 @@
             this.btnService.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnService.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnService.Image = ((System.Drawing.Image)(resources.GetObject("btnService.Image")));
-            this.btnService.Location = new System.Drawing.Point(330, 202);
+            this.btnService.Location = new System.Drawing.Point(290, 202);
             this.btnService.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnService.Name = "btnService";
             this.btnService.Size = new System.Drawing.Size(30, 26);
@@ -2497,8 +2640,6 @@
             this.dgvAutrePrescS.AllowUserToAddRows = false;
             this.dgvAutrePrescS.AllowUserToDeleteRows = false;
             this.dgvAutrePrescS.AllowUserToOrderColumns = true;
-            this.dgvAutrePrescS.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.dgvAutrePrescS.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.dgvAutrePrescS.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvAutrePrescS.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -2528,7 +2669,7 @@
             this.dgvAutrePrescS.ReadOnly = true;
             this.dgvAutrePrescS.RowHeadersVisible = false;
             this.dgvAutrePrescS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAutrePrescS.Size = new System.Drawing.Size(347, 150);
+            this.dgvAutrePrescS.Size = new System.Drawing.Size(347, 114);
             this.dgvAutrePrescS.TabIndex = 763;
             // 
             // dataGridViewTextBoxColumn18
@@ -2632,6 +2773,7 @@
             // 
             // btnEnregistrerPresc
             // 
+            this.btnEnregistrerPresc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEnregistrerPresc.BackColor = System.Drawing.Color.Transparent;
             this.btnEnregistrerPresc.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnEnregistrerPresc.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
@@ -2651,6 +2793,7 @@
             // 
             // btnRetirerPrescription
             // 
+            this.btnRetirerPrescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRetirerPrescription.BackColor = System.Drawing.Color.Transparent;
             this.btnRetirerPrescription.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnRetirerPrescription.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
@@ -2670,6 +2813,7 @@
             // 
             // btnProduit
             // 
+            this.btnProduit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnProduit.BackColor = System.Drawing.Color.Transparent;
             this.btnProduit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnProduit.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
@@ -2689,6 +2833,7 @@
             // 
             // btnEnregistrerAutrePresc
             // 
+            this.btnEnregistrerAutrePresc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEnregistrerAutrePresc.BackColor = System.Drawing.Color.Transparent;
             this.btnEnregistrerAutrePresc.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnEnregistrerAutrePresc.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
@@ -2708,6 +2853,7 @@
             // 
             // btnRetirerAutrePresc
             // 
+            this.btnRetirerAutrePresc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRetirerAutrePresc.BackColor = System.Drawing.Color.Transparent;
             this.btnRetirerAutrePresc.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnRetirerAutrePresc.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
@@ -2727,6 +2873,7 @@
             // 
             // btnPlusAutrePresc
             // 
+            this.btnPlusAutrePresc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPlusAutrePresc.BackColor = System.Drawing.Color.Transparent;
             this.btnPlusAutrePresc.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnPlusAutrePresc.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
@@ -2761,8 +2908,8 @@
             this.dgvAutrePresc.AllowUserToAddRows = false;
             this.dgvAutrePresc.AllowUserToDeleteRows = false;
             this.dgvAutrePresc.AllowUserToOrderColumns = true;
-            this.dgvAutrePresc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dgvAutrePresc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvAutrePresc.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.dgvAutrePresc.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvAutrePresc.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -2791,7 +2938,7 @@
             this.dgvAutrePresc.Name = "dgvAutrePresc";
             this.dgvAutrePresc.RowHeadersVisible = false;
             this.dgvAutrePresc.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAutrePresc.Size = new System.Drawing.Size(318, 150);
+            this.dgvAutrePresc.Size = new System.Drawing.Size(318, 114);
             this.dgvAutrePresc.TabIndex = 747;
             // 
             // dataGridViewTextBoxColumn21
@@ -2813,8 +2960,8 @@
             this.dgvPresc.AllowUserToAddRows = false;
             this.dgvPresc.AllowUserToDeleteRows = false;
             this.dgvPresc.AllowUserToOrderColumns = true;
-            this.dgvPresc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dgvPresc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvPresc.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.dgvPresc.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvPresc.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -2846,7 +2993,7 @@
             this.dgvPresc.Name = "dgvPresc";
             this.dgvPresc.RowHeadersVisible = false;
             this.dgvPresc.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvPresc.Size = new System.Drawing.Size(671, 173);
+            this.dgvPresc.Size = new System.Drawing.Size(671, 146);
             this.dgvPresc.TabIndex = 744;
             // 
             // dataGridViewTextBoxColumn16
@@ -2916,9 +3063,9 @@
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(719, 490);
             this.Name = "FormConsulter";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Shown += new System.EventHandler(this.FormConsulter_Shown);
             this.panel2.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -2970,9 +3117,6 @@
         private System.Windows.Forms.TabPage tabPage7;
         public System.Windows.Forms.DataGridView dgvSigneVital;
         public System.Windows.Forms.Button btnPlainte2;
-        private System.Windows.Forms.CheckBox checkBox1;
-        public System.Windows.Forms.TextBox txtRepondant;
-        private System.Windows.Forms.Label label3;
         public System.Windows.Forms.Label label2;
         public System.Windows.Forms.Button btnEnregistrerPlainte;
         public System.Windows.Forms.Button btnRetirerPlainte;
@@ -3042,11 +3186,7 @@
         public System.Windows.Forms.Button btnEnregistrerAutrePresc;
         public System.Windows.Forms.Button btnRetirerAutrePresc;
         public System.Windows.Forms.Button btnPlusAutrePresc;
-        public System.Windows.Forms.ComboBox cboLienRepondant;
-        private System.Windows.Forms.Label label14;
         public System.Windows.Forms.DataGridView dgvPatient;
-        public System.Windows.Forms.DateTimePicker dtpDate;
-        private System.Windows.Forms.Label label4;
         public System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
@@ -3072,17 +3212,13 @@
         public System.Windows.Forms.Button btnModifierExamPhys;
         public System.Windows.Forms.Button btnSupprimerPrediag;
         public System.Windows.Forms.Button btnModifierPrediag;
-        public System.Windows.Forms.Button btnSupprimerBonLabo;
-        public System.Windows.Forms.Button btnModifierBonLabo;
+        public System.Windows.Forms.Button btnResultat;
         public System.Windows.Forms.Button btnSupprimerDiagno;
         public System.Windows.Forms.Button btnModifierDiagno;
         public System.Windows.Forms.Button btnSupprimerAutrePresc;
         public System.Windows.Forms.Button btnModifierAutrePresc;
         public System.Windows.Forms.Button btnSupprimerPresc;
         public System.Windows.Forms.Button btnModifierPresc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         public System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
@@ -3091,14 +3227,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn24;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         public System.Windows.Forms.DataGridView dgv1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
@@ -3112,5 +3243,26 @@
         public System.Windows.Forms.Button btnService;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn22;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
+        public System.Windows.Forms.Button btnAfficherHisto;
+        public System.Windows.Forms.Button btnAfficherPlainte;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        public System.Windows.Forms.Button btnAfficherAntecedent;
+        public System.Windows.Forms.Button btnAfficherComplement;
+        public System.Windows.Forms.Button btnAfficherExamenPhysique;
+        public System.Windows.Forms.Button btnAfficherPrediag;
+        public System.Windows.Forms.Button btnAfficherDiagno;
+        public System.Windows.Forms.Button btnAfficherPresc;
+        public System.Windows.Forms.Button btnAfficherAutrePresc;
+        public System.Windows.Forms.Button btnAutrePrescS;
+        public System.Windows.Forms.Button btnEnregistrerAutrePrescS;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label1;
     }
 }

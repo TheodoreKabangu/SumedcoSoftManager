@@ -14,7 +14,7 @@ namespace SUMEDCO
     {
         ClassMalade cm = new ClassMalade();
         ClassCompta cc = new ClassCompta();
-        public int idmedecin = 0;
+        public int idmedecin = 0, idutilisateur;
         public MFormConsultation()
         {
             InitializeComponent();
@@ -41,7 +41,7 @@ namespace SUMEDCO
 
         private void btnRendezVous_Click(object sender, EventArgs e)
         {
-
+            cm.AfficherSousForm(this, new FormStatConsultation());
         }
 
         private void btnDossier_Click(object sender, EventArgs e)

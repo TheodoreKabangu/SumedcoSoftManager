@@ -29,7 +29,7 @@ namespace SUMEDCO
             numbon = 0,
             idoperation = 0,
             id = 0;
-        public double taux = 0;
+        public double taux = 0, total_payement;
         public bool supprimer_bon, supprimer_ligne;
 
         private void FormBon_Shown(object sender, EventArgs e)
@@ -37,26 +37,16 @@ namespace SUMEDCO
             cc.AfficherRecette(this, "");
             if (cc.VerifierTaux(DateTime.Now.Date, "") == 0)
             {
-                cc.ChangerDate(new DateTaux(), this, lblDateOperation, lblTaux);
+                cc.ChangerDate(this, new DateTaux());                
             }
             else
             {
                 lblDateOperation.Text = DateTime.Now.ToShortDateString();
                 lblTaux.Text = cc.VerifierTaux(DateTime.Now.Date, "valeur").ToString() + " CDF";
+                taux = double.Parse(lblTaux.Text.Substring(0, lblTaux.Text.IndexOf(" ")));
+                lblCaisseUSD.Text = string.Format("{0} USD", cc.MontantCompte("571201"));
+                lblCaisseCDF.Text = string.Format("{0} CDF", cc.MontantCompte("571101"));
             }
-
-            if (poste == "pharmacie")
-            {
-                cboCaisseRecette.Enabled = false;
-                lblDateOperation.Text = DateTime.Now.ToShortDateString();
-                lblTaux.Text = cc.VerifierTaux(DateTime.Now.Date, "valeur").ToString() + " CDF";
-            }
-            else
-            {
-                lblCaisseUSD.Text = string.Format("{0} USD", cc.MontantCompte("571101"));
-                lblCaisseCDF.Text = string.Format("{0} CDF", cc.MontantCompte("571201"));
-            }
-            taux = double.Parse(lblTaux.Text.Substring(0, lblTaux.Text.IndexOf(" ")));
         }
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -64,7 +54,7 @@ namespace SUMEDCO
         }
         private void btnDate_Click(object sender, EventArgs e)
         {
-            cc.ChangerDate(new DateTaux(), this, lblDateOperation, lblTaux);
+            cc.ChangerDate(this, new DateTaux());
         }
         private void btnRecherche_Click(object sender, EventArgs e)
         {
@@ -72,14 +62,14 @@ namespace SUMEDCO
         }
         private void btnValider_Click(object sender, EventArgs e)
         {
-            if (cboCaisseRecette.Text != "" && dgvRecette.RowCount != 0)
+            if (cboMonnaie.Text != "" && dgvRecette.RowCount != 0)
             {
-                cc.ValiderPayement(this);
+                cc.ValiderPayement(this, new FormPayement());
             }
             else
             {
                 MessageBox.Show("Sélectionnez le bon à encaisser dans la liste et/ou précisez la monnaie pour l'encaissement", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                cboCaisseRecette.Select();
+                cboMonnaie.Select();
             }
         }
         int progress = 0;
@@ -97,6 +87,7 @@ namespace SUMEDCO
         {
             if (dgvRecette.RowCount != 0)
             {
+                idrecette = int.Parse(dgvRecette.CurrentRow.Cells[0].Value.ToString());
                 if (dgvRecette.CurrentRow.Cells[1].Value.ToString() == "immédiat")
                 {
                     btnValider.Enabled = true;
@@ -109,17 +100,13 @@ namespace SUMEDCO
                     btnPayer.Enabled = true;
                     btnAnnulerPayement.Enabled = false;
                 }
-                //numbon = int.Parse(dgvRecette.CurrentRow.Cells[0].Value.ToString());
-                //idpayement = int.Parse(dgvRecette.CurrentRow.Cells[4].Value.ToString());
-                //payeur = dgvRecette.CurrentRow.Cells[3].Value.ToString();
-
-                //cc.AfficherDetailsBon2(this);
+                cc.TrouverPayementRecette(this); 
             }
         }
 
         private void cboCaisseRecette_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboCaisseRecette.Text == "CDF")
+            if (cboMonnaie.Text == "CDF")
             {
                 numcompte = "571101";
                 caisse = "Caisse en CDF Recettes";
@@ -168,6 +155,11 @@ namespace SUMEDCO
         private void label10_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAnnulerPayement_Click(object sender, EventArgs e)
+        {
+            cc.AnnulerPayement(this, new FormPayement());
         }
     }
 }

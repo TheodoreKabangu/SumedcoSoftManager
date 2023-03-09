@@ -35,5 +35,10 @@ namespace SUMEDCO
         {
             Application.Exit();
         }
+
+        private void btnChat_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

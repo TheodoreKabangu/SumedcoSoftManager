@@ -31,8 +31,8 @@ namespace SUMEDCO
             idrecette;
         public double prixunitaire=0;
         public bool ajoutvalide, recettePatientConsulte, fermeture_succes;
-        public string poste, numcompte = "",
-            numcomptediffere = "411100";
+        public string type_patient= "", poste="", numcompte = "",
+            numcomptediffere = "4711";
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -41,6 +41,15 @@ namespace SUMEDCO
         private void FormFactureProduit_Shown(object sender, EventArgs e)
         {
             numcompte = cc.TrouverId("numcompte", "Ventes des médicaments").ToString();
+            if (!recettePatientConsulte)
+            {
+                if (poste == "abonné")
+                {
+                    cboTypeFacture.Items.Remove("immédiat");
+                    cboPayeur.Items.Remove("passant");
+                }
+                cc.ChargerProduit(this, "");
+            }
             if (cc.VerifierTaux(DateTime.Now.Date, "") == 0)
             {
                 cc.ChangerDate(new DateTaux(), this, lblDateOperation, lblTaux);
@@ -52,7 +61,6 @@ namespace SUMEDCO
                 lblTaux.Text = cc.VerifierTaux(DateTime.Now.Date, "valeur").ToString() + " CDF";
                 cboTypeFacture.Select();
             }
-            cc.ChargerProduit(this, "");
         }
         private void txtPayeur_Enter(object sender, EventArgs e)
         {
@@ -83,12 +91,20 @@ namespace SUMEDCO
 
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
-            cc.Enregistrer(this);
-            if (recettePatientConsulte)
+            if (cboTypeFacture.Text != "" && cboPayeur.Text != "")
             {
-                fermeture_succes = true;
-                this.Hide();
+                if (cboPayeur.Text == "passant")
+                {
+                    if (txtPayeur.Text != "" && txtContacts.Text != "")
+                        cc.Enregistrer(this);
+                    else
+                        MessageBox.Show("Rassurez-vous que tous les champs ont des valeurs", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                    cc.Enregistrer(this);
             }
+            else
+				MessageBox.Show("Rassurez-vous que tous les champs ont des valeurs", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
         private void btnDate_Click(object sender, EventArgs e)
         {

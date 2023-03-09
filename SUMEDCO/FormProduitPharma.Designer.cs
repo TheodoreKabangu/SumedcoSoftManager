@@ -41,6 +41,8 @@
             this.btnModifier = new System.Windows.Forms.Button();
             this.btnEnregistrer = new System.Windows.Forms.Button();
             this.btnRechercher = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cboCategorie = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduit)).BeginInit();
             this.SuspendLayout();
             // 
@@ -104,13 +106,13 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvProduit.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvProduit.GridColor = System.Drawing.Color.RoyalBlue;
-            this.dgvProduit.Location = new System.Drawing.Point(12, 112);
+            this.dgvProduit.Location = new System.Drawing.Point(12, 150);
             this.dgvProduit.MultiSelect = false;
             this.dgvProduit.Name = "dgvProduit";
             this.dgvProduit.ReadOnly = true;
             this.dgvProduit.RowHeadersVisible = false;
             this.dgvProduit.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProduit.Size = new System.Drawing.Size(454, 231);
+            this.dgvProduit.Size = new System.Drawing.Size(454, 193);
             this.dgvProduit.TabIndex = 620;
             this.dgvProduit.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProduit_CellClick);
             // 
@@ -137,7 +139,7 @@
             this.btnSupprimer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
             this.btnSupprimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSupprimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSupprimer.Location = new System.Drawing.Point(294, 77);
+            this.btnSupprimer.Location = new System.Drawing.Point(294, 115);
             this.btnSupprimer.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnSupprimer.Name = "btnSupprimer";
             this.btnSupprimer.Size = new System.Drawing.Size(80, 27);
@@ -155,7 +157,7 @@
             this.btnModifier.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
             this.btnModifier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModifier.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModifier.Location = new System.Drawing.Point(202, 77);
+            this.btnModifier.Location = new System.Drawing.Point(202, 115);
             this.btnModifier.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnModifier.Name = "btnModifier";
             this.btnModifier.Size = new System.Drawing.Size(80, 27);
@@ -172,7 +174,7 @@
             this.btnEnregistrer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
             this.btnEnregistrer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEnregistrer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEnregistrer.Location = new System.Drawing.Point(110, 77);
+            this.btnEnregistrer.Location = new System.Drawing.Point(110, 115);
             this.btnEnregistrer.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnEnregistrer.Name = "btnEnregistrer";
             this.btnEnregistrer.Size = new System.Drawing.Size(80, 27);
@@ -189,7 +191,7 @@
             this.btnRechercher.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
             this.btnRechercher.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRechercher.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRechercher.Location = new System.Drawing.Point(386, 77);
+            this.btnRechercher.Location = new System.Drawing.Point(386, 115);
             this.btnRechercher.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnRechercher.Name = "btnRechercher";
             this.btnRechercher.Size = new System.Drawing.Size(80, 27);
@@ -198,12 +200,42 @@
             this.btnRechercher.UseVisualStyleBackColor = false;
             this.btnRechercher.Click += new System.EventHandler(this.btnRechercher_Click);
             // 
-            // FormProduit
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(9, 78);
+            this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(66, 15);
+            this.label5.TabIndex = 711;
+            this.label5.Text = "Catégorie :";
+            // 
+            // cboCategorie
+            // 
+            this.cboCategorie.DropDownHeight = 150;
+            this.cboCategorie.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCategorie.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboCategorie.FormattingEnabled = true;
+            this.cboCategorie.IntegralHeight = false;
+            this.cboCategorie.Items.AddRange(new object[] {
+            "passant",
+            "patient"});
+            this.cboCategorie.Location = new System.Drawing.Point(110, 75);
+            this.cboCategorie.MaxDropDownItems = 10;
+            this.cboCategorie.Name = "cboCategorie";
+            this.cboCategorie.Size = new System.Drawing.Size(264, 23);
+            this.cboCategorie.TabIndex = 710;
+            this.cboCategorie.DropDown += new System.EventHandler(this.cboCategorie_DropDown);
+            this.cboCategorie.SelectedIndexChanged += new System.EventHandler(this.cboCategorie_SelectedIndexChanged);
+            // 
+            // FormProduitPharma
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(484, 355);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.cboCategorie);
             this.Controls.Add(this.btnRechercher);
             this.Controls.Add(this.btnSupprimer);
             this.Controls.Add(this.btnModifier);
@@ -217,9 +249,9 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(500, 394);
-            this.Name = "FormProduit";
+            this.Name = "FormProduitPharma";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SSM - Produit pharmaceutique";
+            this.Text = "SSM - Produit";
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduit)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -238,5 +270,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         public System.Windows.Forms.Button btnRechercher;
+        private System.Windows.Forms.Label label5;
+        public System.Windows.Forms.ComboBox cboCategorie;
     }
 }

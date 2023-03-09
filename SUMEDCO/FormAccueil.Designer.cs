@@ -61,9 +61,10 @@
             this.btnExit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(140, 12);
+            this.btnExit.Location = new System.Drawing.Point(210, 18);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(68, 25);
+            this.btnExit.Size = new System.Drawing.Size(102, 38);
             this.btnExit.TabIndex = 160;
             this.btnExit.Text = "Quitter";
             this.btnExit.UseVisualStyleBackColor = false;
@@ -79,8 +80,9 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(363, 50);
+            this.panel1.Size = new System.Drawing.Size(544, 77);
             this.panel1.TabIndex = 161;
             // 
             // panel2
@@ -88,9 +90,10 @@
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.panel2.Controls.Add(this.btnExit);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 440);
+            this.panel2.Location = new System.Drawing.Point(0, 677);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(363, 50);
+            this.panel2.Size = new System.Drawing.Size(544, 77);
             this.panel2.TabIndex = 136;
             // 
             // label10
@@ -101,9 +104,10 @@
             this.label10.Font = new System.Drawing.Font("Trebuchet MS", 24F);
             this.label10.ForeColor = System.Drawing.Color.MediumBlue;
             this.label10.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label10.Location = new System.Drawing.Point(0, 50);
+            this.label10.Location = new System.Drawing.Point(0, 77);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(363, 40);
+            this.label10.Size = new System.Drawing.Size(544, 62);
             this.label10.TabIndex = 169;
             this.label10.Text = "Menu d\'accueil de SSM";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -122,9 +126,10 @@
             this.pnlMenu.Controls.Add(this.btnInfirmerie);
             this.pnlMenu.Controls.Add(this.btnRecette);
             this.pnlMenu.Controls.Add(this.btnReception);
-            this.pnlMenu.Location = new System.Drawing.Point(52, 96);
+            this.pnlMenu.Location = new System.Drawing.Point(78, 148);
+            this.pnlMenu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(259, 329);
+            this.pnlMenu.Size = new System.Drawing.Size(388, 506);
             this.pnlMenu.TabIndex = 170;
             // 
             // btnAdmin
@@ -140,9 +145,10 @@
             this.btnAdmin.Image = ((System.Drawing.Image)(resources.GetObject("btnAdmin.Image")));
             this.btnAdmin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAdmin.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnAdmin.Location = new System.Drawing.Point(0, 405);
+            this.btnAdmin.Location = new System.Drawing.Point(0, 621);
+            this.btnAdmin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnAdmin.Name = "btnAdmin";
-            this.btnAdmin.Size = new System.Drawing.Size(242, 45);
+            this.btnAdmin.Size = new System.Drawing.Size(362, 69);
             this.btnAdmin.TabIndex = 563;
             this.btnAdmin.Text = "Administration";
             this.btnAdmin.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -163,9 +169,10 @@
             this.btnAbonne.Image = ((System.Drawing.Image)(resources.GetObject("btnAbonne.Image")));
             this.btnAbonne.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAbonne.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnAbonne.Location = new System.Drawing.Point(0, 360);
+            this.btnAbonne.Location = new System.Drawing.Point(0, 552);
+            this.btnAbonne.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnAbonne.Name = "btnAbonne";
-            this.btnAbonne.Size = new System.Drawing.Size(242, 45);
+            this.btnAbonne.Size = new System.Drawing.Size(362, 69);
             this.btnAbonne.TabIndex = 562;
             this.btnAbonne.Text = "Abonnés/Employés";
             this.btnAbonne.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -186,9 +193,10 @@
             this.btnStock.Image = ((System.Drawing.Image)(resources.GetObject("btnStock.Image")));
             this.btnStock.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnStock.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnStock.Location = new System.Drawing.Point(0, 315);
+            this.btnStock.Location = new System.Drawing.Point(0, 483);
+            this.btnStock.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnStock.Name = "btnStock";
-            this.btnStock.Size = new System.Drawing.Size(242, 45);
+            this.btnStock.Size = new System.Drawing.Size(362, 69);
             this.btnStock.TabIndex = 561;
             this.btnStock.Text = "Stock des produits";
             this.btnStock.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -209,9 +217,10 @@
             this.btnPharma.Image = ((System.Drawing.Image)(resources.GetObject("btnPharma.Image")));
             this.btnPharma.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPharma.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnPharma.Location = new System.Drawing.Point(0, 270);
+            this.btnPharma.Location = new System.Drawing.Point(0, 414);
+            this.btnPharma.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnPharma.Name = "btnPharma";
-            this.btnPharma.Size = new System.Drawing.Size(242, 45);
+            this.btnPharma.Size = new System.Drawing.Size(362, 69);
             this.btnPharma.TabIndex = 560;
             this.btnPharma.Text = "Pharmacie";
             this.btnPharma.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -232,9 +241,10 @@
             this.btnCompta.Image = ((System.Drawing.Image)(resources.GetObject("btnCompta.Image")));
             this.btnCompta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCompta.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnCompta.Location = new System.Drawing.Point(0, 225);
+            this.btnCompta.Location = new System.Drawing.Point(0, 345);
+            this.btnCompta.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCompta.Name = "btnCompta";
-            this.btnCompta.Size = new System.Drawing.Size(242, 45);
+            this.btnCompta.Size = new System.Drawing.Size(362, 69);
             this.btnCompta.TabIndex = 559;
             this.btnCompta.Text = "Comptabilité";
             this.btnCompta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -255,11 +265,12 @@
             this.btnDepense.Image = ((System.Drawing.Image)(resources.GetObject("btnDepense.Image")));
             this.btnDepense.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDepense.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnDepense.Location = new System.Drawing.Point(0, 180);
+            this.btnDepense.Location = new System.Drawing.Point(0, 276);
+            this.btnDepense.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnDepense.Name = "btnDepense";
-            this.btnDepense.Size = new System.Drawing.Size(242, 45);
+            this.btnDepense.Size = new System.Drawing.Size(362, 69);
             this.btnDepense.TabIndex = 557;
-            this.btnDepense.Text = "Caisse des dépenses";
+            this.btnDepense.Text = "Trésorerie";
             this.btnDepense.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDepense.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDepense.UseVisualStyleBackColor = false;
@@ -278,9 +289,10 @@
             this.btnMalade.Image = ((System.Drawing.Image)(resources.GetObject("btnMalade.Image")));
             this.btnMalade.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMalade.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnMalade.Location = new System.Drawing.Point(0, 135);
+            this.btnMalade.Location = new System.Drawing.Point(0, 207);
+            this.btnMalade.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnMalade.Name = "btnMalade";
-            this.btnMalade.Size = new System.Drawing.Size(242, 45);
+            this.btnMalade.Size = new System.Drawing.Size(362, 69);
             this.btnMalade.TabIndex = 553;
             this.btnMalade.Text = "Cabinet du médecin";
             this.btnMalade.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -299,9 +311,10 @@
             this.btnInfirmerie.ForeColor = System.Drawing.Color.Black;
             this.btnInfirmerie.Image = ((System.Drawing.Image)(resources.GetObject("btnInfirmerie.Image")));
             this.btnInfirmerie.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInfirmerie.Location = new System.Drawing.Point(0, 90);
+            this.btnInfirmerie.Location = new System.Drawing.Point(0, 138);
+            this.btnInfirmerie.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnInfirmerie.Name = "btnInfirmerie";
-            this.btnInfirmerie.Size = new System.Drawing.Size(242, 45);
+            this.btnInfirmerie.Size = new System.Drawing.Size(362, 69);
             this.btnInfirmerie.TabIndex = 564;
             this.btnInfirmerie.Text = "Salle des soins";
             this.btnInfirmerie.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -322,9 +335,10 @@
             this.btnRecette.Image = ((System.Drawing.Image)(resources.GetObject("btnRecette.Image")));
             this.btnRecette.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRecette.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnRecette.Location = new System.Drawing.Point(0, 45);
+            this.btnRecette.Location = new System.Drawing.Point(0, 69);
+            this.btnRecette.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnRecette.Name = "btnRecette";
-            this.btnRecette.Size = new System.Drawing.Size(242, 45);
+            this.btnRecette.Size = new System.Drawing.Size(362, 69);
             this.btnRecette.TabIndex = 555;
             this.btnRecette.Text = "Caisse des recettes";
             this.btnRecette.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -344,8 +358,9 @@
             this.btnReception.Image = ((System.Drawing.Image)(resources.GetObject("btnReception.Image")));
             this.btnReception.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnReception.Location = new System.Drawing.Point(0, 0);
+            this.btnReception.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnReception.Name = "btnReception";
-            this.btnReception.Size = new System.Drawing.Size(242, 45);
+            this.btnReception.Size = new System.Drawing.Size(362, 69);
             this.btnReception.TabIndex = 565;
             this.btnReception.Text = "Réception";
             this.btnReception.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -360,18 +375,20 @@
             // 
             // FormAccueil
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(363, 490);
+            this.ClientSize = new System.Drawing.Size(544, 754);
             this.Controls.Add(this.pnlMenu);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormAccueil";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Shown += new System.EventHandler(this.FormAccueil_Shown);
             this.panel2.ResumeLayout(false);
             this.pnlMenu.ResumeLayout(false);
             this.ResumeLayout(false);

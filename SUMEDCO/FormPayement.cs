@@ -21,23 +21,47 @@ namespace SUMEDCO
             idpayeur,
             idrecette,
             idoperation;
-        public string caisse, numcompte;
-        public double taux;
+        public string caisse, numcompte, 
+            statut_recette, 
+            categorie_recette, raison_retrait;
+        public double taux, montant_recette;
+        public bool fermeture_succes;
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (btnAjouter.Text == "Valider")
+                this.Hide();
+            else
+                this.Close();
         }
-        bool ajoutvalide;
-        public bool selectionvalide;
+        public bool ajout_valide;
         private void btnAjouter_Click(object sender, EventArgs e)
         {
-            cc.PayerRecette(this);
+            if (btnAjouter.Text == "Valider")
+            {
+                if (cboAnnulation.Text != "")
+                {
+                    raison_retrait = lblDateOperation.Text + ", " + cboAnnulation.Text;
+                    fermeture_succes = true;
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Renseignez la raison du retrait de ce payement", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    cboAnnulation.Select();
+                }
+            }
+            else
+            {
+                cc.PayerRecette(this);
+                fermeture_succes = true;
+                this.Hide();
+            }
         }
         string montantLettre = "";
 
         private void txtMontant_Leave(object sender, EventArgs e)
         {
-            if (txtMontant.Text != "")
+            if (txtMontant.Text != "" && cboMonnaie.Text != "")
             {
                 montantLettre = cc.TestMontant(txtMontant);
                 if (montantLettre != "")
@@ -62,6 +86,22 @@ namespace SUMEDCO
                 numcompte = "571201";
                 caisse = "Caisse en USD Recettes";
             }
+            if (txtMontant.Text != "" && cboMonnaie.Text != "")
+            {
+                montantLettre = cc.TestMontant(txtMontant);
+                if (montantLettre != "")
+                {
+                    if (cboMonnaie.Text == "CDF")
+                        txtMontantLettre.Text = montantLettre.Substring(0, 1).ToUpper() + montantLettre.Substring(1) + " francs congolais";
+                    else
+                        txtMontantLettre.Text = montantLettre.Substring(0, 1).ToUpper() + montantLettre.Substring(1) + " dollars américains";
+                }
+            }
+        }
+
+        private void cboMonnaie_Leave(object sender, EventArgs e)
+        {
+            
         }
     }
 }
