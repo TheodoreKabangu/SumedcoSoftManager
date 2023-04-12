@@ -22,16 +22,29 @@ namespace SUMEDCO
         
         private void btnValider_Click(object sender, EventArgs e)
         {
-            btnValider.Enabled = false;
-            fermeture_succes = true;
-            this.Hide();
-            
+            if (cboTypePatient.Text != "" && dgvPatient.RowCount != 0)
+            {
+                if (cboTypePatient.Text.Contains("abonné"))
+                    numcomptediffere = cm.TrouverNom("numcompte_entreprise", cm.TrouverId("entreprise", dgvPatient.CurrentRow.Cells[12].Value.ToString()));
+                else if (cboTypePatient.Text == "employé")
+                    numcomptediffere = cc.TrouverId("numcompte", "Médecine du travail et pharmacie").ToString();
+                else if (cboTypePatient.Text == "cas social")
+                    numcomptediffere = cc.TrouverId("numcompte", "Frais médicaux & Pharmaceutiques Cas sociaux").ToString();
+                else if (cboTypePatient.Text == "payant" && type_facture == "différé")
+                    numcomptediffere = "4711";
+                btnValider.Enabled = false;
+                fermeture_succes = true;
+                this.Hide();
+            }
+            else MessageBox.Show("Sélectionnez le type de patient et/ou le patient concerné", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
-        public string type_patient;
+        public string poste= "",
+            type_facture = "",
+            numcomptediffere = "";
         private void btnRecherche_Click(object sender, EventArgs e)
         {
-            cm.AfficherPatient(dgvPatient, txtPatient, "recherche", type_patient, 0);
+            cm.AfficherPatient(dgvPatient, txtPatient, "recherche", cboTypePatient.Text, 0);
         }
 
         private void btnAnnuler_Click(object sender, EventArgs e)
@@ -39,16 +52,10 @@ namespace SUMEDCO
             fermeture_succes = false;
             this.Hide();
         }
-        private void txtPatient_Enter(object sender, EventArgs e)
-        {
-            
-        }
 
         private void FormFacturePatient_Shown(object sender, EventArgs e)
         {
-            if (type_patient == "abonné")
-                txtPatient.Text = "Numéro service";
-            else
+            if (poste != "abonné")           
             {
                 txtPatient.Text = "Nom patient";
                 dgvPatient.Columns[11].Visible = false;
@@ -56,17 +63,31 @@ namespace SUMEDCO
                 dgvPatient.Columns[13].Visible = false;
             }
         }
-
-        private void txtPatient_Click(object sender, EventArgs e)
-        {
-            if (txtPatient.Text == "Nom patient" || txtPatient.Text == "Numéro service")
-                txtPatient.Text = "";
-        }
-
         private void dgvPatient_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvPatient.RowCount != 0)
                 btnValider.Enabled = true;
+        }
+
+        private void cboTypePatient_DropDown(object sender, EventArgs e)
+        {
+            cm.ChargerCombo(cboTypePatient, "typepatient");
+            if (poste == "réception")
+            {
+                cboTypePatient.Items.Remove("abonné");
+                cboTypePatient.Items.Remove("employé");
+                cboTypePatient.Items.Remove("abonné forfaitaire");
+            }
+            else if (poste == "abonné")
+            {
+                cboTypePatient.Items.Remove("payant");
+                cboTypePatient.Items.Remove("cas social");
+            }
+        }
+        ClassCompta cc = new ClassCompta();
+        private void cboTypePatient_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
 
     }

@@ -23,10 +23,13 @@ namespace SUMEDCO
             idtypepatient = 0,
             identreprise = 0,
             idtypeabonne = 0,
-            idrecette,
+            idrecette = 0,
             idservice,
-            idpayeur;
-        public string statut= "",
+            idpayeur,
+            idoperation = 0;
+        public string numcompte= "",
+            numcomptediffere = "",
+            statut= "",
             poste= "",
             num_service="";
         private void FormPatient_Shown(object sender, EventArgs e)

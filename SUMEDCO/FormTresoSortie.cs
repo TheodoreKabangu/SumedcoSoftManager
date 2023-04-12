@@ -127,17 +127,11 @@ namespace SUMEDCO
         private void cboCaisseDepense_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboCaisseDepense.Text == "CDF")
-            {
-                caisse = "Caisse en CDF Dépenses";
-                numcompte = cc.TrouverId("numcompte", caisse).ToString();
-                soldeCaisse = cc.MontantCompte(numcompte);
-            }
+                numcompte = "571102";
             else
-            {
-                caisse = "Caisse en USD Dépenses";
-                numcompte = cc.TrouverId("numcompte", caisse).ToString();
-                soldeCaisse = cc.MontantCompte(numcompte);
-            }
+                numcompte = "571202";
+            caisse = cc.TrouverNom("compte", Convert.ToInt32(numcompte));
+            soldeCaisse = cc.MontantCompte(numcompte);
             cboCaisseDepense.Enabled = false;
         }
 

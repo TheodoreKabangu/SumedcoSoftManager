@@ -20,15 +20,24 @@ namespace SUMEDCO
         ClassCompta cc = new ClassCompta();
         public bool fermeture_succes;
         public double prixvente = 0;
-        public int idAppro, idcom = 0, 
-            idstock = 0;
+        public int idAppro, 
+            idcom = 0, 
+            idstock = 0,
+            idoperation = 0;
         public string poste= "", categorie_produit = "";
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
-            if (poste == "comptable")
-                cs.ValiderApproStock(this);
-            else
-                cs.ValiderApproStock2(this);
+            //if (poste == "comptable")
+            //{
+            //    idoperation = cc.NouveauID("operation");
+            //    if(cc.AjouterOperation(idoperation, dtpDateJour.Text, "Appro stock", "BL", cc.TrouverId("typejournal", "achats"), 0, ""))
+            //    {
+            //        //cc.AjouterEcriture(idoperation, "", )
+            //    }
+            //    cs.ValiderApproStock(this);
+            //}
+            //else
+            //    cs.ValiderApproStock2(this);
         }
 
         private void btnAnnuler_Click(object sender, EventArgs e)
@@ -226,6 +235,11 @@ namespace SUMEDCO
             }
             else
                 txtPrixVente.Text = "0";
+        }
+
+        private void cboFournisseur_DropDown(object sender, EventArgs e)
+        {
+            cc.ChargerFournisseur(this);
         }
     }
 }

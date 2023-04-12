@@ -82,7 +82,7 @@
             this.label3.Location = new System.Drawing.Point(15, 56);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 15);
+            this.label3.Size = new System.Drawing.Size(102, 22);
             this.label3.TabIndex = 540;
             this.label3.Text = "Entreprise :";
             // 
@@ -102,7 +102,7 @@
             this.txtReference.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtReference.MaxLength = 15;
             this.txtReference.Name = "txtReference";
-            this.txtReference.Size = new System.Drawing.Size(259, 21);
+            this.txtReference.Size = new System.Drawing.Size(259, 28);
             this.txtReference.TabIndex = 3;
             this.txtReference.Enter += new System.EventHandler(this.cboTypeAbonne_Enter);
             // 
@@ -112,7 +112,7 @@
             this.label5.Location = new System.Drawing.Point(15, 116);
             this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(64, 15);
+            this.label5.Size = new System.Drawing.Size(92, 22);
             this.label5.TabIndex = 539;
             this.label5.Text = "Matricule :";
             // 
@@ -123,7 +123,7 @@
             this.cboEntreprise.FormattingEnabled = true;
             this.cboEntreprise.Location = new System.Drawing.Point(102, 53);
             this.cboEntreprise.Name = "cboEntreprise";
-            this.cboEntreprise.Size = new System.Drawing.Size(259, 23);
+            this.cboEntreprise.Size = new System.Drawing.Size(259, 30);
             this.cboEntreprise.TabIndex = 1;
             this.cboEntreprise.DropDown += new System.EventHandler(this.cboEntreprise_DropDown);
             this.cboEntreprise.SelectedIndexChanged += new System.EventHandler(this.cboEntreprise_SelectedIndexChanged);
@@ -134,7 +134,7 @@
             this.label6.Location = new System.Drawing.Point(15, 85);
             this.label6.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(84, 15);
+            this.label6.Size = new System.Drawing.Size(126, 22);
             this.label6.TabIndex = 540;
             this.label6.Text = "Type abonné :";
             // 
@@ -145,14 +145,14 @@
             this.cboTypeAbonne.FormattingEnabled = true;
             this.cboTypeAbonne.Location = new System.Drawing.Point(102, 82);
             this.cboTypeAbonne.Name = "cboTypeAbonne";
-            this.cboTypeAbonne.Size = new System.Drawing.Size(259, 23);
+            this.cboTypeAbonne.Size = new System.Drawing.Size(259, 30);
             this.cboTypeAbonne.TabIndex = 2;
             this.cboTypeAbonne.SelectedIndexChanged += new System.EventHandler(this.cboTypeAbonne_SelectedIndexChanged);
             this.cboTypeAbonne.Enter += new System.EventHandler(this.cboTypeAbonne_Enter);
             // 
             // FormAbonne
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(382, 181);
@@ -168,6 +168,8 @@
             this.Controls.Add(this.label5);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(404, 237);
+            this.MinimumSize = new System.Drawing.Size(404, 237);
             this.Name = "FormAbonne";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SSM - Abonne";

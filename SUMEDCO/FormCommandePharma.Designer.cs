@@ -87,7 +87,7 @@
             this.dtpDateCom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDateCom.Location = new System.Drawing.Point(655, 33);
             this.dtpDateCom.Name = "dtpDateCom";
-            this.dtpDateCom.Size = new System.Drawing.Size(30, 21);
+            this.dtpDateCom.Size = new System.Drawing.Size(30, 28);
             this.dtpDateCom.TabIndex = 736;
             this.dtpDateCom.Visible = false;
             // 
@@ -97,7 +97,7 @@
             this.lblDateEntree.Location = new System.Drawing.Point(542, 38);
             this.lblDateEntree.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblDateEntree.Name = "lblDateEntree";
-            this.lblDateEntree.Size = new System.Drawing.Size(105, 15);
+            this.lblDateEntree.Size = new System.Drawing.Size(150, 22);
             this.lblDateEntree.TabIndex = 737;
             this.lblDateEntree.Text = "Date commande :";
             this.lblDateEntree.Visible = false;
@@ -246,17 +246,19 @@
             this.dgvAppro.AllowUserToAddRows = false;
             this.dgvAppro.AllowUserToDeleteRows = false;
             this.dgvAppro.AllowUserToOrderColumns = true;
+            this.dgvAppro.AllowUserToResizeColumns = false;
+            this.dgvAppro.AllowUserToResizeRows = false;
             this.dgvAppro.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvAppro.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.dgvAppro.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvAppro.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvAppro.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvAppro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -272,6 +274,8 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvAppro.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvAppro.EnableHeadersVisualStyles = false;
+            this.dgvAppro.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.dgvAppro.Location = new System.Drawing.Point(460, 97);
             this.dgvAppro.MultiSelect = false;
             this.dgvAppro.Name = "dgvAppro";
@@ -315,7 +319,7 @@
             this.cboCategorie.Location = new System.Drawing.Point(84, 40);
             this.cboCategorie.MaxDropDownItems = 10;
             this.cboCategorie.Name = "cboCategorie";
-            this.cboCategorie.Size = new System.Drawing.Size(208, 23);
+            this.cboCategorie.Size = new System.Drawing.Size(208, 30);
             this.cboCategorie.TabIndex = 763;
             // 
             // btnServir
@@ -342,7 +346,7 @@
             this.label3.Location = new System.Drawing.Point(9, 43);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 15);
+            this.label3.Size = new System.Drawing.Size(98, 22);
             this.label3.TabIndex = 761;
             this.label3.Text = "Catégorie :";
             // 
@@ -368,7 +372,7 @@
             this.dtpDateA.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDateA.Location = new System.Drawing.Point(206, 69);
             this.dtpDateA.Name = "dtpDateA";
-            this.dtpDateA.Size = new System.Drawing.Size(86, 21);
+            this.dtpDateA.Size = new System.Drawing.Size(86, 28);
             this.dtpDateA.TabIndex = 756;
             // 
             // dtpDateDe
@@ -376,7 +380,7 @@
             this.dtpDateDe.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDateDe.Location = new System.Drawing.Point(84, 69);
             this.dtpDateDe.Name = "dtpDateDe";
-            this.dtpDateDe.Size = new System.Drawing.Size(86, 21);
+            this.dtpDateDe.Size = new System.Drawing.Size(86, 28);
             this.dtpDateDe.TabIndex = 757;
             // 
             // label1
@@ -385,7 +389,7 @@
             this.label1.Location = new System.Drawing.Point(178, 70);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(20, 15);
+            this.label1.Size = new System.Drawing.Size(30, 22);
             this.label1.TabIndex = 758;
             this.label1.Text = "à :";
             // 
@@ -395,7 +399,7 @@
             this.label2.Location = new System.Drawing.Point(9, 70);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 15);
+            this.label2.Size = new System.Drawing.Size(43, 22);
             this.label2.TabIndex = 759;
             this.label2.Text = "De :";
             // 
@@ -404,6 +408,8 @@
             this.dgvCommande.AllowUserToAddRows = false;
             this.dgvCommande.AllowUserToDeleteRows = false;
             this.dgvCommande.AllowUserToOrderColumns = true;
+            this.dgvCommande.AllowUserToResizeColumns = false;
+            this.dgvCommande.AllowUserToResizeRows = false;
             this.dgvCommande.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -411,11 +417,11 @@
             this.dgvCommande.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvCommande.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvCommande.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvCommande.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -435,6 +441,8 @@
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvCommande.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvCommande.EnableHeadersVisualStyles = false;
+            this.dgvCommande.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.dgvCommande.Location = new System.Drawing.Point(12, 96);
             this.dgvCommande.MultiSelect = false;
             this.dgvCommande.Name = "dgvCommande";
@@ -498,7 +506,7 @@
             // 
             // FormCommandePharma
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(703, 451);

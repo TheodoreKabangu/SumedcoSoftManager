@@ -26,10 +26,6 @@ namespace SUMEDCO
             statut = "nouveau";
             cc.AfficherSousForm(this, new FormPatient());
         }
-        private void btnBonCaisse_Click(object sender, EventArgs e)
-        {
-            cc.AfficherSousForm(this, new FormBonRecette());
-        }
 
         private void btnQuitter_Click(object sender, EventArgs e)
         {
@@ -48,6 +44,7 @@ namespace SUMEDCO
 
         private void btnRapport_Click(object sender, EventArgs e)
         {
+            cc.AfficherSousForm(this, new FormReceptionRapport());
             /*
              * Ici on aura:
              * un form pour présenter tous les malades qui sont entrés à une date ou pour une période donnée

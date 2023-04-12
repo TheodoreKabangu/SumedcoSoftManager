@@ -79,7 +79,7 @@
             this.txtPayeur.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtPayeur.MaxLength = 75;
             this.txtPayeur.Name = "txtPayeur";
-            this.txtPayeur.Size = new System.Drawing.Size(452, 21);
+            this.txtPayeur.Size = new System.Drawing.Size(452, 28);
             this.txtPayeur.TabIndex = 2;
             this.txtPayeur.Enter += new System.EventHandler(this.txtPayeur_Enter);
             // 
@@ -89,7 +89,7 @@
             this.label1.Location = new System.Drawing.Point(15, 110);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 15);
+            this.label1.Size = new System.Drawing.Size(77, 22);
             this.label1.TabIndex = 540;
             this.label1.Text = "Payeur :";
             // 
@@ -110,7 +110,7 @@
             this.label3.Location = new System.Drawing.Point(15, 49);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 15);
+            this.label3.Size = new System.Drawing.Size(130, 22);
             this.label3.TabIndex = 540;
             this.label3.Text = "Date d\'édition :";
             // 
@@ -171,7 +171,7 @@
             this.label4.Location = new System.Drawing.Point(243, 49);
             this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(81, 15);
+            this.label4.Size = new System.Drawing.Size(121, 22);
             this.label4.TabIndex = 540;
             this.label4.Text = "Taux du jour :";
             // 
@@ -181,7 +181,7 @@
             this.label2.Location = new System.Drawing.Point(15, 79);
             this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 15);
+            this.label2.Size = new System.Drawing.Size(146, 22);
             this.label2.TabIndex = 540;
             this.label2.Text = "Type de facture :";
             // 
@@ -226,7 +226,7 @@
             this.cboTypeFacture.Location = new System.Drawing.Point(119, 76);
             this.cboTypeFacture.MaxDropDownItems = 10;
             this.cboTypeFacture.Name = "cboTypeFacture";
-            this.cboTypeFacture.Size = new System.Drawing.Size(172, 23);
+            this.cboTypeFacture.Size = new System.Drawing.Size(172, 30);
             this.cboTypeFacture.TabIndex = 1;
             this.cboTypeFacture.SelectedIndexChanged += new System.EventHandler(this.cboTypeFacture_SelectedIndexChanged);
             // 
@@ -235,6 +235,8 @@
             this.dgvFacture.AllowUserToAddRows = false;
             this.dgvFacture.AllowUserToDeleteRows = false;
             this.dgvFacture.AllowUserToOrderColumns = true;
+            this.dgvFacture.AllowUserToResizeColumns = false;
+            this.dgvFacture.AllowUserToResizeRows = false;
             this.dgvFacture.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -242,11 +244,11 @@
             this.dgvFacture.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvFacture.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvFacture.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvFacture.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -263,7 +265,8 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvFacture.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvFacture.GridColor = System.Drawing.Color.RoyalBlue;
+            this.dgvFacture.EnableHeadersVisualStyles = false;
+            this.dgvFacture.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.dgvFacture.Location = new System.Drawing.Point(297, 167);
             this.dgvFacture.MultiSelect = false;
             this.dgvFacture.Name = "dgvFacture";
@@ -356,7 +359,7 @@
             this.txtTotal.Location = new System.Drawing.Point(563, 423);
             this.txtTotal.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(128, 14);
+            this.txtTotal.Size = new System.Drawing.Size(128, 21);
             this.txtTotal.TabIndex = 615;
             this.txtTotal.Text = "0";
             this.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -368,7 +371,7 @@
             this.label7.Location = new System.Drawing.Point(482, 423);
             this.label7.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(69, 15);
+            this.label7.Size = new System.Drawing.Size(105, 22);
             this.label7.TabIndex = 614;
             this.label7.Text = "Total Gén. :";
             // 
@@ -423,7 +426,7 @@
             this.cboPayeur.Location = new System.Drawing.Point(405, 76);
             this.cboPayeur.MaxDropDownItems = 10;
             this.cboPayeur.Name = "cboPayeur";
-            this.cboPayeur.Size = new System.Drawing.Size(166, 23);
+            this.cboPayeur.Size = new System.Drawing.Size(166, 30);
             this.cboPayeur.TabIndex = 706;
             this.cboPayeur.SelectedIndexChanged += new System.EventHandler(this.cboPayeur_SelectedIndexChanged);
             this.cboPayeur.Enter += new System.EventHandler(this.cboPayeur_Enter);
@@ -433,17 +436,19 @@
             this.dgv1.AllowUserToAddRows = false;
             this.dgv1.AllowUserToDeleteRows = false;
             this.dgv1.AllowUserToOrderColumns = true;
+            this.dgv1.AllowUserToResizeColumns = false;
+            this.dgv1.AllowUserToResizeRows = false;
             this.dgv1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dgv1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.dgv1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgv1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgv1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -458,7 +463,8 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgv1.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dgv1.GridColor = System.Drawing.Color.RoyalBlue;
+            this.dgv1.EnableHeadersVisualStyles = false;
+            this.dgv1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.dgv1.Location = new System.Drawing.Point(119, 167);
             this.dgv1.MultiSelect = false;
             this.dgv1.Name = "dgv1";
@@ -492,7 +498,7 @@
             this.label5.Location = new System.Drawing.Point(300, 79);
             this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(96, 15);
+            this.label5.Size = new System.Drawing.Size(146, 22);
             this.label5.TabIndex = 709;
             this.label5.Text = "Type de payeur :";
             // 
@@ -503,7 +509,7 @@
             this.txtContacts.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtContacts.MaxLength = 75;
             this.txtContacts.Name = "txtContacts";
-            this.txtContacts.Size = new System.Drawing.Size(452, 21);
+            this.txtContacts.Size = new System.Drawing.Size(452, 28);
             this.txtContacts.TabIndex = 710;
             this.txtContacts.Enter += new System.EventHandler(this.txtContacts_Enter);
             // 
@@ -513,7 +519,7 @@
             this.label6.Location = new System.Drawing.Point(15, 141);
             this.label6.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(60, 15);
+            this.label6.Size = new System.Drawing.Size(91, 22);
             this.label6.TabIndex = 711;
             this.label6.Text = "Contacts :";
             // 
@@ -523,12 +529,12 @@
             this.txtRecherche.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtRecherche.MaxLength = 75;
             this.txtRecherche.Name = "txtRecherche";
-            this.txtRecherche.Size = new System.Drawing.Size(85, 21);
+            this.txtRecherche.Size = new System.Drawing.Size(85, 28);
             this.txtRecherche.TabIndex = 716;
             // 
             // FormFactureService
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(703, 451);

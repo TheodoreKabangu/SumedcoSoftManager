@@ -26,12 +26,17 @@ namespace SUMEDCO
 
         private void btnRecette_Click(object sender, EventArgs e)
         {
-            cc.AfficherSousForm(this, new FormBonRecette());
+            cc.AfficherSousForm(this, new FormRecette());
         }
 
         private void btnRapport_Click(object sender, EventArgs e)
         {
-            cc.AfficherSousForm(this, new FormBonRecetteJournal());
+            cc.AfficherSousForm(this, new FormRecetteJournal());
+        }
+
+        private void btnPayement_Click(object sender, EventArgs e)
+        {
+            cc.AfficherSousForm(this, new FormPayements());
         }
 
     }

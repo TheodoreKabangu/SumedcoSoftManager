@@ -146,6 +146,7 @@ namespace SUMEDCO
             }
             else
             {
+                txtPayeur.Text = txtContacts.Text = "";
                 txtPayeur.Enabled = true;
                 txtContacts.Enabled = true;
             }

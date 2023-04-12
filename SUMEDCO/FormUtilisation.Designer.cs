@@ -82,6 +82,8 @@
             this.dgvProduit.AllowUserToAddRows = false;
             this.dgvProduit.AllowUserToDeleteRows = false;
             this.dgvProduit.AllowUserToOrderColumns = true;
+            this.dgvProduit.AllowUserToResizeColumns = false;
+            this.dgvProduit.AllowUserToResizeRows = false;
             this.dgvProduit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -89,11 +91,11 @@
             this.dgvProduit.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvProduit.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvProduit.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvProduit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -110,6 +112,8 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvProduit.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvProduit.EnableHeadersVisualStyles = false;
+            this.dgvProduit.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.dgvProduit.Location = new System.Drawing.Point(12, 73);
             this.dgvProduit.MultiSelect = false;
             this.dgvProduit.Name = "dgvProduit";
@@ -172,7 +176,7 @@
             this.dtpDateA.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDateA.Location = new System.Drawing.Point(168, 42);
             this.dtpDateA.Name = "dtpDateA";
-            this.dtpDateA.Size = new System.Drawing.Size(86, 21);
+            this.dtpDateA.Size = new System.Drawing.Size(86, 28);
             this.dtpDateA.TabIndex = 759;
             // 
             // dtpDateDe
@@ -180,7 +184,7 @@
             this.dtpDateDe.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDateDe.Location = new System.Drawing.Point(46, 42);
             this.dtpDateDe.Name = "dtpDateDe";
-            this.dtpDateDe.Size = new System.Drawing.Size(86, 21);
+            this.dtpDateDe.Size = new System.Drawing.Size(86, 28);
             this.dtpDateDe.TabIndex = 760;
             // 
             // label1
@@ -189,7 +193,7 @@
             this.label1.Location = new System.Drawing.Point(140, 43);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(20, 15);
+            this.label1.Size = new System.Drawing.Size(30, 22);
             this.label1.TabIndex = 761;
             this.label1.Text = "à :";
             // 
@@ -199,7 +203,7 @@
             this.lblDateEntree.Location = new System.Drawing.Point(9, 43);
             this.lblDateEntree.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblDateEntree.Name = "lblDateEntree";
-            this.lblDateEntree.Size = new System.Drawing.Size(29, 15);
+            this.lblDateEntree.Size = new System.Drawing.Size(43, 22);
             this.lblDateEntree.TabIndex = 762;
             this.lblDateEntree.Text = "De :";
             // 
@@ -209,7 +213,7 @@
             this.txtRecherche.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtRecherche.MaxLength = 75;
             this.txtRecherche.Name = "txtRecherche";
-            this.txtRecherche.Size = new System.Drawing.Size(85, 21);
+            this.txtRecherche.Size = new System.Drawing.Size(85, 28);
             this.txtRecherche.TabIndex = 767;
             // 
             // btnRecherche2
@@ -234,13 +238,13 @@
             this.lblQte.Location = new System.Drawing.Point(303, 43);
             this.lblQte.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblQte.Name = "lblQte";
-            this.lblQte.Size = new System.Drawing.Size(52, 15);
+            this.lblQte.Size = new System.Drawing.Size(77, 22);
             this.lblQte.TabIndex = 765;
             this.lblQte.Text = "Produit :";
             // 
             // FormUtilisation
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(703, 451);

@@ -32,7 +32,7 @@ namespace SUMEDCO
 
         private void btnRapport_Click(object sender, EventArgs e)
         {
-            cc.AfficherSousForm(this, new FormDepenseRapport());
+            cc.AfficherSousForm(this, new FormTresoJournal());
         }
 
         private void btnPayement_Click(object sender, EventArgs e)

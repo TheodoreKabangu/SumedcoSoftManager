@@ -53,19 +53,19 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cboTypePatient = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatient)).BeginInit();
             this.SuspendLayout();
             // 
             // txtPatient
             // 
-            this.txtPatient.Location = new System.Drawing.Point(12, 47);
+            this.txtPatient.Location = new System.Drawing.Point(105, 71);
             this.txtPatient.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtPatient.Name = "txtPatient";
-            this.txtPatient.Size = new System.Drawing.Size(299, 21);
+            this.txtPatient.Size = new System.Drawing.Size(206, 28);
             this.txtPatient.TabIndex = 2;
-            this.txtPatient.Text = "Nom patient";
-            this.txtPatient.Click += new System.EventHandler(this.txtPatient_Click);
-            this.txtPatient.Enter += new System.EventHandler(this.txtPatient_Enter);
             // 
             // btnValider
             // 
@@ -79,7 +79,7 @@
             this.btnValider.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnValider.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnValider.Image = ((System.Drawing.Image)(resources.GetObject("btnValider.Image")));
-            this.btnValider.Location = new System.Drawing.Point(356, 47);
+            this.btnValider.Location = new System.Drawing.Point(356, 71);
             this.btnValider.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnValider.Name = "btnValider";
             this.btnValider.Size = new System.Drawing.Size(30, 21);
@@ -96,7 +96,7 @@
             this.btnRecherche.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRecherche.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRecherche.Image = ((System.Drawing.Image)(resources.GetObject("btnRecherche.Image")));
-            this.btnRecherche.Location = new System.Drawing.Point(311, 47);
+            this.btnRecherche.Location = new System.Drawing.Point(311, 71);
             this.btnRecherche.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnRecherche.Name = "btnRecherche";
             this.btnRecherche.Size = new System.Drawing.Size(30, 21);
@@ -125,7 +125,7 @@
             this.btnAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAnnuler.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAnnuler.Image = ((System.Drawing.Image)(resources.GetObject("btnAnnuler.Image")));
-            this.btnAnnuler.Location = new System.Drawing.Point(398, 47);
+            this.btnAnnuler.Location = new System.Drawing.Point(398, 71);
             this.btnAnnuler.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(30, 21);
@@ -139,6 +139,8 @@
             this.dgvPatient.AllowUserToAddRows = false;
             this.dgvPatient.AllowUserToDeleteRows = false;
             this.dgvPatient.AllowUserToOrderColumns = true;
+            this.dgvPatient.AllowUserToResizeColumns = false;
+            this.dgvPatient.AllowUserToResizeRows = false;
             this.dgvPatient.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -146,11 +148,11 @@
             this.dgvPatient.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvPatient.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvPatient.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPatient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -177,14 +179,15 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvPatient.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvPatient.GridColor = System.Drawing.Color.RoyalBlue;
-            this.dgvPatient.Location = new System.Drawing.Point(12, 76);
+            this.dgvPatient.EnableHeadersVisualStyles = false;
+            this.dgvPatient.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            this.dgvPatient.Location = new System.Drawing.Point(12, 100);
             this.dgvPatient.MultiSelect = false;
             this.dgvPatient.Name = "dgvPatient";
             this.dgvPatient.ReadOnly = true;
             this.dgvPatient.RowHeadersVisible = false;
             this.dgvPatient.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPatient.Size = new System.Drawing.Size(416, 235);
+            this.dgvPatient.Size = new System.Drawing.Size(416, 211);
             this.dgvPatient.TabIndex = 647;
             this.dgvPatient.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPatient_CellClick);
             // 
@@ -260,9 +263,10 @@
             // dataGridViewTextBoxColumn31
             // 
             this.dataGridViewTextBoxColumn31.HeaderText = "Tél. contact";
-            this.dataGridViewTextBoxColumn31.MinimumWidth = 100;
+            this.dataGridViewTextBoxColumn31.MinimumWidth = 140;
             this.dataGridViewTextBoxColumn31.Name = "dataGridViewTextBoxColumn31";
             this.dataGridViewTextBoxColumn31.ReadOnly = true;
+            this.dataGridViewTextBoxColumn31.Width = 140;
             // 
             // Column2
             // 
@@ -274,9 +278,10 @@
             // Column3
             // 
             this.Column3.HeaderText = "T. abonné";
-            this.Column3.MinimumWidth = 100;
+            this.Column3.MinimumWidth = 140;
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
+            this.Column3.Width = 140;
             // 
             // Column4
             // 
@@ -289,28 +294,64 @@
             // Column5
             // 
             this.Column5.HeaderText = "N° service";
-            this.Column5.MinimumWidth = 100;
+            this.Column5.MinimumWidth = 140;
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
+            this.Column5.Width = 140;
+            // 
+            // cboTypePatient
+            // 
+            this.cboTypePatient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTypePatient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboTypePatient.FormattingEnabled = true;
+            this.cboTypePatient.Location = new System.Drawing.Point(105, 37);
+            this.cboTypePatient.Name = "cboTypePatient";
+            this.cboTypePatient.Size = new System.Drawing.Size(236, 30);
+            this.cboTypePatient.TabIndex = 648;
+            this.cboTypePatient.DropDown += new System.EventHandler(this.cboTypePatient_DropDown);
+            this.cboTypePatient.SelectedIndexChanged += new System.EventHandler(this.cboTypePatient_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(8, 41);
+            this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(120, 22);
+            this.label3.TabIndex = 649;
+            this.label3.Text = "Type patient :";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(8, 74);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(76, 22);
+            this.label1.TabIndex = 649;
+            this.label1.Text = "Patient :";
             // 
             // FormFacturePatient
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(440, 323);
-            this.ControlBox = false;
+            this.Controls.Add(this.cboTypePatient);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.dgvPatient);
             this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnRecherche);
             this.Controls.Add(this.btnValider);
             this.Controls.Add(this.txtPatient);
+            this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(434, 205);
             this.Name = "FormFacturePatient";
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SSM - Selection Patient";
             this.Shown += new System.EventHandler(this.FormFacturePatient_Shown);
@@ -329,6 +370,9 @@
         public System.Windows.Forms.Button btnAnnuler;
         private System.Windows.Forms.ToolTip toolTip1;
         public System.Windows.Forms.DataGridView dgvPatient;
+        public System.Windows.Forms.ComboBox cboTypePatient;
+        public System.Windows.Forms.Label label3;
+        public System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn24;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn25;

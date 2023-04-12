@@ -28,39 +28,37 @@ namespace SUMEDCO
         private void btnMiseAJour_Click(object sender, EventArgs e)
         {
             cs.AfficherSousForm(this, new FormAdmin());
-            cc.CacherSousMenu(pnlSousMenu);
+            if (btnMiseAJour.BackColor != Color.LightSlateGray)
+            {
+                btnMiseAJour.BackColor = Color.LightSlateGray;
+                btnRapportStat.BackColor = Color.FromArgb(180, 200, 255);
+                btnRapports.BackColor = Color.FromArgb(180, 200, 255);
+                btnChat.BackColor = Color.FromArgb(180, 200, 255);
+            }
+            else
+                btnMiseAJour.BackColor = System.Drawing.Color.FromArgb(180, 200, 255);
         }
 
         private void btnRapports_Click(object sender, EventArgs e)
         {
-            cs.AfficherSousForm(this, new FormAdminRapport());
-            //cc.AfficherSousMenu(pnlSousMenu);
+            cc.SousMenu(pnlSousMenu);
         }
 
         private void btnStock_Click(object sender, EventArgs e)
         {
-            cs.AfficherSousForm(this, new FormStockProduit());
+            //cs.AfficherSousForm(this, new FormStockProduit());
             cc.CacherSousMenu(pnlSousMenu);
         }
 
         private void btnMaladeMedecin_Click(object sender, EventArgs e)
         {
-            cs.AfficherSousForm(this, new FormFrequentation());
-            cc.CacherSousMenu(pnlSousMenu);
+            cs.AfficherSousForm(this, new FormAdminRapportCasMedecin());            
         }
 
         private void btnRecetteDepense_Click(object sender, EventArgs e)
         {
-            cs.AfficherSousForm(this, new FormRecetteDepense());
-            cc.CacherSousMenu(pnlSousMenu);
+            cs.AfficherSousForm(this, new FormComptaRecetteDepense());
         }
-
-        private void btnStock2_Click(object sender, EventArgs e)
-        {
-            cs.AfficherSousForm(this, new FormStockAutreProduit());
-            cc.CacherSousMenu(pnlSousMenu);
-        }
-
         private void MFormAdmin_Shown(object sender, EventArgs e)
         {
             if (utilisateur == "admin")
@@ -76,12 +74,29 @@ namespace SUMEDCO
 
         private void btnRapportStat_Click(object sender, EventArgs e)
         {
-            cs.AfficherSousForm(this, new FormAdminStatService());
+            cs.AfficherSousForm(this, new FormAdminRapportCas());
+            if (btnRapportStat.BackColor != Color.LightSlateGray)
+            {
+                btnRapportStat.BackColor = Color.LightSlateGray; 
+                btnRapports.BackColor = Color.FromArgb(180, 200, 255);
+                btnChat.BackColor = Color.FromArgb(180, 200, 255);
+                btnMiseAJour.BackColor = Color.FromArgb(180, 200, 255);
+            }
+            else
+				btnRapportStat.BackColor = Color.FromArgb(180, 200, 255);
         }
-
-        private void btnRapportMed_Click(object sender, EventArgs e)
+        private void btnChat_Click(object sender, EventArgs e)
         {
-            cs.AfficherSousForm(this, new FormDepenseJournal());
+            //if (btnChat.BackColor != Color.LightSlateGray)
+            //{
+            //    btnChat.BackColor = Color.LightSlateGray;
+            //    
+            //    btnRapports.BackColor = Color.FromArgb(180, 200, 255);
+            //    btnRapportStat.BackColor = Color.FromArgb(180, 200, 255);
+            //    btnMiseAJour.BackColor = Color.FromArgb(180, 200, 255);
+            //}
+            //else
+            //    btnChat.BackColor = Color.FromArgb(180, 200, 255);
         }
     }
 }

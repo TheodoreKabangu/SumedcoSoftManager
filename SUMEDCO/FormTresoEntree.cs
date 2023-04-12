@@ -35,12 +35,12 @@ namespace SUMEDCO
             if (cboCaisseDepense.Text == "CDF")
             {
                 caisse = "Caisse en CDF Dépenses";
-                numcompte = cc.TrouverId("numcompte", caisse).ToString();
+                numcompte = "571102";
             }
             else
             {
                 caisse = "Caisse en USD Dépenses";
-                numcompte = cc.TrouverId("numcompte", caisse).ToString();
+                numcompte = "571202";
             }
             txtMontant.Focus();
         }
@@ -68,7 +68,8 @@ namespace SUMEDCO
 
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
-            cc.AjouterEncaissement(this);
+            if(cboEncaisser.Text != "" && dgvBon.RowCount != 0) 
+                cc.AjouterEncaissement(this);
         }
 
         private void dgvBon_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -79,6 +80,20 @@ namespace SUMEDCO
                     txtMontant.Focus();
                 else
                     cboCaisseDepense.Select();
+            }
+        }
+
+        private void btnAnnuler_Click(object sender, EventArgs e)
+        {
+            cc.Annuler(this);
+        }
+
+        private void txtMontant_Enter(object sender, EventArgs e)
+        {
+            if (cboCaisseDepense.Text == "" && cboEncaisser.Text == "payement par les abonnés")
+            {
+                MessageBox.Show("Aucune monnaie n'est sélectionné pour cette opération", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cboCaisseDepense.Select();
             }
         }
     }

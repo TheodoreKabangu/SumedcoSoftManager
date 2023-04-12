@@ -12,11 +12,13 @@ namespace SUMEDCO
 {
     public partial class MFormComptabilite : Form
     {
+        ClassCompta cc = new ClassCompta();
         public MFormComptabilite()
         {
             InitializeComponent();
+            pnlRapport.Visible = false;
+            pnlCompta.Visible = false;
         }
-        ClassCompta cc = new ClassCompta();
         ClassStock cs = new ClassStock();
         public Form activeForm = null;
         public int idutilisateur;
@@ -26,28 +28,72 @@ namespace SUMEDCO
         }
         private void btnCompte_Click(object sender, EventArgs e)
         {
-            cc.AfficherSousForm(this, new FormBonRecetteJournal());
+            
         }
-
-        private void btnEcriture_Click(object sender, EventArgs e)
-        {
-            cc.AfficherSousForm(this, new FormComptabilite());
-        }
-
         private void btnAppro_Click(object sender, EventArgs e)
         {
             cs.AfficherSousForm(this, new FormApproCommande());
-        }
-        public bool afficher_journal;
-        private void btnVisualisation_Click(object sender, EventArgs e)
+            if (btnAppro.BackColor != Color.LightSlateGray)
+            {
+                btnAppro.BackColor = Color.LightSlateGray;
+                btnRapport.BackColor = System.Drawing.Color.FromArgb(180, 200, 255);
+                btnCompta.BackColor = System.Drawing.Color.FromArgb(180, 200, 255);
+                btnChat.BackColor = System.Drawing.Color.FromArgb(180, 200, 255);
+            }
+            else
+                btnAppro.BackColor = System.Drawing.Color.FromArgb(180, 200, 255);           
+        }        
+        private void btnRapport_Click(object sender, EventArgs e)
         {
-            afficher_journal = true;
-            cc.AfficherSousForm(this, new FormComptaOperation());
+            if (btnRapport.BackColor != Color.LightSlateGray)
+            {
+                btnRapport.BackColor = Color.LightSlateGray;
+                btnAppro.BackColor = System.Drawing.Color.FromArgb(180, 200, 255);
+                btnCompta.BackColor = System.Drawing.Color.FromArgb(180, 200, 255);
+                btnChat.BackColor = System.Drawing.Color.FromArgb(180, 200, 255);
+            }
+            else
+                btnRapport.BackColor = System.Drawing.Color.FromArgb(180, 200, 255);
+            cc.SousMenu(pnlRapport);
+        }
+
+        private void btnCompta_Click(object sender, EventArgs e)
+        {
+            if (btnCompta.BackColor != Color.LightSlateGray)
+            {
+                btnCompta.BackColor = Color.LightSlateGray;
+                btnAppro.BackColor = System.Drawing.Color.FromArgb(180, 200, 255);
+                btnRapport.BackColor = System.Drawing.Color.FromArgb(180, 200, 255);
+                btnChat.BackColor = System.Drawing.Color.FromArgb(180, 200, 255);
+            }
+            else
+                btnCompta.BackColor = System.Drawing.Color.FromArgb(180, 200, 255);
+            cc.SousMenu(pnlCompta);
+        }
+
+        private void btnRapportRecette_Click(object sender, EventArgs e)
+        {
+            cc.AfficherSousForm(this, new FormRecetteJournal());
         }
 
         private void btnRapportDepense_Click(object sender, EventArgs e)
         {
-            cc.AfficherSousForm(this, new FormDepenseRapport());
+            cc.AfficherSousForm(this, new FormTresoJournal());
+        }
+
+        private void btnEcriture_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnVisualisation_Click(object sender, EventArgs e)
+        {
+            cc.AfficherSousForm(this, new FormComptaOperation());
+        }
+
+        private void btnGrandLivre_Click(object sender, EventArgs e)
+        {
+            cc.AfficherSousForm(this, new FormComptaGdLivre());
         }
 
         private void btnBilan__Click(object sender, EventArgs e)
@@ -62,17 +108,22 @@ namespace SUMEDCO
 
         private void btnTabFluxT_Click(object sender, EventArgs e)
         {
-            cc.AfficherSousForm(this, new FormComptaTableauFlux());
-        }
-        private void btnResultat_Click(object sender, EventArgs e)
-        {
-			cc.AfficherSousForm(this, new FormComptaResultat());
+            //cc.AfficherSousForm(this, new FormComptaTableauFlux());
         }
 
-        private void btnGrandLivre_Click(object sender, EventArgs e)
+        private void btnResultat_Click(object sender, EventArgs e)
         {
-            afficher_journal = false;
-            cc.AfficherSousForm(this, new FormComptaOperation());
+            //cc.AfficherSousForm(this, new FormComptaResultat());
+        }
+
+        private void btnCasMedecin_Click(object sender, EventArgs e)
+        {
+            cc.AfficherSousForm(this, new FormAdminRapportCasMedecin());
+        }
+
+        private void btnRapportGlobal_Click(object sender, EventArgs e)
+        {
+            cc.AfficherSousForm(this, new FormComptaRecetteDepense());
         }
     }
 }

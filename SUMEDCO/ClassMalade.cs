@@ -143,7 +143,7 @@ namespace SUMEDCO
         private Form activeForm = null;
 
         #region INFIRMERIE
-        public void AfficherSousForm(MFormInfirmerie i, FormAgenda childForm)
+        public void AfficherSousForm(MFormInfirmerie i, FormAgendaNursing childForm)
         {
             if (activeForm != null)
                 activeForm.Close();
@@ -178,7 +178,7 @@ namespace SUMEDCO
             childForm.statut = i.statut;
             childForm.Show();
         }
-        public void AfficherSousForm(MFormInfirmerie r, FormBonRecette childForm)
+        public void AfficherSousForm(MFormInfirmerie r, FormRecette childForm)
         {
             if (r.activeForm != null)
                 r.activeForm.Close();
@@ -413,20 +413,6 @@ namespace SUMEDCO
             childForm.idmedecin = c.idmedecin;
             childForm.Show();
         }
-        public void AfficherSousForm(MFormConsultation c, FormPrescription childForm)
-        {
-            if (activeForm != null)
-                activeForm.Close();
-            activeForm = childForm;
-            childForm.TopLevel = false;
-            childForm.FormBorderStyle = FormBorderStyle.None;
-            childForm.Dock = DockStyle.Fill;
-            c.pnlChildForm.Controls.Add(childForm);
-            c.pnlChildForm.Tag = childForm;
-            childForm.BringToFront();
-            childForm.idmedecin = c.idmedecin;
-            childForm.Show();
-        }
         public void AfficherSousForm(MFormConsultation c, FormMedecinHistoChat childForm)
         {
             if (activeForm != null)
@@ -441,7 +427,7 @@ namespace SUMEDCO
             childForm.idexpediteur = c.idmedecin;
             childForm.Show();
         }
-        public void AfficherSousForm(MFormConsultation c, FormStatConsultation childForm)
+        public void AfficherSousForm(MFormConsultation c, FormConsultationStat childForm)
         {
             if (activeForm != null)
                 activeForm.Close();
@@ -1746,7 +1732,7 @@ namespace SUMEDCO
         #endregion
 
         #region RENDEZ-VOUS
-        public void TrouverRDVMedecin(FormStatConsultation s)
+        private void TrouverRDVMedecin(FormConsultationStat s)
         {
             con.Open();
             try
@@ -1770,7 +1756,7 @@ namespace SUMEDCO
             }
             con.Close();
         }
-        public void ResumeCas(FormStatConsultation s)
+        public void ResumeCas(FormConsultationStat s)
         {
             con.Open();
             try
@@ -1798,7 +1784,7 @@ namespace SUMEDCO
                     con.Open();
                     try
                     {
-                        cmd = new SqlCommand("SELECT COUNT(Consultation.idconsultation) FROM Consultation, PriseSigneVitaux, Recette, RecetteService WHERE Consultation.idprise = PriseSigneVitaux.idprise AND PriseSigneVitaux.idrecette = Recette.idrecette AND idmedecin = '" + s.idmedecin + "' AND Recette.idrecette = RecetteService.idrecette AND idservice = " + s.dgvResume.Rows[i].Cells[0].Value.ToString() + "", con);
+                        cmd = new SqlCommand("SELECT COUNT(c.idconsultation) FROM Consultation c JOIN PriseSigneVitaux psv ON c.idprise = psv.idprise JOIN Recette r ON psv.idrecette = r.idrecette JOIN RecetteService rs ON r.idrecette = rs.idrecette WHERE idmedecin = '" + s.idmedecin + "' AND rs.idservice = '" + s.dgvResume.Rows[i].Cells[0].Value.ToString() + "' AND c.date_consultation BETWEEN '"+s.dtpDateDe.Text+"' AND '"+s.dtpDateA.Text+"'", con);
                         dr = cmd.ExecuteReader();
                         while (dr.Read())
                         {
@@ -1814,7 +1800,7 @@ namespace SUMEDCO
                 TrouverRDVMedecin(s);
             }
         }
-        public void AjouterOBsRDV(FormStatConsultation s)
+        public void AjouterOBsRDV(FormConsultationStat s)
         {
             s.btnEnregistrer.Enabled = false;
             if (s.dgvRdv.CurrentRow.Cells[4].Value.ToString().ToUpper() != "RAS" && s.dgvRdv.CurrentRow.Cells[4].Value.ToString() != "")
@@ -1969,10 +1955,12 @@ namespace SUMEDCO
                 chaine = "Age :";
             else
             {
-                chaine = (DateTime.Now.Year - int.Parse(chaineDate.Substring(chaineDate.IndexOf("/") + 1))- 1)+" ans et " + (12 - Math.Abs(DateTime.Now.Month - int.Parse(chaineDate.Substring(0, chaineDate.IndexOf("/")))))+" mois";
+                if ((12 - Math.Abs(DateTime.Now.Month - int.Parse(chaineDate.Substring(0, chaineDate.IndexOf("/"))))) < 12)
+                    chaine = (DateTime.Now.Year - int.Parse(chaineDate.Substring(chaineDate.IndexOf("/") + 1)) - 1) + " ans et " + (12 - Math.Abs(DateTime.Now.Month - int.Parse(chaineDate.Substring(0, chaineDate.IndexOf("/"))))) + " mois";
+                else
+                    chaine = 1 + (DateTime.Now.Year - int.Parse(chaineDate.Substring(chaineDate.IndexOf("/") + 1)) - 1) + " ans";
             }
             return chaine;
-            Prescrire(new FormConsulter(), new FormFactureProduit());
         }
         public void ChargerCombo(ComboBox combo, string motif)
         {
@@ -2128,7 +2116,7 @@ namespace SUMEDCO
                 con.Close();
 
                 //Recette
-                AjouterRecetteCas(p);
+                AjouterRecetteCas(p);               
                 AfficherPatient(p.dgvPatient, p.txtRecherche, "", p.poste, p.idpatient);
             }
             else
@@ -2139,10 +2127,29 @@ namespace SUMEDCO
         public void AjouterRecetteCas(FormPatient p)
         {
             //Ajoute la recette
-            id = cc.AjouterRecette(p.idrecette, p.cboTypeFacture.Text, p.lblDateOperation.Text, "patient", p.idpayeur, "service");
+            p.idrecette = cc.AjouterRecette(p.idrecette, p.cboTypeFacture.Text, p.lblDateOperation.Text, "patient", p.idpayeur, "service");
 
             //Ajouter la consultation
-            cc.AjouterServiceRecette(id, cc.TrouverId("service", p.service));
+            cc.AjouterServiceRecette(p.idrecette, cc.TrouverId("service", p.service));
+            ////Ecriture comptable              
+            if (p.cboTypeFacture.Text == "différé")
+            {
+                if (p.cboTypePatient.Text.Contains("abonné"))
+                    p.numcomptediffere = TrouverNom("numcompte_entreprise", p.identreprise);
+                else if (p.cboTypePatient.Text == "employé")
+                    p.numcomptediffere = cc.TrouverId("numcompte", "Médecine du travail et pharmacie").ToString();
+                else if (p.cboTypePatient.Text == "cas social")
+                    p.numcomptediffere = cc.TrouverId("numcompte", "Frais médicaux & Pharmaceutiques Cas sociaux").ToString();
+                else if (p.cboTypePatient.Text == "payant" && p.cboTypeFacture.Text == "différé")
+                    p.numcomptediffere = "4711";
+
+                p.idoperation = cc.NouveauID("operation");
+                if (cc.AjouterOperation(p.idoperation, p.lblDateOperation.Text, "Vente de services à crédit", string.Format("R_{0}", p.idrecette), cc.TrouverId("typejournal", "ventes"), p.idrecette, "recette"))
+                {
+                    p.numcompte = cc.TrouverNom("numcompte_service", cc.TrouverId("service", p.service));
+                    cc.AjouterEcriture(p.idoperation, p.numcomptediffere, p.numcompte, cc.PrixService(cc.TrouverId("service", p.service)), cc.PrixService(cc.TrouverId("service", p.service)));
+                }
+            }
             MessageBox.Show("Ajouté avec succès", "Enregistrement", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             Annuler(p);
@@ -2247,36 +2254,6 @@ namespace SUMEDCO
             //    MessageBox.Show("Ce patient est déjà impliqué dans au moins une consultation ,\npour raison de cohérence, il ne peut être supprimé", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
         }
-        public void AfficherPatientAbonne(DataGridView dgv, int idpatient)
-        {
-            try
-            {
-                con.Open();
-                cmd = new SqlCommand("select Patient.idpatient,idpayeur,noms,sexe,age,adresse,situation,telephone,pers_contact,tel_contact,nomtype,typeabonne,nomentreprise,num_service from Patient, Payeur, TypePatient, TypeAbonne, Entreprise where Patient.idpatient = Payeur.idpatient and Patient.idtype = TypePatient.idtype and Patient.idtypeabonne = TypeAbonne.idtypeabonne and Patient.identreprise = Entreprise.identreprise and Patient.idpatient = '" + idpatient + "'", con);
-                dr = cmd.ExecuteReader();
-                dgv.Rows.Clear();
-                while (dr.Read())
-                {
-                    dgv.Rows.Add();
-                    dgv.Rows[dgv.RowCount - 1].Cells[0].Value = dr[0].ToString();
-                    dgv.Rows[dgv.RowCount - 1].Cells[1].Value = dr[1].ToString();
-                    dgv.Rows[dgv.RowCount - 1].Cells[2].Value = dr[2].ToString();
-                    dgv.Rows[dgv.RowCount - 1].Cells[3].Value = dr[3].ToString();
-                    dgv.Rows[dgv.RowCount - 1].Cells[4].Value = dr[4].ToString();
-                    dgv.Rows[dgv.RowCount - 1].Cells[5].Value = dr[5].ToString();
-                    dgv.Rows[dgv.RowCount - 1].Cells[6].Value = dr[6].ToString();
-                    dgv.Rows[dgv.RowCount - 1].Cells[7].Value = dr[7].ToString();
-                    dgv.Rows[dgv.RowCount - 1].Cells[8].Value = dr[8].ToString();
-                    dgv.Rows[dgv.RowCount - 1].Cells[9].Value = dr[9].ToString();
-                    dgv.Rows[dgv.RowCount - 1].Cells[10].Value = dr[10].ToString();
-                    dgv.Rows[dgv.RowCount - 1].Cells[11].Value = dr[11].ToString();
-                    dgv.Rows[dgv.RowCount - 1].Cells[12].Value = dr[12].ToString();
-                    dgv.Rows[dgv.RowCount - 1].Cells[13].Value = dr[13].ToString();
-                }
-                con.Close();
-            }
-            catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-        }
         public void AfficherPatient(DataGridView dgv, TextBox txt, string motif, string type_patient, int idpatient)
         {
             //A revoir pour les colonnes abonnés
@@ -2287,7 +2264,7 @@ namespace SUMEDCO
                     con.Open();
                     try
                     {
-                        if (type_patient != "abonné")
+                        if (!type_patient.Contains("abonné"))
                         {
                             cmd = new SqlCommand("select Patient.idpatient,idpayeur,noms,sexe,age,adresse,situation,telephone,pers_contact,tel_contact,nomtype from Patient, Payeur, TypePatient where Patient.idpatient = Payeur.idpatient and Patient.idtype = TypePatient.idtype and noms like '" + txt.Text + "%'", con);
                             dr = cmd.ExecuteReader();
@@ -2438,16 +2415,14 @@ namespace SUMEDCO
         }
         public void TrouverPatient(FormFactureService f, FormFacturePatient p)
         {
-            p.type_patient = f.type_patient;
+            p.poste = f.poste;
+            p.type_facture = f.cboTypeFacture.Text;
             p.ShowDialog();
             if(p.fermeture_succes)
             {
                 f.idpayeur = int.Parse(p.dgvPatient.CurrentRow.Cells[1].Value.ToString());
                 f.txtPayeur.Text = p.dgvPatient.CurrentRow.Cells[2].Value.ToString();
-                if (p.type_patient == "abonné")
-                    f.numcomptediffere = TrouverNom("numcompte_entreprise", TrouverId("entreprise", p.dgvPatient.CurrentRow.Cells[12].Value.ToString()));
-                else if (p.type_patient != "abonné" && f.cboTypeFacture.Text == "différé")
-                    f.numcomptediffere = "4711";
+                f.numcomptediffere = p.numcomptediffere;
             }
             else
             {
@@ -2459,16 +2434,14 @@ namespace SUMEDCO
         }
         public void TrouverPatient(FormFactureProduit f, FormFacturePatient p)
         {
-            p.type_patient = f.type_patient;
+            p.poste = f.poste;
+            p.type_facture = f.cboTypeFacture.Text;
             p.ShowDialog();
             if (p.fermeture_succes)
             {
                 f.idpayeur = int.Parse(p.dgvPatient.CurrentRow.Cells[1].Value.ToString());
                 f.txtPayeur.Text = p.dgvPatient.CurrentRow.Cells[2].Value.ToString();
-                if (p.type_patient == "abonné")
-                    f.numcomptediffere = TrouverNom("numcompte_entreprise", TrouverId("entreprise", p.dgvPatient.CurrentRow.Cells[12].Value.ToString()));
-                else if (p.type_patient != "abonné" && f.cboTypeFacture.Text == "différé")
-                    f.numcomptediffere = "4711";
+                f.numcomptediffere = p.numcomptediffere;                
             }
             else
             {
@@ -2518,8 +2491,8 @@ namespace SUMEDCO
         }
         #endregion
 
-        #region AGENDA
-        public void ChargerAgenda(FormAgenda a, string motif)
+        #region AGENDA_NURSING
+        public void ChargerAgenda(FormAgendaNursing a, string motif)
         {
             con.Open();
             try
@@ -2699,7 +2672,7 @@ namespace SUMEDCO
                 MessageBox.Show("Au moins une valeur manque", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        public void AffecterCas(FormAgenda a, FormPriseSigneVital p)
+        public void AffecterCas(FormAgendaNursing a, FormPriseSigneVital p)
         {
             a.btnAffecter.Enabled = false;
             if(a.dgvAgenda.CurrentRow.Cells[4].Value.ToString() == "")
@@ -2721,7 +2694,7 @@ namespace SUMEDCO
                 MessageBox.Show("Ce cas est déjà effecté au médecin " + a.dgvAgenda.CurrentRow.Cells[4].Value.ToString(), "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        public void ReaffecterCas(FormAgenda a, FormPriseSigneVital p)
+        public void ReaffecterCas(FormAgendaNursing a, FormPriseSigneVital p)
         {
             a.btnReaffecter.Enabled = false;
             if (a.dgvAgenda.CurrentRow.Cells[4].Value.ToString() != "")
@@ -2749,41 +2722,239 @@ namespace SUMEDCO
                 MessageBox.Show("Ce cas n'est pas encore effecté à un médecin. Affectez-le" , "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        
-        List<string> listConsulte = new List<string>();
-        public void ImprimerAgenda(FormAgenda a, FormImpression imp)
+        #endregion
+
+        #region AGENDA_IMAGERIE
+        public void AfficherSousForm(MFormEchoRadio ec, FormAgendaEcho childForm)
         {
-            if (a.dgvAgenda.RowCount != 0)
-            {
-                //imp.Text = "SSM - Agenda patients à consulter";
-
-                //List<AgendaPatient> list = new List<AgendaPatient>();
-                //list.Clear();
-
-                //for (int i = 0; i < a.dgvAgenda.RowCount; i++)
-                //{
-                //    AgendaPatient ag = new AgendaPatient
-                //    {
-                //        id = list.Count + 1,
-                //        cas = a.dgvAgenda.Rows[i].Cells[1].Value.ToString(),
-                //        patient = a.dgvAgenda.Rows[i].Cells[4].Value.ToString(),
-                //        medecin = a.dgvAgenda.Rows[i].Cells[5].Value.ToString(),
-                //        caisse = a.dgvAgenda.Rows[i].Cells[6].Value.ToString(),
-                //        signesvit = a.dgvAgenda.Rows[i].Cells[7].Value.ToString(),
-                //        consultation = a.dgvAgenda.Rows[i].Cells[8].Value.ToString(),
-                //        dateentree = a.dgvAgenda.Rows[i].Cells[9].Value.ToString()
-                //    };
-                //    list.Add(ag);
-                //}
-                //rs.Name = "DataSet1";
-                //rs.Value = list;
-                //imp.reportViewer1.LocalReport.DataSources.Clear();
-                //imp.reportViewer1.LocalReport.DataSources.Add(rs);
-                //imp.reportViewer1.LocalReport.ReportEmbeddedResource = "SUMEDCO.AgendaPatient.rdlc";
-                //imp.ShowDialog();
+            if (activeForm != null)
+                activeForm.Close();
+            activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            ec.pnlChildForm.Controls.Add(childForm);
+            ec.pnlChildForm.Tag = childForm;
+            childForm.BringToFront();
+            childForm.idutilisateur = ec.idutilisateur;
+            childForm.Show();
+        }
+        public void AfficherAgendaEcho(FormAgendaEcho a)
+        {
+            con.Open();
+            try
+            {              
+                if (a.checkBox1.Checked)
+                {
+                    cmdtxt = @"SELECT r.idrecette, date_operation, noms 
+                    FROM Recette r
+                    JOIN RecetteService rs ON r.idrecette = rs.idrecette 
+                    JOIN Service s ON rs.idservice = s.idservice
+                    JOIN Payeur p ON r.idpayeur = p.idpayeur
+                    JOIN Patient pa ON p.idpatient = pa.idpatient
+                    WHERE r.statut_caisse = 'OK' AND s.numcompte IN ('706110', '706111') 
+                    AND date_operation = @daterecette
+                    UNION
+                    SELECT r.idrecette, date_operation, p.nompayeur 
+                    FROM Recette r 
+                    JOIN RecetteService rs ON r.idrecette = rs.idrecette 
+                    JOIN Service s ON rs.idservice = s.idservice
+                    JOIN Payeur p ON r.idpayeur = p.idpayeur
+                    WHERE r.statut_caisse = 'OK' AND s.numcompte IN ('706110', '706111') 
+                    AND date_operation = @daterecette";
+                    cmd = new SqlCommand(cmdtxt, con);
+                    cmd.Parameters.AddWithValue("@daterecette", DateTime.Now.ToShortDateString());
+                }
+                else
+                {
+                    if (a.cboService.Text == "" && a.txtNom.Text == "")
+                    {
+                        cmdtxt = @"SELECT r.idrecette, date_operation, noms 
+                        FROM Recette r
+                        JOIN RecetteService rs ON r.idrecette = rs.idrecette 
+                        JOIN Service s ON rs.idservice = s.idservice
+                        JOIN Payeur p ON r.idpayeur = p.idpayeur
+                        JOIN Patient pa ON p.idpatient = pa.idpatient
+                        WHERE r.statut_caisse = 'OK' AND s.numcompte IN ('706110', '706111') 
+                        AND date_operation BETWEEN @dateDe AND @dateA
+                        UNION
+                        SELECT r.idrecette, date_operation, p.nompayeur 
+                        FROM Recette r 
+                        JOIN RecetteService rs ON r.idrecette = rs.idrecette 
+                        JOIN Service s ON rs.idservice = s.idservice
+                        JOIN Payeur p ON r.idpayeur = p.idpayeur
+                        WHERE r.statut_caisse = 'OK' AND s.numcompte IN ('706110', '706111') 
+                        AND date_operation BETWEEN @dateDe AND @dateA";
+                        cmd = new SqlCommand(cmdtxt, con);
+                    }
+                    else if (a.cboService.Text != "" && a.txtNom.Text == "")
+                    {
+                        if (a.cboService.Text == "Radiologie")
+                            cmdtxt = @"SELECT r.idrecette, date_operation, noms 
+                            FROM Recette r
+                            JOIN RecetteService rs ON r.idrecette = rs.idrecette 
+                            JOIN Service s ON rs.idservice = s.idservice
+                            JOIN Payeur p ON r.idpayeur = p.idpayeur
+                            JOIN Patient pa ON p.idpatient = pa.idpatient
+                            WHERE r.statut_caisse = 'OK' AND s.numcompte IN ('706110') 
+                            AND date_operation BETWEEN @dateDe AND @dateA
+                            UNION
+                            SELECT r.idrecette, date_operation, p.nompayeur 
+                            FROM Recette r 
+                            JOIN RecetteService rs ON r.idrecette = rs.idrecette 
+                            JOIN Service s ON rs.idservice = s.idservice
+                            JOIN Payeur p ON r.idpayeur = p.idpayeur
+                            WHERE r.statut_caisse = 'OK' AND s.numcompte IN ('706110') 
+                            AND date_operation BETWEEN @dateDe AND @dateA";
+                        else
+                            cmdtxt = @"SELECT r.idrecette, date_operation, noms 
+                            FROM Recette r
+                            JOIN RecetteService rs ON r.idrecette = rs.idrecette 
+                            JOIN Service s ON rs.idservice = s.idservice
+                            JOIN Payeur p ON r.idpayeur = p.idpayeur
+                            JOIN Patient pa ON p.idpatient = pa.idpatient
+                            WHERE r.statut_caisse = 'OK' AND s.numcompte IN ('706111') 
+                            AND date_operation BETWEEN @dateDe AND @dateA
+                            UNION
+                            SELECT r.idrecette, date_operation, p.nompayeur 
+                            FROM Recette r 
+                            JOIN RecetteService rs ON r.idrecette = rs.idrecette 
+                            JOIN Service s ON rs.idservice = s.idservice
+                            JOIN Payeur p ON r.idpayeur = p.idpayeur
+                            WHERE r.statut_caisse = 'OK' AND s.numcompte IN ('706111') 
+                            AND date_operation BETWEEN @dateDe AND @dateA";
+                        cmd = new SqlCommand(cmdtxt, con);
+                    }
+                    else if (a.cboService.Text == "" && a.txtNom.Text != "")
+                    {
+                        cmdtxt = @"SELECT r.idrecette, date_operation, noms 
+                        FROM Recette r
+                        JOIN RecetteService rs ON r.idrecette = rs.idrecette 
+                        JOIN Service s ON rs.idservice = s.idservice
+                        JOIN Payeur p ON r.idpayeur = p.idpayeur
+                        JOIN Patient pa ON p.idpatient = pa.idpatient
+                        WHERE noms LIKE '"+a.txtNom.Text.Replace("'", "")+@"%' AND r.statut_caisse = 'OK' AND s.numcompte IN ('706110', '706111') 
+                        AND date_operation BETWEEN @dateDe AND @dateA
+                        UNION
+                        SELECT r.idrecette, date_operation, p.nompayeur 
+                        FROM Recette r 
+                        JOIN RecetteService rs ON r.idrecette = rs.idrecette 
+                        JOIN Service s ON rs.idservice = s.idservice
+                        JOIN Payeur p ON r.idpayeur = p.idpayeur
+                        WHERE p.nompayeur LIKE '" + a.txtNom.Text.Replace("'", "") + @"%' AND r.statut_caisse = 'OK' AND s.numcompte IN ('706110', '706111') 
+                        AND date_operation BETWEEN @dateDe AND @dateA";
+                        cmd = new SqlCommand(cmdtxt, con);
+                    }
+                    else if (a.cboService.Text != "" && a.txtNom.Text != "")
+                    {
+                        if (a.cboService.Text == "Radiologie")
+                            cmdtxt = @"SELECT r.idrecette, date_operation, noms 
+                            FROM Recette r
+                            JOIN RecetteService rs ON r.idrecette = rs.idrecette 
+                            JOIN Service s ON rs.idservice = s.idservice
+                            JOIN Payeur p ON r.idpayeur = p.idpayeur
+                            JOIN Patient pa ON p.idpatient = pa.idpatient
+                            WHERE noms LIKE '" + a.txtNom.Text.Replace("'", "") + @"%' AND r.statut_caisse = 'OK' AND s.numcompte IN ('706110') 
+                            AND date_operation BETWEEN @dateDe AND @dateA
+                            UNION
+                            SELECT r.idrecette, date_operation, p.nompayeur 
+                            FROM Recette r 
+                            JOIN RecetteService rs ON r.idrecette = rs.idrecette 
+                            JOIN Service s ON rs.idservice = s.idservice
+                            JOIN Payeur p ON r.idpayeur = p.idpayeur
+                            WHERE p.nompayeur LIKE '" + a.txtNom.Text.Replace("'", "") + @"%' AND r.statut_caisse = 'OK' AND s.numcompte IN ('706110') 
+                            AND date_operation BETWEEN @dateDe AND @dateA";
+                        else
+                            cmdtxt = @"SELECT r.idrecette, date_operation, noms 
+                            FROM Recette r
+                            JOIN RecetteService rs ON r.idrecette = rs.idrecette 
+                            JOIN Service s ON rs.idservice = s.idservice
+                            JOIN Payeur p ON r.idpayeur = p.idpayeur
+                            JOIN Patient pa ON p.idpatient = pa.idpatient
+                            WHERE noms LIKE '" + a.txtNom.Text.Replace("'", "") + @"%' AND r.statut_caisse = 'OK' AND s.numcompte IN ('706111') 
+                            AND date_operation BETWEEN @dateDe AND @dateA
+                            UNION
+                            SELECT r.idrecette, date_operation, p.nompayeur 
+                            FROM Recette r 
+                            JOIN RecetteService rs ON r.idrecette = rs.idrecette 
+                            JOIN Service s ON rs.idservice = s.idservice
+                            JOIN Payeur p ON r.idpayeur = p.idpayeur
+                            WHERE p.nompayeur LIKE '" + a.txtNom.Text.Replace("'", "") + @"%' AND r.statut_caisse = 'OK' AND s.numcompte IN ('706111') 
+                            AND date_operation BETWEEN @dateDe AND @dateA";
+                        cmd = new SqlCommand(cmdtxt, con);
+                    }
+                    cmd.Parameters.AddWithValue("@dateDe", a.dtpDateDe.Text);
+                    cmd.Parameters.AddWithValue("@dateA", a.dtpDateA.Text);
+                }
+                dr = cmd.ExecuteReader();
+                a.dgvPatient.Rows.Clear();
+                a.dgvService.Rows.Clear();
+                while (dr.Read())
+                {
+                    a.dgvPatient.Rows.Add();
+                    a.dgvPatient.Rows[a.dgvPatient.RowCount - 1].Cells[0].Value = a.dgvPatient.RowCount;
+                    a.dgvPatient.Rows[a.dgvPatient.RowCount - 1].Cells[1].Value = dr[0].ToString();
+                    a.dgvPatient.Rows[a.dgvPatient.RowCount - 1].Cells[2].Value = dr[1].ToString();
+                    a.dgvPatient.Rows[a.dgvPatient.RowCount - 1].Cells[3].Value = dr[2].ToString();
+                }
             }
-            else
-                MessageBox.Show("Aucune ligne n'a été trouvée", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            catch (Exception ex)
+            {
+                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            con.Close();
+        }
+        public void AfficherServiceAgenda(FormAgendaEcho a)
+        {
+            con.Open();
+            try
+            {
+                cmdtxt = @"SELECT rs.idservice, nomservice, servi 
+                FROM RecetteService rs
+                JOIN Recette r ON r.idrecette = rs.idrecette 
+                JOIN Service s ON rs.idservice = s.idservice
+                WHERE r.idrecette = @idrecette AND s.numcompte IN ('706110', '706111')";
+                cmd = new SqlCommand(cmdtxt, con);
+                cmd.Parameters.AddWithValue("@idrecette", Convert.ToInt32(a.dgvPatient.CurrentRow.Cells[1].Value));
+                dr = cmd.ExecuteReader();
+                a.dgvService.Rows.Clear();
+                while (dr.Read())
+                {
+                    a.dgvService.Rows.Add();
+                    a.dgvService.Rows[a.dgvService.RowCount - 1].Cells[0].Value = dr[0].ToString();
+                    a.dgvService.Rows[a.dgvService.RowCount - 1].Cells[1].Value = dr[1].ToString();
+                    a.dgvService.Rows[a.dgvService.RowCount - 1].Cells[2].Value = dr[2].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            con.Close();
+        }
+        public void ServirCasEcho(FormAgendaEcho a)
+        {
+            a.btnServir.Enabled = false;
+            con.Open();
+            SqlTransaction tx = con.BeginTransaction();
+            try
+            {
+                cmd = new SqlCommand("UPDATE RecetteService SET servi = 'OK', idutilisateur = @idutilisateur WHERE idrecette = @idrecette AND idservice = @idservice", con);
+                cmd.Parameters.AddWithValue("@idrecette", Convert.ToInt32(a.dgvPatient.CurrentRow.Cells[1].Value));
+                cmd.Parameters.AddWithValue("@idservice", Convert.ToInt32(a.dgvService.CurrentRow.Cells[0].Value));
+                cmd.Parameters.AddWithValue("@idutilisateur", Convert.ToInt32(a.dgvService.CurrentRow.Cells[0].Value));
+                cmd.Transaction = tx;
+                cmd.ExecuteNonQuery();
+                tx.Commit();
+                MessageBox.Show("Servi avec succès", "Mise à jour", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            con.Close();
+            //Recharger les services
+            AfficherServiceAgenda(a);
         }
         #endregion
 
@@ -3006,136 +3177,6 @@ namespace SUMEDCO
         }
         #endregion
 
-        #region PRESCRIPTION
-        public void AjouterLigne(FormPrescription f)
-        {
-            f.txtTotal.Text = "0";
-            f.dgvFacture.Rows.Add();
-            f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[0].Value = f.idstock;
-            f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[1].Value = f.dgvFacture.RowCount;
-            f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[2].Value = string.Format("{0} {1} {2} {3} {4}", f.cboProduit.Text, f.txtConditionnement.Text, f.txtDosage.Text, f.txtForme.Text, f.txtNumLot.Text);
-            f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[3].Value = f.prixunitaire;
-            if (f.txtQte.Text == "") f.txtQte.Text = "1";
-            f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[4].Value = f.txtQte.Text;
-            f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[5].Value = double.Parse(f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[3].Value.ToString()) * int.Parse(f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[4].Value.ToString());
-            for (int i = 0; i < f.dgvFacture.RowCount; i++)
-            {
-                f.txtTotal.Text = (double.Parse(f.txtTotal.Text) + double.Parse(f.dgvFacture.Rows[i].Cells[5].Value.ToString())).ToString("0.00");
-            }
-            Annuler(f);
-        }
-        public void ValiderLigne(FormPrescription f)
-        {
-            if (f.cboStock.Text != "")
-            {
-                f.ajoutvalide = true;
-                if (f.dgvFacture.RowCount > 0)
-                {
-                    for (int i = 0; i < f.dgvFacture.RowCount; i++)
-                    {
-                        if (f.dgvFacture.Rows[i].Cells[0].Value.ToString() == f.idstock.ToString())
-                        {
-                            MessageBox.Show("Ce stock est déjà affecté à la liste", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            i += f.dgvFacture.RowCount;
-                            f.ajoutvalide = false;
-                        }
-                    }
-                    if (f.ajoutvalide)
-                        AjouterLigne(f);
-                }
-                else
-                    AjouterLigne(f);
-            }
-            else
-            {
-                MessageBox.Show("Aucun stock d'un produit n'a été sélectionné", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                f.cboStock.Select();
-            }
-        }
-        public void Prescription(FormMaladieDiagnostic md, FormPrescription p)
-        {
-            p.idconsultation = md.idconsultation;
-            p.idmedecin = md.idmedecin;
-            p.Show();
-            md.Close();
-        }
-        public void Annuler(FormPrescription p)
-        {
-            p.cboProduit.DropDownStyle = ComboBoxStyle.DropDown;
-            p.cboProduit.SelectedText = "";
-            p.cboProduit.DropDownStyle = ComboBoxStyle.DropDownList;
-            p.cboStock.DropDownStyle = ComboBoxStyle.DropDown;
-            p.cboStock.SelectedText = "";
-            p.cboStock.DropDownStyle = ComboBoxStyle.DropDownList;
-            p.idstock = 0;
-            p.txtConditionnement.Text = "";
-            p.txtDosage.Text = "";
-            p.txtForme.Text = "";
-            p.txtNumLot.Text = "";
-            p.lblDate.Text = "Expire en ";
-            p.txtQte.Text = "1";
-        }
-
-        //public void GenererBonExamen(FormPrescription p, FormImpression imp)
-        //{
-        //    imp.idconsultation = p.idconsultation;
-        //    imp.patient = p.txtPatient.Text;
-        //    imp.idmedecin = p.idmedecin;
-        //    imp.medecin = p.txtMedecin.Text;
-        //    imp.numfiche = string.Format("{0}-{1}-{2}", DateConsultation(imp.idconsultation).Substring(0, 10), imp.idconsultation, imp.idmedecin);
-
-        //    List<BonExamen> list = new List<BonExamen>();
-        //    list.Clear();
-
-        //    for (int i = 0; i < p.dgvFacture.RowCount; i++)
-        //    {
-        //        BonExamen be = new BonExamen
-        //        {
-        //            numexamen = p.dgvFacture.Rows[i].Cells[0].Value.ToString(),
-        //            examen = p.dgvFacture.Rows[i].Cells[1].Value.ToString(),
-        //        };
-        //        list.Add(be);
-        //    }
-
-        //    ReportParameter[] rparams = new ReportParameter[]
-        //    {
-        //        new ReportParameter("numfiche", imp.numfiche),
-        //        new ReportParameter("patient", imp.patient),
-        //        new ReportParameter("medecin", imp.medecin)
-        //    };
-        //    rs.Name = "DataSet1";
-        //    rs.Value = list;
-        //    imp.reportViewer1.LocalReport.DataSources.Clear();
-        //    imp.reportViewer1.LocalReport.DataSources.Add(rs);
-        //    imp.reportViewer1.LocalReport.ReportEmbeddedResource = "SUMEDCO.BonExamen.rdlc";
-        //    imp.reportViewer1.LocalReport.SetParameters(rparams);
-        //    imp.MaximumSize = imp.Size;
-        //    imp.MaximizeBox = false;
-        //    imp.MinimizeBox = false;
-        //    imp.ShowDialog();
-        //    p.Close();
-        //}
-        public void MesConsultations(FormPrescription p, FormConsultation c)
-        {
-            p.txtMedecin.Text = TrouverNom("medecin", p.idmedecin);
-            c.MaximizeBox = false;
-            c.MinimizeBox = false;
-            c.MaximumSize = c.Size;
-            c.MinimumSize = c.Size;
-            c.idmedecin = p.idmedecin;
-            c.btnQuitter.Visible = false;
-            c.Text = "SSM - Mes consultations";
-            c.ShowDialog();
-            if (c.fermeture_succes)
-            {
-                p.idconsultation = c.idconsultation;
-                p.txtPatient.Text = TrouverNom("patient", c.idpatient);
-            }
-            else p.Close();
-            c.Close();
-        }
-
-        #endregion
 
         #region MALADIE_DIAGNOSTIC
         public void MaladieDiagnostic(FormPriseSigneVital exa, FormMaladieDiagnostic md)
@@ -4064,7 +4105,7 @@ namespace SUMEDCO
                 }
             }
         }
-        #endregion
+        #endregion       
     }
     public class BonExamen
     {

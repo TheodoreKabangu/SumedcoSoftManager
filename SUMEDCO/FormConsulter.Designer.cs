@@ -507,14 +507,14 @@
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.dgvPatient);
             this.tabPage1.Controls.Add(this.btnPlainte2);
             this.tabPage1.Controls.Add(this.dgvSigneVital);
-            this.tabPage1.Location = new System.Drawing.Point(4, 27);
+            this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 34);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(695, 393);
+            this.tabPage1.Size = new System.Drawing.Size(695, 386);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             // 
@@ -526,7 +526,7 @@
             this.label3.Location = new System.Drawing.Point(292, 17);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(187, 20);
+            this.label3.Size = new System.Drawing.Size(283, 29);
             this.label3.TabIndex = 674;
             this.label3.Text = "Valeurs des signes vitaux";
             // 
@@ -538,7 +538,7 @@
             this.label1.Location = new System.Drawing.Point(4, 17);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(138, 20);
+            this.label1.Size = new System.Drawing.Size(203, 29);
             this.label1.TabIndex = 674;
             this.label1.Text = "Identité du patient";
             // 
@@ -547,15 +547,17 @@
             this.dgvPatient.AllowUserToAddRows = false;
             this.dgvPatient.AllowUserToDeleteRows = false;
             this.dgvPatient.AllowUserToOrderColumns = true;
+            this.dgvPatient.AllowUserToResizeColumns = false;
+            this.dgvPatient.AllowUserToResizeRows = false;
             this.dgvPatient.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.dgvPatient.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvPatient.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvPatient.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPatient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -570,7 +572,8 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvPatient.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvPatient.GridColor = System.Drawing.Color.RoyalBlue;
+            this.dgvPatient.EnableHeadersVisualStyles = false;
+            this.dgvPatient.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.dgvPatient.Location = new System.Drawing.Point(8, 40);
             this.dgvPatient.MultiSelect = false;
             this.dgvPatient.Name = "dgvPatient";
@@ -621,15 +624,17 @@
             this.dgvSigneVital.AllowUserToAddRows = false;
             this.dgvSigneVital.AllowUserToDeleteRows = false;
             this.dgvSigneVital.AllowUserToOrderColumns = true;
+            this.dgvSigneVital.AllowUserToResizeColumns = false;
+            this.dgvSigneVital.AllowUserToResizeRows = false;
             this.dgvSigneVital.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.dgvSigneVital.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvSigneVital.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvSigneVital.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvSigneVital.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -646,6 +651,8 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvSigneVital.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvSigneVital.EnableHeadersVisualStyles = false;
+            this.dgvSigneVital.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.dgvSigneVital.Location = new System.Drawing.Point(296, 40);
             this.dgvSigneVital.MultiSelect = false;
             this.dgvSigneVital.Name = "dgvSigneVital";
@@ -697,10 +704,10 @@
             this.tabPage2.Controls.Add(this.btnRetirerPlainte);
             this.tabPage2.Controls.Add(this.dgvPlainte);
             this.tabPage2.Controls.Add(this.btnPlusPlainte);
-            this.tabPage2.Location = new System.Drawing.Point(4, 27);
+            this.tabPage2.Location = new System.Drawing.Point(4, 34);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(695, 366);
+            this.tabPage2.Size = new System.Drawing.Size(695, 386);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             // 
@@ -794,7 +801,7 @@
             this.label2.Location = new System.Drawing.Point(5, 38);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(154, 18);
+            this.label2.Size = new System.Drawing.Size(228, 26);
             this.label2.TabIndex = 657;
             this.label2.Text = "Plainte(s) principale(s)";
             // 
@@ -920,10 +927,10 @@
             this.tabPage3.Controls.Add(this.btnPlusHisto);
             this.tabPage3.Controls.Add(this.label6);
             this.tabPage3.Controls.Add(this.dgvHisto);
-            this.tabPage3.Location = new System.Drawing.Point(4, 27);
+            this.tabPage3.Location = new System.Drawing.Point(4, 34);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(695, 366);
+            this.tabPage3.Size = new System.Drawing.Size(695, 386);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "tabPage3";
             // 
@@ -1077,7 +1084,7 @@
             this.label6.Location = new System.Drawing.Point(5, 41);
             this.label6.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(165, 18);
+            this.label6.Size = new System.Drawing.Size(246, 26);
             this.label6.TabIndex = 662;
             this.label6.Text = "Historique de la maladie";
             // 
@@ -1144,10 +1151,10 @@
             this.tabPage4.Controls.Add(this.btnPlusAntecedent);
             this.tabPage4.Controls.Add(this.label7);
             this.tabPage4.Controls.Add(this.dgvAntecedent);
-            this.tabPage4.Location = new System.Drawing.Point(4, 27);
+            this.tabPage4.Location = new System.Drawing.Point(4, 34);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(695, 366);
+            this.tabPage4.Size = new System.Drawing.Size(695, 386);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "tabPage4";
             // 
@@ -1301,7 +1308,7 @@
             this.label7.Location = new System.Drawing.Point(5, 39);
             this.label7.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(156, 18);
+            this.label7.Size = new System.Drawing.Size(233, 26);
             this.label7.TabIndex = 662;
             this.label7.Text = "Antécédents médicaux";
             // 
@@ -1368,10 +1375,10 @@
             this.tabPage5.Controls.Add(this.btnPlusComplement);
             this.tabPage5.Controls.Add(this.label8);
             this.tabPage5.Controls.Add(this.dgvComplement);
-            this.tabPage5.Location = new System.Drawing.Point(4, 27);
+            this.tabPage5.Location = new System.Drawing.Point(4, 34);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(695, 366);
+            this.tabPage5.Size = new System.Drawing.Size(695, 386);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "tabPage5";
             // 
@@ -1525,7 +1532,7 @@
             this.label8.Location = new System.Drawing.Point(5, 39);
             this.label8.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(177, 18);
+            this.label8.Size = new System.Drawing.Size(261, 26);
             this.label8.TabIndex = 662;
             this.label8.Text = "Complément d\'anamnèse";
             // 
@@ -1591,10 +1598,10 @@
             this.tabPage6.Controls.Add(this.btnRetirerExamPhys);
             this.tabPage6.Controls.Add(this.label9);
             this.tabPage6.Controls.Add(this.dgvExamPhys);
-            this.tabPage6.Location = new System.Drawing.Point(4, 27);
+            this.tabPage6.Location = new System.Drawing.Point(4, 34);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(695, 366);
+            this.tabPage6.Size = new System.Drawing.Size(695, 386);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "tabPage6";
             // 
@@ -1728,7 +1735,7 @@
             this.label9.Location = new System.Drawing.Point(5, 39);
             this.label9.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(164, 18);
+            this.label9.Size = new System.Drawing.Size(242, 26);
             this.label9.TabIndex = 662;
             this.label9.Text = "Examen(s) physique(s) ";
             // 
@@ -1806,10 +1813,10 @@
             this.tabPage7.Controls.Add(this.btnPlusPrediagnostic);
             this.tabPage7.Controls.Add(this.label10);
             this.tabPage7.Controls.Add(this.dgvPrediagnostic);
-            this.tabPage7.Location = new System.Drawing.Point(4, 27);
+            this.tabPage7.Location = new System.Drawing.Point(4, 34);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(695, 366);
+            this.tabPage7.Size = new System.Drawing.Size(695, 386);
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "tabPage7";
             // 
@@ -1963,7 +1970,7 @@
             this.label10.Location = new System.Drawing.Point(5, 39);
             this.label10.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(98, 18);
+            this.label10.Size = new System.Drawing.Size(144, 26);
             this.label10.TabIndex = 662;
             this.label10.Text = "Prédiagnostic";
             // 
@@ -2030,10 +2037,10 @@
             this.tabPage8.Controls.Add(this.btnRetirerLabo);
             this.tabPage8.Controls.Add(this.label11);
             this.tabPage8.Controls.Add(this.dgvLabo);
-            this.tabPage8.Location = new System.Drawing.Point(4, 27);
+            this.tabPage8.Location = new System.Drawing.Point(4, 34);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(695, 366);
+            this.tabPage8.Size = new System.Drawing.Size(695, 386);
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "tabPage8";
             // 
@@ -2102,7 +2109,7 @@
             this.txtTotal.Location = new System.Drawing.Point(519, 342);
             this.txtTotal.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(128, 14);
+            this.txtTotal.Size = new System.Drawing.Size(128, 21);
             this.txtTotal.TabIndex = 677;
             this.txtTotal.Text = "0";
             this.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -2114,7 +2121,7 @@
             this.label5.Location = new System.Drawing.Point(438, 342);
             this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(69, 15);
+            this.label5.Size = new System.Drawing.Size(105, 22);
             this.label5.TabIndex = 676;
             this.label5.Text = "Total Gén. :";
             // 
@@ -2206,7 +2213,7 @@
             this.label11.Location = new System.Drawing.Point(5, 40);
             this.label11.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(170, 18);
+            this.label11.Size = new System.Drawing.Size(252, 26);
             this.label11.TabIndex = 667;
             this.label11.Text = "Examen(s) paracliniques";
             // 
@@ -2285,10 +2292,10 @@
             this.tabPage9.Controls.Add(this.btnPlusDiagnostic);
             this.tabPage9.Controls.Add(this.label16);
             this.tabPage9.Controls.Add(this.dgvDiagnostic);
-            this.tabPage9.Location = new System.Drawing.Point(4, 27);
+            this.tabPage9.Location = new System.Drawing.Point(4, 34);
             this.tabPage9.Name = "tabPage9";
             this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage9.Size = new System.Drawing.Size(695, 366);
+            this.tabPage9.Size = new System.Drawing.Size(695, 386);
             this.tabPage9.TabIndex = 8;
             this.tabPage9.Text = "tabPage9";
             // 
@@ -2442,7 +2449,7 @@
             this.label16.Location = new System.Drawing.Point(5, 39);
             this.label16.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(86, 18);
+            this.label16.Size = new System.Drawing.Size(125, 26);
             this.label16.TabIndex = 673;
             this.label16.Text = "Diagnostics";
             // 
@@ -2531,10 +2538,10 @@
             this.tabPage10.Controls.Add(this.dgvAutrePresc);
             this.tabPage10.Controls.Add(this.dgvPresc);
             this.tabPage10.Controls.Add(this.label17);
-            this.tabPage10.Location = new System.Drawing.Point(4, 27);
+            this.tabPage10.Location = new System.Drawing.Point(4, 34);
             this.tabPage10.Name = "tabPage10";
             this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage10.Size = new System.Drawing.Size(695, 366);
+            this.tabPage10.Size = new System.Drawing.Size(695, 386);
             this.tabPage10.TabIndex = 9;
             this.tabPage10.Text = "tabPage10";
             // 
@@ -2899,7 +2906,7 @@
             this.label13.Location = new System.Drawing.Point(10, 212);
             this.label13.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(149, 18);
+            this.label13.Size = new System.Drawing.Size(218, 26);
             this.label13.TabIndex = 752;
             this.label13.Text = "Autres prescription(s)";
             // 
@@ -3039,7 +3046,7 @@
             this.label17.Location = new System.Drawing.Point(10, 24);
             this.label17.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(134, 18);
+            this.label17.Size = new System.Drawing.Size(194, 26);
             this.label17.TabIndex = 698;
             this.label17.Text = "Produits prescrit(s)";
             // 
@@ -3054,7 +3061,7 @@
             // 
             // FormConsulter
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(703, 451);

@@ -69,6 +69,8 @@
             this.dgvPrise.AllowUserToAddRows = false;
             this.dgvPrise.AllowUserToDeleteRows = false;
             this.dgvPrise.AllowUserToOrderColumns = true;
+            this.dgvPrise.AllowUserToResizeColumns = false;
+            this.dgvPrise.AllowUserToResizeRows = false;
             this.dgvPrise.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -76,11 +78,11 @@
             this.dgvPrise.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvPrise.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvPrise.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPrise.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -97,6 +99,8 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvPrise.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvPrise.EnableHeadersVisualStyles = false;
+            this.dgvPrise.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.dgvPrise.Location = new System.Drawing.Point(12, 74);
             this.dgvPrise.MultiSelect = false;
             this.dgvPrise.Name = "dgvPrise";
@@ -141,7 +145,7 @@
             this.dtpDateA.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDateA.Location = new System.Drawing.Point(162, 46);
             this.dtpDateA.Name = "dtpDateA";
-            this.dtpDateA.Size = new System.Drawing.Size(87, 21);
+            this.dtpDateA.Size = new System.Drawing.Size(87, 28);
             this.dtpDateA.TabIndex = 656;
             // 
             // label2
@@ -150,7 +154,7 @@
             this.label2.Location = new System.Drawing.Point(138, 49);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(20, 15);
+            this.label2.Size = new System.Drawing.Size(30, 22);
             this.label2.TabIndex = 658;
             this.label2.Text = "à :";
             // 
@@ -159,7 +163,7 @@
             this.dtpDateDe.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDateDe.Location = new System.Drawing.Point(46, 46);
             this.dtpDateDe.Name = "dtpDateDe";
-            this.dtpDateDe.Size = new System.Drawing.Size(87, 21);
+            this.dtpDateDe.Size = new System.Drawing.Size(87, 28);
             this.dtpDateDe.TabIndex = 657;
             // 
             // label1
@@ -168,7 +172,7 @@
             this.label1.Location = new System.Drawing.Point(9, 47);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 15);
+            this.label1.Size = new System.Drawing.Size(43, 22);
             this.label1.TabIndex = 659;
             this.label1.Text = "De :";
             // 
@@ -264,7 +268,7 @@
             this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDate.Location = new System.Drawing.Point(375, 74);
             this.dtpDate.Name = "dtpDate";
-            this.dtpDate.Size = new System.Drawing.Size(94, 21);
+            this.dtpDate.Size = new System.Drawing.Size(94, 28);
             this.dtpDate.TabIndex = 683;
             // 
             // label4
@@ -274,7 +278,7 @@
             this.label4.Location = new System.Drawing.Point(289, 79);
             this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(74, 15);
+            this.label4.Size = new System.Drawing.Size(110, 22);
             this.label4.TabIndex = 682;
             this.label4.Text = "Consulté le :";
             // 
@@ -283,9 +287,9 @@
             this.checkBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBox2.AutoSize = true;
             this.checkBox2.ForeColor = System.Drawing.Color.MediumBlue;
-            this.checkBox2.Location = new System.Drawing.Point(475, 74);
+            this.checkBox2.Location = new System.Drawing.Point(404, 74);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(162, 19);
+            this.checkBox2.Size = new System.Drawing.Size(233, 26);
             this.checkBox2.TabIndex = 681;
             this.checkBox2.Text = "Renseigner le répondant";
             this.checkBox2.UseVisualStyleBackColor = true;
@@ -299,7 +303,7 @@
             this.txtRepondant.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtRepondant.MaxLength = 75;
             this.txtRepondant.Name = "txtRepondant";
-            this.txtRepondant.Size = new System.Drawing.Size(314, 21);
+            this.txtRepondant.Size = new System.Drawing.Size(314, 28);
             this.txtRepondant.TabIndex = 679;
             // 
             // label3
@@ -309,7 +313,7 @@
             this.label3.Location = new System.Drawing.Point(289, 106);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(74, 15);
+            this.label3.Size = new System.Drawing.Size(108, 22);
             this.label3.TabIndex = 680;
             this.label3.Text = "Répondant :";
             // 
@@ -328,7 +332,7 @@
             "parenté"});
             this.cboLienRepondant.Location = new System.Drawing.Point(375, 132);
             this.cboLienRepondant.Name = "cboLienRepondant";
-            this.cboLienRepondant.Size = new System.Drawing.Size(276, 23);
+            this.cboLienRepondant.Size = new System.Drawing.Size(276, 30);
             this.cboLienRepondant.Sorted = true;
             this.cboLienRepondant.TabIndex = 685;
             // 
@@ -339,7 +343,7 @@
             this.label14.Location = new System.Drawing.Point(289, 135);
             this.label14.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(37, 15);
+            this.label14.Size = new System.Drawing.Size(54, 22);
             this.label14.TabIndex = 686;
             this.label14.Text = "Lien :";
             // 
@@ -348,17 +352,19 @@
             this.dgvPatient.AllowUserToAddRows = false;
             this.dgvPatient.AllowUserToDeleteRows = false;
             this.dgvPatient.AllowUserToOrderColumns = true;
+            this.dgvPatient.AllowUserToResizeColumns = false;
+            this.dgvPatient.AllowUserToResizeRows = false;
             this.dgvPatient.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvPatient.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.dgvPatient.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvPatient.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvPatient.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvPatient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -373,7 +379,8 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvPatient.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvPatient.GridColor = System.Drawing.Color.RoyalBlue;
+            this.dgvPatient.EnableHeadersVisualStyles = false;
+            this.dgvPatient.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.dgvPatient.Location = new System.Drawing.Point(292, 162);
             this.dgvPatient.MultiSelect = false;
             this.dgvPatient.Name = "dgvPatient";
@@ -401,7 +408,7 @@
             // 
             // FormConsulterPrise
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(703, 451);

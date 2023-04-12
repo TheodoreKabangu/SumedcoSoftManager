@@ -125,6 +125,8 @@
             this.dgvActif.AllowUserToAddRows = false;
             this.dgvActif.AllowUserToDeleteRows = false;
             this.dgvActif.AllowUserToOrderColumns = true;
+            this.dgvActif.AllowUserToResizeColumns = false;
+            this.dgvActif.AllowUserToResizeRows = false;
             this.dgvActif.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -132,11 +134,11 @@
             this.dgvActif.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvActif.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvActif.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvActif.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -157,7 +159,8 @@
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvActif.DefaultCellStyle = dataGridViewCellStyle7;
-            this.dgvActif.GridColor = System.Drawing.Color.RoyalBlue;
+            this.dgvActif.EnableHeadersVisualStyles = false;
+            this.dgvActif.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.dgvActif.Location = new System.Drawing.Point(8, 0);
             this.dgvActif.MultiSelect = false;
             this.dgvActif.Name = "dgvActif";
@@ -246,6 +249,8 @@
             this.dgvPassif.AllowUserToAddRows = false;
             this.dgvPassif.AllowUserToDeleteRows = false;
             this.dgvPassif.AllowUserToOrderColumns = true;
+            this.dgvPassif.AllowUserToResizeColumns = false;
+            this.dgvPassif.AllowUserToResizeRows = false;
             this.dgvPassif.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -253,11 +258,11 @@
             this.dgvPassif.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvPassif.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvPassif.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvPassif.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -275,7 +280,8 @@
             dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvPassif.DefaultCellStyle = dataGridViewCellStyle11;
-            this.dgvPassif.GridColor = System.Drawing.Color.RoyalBlue;
+            this.dgvPassif.EnableHeadersVisualStyles = false;
+            this.dgvPassif.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.dgvPassif.Location = new System.Drawing.Point(5, 0);
             this.dgvPassif.MultiSelect = false;
             this.dgvPassif.Name = "dgvPassif";

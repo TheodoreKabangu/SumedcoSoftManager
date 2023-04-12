@@ -47,6 +47,8 @@
             this.btnRecette = new System.Windows.Forms.Button();
             this.btnReception = new System.Windows.Forms.Button();
             this.bunifuElipse2 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.btnImagerie = new System.Windows.Forms.Button();
+            this.btnLabo = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.pnlMenu.SuspendLayout();
             this.SuspendLayout();
@@ -102,7 +104,7 @@
             this.label10.Dock = System.Windows.Forms.DockStyle.Top;
             this.label10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label10.Font = new System.Drawing.Font("Trebuchet MS", 24F);
-            this.label10.ForeColor = System.Drawing.Color.MediumBlue;
+            this.label10.ForeColor = System.Drawing.Color.Navy;
             this.label10.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label10.Location = new System.Drawing.Point(0, 77);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -117,15 +119,17 @@
             this.pnlMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.pnlMenu.AutoScroll = true;
             this.pnlMenu.Controls.Add(this.btnAdmin);
-            this.pnlMenu.Controls.Add(this.btnAbonne);
             this.pnlMenu.Controls.Add(this.btnStock);
             this.pnlMenu.Controls.Add(this.btnPharma);
             this.pnlMenu.Controls.Add(this.btnCompta);
             this.pnlMenu.Controls.Add(this.btnDepense);
+            this.pnlMenu.Controls.Add(this.btnLabo);
             this.pnlMenu.Controls.Add(this.btnMalade);
             this.pnlMenu.Controls.Add(this.btnInfirmerie);
+            this.pnlMenu.Controls.Add(this.btnImagerie);
             this.pnlMenu.Controls.Add(this.btnRecette);
             this.pnlMenu.Controls.Add(this.btnReception);
+            this.pnlMenu.Controls.Add(this.btnAbonne);
             this.pnlMenu.Location = new System.Drawing.Point(78, 148);
             this.pnlMenu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlMenu.Name = "pnlMenu";
@@ -145,7 +149,7 @@
             this.btnAdmin.Image = ((System.Drawing.Image)(resources.GetObject("btnAdmin.Image")));
             this.btnAdmin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAdmin.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnAdmin.Location = new System.Drawing.Point(0, 621);
+            this.btnAdmin.Location = new System.Drawing.Point(0, 759);
             this.btnAdmin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnAdmin.Name = "btnAdmin";
             this.btnAdmin.Size = new System.Drawing.Size(362, 69);
@@ -169,7 +173,7 @@
             this.btnAbonne.Image = ((System.Drawing.Image)(resources.GetObject("btnAbonne.Image")));
             this.btnAbonne.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAbonne.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnAbonne.Location = new System.Drawing.Point(0, 552);
+            this.btnAbonne.Location = new System.Drawing.Point(0, 0);
             this.btnAbonne.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnAbonne.Name = "btnAbonne";
             this.btnAbonne.Size = new System.Drawing.Size(362, 69);
@@ -193,7 +197,7 @@
             this.btnStock.Image = ((System.Drawing.Image)(resources.GetObject("btnStock.Image")));
             this.btnStock.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnStock.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnStock.Location = new System.Drawing.Point(0, 483);
+            this.btnStock.Location = new System.Drawing.Point(0, 690);
             this.btnStock.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnStock.Name = "btnStock";
             this.btnStock.Size = new System.Drawing.Size(362, 69);
@@ -217,7 +221,7 @@
             this.btnPharma.Image = ((System.Drawing.Image)(resources.GetObject("btnPharma.Image")));
             this.btnPharma.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPharma.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnPharma.Location = new System.Drawing.Point(0, 414);
+            this.btnPharma.Location = new System.Drawing.Point(0, 621);
             this.btnPharma.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnPharma.Name = "btnPharma";
             this.btnPharma.Size = new System.Drawing.Size(362, 69);
@@ -241,7 +245,7 @@
             this.btnCompta.Image = ((System.Drawing.Image)(resources.GetObject("btnCompta.Image")));
             this.btnCompta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCompta.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnCompta.Location = new System.Drawing.Point(0, 345);
+            this.btnCompta.Location = new System.Drawing.Point(0, 552);
             this.btnCompta.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCompta.Name = "btnCompta";
             this.btnCompta.Size = new System.Drawing.Size(362, 69);
@@ -265,7 +269,7 @@
             this.btnDepense.Image = ((System.Drawing.Image)(resources.GetObject("btnDepense.Image")));
             this.btnDepense.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDepense.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnDepense.Location = new System.Drawing.Point(0, 276);
+            this.btnDepense.Location = new System.Drawing.Point(0, 483);
             this.btnDepense.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnDepense.Name = "btnDepense";
             this.btnDepense.Size = new System.Drawing.Size(362, 69);
@@ -289,7 +293,7 @@
             this.btnMalade.Image = ((System.Drawing.Image)(resources.GetObject("btnMalade.Image")));
             this.btnMalade.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMalade.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnMalade.Location = new System.Drawing.Point(0, 207);
+            this.btnMalade.Location = new System.Drawing.Point(0, 345);
             this.btnMalade.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnMalade.Name = "btnMalade";
             this.btnMalade.Size = new System.Drawing.Size(362, 69);
@@ -311,7 +315,7 @@
             this.btnInfirmerie.ForeColor = System.Drawing.Color.Black;
             this.btnInfirmerie.Image = ((System.Drawing.Image)(resources.GetObject("btnInfirmerie.Image")));
             this.btnInfirmerie.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInfirmerie.Location = new System.Drawing.Point(0, 138);
+            this.btnInfirmerie.Location = new System.Drawing.Point(0, 276);
             this.btnInfirmerie.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnInfirmerie.Name = "btnInfirmerie";
             this.btnInfirmerie.Size = new System.Drawing.Size(362, 69);
@@ -335,7 +339,7 @@
             this.btnRecette.Image = ((System.Drawing.Image)(resources.GetObject("btnRecette.Image")));
             this.btnRecette.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRecette.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnRecette.Location = new System.Drawing.Point(0, 69);
+            this.btnRecette.Location = new System.Drawing.Point(0, 138);
             this.btnRecette.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnRecette.Name = "btnRecette";
             this.btnRecette.Size = new System.Drawing.Size(362, 69);
@@ -357,7 +361,7 @@
             this.btnReception.ForeColor = System.Drawing.Color.Black;
             this.btnReception.Image = ((System.Drawing.Image)(resources.GetObject("btnReception.Image")));
             this.btnReception.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReception.Location = new System.Drawing.Point(0, 0);
+            this.btnReception.Location = new System.Drawing.Point(0, 69);
             this.btnReception.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnReception.Name = "btnReception";
             this.btnReception.Size = new System.Drawing.Size(362, 69);
@@ -372,6 +376,49 @@
             // 
             this.bunifuElipse2.ElipseRadius = 20;
             this.bunifuElipse2.TargetControl = this.btnExit;
+            // 
+            // btnImagerie
+            // 
+            this.btnImagerie.BackColor = System.Drawing.Color.Transparent;
+            this.btnImagerie.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnImagerie.FlatAppearance.BorderSize = 0;
+            this.btnImagerie.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnImagerie.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImagerie.Font = new System.Drawing.Font("Century Gothic", 12F);
+            this.btnImagerie.ForeColor = System.Drawing.Color.Black;
+            this.btnImagerie.Image = ((System.Drawing.Image)(resources.GetObject("btnImagerie.Image")));
+            this.btnImagerie.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnImagerie.Location = new System.Drawing.Point(0, 207);
+            this.btnImagerie.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnImagerie.Name = "btnImagerie";
+            this.btnImagerie.Size = new System.Drawing.Size(362, 69);
+            this.btnImagerie.TabIndex = 566;
+            this.btnImagerie.Text = "Imagerie";
+            this.btnImagerie.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnImagerie.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnImagerie.UseVisualStyleBackColor = false;
+            this.btnImagerie.Click += new System.EventHandler(this.btnImagerie_Click);
+            // 
+            // btnLabo
+            // 
+            this.btnLabo.BackColor = System.Drawing.Color.Transparent;
+            this.btnLabo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnLabo.FlatAppearance.BorderSize = 0;
+            this.btnLabo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnLabo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLabo.Font = new System.Drawing.Font("Century Gothic", 12F);
+            this.btnLabo.ForeColor = System.Drawing.Color.Black;
+            this.btnLabo.Image = ((System.Drawing.Image)(resources.GetObject("btnLabo.Image")));
+            this.btnLabo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLabo.Location = new System.Drawing.Point(0, 414);
+            this.btnLabo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnLabo.Name = "btnLabo";
+            this.btnLabo.Size = new System.Drawing.Size(362, 69);
+            this.btnLabo.TabIndex = 567;
+            this.btnLabo.Text = "Laboratoire";
+            this.btnLabo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLabo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnLabo.UseVisualStyleBackColor = false;
             // 
             // FormAccueil
             // 
@@ -388,6 +435,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormAccueil";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "SSM";
             this.Shown += new System.EventHandler(this.FormAccueil_Shown);
             this.panel2.ResumeLayout(false);
             this.pnlMenu.ResumeLayout(false);
@@ -414,5 +462,7 @@
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse2;
         public System.Windows.Forms.Button btnInfirmerie;
         public System.Windows.Forms.Button btnReception;
+        public System.Windows.Forms.Button btnImagerie;
+        public System.Windows.Forms.Button btnLabo;
     }
 }

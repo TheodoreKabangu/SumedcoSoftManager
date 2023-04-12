@@ -21,9 +21,12 @@ namespace SUMEDCO
             idpayeur,
             idrecette,
             idoperation;
-        public string caisse, numcompte, 
-            statut_recette, 
-            categorie_recette, raison_retrait;
+        public string caisse = "", 
+            numcompte="",
+            numcompteDiffere = "",
+            statut_recette= "", 
+            categorie_recette ="",
+            raison_retrait= "";
         public double taux, montant_recette;
         public bool fermeture_succes;
         private void btnAnnuler_Click(object sender, EventArgs e)
@@ -36,6 +39,17 @@ namespace SUMEDCO
         public bool ajout_valide;
         private void btnAjouter_Click(object sender, EventArgs e)
         {
+            if (txtMontant.Text != "" && cboMonnaie.Text != "")
+            {
+                montantLettre = cc.TestMontant(txtMontant);
+                if (montantLettre != "")
+                {
+                    if (cboMonnaie.Text == "CDF")
+                        txtMontantLettre.Text = montantLettre.Substring(0, 1).ToUpper() + montantLettre.Substring(1) + " francs congolais";
+                    else
+                        txtMontantLettre.Text = montantLettre.Substring(0, 1).ToUpper() + montantLettre.Substring(1) + " dollars américains";
+                }
+            }
             if (btnAjouter.Text == "Valider")
             {
                 if (cboAnnulation.Text != "")
@@ -57,7 +71,7 @@ namespace SUMEDCO
                 this.Hide();
             }
         }
-        string montantLettre = "";
+        public string montantLettre = "";
 
         private void txtMontant_Leave(object sender, EventArgs e)
         {
@@ -77,15 +91,10 @@ namespace SUMEDCO
         private void cboMonnaie_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboMonnaie.Text == "CDF")
-            {
                 numcompte = "571101";
-                caisse = "Caisse en CDF Recettes";
-            }
             else
-            {
                 numcompte = "571201";
-                caisse = "Caisse en USD Recettes";
-            }
+            caisse = cc.TrouverNom("compte", Convert.ToInt32(numcompte));
             if (txtMontant.Text != "" && cboMonnaie.Text != "")
             {
                 montantLettre = cc.TestMontant(txtMontant);
@@ -100,6 +109,11 @@ namespace SUMEDCO
         }
 
         private void cboMonnaie_Leave(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void FormPayement_Shown(object sender, EventArgs e)
         {
             
         }

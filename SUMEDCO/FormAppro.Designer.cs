@@ -63,13 +63,15 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.txtPrixStock = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.cboFournisseur = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudAnnee)).BeginInit();
             this.SuspendLayout();
             // 
             // txtQteAppro
             // 
             this.txtQteAppro.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.txtQteAppro.Location = new System.Drawing.Point(146, 326);
+            this.txtQteAppro.Location = new System.Drawing.Point(146, 358);
             this.txtQteAppro.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtQteAppro.MaxLength = 10;
             this.txtQteAppro.Name = "txtQteAppro";
@@ -86,7 +88,7 @@
             this.btnEnregistrer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEnregistrer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEnregistrer.ForeColor = System.Drawing.Color.MediumBlue;
-            this.btnEnregistrer.Location = new System.Drawing.Point(236, 387);
+            this.btnEnregistrer.Location = new System.Drawing.Point(236, 419);
             this.btnEnregistrer.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnEnregistrer.Name = "btnEnregistrer";
             this.btnEnregistrer.Size = new System.Drawing.Size(80, 26);
@@ -103,7 +105,7 @@
             this.btnAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAnnuler.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAnnuler.ForeColor = System.Drawing.Color.MediumBlue;
-            this.btnAnnuler.Location = new System.Drawing.Point(146, 387);
+            this.btnAnnuler.Location = new System.Drawing.Point(146, 419);
             this.btnAnnuler.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(80, 26);
@@ -115,7 +117,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 329);
+            this.label7.Location = new System.Drawing.Point(12, 361);
             this.label7.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(139, 22);
@@ -125,7 +127,7 @@
             // dtpDateJour
             // 
             this.dtpDateJour.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDateJour.Location = new System.Drawing.Point(146, 77);
+            this.dtpDateJour.Location = new System.Drawing.Point(146, 109);
             this.dtpDateJour.Name = "dtpDateJour";
             this.dtpDateJour.Size = new System.Drawing.Size(170, 28);
             this.dtpDateJour.TabIndex = 1;
@@ -133,7 +135,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 360);
+            this.label2.Location = new System.Drawing.Point(12, 392);
             this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(152, 22);
@@ -143,7 +145,7 @@
             // txtQteAjout
             // 
             this.txtQteAjout.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtQteAjout.Location = new System.Drawing.Point(146, 357);
+            this.txtQteAjout.Location = new System.Drawing.Point(146, 389);
             this.txtQteAjout.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtQteAjout.MaxLength = 10;
             this.txtQteAjout.Name = "txtQteAjout";
@@ -156,7 +158,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 80);
+            this.label3.Location = new System.Drawing.Point(13, 112);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(118, 22);
@@ -166,7 +168,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(13, 140);
+            this.label6.Location = new System.Drawing.Point(13, 172);
             this.label6.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(137, 22);
@@ -176,7 +178,7 @@
             // txtPrixAchat
             // 
             this.txtPrixAchat.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.txtPrixAchat.Location = new System.Drawing.Point(146, 137);
+            this.txtPrixAchat.Location = new System.Drawing.Point(146, 169);
             this.txtPrixAchat.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtPrixAchat.MaxLength = 10;
             this.txtPrixAchat.Name = "txtPrixAchat";
@@ -188,7 +190,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.ForeColor = System.Drawing.Color.MediumBlue;
-            this.label11.Location = new System.Drawing.Point(323, 140);
+            this.label11.Location = new System.Drawing.Point(323, 141);
             this.label11.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(100, 22);
@@ -198,7 +200,7 @@
             // txtPrixVente
             // 
             this.txtPrixVente.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.txtPrixVente.Location = new System.Drawing.Point(403, 137);
+            this.txtPrixVente.Location = new System.Drawing.Point(403, 138);
             this.txtPrixVente.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtPrixVente.MaxLength = 10;
             this.txtPrixVente.Name = "txtPrixVente";
@@ -214,7 +216,7 @@
             // 
             this.lblPrix.AutoSize = true;
             this.lblPrix.ForeColor = System.Drawing.Color.MediumBlue;
-            this.lblPrix.Location = new System.Drawing.Point(323, 109);
+            this.lblPrix.Location = new System.Drawing.Point(323, 110);
             this.lblPrix.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblPrix.Name = "lblPrix";
             this.lblPrix.Size = new System.Drawing.Size(103, 22);
@@ -227,7 +229,7 @@
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox2.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(285, 107);
+            this.textBox2.Location = new System.Drawing.Point(285, 139);
             this.textBox2.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.textBox2.MaxLength = 10;
             this.textBox2.Name = "textBox2";
@@ -239,7 +241,7 @@
             // txtTaux
             // 
             this.txtTaux.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.txtTaux.Location = new System.Drawing.Point(146, 107);
+            this.txtTaux.Location = new System.Drawing.Point(146, 139);
             this.txtTaux.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtTaux.MaxLength = 3;
             this.txtTaux.Name = "txtTaux";
@@ -252,7 +254,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(13, 109);
+            this.label12.Location = new System.Drawing.Point(13, 141);
             this.label12.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(134, 22);
@@ -265,7 +267,7 @@
             this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox3.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.textBox3.Enabled = false;
-            this.textBox3.Location = new System.Drawing.Point(285, 137);
+            this.textBox3.Location = new System.Drawing.Point(285, 169);
             this.textBox3.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(31, 28);
@@ -297,7 +299,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 298);
+            this.label1.Location = new System.Drawing.Point(12, 330);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(177, 22);
@@ -308,7 +310,7 @@
             // 
             this.txtQteDem.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.txtQteDem.Enabled = false;
-            this.txtQteDem.Location = new System.Drawing.Point(146, 295);
+            this.txtQteDem.Location = new System.Drawing.Point(146, 327);
             this.txtQteDem.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtQteDem.MaxLength = 10;
             this.txtQteDem.Name = "txtQteDem";
@@ -321,7 +323,7 @@
             this.txtLibelle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtLibelle.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.txtLibelle.Enabled = false;
-            this.txtLibelle.Location = new System.Drawing.Point(146, 48);
+            this.txtLibelle.Location = new System.Drawing.Point(146, 80);
             this.txtLibelle.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtLibelle.MaxLength = 200;
             this.txtLibelle.Name = "txtLibelle";
@@ -331,7 +333,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 51);
+            this.label4.Location = new System.Drawing.Point(12, 83);
             this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(132, 22);
@@ -341,7 +343,7 @@
             // nudAnnee
             // 
             this.nudAnnee.Enabled = false;
-            this.nudAnnee.Location = new System.Drawing.Point(146, 256);
+            this.nudAnnee.Location = new System.Drawing.Point(146, 288);
             this.nudAnnee.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -382,7 +384,7 @@
             "10",
             "11",
             "12"});
-            this.cboMois.Location = new System.Drawing.Point(146, 226);
+            this.cboMois.Location = new System.Drawing.Point(146, 258);
             this.cboMois.MaxDropDownItems = 10;
             this.cboMois.Name = "cboMois";
             this.cboMois.Size = new System.Drawing.Size(170, 30);
@@ -392,7 +394,7 @@
             // txtNumLot
             // 
             this.txtNumLot.Enabled = false;
-            this.txtNumLot.Location = new System.Drawing.Point(146, 195);
+            this.txtNumLot.Location = new System.Drawing.Point(146, 227);
             this.txtNumLot.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtNumLot.MaxLength = 20;
             this.txtNumLot.Name = "txtNumLot";
@@ -403,7 +405,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.MediumBlue;
-            this.label5.Location = new System.Drawing.Point(14, 198);
+            this.label5.Location = new System.Drawing.Point(14, 230);
             this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(132, 22);
@@ -414,7 +416,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.Color.MediumBlue;
-            this.label8.Location = new System.Drawing.Point(14, 260);
+            this.label8.Location = new System.Drawing.Point(14, 292);
             this.label8.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(155, 22);
@@ -425,7 +427,7 @@
             // 
             this.lblDateEntree.AutoSize = true;
             this.lblDateEntree.ForeColor = System.Drawing.Color.MediumBlue;
-            this.lblDateEntree.Location = new System.Drawing.Point(14, 229);
+            this.lblDateEntree.Location = new System.Drawing.Point(14, 261);
             this.lblDateEntree.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblDateEntree.Name = "lblDateEntree";
             this.lblDateEntree.Size = new System.Drawing.Size(140, 22);
@@ -435,7 +437,7 @@
             // txtObs
             // 
             this.txtObs.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtObs.Location = new System.Drawing.Point(328, 295);
+            this.txtObs.Location = new System.Drawing.Point(328, 327);
             this.txtObs.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtObs.MaxLength = 100;
             this.txtObs.Multiline = true;
@@ -446,7 +448,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(325, 268);
+            this.label9.Location = new System.Drawing.Point(325, 300);
             this.label9.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(117, 22);
@@ -470,7 +472,7 @@
             // 
             this.txtPrixStock.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.txtPrixStock.Enabled = false;
-            this.txtPrixStock.Location = new System.Drawing.Point(403, 106);
+            this.txtPrixStock.Location = new System.Drawing.Point(403, 107);
             this.txtPrixStock.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtPrixStock.MaxLength = 10;
             this.txtPrixStock.Name = "txtPrixStock";
@@ -482,7 +484,7 @@
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.ForeColor = System.Drawing.Color.MediumBlue;
-            this.checkBox1.Location = new System.Drawing.Point(146, 166);
+            this.checkBox1.Location = new System.Drawing.Point(146, 198);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(171, 26);
             this.checkBox1.TabIndex = 713;
@@ -490,12 +492,38 @@
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.Click += new System.EventHandler(this.checkBox1_Click);
             // 
+            // cboFournisseur
+            // 
+            this.cboFournisseur.DropDownHeight = 150;
+            this.cboFournisseur.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboFournisseur.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboFournisseur.FormattingEnabled = true;
+            this.cboFournisseur.IntegralHeight = false;
+            this.cboFournisseur.Location = new System.Drawing.Point(146, 40);
+            this.cboFournisseur.MaxDropDownItems = 10;
+            this.cboFournisseur.Name = "cboFournisseur";
+            this.cboFournisseur.Size = new System.Drawing.Size(262, 30);
+            this.cboFournisseur.TabIndex = 771;
+            this.cboFournisseur.DropDown += new System.EventHandler(this.cboFournisseur_DropDown);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(12, 43);
+            this.label10.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(115, 22);
+            this.label10.TabIndex = 770;
+            this.label10.Text = "Fournisseur :";
+            // 
             // FormAppro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(579, 409);
+            this.ClientSize = new System.Drawing.Size(579, 451);
+            this.Controls.Add(this.cboFournisseur);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.txtPrixStock);
@@ -533,7 +561,6 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(601, 465);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(601, 465);
             this.Name = "FormAppro";
@@ -582,5 +609,7 @@
         public System.Windows.Forms.TextBox txtPrixStock;
         private System.Windows.Forms.Label lblPrix;
         public System.Windows.Forms.CheckBox checkBox1;
+        public System.Windows.Forms.ComboBox cboFournisseur;
+        private System.Windows.Forms.Label label10;
     }
 }

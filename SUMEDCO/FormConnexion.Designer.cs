@@ -52,9 +52,9 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 317);
+            this.panel2.Location = new System.Drawing.Point(0, 324);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(289, 46);
+            this.panel2.Size = new System.Drawing.Size(290, 46);
             this.panel2.TabIndex = 152;
             // 
             // panel1
@@ -63,7 +63,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(289, 46);
+            this.panel1.Size = new System.Drawing.Size(290, 46);
             this.panel1.TabIndex = 151;
             // 
             // bunifuElipse1
@@ -80,7 +80,7 @@
             this.txtMotdePass.Location = new System.Drawing.Point(63, 124);
             this.txtMotdePass.MaxLength = 10;
             this.txtMotdePass.Name = "txtMotdePass";
-            this.txtMotdePass.Size = new System.Drawing.Size(201, 19);
+            this.txtMotdePass.Size = new System.Drawing.Size(201, 28);
             this.txtMotdePass.TabIndex = 2;
             this.txtMotdePass.Text = "Mot de passe";
             this.txtMotdePass.Enter += new System.EventHandler(this.txtMotdePass_Enter);
@@ -111,7 +111,7 @@
             this.txtUtilisateur.Location = new System.Drawing.Point(63, 85);
             this.txtUtilisateur.MaxLength = 10;
             this.txtUtilisateur.Name = "txtUtilisateur";
-            this.txtUtilisateur.Size = new System.Drawing.Size(201, 19);
+            this.txtUtilisateur.Size = new System.Drawing.Size(201, 28);
             this.txtUtilisateur.TabIndex = 1;
             this.txtUtilisateur.Text = "Utilisateur";
             this.txtUtilisateur.Click += new System.EventHandler(this.txtUtilisateur_Click);
@@ -178,7 +178,7 @@
             this.checkBox1.ForeColor = System.Drawing.Color.MediumBlue;
             this.checkBox1.Location = new System.Drawing.Point(127, 153);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(137, 19);
+            this.checkBox1.Size = new System.Drawing.Size(199, 26);
             this.checkBox1.TabIndex = 3;
             this.checkBox1.Text = "Voir le mot de passe";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -191,7 +191,7 @@
             this.linkModifier.LinkColor = System.Drawing.Color.MediumBlue;
             this.linkModifier.Location = new System.Drawing.Point(74, 288);
             this.linkModifier.Name = "linkModifier";
-            this.linkModifier.Size = new System.Drawing.Size(142, 15);
+            this.linkModifier.Size = new System.Drawing.Size(204, 22);
             this.linkModifier.TabIndex = 6;
             this.linkModifier.TabStop = true;
             this.linkModifier.Text = "Modifier le mot de passe";
@@ -205,17 +205,17 @@
             this.cboUtilisateur.FormattingEnabled = true;
             this.cboUtilisateur.Location = new System.Drawing.Point(21, 184);
             this.cboUtilisateur.Name = "cboUtilisateur";
-            this.cboUtilisateur.Size = new System.Drawing.Size(243, 23);
+            this.cboUtilisateur.Size = new System.Drawing.Size(243, 30);
             this.cboUtilisateur.TabIndex = 651;
             this.cboUtilisateur.SelectedIndexChanged += new System.EventHandler(this.cboUtilisateur_SelectedIndexChanged);
             // 
             // FormConnexion
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(289, 363);
+            this.ClientSize = new System.Drawing.Size(290, 370);
             this.Controls.Add(this.cboUtilisateur);
             this.Controls.Add(this.linkModifier);
             this.Controls.Add(this.checkBox1);
@@ -233,6 +233,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(290, 370);
             this.Name = "FormConnexion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SSM - Connexion";

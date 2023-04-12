@@ -492,6 +492,8 @@
             this.dgvEcriture.AllowUserToAddRows = false;
             this.dgvEcriture.AllowUserToDeleteRows = false;
             this.dgvEcriture.AllowUserToOrderColumns = true;
+            this.dgvEcriture.AllowUserToResizeColumns = false;
+            this.dgvEcriture.AllowUserToResizeRows = false;
             this.dgvEcriture.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -499,11 +501,11 @@
             this.dgvEcriture.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvEcriture.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvEcriture.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvEcriture.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -520,7 +522,8 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvEcriture.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvEcriture.GridColor = System.Drawing.Color.RoyalBlue;
+            this.dgvEcriture.EnableHeadersVisualStyles = false;
+            this.dgvEcriture.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.dgvEcriture.Location = new System.Drawing.Point(122, 298);
             this.dgvEcriture.MultiSelect = false;
             this.dgvEcriture.Name = "dgvEcriture";
@@ -594,7 +597,7 @@
             this.label13.Text = "Caisse CDF :";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // FormDepense
+            // FormTresoSortie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -609,7 +612,6 @@
             this.Controls.Add(this.btnRetirerTout);
             this.Controls.Add(this.btnCompte);
             this.Controls.Add(this.dgvEcriture);
-            this.Controls.Add(this.label11);
             this.Controls.Add(this.lblCaisseCDF);
             this.Controls.Add(this.lblCaisseUSD);
             this.Controls.Add(this.cboCaisseDepense);
@@ -634,9 +636,10 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.label11);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FormDepense";
+            this.Name = "FormTresoSortie";
             this.Text = "FormDepense";
             this.Shown += new System.EventHandler(this.FormDepense_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEcriture)).EndInit();

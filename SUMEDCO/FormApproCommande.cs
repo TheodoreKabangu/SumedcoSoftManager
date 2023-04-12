@@ -35,8 +35,6 @@ namespace SUMEDCO
                     cs.TrouverApproCommande(this);
                 else 
                     cs.TrouverApproCommandePha(this);               
-                qte_reste = int.Parse(dgvCommande.CurrentRow.Cells[5].Value.ToString()) - cs.TotalAjoute(this);
-                btnServir.Enabled = true;
                 btnRetirer.Enabled = true;
             }
         }
@@ -55,7 +53,7 @@ namespace SUMEDCO
         }
         private void btnServir_Click(object sender, EventArgs e)
         {
-            cs.ApprovisionnerStock(this, new FormAppro());
+            cc.ApprovisionnerStock(this, new FormApprov());
         }
         private void btnQuitter_Click(object sender, EventArgs e)
         {
@@ -64,8 +62,10 @@ namespace SUMEDCO
 
         private void btnRecherche_Click(object sender, EventArgs e)
         {
-            if (poste == "comptable") cs.AfficherCommande(this, "");
-            else cs.AfficherCommandePha(this, "");
+            if (poste == "comptable") 
+                cs.AfficherCommande(this, "");
+            else 
+                cs.AfficherCommandePha(this, "");
         }
 
         private void btnImprimer_Click(object sender, EventArgs e)
@@ -95,6 +95,17 @@ namespace SUMEDCO
         private void btnNouveauProduit_Click(object sender, EventArgs e)
         {
             cs.ApprovisionnerStock2(this, new FormApproAutre());
+        }
+
+        private void dgvAppro_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvAppro.RowCount != 0)
+                btnMiseAjour.Enabled = true;
+        }
+
+        private void btnMiseAjour_Click(object sender, EventArgs e)
+        {
+            btnMiseAjour.Enabled = false;
         }
     }
 }

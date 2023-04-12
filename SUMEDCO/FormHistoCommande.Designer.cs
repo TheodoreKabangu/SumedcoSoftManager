@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormHistoCommande));
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvCommande = new System.Windows.Forms.DataGridView();
@@ -47,6 +47,8 @@
             this.btnRecherche = new System.Windows.Forms.Button();
             this.btnRecherche2 = new System.Windows.Forms.Button();
             this.btnRetirer = new System.Windows.Forms.Button();
+            this.btnModifier = new System.Windows.Forms.Button();
+            this.btnValider = new System.Windows.Forms.Button();
             this.cboCategorie = new System.Windows.Forms.ComboBox();
             this.lblQte = new System.Windows.Forms.Label();
             this.dtpDateA = new System.Windows.Forms.DateTimePicker();
@@ -56,9 +58,7 @@
             this.txtRecherche = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnQuitter = new System.Windows.Forms.Button();
-            this.btnModifier = new System.Windows.Forms.Button();
             this.txtQte = new System.Windows.Forms.TextBox();
-            this.btnValider = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCommande)).BeginInit();
             this.SuspendLayout();
@@ -77,20 +77,22 @@
             this.dgvCommande.AllowUserToAddRows = false;
             this.dgvCommande.AllowUserToDeleteRows = false;
             this.dgvCommande.AllowUserToOrderColumns = true;
+            this.dgvCommande.AllowUserToResizeColumns = false;
+            this.dgvCommande.AllowUserToResizeRows = false;
             this.dgvCommande.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvCommande.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.dgvCommande.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvCommande.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCommande.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCommande.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvCommande.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCommande.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -101,14 +103,16 @@
             this.Column6,
             this.Column11,
             this.Column3});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Lavender;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCommande.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Lavender;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCommande.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvCommande.EnableHeadersVisualStyles = false;
+            this.dgvCommande.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.dgvCommande.Location = new System.Drawing.Point(12, 99);
             this.dgvCommande.MultiSelect = false;
             this.dgvCommande.Name = "dgvCommande";
@@ -253,6 +257,45 @@
             this.btnRetirer.UseVisualStyleBackColor = false;
             this.btnRetirer.Click += new System.EventHandler(this.btnRetirer_Click);
             // 
+            // btnModifier
+            // 
+            this.btnModifier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.btnModifier.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnModifier.Enabled = false;
+            this.btnModifier.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnModifier.FlatAppearance.BorderSize = 0;
+            this.btnModifier.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnModifier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModifier.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModifier.Image = ((System.Drawing.Image)(resources.GetObject("btnModifier.Image")));
+            this.btnModifier.Location = new System.Drawing.Point(614, 70);
+            this.btnModifier.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btnModifier.Name = "btnModifier";
+            this.btnModifier.Size = new System.Drawing.Size(30, 21);
+            this.btnModifier.TabIndex = 767;
+            this.toolTip1.SetToolTip(this.btnModifier, "Modifier la commande");
+            this.btnModifier.UseVisualStyleBackColor = false;
+            this.btnModifier.Click += new System.EventHandler(this.btnModifier_Click);
+            // 
+            // btnValider
+            // 
+            this.btnValider.BackColor = System.Drawing.Color.Transparent;
+            this.btnValider.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnValider.Enabled = false;
+            this.btnValider.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnValider.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnValider.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnValider.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnValider.Image = ((System.Drawing.Image)(resources.GetObject("btnValider.Image")));
+            this.btnValider.Location = new System.Drawing.Point(572, 70);
+            this.btnValider.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btnValider.Name = "btnValider";
+            this.btnValider.Size = new System.Drawing.Size(30, 21);
+            this.btnValider.TabIndex = 769;
+            this.toolTip1.SetToolTip(this.btnValider, "Rechercher");
+            this.btnValider.UseVisualStyleBackColor = false;
+            this.btnValider.Click += new System.EventHandler(this.btnValider_Click);
+            // 
             // cboCategorie
             // 
             this.cboCategorie.DropDownHeight = 150;
@@ -266,7 +309,7 @@
             this.cboCategorie.Location = new System.Drawing.Point(84, 43);
             this.cboCategorie.MaxDropDownItems = 10;
             this.cboCategorie.Name = "cboCategorie";
-            this.cboCategorie.Size = new System.Drawing.Size(208, 23);
+            this.cboCategorie.Size = new System.Drawing.Size(208, 30);
             this.cboCategorie.TabIndex = 762;
             this.cboCategorie.DropDown += new System.EventHandler(this.cboCategorie_DropDown);
             this.cboCategorie.SelectedIndexChanged += new System.EventHandler(this.cboCategorie_SelectedIndexChanged);
@@ -277,7 +320,7 @@
             this.lblQte.Location = new System.Drawing.Point(301, 46);
             this.lblQte.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblQte.Name = "lblQte";
-            this.lblQte.Size = new System.Drawing.Size(52, 15);
+            this.lblQte.Size = new System.Drawing.Size(77, 22);
             this.lblQte.TabIndex = 759;
             this.lblQte.Text = "Produit :";
             // 
@@ -286,7 +329,7 @@
             this.dtpDateA.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDateA.Location = new System.Drawing.Point(206, 72);
             this.dtpDateA.Name = "dtpDateA";
-            this.dtpDateA.Size = new System.Drawing.Size(86, 21);
+            this.dtpDateA.Size = new System.Drawing.Size(86, 28);
             this.dtpDateA.TabIndex = 754;
             // 
             // dtpDateDe
@@ -294,7 +337,7 @@
             this.dtpDateDe.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDateDe.Location = new System.Drawing.Point(84, 72);
             this.dtpDateDe.Name = "dtpDateDe";
-            this.dtpDateDe.Size = new System.Drawing.Size(86, 21);
+            this.dtpDateDe.Size = new System.Drawing.Size(86, 28);
             this.dtpDateDe.TabIndex = 755;
             // 
             // label1
@@ -303,7 +346,7 @@
             this.label1.Location = new System.Drawing.Point(178, 73);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(20, 15);
+            this.label1.Size = new System.Drawing.Size(30, 22);
             this.label1.TabIndex = 756;
             this.label1.Text = "à :";
             // 
@@ -313,7 +356,7 @@
             this.lblDateEntree.Location = new System.Drawing.Point(9, 73);
             this.lblDateEntree.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblDateEntree.Name = "lblDateEntree";
-            this.lblDateEntree.Size = new System.Drawing.Size(29, 15);
+            this.lblDateEntree.Size = new System.Drawing.Size(43, 22);
             this.lblDateEntree.TabIndex = 757;
             this.lblDateEntree.Text = "De :";
             // 
@@ -323,7 +366,7 @@
             this.txtRecherche.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtRecherche.MaxLength = 75;
             this.txtRecherche.Name = "txtRecherche";
-            this.txtRecherche.Size = new System.Drawing.Size(85, 21);
+            this.txtRecherche.Size = new System.Drawing.Size(85, 28);
             this.txtRecherche.TabIndex = 764;
             // 
             // label2
@@ -332,7 +375,7 @@
             this.label2.Location = new System.Drawing.Point(9, 46);
             this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 15);
+            this.label2.Size = new System.Drawing.Size(98, 22);
             this.label2.TabIndex = 759;
             this.label2.Text = "Catégorie :";
             // 
@@ -355,26 +398,6 @@
             this.btnQuitter.UseVisualStyleBackColor = false;
             this.btnQuitter.Click += new System.EventHandler(this.btnQuitter_Click);
             // 
-            // btnModifier
-            // 
-            this.btnModifier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.btnModifier.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnModifier.Enabled = false;
-            this.btnModifier.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnModifier.FlatAppearance.BorderSize = 0;
-            this.btnModifier.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnModifier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnModifier.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModifier.Image = ((System.Drawing.Image)(resources.GetObject("btnModifier.Image")));
-            this.btnModifier.Location = new System.Drawing.Point(614, 70);
-            this.btnModifier.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.btnModifier.Name = "btnModifier";
-            this.btnModifier.Size = new System.Drawing.Size(30, 21);
-            this.btnModifier.TabIndex = 767;
-            this.toolTip1.SetToolTip(this.btnModifier, "Modifier la commande");
-            this.btnModifier.UseVisualStyleBackColor = false;
-            this.btnModifier.Click += new System.EventHandler(this.btnModifier_Click);
-            // 
             // txtQte
             // 
             this.txtQte.Enabled = false;
@@ -382,28 +405,9 @@
             this.txtQte.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtQte.MaxLength = 6;
             this.txtQte.Name = "txtQte";
-            this.txtQte.Size = new System.Drawing.Size(85, 21);
+            this.txtQte.Size = new System.Drawing.Size(85, 28);
             this.txtQte.TabIndex = 770;
             this.txtQte.TextChanged += new System.EventHandler(this.txtQte_TextChanged);
-            // 
-            // btnValider
-            // 
-            this.btnValider.BackColor = System.Drawing.Color.Transparent;
-            this.btnValider.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnValider.Enabled = false;
-            this.btnValider.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnValider.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnValider.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnValider.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnValider.Image = ((System.Drawing.Image)(resources.GetObject("btnValider.Image")));
-            this.btnValider.Location = new System.Drawing.Point(572, 70);
-            this.btnValider.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.btnValider.Name = "btnValider";
-            this.btnValider.Size = new System.Drawing.Size(30, 21);
-            this.btnValider.TabIndex = 769;
-            this.toolTip1.SetToolTip(this.btnValider, "Rechercher");
-            this.btnValider.UseVisualStyleBackColor = false;
-            this.btnValider.Click += new System.EventHandler(this.btnValider_Click);
             // 
             // label3
             // 
@@ -411,13 +415,13 @@
             this.label3.Location = new System.Drawing.Point(423, 73);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(62, 15);
+            this.label3.Size = new System.Drawing.Size(92, 22);
             this.label3.TabIndex = 768;
             this.label3.Text = "Qté com. :";
             // 
             // FormHistoCommande
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(703, 451);

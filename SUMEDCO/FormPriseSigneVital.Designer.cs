@@ -63,7 +63,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(462, 27);
+            this.panel2.Size = new System.Drawing.Size(456, 27);
             this.panel2.TabIndex = 631;
             // 
             // btnEnregistrer
@@ -88,15 +88,17 @@
             // 
             this.dgvSigne.AllowUserToAddRows = false;
             this.dgvSigne.AllowUserToDeleteRows = false;
+            this.dgvSigne.AllowUserToResizeColumns = false;
+            this.dgvSigne.AllowUserToResizeRows = false;
             this.dgvSigne.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.dgvSigne.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvSigne.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvSigne.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvSigne.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -113,7 +115,8 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvSigne.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvSigne.GridColor = System.Drawing.Color.RoyalBlue;
+            this.dgvSigne.EnableHeadersVisualStyles = false;
+            this.dgvSigne.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.dgvSigne.Location = new System.Drawing.Point(18, 253);
             this.dgvSigne.MultiSelect = false;
             this.dgvSigne.Name = "dgvSigne";
@@ -160,7 +163,7 @@
             this.txtPatient.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtPatient.MaxLength = 75;
             this.txtPatient.Name = "txtPatient";
-            this.txtPatient.Size = new System.Drawing.Size(357, 21);
+            this.txtPatient.Size = new System.Drawing.Size(357, 28);
             this.txtPatient.TabIndex = 645;
             // 
             // label2
@@ -169,7 +172,7 @@
             this.label2.Location = new System.Drawing.Point(15, 227);
             this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 15);
+            this.label2.Size = new System.Drawing.Size(87, 22);
             this.label2.TabIndex = 642;
             this.label2.Text = "Médecin :";
             // 
@@ -179,7 +182,7 @@
             this.label4.Location = new System.Drawing.Point(15, 198);
             this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(51, 15);
+            this.label4.Size = new System.Drawing.Size(76, 22);
             this.label4.TabIndex = 643;
             this.label4.Text = "Patient :";
             // 
@@ -206,7 +209,7 @@
             this.label3.Location = new System.Drawing.Point(15, 171);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 15);
+            this.label3.Size = new System.Drawing.Size(102, 22);
             this.label3.TabIndex = 657;
             this.label3.Text = "Date prise :";
             // 
@@ -219,7 +222,7 @@
             ""});
             this.cboMedecin.Location = new System.Drawing.Point(90, 224);
             this.cboMedecin.Name = "cboMedecin";
-            this.cboMedecin.Size = new System.Drawing.Size(357, 23);
+            this.cboMedecin.Size = new System.Drawing.Size(357, 30);
             this.cboMedecin.Sorted = true;
             this.cboMedecin.TabIndex = 658;
             this.cboMedecin.DropDown += new System.EventHandler(this.cboMedecin_DropDown);
@@ -229,16 +232,17 @@
             // 
             this.dgvMedecin.AllowUserToAddRows = false;
             this.dgvMedecin.AllowUserToDeleteRows = false;
-            this.dgvMedecin.AllowUserToOrderColumns = true;
+            this.dgvMedecin.AllowUserToResizeColumns = false;
+            this.dgvMedecin.AllowUserToResizeRows = false;
             this.dgvMedecin.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.dgvMedecin.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvMedecin.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvMedecin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvMedecin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -254,7 +258,8 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvMedecin.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvMedecin.GridColor = System.Drawing.Color.RoyalBlue;
+            this.dgvMedecin.EnableHeadersVisualStyles = false;
+            this.dgvMedecin.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.dgvMedecin.Location = new System.Drawing.Point(18, 46);
             this.dgvMedecin.MultiSelect = false;
             this.dgvMedecin.Name = "dgvMedecin";
@@ -292,15 +297,15 @@
             this.dtpDateDe.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDateDe.Location = new System.Drawing.Point(90, 166);
             this.dtpDateDe.Name = "dtpDateDe";
-            this.dtpDateDe.Size = new System.Drawing.Size(87, 21);
+            this.dtpDateDe.Size = new System.Drawing.Size(87, 28);
             this.dtpDateDe.TabIndex = 660;
             // 
             // FormPriseSigneVital
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(462, 451);
+            this.ClientSize = new System.Drawing.Size(456, 434);
             this.ControlBox = false;
             this.Controls.Add(this.dtpDateDe);
             this.Controls.Add(this.dgvMedecin);

@@ -26,7 +26,7 @@ namespace SUMEDCO
         }
         private void btnEncaisser_Click(object sender, EventArgs e)
         {
-            cs.AfficherSousForm(this, new FormPharmaVente());
+            cs.AfficherSousForm(this, new FormPhamaVente());
         }
 
         private void btnStockPh_Click(object sender, EventArgs e)

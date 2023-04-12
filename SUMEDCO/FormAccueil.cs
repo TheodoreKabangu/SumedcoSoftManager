@@ -101,5 +101,12 @@ namespace SUMEDCO
             //MessageBox.Show("" + (int)(double.Parse("2025000,00") / 2000.00));
             //MessageBox.Show("" + ((int)(double.Parse("2025000,00") / 2000.00) * 2000.00).ToString());
         }
+
+        private void btnImagerie_Click(object sender, EventArgs e)
+        {
+            cn.poste = "imagerie";
+            cn.Show();
+            this.Hide();
+        }
     }
 }

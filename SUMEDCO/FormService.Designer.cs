@@ -39,17 +39,17 @@
             this.btnSupprimer = new System.Windows.Forms.Button();
             this.btnModifier = new System.Windows.Forms.Button();
             this.dgvService = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtPrixService = new System.Windows.Forms.TextBox();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnAfficher = new System.Windows.Forms.Button();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvService)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,7 +60,7 @@
             this.cboCatService.FormattingEnabled = true;
             this.cboCatService.Location = new System.Drawing.Point(105, 31);
             this.cboCatService.Name = "cboCatService";
-            this.cboCatService.Size = new System.Drawing.Size(350, 23);
+            this.cboCatService.Size = new System.Drawing.Size(350, 30);
             this.cboCatService.TabIndex = 1;
             this.cboCatService.DropDown += new System.EventHandler(this.cboCatService_DropDown);
             this.cboCatService.SelectedIndexChanged += new System.EventHandler(this.cboCategorie_SelectedIndexChanged);
@@ -74,7 +74,7 @@
             this.textBox3.Location = new System.Drawing.Point(285, 93);
             this.textBox3.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(31, 21);
+            this.textBox3.Size = new System.Drawing.Size(31, 28);
             this.textBox3.TabIndex = 568;
             this.textBox3.Text = "CDF";
             // 
@@ -84,7 +84,7 @@
             this.txtNomService.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtNomService.MaxLength = 75;
             this.txtNomService.Name = "txtNomService";
-            this.txtNomService.Size = new System.Drawing.Size(350, 21);
+            this.txtNomService.Size = new System.Drawing.Size(350, 28);
             this.txtNomService.TabIndex = 3;
             // 
             // btnEnregistrer
@@ -162,17 +162,19 @@
             this.dgvService.AllowUserToAddRows = false;
             this.dgvService.AllowUserToDeleteRows = false;
             this.dgvService.AllowUserToOrderColumns = true;
+            this.dgvService.AllowUserToResizeColumns = false;
+            this.dgvService.AllowUserToResizeRows = false;
             this.dgvService.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dgvService.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.dgvService.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvService.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvService.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvService.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -190,7 +192,8 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvService.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvService.GridColor = System.Drawing.Color.RoyalBlue;
+            this.dgvService.EnableHeadersVisualStyles = false;
+            this.dgvService.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.dgvService.Location = new System.Drawing.Point(105, 158);
             this.dgvService.MultiSelect = false;
             this.dgvService.Name = "dgvService";
@@ -201,13 +204,47 @@
             this.dgvService.TabIndex = 565;
             this.dgvService.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvService_CellClick);
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "N°";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 50;
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column3.HeaderText = "Nom du consommmable";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Prix unit.";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "numcompte";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Visible = false;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Catégorie";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 130;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(15, 35);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 15);
+            this.label1.Size = new System.Drawing.Size(98, 22);
             this.label1.TabIndex = 562;
             this.label1.Text = "Catégorie :";
             // 
@@ -217,7 +254,7 @@
             this.label2.Location = new System.Drawing.Point(15, 96);
             this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(78, 15);
+            this.label2.Size = new System.Drawing.Size(115, 22);
             this.label2.TabIndex = 564;
             this.label2.Text = "Prix unitaire :";
             // 
@@ -227,7 +264,7 @@
             this.label3.Location = new System.Drawing.Point(15, 66);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(40, 15);
+            this.label3.Size = new System.Drawing.Size(57, 22);
             this.label3.TabIndex = 563;
             this.label3.Text = "Nom :";
             // 
@@ -237,7 +274,7 @@
             this.txtPrixService.Location = new System.Drawing.Point(105, 93);
             this.txtPrixService.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtPrixService.Name = "txtPrixService";
-            this.txtPrixService.Size = new System.Drawing.Size(180, 21);
+            this.txtPrixService.Size = new System.Drawing.Size(180, 28);
             this.txtPrixService.TabIndex = 4;
             this.txtPrixService.TextChanged += new System.EventHandler(this.txtPrixService_TextChanged);
             this.txtPrixService.Enter += new System.EventHandler(this.txtPrixService_Enter);
@@ -278,43 +315,9 @@
             this.btnAfficher.UseVisualStyleBackColor = false;
             this.btnAfficher.Click += new System.EventHandler(this.btnAfficher_Click);
             // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "N°";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 50;
-            // 
-            // Column3
-            // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column3.HeaderText = "Nom du consommmable";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Prix unit.";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "numcompte";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Visible = false;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Catégorie";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 130;
-            // 
             // FormService
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(703, 394);

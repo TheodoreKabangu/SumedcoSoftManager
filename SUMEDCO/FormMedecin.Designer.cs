@@ -70,7 +70,7 @@
             this.label5.Location = new System.Drawing.Point(9, 43);
             this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(40, 15);
+            this.label5.Size = new System.Drawing.Size(57, 22);
             this.label5.TabIndex = 602;
             this.label5.Text = "Nom :";
             // 
@@ -81,7 +81,7 @@
             this.txtNom.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtNom.MaxLength = 75;
             this.txtNom.Name = "txtNom";
-            this.txtNom.Size = new System.Drawing.Size(236, 21);
+            this.txtNom.Size = new System.Drawing.Size(236, 28);
             this.txtNom.TabIndex = 1;
             // 
             // label3
@@ -90,7 +90,7 @@
             this.label3.Location = new System.Drawing.Point(9, 133);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(72, 15);
+            this.label3.Size = new System.Drawing.Size(106, 22);
             this.label3.TabIndex = 601;
             this.label3.Text = "Téléphone :";
             // 
@@ -101,7 +101,7 @@
             this.txtNumOrdre.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtNumOrdre.MaxLength = 15;
             this.txtNumOrdre.Name = "txtNumOrdre";
-            this.txtNumOrdre.Size = new System.Drawing.Size(236, 21);
+            this.txtNumOrdre.Size = new System.Drawing.Size(236, 28);
             this.txtNumOrdre.TabIndex = 2;
             // 
             // btnEnregistrer
@@ -167,6 +167,8 @@
             this.dgvMedecin.AllowUserToAddRows = false;
             this.dgvMedecin.AllowUserToDeleteRows = false;
             this.dgvMedecin.AllowUserToOrderColumns = true;
+            this.dgvMedecin.AllowUserToResizeColumns = false;
+            this.dgvMedecin.AllowUserToResizeRows = false;
             this.dgvMedecin.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -174,11 +176,11 @@
             this.dgvMedecin.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvMedecin.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvMedecin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvMedecin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -196,7 +198,8 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvMedecin.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvMedecin.GridColor = System.Drawing.Color.RoyalBlue;
+            this.dgvMedecin.EnableHeadersVisualStyles = false;
+            this.dgvMedecin.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.dgvMedecin.Location = new System.Drawing.Point(257, 62);
             this.dgvMedecin.MultiSelect = false;
             this.dgvMedecin.Name = "dgvMedecin";
@@ -249,7 +252,7 @@
             this.label2.Location = new System.Drawing.Point(9, 87);
             this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 15);
+            this.label2.Size = new System.Drawing.Size(101, 22);
             this.label2.TabIndex = 598;
             this.label2.Text = "N° d\'ordre :";
             // 
@@ -260,7 +263,7 @@
             this.txtTel.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtTel.MaxLength = 15;
             this.txtTel.Name = "txtTel";
-            this.txtTel.Size = new System.Drawing.Size(236, 21);
+            this.txtTel.Size = new System.Drawing.Size(236, 28);
             this.txtTel.TabIndex = 3;
             // 
             // btnSupprimer
@@ -323,7 +326,7 @@
             // 
             // FormMedecin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(699, 426);

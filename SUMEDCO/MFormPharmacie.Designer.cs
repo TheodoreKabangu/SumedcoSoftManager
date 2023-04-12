@@ -30,23 +30,23 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MFormPharmacie));
             this.pnlSide = new System.Windows.Forms.Panel();
+            this.btnChat = new System.Windows.Forms.Button();
             this.btnRapport = new System.Windows.Forms.Button();
             this.btnUtilisation = new System.Windows.Forms.Button();
             this.btnCommande = new System.Windows.Forms.Button();
+            this.btnAlertes = new System.Windows.Forms.Button();
             this.btnVente = new System.Windows.Forms.Button();
             this.btnStockPh = new System.Windows.Forms.Button();
             this.btnQuitter = new System.Windows.Forms.Button();
             this.pnlLogo = new System.Windows.Forms.Panel();
-            this.btnLogo = new System.Windows.Forms.Button();
             this.pnlChildForm = new System.Windows.Forms.Panel();
-            this.btnAlertes = new System.Windows.Forms.Button();
             this.pnlSide.SuspendLayout();
-            this.pnlLogo.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlSide
             // 
             this.pnlSide.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            this.pnlSide.Controls.Add(this.btnChat);
             this.pnlSide.Controls.Add(this.btnRapport);
             this.pnlSide.Controls.Add(this.btnUtilisation);
             this.pnlSide.Controls.Add(this.btnCommande);
@@ -61,16 +61,34 @@
             this.pnlSide.Size = new System.Drawing.Size(180, 491);
             this.pnlSide.TabIndex = 584;
             // 
+            // btnChat
+            // 
+            this.btnChat.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnChat.FlatAppearance.BorderSize = 0;
+            this.btnChat.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSlateGray;
+            this.btnChat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChat.ForeColor = System.Drawing.Color.Black;
+            this.btnChat.Image = ((System.Drawing.Image)(resources.GetObject("btnChat.Image")));
+            this.btnChat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnChat.Location = new System.Drawing.Point(0, 297);
+            this.btnChat.Name = "btnChat";
+            this.btnChat.Size = new System.Drawing.Size(180, 45);
+            this.btnChat.TabIndex = 590;
+            this.btnChat.Text = "Messagerie";
+            this.btnChat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnChat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnChat.UseVisualStyleBackColor = true;
+            // 
             // btnRapport
             // 
             this.btnRapport.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnRapport.FlatAppearance.BorderSize = 0;
-            this.btnRapport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.btnRapport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSlateGray;
             this.btnRapport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRapport.ForeColor = System.Drawing.Color.Black;
             this.btnRapport.Image = ((System.Drawing.Image)(resources.GetObject("btnRapport.Image")));
             this.btnRapport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRapport.Location = new System.Drawing.Point(0, 297);
+            this.btnRapport.Location = new System.Drawing.Point(0, 252);
             this.btnRapport.Name = "btnRapport";
             this.btnRapport.Size = new System.Drawing.Size(180, 45);
             this.btnRapport.TabIndex = 3;
@@ -83,12 +101,12 @@
             // 
             this.btnUtilisation.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnUtilisation.FlatAppearance.BorderSize = 0;
-            this.btnUtilisation.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.btnUtilisation.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSlateGray;
             this.btnUtilisation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUtilisation.ForeColor = System.Drawing.Color.Black;
             this.btnUtilisation.Image = ((System.Drawing.Image)(resources.GetObject("btnUtilisation.Image")));
             this.btnUtilisation.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUtilisation.Location = new System.Drawing.Point(0, 252);
+            this.btnUtilisation.Location = new System.Drawing.Point(0, 207);
             this.btnUtilisation.Name = "btnUtilisation";
             this.btnUtilisation.Size = new System.Drawing.Size(180, 45);
             this.btnUtilisation.TabIndex = 1;
@@ -102,12 +120,12 @@
             // 
             this.btnCommande.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnCommande.FlatAppearance.BorderSize = 0;
-            this.btnCommande.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.btnCommande.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSlateGray;
             this.btnCommande.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCommande.ForeColor = System.Drawing.Color.Black;
             this.btnCommande.Image = ((System.Drawing.Image)(resources.GetObject("btnCommande.Image")));
             this.btnCommande.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCommande.Location = new System.Drawing.Point(0, 207);
+            this.btnCommande.Location = new System.Drawing.Point(0, 162);
             this.btnCommande.Name = "btnCommande";
             this.btnCommande.Size = new System.Drawing.Size(180, 45);
             this.btnCommande.TabIndex = 588;
@@ -117,16 +135,35 @@
             this.btnCommande.UseVisualStyleBackColor = true;
             this.btnCommande.Click += new System.EventHandler(this.btnCommande_Click);
             // 
+            // btnAlertes
+            // 
+            this.btnAlertes.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAlertes.FlatAppearance.BorderSize = 0;
+            this.btnAlertes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSlateGray;
+            this.btnAlertes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAlertes.ForeColor = System.Drawing.Color.Black;
+            this.btnAlertes.Image = ((System.Drawing.Image)(resources.GetObject("btnAlertes.Image")));
+            this.btnAlertes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAlertes.Location = new System.Drawing.Point(0, 117);
+            this.btnAlertes.Name = "btnAlertes";
+            this.btnAlertes.Size = new System.Drawing.Size(180, 45);
+            this.btnAlertes.TabIndex = 589;
+            this.btnAlertes.Text = "Alertes stocks";
+            this.btnAlertes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAlertes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAlertes.UseVisualStyleBackColor = true;
+            this.btnAlertes.Click += new System.EventHandler(this.btnAlertes_Click);
+            // 
             // btnVente
             // 
             this.btnVente.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnVente.FlatAppearance.BorderSize = 0;
-            this.btnVente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.btnVente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSlateGray;
             this.btnVente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVente.ForeColor = System.Drawing.Color.Black;
             this.btnVente.Image = ((System.Drawing.Image)(resources.GetObject("btnVente.Image")));
             this.btnVente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVente.Location = new System.Drawing.Point(0, 117);
+            this.btnVente.Location = new System.Drawing.Point(0, 72);
             this.btnVente.Name = "btnVente";
             this.btnVente.Size = new System.Drawing.Size(180, 45);
             this.btnVente.TabIndex = 586;
@@ -140,12 +177,12 @@
             // 
             this.btnStockPh.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnStockPh.FlatAppearance.BorderSize = 0;
-            this.btnStockPh.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.btnStockPh.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSlateGray;
             this.btnStockPh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStockPh.ForeColor = System.Drawing.Color.Black;
             this.btnStockPh.Image = ((System.Drawing.Image)(resources.GetObject("btnStockPh.Image")));
             this.btnStockPh.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStockPh.Location = new System.Drawing.Point(0, 72);
+            this.btnStockPh.Location = new System.Drawing.Point(0, 27);
             this.btnStockPh.Name = "btnStockPh";
             this.btnStockPh.Size = new System.Drawing.Size(180, 45);
             this.btnStockPh.TabIndex = 587;
@@ -162,16 +199,16 @@
             this.btnQuitter.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnQuitter.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
             this.btnQuitter.FlatAppearance.BorderSize = 0;
-            this.btnQuitter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.btnQuitter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSlateGray;
             this.btnQuitter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuitter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuitter.ForeColor = System.Drawing.Color.Black;
             this.btnQuitter.Image = ((System.Drawing.Image)(resources.GetObject("btnQuitter.Image")));
             this.btnQuitter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnQuitter.Location = new System.Drawing.Point(0, 461);
+            this.btnQuitter.Location = new System.Drawing.Point(0, 446);
             this.btnQuitter.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnQuitter.Name = "btnQuitter";
-            this.btnQuitter.Size = new System.Drawing.Size(180, 30);
+            this.btnQuitter.Size = new System.Drawing.Size(180, 45);
             this.btnQuitter.TabIndex = 585;
             this.btnQuitter.Text = "Quitter";
             this.btnQuitter.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -181,30 +218,11 @@
             // 
             // pnlLogo
             // 
-            this.pnlLogo.Controls.Add(this.btnLogo);
             this.pnlLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlLogo.Location = new System.Drawing.Point(0, 0);
             this.pnlLogo.Name = "pnlLogo";
-            this.pnlLogo.Size = new System.Drawing.Size(180, 72);
+            this.pnlLogo.Size = new System.Drawing.Size(180, 27);
             this.pnlLogo.TabIndex = 0;
-            // 
-            // btnLogo
-            // 
-            this.btnLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            this.btnLogo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnLogo.Enabled = false;
-            this.btnLogo.FlatAppearance.BorderSize = 0;
-            this.btnLogo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            this.btnLogo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            this.btnLogo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogo.Font = new System.Drawing.Font("Segoe Marker", 20F);
-            this.btnLogo.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.btnLogo.Location = new System.Drawing.Point(0, 0);
-            this.btnLogo.Name = "btnLogo";
-            this.btnLogo.Size = new System.Drawing.Size(180, 72);
-            this.btnLogo.TabIndex = 1;
-            this.btnLogo.Text = "F.F.L.\r\nSUMEDCO";
-            this.btnLogo.UseVisualStyleBackColor = false;
             // 
             // pnlChildForm
             // 
@@ -216,28 +234,9 @@
             this.pnlChildForm.Size = new System.Drawing.Size(714, 491);
             this.pnlChildForm.TabIndex = 585;
             // 
-            // btnAlertes
-            // 
-            this.btnAlertes.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAlertes.FlatAppearance.BorderSize = 0;
-            this.btnAlertes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.btnAlertes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAlertes.ForeColor = System.Drawing.Color.Black;
-            this.btnAlertes.Image = ((System.Drawing.Image)(resources.GetObject("btnAlertes.Image")));
-            this.btnAlertes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAlertes.Location = new System.Drawing.Point(0, 162);
-            this.btnAlertes.Name = "btnAlertes";
-            this.btnAlertes.Size = new System.Drawing.Size(180, 45);
-            this.btnAlertes.TabIndex = 589;
-            this.btnAlertes.Text = "Alertes stocks";
-            this.btnAlertes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAlertes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAlertes.UseVisualStyleBackColor = true;
-            this.btnAlertes.Click += new System.EventHandler(this.btnAlertes_Click);
-            // 
             // MFormPharmacie
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(894, 491);
@@ -251,7 +250,6 @@
             this.Text = "SSM - Pharmacie";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.pnlSide.ResumeLayout(false);
-            this.pnlLogo.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -263,12 +261,12 @@
         public System.Windows.Forms.Button btnRapport;
         public System.Windows.Forms.Button btnUtilisation;
         private System.Windows.Forms.Panel pnlLogo;
-        public System.Windows.Forms.Button btnLogo;
         public System.Windows.Forms.Panel pnlChildForm;
         public System.Windows.Forms.Button btnVente;
         public System.Windows.Forms.Button btnStockPh;
         public System.Windows.Forms.Button btnCommande;
         public System.Windows.Forms.Button btnAlertes;
+        public System.Windows.Forms.Button btnChat;
 
     }
 }

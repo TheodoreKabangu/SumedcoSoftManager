@@ -29,7 +29,8 @@ namespace SUMEDCO
 
         private void txtUtilisateur_Click(object sender, EventArgs e)
         {
-            txtUtilisateur.Text = "";
+            if (txtUtilisateur.Text=="Utilisateur") 
+                txtUtilisateur.Text = "";
             txtUtilisateur.ForeColor = Color.Black;
         }
 
@@ -58,7 +59,8 @@ namespace SUMEDCO
             if (txtMotdePass.Text == "Mot de passe")
                 txtMotdePass.Text = "";
             txtMotdePass.ForeColor = Color.Black;
-            txtMotdePass.UseSystemPasswordChar = true;
+            if(!checkBox1.Checked) 
+                txtMotdePass.UseSystemPasswordChar = true;
         }
         public string poste = "";
         private void FormConnexion_Load(object sender, EventArgs e)

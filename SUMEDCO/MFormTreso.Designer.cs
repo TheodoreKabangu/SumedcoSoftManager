@@ -30,20 +30,20 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MFormTreso));
             this.pnlSide = new System.Windows.Forms.Panel();
+            this.btnChat = new System.Windows.Forms.Button();
             this.btnRapport = new System.Windows.Forms.Button();
             this.btnPayement = new System.Windows.Forms.Button();
             this.btnQuitter = new System.Windows.Forms.Button();
             this.btnDepense = new System.Windows.Forms.Button();
             this.pnlLogo = new System.Windows.Forms.Panel();
-            this.btnLogo = new System.Windows.Forms.Button();
             this.pnlChildForm = new System.Windows.Forms.Panel();
             this.pnlSide.SuspendLayout();
-            this.pnlLogo.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlSide
             // 
             this.pnlSide.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            this.pnlSide.Controls.Add(this.btnChat);
             this.pnlSide.Controls.Add(this.btnRapport);
             this.pnlSide.Controls.Add(this.btnPayement);
             this.pnlSide.Controls.Add(this.btnQuitter);
@@ -55,16 +55,34 @@
             this.pnlSide.Size = new System.Drawing.Size(180, 491);
             this.pnlSide.TabIndex = 585;
             // 
+            // btnChat
+            // 
+            this.btnChat.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnChat.FlatAppearance.BorderSize = 0;
+            this.btnChat.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSlateGray;
+            this.btnChat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChat.ForeColor = System.Drawing.Color.Black;
+            this.btnChat.Image = ((System.Drawing.Image)(resources.GetObject("btnChat.Image")));
+            this.btnChat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnChat.Location = new System.Drawing.Point(0, 162);
+            this.btnChat.Name = "btnChat";
+            this.btnChat.Size = new System.Drawing.Size(180, 45);
+            this.btnChat.TabIndex = 587;
+            this.btnChat.Text = "Messagerie";
+            this.btnChat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnChat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnChat.UseVisualStyleBackColor = true;
+            // 
             // btnRapport
             // 
             this.btnRapport.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnRapport.FlatAppearance.BorderSize = 0;
-            this.btnRapport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.btnRapport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSlateGray;
             this.btnRapport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRapport.ForeColor = System.Drawing.Color.Black;
             this.btnRapport.Image = ((System.Drawing.Image)(resources.GetObject("btnRapport.Image")));
             this.btnRapport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRapport.Location = new System.Drawing.Point(0, 162);
+            this.btnRapport.Location = new System.Drawing.Point(0, 117);
             this.btnRapport.Name = "btnRapport";
             this.btnRapport.Size = new System.Drawing.Size(180, 45);
             this.btnRapport.TabIndex = 3;
@@ -78,12 +96,12 @@
             // 
             this.btnPayement.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnPayement.FlatAppearance.BorderSize = 0;
-            this.btnPayement.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.btnPayement.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSlateGray;
             this.btnPayement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPayement.ForeColor = System.Drawing.Color.Black;
             this.btnPayement.Image = ((System.Drawing.Image)(resources.GetObject("btnPayement.Image")));
             this.btnPayement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPayement.Location = new System.Drawing.Point(0, 117);
+            this.btnPayement.Location = new System.Drawing.Point(0, 72);
             this.btnPayement.Name = "btnPayement";
             this.btnPayement.Size = new System.Drawing.Size(180, 45);
             this.btnPayement.TabIndex = 586;
@@ -100,16 +118,16 @@
             this.btnQuitter.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnQuitter.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
             this.btnQuitter.FlatAppearance.BorderSize = 0;
-            this.btnQuitter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.btnQuitter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSlateGray;
             this.btnQuitter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuitter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuitter.ForeColor = System.Drawing.Color.Black;
             this.btnQuitter.Image = ((System.Drawing.Image)(resources.GetObject("btnQuitter.Image")));
             this.btnQuitter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnQuitter.Location = new System.Drawing.Point(0, 461);
+            this.btnQuitter.Location = new System.Drawing.Point(0, 446);
             this.btnQuitter.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnQuitter.Name = "btnQuitter";
-            this.btnQuitter.Size = new System.Drawing.Size(180, 30);
+            this.btnQuitter.Size = new System.Drawing.Size(180, 45);
             this.btnQuitter.TabIndex = 585;
             this.btnQuitter.Text = "Quitter";
             this.btnQuitter.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -121,12 +139,12 @@
             // 
             this.btnDepense.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnDepense.FlatAppearance.BorderSize = 0;
-            this.btnDepense.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.btnDepense.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSlateGray;
             this.btnDepense.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDepense.ForeColor = System.Drawing.Color.Black;
             this.btnDepense.Image = ((System.Drawing.Image)(resources.GetObject("btnDepense.Image")));
             this.btnDepense.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDepense.Location = new System.Drawing.Point(0, 72);
+            this.btnDepense.Location = new System.Drawing.Point(0, 27);
             this.btnDepense.Name = "btnDepense";
             this.btnDepense.Size = new System.Drawing.Size(180, 45);
             this.btnDepense.TabIndex = 1;
@@ -138,30 +156,11 @@
             // 
             // pnlLogo
             // 
-            this.pnlLogo.Controls.Add(this.btnLogo);
             this.pnlLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlLogo.Location = new System.Drawing.Point(0, 0);
             this.pnlLogo.Name = "pnlLogo";
-            this.pnlLogo.Size = new System.Drawing.Size(180, 72);
+            this.pnlLogo.Size = new System.Drawing.Size(180, 27);
             this.pnlLogo.TabIndex = 0;
-            // 
-            // btnLogo
-            // 
-            this.btnLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            this.btnLogo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnLogo.Enabled = false;
-            this.btnLogo.FlatAppearance.BorderSize = 0;
-            this.btnLogo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            this.btnLogo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            this.btnLogo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogo.Font = new System.Drawing.Font("Segoe Marker", 20F);
-            this.btnLogo.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.btnLogo.Location = new System.Drawing.Point(0, 0);
-            this.btnLogo.Name = "btnLogo";
-            this.btnLogo.Size = new System.Drawing.Size(180, 72);
-            this.btnLogo.TabIndex = 1;
-            this.btnLogo.Text = "F.F.L.\r\nSUMEDCO";
-            this.btnLogo.UseVisualStyleBackColor = false;
             // 
             // pnlChildForm
             // 
@@ -173,9 +172,9 @@
             this.pnlChildForm.Size = new System.Drawing.Size(714, 491);
             this.pnlChildForm.TabIndex = 586;
             // 
-            // MFormDepense
+            // MFormTreso
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(894, 491);
@@ -184,12 +183,11 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(910, 530);
-            this.Name = "MFormDepense";
+            this.Name = "MFormTreso";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SSM - Dépense";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.pnlSide.ResumeLayout(false);
-            this.pnlLogo.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -201,8 +199,8 @@
         public System.Windows.Forms.Button btnRapport;
         public System.Windows.Forms.Button btnDepense;
         private System.Windows.Forms.Panel pnlLogo;
-        public System.Windows.Forms.Button btnLogo;
         public System.Windows.Forms.Panel pnlChildForm;
         public System.Windows.Forms.Button btnPayement;
+        public System.Windows.Forms.Button btnChat;
     }
 }

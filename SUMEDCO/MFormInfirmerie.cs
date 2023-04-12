@@ -23,7 +23,7 @@ namespace SUMEDCO
         public Form activeForm = null;
         private void btnConsultation_Click(object sender, EventArgs e)
         {
-            cm.AfficherSousForm(this, new FormAgenda());
+            cm.AfficherSousForm(this, new FormAgendaNursing());
         }
 
         private void FormInfirmerie_Load(object sender, EventArgs e)

@@ -44,12 +44,6 @@ namespace SUMEDCO
                 txtNumPiece.Select();
             }
         }
-
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void cboMonnaie_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtMotif.Focus();
