@@ -209,11 +209,11 @@
     <Compile Include="FormAbonneRapport.Designer.cs">
       <DependentUpon>FormAbonneRapport.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAppro.cs">
+    <Compile Include="FormStockInventaire.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAppro.Designer.cs">
-      <DependentUpon>FormAppro.cs</DependentUpon>
+    <Compile Include="FormStockInventaire.Designer.cs">
+      <DependentUpon>FormStockInventaire.cs</DependentUpon>
     </Compile>
     <Compile Include="FormComptaJournal.cs">
       <SubType>Form</SubType>
@@ -755,8 +755,8 @@
     <EmbeddedResource Include="FormAbonneRapport.resx">
       <DependentUpon>FormAbonneRapport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAppro.resx">
-      <DependentUpon>FormAppro.cs</DependentUpon>
+    <EmbeddedResource Include="FormStockInventaire.resx">
+      <DependentUpon>FormStockInventaire.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormComptaJournal.resx">
       <DependentUpon>FormComptaJournal.cs</DependentUpon>

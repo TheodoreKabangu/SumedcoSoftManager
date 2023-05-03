@@ -3924,7 +3924,7 @@ namespace SUMEDCO
             for (int i = 0; i < a.dgvAbonneProduit.RowCount; i++)
             {
                 a.dgvAbonneProduit.Rows[i].Cells[4].Value = TrouverNom("abonne", int.Parse(a.dgvAbonneProduit.Rows[i].Cells[2].Value.ToString()));
-                a.dgvAbonneProduit.Rows[i].Cells[11].Value = cs.PrixStock(int.Parse(a.dgvAbonneProduit.Rows[i].Cells[3].Value.ToString()));
+                a.dgvAbonneProduit.Rows[i].Cells[11].Value = cs.PrixStock(Convert.ToInt32(a.dgvAbonneProduit.Rows[i].Cells[3].Value), "vente");
                 a.txtTotalProduit.Text = int.Parse(a.txtTotalProduit.Text) + int.Parse(a.dgvAbonneProduit.Rows[i].Cells[11].Value.ToString()) + "";
             }
             cs.AfficherLigneStock(a.dgvAbonneProduit);
@@ -6273,7 +6273,7 @@ namespace SUMEDCO
                             ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[11].Value = 0;
                             ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[12].Value = "RAS";
                             ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[13].Value = a.dgvCommande.Rows[i].Cells[6].Value;
-                            ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[10].Value = cs.PrixStock(Convert.ToInt32(a.dgvCommande.Rows[i].Cells[6].Value));
+                            ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[10].Value = cs.PrixStock(Convert.ToInt32(a.dgvCommande.Rows[i].Cells[6].Value), "vente");
                             if (ap.categorie_produit.ToLower() == "pharmaceutique")
                                 ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[14].Value = "OUI";
                             else
@@ -6303,7 +6303,7 @@ namespace SUMEDCO
                             ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[11].Value = 0;
                             ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[12].Value = "RAS";
                             ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[13].Value = a.dgvCommande.Rows[i].Cells[6].Value;
-                            ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[10].Value = cs.PrixStock(Convert.ToInt32(a.dgvCommande.Rows[i].Cells[6].Value));
+                            ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[10].Value = cs.PrixStock(Convert.ToInt32(a.dgvCommande.Rows[i].Cells[6].Value), "vente");
                         }
                     }
                 }

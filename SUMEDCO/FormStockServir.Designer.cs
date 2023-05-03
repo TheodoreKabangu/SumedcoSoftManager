@@ -65,7 +65,7 @@
             this.txtLibelle.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtLibelle.MaxLength = 200;
             this.txtLibelle.Name = "txtLibelle";
-            this.txtLibelle.Size = new System.Drawing.Size(388, 21);
+            this.txtLibelle.Size = new System.Drawing.Size(388, 28);
             this.txtLibelle.TabIndex = 705;
             // 
             // label4
@@ -74,7 +74,7 @@
             this.label4.Location = new System.Drawing.Point(15, 50);
             this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(52, 15);
+            this.label4.Size = new System.Drawing.Size(77, 22);
             this.label4.TabIndex = 706;
             this.label4.Text = "Produit :";
             // 
@@ -83,7 +83,7 @@
             this.dtpDateJour.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDateJour.Location = new System.Drawing.Point(112, 77);
             this.dtpDateJour.Name = "dtpDateJour";
-            this.dtpDateJour.Size = new System.Drawing.Size(170, 21);
+            this.dtpDateJour.Size = new System.Drawing.Size(170, 28);
             this.dtpDateJour.TabIndex = 707;
             // 
             // label3
@@ -92,7 +92,7 @@
             this.label3.Location = new System.Drawing.Point(15, 82);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 15);
+            this.label3.Size = new System.Drawing.Size(118, 22);
             this.label3.TabIndex = 708;
             this.label3.Text = "Date du jour :";
             // 
@@ -104,7 +104,7 @@
             this.txtQteStock.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtQteStock.MaxLength = 10;
             this.txtQteStock.Name = "txtQteStock";
-            this.txtQteStock.Size = new System.Drawing.Size(170, 21);
+            this.txtQteStock.Size = new System.Drawing.Size(170, 28);
             this.txtQteStock.TabIndex = 709;
             // 
             // txtQteCom
@@ -114,7 +114,7 @@
             this.txtQteCom.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtQteCom.MaxLength = 10;
             this.txtQteCom.Name = "txtQteCom";
-            this.txtQteCom.Size = new System.Drawing.Size(170, 21);
+            this.txtQteCom.Size = new System.Drawing.Size(170, 28);
             this.txtQteCom.TabIndex = 710;
             this.txtQteCom.TextChanged += new System.EventHandler(this.txtQteCom_TextChanged);
             // 
@@ -124,7 +124,7 @@
             this.label1.Location = new System.Drawing.Point(15, 109);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 15);
+            this.label1.Size = new System.Drawing.Size(96, 22);
             this.label1.TabIndex = 713;
             this.label1.Text = "Qté stock :";
             // 
@@ -134,7 +134,7 @@
             this.label7.Location = new System.Drawing.Point(15, 140);
             this.label7.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(95, 15);
+            this.label7.Size = new System.Drawing.Size(138, 22);
             this.label7.TabIndex = 714;
             this.label7.Text = "Qté demandée :";
             // 
@@ -144,7 +144,7 @@
             this.label2.Location = new System.Drawing.Point(15, 171);
             this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 15);
+            this.label2.Size = new System.Drawing.Size(102, 22);
             this.label2.TabIndex = 712;
             this.label2.Text = "Qté servie :";
             // 
@@ -155,7 +155,7 @@
             this.txtQteServie.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtQteServie.MaxLength = 10;
             this.txtQteServie.Name = "txtQteServie";
-            this.txtQteServie.Size = new System.Drawing.Size(170, 21);
+            this.txtQteServie.Size = new System.Drawing.Size(170, 28);
             this.txtQteServie.TabIndex = 711;
             this.txtQteServie.TextChanged += new System.EventHandler(this.txtQteServie_TextChanged);
             // 
@@ -216,7 +216,7 @@
             this.cboPoste.Location = new System.Drawing.Point(112, 197);
             this.cboPoste.MaxDropDownItems = 10;
             this.cboPoste.Name = "cboPoste";
-            this.cboPoste.Size = new System.Drawing.Size(170, 23);
+            this.cboPoste.Size = new System.Drawing.Size(170, 30);
             this.cboPoste.Sorted = true;
             this.cboPoste.TabIndex = 717;
             this.cboPoste.DropDown += new System.EventHandler(this.cboPoste_DropDown);
@@ -228,13 +228,13 @@
             this.label5.Location = new System.Drawing.Point(15, 200);
             this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(75, 15);
+            this.label5.Size = new System.Drawing.Size(110, 22);
             this.label5.TabIndex = 712;
             this.label5.Text = "Destination :";
             // 
             // FormStockServir
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(517, 271);

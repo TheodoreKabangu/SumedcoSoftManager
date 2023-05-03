@@ -15,9 +15,9 @@ namespace SUMEDCO
         public FormStockInventaire()
         {
             InitializeComponent();
-            for (int i = 0; i < dgvProduit.ColumnCount; i++)
+            for (int i = 0; i < dgvStock.ColumnCount; i++)
             {
-                dgvProduit.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+                dgvStock.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
             }
         }
         ClassStock cs = new ClassStock();
@@ -27,82 +27,19 @@ namespace SUMEDCO
         public int idstock = 0,
             idoperation = 0;
         public string poste= "", categorie_produit = "";
-        private void btnEnregistrer_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void btnAnnuler_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void txtPrixAchat_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void txtTaux_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void txtTaux_Leave(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void txtQteAjout_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-        private void txtQteAppro_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-        private void FormApproPharma_Shown(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void checkBox1_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void txtQteAjout_Enter(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void txtQteAjout_Leave(object sender, EventArgs e)
-        {
-                       
-        }
-
-        private void txtQteAppro_Leave(object sender, EventArgs e)
-        {
-                       
-        }
-
-        private void txtPrixVente_DoubleClick(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void txtPrixVente_Leave(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void txtPrixVente_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
         private void btnQuitter_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void FormStockInventaire_Shown(object sender, EventArgs e)
+        {
+            cs.AfficherStockProduit(this);
+        }
+
+        private void btnRecherche_Click(object sender, EventArgs e)
+        {
+            cs.TrouverQteStock(this);
         }
     }
 }
