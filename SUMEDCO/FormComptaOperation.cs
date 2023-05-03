@@ -15,9 +15,13 @@ namespace SUMEDCO
         public FormComptaOperation()
         {
             InitializeComponent();
+            for (int i = 0; i < dgvOperation.ColumnCount; i++)
+            {
+               dgvOperation.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
         ClassCompta cc = new ClassCompta();
-        public int exercice = 0,
+        public int idexercice = 0,
             idtypejournal = 0;
         public double sommeDebit = 0, sommeCredit = 0;
         private void cboTypeJournal_DropDown(object sender, EventArgs e)
@@ -42,7 +46,9 @@ namespace SUMEDCO
 
         private void btnOperation_Click(object sender, EventArgs e)
         {
-            new FormComptabilite().ShowDialog();
+            FormComptabilite c = new FormComptabilite();
+            c.idexercice = idexercice;
+            c.ShowDialog();
         }
     }
 }

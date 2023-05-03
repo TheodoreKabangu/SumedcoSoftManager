@@ -96,9 +96,9 @@
             this.pnlCompta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.pnlCompta.Controls.Add(this.btnResultat);
             this.pnlCompta.Controls.Add(this.btnTabFluxT);
-            this.pnlCompta.Controls.Add(this.btnBalance_);
             this.pnlCompta.Controls.Add(this.btnBilan_);
             this.pnlCompta.Controls.Add(this.btnGrandLivre);
+            this.pnlCompta.Controls.Add(this.btnBalance_);
             this.pnlCompta.Controls.Add(this.btnVisualisation);
             this.pnlCompta.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlCompta.Location = new System.Drawing.Point(0, 343);
@@ -155,7 +155,7 @@
             this.btnBalance_.ForeColor = System.Drawing.Color.MediumBlue;
             this.btnBalance_.Image = ((System.Drawing.Image)(resources.GetObject("btnBalance_.Image")));
             this.btnBalance_.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBalance_.Location = new System.Drawing.Point(0, 135);
+            this.btnBalance_.Location = new System.Drawing.Point(0, 45);
             this.btnBalance_.Name = "btnBalance_";
             this.btnBalance_.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.btnBalance_.Size = new System.Drawing.Size(154, 45);
@@ -175,7 +175,7 @@
             this.btnBilan_.ForeColor = System.Drawing.Color.MediumBlue;
             this.btnBilan_.Image = ((System.Drawing.Image)(resources.GetObject("btnBilan_.Image")));
             this.btnBilan_.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBilan_.Location = new System.Drawing.Point(0, 90);
+            this.btnBilan_.Location = new System.Drawing.Point(0, 135);
             this.btnBilan_.Name = "btnBilan_";
             this.btnBilan_.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.btnBilan_.Size = new System.Drawing.Size(154, 45);
@@ -195,7 +195,7 @@
             this.btnGrandLivre.ForeColor = System.Drawing.Color.MediumBlue;
             this.btnGrandLivre.Image = ((System.Drawing.Image)(resources.GetObject("btnGrandLivre.Image")));
             this.btnGrandLivre.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGrandLivre.Location = new System.Drawing.Point(0, 45);
+            this.btnGrandLivre.Location = new System.Drawing.Point(0, 90);
             this.btnGrandLivre.Name = "btnGrandLivre";
             this.btnGrandLivre.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.btnGrandLivre.Size = new System.Drawing.Size(154, 45);

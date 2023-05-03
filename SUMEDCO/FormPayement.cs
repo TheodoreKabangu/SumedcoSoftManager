@@ -15,6 +15,10 @@ namespace SUMEDCO
         public FormPayement()
         {
             InitializeComponent();
+            for (int i = 0; i < dgvCompte.ColumnCount; i++)
+            {
+                dgvCompte.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
         ClassCompta cc = new ClassCompta();
         public int idpayement,
@@ -75,17 +79,7 @@ namespace SUMEDCO
 
         private void txtMontant_Leave(object sender, EventArgs e)
         {
-            if (txtMontant.Text != "" && cboMonnaie.Text != "")
-            {
-                montantLettre = cc.TestMontant(txtMontant);
-                if (montantLettre != "")
-                {
-                    if (cboMonnaie.Text == "CDF")
-                        txtMontantLettre.Text = montantLettre.Substring(0, 1).ToUpper() + montantLettre.Substring(1) + " francs congolais";
-                    else
-                        txtMontantLettre.Text = montantLettre.Substring(0, 1).ToUpper() + montantLettre.Substring(1) + " dollars américains";
-                }
-            }
+            
         }
 
         private void cboMonnaie_SelectedIndexChanged(object sender, EventArgs e)

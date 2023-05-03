@@ -15,10 +15,17 @@ namespace SUMEDCO
         public FormComptaBilan()
         {
             InitializeComponent();
+            for (int i = 0; i < dgvActif.ColumnCount; i++)
+            {
+                dgvActif.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+            for (int i = 0; i < dgvPassif.ColumnCount; i++)
+            {
+                dgvPassif.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
         ClassCompta cc = new ClassCompta();
-        public string typeItem = "";
-        public int taux = 0;
+        public int idexercice= 0, taux = 0;
         public double sommeRef = 0, sommeSoldeAnte = 0;
         private void btnQuitter_Click(object sender, EventArgs e)
         {
@@ -27,21 +34,28 @@ namespace SUMEDCO
 
         private void btnRecherche_Click(object sender, EventArgs e)
         {
-            if (dgvActif.RowCount != 0)
+            if (dtpDateDe.Value.Year == dtpDateA.Value.Year && dtpDateDe.Value.Date <= dtpDateA.Value.Date)
             {
-                cc.AfficherActif(this);
-                cc.AfficherPassif(this);
+                if (dgvActif.RowCount != 0)
+                {                  
+                    cc.Rubriques(this);
+                    cc.AfficherBilan(this);
+                }
+                else
+                    MessageBox.Show("Aucune ligne trouvée! Rassurez-vous que le taux du jour est enregistré", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
-                MessageBox.Show("Aucune ligne trouvée! Rassurez-vous que le taux du jour est enregistré", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("La première date doit être inférieure ou égale à la deuxième et l'année doit être la même", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
         private void FormComptaBilan_Shown(object sender, EventArgs e)
         {
-            taux = cc.VerifierTaux(DateTime.Now.Date, "valeur");
+            if (cc.VerifierTaux(DateTime.Now.Date, "") == 0)
+                taux = cc.ChangerDate(this, new DateTaux());
+            else
+                taux = cc.VerifierTaux(DateTime.Now.Date, "valeur");
             if(taux !=0)
             {
-                cc.RubriquesActif(this);
-                cc.RubriquesPassif(this);
+                cc.Rubriques(this);
             }
         }
 

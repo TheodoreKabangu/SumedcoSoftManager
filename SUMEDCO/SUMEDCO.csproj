@@ -161,12 +161,6 @@
     <Compile Include="FormHospitalisation.Designer.cs">
       <DependentUpon>FormHospitalisation.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormSotckInventaire.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormSotckInventaire.Designer.cs">
-      <DependentUpon>FormSotckInventaire.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormStockServir.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -737,9 +731,6 @@
     <EmbeddedResource Include="FormHospitalisation.resx">
       <DependentUpon>FormHospitalisation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormSotckInventaire.resx">
-      <DependentUpon>FormSotckInventaire.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormStockServir.resx">
       <DependentUpon>FormStockServir.cs</DependentUpon>
     </EmbeddedResource>
@@ -1051,7 +1042,6 @@
     <Folder Include="Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="icons8_heart_cross.ico" />
     <Content Include="LogoSSM .ico" />
     <Content Include="AppTextFile1.txt" />
   </ItemGroup>

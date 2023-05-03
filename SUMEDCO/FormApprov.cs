@@ -15,16 +15,22 @@ namespace SUMEDCO
         public FormApprov()
         {
             InitializeComponent();
+            for (int i = 0; i < dgvAppro.ColumnCount; i++)
+            {
+                dgvAppro.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
         ClassStock cs = new ClassStock();
         ClassCompta cc = new ClassCompta();
-        public int idoperation = 0,
+        public int idexercice = 0,
+            idoperation = 0,
             idAppro = 0;
         public string caisse = "",
             compteFournis = "",
             poste = "",
             categorie_produit = "";
         public double prixvente = 0, 
+            prix_achat = 0,
             taux = 0;
         public bool lotvalide;
         private void cboFournisseur_DropDown(object sender, EventArgs e)
@@ -36,10 +42,10 @@ namespace SUMEDCO
         {
             if (cc.VerifierTaux(DateTime.Now.Date, "") == 0)
             {
-                cc.ChangerDate(this, new DateTaux());
+                taux = cc.ChangerDate(this, new DateTaux());
             }
             else
-                taux = double.Parse(cc.VerifierTaux(DateTime.Now.Date, "valeur").ToString());
+                taux = cc.VerifierTaux(DateTime.Now.Date, "valeur");
         }
 
         private void btnEnregistrer_Click(object sender, EventArgs e)
@@ -89,6 +95,11 @@ namespace SUMEDCO
                 if (dgvAppro.CurrentRow.Index < dgvAppro.RowCount - 1)
                 dgvAppro.Rows.RemoveAt(dgvAppro.CurrentRow.Index);
             }
+        }
+        ClassMalade cm = new ClassMalade();
+        private void txtValeurMin_TextChanged(object sender, EventArgs e)
+        {
+            cm.TestEntier(txtValeurMin);
         }       
     }
 }

@@ -15,6 +15,10 @@ namespace SUMEDCO
         public FormFactureProduit()
         {
             InitializeComponent();
+            for (int i = 0; i < dgvFacture.ColumnCount; i++)
+            {
+                dgvFacture.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
         DateTaux d = new DateTaux();
         ClassCompta cc = new ClassCompta();
@@ -24,7 +28,7 @@ namespace SUMEDCO
             numbonP = 0,
             idproduit = 0,
             idstock = 0,
-            id,
+            idexercice = 0,
             idoperation = 0,
             idutilisateur,
             idpayeur,
@@ -145,8 +149,7 @@ namespace SUMEDCO
             if (dgvFacture.RowCount != 0)
             {
                 dgvFacture.Rows.RemoveAt(dgvFacture.CurrentRow.Index);
-                cc.CalculerTotal(dgvFacture, 5, txtTotal);
-                cm.RemplirNumLigne(dgvFacture, 1);
+                cc.CalculerTotal(dgvFacture, txtTotal);
             }
             btnRetirerTout.Enabled = false;
             btnRetirer.Enabled = false;

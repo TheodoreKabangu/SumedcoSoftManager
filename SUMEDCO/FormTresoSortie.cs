@@ -14,12 +14,16 @@ namespace SUMEDCO
     {
         public FormTresoSortie()
         {
-            InitializeComponent();            
+            InitializeComponent();
+            for (int i = 0; i < dgvEcriture.ColumnCount; i++)
+            {
+                dgvEcriture.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
         ClassCompta cc = new ClassCompta();
         ClassMalade cm = new ClassMalade();
         public int numbon = 0,
-            idabonne =0,
+            idexercice =0,
             idcatdepense = 0,
             iddepense = 0,
             idoperation=0,
@@ -34,16 +38,19 @@ namespace SUMEDCO
         {
             if (cc.VerifierTaux(DateTime.Now.Date, "") == 0)
             {
-                cc.ChangerDate(this, new DateTaux());
-                txtNumRequisition.Focus();
+                taux = cc.ChangerDate(new DateTaux(), this, lblDateOperation, lblTaux);
+                if (taux > 0)
+                {
+                    cc.SoldesCaisse(lblCaisseCDF, lblCaisseUSD, "dépense");
+                    txtNumRequisition.Focus();
+                }
             }
             else
             {
                 lblDateOperation.Text = DateTime.Now.ToShortDateString();
-                lblTaux.Text = cc.VerifierTaux(DateTime.Now.Date, "valeur").ToString() + " CDF";
-                taux = double.Parse(lblTaux.Text.Substring(0, lblTaux.Text.IndexOf(" ")));
-                lblCaisseUSD.Text = string.Format("{0} USD", cc.MontantCompte("571202"));
-                lblCaisseCDF.Text = string.Format("{0} CDF", cc.MontantCompte("571102"));
+                taux = cc.VerifierTaux(DateTime.Now.Date, "valeur");
+                lblTaux.Text = taux + " CDF";
+                cc.SoldesCaisse(lblCaisseCDF, lblCaisseUSD, "dépense");
                 txtNumRequisition.Focus();
             }
         }
@@ -89,7 +96,7 @@ namespace SUMEDCO
         }
         private void btnDate_Click(object sender, EventArgs e)
         {
-            cc.ChangerDate(this, new DateTaux());
+            taux = cc.ChangerDate(new DateTaux(), this, lblDateOperation, lblTaux);
             txtNumRequisition.Focus();
         }
         private void cboMonnaie_Enter(object sender, EventArgs e)
@@ -131,7 +138,7 @@ namespace SUMEDCO
             else
                 numcompte = "571202";
             caisse = cc.TrouverNom("compte", Convert.ToInt32(numcompte));
-            soldeCaisse = cc.MontantCompte(numcompte);
+            soldeCaisse = cc.SoldeCompte(numcompte);
             cboCaisseDepense.Enabled = false;
         }
 

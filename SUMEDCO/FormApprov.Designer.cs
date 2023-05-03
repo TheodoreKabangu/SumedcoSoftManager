@@ -30,34 +30,21 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormApprov));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnEnregistrer = new System.Windows.Forms.Button();
             this.btnRetirer = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvAppro = new System.Windows.Forms.DataGridView();
-            this.cboFournisseur = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cboMonnaie = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.dtpDateJour = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.txtTaux = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.btnNewFournisseur = new System.Windows.Forms.Button();
-            this.txtValeurMin = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,6 +60,20 @@
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cboFournisseur = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cboMonnaie = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.dtpDateJour = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtTaux = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.btnNewFournisseur = new System.Windows.Forms.Button();
+            this.txtValeurMin = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppro)).BeginInit();
             this.SuspendLayout();
             // 
@@ -134,14 +135,14 @@
             this.dgvAppro.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.dgvAppro.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvAppro.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAppro.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAppro.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvAppro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAppro.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -158,15 +159,16 @@
             this.Column14,
             this.Column12,
             this.Column10,
-            this.Column15});
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.BackColor = System.Drawing.Color.Lavender;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvAppro.DefaultCellStyle = dataGridViewCellStyle20;
+            this.Column15,
+            this.Column16});
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.Lavender;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvAppro.DefaultCellStyle = dataGridViewCellStyle10;
             this.dgvAppro.EnableHeadersVisualStyles = false;
             this.dgvAppro.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.dgvAppro.Location = new System.Drawing.Point(12, 116);
@@ -177,6 +179,151 @@
             this.dgvAppro.Size = new System.Drawing.Size(679, 285);
             this.dgvAppro.TabIndex = 767;
             this.dgvAppro.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAppro_CellEndEdit);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "N°";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Visible = false;
+            this.Column1.Width = 40;
+            // 
+            // Column5
+            // 
+            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column5.HeaderText = "Produit";
+            this.Column5.MinimumWidth = 200;
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "N° lot";
+            this.Column8.MaxInputLength = 20;
+            this.Column8.MinimumWidth = 100;
+            this.Column8.Name = "Column8";
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "Expiration";
+            this.Column9.MaxInputLength = 7;
+            this.Column9.MinimumWidth = 100;
+            this.Column9.Name = "Column9";
+            // 
+            // Column6
+            // 
+            dataGridViewCellStyle2.Format = "N0";
+            dataGridViewCellStyle2.NullValue = null;
+            this.Column6.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Column6.HeaderText = "Qté dem.";
+            this.Column6.MaxInputLength = 9;
+            this.Column6.MinimumWidth = 130;
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Width = 130;
+            // 
+            // Column13
+            // 
+            dataGridViewCellStyle3.Format = "N0";
+            dataGridViewCellStyle3.NullValue = null;
+            this.Column13.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Column13.HeaderText = "Qté reste";
+            this.Column13.MaxInputLength = 9;
+            this.Column13.MinimumWidth = 130;
+            this.Column13.Name = "Column13";
+            this.Column13.ReadOnly = true;
+            this.Column13.Width = 130;
+            // 
+            // Column7
+            // 
+            dataGridViewCellStyle4.Format = "N0";
+            dataGridViewCellStyle4.NullValue = null;
+            this.Column7.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Column7.HeaderText = "Qté appro.";
+            this.Column7.MaxInputLength = 9;
+            this.Column7.MinimumWidth = 130;
+            this.Column7.Name = "Column7";
+            this.Column7.Width = 130;
+            // 
+            // Column2
+            // 
+            dataGridViewCellStyle5.Format = "N0";
+            dataGridViewCellStyle5.NullValue = null;
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Column2.HeaderText = "Qté ajout";
+            this.Column2.MaxInputLength = 9;
+            this.Column2.MinimumWidth = 130;
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 130;
+            // 
+            // Column3
+            // 
+            dataGridViewCellStyle6.Format = "N2";
+            dataGridViewCellStyle6.NullValue = null;
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle6;
+            this.Column3.HeaderText = "Prix achat";
+            this.Column3.MaxInputLength = 9;
+            this.Column3.MinimumWidth = 130;
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 130;
+            // 
+            // Column4
+            // 
+            dataGridViewCellStyle7.Format = "N2";
+            dataGridViewCellStyle7.NullValue = null;
+            this.Column4.DefaultCellStyle = dataGridViewCellStyle7;
+            this.Column4.HeaderText = "Prix vente";
+            this.Column4.MinimumWidth = 130;
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 130;
+            // 
+            // Column11
+            // 
+            dataGridViewCellStyle8.Format = "N2";
+            dataGridViewCellStyle8.NullValue = null;
+            this.Column11.DefaultCellStyle = dataGridViewCellStyle8;
+            this.Column11.HeaderText = "Prix stock";
+            this.Column11.MinimumWidth = 130;
+            this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
+            this.Column11.Width = 130;
+            // 
+            // Column14
+            // 
+            dataGridViewCellStyle9.Format = "N2";
+            dataGridViewCellStyle9.NullValue = null;
+            this.Column14.DefaultCellStyle = dataGridViewCellStyle9;
+            this.Column14.HeaderText = "Tot. achat";
+            this.Column14.MinimumWidth = 130;
+            this.Column14.Name = "Column14";
+            this.Column14.Width = 130;
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "Observation";
+            this.Column12.MaxInputLength = 100;
+            this.Column12.Name = "Column12";
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "idstock";
+            this.Column10.Name = "Column10";
+            this.Column10.Visible = false;
+            // 
+            // Column15
+            // 
+            this.Column15.HeaderText = "Expirable";
+            this.Column15.MaxInputLength = 3;
+            this.Column15.MinimumWidth = 100;
+            this.Column15.Name = "Column15";
+            this.Column15.ReadOnly = true;
+            // 
+            // Column16
+            // 
+            this.Column16.HeaderText = "prix_achat";
+            this.Column16.Name = "Column16";
+            this.Column16.Visible = false;
             // 
             // cboFournisseur
             // 
@@ -324,6 +471,7 @@
             this.txtValeurMin.Size = new System.Drawing.Size(52, 28);
             this.txtValeurMin.TabIndex = 781;
             this.txtValeurMin.Text = "50";
+            this.txtValeurMin.TextChanged += new System.EventHandler(this.txtValeurMin_TextChanged);
             // 
             // label2
             // 
@@ -335,145 +483,6 @@
             this.label2.Size = new System.Drawing.Size(110, 22);
             this.label2.TabIndex = 782;
             this.label2.Text = "Valeur min. :";
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "N°";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Visible = false;
-            this.Column1.Width = 40;
-            // 
-            // Column5
-            // 
-            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column5.HeaderText = "Produit";
-            this.Column5.MinimumWidth = 200;
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "N° lot";
-            this.Column8.MaxInputLength = 20;
-            this.Column8.MinimumWidth = 100;
-            this.Column8.Name = "Column8";
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "Expiration";
-            this.Column9.MaxInputLength = 7;
-            this.Column9.MinimumWidth = 100;
-            this.Column9.Name = "Column9";
-            // 
-            // Column6
-            // 
-            dataGridViewCellStyle12.Format = "N0";
-            dataGridViewCellStyle12.NullValue = null;
-            this.Column6.DefaultCellStyle = dataGridViewCellStyle12;
-            this.Column6.HeaderText = "Qté dem.";
-            this.Column6.MaxInputLength = 9;
-            this.Column6.MinimumWidth = 130;
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            this.Column6.Width = 130;
-            // 
-            // Column13
-            // 
-            dataGridViewCellStyle13.Format = "N0";
-            dataGridViewCellStyle13.NullValue = null;
-            this.Column13.DefaultCellStyle = dataGridViewCellStyle13;
-            this.Column13.HeaderText = "Qté reste";
-            this.Column13.MaxInputLength = 9;
-            this.Column13.MinimumWidth = 130;
-            this.Column13.Name = "Column13";
-            this.Column13.ReadOnly = true;
-            this.Column13.Width = 130;
-            // 
-            // Column7
-            // 
-            dataGridViewCellStyle14.Format = "N0";
-            dataGridViewCellStyle14.NullValue = null;
-            this.Column7.DefaultCellStyle = dataGridViewCellStyle14;
-            this.Column7.HeaderText = "Qté appro.";
-            this.Column7.MaxInputLength = 9;
-            this.Column7.MinimumWidth = 130;
-            this.Column7.Name = "Column7";
-            this.Column7.Width = 130;
-            // 
-            // Column2
-            // 
-            dataGridViewCellStyle15.Format = "N0";
-            dataGridViewCellStyle15.NullValue = null;
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle15;
-            this.Column2.HeaderText = "Qté ajout";
-            this.Column2.MaxInputLength = 9;
-            this.Column2.MinimumWidth = 130;
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 130;
-            // 
-            // Column3
-            // 
-            dataGridViewCellStyle16.Format = "N2";
-            dataGridViewCellStyle16.NullValue = null;
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle16;
-            this.Column3.HeaderText = "Prix achat";
-            this.Column3.MaxInputLength = 9;
-            this.Column3.MinimumWidth = 130;
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 130;
-            // 
-            // Column4
-            // 
-            dataGridViewCellStyle17.Format = "N2";
-            dataGridViewCellStyle17.NullValue = null;
-            this.Column4.DefaultCellStyle = dataGridViewCellStyle17;
-            this.Column4.HeaderText = "Prix vente";
-            this.Column4.MinimumWidth = 130;
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 130;
-            // 
-            // Column11
-            // 
-            dataGridViewCellStyle18.Format = "N2";
-            dataGridViewCellStyle18.NullValue = null;
-            this.Column11.DefaultCellStyle = dataGridViewCellStyle18;
-            this.Column11.HeaderText = "Prix stock";
-            this.Column11.MinimumWidth = 130;
-            this.Column11.Name = "Column11";
-            this.Column11.ReadOnly = true;
-            this.Column11.Width = 130;
-            // 
-            // Column14
-            // 
-            dataGridViewCellStyle19.Format = "N2";
-            dataGridViewCellStyle19.NullValue = null;
-            this.Column14.DefaultCellStyle = dataGridViewCellStyle19;
-            this.Column14.HeaderText = "Tot. achat";
-            this.Column14.MinimumWidth = 130;
-            this.Column14.Name = "Column14";
-            this.Column14.Width = 130;
-            // 
-            // Column12
-            // 
-            this.Column12.HeaderText = "Observation";
-            this.Column12.MaxInputLength = 100;
-            this.Column12.Name = "Column12";
-            // 
-            // Column10
-            // 
-            this.Column10.HeaderText = "idstock";
-            this.Column10.Name = "Column10";
-            this.Column10.Visible = false;
-            // 
-            // Column15
-            // 
-            this.Column15.HeaderText = "Expirable";
-            this.Column15.MaxInputLength = 3;
-            this.Column15.MinimumWidth = 100;
-            this.Column15.Name = "Column15";
-            this.Column15.ReadOnly = true;
             // 
             // FormApprov
             // 
@@ -546,5 +555,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
     }
 }

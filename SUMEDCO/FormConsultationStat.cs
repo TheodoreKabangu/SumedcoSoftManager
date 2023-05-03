@@ -15,6 +15,14 @@ namespace SUMEDCO
         public FormConsultationStat()
         {
             InitializeComponent();
+            for (int i = 0; i < dgvRdv.ColumnCount; i++)
+            {
+                dgvRdv.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+            for (int i = 0; i < dgvResume.ColumnCount; i++)
+            {
+                dgvResume.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
         public int idmedecin = 0,
             idservice=0;

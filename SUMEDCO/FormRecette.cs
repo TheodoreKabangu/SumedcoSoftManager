@@ -15,6 +15,22 @@ namespace SUMEDCO
         public FormRecette()
         {
             InitializeComponent();
+            for (int i = 0; i < dgvRecette.ColumnCount; i++)
+            {
+                dgvRecette.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+            for (int i = 0; i < dgvPayement.ColumnCount; i++)
+            {
+                dgvPayement.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+            for (int i = 0; i < dgvTotaux.ColumnCount; i++)
+            {
+                dgvTotaux.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+            for (int i = 0; i < dgvCompte.ColumnCount; i++)
+            {
+                dgvCompte.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
         ClassCompta cc = new ClassCompta();
         ClassStock cs = new ClassStock();
@@ -26,7 +42,7 @@ namespace SUMEDCO
         public int tauxjour = 0,
             idpayement= 0,
             idrecette = 0, 
-            numbon = 0,
+            idexercice = 0,
             idoperation = 0,
             id = 0;
         public double taux = 0, total_payement;
@@ -37,15 +53,16 @@ namespace SUMEDCO
             cc.AfficherRecette(this, "");
             if (cc.VerifierTaux(DateTime.Now.Date, "") == 0)
             {
-                cc.ChangerDate(this, new DateTaux());                
+                taux = cc.ChangerDate(new DateTaux(), this, lblDateOperation, lblTaux);
+                if(taux > 0)
+                    cc.SoldesCaisse(lblCaisseCDF, lblCaisseUSD, "recette");
             }
             else
             {
                 lblDateOperation.Text = DateTime.Now.ToShortDateString();
-                lblTaux.Text = cc.VerifierTaux(DateTime.Now.Date, "valeur").ToString() + " CDF";
-                taux = double.Parse(lblTaux.Text.Substring(0, lblTaux.Text.IndexOf(" ")));
-                lblCaisseUSD.Text = string.Format("{0} USD", cc.MontantCompte("571201"));
-                lblCaisseCDF.Text = string.Format("{0} CDF", cc.MontantCompte("571101"));
+                taux = cc.VerifierTaux(DateTime.Now.Date, "valeur");
+                lblTaux.Text = taux + " CDF";
+                cc.SoldesCaisse(lblCaisseCDF, lblCaisseUSD, "recette");
             }
         }
         private void btnExit_Click(object sender, EventArgs e)
@@ -54,7 +71,7 @@ namespace SUMEDCO
         }
         private void btnDate_Click(object sender, EventArgs e)
         {
-            cc.ChangerDate(this, new DateTaux());
+            taux = cc.ChangerDate(new DateTaux(), this, lblDateOperation, lblTaux);
         }
         private void btnRecherche_Click(object sender, EventArgs e)
         {

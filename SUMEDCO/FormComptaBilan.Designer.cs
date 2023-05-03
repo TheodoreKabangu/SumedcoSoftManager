@@ -66,6 +66,10 @@
             this.cboBilan = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.dtpDateA = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dtpDateDe = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvActif)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPassif)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -98,16 +102,18 @@
             this.btnRecherche.BackColor = System.Drawing.Color.Transparent;
             this.btnRecherche.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnRecherche.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnRecherche.FlatAppearance.BorderSize = 0;
             this.btnRecherche.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
             this.btnRecherche.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRecherche.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRecherche.ForeColor = System.Drawing.Color.MediumBlue;
-            this.btnRecherche.Location = new System.Drawing.Point(8, 36);
+            this.btnRecherche.Image = ((System.Drawing.Image)(resources.GetObject("btnRecherche.Image")));
+            this.btnRecherche.Location = new System.Drawing.Point(292, 35);
             this.btnRecherche.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnRecherche.Name = "btnRecherche";
-            this.btnRecherche.Size = new System.Drawing.Size(80, 26);
+            this.btnRecherche.Size = new System.Drawing.Size(30, 23);
             this.btnRecherche.TabIndex = 653;
-            this.btnRecherche.Text = "Calculer";
+            this.toolTip1.SetToolTip(this.btnRecherche, "Calculer");
             this.btnRecherche.UseVisualStyleBackColor = false;
             this.btnRecherche.Click += new System.EventHandler(this.btnRecherche_Click);
             // 
@@ -303,7 +309,7 @@
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.HeaderText = "Libellé";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Passif";
             this.dataGridViewTextBoxColumn2.MinimumWidth = 250;
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
@@ -392,7 +398,7 @@
             "BT_TOTAL TRESORERIE ACTIF",
             "BU_Ecart de conversion actif_12",
             "BZ_TOTAL GENERAL"});
-            this.cboActif.Location = new System.Drawing.Point(493, 36);
+            this.cboActif.Location = new System.Drawing.Point(637, 33);
             this.cboActif.Name = "cboActif";
             this.cboActif.Size = new System.Drawing.Size(10, 30);
             this.cboActif.TabIndex = 663;
@@ -434,7 +440,7 @@
             "DT_TOTAL TRESORERIE PASSIF",
             "DV_Ecart de conversion passif_12",
             "DZ_TOTAL GENERAL"});
-            this.cboPassif.Location = new System.Drawing.Point(509, 36);
+            this.cboPassif.Location = new System.Drawing.Point(653, 33);
             this.cboPassif.Name = "cboPassif";
             this.cboPassif.Size = new System.Drawing.Size(10, 30);
             this.cboPassif.TabIndex = 664;
@@ -452,7 +458,7 @@
             this.btnImprimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImprimer.ForeColor = System.Drawing.Color.MediumBlue;
             this.btnImprimer.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimer.Image")));
-            this.btnImprimer.Location = new System.Drawing.Point(274, 36);
+            this.btnImprimer.Location = new System.Drawing.Point(514, 36);
             this.btnImprimer.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnImprimer.Name = "btnImprimer";
             this.btnImprimer.Size = new System.Drawing.Size(30, 23);
@@ -472,7 +478,7 @@
             "Actif",
             "Passif",
             "Tout"});
-            this.cboBilan.Location = new System.Drawing.Point(174, 36);
+            this.cboBilan.Location = new System.Drawing.Point(414, 36);
             this.cboBilan.MaxDropDownItems = 10;
             this.cboBilan.Name = "cboBilan";
             this.cboBilan.Size = new System.Drawing.Size(92, 30);
@@ -483,12 +489,48 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(99, 39);
+            this.label7.Location = new System.Drawing.Point(339, 39);
             this.label7.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(101, 22);
             this.label7.TabIndex = 667;
             this.label7.Text = "Impression:";
+            // 
+            // dtpDateA
+            // 
+            this.dtpDateA.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDateA.Location = new System.Drawing.Point(172, 35);
+            this.dtpDateA.Name = "dtpDateA";
+            this.dtpDateA.Size = new System.Drawing.Size(113, 28);
+            this.dtpDateA.TabIndex = 668;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(153, 38);
+            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(30, 22);
+            this.label2.TabIndex = 670;
+            this.label2.Text = "à :";
+            // 
+            // dtpDateDe
+            // 
+            this.dtpDateDe.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDateDe.Location = new System.Drawing.Point(40, 35);
+            this.dtpDateDe.Name = "dtpDateDe";
+            this.dtpDateDe.Size = new System.Drawing.Size(113, 28);
+            this.dtpDateDe.TabIndex = 669;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(4, 40);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(43, 22);
+            this.label1.TabIndex = 671;
+            this.label1.Text = "De :";
             // 
             // FormComptaBilan
             // 
@@ -496,6 +538,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(703, 451);
+            this.Controls.Add(this.dtpDateA);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.dtpDateDe);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.cboBilan);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btnImprimer);
@@ -532,11 +578,6 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         public System.Windows.Forms.ComboBox cboActif;
         public System.Windows.Forms.ComboBox cboPassif;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         public System.Windows.Forms.Button btnImprimer;
         public System.Windows.Forms.ComboBox cboBilan;
         private System.Windows.Forms.Label label7;
@@ -549,6 +590,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        public System.Windows.Forms.DateTimePicker dtpDateA;
+        public System.Windows.Forms.Label label2;
+        public System.Windows.Forms.DateTimePicker dtpDateDe;
+        public System.Windows.Forms.Label label1;
 
     }
 }

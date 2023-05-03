@@ -15,6 +15,10 @@ namespace SUMEDCO
         public FormFactureService()
         {
             InitializeComponent();
+            for (int i = 0; i < dgvFacture.ColumnCount; i++)
+            {
+                dgvFacture.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
         ClassCompta cc = new ClassCompta();
         ClassMalade cm = new ClassMalade();
@@ -22,7 +26,7 @@ namespace SUMEDCO
             idservice = 0,
             idpayeur = 0,
             idoperation = 0,
-            id = 0,
+            idexercice = 0,
             idutilisateur;
         public bool ajoutvalide, recettePatientConsulte, fermeture_succes;
         public string poste="", type_patient = "",
@@ -75,8 +79,7 @@ namespace SUMEDCO
             if (dgvFacture.RowCount != 0)
             {
                 dgvFacture.Rows.RemoveAt(dgvFacture.CurrentRow.Index);
-                cc.CalculerTotal(dgvFacture, 3, txtTotal);
-                cm.RemplirNumLigne(dgvFacture, 1);
+                cc.CalculerTotal(dgvFacture, txtTotal);
             }
             btnRetirerTout.Enabled = false;
             btnRetirer.Enabled = false;
@@ -176,6 +179,30 @@ namespace SUMEDCO
                 cc.ChargerCategorie(this, "recherche");
             else
                 cc.ChargerCategorie(this, "");
+        }
+
+        private void dgvFacture_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (Convert.ToInt32(dgvFacture.CurrentRow.Cells[4].Value) > 1)
+                {
+                    dgvFacture.CurrentRow.Cells[5].Value = Convert.ToInt32(dgvFacture.CurrentRow.Cells[4].Value) * Convert.ToDouble(dgvFacture.CurrentRow.Cells[3].Value);
+                    cc.CalculerTotal(dgvFacture, txtTotal);
+                }
+                else
+                {
+                    MessageBox.Show("Erreur! La valeur minimale doit être 1", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    dgvFacture.CurrentRow.Cells[4].Value = 1;
+                    cc.CalculerTotal(dgvFacture, txtTotal);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur! Valeur interdite","Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dgvFacture.CurrentRow.Cells[4].Value = 1;
+                cc.CalculerTotal(dgvFacture, txtTotal);
+            }            
         }
 
     }

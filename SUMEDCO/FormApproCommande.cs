@@ -15,11 +15,20 @@ namespace SUMEDCO
         public FormApproCommande()
         {
             InitializeComponent();
+            for (int i = 0; i < dgvAppro.ColumnCount; i++)
+            {
+                dgvAppro.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+            for (int i = 0; i < dgvCommande.ColumnCount; i++)
+            {
+                dgvCommande.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
         ClassStock cs = new ClassStock();
         ClassCompta cc = new ClassCompta();
         public string poste;
-        public int idcom = 0,
+        public int idexercice = 0,
+            idcom = 0,
             idstock = 0,
             idproduit = 0,
             qte_reste= 0,

@@ -15,6 +15,10 @@ namespace SUMEDCO
         public FormConsulter()
         {
             InitializeComponent();
+            for (int i = 0; i < dgvLabo.ColumnCount; i++)
+            {
+                dgvLabo.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
         public int idligneagenda = 0,
             idligne = 0,
@@ -216,7 +220,7 @@ namespace SUMEDCO
                 if (dgvLabo.CurrentRow.Cells[0].Value.ToString() != "")
                 {
                     dgvLabo.Rows.RemoveAt(dgvLabo.CurrentRow.Index);
-                    cc.CalculerTotal(dgvLabo, 2, txtTotal);
+                    cc.CalculerTotal(dgvLabo, txtTotal);
                 }
                 else
                 {
@@ -474,6 +478,37 @@ namespace SUMEDCO
             {
                 cm.AjouterPrescriptionService(this, "autre", dgvAutrePrescS);
             }
+        }
+
+        private void dgvLabo_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (Convert.ToInt32(dgvLabo.CurrentRow.Cells[4].Value) > 1)
+                {
+                    dgvLabo.CurrentRow.Cells[5].Value = Convert.ToInt32(dgvLabo.CurrentRow.Cells[4].Value) * Convert.ToDouble(dgvLabo.CurrentRow.Cells[3].Value);
+                    cc.CalculerTotal(dgvLabo, txtTotal);
+                }
+                else
+                {
+                    MessageBox.Show("Erreur! La valeur minimale doit être 1", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    dgvLabo.CurrentRow.Cells[4].Value = 1;
+                    cc.CalculerTotal(dgvLabo, txtTotal);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur! Valeur interdite", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dgvLabo.CurrentRow.Cells[4].Value = 1;
+                cc.CalculerTotal(dgvLabo, txtTotal);
+            }
+        }
+
+        private void FormConsulter_Shown(object sender, EventArgs e)
+        {
+            dgvPresc.Rows.Add(20);
+            dgvAutrePresc.Rows.Add(20);
+            dgvAutrePrescS.Rows.Add(20);
         }
     }
 }

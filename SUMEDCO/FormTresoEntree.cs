@@ -15,11 +15,15 @@ namespace SUMEDCO
         public FormTresoEntree()
         {
             InitializeComponent();
+            for (int i = 0; i < dgvBon.ColumnCount; i++)
+            {
+                dgvBon.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
         ClassCompta cc = new ClassCompta();
         public string caisse= "", numcompte = "";
         public double taux = 0;
-        public int idoperation = 0;
+        public int idexercice= 0, idoperation = 0;
         private void btnQuitter_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -47,22 +51,23 @@ namespace SUMEDCO
 
         private void btnDate_Click(object sender, EventArgs e)
         {
-            cc.ChangerDate(this, new DateTaux());
+            taux = cc.ChangerDate(new DateTaux(), this, lblDateOperation, lblTaux);
         }
 
         private void FormDepense2_Shown(object sender, EventArgs e)
         {
             if (cc.VerifierTaux(DateTime.Now.Date, "") == 0)
             {
-                cc.ChangerDate(this, new DateTaux());
+                taux = cc.ChangerDate(new DateTaux(), this, lblDateOperation, lblTaux);
+                if(taux > 0)
+                    cc.SoldesCaisse(lblCaisseCDF, lblCaisseUSD, "dépense");
             }
             else
             {
                 lblDateOperation.Text = DateTime.Now.ToShortDateString();
-                lblTaux.Text = cc.VerifierTaux(DateTime.Now.Date, "valeur").ToString() + " CDF";
-                taux = double.Parse(lblTaux.Text.Substring(0, lblTaux.Text.IndexOf(" ")));
-                lblCaisseUSD.Text = string.Format("{0} USD", cc.MontantCompte("571202"));
-                lblCaisseCDF.Text = string.Format("{0} CDF", cc.MontantCompte("571102"));
+                taux = cc.VerifierTaux(DateTime.Now.Date, "valeur");
+                lblTaux.Text = taux + " CDF";
+                cc.SoldesCaisse(lblCaisseCDF, lblCaisseUSD, "dépense");
             }
         }
 

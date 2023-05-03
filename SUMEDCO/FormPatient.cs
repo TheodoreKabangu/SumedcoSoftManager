@@ -19,7 +19,7 @@ namespace SUMEDCO
         ClassMalade cm = new ClassMalade();
         ClassCompta cc = new ClassCompta();
         public int idpatient = 0, 
-            idmedecin =0, 
+            idexercice =0, 
             idtypepatient = 0,
             identreprise = 0,
             idtypeabonne = 0,
@@ -27,7 +27,8 @@ namespace SUMEDCO
             idservice,
             idpayeur,
             idoperation = 0;
-        public string numcompte= "",
+        public string type_patient= "",
+            numcompte= "",
             numcomptediffere = "",
             statut= "",
             poste= "",
@@ -133,6 +134,7 @@ namespace SUMEDCO
         {
             if (service != "" && cboTypeFacture.Text != "")
             {
+                type_patient = dgvPatient.CurrentRow.Cells[10].Value.ToString();
                 cm.AjouterRecetteCas(this);
             }
             else
@@ -153,6 +155,8 @@ namespace SUMEDCO
                     idpatient = int.Parse(dgvPatient.CurrentRow.Cells[0].Value.ToString());
                     idpayeur = int.Parse(dgvPatient.CurrentRow.Cells[1].Value.ToString());
                 }
+                if (poste == "abonné")
+                    identreprise = cc.TrouverId("entreprise", dgvPatient.CurrentRow.Cells[12].Value.ToString());
             }
         }
 

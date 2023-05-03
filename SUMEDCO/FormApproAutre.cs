@@ -15,9 +15,13 @@ namespace SUMEDCO
         public FormApproAutre()
         {
             InitializeComponent();
+
+            for (int i = 0; i < dgvProduit.ColumnCount; i++)
+            {
+                dgvProduit.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
         public int idproduit = 0, idAppro = 0, idstock = 0, idcat= 0;
-        public string descriptif = "RAS";
         public bool fermeture_succes;
 
         ClassCompta cc = new ClassCompta();
@@ -38,7 +42,7 @@ namespace SUMEDCO
                 cboMois.DropDownStyle = ComboBoxStyle.DropDown;
                 cboMois.SelectedText = "";
                 cboMois.DropDownStyle = ComboBoxStyle.DropDownList;
-                nudAnnee.Value = 2023;
+                nudAnnee.Value = DateTime.Now.Year;
                 txtNumLot.Enabled = false;
                 cboMois.Enabled = false;
                 nudAnnee.Enabled = false;
@@ -47,30 +51,20 @@ namespace SUMEDCO
 
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
-            txtProduit.Enabled = true;
-            txtProduit.Text = "";
-            cboForme.DropDownStyle = ComboBoxStyle.DropDown;
-            cboForme.SelectedText = "";
-            cboForme.DropDownStyle = ComboBoxStyle.DropDownList;
-            txtCMM.Text = "0";
-            txtDosage.Text = "";
-            txtPrixAchat.Text = "0";
-            txtTaux.Text = "20";
-            chboxLot.Checked = false;
+            cs.Annuler(this);
             chboxLot_Click(null, null);
-            txtQteAppro.Text = "";
-            txtQteAjout.Text = "";
-            txtObs.Text = "";
         }
         public string[] valeurstock;
+        public string expirationlot = "RAS";
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
-            if (txtPrixAchat.Text != "" && txtPrixVente.Text != "" && txtQteAppro.Text != "" && txtQteAjout.Text != "" && txtObs.Text != "")
+            if (txtProduit.Text != "" && cboForme.Text != "" && txtPrixAchat.Text != "" && txtPrixVente.Text != "" && txtQteAppro.Text != "")
             {
                 if (categorie_produit.ToLower() == "pharmaceutique")
                 {
-                    if (txtTaux.Text != "" && txtNumLot.Text != "" && cboMois.Text != "" && nudAnnee.Value >= dtpDateJour.Value.Year)
+                    if (txtTaux.Text != "" && txtNumLot.Text != "" && cboMois.Text != "" && nudAnnee.Value >= DateTime.Now.Year)
                     {
+                        expirationlot = string.Format("{0}/{1}", cboMois.Text, nudAnnee.Value);
                         cs.AjouterApproAutre(this);
                     }
                     else
@@ -80,8 +74,9 @@ namespace SUMEDCO
                 {
                     if (chboxLot.Checked)
                     {
-                        if (txtNumLot.Text != "" && cboMois.Text != "" && nudAnnee.Value >= dtpDateJour.Value.Year)
+                        if (txtNumLot.Text != "" && cboMois.Text != "" && nudAnnee.Value >= DateTime.Now.Year)
                         {
+                            expirationlot = string.Format("{0}/{1}", cboMois.Text, nudAnnee.Value);
                             cs.AjouterApproAutre(this);
                         }
                         else
@@ -103,7 +98,8 @@ namespace SUMEDCO
             {
                 try
                 {
-                    txtPrixVente.Text = (float.Parse(txtPrixAchat.Text) + float.Parse(txtPrixAchat.Text) * int.Parse(txtTaux.Text) / 100).ToString("0.00");
+                    txtPrixVente.Text = (float.Parse(txtPrixAchat.Text) + float.Parse(txtPrixAchat.Text) * float.Parse(txtTaux.Text) / 100).ToString("0.00");
+                    txtPrixVente.Text = (Convert.ToInt32(txtValeurMin.Text) * Math.Ceiling(Convert.ToDouble(txtPrixVente.Text) / 50)).ToString("0.00");
                 }
                 catch (Exception ex)
                 {
@@ -121,11 +117,11 @@ namespace SUMEDCO
 
         private void txtQteAppro_TextChanged(object sender, EventArgs e)
         {
-            if (txtQteAppro.Text != "" && int.Parse(txtQteAppro.Text) > 0)
+            if (txtQteAppro.Text != "")
             {
                 try
                 {
-                    txtQteAppro.Text = int.Parse(txtQteAppro.Text) + "";
+                    txtQteAppro.Text = Math.Abs(int.Parse(txtQteAppro.Text)) + "";
                 }
                 catch (Exception)
                 {
@@ -143,29 +139,7 @@ namespace SUMEDCO
 
         private void txtQteAjout_TextChanged(object sender, EventArgs e)
         {
-            if (txtQteAjout.Text != "")
-            {
-                try
-                {
-                    if (int.Parse(txtQteAjout.Text) > int.Parse(txtQteAppro.Text))
-                    {
-                        MessageBox.Show("La quantité ajoutée ne doit pas dépasser la quantité d'approvisionnement", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        txtQteAjout.Text = txtQteAjout.Text.Substring(0, txtQteAjout.Text.Length - 1);
-                        btnAnnuler.Select();
-                    }
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Caractère interdit! Saisissez seuls les nombres entiers", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtQteAjout.Text = txtQteAjout.Text.Substring(0, txtQteAjout.Text.Length - 1);
-                    btnAnnuler.Select();
-                }
-            }
-            else
-            {
-                MessageBox.Show("Saisissez une valeur supérieure à 0", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtQteAjout.Text = "";
-            }
+
         }
 
         private void txtPrixVente_Leave(object sender, EventArgs e)
@@ -219,6 +193,11 @@ namespace SUMEDCO
         private void btnRecherche_Click(object sender, EventArgs e)
         {
             cs.ChargerProduit(this, "recherche");
+        }
+        ClassMalade cm = new ClassMalade();
+        private void txtValeurMin_TextChanged(object sender, EventArgs e)
+        {
+            cm.TestEntier(txtValeurMin);
         }
     }
 }

@@ -15,6 +15,10 @@ namespace SUMEDCO
         public FormReceptionRapport()
         {
             InitializeComponent();
+            for (int i = 0; i < dgvRecette.ColumnCount; i++)
+            {
+                dgvRecette.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
         ClassCompta cc = new ClassCompta();
         public int idproduit;

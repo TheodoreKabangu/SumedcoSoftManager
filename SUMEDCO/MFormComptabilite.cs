@@ -21,7 +21,7 @@ namespace SUMEDCO
         }
         ClassStock cs = new ClassStock();
         public Form activeForm = null;
-        public int idutilisateur;
+        public int id = 0, idutilisateur;
         private void btnQuitter_Click(object sender, EventArgs e)
         {
             Application.Exit();          
@@ -32,7 +32,7 @@ namespace SUMEDCO
         }
         private void btnAppro_Click(object sender, EventArgs e)
         {
-            cs.AfficherSousForm(this, new FormApproCommande());
+            cc.AfficherSousForm(this, new FormApproCommande());
             if (btnAppro.BackColor != Color.LightSlateGray)
             {
                 btnAppro.BackColor = Color.LightSlateGray;
@@ -48,9 +48,9 @@ namespace SUMEDCO
             if (btnRapport.BackColor != Color.LightSlateGray)
             {
                 btnRapport.BackColor = Color.LightSlateGray;
-                btnAppro.BackColor = System.Drawing.Color.FromArgb(180, 200, 255);
-                btnCompta.BackColor = System.Drawing.Color.FromArgb(180, 200, 255);
-                btnChat.BackColor = System.Drawing.Color.FromArgb(180, 200, 255);
+                btnAppro.BackColor = Color.FromArgb(180, 200, 255);
+                btnCompta.BackColor = Color.FromArgb(180, 200, 255);
+                btnChat.BackColor = Color.FromArgb(180, 200, 255);
             }
             else
                 btnRapport.BackColor = System.Drawing.Color.FromArgb(180, 200, 255);
@@ -68,6 +68,7 @@ namespace SUMEDCO
             }
             else
                 btnCompta.BackColor = System.Drawing.Color.FromArgb(180, 200, 255);
+            cc.LancerCompta(this);
             cc.SousMenu(pnlCompta);
         }
 
@@ -108,12 +109,12 @@ namespace SUMEDCO
 
         private void btnTabFluxT_Click(object sender, EventArgs e)
         {
-            //cc.AfficherSousForm(this, new FormComptaTableauFlux());
+            cc.AfficherSousForm(this, new FormComptaTableauFlux());
         }
 
         private void btnResultat_Click(object sender, EventArgs e)
         {
-            //cc.AfficherSousForm(this, new FormComptaResultat());
+            cc.AfficherSousForm(this, new FormComptaResultat());
         }
 
         private void btnCasMedecin_Click(object sender, EventArgs e)

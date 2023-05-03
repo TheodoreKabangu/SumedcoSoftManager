@@ -16,7 +16,8 @@ namespace SUMEDCO
         {
             InitializeComponent();
         }
-        ClassCompta cm = new ClassCompta();
+        ClassCompta cc = new ClassCompta();
+        ClassMalade cm = new ClassMalade();
         public bool fermeture_succes;
 
         private void btnAnnuler_Click(object sender, EventArgs e)
@@ -27,7 +28,7 @@ namespace SUMEDCO
 
         private void btnContinuer_Click(object sender, EventArgs e)
         {
-            if (cm.VerifierTaux(dtpTaux.Value.Date, "") != 0)
+            if (cc.VerifierTaux(dtpTaux.Value.Date, "") != 0)
             {
                 fermeture_succes = true;
                 this.Hide();
@@ -36,9 +37,13 @@ namespace SUMEDCO
 
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
-            cm.Enregistrer(this);
+            cc.Enregistrer(this);
             fermeture_succes = true;
             Hide();
+        }
+        private void txtTaux_TextChanged(object sender, EventArgs e)
+        {
+            cm.TestEntier(txtTaux);
         }
     }
 }

@@ -15,6 +15,10 @@ namespace SUMEDCO
         public FormTresoRapport()
         {
             InitializeComponent();
+            for (int i = 0; i < dgvBon.ColumnCount; i++)
+            {
+                dgvBon.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
         ClassCompta cc = new ClassCompta();
         public double taux = 0, somme = 0;
@@ -28,10 +32,10 @@ namespace SUMEDCO
         {
             if (cc.VerifierTaux(DateTime.Now.Date, "") == 0)
             {
-                cc.ChangerDate(this, new DateTaux());
+                taux = cc.ChangerDate(this, new DateTaux());
             }
             else
-                taux = double.Parse(cc.VerifierTaux(DateTime.Now.Date, "valeur").ToString());
+                taux = cc.VerifierTaux(DateTime.Now.Date, "valeur");
         }
     }
 }

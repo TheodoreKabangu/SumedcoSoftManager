@@ -33,12 +33,18 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnQuitter = new System.Windows.Forms.Button();
             this.dgvCommande = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnRetirer = new System.Windows.Forms.Button();
             this.btnServir = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -51,25 +57,16 @@
             this.btnImprimer = new System.Windows.Forms.Button();
             this.btnRecherche2 = new System.Windows.Forms.Button();
             this.btnNouveauProduit = new System.Windows.Forms.Button();
+            this.btnMiseAjour = new System.Windows.Forms.Button();
             this.cboCategorie = new System.Windows.Forms.ComboBox();
             this.dgvAppro = new System.Windows.Forms.DataGridView();
-            this.txtRecherche = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnMiseAjour = new System.Windows.Forms.Button();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtRecherche = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCommande)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppro)).BeginInit();
             this.SuspendLayout();
@@ -130,7 +127,8 @@
             this.Column8,
             this.Column7,
             this.Column6,
-            this.Column10});
+            this.Column10,
+            this.Column11});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Lavender;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -150,6 +148,66 @@
             this.dgvCommande.Size = new System.Drawing.Size(442, 342);
             this.dgvCommande.TabIndex = 738;
             this.dgvCommande.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStock_CellClick);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "N°";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 40;
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column3.HeaderText = "Date com.";
+            this.Column3.MinimumWidth = 130;
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column5.HeaderText = "Produit";
+            this.Column5.MinimumWidth = 150;
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "Forme";
+            this.Column8.MinimumWidth = 100;
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            // 
+            // Column7
+            // 
+            this.Column7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column7.HeaderText = "Dosage";
+            this.Column7.MinimumWidth = 150;
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Qté dem.";
+            this.Column6.MinimumWidth = 130;
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Width = 130;
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "idstock";
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            this.Column10.Visible = false;
+            // 
+            // Column11
+            // 
+            this.Column11.HeaderText = "prix_achat";
+            this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
+            this.Column11.Visible = false;
             // 
             // btnRetirer
             // 
@@ -308,9 +366,29 @@
             this.btnNouveauProduit.Name = "btnNouveauProduit";
             this.btnNouveauProduit.Size = new System.Drawing.Size(30, 21);
             this.btnNouveauProduit.TabIndex = 762;
-            this.toolTip1.SetToolTip(this.btnNouveauProduit, "Approvisionner par don ou bonus");
+            this.toolTip1.SetToolTip(this.btnNouveauProduit, "Autre approvisionnement");
             this.btnNouveauProduit.UseVisualStyleBackColor = false;
             this.btnNouveauProduit.Click += new System.EventHandler(this.btnNouveauProduit_Click);
+            // 
+            // btnMiseAjour
+            // 
+            this.btnMiseAjour.BackColor = System.Drawing.Color.Transparent;
+            this.btnMiseAjour.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnMiseAjour.Enabled = false;
+            this.btnMiseAjour.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnMiseAjour.FlatAppearance.BorderSize = 0;
+            this.btnMiseAjour.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnMiseAjour.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMiseAjour.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMiseAjour.Image = ((System.Drawing.Image)(resources.GetObject("btnMiseAjour.Image")));
+            this.btnMiseAjour.Location = new System.Drawing.Point(661, 67);
+            this.btnMiseAjour.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btnMiseAjour.Name = "btnMiseAjour";
+            this.btnMiseAjour.Size = new System.Drawing.Size(30, 21);
+            this.btnMiseAjour.TabIndex = 763;
+            this.toolTip1.SetToolTip(this.btnMiseAjour, "Mettre à jour cet appro");
+            this.btnMiseAjour.UseVisualStyleBackColor = false;
+            this.btnMiseAjour.Click += new System.EventHandler(this.btnMiseAjour_Click);
             // 
             // cboCategorie
             // 
@@ -351,17 +429,15 @@
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn6,
-            this.Column2,
-            this.Column4,
             this.Column9});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Lavender;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvAppro.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Lavender;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvAppro.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvAppro.EnableHeadersVisualStyles = false;
             this.dgvAppro.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.dgvAppro.Location = new System.Drawing.Point(460, 98);
@@ -373,25 +449,6 @@
             this.dgvAppro.Size = new System.Drawing.Size(231, 342);
             this.dgvAppro.TabIndex = 754;
             this.dgvAppro.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAppro_CellClick);
-            // 
-            // txtRecherche
-            // 
-            this.txtRecherche.Location = new System.Drawing.Point(405, 68);
-            this.txtRecherche.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.txtRecherche.MaxLength = 75;
-            this.txtRecherche.Name = "txtRecherche";
-            this.txtRecherche.Size = new System.Drawing.Size(85, 28);
-            this.txtRecherche.TabIndex = 756;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(341, 71);
-            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(77, 22);
-            this.label2.TabIndex = 760;
-            this.label2.Text = "Produit :";
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -424,26 +481,6 @@
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
             this.dataGridViewTextBoxColumn6.Width = 140;
             // 
-            // Column2
-            // 
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = null;
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Column2.HeaderText = "Prix U.";
-            this.Column2.MinimumWidth = 100;
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            dataGridViewCellStyle5.Format = "N2";
-            dataGridViewCellStyle5.NullValue = null;
-            this.Column4.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Column4.HeaderText = "Taux";
-            this.Column4.MinimumWidth = 80;
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
             // Column9
             // 
             this.Column9.HeaderText = "Observation";
@@ -451,78 +488,24 @@
             this.Column9.Name = "Column9";
             this.Column9.ReadOnly = true;
             // 
-            // btnMiseAjour
+            // txtRecherche
             // 
-            this.btnMiseAjour.BackColor = System.Drawing.Color.Transparent;
-            this.btnMiseAjour.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnMiseAjour.Enabled = false;
-            this.btnMiseAjour.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnMiseAjour.FlatAppearance.BorderSize = 0;
-            this.btnMiseAjour.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnMiseAjour.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMiseAjour.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMiseAjour.Image = ((System.Drawing.Image)(resources.GetObject("btnMiseAjour.Image")));
-            this.btnMiseAjour.Location = new System.Drawing.Point(661, 67);
-            this.btnMiseAjour.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.btnMiseAjour.Name = "btnMiseAjour";
-            this.btnMiseAjour.Size = new System.Drawing.Size(30, 21);
-            this.btnMiseAjour.TabIndex = 763;
-            this.toolTip1.SetToolTip(this.btnMiseAjour, "Mettre à jour cet appro");
-            this.btnMiseAjour.UseVisualStyleBackColor = false;
-            this.btnMiseAjour.Click += new System.EventHandler(this.btnMiseAjour_Click);
+            this.txtRecherche.Location = new System.Drawing.Point(405, 68);
+            this.txtRecherche.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.txtRecherche.MaxLength = 75;
+            this.txtRecherche.Name = "txtRecherche";
+            this.txtRecherche.Size = new System.Drawing.Size(85, 28);
+            this.txtRecherche.TabIndex = 756;
             // 
-            // Column1
+            // label2
             // 
-            this.Column1.HeaderText = "N°";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 40;
-            // 
-            // Column3
-            // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column3.HeaderText = "Date com.";
-            this.Column3.MinimumWidth = 130;
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column5.HeaderText = "Produit";
-            this.Column5.MinimumWidth = 150;
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "Forme";
-            this.Column8.MinimumWidth = 100;
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            // 
-            // Column7
-            // 
-            this.Column7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column7.HeaderText = "Dosage";
-            this.Column7.MinimumWidth = 150;
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Qté dem.";
-            this.Column6.MinimumWidth = 130;
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            this.Column6.Width = 130;
-            // 
-            // Column10
-            // 
-            this.Column10.HeaderText = "idstock";
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
-            this.Column10.Visible = false;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(341, 71);
+            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(77, 22);
+            this.label2.TabIndex = 760;
+            this.label2.Text = "Produit :";
             // 
             // FormApproCommande
             // 
@@ -582,13 +565,6 @@
         public System.Windows.Forms.Button btnRecherche2;
         private System.Windows.Forms.Label label2;
         public System.Windows.Forms.Button btnNouveauProduit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         public System.Windows.Forms.Button btnMiseAjour;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -597,6 +573,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
 
     }
 }

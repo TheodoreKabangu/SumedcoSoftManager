@@ -15,6 +15,10 @@ namespace SUMEDCO
         public FormTresoJournal()
         {
             InitializeComponent();
+            for (int i = 0; i < dgvBon.ColumnCount; i++)
+            {
+                dgvBon.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
         ClassCompta cc = new ClassCompta();
         public int numbon = 0;

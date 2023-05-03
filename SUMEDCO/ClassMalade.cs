@@ -1290,11 +1290,13 @@ namespace SUMEDCO
                         f.dgvFacture.Rows.Add();
                         f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[0].Value = c.dgvLabo.Rows[i].Cells[0].Value;
                         f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[1].Value = f.dgvFacture.RowCount;
-                        f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[2].Value = c.dgvLabo.Rows[i].Cells[1].Value;
-                        f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[3].Value = c.dgvLabo.Rows[i].Cells[2].Value;
+                        f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[2].Value = c.dgvLabo.Rows[i].Cells[2].Value;
+                        f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[3].Value = c.dgvLabo.Rows[i].Cells[3].Value;
+                        f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[4].Value = c.dgvLabo.Rows[i].Cells[4].Value;
+                        f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[5].Value = c.dgvLabo.Rows[i].Cells[5].Value;
                     }
                 }
-                cc.CalculerTotal(f.dgvFacture, 3, f.txtTotal);
+                cc.CalculerTotal(f.dgvFacture, f.txtTotal);
                 f.ShowDialog();
                 if (f.fermeture_succes)
                 {
@@ -2116,6 +2118,7 @@ namespace SUMEDCO
                 con.Close();
 
                 //Recette
+                p.type_patient = p.cboTypePatient.Text;
                 AjouterRecetteCas(p);               
                 AfficherPatient(p.dgvPatient, p.txtRecherche, "", p.poste, p.idpatient);
             }
@@ -2134,20 +2137,19 @@ namespace SUMEDCO
             ////Ecriture comptable              
             if (p.cboTypeFacture.Text == "différé")
             {
-                if (p.cboTypePatient.Text.Contains("abonné"))
+                if (p.type_patient.Contains("abonné"))
                     p.numcomptediffere = TrouverNom("numcompte_entreprise", p.identreprise);
-                else if (p.cboTypePatient.Text == "employé")
+                else if (p.type_patient == "employé")
                     p.numcomptediffere = cc.TrouverId("numcompte", "Médecine du travail et pharmacie").ToString();
-                else if (p.cboTypePatient.Text == "cas social")
+                else if (p.type_patient == "cas social")
                     p.numcomptediffere = cc.TrouverId("numcompte", "Frais médicaux & Pharmaceutiques Cas sociaux").ToString();
-                else if (p.cboTypePatient.Text == "payant" && p.cboTypeFacture.Text == "différé")
+                else if (p.type_patient == "payant" && p.cboTypeFacture.Text == "différé")
                     p.numcomptediffere = "4711";
-
                 p.idoperation = cc.NouveauID("operation");
-                if (cc.AjouterOperation(p.idoperation, p.lblDateOperation.Text, "Vente de services à crédit", string.Format("R_{0}", p.idrecette), cc.TrouverId("typejournal", "ventes"), p.idrecette, "recette"))
+                if (cc.AjouterOperation(p.idoperation, p.lblDateOperation.Text, string.Format("R_{0}", p.idrecette), cc.TrouverId("typejournal", "ventes"), p.idexercice, p.idrecette, "recette"))
                 {
                     p.numcompte = cc.TrouverNom("numcompte_service", cc.TrouverId("service", p.service));
-                    cc.AjouterEcriture(p.idoperation, p.numcomptediffere, p.numcompte, cc.PrixService(cc.TrouverId("service", p.service)), cc.PrixService(cc.TrouverId("service", p.service)));
+                    cc.AjouterEcriture(p.idoperation, p.numcomptediffere, p.numcompte, cc.PrixService(cc.TrouverId("service", p.service)), cc.PrixService(cc.TrouverId("service", p.service)), "Vente - service à crédit");
                 }
             }
             MessageBox.Show("Ajouté avec succès", "Enregistrement", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -2254,9 +2256,8 @@ namespace SUMEDCO
             //    MessageBox.Show("Ce patient est déjà impliqué dans au moins une consultation ,\npour raison de cohérence, il ne peut être supprimé", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
         }
-        public void AfficherPatient(DataGridView dgv, TextBox txt, string motif, string type_patient, int idpatient)
+        public void AfficherPatient(DataGridView dgv, TextBox txt, string motif, string poste, int idpatient)
         {
-            //A revoir pour les colonnes abonnés
             if(motif =="recherche")
             {
                 if (txt.Text != "" && txt.Text != "Nom du patient" && txt.Text != "Numéro service")
@@ -2264,7 +2265,7 @@ namespace SUMEDCO
                     con.Open();
                     try
                     {
-                        if (!type_patient.Contains("abonné"))
+                        if (!poste.Contains("abonné"))
                         {
                             cmd = new SqlCommand("select Patient.idpatient,idpayeur,noms,sexe,age,adresse,situation,telephone,pers_contact,tel_contact,nomtype from Patient, Payeur, TypePatient where Patient.idpatient = Payeur.idpatient and Patient.idtype = TypePatient.idtype and noms like '" + txt.Text + "%'", con);
                             dr = cmd.ExecuteReader();
@@ -2323,7 +2324,7 @@ namespace SUMEDCO
                 con.Open();
                 try
                 {
-                    if (type_patient != "abonné")
+                    if (poste != "abonné")
                     {
                         cmd = new SqlCommand("select Patient.idpatient,idpayeur,noms,sexe,age,adresse,situation,telephone,pers_contact,tel_contact,nomtype from Patient, Payeur, TypePatient where Patient.idpatient = Payeur.idpatient and Patient.idtype = TypePatient.idtype and Patient.idpatient = '" + idpatient + "'", con);
                         dr = cmd.ExecuteReader();
@@ -3073,7 +3074,7 @@ namespace SUMEDCO
                 BonExamen be = new BonExamen
                 {
                     numexamen = c.dgvLabo.Rows[i].Cells[0].Value.ToString(),
-                    examen = c.dgvLabo.Rows[i].Cells[1].Value.ToString(),
+                    examen = c.dgvLabo.Rows[i].Cells[2].Value.ToString(),
                 };
                 list.Add(be);
             }

@@ -15,6 +15,10 @@ namespace SUMEDCO
         public FormPayements()
         {
             InitializeComponent();
+            for (int i = 0; i < dgvPayement.ColumnCount; i++)
+            {
+                dgvPayement.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
         ClassCompta cc = new ClassCompta();
         public string poste, motif = "", statut_examen = "";

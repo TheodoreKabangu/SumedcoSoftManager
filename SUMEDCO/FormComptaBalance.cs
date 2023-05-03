@@ -15,22 +15,19 @@ namespace SUMEDCO
         public FormComptaBalance()
         {
             InitializeComponent();
+            for (int i = 0; i < dgvBalance.ColumnCount; i++)
+            {
+                dgvBalance.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
         ClassCompta cc = new ClassCompta();
-        public int taux = 0;
-        private void btnRecherche_Click(object sender, EventArgs e)
-        {
-            cc.CalculerBalance(this);
-            btnImprimer.Enabled = true;
-        }
-
+        public int idexercice=0, taux = 0;
         private void FormComptaBalance_Shown(object sender, EventArgs e)
         {
-            taux = cc.VerifierTaux(DateTime.Now.Date, "valeur");
-            if (taux != 0)
-            {
-                cc.RubriquesBalances(this);
-            }
+            if (cc.VerifierTaux(DateTime.Now.Date, "") == 0)
+                taux = cc.ChangerDate(this, new DateTaux());
+            else
+                taux = cc.VerifierTaux(DateTime.Now.Date, "valeur");
         }
 
         private void btnQuitter_Click(object sender, EventArgs e)
@@ -42,10 +39,15 @@ namespace SUMEDCO
         {
             cc.ImprimerBalance(this, new FormImpression());
         }
-
-        private void cboBalance_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnRecherche_Click(object sender, EventArgs e)
         {
-            cc.ComptesBalance(this);
+            if (dtpDateDe.Value.Year == dtpDateA.Value.Year && dtpDateDe.Value.Date <= dtpDateA.Value.Date)
+            {
+                cc.CalculerBalance(this);
+                btnImprimer.Enabled = true;
+            }
+            else
+                MessageBox.Show("La première date doit être inférieure ou égale à la deuxième et l'année doit être la même", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
     }
 }

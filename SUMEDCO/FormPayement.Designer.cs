@@ -69,7 +69,7 @@
             this.btnAjouter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
             this.btnAjouter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAjouter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAjouter.Location = new System.Drawing.Point(389, 199);
+            this.btnAjouter.Location = new System.Drawing.Point(389, 343);
             this.btnAjouter.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnAjouter.Name = "btnAjouter";
             this.btnAjouter.Size = new System.Drawing.Size(80, 27);
@@ -86,7 +86,7 @@
             this.btnAnnuler.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
             this.btnAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAnnuler.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAnnuler.Location = new System.Drawing.Point(297, 199);
+            this.btnAnnuler.Location = new System.Drawing.Point(297, 343);
             this.btnAnnuler.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(80, 27);
@@ -119,7 +119,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 120);
+            this.label2.Location = new System.Drawing.Point(12, 264);
             this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(84, 22);
@@ -129,7 +129,8 @@
             // txtMontant
             // 
             this.txtMontant.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtMontant.Location = new System.Drawing.Point(113, 117);
+            this.txtMontant.Enabled = false;
+            this.txtMontant.Location = new System.Drawing.Point(113, 261);
             this.txtMontant.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtMontant.MaxLength = 75;
             this.txtMontant.Name = "txtMontant";
@@ -144,7 +145,7 @@
             this.txtMontantLettre.Enabled = false;
             this.txtMontantLettre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMontantLettre.ForeColor = System.Drawing.Color.MediumBlue;
-            this.txtMontantLettre.Location = new System.Drawing.Point(113, 148);
+            this.txtMontantLettre.Location = new System.Drawing.Point(113, 292);
             this.txtMontantLettre.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtMontantLettre.MaxLength = 200;
             this.txtMontantLettre.Multiline = true;
@@ -162,7 +163,7 @@
             this.cboMonnaie.Items.AddRange(new object[] {
             "CDF",
             "USD"});
-            this.cboMonnaie.Location = new System.Drawing.Point(407, 117);
+            this.cboMonnaie.Location = new System.Drawing.Point(407, 261);
             this.cboMonnaie.MaxDropDownItems = 10;
             this.cboMonnaie.Name = "cboMonnaie";
             this.cboMonnaie.Size = new System.Drawing.Size(62, 30);
@@ -174,7 +175,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(337, 121);
+            this.label10.Location = new System.Drawing.Point(337, 265);
             this.label10.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(100, 22);
@@ -184,7 +185,7 @@
             // lblDateOperation
             // 
             this.lblDateOperation.ForeColor = System.Drawing.Color.IndianRed;
-            this.lblDateOperation.Location = new System.Drawing.Point(109, 209);
+            this.lblDateOperation.Location = new System.Drawing.Point(109, 353);
             this.lblDateOperation.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblDateOperation.Name = "lblDateOperation";
             this.lblDateOperation.Size = new System.Drawing.Size(80, 15);
@@ -195,7 +196,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 205);
+            this.label3.Location = new System.Drawing.Point(12, 349);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(86, 22);
@@ -264,7 +265,7 @@
             this.dgvCompte.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvCompte.EnableHeadersVisualStyles = false;
             this.dgvCompte.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            this.dgvCompte.Location = new System.Drawing.Point(113, 234);
+            this.dgvCompte.Location = new System.Drawing.Point(113, 118);
             this.dgvCompte.MultiSelect = false;
             this.dgvCompte.Name = "dgvCompte";
             this.dgvCompte.RowHeadersVisible = false;

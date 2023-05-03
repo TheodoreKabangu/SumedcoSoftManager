@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormComptaResultat));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnImprimer = new System.Windows.Forms.Button();
-            this.btnRecherche = new System.Windows.Forms.Button();
             this.dgvResultat = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,6 +47,12 @@
             this.dataGridViewTextBoxColumn29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cboLibelle = new System.Windows.Forms.ComboBox();
             this.btnQuitter = new System.Windows.Forms.Button();
+            this.dtpDateA = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dtpDateDe = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnRecherche = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvResultat)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,31 +77,14 @@
             this.btnImprimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImprimer.ForeColor = System.Drawing.Color.MediumBlue;
             this.btnImprimer.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimer.Image")));
-            this.btnImprimer.Location = new System.Drawing.Point(102, 36);
+            this.btnImprimer.Location = new System.Drawing.Point(336, 32);
             this.btnImprimer.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnImprimer.Name = "btnImprimer";
             this.btnImprimer.Size = new System.Drawing.Size(30, 23);
             this.btnImprimer.TabIndex = 670;
+            this.toolTip1.SetToolTip(this.btnImprimer, "Imprimer");
             this.btnImprimer.UseVisualStyleBackColor = false;
             this.btnImprimer.Click += new System.EventHandler(this.btnImprimer_Click);
-            // 
-            // btnRecherche
-            // 
-            this.btnRecherche.BackColor = System.Drawing.Color.Transparent;
-            this.btnRecherche.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnRecherche.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnRecherche.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnRecherche.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRecherche.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRecherche.ForeColor = System.Drawing.Color.MediumBlue;
-            this.btnRecherche.Location = new System.Drawing.Point(12, 34);
-            this.btnRecherche.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.btnRecherche.Name = "btnRecherche";
-            this.btnRecherche.Size = new System.Drawing.Size(80, 26);
-            this.btnRecherche.TabIndex = 669;
-            this.btnRecherche.Text = "Calculer";
-            this.btnRecherche.UseVisualStyleBackColor = false;
-            this.btnRecherche.Click += new System.EventHandler(this.btnRecherche_Click);
             // 
             // dgvResultat
             // 
@@ -110,14 +99,14 @@
             this.dgvResultat.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.dgvResultat.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvResultat.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvResultat.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvResultat.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvResultat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvResultat.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn25,
@@ -126,14 +115,14 @@
             this.dataGridViewTextBoxColumn27,
             this.dataGridViewTextBoxColumn28,
             this.dataGridViewTextBoxColumn29});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Lavender;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvResultat.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.Lavender;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvResultat.DefaultCellStyle = dataGridViewCellStyle12;
             this.dgvResultat.EnableHeadersVisualStyles = false;
             this.dgvResultat.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.dgvResultat.Location = new System.Drawing.Point(12, 67);
@@ -164,8 +153,8 @@
             // 
             // Column1
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle8;
             this.Column1.HeaderText = "";
             this.Column1.MinimumWidth = 30;
             this.Column1.Name = "Column1";
@@ -174,9 +163,9 @@
             // 
             // dataGridViewTextBoxColumn27
             // 
-            dataGridViewCellStyle3.Format = "N2";
-            dataGridViewCellStyle3.NullValue = null;
-            this.dataGridViewTextBoxColumn27.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Format = "N2";
+            dataGridViewCellStyle9.NullValue = null;
+            this.dataGridViewTextBoxColumn27.DefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridViewTextBoxColumn27.HeaderText = "Note";
             this.dataGridViewTextBoxColumn27.MinimumWidth = 100;
             this.dataGridViewTextBoxColumn27.Name = "dataGridViewTextBoxColumn27";
@@ -184,9 +173,9 @@
             // 
             // dataGridViewTextBoxColumn28
             // 
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = null;
-            this.dataGridViewTextBoxColumn28.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Format = "N2";
+            dataGridViewCellStyle10.NullValue = null;
+            this.dataGridViewTextBoxColumn28.DefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridViewTextBoxColumn28.HeaderText = "Exercice N";
             this.dataGridViewTextBoxColumn28.MinimumWidth = 100;
             this.dataGridViewTextBoxColumn28.Name = "dataGridViewTextBoxColumn28";
@@ -194,9 +183,9 @@
             // 
             // dataGridViewTextBoxColumn29
             // 
-            dataGridViewCellStyle5.Format = "N2";
-            dataGridViewCellStyle5.NullValue = null;
-            this.dataGridViewTextBoxColumn29.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.Format = "N2";
+            dataGridViewCellStyle11.NullValue = null;
+            this.dataGridViewTextBoxColumn29.DefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridViewTextBoxColumn29.HeaderText = "Exercice N-1";
             this.dataGridViewTextBoxColumn29.MinimumWidth = 100;
             this.dataGridViewTextBoxColumn29.Name = "dataGridViewTextBoxColumn29";
@@ -252,7 +241,7 @@
             "RQ_Participation des travailleurs_30_-",
             "RS_Impôts sur le résultat_37_-",
             "XI_RESULTAT NET (XG+XH+RQ+RS)"});
-            this.cboLibelle.Location = new System.Drawing.Point(141, 36);
+            this.cboLibelle.Location = new System.Drawing.Point(634, 36);
             this.cboLibelle.Name = "cboLibelle";
             this.cboLibelle.Size = new System.Drawing.Size(10, 30);
             this.cboLibelle.TabIndex = 671;
@@ -277,16 +266,76 @@
             this.btnQuitter.UseVisualStyleBackColor = false;
             this.btnQuitter.Click += new System.EventHandler(this.btnQuitter_Click);
             // 
+            // dtpDateA
+            // 
+            this.dtpDateA.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDateA.Location = new System.Drawing.Point(176, 32);
+            this.dtpDateA.Name = "dtpDateA";
+            this.dtpDateA.Size = new System.Drawing.Size(113, 28);
+            this.dtpDateA.TabIndex = 676;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(157, 35);
+            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(30, 22);
+            this.label2.TabIndex = 678;
+            this.label2.Text = "à :";
+            // 
+            // dtpDateDe
+            // 
+            this.dtpDateDe.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDateDe.Location = new System.Drawing.Point(44, 32);
+            this.dtpDateDe.Name = "dtpDateDe";
+            this.dtpDateDe.Size = new System.Drawing.Size(113, 28);
+            this.dtpDateDe.TabIndex = 677;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(8, 37);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(43, 22);
+            this.label1.TabIndex = 679;
+            this.label1.Text = "De :";
+            // 
+            // btnRecherche
+            // 
+            this.btnRecherche.BackColor = System.Drawing.Color.Transparent;
+            this.btnRecherche.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnRecherche.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnRecherche.FlatAppearance.BorderSize = 0;
+            this.btnRecherche.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnRecherche.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRecherche.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRecherche.ForeColor = System.Drawing.Color.MediumBlue;
+            this.btnRecherche.Image = ((System.Drawing.Image)(resources.GetObject("btnRecherche.Image")));
+            this.btnRecherche.Location = new System.Drawing.Point(296, 32);
+            this.btnRecherche.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnRecherche.Name = "btnRecherche";
+            this.btnRecherche.Size = new System.Drawing.Size(30, 23);
+            this.btnRecherche.TabIndex = 675;
+            this.toolTip1.SetToolTip(this.btnRecherche, "Calculer");
+            this.btnRecherche.UseVisualStyleBackColor = false;
+            this.btnRecherche.Click += new System.EventHandler(this.btnRecherche_Click);
+            // 
             // FormComptaResultat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(703, 451);
+            this.Controls.Add(this.dtpDateA);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.dtpDateDe);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnRecherche);
             this.Controls.Add(this.btnQuitter);
             this.Controls.Add(this.cboLibelle);
             this.Controls.Add(this.btnImprimer);
-            this.Controls.Add(this.btnRecherche);
             this.Controls.Add(this.dgvResultat);
             this.Controls.Add(this.panel2);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -296,6 +345,7 @@
             this.Shown += new System.EventHandler(this.FormComptaResultat_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvResultat)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -303,7 +353,6 @@
 
         private System.Windows.Forms.Panel panel2;
         public System.Windows.Forms.Button btnImprimer;
-        public System.Windows.Forms.Button btnRecherche;
         public System.Windows.Forms.DataGridView dgvResultat;
         public System.Windows.Forms.ComboBox cboLibelle;
         public System.Windows.Forms.Button btnQuitter;
@@ -313,5 +362,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn27;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn28;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn29;
+        public System.Windows.Forms.DateTimePicker dtpDateA;
+        public System.Windows.Forms.Label label2;
+        public System.Windows.Forms.DateTimePicker dtpDateDe;
+        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Button btnRecherche;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

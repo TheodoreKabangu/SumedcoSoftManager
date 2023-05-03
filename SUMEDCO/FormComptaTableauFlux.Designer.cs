@@ -30,36 +30,24 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormComptaTableauFlux));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cboLibelle = new System.Windows.Forms.ComboBox();
             this.btnImprimer = new System.Windows.Forms.Button();
-            this.btnRecherche = new System.Windows.Forms.Button();
             this.dgvTFT = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.dgvResultat = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtpDateA = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dtpDateDe = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnCalculer = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTFT)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvResultat)).BeginInit();
             this.SuspendLayout();
             // 
             // cboLibelle
@@ -72,38 +60,38 @@
             this.cboLibelle.Items.AddRange(new object[] {
             "ZA_Trésorerie nette au 1er janvier (Trésorerie actif N-1 - Trésorerie passif N-1)" +
                 "_A",
-            "Flux de trésorerie provenant des activités opérationnelles",
+            "_Flux de trésorerie provenant des activités opérationnelles",
             "FA_Capacité d\'Autofinancement Globale (CAFG)",
-            "FB_- Actif circulant HAO (1)",
-            "FC_- Variation des stocks",
-            "FD_- Variation des créances",
-            "FE_+ Variation du passif circulant (1)",
-            "Variation du BF lié aux activités opérationnelles FB+FC+FD+FE :",
+            "FB_Actif circulant HAO (1)_-",
+            "FC_Variation des stocks_-",
+            "FD_Variation des créances_-",
+            "FE_Variation du passif circulant (1)_+",
+            "_Variation du BF lié aux activités opérationnelles FB+FC+FD+FE :",
             "ZB_Flux de trésorerie provenant des activités opérationnelles  (Somme FA à FE)_B",
-            "Flux de trésorerie provenant des activités d’investissements",
-            "FF_- Décaissements liés aux acquisitions d\'immobilisations incorporelles",
-            "FG_- Décaissements liés aux acquisitions d\'immobilisations corporelles",
-            "FH_- Décaissements liés aux acquisitions d\'immobilisations financières",
-            "FI_+ Encaissements liés aux cessions d’immobilisations incorporelles et corporell" +
-                "es",
-            "FJ_+ Encaissements liés aux cessions d’immobilisations financières",
+            "_Flux de trésorerie provenant des activités d’investissements",
+            "FF_Décaissements liés aux acquisitions d\'immobilisations incorporelles_-",
+            "FG_Décaissements liés aux acquisitions d\'immobilisations corporelles_-",
+            "FH_Décaissements liés aux acquisitions d\'immobilisations financières_-",
+            "FI_Encaissements liés aux cessions d’immobilisations incorporelles et corporelles" +
+                "_+",
+            "FJ_Encaissements liés aux cessions d’immobilisations financières_+",
             "ZC_Flux de trésorerie provenant des activités d’investissement (somme FF à FJ)_C",
-            "Flux de trésorerie provenant du financement par les capitaux propres",
-            "FK_+ Augmentations de capital par apports nouveaux",
-            "FL_+ Subventions d\'investissement reçues",
-            "FM_- Prélèvements sur le capital",
-            "FN_- Dividendes versés",
+            "_Flux de trésorerie provenant du financement par les capitaux propres",
+            "FK_Augmentations de capital par apports nouveaux_+",
+            "FL_Subventions d\'investissement reçues_+",
+            "FM_Prélèvements sur le capital_-",
+            "FN_Dividendes versés_-",
             "ZD_Flux de trésorerie provenant des capitaux propres (somme FK à FN)_D",
-            "Trésorerie provenant du financement par les capitaux étrangers",
-            "FO_+ Emprunts",
-            "FP_+ Autres dettes financières",
-            "FQ_- Remboursements des emprunts et autres dettes financières",
+            "_Trésorerie provenant du financement par les capitaux étrangers",
+            "FO_Emprunts_+",
+            "FP_Autres dettes financières_+",
+            "FQ_Remboursements des emprunts et autres dettes financières_-",
             "ZE_Flux de trésorerie provenant des capitaux étrangers (somme FO à FQ)_E",
             "ZF_Flux de trésorerie provenant des activités de financement (D+E)_F",
             "ZG_VARIATION DE LA TRÉSORERIE NETTE DE LA PÉRIODE (B+C+F)_G",
             "ZH_Trésorerie nette au 31 Décembre (G+A) Contrôle : Trésorerie actif N - Trésorer" +
                 "ie passif N_H"});
-            this.cboLibelle.Location = new System.Drawing.Point(141, 36);
+            this.cboLibelle.Location = new System.Drawing.Point(526, 36);
             this.cboLibelle.Name = "cboLibelle";
             this.cboLibelle.Size = new System.Drawing.Size(10, 30);
             this.cboLibelle.TabIndex = 676;
@@ -121,31 +109,13 @@
             this.btnImprimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImprimer.ForeColor = System.Drawing.Color.MediumBlue;
             this.btnImprimer.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimer.Image")));
-            this.btnImprimer.Location = new System.Drawing.Point(102, 36);
+            this.btnImprimer.Location = new System.Drawing.Point(336, 36);
             this.btnImprimer.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnImprimer.Name = "btnImprimer";
             this.btnImprimer.Size = new System.Drawing.Size(30, 23);
             this.btnImprimer.TabIndex = 675;
             this.btnImprimer.UseVisualStyleBackColor = false;
             this.btnImprimer.Click += new System.EventHandler(this.btnImprimer_Click);
-            // 
-            // btnRecherche
-            // 
-            this.btnRecherche.BackColor = System.Drawing.Color.Transparent;
-            this.btnRecherche.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnRecherche.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnRecherche.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnRecherche.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRecherche.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRecherche.ForeColor = System.Drawing.Color.MediumBlue;
-            this.btnRecherche.Location = new System.Drawing.Point(12, 34);
-            this.btnRecherche.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.btnRecherche.Name = "btnRecherche";
-            this.btnRecherche.Size = new System.Drawing.Size(80, 26);
-            this.btnRecherche.TabIndex = 674;
-            this.btnRecherche.Text = "Calculer";
-            this.btnRecherche.UseVisualStyleBackColor = false;
-            this.btnRecherche.Click += new System.EventHandler(this.btnRecherche_Click);
             // 
             // dgvTFT
             // 
@@ -174,16 +144,15 @@
             this.dataGridViewTextBoxColumn26,
             this.Column1,
             this.dataGridViewTextBoxColumn27,
-            this.dataGridViewTextBoxColumn28,
-            this.dataGridViewTextBoxColumn29});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Lavender;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvTFT.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridViewTextBoxColumn28});
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Lavender;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvTFT.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvTFT.EnableHeadersVisualStyles = false;
             this.dgvTFT.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.dgvTFT.Location = new System.Drawing.Point(12, 67);
@@ -239,16 +208,6 @@
             this.dataGridViewTextBoxColumn28.Name = "dataGridViewTextBoxColumn28";
             this.dataGridViewTextBoxColumn28.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn29
-            // 
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = null;
-            this.dataGridViewTextBoxColumn29.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridViewTextBoxColumn29.HeaderText = "Exercice N-1";
-            this.dataGridViewTextBoxColumn29.MinimumWidth = 100;
-            this.dataGridViewTextBoxColumn29.Name = "dataGridViewTextBoxColumn29";
-            this.dataGridViewTextBoxColumn29.ReadOnly = true;
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
@@ -258,108 +217,60 @@
             this.panel2.Size = new System.Drawing.Size(703, 27);
             this.panel2.TabIndex = 672;
             // 
-            // dgvResultat
+            // dtpDateA
             // 
-            this.dgvResultat.AllowUserToAddRows = false;
-            this.dgvResultat.AllowUserToDeleteRows = false;
-            this.dgvResultat.AllowUserToOrderColumns = true;
-            this.dgvResultat.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvResultat.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.dgvResultat.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvResultat.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvResultat.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvResultat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvResultat.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6});
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.Lavender;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvResultat.DefaultCellStyle = dataGridViewCellStyle11;
-            this.dgvResultat.GridColor = System.Drawing.Color.RoyalBlue;
-            this.dgvResultat.Location = new System.Drawing.Point(666, 36);
-            this.dgvResultat.MultiSelect = false;
-            this.dgvResultat.Name = "dgvResultat";
-            this.dgvResultat.ReadOnly = true;
-            this.dgvResultat.RowHeadersVisible = false;
-            this.dgvResultat.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dgvResultat.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvResultat.Size = new System.Drawing.Size(25, 25);
-            this.dgvResultat.TabIndex = 677;
-            this.dgvResultat.Visible = false;
+            this.dtpDateA.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDateA.Location = new System.Drawing.Point(176, 34);
+            this.dtpDateA.Name = "dtpDateA";
+            this.dtpDateA.Size = new System.Drawing.Size(113, 28);
+            this.dtpDateA.TabIndex = 681;
             // 
-            // dataGridViewTextBoxColumn1
+            // label2
             // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Réf.";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 30;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 30;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(157, 37);
+            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(30, 22);
+            this.label2.TabIndex = 683;
+            this.label2.Text = "à :";
             // 
-            // dataGridViewTextBoxColumn2
+            // dtpDateDe
             // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.HeaderText = "Libellé";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 250;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dtpDateDe.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDateDe.Location = new System.Drawing.Point(44, 34);
+            this.dtpDateDe.Name = "dtpDateDe";
+            this.dtpDateDe.Size = new System.Drawing.Size(113, 28);
+            this.dtpDateDe.TabIndex = 682;
             // 
-            // dataGridViewTextBoxColumn3
+            // label1
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle7;
-            this.dataGridViewTextBoxColumn3.HeaderText = "";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 30;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 30;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(8, 39);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(43, 22);
+            this.label1.TabIndex = 684;
+            this.label1.Text = "De :";
             // 
-            // dataGridViewTextBoxColumn4
+            // btnCalculer
             // 
-            dataGridViewCellStyle8.Format = "N2";
-            dataGridViewCellStyle8.NullValue = null;
-            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dataGridViewTextBoxColumn4.HeaderText = "Note";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 100;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            dataGridViewCellStyle9.Format = "N2";
-            dataGridViewCellStyle9.NullValue = null;
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle9;
-            this.dataGridViewTextBoxColumn5.HeaderText = "Exercice N";
-            this.dataGridViewTextBoxColumn5.MinimumWidth = 100;
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            dataGridViewCellStyle10.Format = "N2";
-            dataGridViewCellStyle10.NullValue = null;
-            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle10;
-            this.dataGridViewTextBoxColumn6.HeaderText = "Exercice N-1";
-            this.dataGridViewTextBoxColumn6.MinimumWidth = 100;
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.btnCalculer.BackColor = System.Drawing.Color.Transparent;
+            this.btnCalculer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnCalculer.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnCalculer.FlatAppearance.BorderSize = 0;
+            this.btnCalculer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnCalculer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCalculer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCalculer.ForeColor = System.Drawing.Color.MediumBlue;
+            this.btnCalculer.Image = ((System.Drawing.Image)(resources.GetObject("btnCalculer.Image")));
+            this.btnCalculer.Location = new System.Drawing.Point(296, 34);
+            this.btnCalculer.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnCalculer.Name = "btnCalculer";
+            this.btnCalculer.Size = new System.Drawing.Size(30, 23);
+            this.btnCalculer.TabIndex = 680;
+            this.btnCalculer.UseVisualStyleBackColor = false;
+            this.btnCalculer.Click += new System.EventHandler(this.btnCalculer_Click);
             // 
             // FormComptaTableauFlux
             // 
@@ -367,10 +278,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(703, 451);
-            this.Controls.Add(this.dgvResultat);
+            this.Controls.Add(this.dtpDateA);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.dtpDateDe);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnCalculer);
             this.Controls.Add(this.cboLibelle);
             this.Controls.Add(this.btnImprimer);
-            this.Controls.Add(this.btnRecherche);
             this.Controls.Add(this.dgvTFT);
             this.Controls.Add(this.panel2);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -379,8 +293,8 @@
             this.Text = "FormComptaTableauFlux";
             this.Shown += new System.EventHandler(this.FormComptaTableauFlux_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTFT)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvResultat)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -388,7 +302,6 @@
 
         public System.Windows.Forms.ComboBox cboLibelle;
         public System.Windows.Forms.Button btnImprimer;
-        public System.Windows.Forms.Button btnRecherche;
         public System.Windows.Forms.DataGridView dgvTFT;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn25;
@@ -396,13 +309,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn27;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn28;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn29;
-        public System.Windows.Forms.DataGridView dgvResultat;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        public System.Windows.Forms.DateTimePicker dtpDateA;
+        public System.Windows.Forms.Label label2;
+        public System.Windows.Forms.DateTimePicker dtpDateDe;
+        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Button btnCalculer;
     }
 }

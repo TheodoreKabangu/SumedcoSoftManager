@@ -16,7 +16,7 @@ namespace SUMEDCO
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormComptabilite());
+            Application.Run(new FormAccueil());
         }
     }
 }

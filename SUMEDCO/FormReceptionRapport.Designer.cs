@@ -108,12 +108,12 @@
             this.dgvRecette.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvRecette.EnableHeadersVisualStyles = false;
             this.dgvRecette.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            this.dgvRecette.Location = new System.Drawing.Point(12, 107);
+            this.dgvRecette.Location = new System.Drawing.Point(12, 94);
             this.dgvRecette.Name = "dgvRecette";
             this.dgvRecette.ReadOnly = true;
             this.dgvRecette.RowHeadersVisible = false;
             this.dgvRecette.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvRecette.Size = new System.Drawing.Size(679, 294);
+            this.dgvRecette.Size = new System.Drawing.Size(679, 307);
             this.dgvRecette.TabIndex = 713;
             this.dgvRecette.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStock_CellClick);
             // 
@@ -196,7 +196,7 @@
             this.btnRecherche.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRecherche.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRecherche.Image = ((System.Drawing.Image)(resources.GetObject("btnRecherche.Image")));
-            this.btnRecherche.Location = new System.Drawing.Point(657, 71);
+            this.btnRecherche.Location = new System.Drawing.Point(657, 62);
             this.btnRecherche.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnRecherche.Name = "btnRecherche";
             this.btnRecherche.Size = new System.Drawing.Size(30, 21);
@@ -249,7 +249,7 @@
             // dtpA
             // 
             this.dtpA.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpA.Location = new System.Drawing.Point(540, 71);
+            this.dtpA.Location = new System.Drawing.Point(540, 62);
             this.dtpA.Name = "dtpA";
             this.dtpA.Size = new System.Drawing.Size(113, 28);
             this.dtpA.TabIndex = 733;
@@ -257,7 +257,7 @@
             // dtpDe
             // 
             this.dtpDe.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDe.Location = new System.Drawing.Point(407, 71);
+            this.dtpDe.Location = new System.Drawing.Point(407, 62);
             this.dtpDe.Name = "dtpDe";
             this.dtpDe.Size = new System.Drawing.Size(113, 28);
             this.dtpDe.TabIndex = 734;
@@ -265,7 +265,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(523, 73);
+            this.label3.Location = new System.Drawing.Point(523, 64);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(30, 22);
@@ -275,7 +275,7 @@
             // lblDateEntree
             // 
             this.lblDateEntree.AutoSize = true;
-            this.lblDateEntree.Location = new System.Drawing.Point(377, 74);
+            this.lblDateEntree.Location = new System.Drawing.Point(377, 65);
             this.lblDateEntree.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblDateEntree.Name = "lblDateEntree";
             this.lblDateEntree.Size = new System.Drawing.Size(43, 22);
@@ -292,7 +292,7 @@
             this.cboStatut.Items.AddRange(new object[] {
             "immédiat",
             "différé"});
-            this.cboStatut.Location = new System.Drawing.Point(61, 71);
+            this.cboStatut.Location = new System.Drawing.Point(61, 62);
             this.cboStatut.MaxDropDownItems = 10;
             this.cboStatut.Name = "cboStatut";
             this.cboStatut.Size = new System.Drawing.Size(158, 30);
@@ -301,7 +301,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 74);
+            this.label4.Location = new System.Drawing.Point(8, 65);
             this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(81, 22);
@@ -311,7 +311,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(218, 74);
+            this.label5.Location = new System.Drawing.Point(218, 65);
             this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(82, 22);
@@ -328,7 +328,7 @@
             this.cboCategorie.Items.AddRange(new object[] {
             "service",
             "produit"});
-            this.cboCategorie.Location = new System.Drawing.Point(276, 71);
+            this.cboCategorie.Location = new System.Drawing.Point(276, 62);
             this.cboCategorie.MaxDropDownItems = 10;
             this.cboCategorie.Name = "cboCategorie";
             this.cboCategorie.Size = new System.Drawing.Size(102, 30);

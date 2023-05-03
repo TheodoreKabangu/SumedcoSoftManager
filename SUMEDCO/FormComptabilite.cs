@@ -15,12 +15,17 @@ namespace SUMEDCO
         public FormComptabilite()
         {
             InitializeComponent();
+            for (int i = 0; i < dgvEcriture.ColumnCount; i++)
+            {
+                dgvEcriture.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
         ClassCompta cc = new ClassCompta();
         ClassMalade cm = new ClassMalade();
         public int id = 0, 
             idoperation = 0,
-            idtypejournal = 0;
+            idtypejournal = 0,
+            idexercice = 0;
         public string numcompteJournal = "",
             numcompteAchat="",
             numcompteVariation = "",
@@ -33,14 +38,15 @@ namespace SUMEDCO
         {
             if (cc.VerifierTaux(DateTime.Now.Date, "") == 0)
             {
-                cc.ChangerDate(this, new DateTaux());
-                txtNumPiece.Select();
+                taux = cc.ChangerDate(new DateTaux(), this, lblDateOperation, lblTaux);
+                if(taux > 0)
+                    txtNumPiece.Select();
             }
             else
             {
                 lblDateOperation.Text = DateTime.Now.ToShortDateString();
-                lblTaux.Text = cc.VerifierTaux(DateTime.Now.Date, "valeur").ToString() + " CDF";
-                taux = double.Parse(lblTaux.Text.Substring(0, lblTaux.Text.IndexOf(" ")));
+                taux = cc.VerifierTaux(DateTime.Now.Date, "valeur");
+                lblTaux.Text = taux + " CDF";
                 txtNumPiece.Select();
             }
         }
@@ -141,7 +147,7 @@ namespace SUMEDCO
 
         private void btnDate_Click(object sender, EventArgs e)
         {
-            cc.ChangerDate(this, new DateTaux());
+            taux = cc.ChangerDate(new DateTaux(), this, lblDateOperation, lblTaux);
             txtNumPiece.Select();
         }
         private void btnValider_Click(object sender, EventArgs e)

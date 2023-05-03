@@ -15,8 +15,17 @@ namespace SUMEDCO
         public FormComptaGdLivre()
         {
             InitializeComponent();
+            for (int i = 0; i < dgvCompte.ColumnCount; i++)
+            {
+                dgvCompte.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+            for (int i = 0; i < dgvOperation.ColumnCount; i++)
+            {
+                dgvOperation.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
         ClassCompta cc = new ClassCompta();
+        public int idexercice = 0;
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();

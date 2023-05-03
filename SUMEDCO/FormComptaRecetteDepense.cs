@@ -32,10 +32,10 @@ namespace SUMEDCO
         {
             if (cc.VerifierTaux(DateTime.Now.Date, "") == 0)
             {
-                cc.ChangerDate(this, new DateTaux());
+                taux = cc.ChangerDate(this, new DateTaux());
             }
             else
-                taux = double.Parse(cc.VerifierTaux(DateTime.Now.Date, "valeur").ToString());
+                taux = cc.VerifierTaux(DateTime.Now.Date, "valeur");
         }
 
         private void btnAjouteValeur_Click(object sender, EventArgs e)

@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormTresoEntree));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnQuitter = new System.Windows.Forms.Button();
             this.lblDateEntree = new System.Windows.Forms.Label();
@@ -48,9 +48,9 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnAnnuler = new System.Windows.Forms.Button();
             this.btnEnregistrer = new System.Windows.Forms.Button();
+            this.btnDate = new System.Windows.Forms.Button();
             this.cboCaisseDepense = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.btnDate = new System.Windows.Forms.Button();
             this.lblTaux = new System.Windows.Forms.Label();
             this.lblDateOperation = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -129,27 +129,27 @@
             this.dgvBon.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.dgvBon.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvBon.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvBon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn10});
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.Lavender;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvBon.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Lavender;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvBon.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvBon.EnableHeadersVisualStyles = false;
             this.dgvBon.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.dgvBon.Location = new System.Drawing.Point(12, 144);
@@ -180,10 +180,10 @@
             // 
             // dataGridViewTextBoxColumn10
             // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle11.Format = "N2";
-            dataGridViewCellStyle11.NullValue = null;
-            this.dataGridViewTextBoxColumn10.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.dataGridViewTextBoxColumn10.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewTextBoxColumn10.HeaderText = "Montant";
             this.dataGridViewTextBoxColumn10.MinimumWidth = 100;
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
@@ -275,6 +275,25 @@
             this.btnEnregistrer.UseVisualStyleBackColor = false;
             this.btnEnregistrer.Click += new System.EventHandler(this.btnEnregistrer_Click);
             // 
+            // btnDate
+            // 
+            this.btnDate.BackColor = System.Drawing.Color.Transparent;
+            this.btnDate.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDate.BackgroundImage")));
+            this.btnDate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnDate.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnDate.FlatAppearance.BorderSize = 0;
+            this.btnDate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDate.Location = new System.Drawing.Point(175, 79);
+            this.btnDate.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnDate.Name = "btnDate";
+            this.btnDate.Size = new System.Drawing.Size(30, 21);
+            this.btnDate.TabIndex = 722;
+            this.toolTip1.SetToolTip(this.btnDate, "Changer la date");
+            this.btnDate.UseVisualStyleBackColor = false;
+            this.btnDate.Click += new System.EventHandler(this.btnDate_Click);
+            // 
             // cboCaisseDepense
             // 
             this.cboCaisseDepense.DropDownHeight = 150;
@@ -303,25 +322,6 @@
             this.label10.Size = new System.Drawing.Size(118, 22);
             this.label10.TabIndex = 717;
             this.label10.Text = "Encaissé en :";
-            // 
-            // btnDate
-            // 
-            this.btnDate.BackColor = System.Drawing.Color.Transparent;
-            this.btnDate.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDate.BackgroundImage")));
-            this.btnDate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnDate.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnDate.FlatAppearance.BorderSize = 0;
-            this.btnDate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDate.Location = new System.Drawing.Point(175, 79);
-            this.btnDate.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.btnDate.Name = "btnDate";
-            this.btnDate.Size = new System.Drawing.Size(30, 21);
-            this.btnDate.TabIndex = 722;
-            this.toolTip1.SetToolTip(this.btnDate, "Changer la date");
-            this.btnDate.UseVisualStyleBackColor = false;
-            this.btnDate.Click += new System.EventHandler(this.btnDate_Click);
             // 
             // lblTaux
             // 
