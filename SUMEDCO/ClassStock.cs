@@ -1789,7 +1789,10 @@ namespace SUMEDCO
             con.Open();
             try
             {
-                cmd = new SqlCommand("SELECT idstock, nomproduit, forme, dosage, qtestock From LigneStock s JOIN Produit p ON p.idproduit = s.idproduit WHERE qtestock > 0", con);
+                if(s.poste=="pharmacie")
+                    cmd = new SqlCommand("SELECT idstock, nomproduit, forme, dosage From LigneStock s JOIN Produit p ON p.idproduit = s.idproduit WHERE qtestock > 0", con);
+                else
+                    cmd = new SqlCommand("SELECT idstock, nomproduit, forme, dosage, qtestock From LigneStock s JOIN Produit p ON p.idproduit = s.idproduit WHERE qtestock > 0", con);
                 dr = cmd.ExecuteReader();
                 s.dgvStock.Rows.Clear();
                 while (dr.Read())
@@ -1799,7 +1802,10 @@ namespace SUMEDCO
                     s.dgvStock.Rows[s.dgvStock.RowCount - 1].Cells[1].Value = dr[1].ToString();
                     s.dgvStock.Rows[s.dgvStock.RowCount - 1].Cells[2].Value = dr[2].ToString();
                     s.dgvStock.Rows[s.dgvStock.RowCount - 1].Cells[3].Value = dr[3].ToString();
-                    s.dgvStock.Rows[s.dgvStock.RowCount - 1].Cells[4].Value = dr[4].ToString();
+                    if (s.poste == "pharmacie")
+                        s.dgvStock.Rows[s.dgvStock.RowCount - 1].Cells[4].Value = 0;
+                    else
+                        s.dgvStock.Rows[s.dgvStock.RowCount - 1].Cells[4].Value = dr[4].ToString();
                     s.dgvStock.Rows[s.dgvStock.RowCount - 1].Cells[5].Value = 0;
                     s.dgvStock.Rows[s.dgvStock.RowCount - 1].Cells[6].Value = 0;
                     s.dgvStock.Rows[s.dgvStock.RowCount - 1].Cells[7].Value = 0;
@@ -2527,24 +2533,10 @@ namespace SUMEDCO
                     con.Close();
                     
                     //Ajouter comme service demandeur
-                    p.idpharma = NouveauID("poste");
-                    con.Open();
-                    tx = con.BeginTransaction();
-                    try
-                    {
-                        cmd = new SqlCommand("insert into ServiceDemandeur values (@idposte, @nomposte)", con);
-                        cmd.Parameters.AddWithValue("@idposte", p.idpharma);
-                        cmd.Parameters.AddWithValue("@nomposte", p.txtPharmacie.Text);
-                        cmd.Transaction = tx;
-                        cmd.ExecuteNonQuery();
-                        tx.Commit();
-                    }
-                    catch (Exception ex)
-                    {
-                        tx.Rollback();
-                        MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    con.Close();
+                    AjouterServiceDemandeur(p.txtPharmacie.Text);
+                    
+                    //Ajouter un compte utilisateur
+                    AjouterNouvelUtilisateur(p.txtPharmacie.Text, "pharmacie", p.txtPharmacie.Text);
                 }
                 else MessageBox.Show("Cette pharmacie existe déjà dans le système", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -2553,6 +2545,51 @@ namespace SUMEDCO
             p.txtPharmacie.Enabled = false;
             p.txtPharmacie.Text = "";
             p.btnValider.Enabled = false;
+        }
+        public void AjouterServiceDemandeur(string service)
+        {
+            id = NouveauID("poste");
+            con.Open();
+            SqlTransaction tx = con.BeginTransaction();
+            try
+            {
+                cmd = new SqlCommand("insert into ServiceDemandeur values (@idposte, @nomposte)", con);
+                cmd.Parameters.AddWithValue("@idposte", id);
+                cmd.Parameters.AddWithValue("@nomposte", service);
+                cmd.Transaction = tx;
+                cmd.ExecuteNonQuery();
+                tx.Commit();
+            }
+            catch (Exception ex)
+            {
+                tx.Rollback();
+                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            con.Close();
+        }
+        public void AjouterNouvelUtilisateur(string utilisateur, string poste, string specification)
+        {
+            id = NouveauID("user");
+            con.Open();
+            SqlTransaction tx = con.BeginTransaction();
+            try
+            {
+                cmd = new SqlCommand("insert into Utilisateur values (@id, @util, @mot, @poste, @specification)", con);
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@util", utilisateur);
+                cmd.Parameters.AddWithValue("@mot", "123456");
+                cmd.Parameters.AddWithValue("@poste", poste);
+                cmd.Parameters.AddWithValue("@specification", specification);
+                cmd.Transaction = tx;
+                cmd.ExecuteNonQuery();
+                tx.Commit();
+            }
+            catch (Exception ex)
+            {
+                tx.Rollback();
+                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            con.Close();
         }
         public int VerifierPharma(string nompharma)
         {

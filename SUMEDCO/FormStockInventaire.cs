@@ -34,7 +34,7 @@ namespace SUMEDCO
 
         private void FormStockInventaire_Shown(object sender, EventArgs e)
         {
-            cs.AfficherStockProduit(this);
+			cs.AfficherStockProduit(this);
         }
 
         private void btnRecherche_Click(object sender, EventArgs e)

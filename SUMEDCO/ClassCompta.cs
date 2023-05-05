@@ -4322,6 +4322,7 @@ namespace SUMEDCO
             //    }
             //}
             //fs.Close();
+            
         }
         public void Annuler(FormAbonneService a)
         {
@@ -6498,7 +6499,7 @@ namespace SUMEDCO
                 pnl.Visible = true;
         }
         #endregion
-
+        
         #region BILAN
 
         private void AutresCreances(FormComptaBilan c, string motif)

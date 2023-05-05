@@ -1949,7 +1949,8 @@ namespace SUMEDCO
         #endregion
 
         ClassCompta cc = new ClassCompta();
-        
+        ClassStock cs = new ClassStock();
+
         #region PATIENT
         public string AgePatient(string chaineDate)
         {
@@ -3756,41 +3757,35 @@ namespace SUMEDCO
         {
             if (m.txtNom.Text != "" && m.txtNumOrdre.Text != "" && m.txtTel.Text != "")
             {
-                FormUtilisateur u = new FormUtilisateur();
-                u.cboPoste.Items.Clear();
-                u.cboPoste.Items.Add("médecin");
-                u.btnExit.Visible = false;
-                u.nouveau_medecin = true;
-                u.ShowDialog();
-                if (u.fermeture_succes)
+                m.idmedecin = NouveauID("medecin");
+                con.Open();
+                SqlTransaction tx = con.BeginTransaction();
+                try
                 {
-                    m.idmedecin = NouveauID("medecin");
-                    m.utilisateur = u.txtSpecification.Text;
-                    con.Open();
-                    SqlTransaction tx = con.BeginTransaction();
-                    try
-                    {
-                        cmd = new SqlCommand("insert into Medecin values (@id, @nom, @numordre, @tel, @util)", con);
-                        cmd.Parameters.AddWithValue("@id", m.idmedecin);
-                        cmd.Parameters.AddWithValue("@nom", m.txtNom.Text);
-                        cmd.Parameters.AddWithValue("@numordre", m.txtNumOrdre.Text);
-                        cmd.Parameters.AddWithValue("@tel", m.txtTel.Text);
-                        cmd.Parameters.AddWithValue("@util", m.utilisateur);
-                        cmd.Transaction = tx;
-                        cmd.ExecuteNonQuery();
-                        tx.Commit();
-                        MessageBox.Show("Enregistré avec succès", "Enregistrement", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        AfficherMedecin(m, "");
-                    }
-                    catch (Exception ex)
-                    {
-                        tx.Rollback();
-                        MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    con.Close();
-                    Annuler(m);
+                    cmd = new SqlCommand("insert into Medecin values (@id, @nom, @numordre, @tel)", con);
+                    cmd.Parameters.AddWithValue("@id", m.idmedecin);
+                    cmd.Parameters.AddWithValue("@nom", m.txtNom.Text);
+                    cmd.Parameters.AddWithValue("@numordre", m.txtNumOrdre.Text);
+                    cmd.Parameters.AddWithValue("@tel", m.txtTel.Text);
+                    cmd.Transaction = tx;
+                    cmd.ExecuteNonQuery();
+                    tx.Commit();
+                    MessageBox.Show("Enregistré avec succès", "Enregistrement", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    AfficherMedecin(m, "");
                 }
-                u.Close();
+                catch (Exception ex)
+                {
+                    tx.Rollback();
+                    MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                con.Close();
+                //Ajouter comme service demandeur
+                cs.AjouterServiceDemandeur(m.txtNom.Text);
+                
+                //Ajouter un compte utilisateur
+                cs.AjouterNouvelUtilisateur(m.txtNom.Text, "médecin", m.txtNom.Text);
+
+                Annuler(m);
             }
             else
             {
