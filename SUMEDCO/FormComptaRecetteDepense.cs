@@ -15,6 +15,10 @@ namespace SUMEDCO
         public FormComptaRecetteDepense()
         {
             InitializeComponent();
+            for (int i = 0; i < dgvRapport.ColumnCount; i++)
+            {
+                dgvRapport.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
         ClassCompta cc = new ClassCompta();
         public double taux = 0;

@@ -36,8 +36,7 @@ namespace SUMEDCO
 
         ClassMalade cm = new ClassMalade();
         ClassStock cs = new ClassStock();
-        public string medecin;
-        public int idmedecin;
+        public int idmedecin, idpharma;
         private void btnConnexion_Click(object sender, EventArgs e)
         {
             if (cboUtilisateur.Enabled)
@@ -92,7 +91,10 @@ namespace SUMEDCO
             if (poste == "médecin")
             {
                 idmedecin = cm.TrouverId("medecin", cboUtilisateur.Text);
-                medecin = cm.Utilisateur(idmedecin);
+            }
+            if (poste == "pharmacie")
+            {
+                idpharma = cm.TrouverId("pharmacie", cboUtilisateur.Text);
             }
         }
     }

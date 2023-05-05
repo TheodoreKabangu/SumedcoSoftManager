@@ -24,7 +24,7 @@ namespace SUMEDCO
         ClassCompta cc = new ClassCompta();
         public bool fermeture_succes;
         public double prixvente = 0;
-        public int idstock = 0,
+        public int idpharma, idstock = 0,
             idoperation = 0;
         public string poste= "", categorie_produit = "";
         private void btnQuitter_Click(object sender, EventArgs e)

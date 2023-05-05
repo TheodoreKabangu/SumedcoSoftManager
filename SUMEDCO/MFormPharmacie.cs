@@ -19,7 +19,7 @@ namespace SUMEDCO
         public Form activeForm = null;
         ClassCompta cc = new ClassCompta();
         ClassStock cs = new ClassStock();
-        public int idutilisateur;
+        public int idutilisateur, idpharma;
         private void btnQuitter_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -47,6 +47,11 @@ namespace SUMEDCO
         private void btnUtilisation_Click(object sender, EventArgs e)
         {
             cs.AfficherSousForm(this, new FormUtilisation());
+        }
+
+        private void btnRapport_Click(object sender, EventArgs e)
+        {
+            cs.AfficherSousForm(this, new FormStockInventaire());
         }
 
     }

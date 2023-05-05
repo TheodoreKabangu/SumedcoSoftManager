@@ -15,6 +15,14 @@ namespace SUMEDCO
         public FormStockProduit()
         {
             InitializeComponent();
+            for (int i = 0; i < dgvProduit.ColumnCount; i++)
+            {
+                dgvProduit.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+            for (int i = 0; i < dgvStock.ColumnCount; i++)
+            {
+                dgvStock.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
         ClassStock cs = new ClassStock();
         ClassCompta cc = new ClassCompta();

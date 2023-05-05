@@ -128,9 +128,9 @@
             this.label3.Location = new System.Drawing.Point(14, 118);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(139, 22);
+            this.label3.Size = new System.Drawing.Size(142, 22);
             this.label3.TabIndex = 762;
-            this.label3.Text = "Nouveau stock :";
+            this.label3.Text = "Nouveau dépôt :";
             // 
             // txtPharmacie
             // 
@@ -199,7 +199,6 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(410, 240);
             this.Name = "FormStockPha";
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SSM - Stock Pharmacie";
             this.ResumeLayout(false);

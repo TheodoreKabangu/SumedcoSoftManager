@@ -85,6 +85,8 @@ namespace SUMEDCO
         private void btnPharma_Click(object sender, EventArgs e)
         {
             cn.poste = "pharmacie";
+            cm.ChargerCombo(cn.cboUtilisateur, "pharmacie");
+            cn.cboUtilisateur.Enabled = true;
             cn.Show();
             this.Hide();
         }

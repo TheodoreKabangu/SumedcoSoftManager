@@ -51,7 +51,7 @@
             this.cboUtilisateur.FormattingEnabled = true;
             this.cboUtilisateur.Location = new System.Drawing.Point(23, 136);
             this.cboUtilisateur.Name = "cboUtilisateur";
-            this.cboUtilisateur.Size = new System.Drawing.Size(233, 23);
+            this.cboUtilisateur.Size = new System.Drawing.Size(233, 30);
             this.cboUtilisateur.TabIndex = 653;
             this.cboUtilisateur.DropDown += new System.EventHandler(this.cboUtilisateur_DropDown);
             this.cboUtilisateur.SelectedIndexChanged += new System.EventHandler(this.cboUtilisateur_SelectedIndexChanged);
@@ -70,7 +70,7 @@
             this.btnConnexion.Name = "btnConnexion";
             this.btnConnexion.Size = new System.Drawing.Size(233, 27);
             this.btnConnexion.TabIndex = 652;
-            this.btnConnexion.Text = "Connexion";
+            this.btnConnexion.Text = "Connexion simple";
             this.btnConnexion.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnConnexion.UseVisualStyleBackColor = false;
             this.btnConnexion.Click += new System.EventHandler(this.btnConnexion_Click);
@@ -84,7 +84,7 @@
             this.cboAutorisation.FormattingEnabled = true;
             this.cboAutorisation.Location = new System.Drawing.Point(23, 107);
             this.cboAutorisation.Name = "cboAutorisation";
-            this.cboAutorisation.Size = new System.Drawing.Size(233, 23);
+            this.cboAutorisation.Size = new System.Drawing.Size(233, 30);
             this.cboAutorisation.TabIndex = 653;
             this.cboAutorisation.DropDown += new System.EventHandler(this.cboAutorisation_DropDown);
             this.cboAutorisation.SelectedIndexChanged += new System.EventHandler(this.cboAutorisation_SelectedIndexChanged);
@@ -168,7 +168,7 @@
             // 
             // FormAutorisation
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(274, 342);

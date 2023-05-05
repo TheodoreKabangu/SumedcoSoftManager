@@ -327,7 +327,7 @@
             this.txtSpecification.Name = "txtSpecification";
             this.txtSpecification.Size = new System.Drawing.Size(225, 28);
             this.txtSpecification.TabIndex = 2;
-            this.txtSpecification.Text = "NULL";
+            this.txtSpecification.Text = "RAS";
             // 
             // label3
             // 

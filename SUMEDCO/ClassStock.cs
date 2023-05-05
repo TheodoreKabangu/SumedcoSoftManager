@@ -206,7 +206,7 @@ namespace SUMEDCO
                     }
                     else if (c.poste == "médecin")
                     {
-                        if (chaine == c.medecin)
+                        if (chaine == c.cboUtilisateur.Text)
                         {
                             MFormConsultation cons = new MFormConsultation();
                             cons.idmedecin = c.idmedecin;
@@ -245,10 +245,19 @@ namespace SUMEDCO
                     }
                     else if (c.poste == "pharmacie")
                     {
-                        FormAutorisation aut = new FormAutorisation();
-                        aut.idutilisateur = id;
-                        aut.poste = "pharmacie";
-                        aut.Show();
+                        if (chaine == c.cboUtilisateur.Text)
+                        {
+                            FormAutorisation aut = new FormAutorisation();
+                            aut.idutilisateur = id;
+                            aut.idpharma = c.idpharma;
+                            aut.poste = "pharmacie";
+                            aut.Show();
+                        }
+                        else
+                        {
+                            c.access_autorise = false;
+                            MessageBox.Show("Accès refusé", "Connexion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }                        
                     }
                     else if (c.poste == "stock")
                     {
@@ -1308,29 +1317,29 @@ namespace SUMEDCO
             ph.pnlChildForm.Controls.Add(childForm);
             ph.pnlChildForm.Tag = childForm;
             childForm.BringToFront();
-            childForm.idpharma = 1;//Cette valeur changera selon la pharmacie
+            childForm.idpharma = ph.idpharma;//Cette valeur changera selon la pharmacie
             childForm.idutilisateur = ph.idutilisateur;
             childForm.Show();
         }
 
-        public void AfficherSousForm(MFormPharmacie c, FormStockProduit childForm)
+        public void AfficherSousForm(MFormPharmacie ph, FormStockProduit childForm)
         {
-            if (c.activeForm != null)
-                c.activeForm.Close();
-            c.activeForm = childForm;
+            if (ph.activeForm != null)
+                ph.activeForm.Close();
+            ph.activeForm = childForm;
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
             childForm.Dock = DockStyle.Fill;
-            c.pnlChildForm.Controls.Add(childForm);
-            c.pnlChildForm.Tag = childForm;
+            ph.pnlChildForm.Controls.Add(childForm);
+            ph.pnlChildForm.Tag = childForm;
             childForm.BringToFront();
             childForm.poste = "pharmacie";
-            childForm.idpharma = 1;//Trouver l'id de la pharma qui se connecte
+            childForm.idpharma = ph.idpharma;//Trouver l'id de la pharma qui se connecte
             childForm.btnNouveauStock.Visible = false;
             childForm.btnStockPha.Visible = false;
             childForm.Show();
         }
-        public void AfficherSousForm(MFormPharmacie s, FormStockAlerte childForm)
+        public void AfficherSousForm(MFormPharmacie ph, FormStockAlerte childForm)
         {
             if (activeForm != null)
                 activeForm.Close();
@@ -1338,14 +1347,14 @@ namespace SUMEDCO
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
             childForm.Dock = DockStyle.Fill;
-            s.pnlChildForm.Controls.Add(childForm);
-            s.pnlChildForm.Tag = childForm;
+            ph.pnlChildForm.Controls.Add(childForm);
+            ph.pnlChildForm.Tag = childForm;
             childForm.BringToFront();
             childForm.poste = "pharmacie";
-            childForm.idpharma = 1;//Trouver l'id de la pharma qui se connecte
+            childForm.idpharma = ph.idpharma;//Trouver l'id de la pharma qui se connecte
             childForm.Show();
         }
-        public void AfficherSousForm(MFormPharmacie s, FormUtilisation childForm)
+        public void AfficherSousForm(MFormPharmacie ph, FormUtilisation childForm)
         {
             if (activeForm != null)
                 activeForm.Close();
@@ -1353,29 +1362,43 @@ namespace SUMEDCO
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
             childForm.Dock = DockStyle.Fill;
-            s.pnlChildForm.Controls.Add(childForm);
-            s.pnlChildForm.Tag = childForm;
+            ph.pnlChildForm.Controls.Add(childForm);
+            ph.pnlChildForm.Tag = childForm;
             childForm.BringToFront();
             childForm.poste = "pharmacie";
-            childForm.idpharma = 1;//Trouver l'id de la pharma qui se connecte
+            childForm.idpharma = ph.idpharma;//Trouver l'id de la pharma qui se connecte
             childForm.Show();
         }
-        public void AfficherSousForm(MFormPharmacie c, FormHistoCommande childForm)
+        public void AfficherSousForm(MFormPharmacie ph, FormHistoCommande childForm)
         {
-            if (c.activeForm != null)
-                c.activeForm.Close();
-            c.activeForm = childForm;
+            if (ph.activeForm != null)
+                ph.activeForm.Close();
+            ph.activeForm = childForm;
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
             childForm.Dock = DockStyle.Fill;
-            c.pnlChildForm.Controls.Add(childForm);
-            c.pnlChildForm.Tag = childForm;
+            ph.pnlChildForm.Controls.Add(childForm);
+            ph.pnlChildForm.Tag = childForm;
             childForm.BringToFront();
             childForm.poste = "pharmacie";
-            childForm.idpharma = 1;//Trouver l'id de la pharma qui se connecte
+            childForm.idpharma = ph.idpharma;//Trouver l'id de la pharma qui se connecte
             childForm.Show();
         }
-
+        public void AfficherSousForm(MFormPharmacie ph, FormStockInventaire childForm)
+        {
+            if (ph.activeForm != null)
+                ph.activeForm.Close();
+            ph.activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            ph.pnlChildForm.Controls.Add(childForm);
+            ph.pnlChildForm.Tag = childForm;
+            childForm.BringToFront();
+            childForm.poste = "pharmacie";
+            childForm.idpharma = ph.idpharma;//Trouver l'id de la pharma qui se connecte
+            childForm.Show();
+        }
         
         #endregion
 
@@ -1670,10 +1693,10 @@ namespace SUMEDCO
                 if (s.poste == "pharmacie")
                 {
                     s.dgvStock.Columns[2].Visible = false;
-                    cmd = new SqlCommand("select idstockph, LigneStockPharma.qtestock, CMM, forme, dosage, numlot, expiration from LigneStock,LigneStockPharma where LigneStockPharma.idstock = LigneStock.idstock and LigneStockPharma.idpharma = '" + s.idpharma + "' and idproduit = @id", con);
+                    cmd = new SqlCommand("select idstockph, LigneStockPharma.qtestock, CMM, forme, dosage, numlot, expiration from LigneStock,LigneStockPharma where LigneStockPharma.idstock = LigneStock.idstock and LigneStockPharma.idpharma = '" + s.idpharma + "' and idproduit = @id ORDER BY forme, dosage", con);
                 }
                 else
-                    cmd = new SqlCommand("select idstock, qtestock, CMM, forme, dosage, numlot, expiration from LigneStock where idproduit = @id", con);
+                    cmd = new SqlCommand("select idstock, qtestock, CMM, forme, dosage, numlot, expiration from LigneStock where idproduit = @id ORDER BY forme, dosage", con);
                 cmd.Parameters.AddWithValue("@id", s.idproduit);
                 dr = cmd.ExecuteReader();
                 s.dgvStock.Rows.Clear();
@@ -1766,7 +1789,7 @@ namespace SUMEDCO
             con.Open();
             try
             {
-                cmd = new SqlCommand("SELECT idstock, nomproduit, forme, dosage, qtestock From LigneStock s JOIN Produit p ON p.idproduit = s.idproduit", con);
+                cmd = new SqlCommand("SELECT idstock, nomproduit, forme, dosage, qtestock From LigneStock s JOIN Produit p ON p.idproduit = s.idproduit WHERE qtestock > 0", con);
                 dr = cmd.ExecuteReader();
                 s.dgvStock.Rows.Clear();
                 while (dr.Read())
@@ -1790,6 +1813,7 @@ namespace SUMEDCO
         }
         public void TrouverQteStock(FormStockInventaire s)
         {
+            AfficherStockProduit(s);
             for (int i = 0; i < s.dgvStock.RowCount; i++)
             {
                 //Entrée
@@ -1817,7 +1841,7 @@ namespace SUMEDCO
                     MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 con.Close();
-                //Sortie
+                //Sortie - Pharmacie
                 con.Open();
                 try
                 {
@@ -1843,6 +1867,31 @@ namespace SUMEDCO
                     MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 con.Close();
+                //SortieStock
+                con.Open();
+                try
+                {
+                    cmdtxt = @"SELECT SUM(qteservie) sortie
+                    FROM LigneStock s
+                    JOIN SortieStock ss ON ss.idstock = s.idstock
+                    WHERE s.idstock = @idstock AND date_jour BETWEEN @dateDe AND @dateA";
+                    cmd = new SqlCommand(cmdtxt, con);
+                    cmd.Parameters.AddWithValue("@idstock", s.dgvStock.Rows[i].Cells[0].Value);
+                    cmd.Parameters.AddWithValue("@dateDe", s.dtpDateDe.Text);
+                    cmd.Parameters.AddWithValue("@dateA", s.dtpDateA.Text);
+                    dr = cmd.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        if (dr[0].ToString() != "")
+                            s.dgvStock.Rows[i].Cells[6].Value = Convert.ToInt32(s.dgvStock.Rows[i].Cells[6].Value) + Convert.ToInt32(dr[0].ToString());
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                con.Close();
+
                 //Calcul Valeur stock
                 s.dgvStock.Rows[i].Cells[7].Value = Convert.ToInt32(s.dgvStock.Rows[i].Cells[4].Value) * PrixStock(Convert.ToInt32(s.dgvStock.Rows[i].Cells[0].Value), "achat");               
             }

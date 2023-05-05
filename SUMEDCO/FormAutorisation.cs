@@ -17,7 +17,8 @@ namespace SUMEDCO
             InitializeComponent();
         }
         public string poste, etat;
-        public int idutilisateur, 
+        public int idpharma,
+            idutilisateur, 
             idmedecin,
             id;
         ClassMalade cm = new ClassMalade();
@@ -36,6 +37,7 @@ namespace SUMEDCO
                 {
                     MFormPharmacie ph = new MFormPharmacie();
                     ph.idutilisateur = idutilisateur;
+                    ph.idpharma = idpharma;
                     ph.Show();
                 }
                 this.Close();
@@ -102,6 +104,7 @@ namespace SUMEDCO
         {
             id = cm.TrouverId("autorisation", cboAutorisation.Text);
             etat = cm.TrouverNom("autorisation", id);
+            btnConnexion.Text = "Connexion";
             if (cboAutorisation.Text == "infirmier - médecin" && poste == "infirmier")
             {
                 cm.ChargerCombo(cboUtilisateur, "médecin");

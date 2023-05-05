@@ -6191,8 +6191,8 @@ namespace SUMEDCO
                 c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[3].Value = "";
                 c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[4].Value = 0;
                 c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[5].Value = 0;
-                
-                for (int i = 0; i < c.dgvOperation.RowCount-1; i++)
+
+                for (int i = 0; i < c.dgvOperation.RowCount - 1; i++)
                 {
                     c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[4].Value = Convert.ToDouble(c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[4].Value) + Convert.ToDouble(c.dgvOperation.Rows[i].Cells[4].Value);
                     c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[5].Value = Convert.ToDouble(c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[5].Value) + Convert.ToDouble(c.dgvOperation.Rows[i].Cells[5].Value);

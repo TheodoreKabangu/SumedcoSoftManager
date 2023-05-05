@@ -91,6 +91,7 @@ namespace SUMEDCO
             switch(motif)
             {
                 case "medecin": cmdtxt = "select idmedecin from Medecin where nommedecin = @nom"; break;
+                case "pharmacie": cmdtxt = "select idpharma from Pharmacie where designation = @nom"; break;
                 case "typepatient": cmdtxt = "select idtype from TypePatient where nomtype = @nom"; break;
                 case "typepatient2": cmdtxt = "select idtype from Patient where noms = @nom"; break;
                 case "maladie": cmdtxt = "select idmaladie from Maladie where nommaladie = @nom"; break;
@@ -1971,6 +1972,7 @@ namespace SUMEDCO
                 case "médecin": cmd = new SqlCommand("select nommedecin from Medecin", con); break;
                 case "typepatient": cmd = new SqlCommand("select nomtype from TypePatient", con); break;
                 case "autorisation": cmd = new SqlCommand("select libelle from Autorisations", con); break;
+                case "pharmacie": cmd = new SqlCommand("select designation from Pharmacie", con); break;
 	        }
             con.Open();
             try
@@ -3855,22 +3857,6 @@ namespace SUMEDCO
             {
                 MessageBox.Show("Identifiant du médecin non reconnu.", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-        }
-        public string Utilisateur(int idmedecin)
-        {
-            chaine = "";
-            try
-            {
-                con.Open();
-                cmd = new SqlCommand("select utilisateur from Medecin where idmedecin = @id", con);
-                cmd.Parameters.AddWithValue("@id", id);
-                dr = cmd.ExecuteReader();
-                dr.Read();
-                chaine = dr[0].ToString();
-                con.Close();
-            }
-            catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-            return chaine;
         }
         #endregion
 

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormComptaRecetteDepense));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -43,13 +44,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblDateEntree = new System.Windows.Forms.Label();
             this.dgvRapport = new System.Windows.Forms.DataGridView();
-            this.cboMonnaie = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtMontant1 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtMontant2 = new System.Windows.Forms.TextBox();
-            this.btnAjouteValeur = new System.Windows.Forms.Button();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,6 +51,14 @@
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cboMonnaie = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtMontant1 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtMontant2 = new System.Windows.Forms.TextBox();
+            this.btnAjouteValeur = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRapport)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,6 +87,7 @@
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(30, 30);
             this.btnExit.TabIndex = 715;
+            this.toolTip1.SetToolTip(this.btnExit, "Fermer");
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
@@ -103,6 +106,7 @@
             this.btnRecherche.Name = "btnRecherche";
             this.btnRecherche.Size = new System.Drawing.Size(30, 21);
             this.btnRecherche.TabIndex = 732;
+            this.toolTip1.SetToolTip(this.btnRecherche, "Afficher");
             this.btnRecherche.UseVisualStyleBackColor = false;
             this.btnRecherche.Click += new System.EventHandler(this.btnRecherche_Click);
             // 
@@ -189,6 +193,67 @@
             this.dgvRapport.Size = new System.Drawing.Size(679, 326);
             this.dgvRapport.TabIndex = 737;
             // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "numcompte";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Visible = false;
+            // 
+            // Column6
+            // 
+            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column6.HeaderText = "Rubriques";
+            this.Column6.MinimumWidth = 160;
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.Column5.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Column5.HeaderText = "CDF";
+            this.Column5.MinimumWidth = 100;
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            dataGridViewCellStyle3.Format = "N2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Column2.HeaderText = "USD";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.NullValue = null;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Column1.HeaderText = "CDF";
+            this.Column1.MinimumWidth = 100;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            dataGridViewCellStyle5.Format = "N2";
+            dataGridViewCellStyle5.NullValue = null;
+            this.Column4.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Column4.HeaderText = "USD";
+            this.Column4.MinimumWidth = 100;
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "motif_R_D";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.Visible = false;
+            // 
             // cboMonnaie
             // 
             this.cboMonnaie.DropDownHeight = 150;
@@ -271,69 +336,9 @@
             this.btnAjouteValeur.Name = "btnAjouteValeur";
             this.btnAjouteValeur.Size = new System.Drawing.Size(30, 21);
             this.btnAjouteValeur.TabIndex = 748;
+            this.toolTip1.SetToolTip(this.btnAjouteValeur, "Valider");
             this.btnAjouteValeur.UseVisualStyleBackColor = false;
             this.btnAjouteValeur.Click += new System.EventHandler(this.btnAjouteValeur_Click);
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "numcompte";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Visible = false;
-            // 
-            // Column6
-            // 
-            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column6.HeaderText = "Rubriques";
-            this.Column6.MinimumWidth = 160;
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            dataGridViewCellStyle2.Format = "N2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.Column5.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Column5.HeaderText = "CDF";
-            this.Column5.MinimumWidth = 100;
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            dataGridViewCellStyle3.Format = "N2";
-            dataGridViewCellStyle3.NullValue = null;
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Column2.HeaderText = "USD";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column1
-            // 
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = null;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Column1.HeaderText = "CDF";
-            this.Column1.MinimumWidth = 100;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            dataGridViewCellStyle5.Format = "N2";
-            dataGridViewCellStyle5.NullValue = null;
-            this.Column4.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Column4.HeaderText = "USD";
-            this.Column4.MinimumWidth = 100;
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "motif_R_D";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            this.Column7.Visible = false;
             // 
             // FormComptaRecetteDepense
             // 
@@ -391,5 +396,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

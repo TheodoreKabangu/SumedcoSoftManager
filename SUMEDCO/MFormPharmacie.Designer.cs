@@ -96,6 +96,7 @@
             this.btnRapport.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRapport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRapport.UseVisualStyleBackColor = true;
+            this.btnRapport.Click += new System.EventHandler(this.btnRapport_Click);
             // 
             // btnUtilisation
             // 
