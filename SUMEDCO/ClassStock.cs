@@ -603,6 +603,7 @@ namespace SUMEDCO
             switch (motif)
             {
                 case "produit": cmd = new SqlCommand("select nomproduit from Produit", con); break;
+                case "pharma": cmd = new SqlCommand("SELECT designation FROM Pharmacie", con); break;
                 case "stock": 
                     cmd = new SqlCommand("select idstock from LigneStock where idproduit= @idproduit", con);
                     cmd.Parameters.AddWithValue("@idproduit", id);
@@ -1789,8 +1790,11 @@ namespace SUMEDCO
             con.Open();
             try
             {
-                if(s.poste=="pharmacie")
+                if (s.poste == "pharmacie")
+                {
                     cmd = new SqlCommand("SELECT idstock, nomproduit, forme, dosage From LigneStock s JOIN Produit p ON p.idproduit = s.idproduit WHERE qtestock > 0", con);
+                    s.cboDepot.Enabled = false;
+                }
                 else
                     cmd = new SqlCommand("SELECT idstock, nomproduit, forme, dosage, qtestock From LigneStock s JOIN Produit p ON p.idproduit = s.idproduit WHERE qtestock > 0", con);
                 dr = cmd.ExecuteReader();
@@ -1816,6 +1820,36 @@ namespace SUMEDCO
                 MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             con.Close();
+            //Qte stock pour la pharmacie
+            if (s.poste == "pharmacie")
+                TrouverQteStockPha(s);
+        }
+        public void TrouverQteStockPha(FormStockInventaire s)
+        {
+            if (s.dgvStock.RowCount != 0)
+            {
+                for (int i = 0; i < s.dgvStock.RowCount; i++)
+                {
+                    con.Open();
+                    try
+                    {
+                        cmdtxt = @"SELECT sp.qtestock FROM LigneStockPharma sp 
+                        JOIN LigneStock s ON sp.idstock = s.idstock
+                        WHERE s.idstock = '" + s.dgvStock.Rows[i].Cells[0].Value + "' AND idpharma = '"+s.idpharma+"'";
+                        cmd = new SqlCommand(cmdtxt, con);
+                        dr = cmd.ExecuteReader();
+                        while (dr.Read())
+                        {
+                            s.dgvStock.Rows[i].Cells[4].Value = dr[0].ToString();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    con.Close();
+                }
+            }
         }
         public void TrouverQteStock(FormStockInventaire s)
         {
@@ -1826,11 +1860,20 @@ namespace SUMEDCO
                 con.Open();
                 try
                 {
-                    cmdtxt = @"SELECT SUM(qteajoute) entree
-                    FROM LigneStock s
-                    JOIN LigneCommande c ON c.idstock = s.idstock
-                    JOIN LigneAppro a ON a.idcom = c.idcom
-                    WHERE s.idstock = @idstock AND date_appro BETWEEN @dateDe AND @dateA";
+                    if(s.poste == "pharmacie")
+                        cmdtxt = @"SELECT SUM(qteservie) sortie
+                        FROM ApproPharma ap 
+                        JOIN CommandePharma cp ON ap.idcomph = cp.idcomph
+                        JOIN LigneStockPharma sp ON cp.idstockph = sp.idstockph
+                        JOIN LigneStock s ON sp.idstock = s.idstock
+                        JOIN Pharmacie p ON sp.idpharma = p.idpharma
+                        WHERE s.idstock = @idstock AND p.idpharma = '"+s.idpharma+"' AND date_appro BETWEEN @dateDe AND @dateA";
+                    else
+                        cmdtxt = @"SELECT SUM(qteajoute) entree
+                        FROM LigneStock s
+                        JOIN LigneCommande c ON c.idstock = s.idstock
+                        JOIN LigneAppro a ON a.idcom = c.idcom
+                        WHERE s.idstock = @idstock AND date_appro BETWEEN @dateDe AND @dateA";
                     cmd = new SqlCommand(cmdtxt, con);
                     cmd.Parameters.AddWithValue("@idstock", s.dgvStock.Rows[i].Cells[0].Value);
                     cmd.Parameters.AddWithValue("@dateDe", s.dtpDateDe.Text);
@@ -1839,7 +1882,7 @@ namespace SUMEDCO
                     while (dr.Read())
                     {
                         if(dr[0].ToString() != "")
-                            s.dgvStock.Rows[i].Cells[5].Value = Convert.ToInt32(dr[0].ToString());
+                            s.dgvStock.Rows[i].Cells[5].Value = Convert.ToInt32(s.dgvStock.Rows[i].Cells[5].Value) + Convert.ToInt32(dr[0].ToString());
                     }
                 }
                 catch (Exception ex)
@@ -1847,40 +1890,51 @@ namespace SUMEDCO
                     MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 con.Close();
-                //Sortie - Pharmacie
-                con.Open();
-                try
+                //Sortie vers Pharmacie
+                if (s.poste != "pharmacie")
                 {
-                    cmdtxt = @"SELECT SUM(qteservie) sortie
+                    con.Open();
+                    try
+                    {
+                        cmdtxt = @"SELECT SUM(qteservie) sortie
                     FROM LigneStock s
                     JOIN LigneStockPharma sp ON sp.idstock = s.idstock
                     JOIN CommandePharma cp ON cp.idstockph = sp.idstockph
                     JOIN ApproPharma ap ON ap.idcomph = cp.idcomph
                     WHERE s.idstock = @idstock AND date_appro BETWEEN @dateDe AND @dateA";
-                    cmd = new SqlCommand(cmdtxt, con);
-                    cmd.Parameters.AddWithValue("@idstock", s.dgvStock.Rows[i].Cells[0].Value);
-                    cmd.Parameters.AddWithValue("@dateDe", s.dtpDateDe.Text);
-                    cmd.Parameters.AddWithValue("@dateA", s.dtpDateA.Text);
-                    dr = cmd.ExecuteReader();
-                    while (dr.Read())
-                    {
-                        if (dr[0].ToString() != "")
-                            s.dgvStock.Rows[i].Cells[6].Value = Convert.ToInt32(dr[0].ToString());
+                        cmd = new SqlCommand(cmdtxt, con);
+                        cmd.Parameters.AddWithValue("@idstock", s.dgvStock.Rows[i].Cells[0].Value);
+                        cmd.Parameters.AddWithValue("@dateDe", s.dtpDateDe.Text);
+                        cmd.Parameters.AddWithValue("@dateA", s.dtpDateA.Text);
+                        dr = cmd.ExecuteReader();
+                        while (dr.Read())
+                        {
+                            if (dr[0].ToString() != "")
+                                s.dgvStock.Rows[i].Cells[6].Value = Convert.ToInt32(dr[0].ToString());
+                        }
                     }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                con.Close();
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    con.Close();
+                }               
                 //SortieStock
                 con.Open();
                 try
                 {
-                    cmdtxt = @"SELECT SUM(qteservie) sortie
-                    FROM LigneStock s
-                    JOIN SortieStock ss ON ss.idstock = s.idstock
-                    WHERE s.idstock = @idstock AND date_jour BETWEEN @dateDe AND @dateA";
+                    if (s.poste == "pharmacie")
+                        cmdtxt = @"SELECT SUM(qteservie) sortie
+                        FROM SortiePharma sph 
+                        JOIN LigneStockPharma sp ON sph.idstockph = sp.idstockph
+                        JOIN LigneStock s ON sp.idstock = s.idstock
+                        JOIN Pharmacie p ON sp.idpharma = p.idpharma
+                        WHERE s.idstock = @idstock AND p.idpharma = '" + s.idpharma + "' AND date_jour BETWEEN @dateDe AND @dateA";
+                    else
+                        cmdtxt = @"SELECT SUM(qteservie) sortie
+                        FROM LigneStock s
+                        JOIN SortieStock ss ON ss.idstock = s.idstock
+                        WHERE s.idstock = @idstock AND date_jour BETWEEN @dateDe AND @dateA";
                     cmd = new SqlCommand(cmdtxt, con);
                     cmd.Parameters.AddWithValue("@idstock", s.dgvStock.Rows[i].Cells[0].Value);
                     cmd.Parameters.AddWithValue("@dateDe", s.dtpDateDe.Text);

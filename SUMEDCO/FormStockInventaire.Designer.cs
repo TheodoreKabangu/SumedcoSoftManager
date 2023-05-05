@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormStockInventaire));
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvStock = new System.Windows.Forms.DataGridView();
@@ -53,6 +53,8 @@
             this.lblDateEntree = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnQuitter = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cboDepot = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStock)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,14 +80,14 @@
             this.dgvStock.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.dgvStock.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvStock.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvStock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvStock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
             this.dgvStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStock.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn2,
@@ -96,14 +98,14 @@
             this.Column3,
             this.Column4,
             this.Column7});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Lavender;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvStock.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle30.BackColor = System.Drawing.Color.Lavender;
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvStock.DefaultCellStyle = dataGridViewCellStyle30;
             this.dgvStock.EnableHeadersVisualStyles = false;
             this.dgvStock.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.dgvStock.Location = new System.Drawing.Point(12, 71);
@@ -148,9 +150,9 @@
             // 
             // Column2
             // 
-            dataGridViewCellStyle2.Format = "N0";
-            dataGridViewCellStyle2.NullValue = null;
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle26.Format = "N0";
+            dataGridViewCellStyle26.NullValue = null;
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle26;
             this.Column2.HeaderText = "Qté stock";
             this.Column2.MinimumWidth = 100;
             this.Column2.Name = "Column2";
@@ -158,9 +160,9 @@
             // 
             // Column3
             // 
-            dataGridViewCellStyle3.Format = "N0";
-            dataGridViewCellStyle3.NullValue = null;
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle27.Format = "N0";
+            dataGridViewCellStyle27.NullValue = null;
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle27;
             this.Column3.HeaderText = "Qté entée";
             this.Column3.MinimumWidth = 100;
             this.Column3.Name = "Column3";
@@ -168,9 +170,9 @@
             // 
             // Column4
             // 
-            dataGridViewCellStyle4.Format = "N0";
-            dataGridViewCellStyle4.NullValue = null;
-            this.Column4.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle28.Format = "N0";
+            dataGridViewCellStyle28.NullValue = null;
+            this.Column4.DefaultCellStyle = dataGridViewCellStyle28;
             this.Column4.HeaderText = "Qté sotie";
             this.Column4.MinimumWidth = 100;
             this.Column4.Name = "Column4";
@@ -178,9 +180,9 @@
             // 
             // Column7
             // 
-            dataGridViewCellStyle5.Format = "N2";
-            dataGridViewCellStyle5.NullValue = null;
-            this.Column7.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle29.Format = "N2";
+            dataGridViewCellStyle29.NullValue = null;
+            this.Column7.DefaultCellStyle = dataGridViewCellStyle29;
             this.Column7.HeaderText = "Valeur";
             this.Column7.MinimumWidth = 100;
             this.Column7.Name = "Column7";
@@ -252,7 +254,7 @@
             this.btnQuitter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuitter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuitter.Image = ((System.Drawing.Image)(resources.GetObject("btnQuitter.Image")));
-            this.btnQuitter.Location = new System.Drawing.Point(673, 28);
+            this.btnQuitter.Location = new System.Drawing.Point(674, 27);
             this.btnQuitter.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnQuitter.Name = "btnQuitter";
             this.btnQuitter.Size = new System.Drawing.Size(30, 30);
@@ -261,12 +263,56 @@
             this.btnQuitter.UseVisualStyleBackColor = false;
             this.btnQuitter.Click += new System.EventHandler(this.btnQuitter_Click);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(347, 42);
+            this.label8.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(68, 22);
+            this.label8.TabIndex = 771;
+            this.label8.Text = "Dépôt :";
+            // 
+            // cboDepot
+            // 
+            this.cboDepot.DropDownHeight = 150;
+            this.cboDepot.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboDepot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboDepot.FormattingEnabled = true;
+            this.cboDepot.IntegralHeight = false;
+            this.cboDepot.Items.AddRange(new object[] {
+            "ampoule",
+            "baxtère",
+            "boite",
+            "capsule",
+            "comprimé",
+            "flacon",
+            "litre",
+            "ovule",
+            "pièce",
+            "pot",
+            "rouleau",
+            "sachet",
+            "sirop",
+            "suppositoire",
+            "tube"});
+            this.cboDepot.Location = new System.Drawing.Point(407, 39);
+            this.cboDepot.MaxDropDownItems = 10;
+            this.cboDepot.Name = "cboDepot";
+            this.cboDepot.Size = new System.Drawing.Size(257, 30);
+            this.cboDepot.Sorted = true;
+            this.cboDepot.TabIndex = 770;
+            this.cboDepot.DropDown += new System.EventHandler(this.cboDepot_DropDown);
+            this.cboDepot.SelectedIndexChanged += new System.EventHandler(this.cboDepot_SelectedIndexChanged);
+            // 
             // FormStockInventaire
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(703, 451);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.cboDepot);
             this.Controls.Add(this.btnQuitter);
             this.Controls.Add(this.btnRecherche);
             this.Controls.Add(this.dtpDateA);
@@ -308,5 +354,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         public System.Windows.Forms.Button btnQuitter;
+        private System.Windows.Forms.Label label8;
+        public System.Windows.Forms.ComboBox cboDepot;
     }
 }

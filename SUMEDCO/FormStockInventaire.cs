@@ -41,5 +41,15 @@ namespace SUMEDCO
         {
             cs.TrouverQteStock(this);
         }
+
+        private void cboDepot_DropDown(object sender, EventArgs e)
+        {
+            cs.ChargerCombo(cboDepot, "pharma", 0);
+        }
+
+        private void cboDepot_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            idpharma = cs.TrouverId("pharma", cboDepot.Text);
+        }
     }
 }
