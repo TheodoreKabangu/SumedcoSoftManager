@@ -60,13 +60,13 @@
             this.btnMiseAjour = new System.Windows.Forms.Button();
             this.cboCategorie = new System.Windows.Forms.ComboBox();
             this.dgvAppro = new System.Windows.Forms.DataGridView();
+            this.txtRecherche = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtRecherche = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCommande)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppro)).BeginInit();
             this.SuspendLayout();
@@ -145,7 +145,7 @@
             this.dgvCommande.ReadOnly = true;
             this.dgvCommande.RowHeadersVisible = false;
             this.dgvCommande.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCommande.Size = new System.Drawing.Size(442, 342);
+            this.dgvCommande.Size = new System.Drawing.Size(319, 342);
             this.dgvCommande.TabIndex = 738;
             this.dgvCommande.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStock_CellClick);
             // 
@@ -440,53 +440,15 @@
             this.dgvAppro.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvAppro.EnableHeadersVisualStyles = false;
             this.dgvAppro.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            this.dgvAppro.Location = new System.Drawing.Point(460, 98);
+            this.dgvAppro.Location = new System.Drawing.Point(337, 98);
             this.dgvAppro.MultiSelect = false;
             this.dgvAppro.Name = "dgvAppro";
             this.dgvAppro.ReadOnly = true;
             this.dgvAppro.RowHeadersVisible = false;
             this.dgvAppro.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAppro.Size = new System.Drawing.Size(231, 342);
+            this.dgvAppro.Size = new System.Drawing.Size(354, 342);
             this.dgvAppro.TabIndex = 754;
             this.dgvAppro.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAppro_CellClick);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "N°";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 40;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Date appro.";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 140;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 140;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Qté appro";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 130;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 130;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "Qté ajoutée";
-            this.dataGridViewTextBoxColumn6.MinimumWidth = 140;
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Width = 140;
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "Observation";
-            this.Column9.MinimumWidth = 100;
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
             // 
             // txtRecherche
             // 
@@ -506,6 +468,45 @@
             this.label2.Size = new System.Drawing.Size(77, 22);
             this.label2.TabIndex = 760;
             this.label2.Text = "Produit :";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "N°";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 40;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Date appro.";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 120;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 120;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Qté appro";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 120;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 120;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "Qté ajoutée";
+            this.dataGridViewTextBoxColumn6.MinimumWidth = 120;
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Width = 120;
+            // 
+            // Column9
+            // 
+            this.Column9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column9.HeaderText = "Observation";
+            this.Column9.MinimumWidth = 100;
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
             // 
             // FormApproCommande
             // 

@@ -54,6 +54,16 @@ namespace SUMEDCO
                 }
                 cc.ChargerProduit(this, "");
             }
+            else
+            {
+                if (cc.NbExerciceEncours() == 1)
+                    idexercice = cc.ExerciceEncours();
+                else
+                {
+                    MessageBox.Show("Besoin d'un exercice comptable en cours. Contactez le comptable de l'entreprise", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.Close();
+                }
+            }
             if (cc.VerifierTaux(DateTime.Now.Date, "") == 0)
             {
                 cc.ChangerDate(new DateTaux(), this, lblDateOperation, lblTaux);

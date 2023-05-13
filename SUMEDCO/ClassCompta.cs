@@ -148,13 +148,7 @@ namespace SUMEDCO
             id = NbExerciceEncours();
             if (id == 1)
             {
-                con.Open();
-                cmd = new SqlCommand("SELECT idexercice from Exercice where statut IS NULL", con);
-                dr = cmd.ExecuteReader();
-                dr.Read();
-                childForm.idexercice = int.Parse(dr[0].ToString());
-                con.Close();
-
+                childForm.idexercice = ExerciceEncours();
                 if (r.activeForm != null)
                     r.activeForm.Close();
                 r.activeForm = childForm;
@@ -203,13 +197,7 @@ namespace SUMEDCO
             id = NbExerciceEncours();
             if (id == 1)
             {
-                con.Open();
-                cmd = new SqlCommand("SELECT idexercice from Exercice where statut IS NULL", con);
-                dr = cmd.ExecuteReader();
-                dr.Read();
-                childForm.idexercice = int.Parse(dr[0].ToString());
-                con.Close();
-
+                childForm.idexercice = ExerciceEncours();
                 if (r.activeForm != null)
                     r.activeForm.Close();
                 r.activeForm = childForm;
@@ -231,13 +219,7 @@ namespace SUMEDCO
             id = NbExerciceEncours();
             if (id == 1)
             {
-                con.Open();
-                cmd = new SqlCommand("SELECT idexercice from Exercice where statut IS NULL", con);
-                dr = cmd.ExecuteReader();
-                dr.Read();
-                childForm.idexercice = int.Parse(dr[0].ToString());
-                con.Close();
-
+                childForm.idexercice = ExerciceEncours();
                 if (r.activeForm != null)
                     r.activeForm.Close();
                 r.activeForm = childForm;
@@ -259,13 +241,7 @@ namespace SUMEDCO
             id = NbExerciceEncours();
             if (id == 1)
             {
-                con.Open();
-                cmd = new SqlCommand("SELECT idexercice from Exercice where statut IS NULL", con);
-                dr = cmd.ExecuteReader();
-                dr.Read();
-                childForm.idexercice = int.Parse(dr[0].ToString());
-                con.Close();
-
+                childForm.idexercice = ExerciceEncours();
                 if (r.activeForm != null)
                     r.activeForm.Close();
                 r.activeForm = childForm;
@@ -2581,13 +2557,7 @@ namespace SUMEDCO
             id = NbExerciceEncours();
             if (id == 1)
             {
-                con.Open();
-                cmd = new SqlCommand("SELECT idexercice from Exercice where statut IS NULL", con);
-                dr = cmd.ExecuteReader();
-                dr.Read();
-                childForm.idexercice = int.Parse(dr[0].ToString());
-                con.Close();
-
+                childForm.idexercice = ExerciceEncours();
                 if (d.activeForm != null)
                     d.activeForm.Close();
                 d.activeForm = childForm;
@@ -2607,13 +2577,7 @@ namespace SUMEDCO
             id = NbExerciceEncours();
             if (id == 1)
             {
-                con.Open();
-                cmd = new SqlCommand("SELECT idexercice from Exercice where statut IS NULL", con);
-                dr = cmd.ExecuteReader();
-                dr.Read();
-                childForm.idexercice = int.Parse(dr[0].ToString());
-                con.Close();
-
+                childForm.idexercice = ExerciceEncours();
                 if (d.activeForm != null)
                     d.activeForm.Close();
                 d.activeForm = childForm;
@@ -3712,13 +3676,7 @@ namespace SUMEDCO
             id = NbExerciceEncours();
             if (id == 1)
             {
-                con.Open();
-                cmd = new SqlCommand("SELECT idexercice from Exercice where statut IS NULL", con);
-                dr = cmd.ExecuteReader();
-                dr.Read();
-                childForm.idexercice = int.Parse(dr[0].ToString());
-                con.Close();
-
+                childForm.idexercice = ExerciceEncours();
                 if (r.activeForm != null)
                     r.activeForm.Close();
                 r.activeForm = childForm;
@@ -4836,14 +4794,41 @@ namespace SUMEDCO
             else
                 MessageBox.Show("Impossible de supprimer un exercice impliqué dans les opérations", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
-        private int NbExerciceEncours()
+        public int NbExerciceEncours()
         {
             id = 0;
             con.Open();
-            cmd = new SqlCommand("SELECT COUNT(exercice) from Exercice where statut IS NULL", con);
-            dr = cmd.ExecuteReader();
-            dr.Read();
-            id = int.Parse(dr[0].ToString());
+            try
+            {
+                
+                cmd = new SqlCommand("SELECT COUNT(exercice) from Exercice where statut IS NULL", con);
+                dr = cmd.ExecuteReader();
+                if (dr.Read())
+                    id = int.Parse(dr[0].ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            con.Close();
+            return id;
+        }
+        public int ExerciceEncours()
+        {
+            id = 0;
+            con.Open();
+            try
+            {
+
+                cmd = new SqlCommand("SELECT idexercice from Exercice where statut IS NULL", con);
+                dr = cmd.ExecuteReader();
+                if(dr.Read())
+                    id = int.Parse(dr[0].ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             con.Close();
             return id;
         }
@@ -4868,13 +4853,7 @@ namespace SUMEDCO
             id = NbExerciceEncours();
             if (id == 1)
             {
-                con.Open();
-                cmd = new SqlCommand("SELECT idexercice from Exercice where statut IS NULL", con);
-                dr = cmd.ExecuteReader();
-                dr.Read();
-                childForm.idexercice = int.Parse(dr[0].ToString());
-                con.Close();
-
+                childForm.idexercice = ExerciceEncours();
                 if (c.activeForm != null)
                     c.activeForm.Close();
                 c.activeForm = childForm;
@@ -4895,13 +4874,7 @@ namespace SUMEDCO
             id = NbExerciceEncours();
             if (id == 1)
             {
-                con.Open();
-                cmd = new SqlCommand("SELECT idexercice from Exercice where statut IS NULL", con);
-                dr = cmd.ExecuteReader();
-                dr.Read();
-                childForm.idexercice = int.Parse(dr[0].ToString());
-                con.Close();
-
+                childForm.idexercice = ExerciceEncours();
                 if (c.activeForm != null)
                     c.activeForm.Close();
                 c.activeForm = childForm;
@@ -4921,13 +4894,7 @@ namespace SUMEDCO
             id = NbExerciceEncours();
             if (id == 1)
             {
-                con.Open();
-                cmd = new SqlCommand("SELECT idexercice from Exercice where statut IS NULL", con);
-                dr = cmd.ExecuteReader();
-                dr.Read();
-                childForm.idexercice = int.Parse(dr[0].ToString());
-                con.Close();
-
+                childForm.idexercice = ExerciceEncours();
                 if (c.activeForm != null)
                     c.activeForm.Close();
                 c.activeForm = childForm;
@@ -4960,13 +4927,7 @@ namespace SUMEDCO
             id = NbExerciceEncours();
             if (id == 1)
             {
-                con.Open();
-                cmd = new SqlCommand("SELECT idexercice from Exercice where statut IS NULL", con);
-                dr = cmd.ExecuteReader();
-                dr.Read();
-                childForm.idexercice = int.Parse(dr[0].ToString());
-                con.Close();
-
+                childForm.idexercice = ExerciceEncours();
                 if (c.activeForm != null)
                     c.activeForm.Close();
                 c.activeForm = childForm;
@@ -5012,13 +4973,7 @@ namespace SUMEDCO
             id = NbExerciceEncours();
             if (id == 1)
             {
-                con.Open();
-                cmd = new SqlCommand("SELECT idexercice from Exercice where statut IS NULL", con);
-                dr = cmd.ExecuteReader();
-                dr.Read();
-                childForm.idexercice = int.Parse(dr[0].ToString());
-                con.Close();
-
+                childForm.idexercice = ExerciceEncours();
                 if (c.activeForm != null)
                     c.activeForm.Close();
                 c.activeForm = childForm;
@@ -6377,31 +6332,22 @@ namespace SUMEDCO
                         {
                             if (Convert.ToDouble(a.dgvAppro.CurrentRow.Cells[6].Value) <= Convert.ToDouble(a.dgvAppro.CurrentRow.Cells[5].Value))
                             {
-                                if(Convert.ToDouble(a.dgvAppro.CurrentRow.Cells[7].Value) <= Convert.ToDouble(a.dgvAppro.CurrentRow.Cells[6].Value))
+                                if (Convert.ToDouble(a.dgvAppro.CurrentRow.Cells[7].Value) > 0)
                                 {
-                                    if(Convert.ToDouble(a.dgvAppro.CurrentRow.Cells[7].Value)>0)
+                                    if (a.txtTaux.Text == "")
+                                        a.txtTaux.Text = "20";
+                                    a.dgvAppro.CurrentRow.Cells[9].Value = Convert.ToDouble(a.dgvAppro.CurrentRow.Cells[8].Value) + Convert.ToDouble(a.dgvAppro.CurrentRow.Cells[8].Value) * Convert.ToDouble(a.txtTaux.Text) / 100;
+                                    if (a.txtValeurMin.Text != "")
+                                        a.dgvAppro.CurrentRow.Cells[9].Value = Convert.ToInt32(a.txtValeurMin.Text) * Math.Ceiling(Convert.ToDouble(a.dgvAppro.CurrentRow.Cells[9].Value) / 50);
+                                    a.dgvAppro.CurrentRow.Cells[11].Value = Convert.ToDouble(a.dgvAppro.CurrentRow.Cells[6].Value) * Convert.ToDouble(a.dgvAppro.CurrentRow.Cells[8].Value);
+                                    a.dgvAppro.Rows[a.dgvAppro.RowCount - 1].Cells[11].Value = 0;
+                                    for (int j = 0; j < a.dgvAppro.RowCount - 1; j++)
                                     {
-                                        if (a.txtTaux.Text == "")
-                                            a.txtTaux.Text = "20";
-                                        a.dgvAppro.CurrentRow.Cells[9].Value = Convert.ToDouble(a.dgvAppro.CurrentRow.Cells[8].Value) + Convert.ToDouble(a.dgvAppro.CurrentRow.Cells[8].Value) * Convert.ToDouble(a.txtTaux.Text) / 100;
-                                        if (a.txtValeurMin.Text != "")
-                                            a.dgvAppro.CurrentRow.Cells[9].Value = Convert.ToInt32(a.txtValeurMin.Text) * Math.Ceiling(Convert.ToDouble(a.dgvAppro.CurrentRow.Cells[9].Value) / 50);
-                                        a.dgvAppro.CurrentRow.Cells[11].Value = Convert.ToDouble(a.dgvAppro.CurrentRow.Cells[6].Value) * Convert.ToDouble(a.dgvAppro.CurrentRow.Cells[8].Value);
-                                        a.dgvAppro.Rows[a.dgvAppro.RowCount - 1].Cells[11].Value = 0;
-                                        for (int j = 0; j < a.dgvAppro.RowCount - 1; j++)
-                                        {
-                                            a.dgvAppro.Rows[a.dgvAppro.RowCount - 1].Cells[11].Value = Convert.ToDouble(a.dgvAppro.Rows[a.dgvAppro.RowCount - 1].Cells[11].Value) + Convert.ToDouble(a.dgvAppro.Rows[j].Cells[11].Value);
-                                        }
+                                        a.dgvAppro.Rows[a.dgvAppro.RowCount - 1].Cells[11].Value = Convert.ToDouble(a.dgvAppro.Rows[a.dgvAppro.RowCount - 1].Cells[11].Value) + Convert.ToDouble(a.dgvAppro.Rows[j].Cells[11].Value);
                                     }
-                                    else
-                                        a.dgvAppro.Rows[a.dgvAppro.RowCount - 1].Cells[11].Value = 0;
                                 }
                                 else
-                                {
-                                    MessageBox.Show("La quantité ajoutée ne doit pas dépasser celle approvisionnée","Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                    a.dgvAppro.CurrentRow.Cells[7].Value = 0;
                                     a.dgvAppro.Rows[a.dgvAppro.RowCount - 1].Cells[11].Value = 0;
-                                }
                             }
                             else
                             {

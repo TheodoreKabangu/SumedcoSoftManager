@@ -34,12 +34,13 @@
             this.pnlCompta = new System.Windows.Forms.Panel();
             this.btnResultat = new System.Windows.Forms.Button();
             this.btnTabFluxT = new System.Windows.Forms.Button();
-            this.btnBalance_ = new System.Windows.Forms.Button();
             this.btnBilan_ = new System.Windows.Forms.Button();
             this.btnGrandLivre = new System.Windows.Forms.Button();
+            this.btnBalance_ = new System.Windows.Forms.Button();
             this.btnVisualisation = new System.Windows.Forms.Button();
             this.btnCompta = new System.Windows.Forms.Button();
             this.pnlRapport = new System.Windows.Forms.Panel();
+            this.btnInventaire = new System.Windows.Forms.Button();
             this.btnCasMedecin = new System.Windows.Forms.Button();
             this.btnRapportGlobal = new System.Windows.Forms.Button();
             this.btnRapportDepense = new System.Windows.Forms.Button();
@@ -81,7 +82,7 @@
             this.btnChat.ForeColor = System.Drawing.Color.Black;
             this.btnChat.Image = ((System.Drawing.Image)(resources.GetObject("btnChat.Image")));
             this.btnChat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnChat.Location = new System.Drawing.Point(0, 617);
+            this.btnChat.Location = new System.Drawing.Point(0, 668);
             this.btnChat.Name = "btnChat";
             this.btnChat.Size = new System.Drawing.Size(154, 45);
             this.btnChat.TabIndex = 600;
@@ -101,7 +102,7 @@
             this.pnlCompta.Controls.Add(this.btnBalance_);
             this.pnlCompta.Controls.Add(this.btnVisualisation);
             this.pnlCompta.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlCompta.Location = new System.Drawing.Point(0, 343);
+            this.pnlCompta.Location = new System.Drawing.Point(0, 394);
             this.pnlCompta.Name = "pnlCompta";
             this.pnlCompta.Size = new System.Drawing.Size(154, 274);
             this.pnlCompta.TabIndex = 596;
@@ -146,26 +147,6 @@
             this.btnTabFluxT.UseVisualStyleBackColor = true;
             this.btnTabFluxT.Click += new System.EventHandler(this.btnTabFluxT_Click);
             // 
-            // btnBalance_
-            // 
-            this.btnBalance_.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnBalance_.FlatAppearance.BorderSize = 0;
-            this.btnBalance_.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnBalance_.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBalance_.ForeColor = System.Drawing.Color.MediumBlue;
-            this.btnBalance_.Image = ((System.Drawing.Image)(resources.GetObject("btnBalance_.Image")));
-            this.btnBalance_.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBalance_.Location = new System.Drawing.Point(0, 45);
-            this.btnBalance_.Name = "btnBalance_";
-            this.btnBalance_.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnBalance_.Size = new System.Drawing.Size(154, 45);
-            this.btnBalance_.TabIndex = 600;
-            this.btnBalance_.Text = "Balance";
-            this.btnBalance_.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBalance_.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnBalance_.UseVisualStyleBackColor = true;
-            this.btnBalance_.Click += new System.EventHandler(this.btnBalance__Click);
-            // 
             // btnBilan_
             // 
             this.btnBilan_.Dock = System.Windows.Forms.DockStyle.Top;
@@ -206,6 +187,26 @@
             this.btnGrandLivre.UseVisualStyleBackColor = true;
             this.btnGrandLivre.Click += new System.EventHandler(this.btnGrandLivre_Click);
             // 
+            // btnBalance_
+            // 
+            this.btnBalance_.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnBalance_.FlatAppearance.BorderSize = 0;
+            this.btnBalance_.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnBalance_.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBalance_.ForeColor = System.Drawing.Color.MediumBlue;
+            this.btnBalance_.Image = ((System.Drawing.Image)(resources.GetObject("btnBalance_.Image")));
+            this.btnBalance_.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBalance_.Location = new System.Drawing.Point(0, 45);
+            this.btnBalance_.Name = "btnBalance_";
+            this.btnBalance_.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnBalance_.Size = new System.Drawing.Size(154, 45);
+            this.btnBalance_.TabIndex = 600;
+            this.btnBalance_.Text = "Balance";
+            this.btnBalance_.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBalance_.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnBalance_.UseVisualStyleBackColor = true;
+            this.btnBalance_.Click += new System.EventHandler(this.btnBalance__Click);
+            // 
             // btnVisualisation
             // 
             this.btnVisualisation.Dock = System.Windows.Forms.DockStyle.Top;
@@ -235,7 +236,7 @@
             this.btnCompta.ForeColor = System.Drawing.Color.Black;
             this.btnCompta.Image = ((System.Drawing.Image)(resources.GetObject("btnCompta.Image")));
             this.btnCompta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCompta.Location = new System.Drawing.Point(0, 298);
+            this.btnCompta.Location = new System.Drawing.Point(0, 349);
             this.btnCompta.Name = "btnCompta";
             this.btnCompta.Size = new System.Drawing.Size(154, 45);
             this.btnCompta.TabIndex = 597;
@@ -249,6 +250,7 @@
             // 
             this.pnlRapport.AutoScroll = true;
             this.pnlRapport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            this.pnlRapport.Controls.Add(this.btnInventaire);
             this.pnlRapport.Controls.Add(this.btnCasMedecin);
             this.pnlRapport.Controls.Add(this.btnRapportGlobal);
             this.pnlRapport.Controls.Add(this.btnRapportDepense);
@@ -256,8 +258,28 @@
             this.pnlRapport.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlRapport.Location = new System.Drawing.Point(0, 117);
             this.pnlRapport.Name = "pnlRapport";
-            this.pnlRapport.Size = new System.Drawing.Size(154, 181);
+            this.pnlRapport.Size = new System.Drawing.Size(154, 232);
             this.pnlRapport.TabIndex = 598;
+            // 
+            // btnInventaire
+            // 
+            this.btnInventaire.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnInventaire.FlatAppearance.BorderSize = 0;
+            this.btnInventaire.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnInventaire.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInventaire.ForeColor = System.Drawing.Color.MediumBlue;
+            this.btnInventaire.Image = ((System.Drawing.Image)(resources.GetObject("btnInventaire.Image")));
+            this.btnInventaire.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInventaire.Location = new System.Drawing.Point(0, 180);
+            this.btnInventaire.Name = "btnInventaire";
+            this.btnInventaire.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnInventaire.Size = new System.Drawing.Size(154, 45);
+            this.btnInventaire.TabIndex = 604;
+            this.btnInventaire.Text = "Inventaire";
+            this.btnInventaire.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInventaire.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnInventaire.UseVisualStyleBackColor = true;
+            this.btnInventaire.Click += new System.EventHandler(this.btnInventaire_Click);
             // 
             // btnCasMedecin
             // 
@@ -371,7 +393,7 @@
             this.btnQuitter.ForeColor = System.Drawing.Color.Black;
             this.btnQuitter.Image = ((System.Drawing.Image)(resources.GetObject("btnQuitter.Image")));
             this.btnQuitter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnQuitter.Location = new System.Drawing.Point(0, 662);
+            this.btnQuitter.Location = new System.Drawing.Point(0, 713);
             this.btnQuitter.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnQuitter.Name = "btnQuitter";
             this.btnQuitter.Size = new System.Drawing.Size(154, 45);
@@ -463,5 +485,6 @@
         public System.Windows.Forms.Button btnRapportRecette;
         public System.Windows.Forms.Button btnChat;
         public System.Windows.Forms.Button btnCasMedecin;
+        public System.Windows.Forms.Button btnInventaire;
     }
 }

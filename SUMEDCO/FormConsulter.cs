@@ -506,9 +506,7 @@ namespace SUMEDCO
 
         private void FormConsulter_Shown(object sender, EventArgs e)
         {
-            dgvPresc.Rows.Add(20);
-            dgvAutrePresc.Rows.Add(20);
-            dgvAutrePrescS.Rows.Add(20);
+            
         }
     }
 }

@@ -58,7 +58,7 @@
             this.pnlSide.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlSide.Location = new System.Drawing.Point(0, 0);
             this.pnlSide.Name = "pnlSide";
-            this.pnlSide.Size = new System.Drawing.Size(180, 471);
+            this.pnlSide.Size = new System.Drawing.Size(180, 474);
             this.pnlSide.TabIndex = 584;
             // 
             // btnChat
@@ -98,13 +98,16 @@
             this.btnStock.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
             this.btnStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStock.ForeColor = System.Drawing.Color.MediumBlue;
-            this.btnStock.Location = new System.Drawing.Point(0, 70);
+            this.btnStock.Image = ((System.Drawing.Image)(resources.GetObject("btnStock.Image")));
+            this.btnStock.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStock.Location = new System.Drawing.Point(0, 90);
             this.btnStock.Name = "btnStock";
-            this.btnStock.Padding = new System.Windows.Forms.Padding(39, 0, 0, 0);
-            this.btnStock.Size = new System.Drawing.Size(180, 35);
+            this.btnStock.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnStock.Size = new System.Drawing.Size(180, 45);
             this.btnStock.TabIndex = 9;
-            this.btnStock.Text = "Stocks des produits ph.";
+            this.btnStock.Text = "Inventaire";
             this.btnStock.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStock.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnStock.UseVisualStyleBackColor = true;
             this.btnStock.Click += new System.EventHandler(this.btnStock_Click);
             // 
@@ -115,13 +118,16 @@
             this.btnRecetteDepense.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
             this.btnRecetteDepense.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRecetteDepense.ForeColor = System.Drawing.Color.MediumBlue;
-            this.btnRecetteDepense.Location = new System.Drawing.Point(0, 35);
+            this.btnRecetteDepense.Image = ((System.Drawing.Image)(resources.GetObject("btnRecetteDepense.Image")));
+            this.btnRecetteDepense.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRecetteDepense.Location = new System.Drawing.Point(0, 45);
             this.btnRecetteDepense.Name = "btnRecetteDepense";
-            this.btnRecetteDepense.Padding = new System.Windows.Forms.Padding(39, 0, 0, 0);
-            this.btnRecetteDepense.Size = new System.Drawing.Size(180, 35);
+            this.btnRecetteDepense.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnRecetteDepense.Size = new System.Drawing.Size(180, 45);
             this.btnRecetteDepense.TabIndex = 10;
             this.btnRecetteDepense.Text = "Recettes et Dépenses";
             this.btnRecetteDepense.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRecetteDepense.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRecetteDepense.UseVisualStyleBackColor = true;
             this.btnRecetteDepense.Click += new System.EventHandler(this.btnRecetteDepense_Click);
             // 
@@ -132,13 +138,16 @@
             this.btnMaladeMedecin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
             this.btnMaladeMedecin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMaladeMedecin.ForeColor = System.Drawing.Color.MediumBlue;
+            this.btnMaladeMedecin.Image = ((System.Drawing.Image)(resources.GetObject("btnMaladeMedecin.Image")));
+            this.btnMaladeMedecin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMaladeMedecin.Location = new System.Drawing.Point(0, 0);
             this.btnMaladeMedecin.Name = "btnMaladeMedecin";
-            this.btnMaladeMedecin.Padding = new System.Windows.Forms.Padding(39, 0, 0, 0);
-            this.btnMaladeMedecin.Size = new System.Drawing.Size(180, 35);
+            this.btnMaladeMedecin.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnMaladeMedecin.Size = new System.Drawing.Size(180, 45);
             this.btnMaladeMedecin.TabIndex = 8;
             this.btnMaladeMedecin.Text = "Cas par médecin";
             this.btnMaladeMedecin.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMaladeMedecin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnMaladeMedecin.UseVisualStyleBackColor = true;
             this.btnMaladeMedecin.Click += new System.EventHandler(this.btnMaladeMedecin_Click);
             // 
@@ -155,7 +164,7 @@
             this.btnQuitter.ForeColor = System.Drawing.Color.Black;
             this.btnQuitter.Image = ((System.Drawing.Image)(resources.GetObject("btnQuitter.Image")));
             this.btnQuitter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnQuitter.Location = new System.Drawing.Point(0, 426);
+            this.btnQuitter.Location = new System.Drawing.Point(0, 429);
             this.btnQuitter.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnQuitter.Name = "btnQuitter";
             this.btnQuitter.Size = new System.Drawing.Size(180, 45);
@@ -238,7 +247,7 @@
             this.pnlChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlChildForm.Location = new System.Drawing.Point(180, 0);
             this.pnlChildForm.Name = "pnlChildForm";
-            this.pnlChildForm.Size = new System.Drawing.Size(714, 471);
+            this.pnlChildForm.Size = new System.Drawing.Size(714, 474);
             this.pnlChildForm.TabIndex = 585;
             // 
             // MFormAdmin
@@ -246,12 +255,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(894, 471);
+            this.ClientSize = new System.Drawing.Size(894, 474);
             this.Controls.Add(this.pnlChildForm);
             this.Controls.Add(this.pnlSide);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(910, 510);
+            this.MinimumSize = new System.Drawing.Size(910, 530);
             this.Name = "MFormAdmin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SSM - Administration";

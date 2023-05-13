@@ -126,5 +126,10 @@ namespace SUMEDCO
         {
             cc.AfficherSousForm(this, new FormComptaRecetteDepense());
         }
+
+        private void btnInventaire_Click(object sender, EventArgs e)
+        {
+            cc.AfficherSousForm(this, new FormStockInventaire());
+        }
     }
 }

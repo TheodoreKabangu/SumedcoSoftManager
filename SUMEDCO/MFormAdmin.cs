@@ -41,13 +41,21 @@ namespace SUMEDCO
 
         private void btnRapports_Click(object sender, EventArgs e)
         {
+            if (btnRapports.BackColor != Color.LightSlateGray)
+            {
+                btnRapports.BackColor = Color.LightSlateGray;
+                btnRapportStat.BackColor = Color.FromArgb(180, 200, 255);
+                btnMiseAJour.BackColor = Color.FromArgb(180, 200, 255);
+                btnChat.BackColor = Color.FromArgb(180, 200, 255);
+            }
+            else
+                btnRapports.BackColor = System.Drawing.Color.FromArgb(180, 200, 255);
             cc.SousMenu(pnlSousMenu);
         }
 
         private void btnStock_Click(object sender, EventArgs e)
         {
-            //cs.AfficherSousForm(this, new FormStockProduit());
-            cc.CacherSousMenu(pnlSousMenu);
+            cs.AfficherSousForm(this, new FormStockInventaire());           
         }
 
         private void btnMaladeMedecin_Click(object sender, EventArgs e)
@@ -69,7 +77,10 @@ namespace SUMEDCO
             else if (utilisateur == "Numéro 1")
                 btnMiseAJour.Enabled = false;
             else
-                btnRapports.Enabled = false;
+            {
+                btnMaladeMedecin.Enabled = false;
+                btnRecetteDepense.Enabled = false;
+            }
         }
 
         private void btnRapportStat_Click(object sender, EventArgs e)
@@ -90,7 +101,6 @@ namespace SUMEDCO
             //if (btnChat.BackColor != Color.LightSlateGray)
             //{
             //    btnChat.BackColor = Color.LightSlateGray;
-            //    
             //    btnRapports.BackColor = Color.FromArgb(180, 200, 255);
             //    btnRapportStat.BackColor = Color.FromArgb(180, 200, 255);
             //    btnMiseAJour.BackColor = Color.FromArgb(180, 200, 255);

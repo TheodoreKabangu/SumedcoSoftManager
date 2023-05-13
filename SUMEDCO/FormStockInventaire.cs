@@ -50,6 +50,24 @@ namespace SUMEDCO
         private void cboDepot_SelectedIndexChanged(object sender, EventArgs e)
         {
             idpharma = cs.TrouverId("pharma", cboDepot.Text);
+            cs.AfficherStockProduit(this);
+        }
+
+        private void checkBox2_Click(object sender, EventArgs e)
+        {
+            if (checkBox2.Checked)
+            {
+                cboDepot.DropDownStyle = ComboBoxStyle.DropDown;
+                cboDepot.SelectedText = "";
+                cboDepot.DropDownStyle = ComboBoxStyle.DropDownList;
+                cboDepot.Enabled = false;
+                cs.AfficherStockProduit(this);
+            }
+            else
+            {
+                cs.AfficherStockProduit(this);
+                cboDepot.Enabled = true;
+            }
         }
     }
 }

@@ -1392,7 +1392,7 @@ namespace SUMEDCO
             f.Text = "Facturation Produits";
             f.recettePatientConsulte = true;
             f.type_patient = c.dgvPatient.Rows[8].Cells[1].Value.ToString();
-            if(f.type_patient == "abonné")
+            if (f.type_patient != "payant")
                 f.cboTypeFacture.Items.Remove("immédiat");
             f.StartPosition = FormStartPosition.CenterScreen;
             f.ShowDialog();
