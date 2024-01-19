@@ -98,6 +98,7 @@
             this.btnRapport.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRapport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRapport.UseVisualStyleBackColor = true;
+            this.btnRapport.Click += new System.EventHandler(this.btnRapport_Click);
             // 
             // btnQuitter
             // 
@@ -136,7 +137,7 @@
             this.btnAbonne.Name = "btnAbonne";
             this.btnAbonne.Size = new System.Drawing.Size(180, 45);
             this.btnAbonne.TabIndex = 1;
-            this.btnAbonne.Text = "Afficher les cas";
+            this.btnAbonne.Text = "Patients";
             this.btnAbonne.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAbonne.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAbonne.UseVisualStyleBackColor = true;

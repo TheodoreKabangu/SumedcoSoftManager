@@ -110,5 +110,12 @@ namespace SUMEDCO
             cn.Show();
             this.Hide();
         }
+
+        private void btnLabo_Click(object sender, EventArgs e)
+        {
+            cn.poste = "labo";
+            cn.Show();
+            this.Hide();
+        }
     }
 }

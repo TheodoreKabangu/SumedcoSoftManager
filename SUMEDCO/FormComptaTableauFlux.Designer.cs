@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormComptaTableauFlux));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -47,6 +48,7 @@
             this.dtpDateDe = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCalculer = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTFT)).BeginInit();
             this.SuspendLayout();
             // 
@@ -269,6 +271,7 @@
             this.btnCalculer.Name = "btnCalculer";
             this.btnCalculer.Size = new System.Drawing.Size(30, 23);
             this.btnCalculer.TabIndex = 680;
+            this.toolTip1.SetToolTip(this.btnCalculer, "Calculer");
             this.btnCalculer.UseVisualStyleBackColor = false;
             this.btnCalculer.Click += new System.EventHandler(this.btnCalculer_Click);
             // 
@@ -314,5 +317,6 @@
         public System.Windows.Forms.DateTimePicker dtpDateDe;
         public System.Windows.Forms.Label label1;
         public System.Windows.Forms.Button btnCalculer;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

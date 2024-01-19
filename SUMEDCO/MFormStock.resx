@@ -150,19 +150,6 @@
         AAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="btnSortieStock.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAZtJREFUSEvl
-        lTsvBFEYhlfh1qgkKDUqKkKhklCIyqUh7onLP9BK+AFCJQqFQihEQsEf0NC6JBT8A4mIe3jeM2P32J05
-        s9gZwZM8yXfOfPO9s7ObPanfSLVvotTgKZ5gYuEKPcNnfEE9gPZipRYvcRtXfVVrT9diQYOvUEEluOyr
-        OtbwXdzDMrPKBIty3McdsyowVVjslQY7WOiaemInOzgx/lZwN7Z7ZSj5BHdgj1dGM4iPqHAXS74uelGz
-        NNPJND5gn1m5qfCNYhg1s9+sApjEfEM/i2be44hZWXTha4D6Pz7GWSzFKNSjXt2je4NmdmKaIlzHG9RT
-        Nfo24wBe4AZGsYnnqNeqe9/nTOEdrmAOCl/Ea2zRhkUd6hPUm1UwDfiE6rVpw1ucN6sQFL6ACteT2uj4
-        c/06h1Dns00TapZmarYTNczhuFllOEK9sjB0TT02mqFZ3+IrwQUhluDsIy+IQ5zwykD0P6AeFzlH5wGO
-        emUorVjplYHomnpcjKGy0kS9xkKR83X8z+AtnIlZZXwIXkNtJKGyfopU6g1ZvoPGuSPiyQAAAABJRU5E
-        rkJggg==
-</value>
-  </data>
   <data name="btnComPharma.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAZ1JREFUSEvt

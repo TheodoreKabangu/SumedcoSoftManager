@@ -23,8 +23,7 @@ namespace SUMEDCO
         public bool infirmier_autorise;
         private void btnAbonne_Click(object sender, EventArgs e)
         {
-            statut = "nouveau";
-            cc.AfficherSousForm(this, new FormPatient());
+            cc.AfficherSousForm(this, new FormPatientRecherche());
         }
 
         private void btnQuitter_Click(object sender, EventArgs e)
@@ -34,23 +33,7 @@ namespace SUMEDCO
 
         private void btnRapport_Click(object sender, EventArgs e)
         {
-            //cc.AfficherSousForm(this, new FormAbonnePersoRapport());
-        }
-
-        private void btnVoirAbonne_Click(object sender, EventArgs e)
-        {
-            cc.AfficherSousForm(this, new FormFactureService());
-        }
-
-        private void btnAncien_Click(object sender, EventArgs e)
-        {
-            statut = "ancien";
-            cc.AfficherSousForm(this, new FormPatient());
-        }
-
-        private void btnProduitConsomme_Click(object sender, EventArgs e)
-        {
-            cc.AfficherSousForm(this, new FormFactureProduit());
+            cc.AfficherSousForm(this, new FormAbonnePersoRapport());
         }
     }
 }

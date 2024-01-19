@@ -37,6 +37,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnRecherche = new System.Windows.Forms.Button();
+            this.btnAnnuler = new System.Windows.Forms.Button();
             this.dtpDateA = new System.Windows.Forms.DateTimePicker();
             this.dtpDateDe = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
@@ -46,10 +47,15 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cboMonnaie = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.cboAnnulation = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cboCatPaye = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPayement)).BeginInit();
             this.SuspendLayout();
             // 
@@ -91,48 +97,70 @@
             this.btnRecherche.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRecherche.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRecherche.Image = ((System.Drawing.Image)(resources.GetObject("btnRecherche.Image")));
-            this.btnRecherche.Location = new System.Drawing.Point(480, 57);
+            this.btnRecherche.Location = new System.Drawing.Point(580, 39);
             this.btnRecherche.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnRecherche.Name = "btnRecherche";
             this.btnRecherche.Size = new System.Drawing.Size(30, 21);
             this.btnRecherche.TabIndex = 741;
+            this.btnRecherche.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.toolTip1.SetToolTip(this.btnRecherche, "Afficher pour cette période");
             this.btnRecherche.UseVisualStyleBackColor = false;
             this.btnRecherche.Click += new System.EventHandler(this.btnRecherche_Click);
             // 
+            // btnAnnuler
+            // 
+            this.btnAnnuler.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.btnAnnuler.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAnnuler.Enabled = false;
+            this.btnAnnuler.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnAnnuler.FlatAppearance.BorderSize = 0;
+            this.btnAnnuler.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAnnuler.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAnnuler.Image = ((System.Drawing.Image)(resources.GetObject("btnAnnuler.Image")));
+            this.btnAnnuler.Location = new System.Drawing.Point(580, 71);
+            this.btnAnnuler.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btnAnnuler.Name = "btnAnnuler";
+            this.btnAnnuler.Size = new System.Drawing.Size(30, 21);
+            this.btnAnnuler.TabIndex = 744;
+            this.btnAnnuler.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnAnnuler, "Annuler le payement");
+            this.btnAnnuler.UseVisualStyleBackColor = false;
+            this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
+            // 
             // dtpDateA
             // 
             this.dtpDateA.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDateA.Location = new System.Drawing.Point(359, 57);
+            this.dtpDateA.Location = new System.Drawing.Point(462, 39);
             this.dtpDateA.Name = "dtpDateA";
-            this.dtpDateA.Size = new System.Drawing.Size(113, 28);
+            this.dtpDateA.Size = new System.Drawing.Size(113, 24);
             this.dtpDateA.TabIndex = 737;
             // 
             // dtpDateDe
             // 
             this.dtpDateDe.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDateDe.Location = new System.Drawing.Point(201, 57);
+            this.dtpDateDe.Location = new System.Drawing.Point(326, 39);
             this.dtpDateDe.Name = "dtpDateDe";
-            this.dtpDateDe.Size = new System.Drawing.Size(113, 28);
+            this.dtpDateDe.Size = new System.Drawing.Size(113, 24);
             this.dtpDateDe.TabIndex = 738;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(324, 61);
+            this.label1.Location = new System.Drawing.Point(443, 43);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(30, 22);
+            this.label1.Size = new System.Drawing.Size(24, 18);
             this.label1.TabIndex = 739;
             this.label1.Text = "à :";
             // 
             // lblDateEntree
             // 
             this.lblDateEntree.AutoSize = true;
-            this.lblDateEntree.Location = new System.Drawing.Point(159, 62);
+            this.lblDateEntree.Location = new System.Drawing.Point(297, 43);
             this.lblDateEntree.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblDateEntree.Name = "lblDateEntree";
-            this.lblDateEntree.Size = new System.Drawing.Size(43, 22);
+            this.lblDateEntree.Size = new System.Drawing.Size(35, 18);
             this.lblDateEntree.TabIndex = 740;
             this.lblDateEntree.Text = "De :";
             // 
@@ -161,6 +189,7 @@
             this.Column3,
             this.Column5,
             this.Column8,
+            this.Column2,
             this.Column6,
             this.Column11});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -173,21 +202,24 @@
             this.dgvPayement.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvPayement.EnableHeadersVisualStyles = false;
             this.dgvPayement.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            this.dgvPayement.Location = new System.Drawing.Point(12, 88);
+            this.dgvPayement.Location = new System.Drawing.Point(12, 106);
             this.dgvPayement.MultiSelect = false;
             this.dgvPayement.Name = "dgvPayement";
             this.dgvPayement.ReadOnly = true;
             this.dgvPayement.RowHeadersVisible = false;
+            this.dgvPayement.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvPayement.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPayement.Size = new System.Drawing.Size(679, 351);
+            this.dgvPayement.Size = new System.Drawing.Size(679, 333);
             this.dgvPayement.TabIndex = 736;
+            this.dgvPayement.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPayement_CellClick);
             // 
             // Column1
             // 
             this.Column1.HeaderText = "N°";
+            this.Column1.MinimumWidth = 50;
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
-            this.Column1.Width = 40;
+            this.Column1.Width = 50;
             // 
             // Column3
             // 
@@ -207,16 +239,24 @@
             // 
             // Column8
             // 
-            this.Column8.HeaderText = "Mon.";
+            this.Column8.HeaderText = "Monnaie";
             this.Column8.MinimumWidth = 100;
             this.Column8.Name = "Column8";
             this.Column8.ReadOnly = true;
             // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column2.HeaderText = "Catégorie";
+            this.Column2.MinimumWidth = 150;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
             // Column6
             // 
             this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column6.HeaderText = "Payeur";
-            this.Column6.MinimumWidth = 160;
+            this.Column6.HeaderText = "Libellé";
+            this.Column6.MinimumWidth = 200;
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
             // 
@@ -238,29 +278,91 @@
             this.cboMonnaie.Items.AddRange(new object[] {
             "CDF",
             "USD"});
-            this.cboMonnaie.Location = new System.Drawing.Point(83, 56);
+            this.cboMonnaie.Location = new System.Drawing.Point(228, 38);
             this.cboMonnaie.MaxDropDownItems = 10;
             this.cboMonnaie.Name = "cboMonnaie";
-            this.cboMonnaie.Size = new System.Drawing.Size(69, 30);
+            this.cboMonnaie.Size = new System.Drawing.Size(69, 26);
             this.cboMonnaie.Sorted = true;
             this.cboMonnaie.TabIndex = 742;
+            this.cboMonnaie.SelectedIndexChanged += new System.EventHandler(this.cboMonnaie_SelectedIndexChanged);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(8, 59);
+            this.label7.Location = new System.Drawing.Point(153, 41);
             this.label7.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(100, 22);
+            this.label7.Size = new System.Drawing.Size(83, 18);
             this.label7.TabIndex = 743;
             this.label7.Text = "CDF/USD :";
             // 
+            // cboAnnulation
+            // 
+            this.cboAnnulation.DropDownHeight = 150;
+            this.cboAnnulation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboAnnulation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboAnnulation.FormattingEnabled = true;
+            this.cboAnnulation.IntegralHeight = false;
+            this.cboAnnulation.Items.AddRange(new object[] {
+            "erreur sur le payeur",
+            "modification du montant",
+            "remboursement"});
+            this.cboAnnulation.Location = new System.Drawing.Point(181, 69);
+            this.cboAnnulation.MaxDropDownItems = 10;
+            this.cboAnnulation.Name = "cboAnnulation";
+            this.cboAnnulation.Size = new System.Drawing.Size(392, 26);
+            this.cboAnnulation.Sorted = true;
+            this.cboAnnulation.TabIndex = 746;
+            this.cboAnnulation.SelectedIndexChanged += new System.EventHandler(this.cboAnnulation_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(8, 72);
+            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(182, 18);
+            this.label4.TabIndex = 745;
+            this.label4.Text = "Annuler le payement pour :";
+            // 
+            // cboCatPaye
+            // 
+            this.cboCatPaye.DropDownHeight = 150;
+            this.cboCatPaye.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCatPaye.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboCatPaye.FormattingEnabled = true;
+            this.cboCatPaye.IntegralHeight = false;
+            this.cboCatPaye.Items.AddRange(new object[] {
+            "Annulé",
+            "Effectif"});
+            this.cboCatPaye.Location = new System.Drawing.Point(56, 39);
+            this.cboCatPaye.MaxDropDownItems = 10;
+            this.cboCatPaye.Name = "cboCatPaye";
+            this.cboCatPaye.Size = new System.Drawing.Size(96, 26);
+            this.cboCatPaye.Sorted = true;
+            this.cboCatPaye.TabIndex = 747;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(8, 42);
+            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(50, 18);
+            this.label2.TabIndex = 748;
+            this.label2.Text = "Choix:";
+            // 
             // FormPayements
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(703, 451);
+            this.Controls.Add(this.cboCatPaye);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cboAnnulation);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.cboMonnaie);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btnRecherche);
@@ -294,13 +396,19 @@
         public System.Windows.Forms.Label label1;
         public System.Windows.Forms.Label lblDateEntree;
         public System.Windows.Forms.DataGridView dgvPayement;
+        public System.Windows.Forms.ComboBox cboMonnaie;
+        private System.Windows.Forms.Label label7;
+        public System.Windows.Forms.Button btnAnnuler;
+        public System.Windows.Forms.ComboBox cboAnnulation;
+        public System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
-        public System.Windows.Forms.ComboBox cboMonnaie;
-        private System.Windows.Forms.Label label7;
+        public System.Windows.Forms.ComboBox cboCatPaye;
+        private System.Windows.Forms.Label label2;
     }
 }

@@ -15,12 +15,16 @@ namespace SUMEDCO
         public FormAdminRapportCas()
         {
             InitializeComponent();
+            for (int i = 0; i < dgvRecette.ColumnCount; i++)
+            {
+                dgvRecette.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
         ClassCompta cc = new ClassCompta();
         ClassStock cs = new ClassStock();
         private void btnExit_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Close(); 
         }
 
         private void cboMotif_SelectedIndexChanged(object sender, EventArgs e)
@@ -36,6 +40,11 @@ namespace SUMEDCO
         private void FormAdminRapport_Shown(object sender, EventArgs e)
         {
             cs.ChargerRubriques(this);
+        }
+
+        private void btnImprimer_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Veuillez contacter le concepteur", "Impression", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
     }
 }

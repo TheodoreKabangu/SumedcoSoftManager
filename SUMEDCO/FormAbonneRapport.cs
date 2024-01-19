@@ -43,7 +43,7 @@ namespace SUMEDCO
 
         private void btnRecherche_Click(object sender, EventArgs e)
         {
-            cc.RapportAbonne(this);
+            
         }
 
         private void txtTaux_TextChanged(object sender, EventArgs e)

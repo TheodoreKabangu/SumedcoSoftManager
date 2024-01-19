@@ -31,23 +31,15 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormComptaBalance));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormComptaBalance));
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvBalance = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnImprimer = new System.Windows.Forms.Button();
             this.btnQuitter = new System.Windows.Forms.Button();
             this.dtpDateA = new System.Windows.Forms.DateTimePicker();
@@ -56,6 +48,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnRecherche = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.dataGridViewTextBoxColumn25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBalance)).BeginInit();
             this.SuspendLayout();
             // 
@@ -117,82 +117,6 @@
             this.dgvBalance.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvBalance.Size = new System.Drawing.Size(679, 372);
             this.dgvBalance.TabIndex = 621;
-            // 
-            // dataGridViewTextBoxColumn25
-            // 
-            this.dataGridViewTextBoxColumn25.HeaderText = "Compte";
-            this.dataGridViewTextBoxColumn25.MinimumWidth = 80;
-            this.dataGridViewTextBoxColumn25.Name = "dataGridViewTextBoxColumn25";
-            this.dataGridViewTextBoxColumn25.ReadOnly = true;
-            this.dataGridViewTextBoxColumn25.Width = 80;
-            // 
-            // dataGridViewTextBoxColumn26
-            // 
-            this.dataGridViewTextBoxColumn26.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn26.HeaderText = "Libellé";
-            this.dataGridViewTextBoxColumn26.MinimumWidth = 250;
-            this.dataGridViewTextBoxColumn26.Name = "dataGridViewTextBoxColumn26";
-            this.dataGridViewTextBoxColumn26.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn27
-            // 
-            dataGridViewCellStyle2.Format = "N2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.dataGridViewTextBoxColumn27.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewTextBoxColumn27.HeaderText = "Débit ouv.";
-            this.dataGridViewTextBoxColumn27.MinimumWidth = 100;
-            this.dataGridViewTextBoxColumn27.Name = "dataGridViewTextBoxColumn27";
-            this.dataGridViewTextBoxColumn27.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn28
-            // 
-            dataGridViewCellStyle3.Format = "N2";
-            dataGridViewCellStyle3.NullValue = null;
-            this.dataGridViewTextBoxColumn28.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridViewTextBoxColumn28.HeaderText = "Crédit ouv.";
-            this.dataGridViewTextBoxColumn28.MinimumWidth = 100;
-            this.dataGridViewTextBoxColumn28.Name = "dataGridViewTextBoxColumn28";
-            this.dataGridViewTextBoxColumn28.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn29
-            // 
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = null;
-            this.dataGridViewTextBoxColumn29.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridViewTextBoxColumn29.HeaderText = "Mvt débit";
-            this.dataGridViewTextBoxColumn29.MinimumWidth = 100;
-            this.dataGridViewTextBoxColumn29.Name = "dataGridViewTextBoxColumn29";
-            this.dataGridViewTextBoxColumn29.ReadOnly = true;
-            // 
-            // Column10
-            // 
-            dataGridViewCellStyle5.Format = "N2";
-            dataGridViewCellStyle5.NullValue = null;
-            this.Column10.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Column10.HeaderText = "Mvt crédit";
-            this.Column10.MinimumWidth = 100;
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
-            // 
-            // Column14
-            // 
-            dataGridViewCellStyle6.Format = "N2";
-            dataGridViewCellStyle6.NullValue = null;
-            this.Column14.DefaultCellStyle = dataGridViewCellStyle6;
-            this.Column14.HeaderText = "Débit clo.";
-            this.Column14.MinimumWidth = 100;
-            this.Column14.Name = "Column14";
-            this.Column14.ReadOnly = true;
-            // 
-            // Column15
-            // 
-            dataGridViewCellStyle7.Format = "N2";
-            dataGridViewCellStyle7.NullValue = null;
-            this.Column15.DefaultCellStyle = dataGridViewCellStyle7;
-            this.Column15.HeaderText = "Crédit clo.";
-            this.Column15.MinimumWidth = 100;
-            this.Column15.Name = "Column15";
-            this.Column15.ReadOnly = true;
             // 
             // btnImprimer
             // 
@@ -290,6 +214,82 @@
             this.btnRecherche.UseVisualStyleBackColor = false;
             this.btnRecherche.Click += new System.EventHandler(this.btnRecherche_Click);
             // 
+            // dataGridViewTextBoxColumn25
+            // 
+            this.dataGridViewTextBoxColumn25.HeaderText = "Compte";
+            this.dataGridViewTextBoxColumn25.MinimumWidth = 80;
+            this.dataGridViewTextBoxColumn25.Name = "dataGridViewTextBoxColumn25";
+            this.dataGridViewTextBoxColumn25.ReadOnly = true;
+            this.dataGridViewTextBoxColumn25.Width = 80;
+            // 
+            // dataGridViewTextBoxColumn26
+            // 
+            this.dataGridViewTextBoxColumn26.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn26.HeaderText = "Libellé";
+            this.dataGridViewTextBoxColumn26.MinimumWidth = 250;
+            this.dataGridViewTextBoxColumn26.Name = "dataGridViewTextBoxColumn26";
+            this.dataGridViewTextBoxColumn26.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn27
+            // 
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.dataGridViewTextBoxColumn27.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewTextBoxColumn27.HeaderText = "Débit ouv.";
+            this.dataGridViewTextBoxColumn27.MinimumWidth = 100;
+            this.dataGridViewTextBoxColumn27.Name = "dataGridViewTextBoxColumn27";
+            this.dataGridViewTextBoxColumn27.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn28
+            // 
+            dataGridViewCellStyle3.Format = "N2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.dataGridViewTextBoxColumn28.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewTextBoxColumn28.HeaderText = "Crédit ouv.";
+            this.dataGridViewTextBoxColumn28.MinimumWidth = 100;
+            this.dataGridViewTextBoxColumn28.Name = "dataGridViewTextBoxColumn28";
+            this.dataGridViewTextBoxColumn28.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn29
+            // 
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.NullValue = null;
+            this.dataGridViewTextBoxColumn29.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridViewTextBoxColumn29.HeaderText = "Mvt débit";
+            this.dataGridViewTextBoxColumn29.MinimumWidth = 100;
+            this.dataGridViewTextBoxColumn29.Name = "dataGridViewTextBoxColumn29";
+            this.dataGridViewTextBoxColumn29.ReadOnly = true;
+            // 
+            // Column10
+            // 
+            dataGridViewCellStyle5.Format = "N2";
+            dataGridViewCellStyle5.NullValue = null;
+            this.Column10.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Column10.HeaderText = "Mvt crédit";
+            this.Column10.MinimumWidth = 100;
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            // 
+            // Column14
+            // 
+            dataGridViewCellStyle6.Format = "N2";
+            dataGridViewCellStyle6.NullValue = null;
+            this.Column14.DefaultCellStyle = dataGridViewCellStyle6;
+            this.Column14.HeaderText = "Débit clo.";
+            this.Column14.MinimumWidth = 100;
+            this.Column14.Name = "Column14";
+            this.Column14.ReadOnly = true;
+            // 
+            // Column15
+            // 
+            dataGridViewCellStyle7.Format = "N2";
+            dataGridViewCellStyle7.NullValue = null;
+            this.Column15.DefaultCellStyle = dataGridViewCellStyle7;
+            this.Column15.HeaderText = "Crédit clo.";
+            this.Column15.MinimumWidth = 100;
+            this.Column15.Name = "Column15";
+            this.Column15.ReadOnly = true;
+            // 
             // FormComptaBalance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
@@ -321,6 +321,13 @@
         private System.Windows.Forms.Panel panel2;
         public System.Windows.Forms.DataGridView dgvBalance;
         public System.Windows.Forms.Button btnImprimer;
+        public System.Windows.Forms.Button btnQuitter;
+        public System.Windows.Forms.DateTimePicker dtpDateA;
+        public System.Windows.Forms.Label label2;
+        public System.Windows.Forms.DateTimePicker dtpDateDe;
+        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Button btnRecherche;
+        private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn25;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn26;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn27;
@@ -329,12 +336,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
-        public System.Windows.Forms.Button btnQuitter;
-        public System.Windows.Forms.DateTimePicker dtpDateA;
-        public System.Windows.Forms.Label label2;
-        public System.Windows.Forms.DateTimePicker dtpDateDe;
-        public System.Windows.Forms.Label label1;
-        public System.Windows.Forms.Button btnRecherche;
-        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

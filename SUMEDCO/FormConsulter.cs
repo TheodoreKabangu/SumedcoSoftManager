@@ -156,7 +156,10 @@ namespace SUMEDCO
 
         private void btnEnregistrerAutrePresc_Click(object sender, EventArgs e)
         {
-            cm.AjouterRenseignement(dgvAutrePresc, "autre", idconsultation);           
+            if (dgvAutrePrescS.RowCount != 0) 
+                cm.AjouterPrescription(this, "autre");
+            else
+                MessageBox.Show("Aucune ligne n'a été trouvée", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void btnPlusHisto_Click(object sender, EventArgs e)
@@ -261,7 +264,10 @@ namespace SUMEDCO
 
         private void btnEnregistrerPresc_Click(object sender, EventArgs e)
         {
-            cm.AjouterPrescription(this);
+            if (dgvPresc.RowCount != 0) 
+                cm.AjouterPrescription(this, "produit");
+            else
+                MessageBox.Show("Aucune ligne n'a été trouvée", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void btnRendezVous_Click(object sender, EventArgs e)
@@ -402,10 +408,7 @@ namespace SUMEDCO
         {
             if (dgv1.RowCount != 0)
             {
-                if (dgv1.CurrentRow.Cells[1].Value.ToString() == "AUTRES")
-                    cc.AutresExamens(this, new FormFacture());
-                else
-                    cc.ChargerExamens(this, new FormFacture());
+                cc.ChargerExamens(this, new FormFacture());                   
             }
         }
 
@@ -418,7 +421,7 @@ namespace SUMEDCO
         {
             if (idconsultation != 0)
             {
-                cm.AjouterResultatExamen(this, "examen para", new FormResultatExamen());
+                cm.VoirPrescription(this, new FormConsulterPresc(), "examen para");
             }
         }
 
@@ -459,25 +462,27 @@ namespace SUMEDCO
 
         private void btnAfficherPresc_Click(object sender, EventArgs e)
         {
-            cm.VoirPrescriptionProduit(this);
+            cm.VoirPrescription(this, new FormConsulterPresc(), "produit");
         }
 
         private void btnAutrePrescS_Click(object sender, EventArgs e)
         {
-            cm.AjouterResultatExamen(this, "autre", new FormResultatExamen());
+            cm.VoirPrescription(this, new FormConsulterPresc(), "autre");
         }
 
         private void btnAfficherAutrePresc_Click(object sender, EventArgs e)
         {
-            cm.VoirRenseignement(this, "autre");
+            cm.VoirPrescription(this, new FormConsulterPresc(), "autre");
         }
 
         private void btnEnregistrerAutrePrescS_Click(object sender, EventArgs e)
         {
             if (dgvAutrePrescS.RowCount != 0)
             {
-                cm.AjouterPrescriptionService(this, "autre", dgvAutrePrescS);
+                cm.AjouterPrescription(this, "autre");
             }
+            else
+                MessageBox.Show("Aucune ligne n'a été trouvée", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void dgvLabo_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -507,6 +512,23 @@ namespace SUMEDCO
         private void FormConsulter_Shown(object sender, EventArgs e)
         {
             
+        }
+
+        private void btnOuvrir_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.ShowDialog();
+            txtFiche.Text = dlg.FileName;
+        }
+
+        private void btnAjouterFiche_Click(object sender, EventArgs e)
+        {
+            cm.AjouterFichePatient(this);
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            cm.ImprimerOrdonnance(this, new FormImpression());
         }
     }
 }

@@ -61,7 +61,7 @@
             this.dtpDateA.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDateA.Location = new System.Drawing.Point(200, 38);
             this.dtpDateA.Name = "dtpDateA";
-            this.dtpDateA.Size = new System.Drawing.Size(113, 28);
+            this.dtpDateA.Size = new System.Drawing.Size(113, 24);
             this.dtpDateA.TabIndex = 654;
             // 
             // label2
@@ -70,7 +70,7 @@
             this.label2.Location = new System.Drawing.Point(172, 41);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(30, 22);
+            this.label2.Size = new System.Drawing.Size(24, 18);
             this.label2.TabIndex = 656;
             this.label2.Text = "à :";
             // 
@@ -79,7 +79,7 @@
             this.dtpDateDe.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDateDe.Location = new System.Drawing.Point(51, 38);
             this.dtpDateDe.Name = "dtpDateDe";
-            this.dtpDateDe.Size = new System.Drawing.Size(113, 28);
+            this.dtpDateDe.Size = new System.Drawing.Size(113, 24);
             this.dtpDateDe.TabIndex = 655;
             // 
             // label1
@@ -88,7 +88,7 @@
             this.label1.Location = new System.Drawing.Point(9, 41);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 22);
+            this.label1.Size = new System.Drawing.Size(35, 18);
             this.label1.TabIndex = 657;
             this.label1.Text = "De :";
             // 
@@ -200,7 +200,7 @@
             // 
             // FormAdminStatService
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(703, 451);

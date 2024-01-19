@@ -28,6 +28,7 @@ namespace SUMEDCO
         ClassCompta cc = new ClassCompta();
         public string poste;
         public int idexercice = 0,
+            idpharma= 0,
             idcom = 0,
             idstock = 0,
             idproduit = 0,
@@ -115,6 +116,17 @@ namespace SUMEDCO
         private void btnMiseAjour_Click(object sender, EventArgs e)
         {
             btnMiseAjour.Enabled = false;
+            cs.MiseAJourAppro(this);
+        }
+
+        private void cboDepot_DropDown(object sender, EventArgs e)
+        {
+            cc.ChargerCombo("pharma", cboDepot, 0);
+        }
+
+        private void cboDepot_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            idpharma = cs.TrouverId("pharma", cboDepot.Text);
         }
     }
 }

@@ -31,6 +31,7 @@ namespace SUMEDCO
             idstock = 0,
             idpharma = 0;
         public string poste = "";
+        public bool fermeture_succes;
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -51,17 +52,17 @@ namespace SUMEDCO
 
         private void btnFicheStock_Click(object sender, EventArgs e)
         {
-            cs.FicheStock(this, new FormFicheStock());
+            cs.FicheStock(this, new FormStockFicheStock());
         }
 
         private void btnEntrees_Click(object sender, EventArgs e)
         {
-            cs.FicheStock(this, new FormFicheStock());
+            cs.FicheStock(this, new FormStockFicheStock());
         }
 
         private void btnSorties_Click(object sender, EventArgs e)
         {
-            cs.FicheStock(this, new FormFicheStock());
+            cs.FicheStock(this, new FormStockFicheStock());
         }
         private void btnCommandes_Click(object sender, EventArgs e)
         {
@@ -131,13 +132,20 @@ namespace SUMEDCO
         {
             if(dgvStock.RowCount != 0)
             {               
-                if(cboCategorie.Text.ToLower()!="pharmaceutique")
-                    btnDemande.Enabled = true;
+                btnDemande.Enabled = true;
                 btnFicheStock.Enabled = true;
                 btnEntrees.Enabled = true;
                 btnSorties.Enabled = true;
                 btnPerte.Enabled = true;
-                btnStockPha.Enabled = true;
+                btnRetour.Enabled = true;
+                if (poste != "pharmacie")
+                {
+                    btnStockPha.Enabled = true;
+                    if (cboCategorie.Text.ToLower() == "pharmaceutique")
+                        btnDemande.Enabled = false;
+                }
+                else
+                    btnVente.Enabled = true;
                 idstock = int.Parse(dgvStock.CurrentRow.Cells[0].Value.ToString());
             }
         }
@@ -150,6 +158,16 @@ namespace SUMEDCO
         private void btnStockPha_Click(object sender, EventArgs e)
         {
             cs.AjouterStockPha(this, new FormStockPha());
+        }
+
+        private void btnVente_Click(object sender, EventArgs e)
+        {
+            cs.VenteStockPharma(this, new FormStockServir());
+        }
+
+        private void btnRetour_Click(object sender, EventArgs e)
+        {
+            cs.RetourEnStock(this, new FormStockRetour());
         }
 
     }

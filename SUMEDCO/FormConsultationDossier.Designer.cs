@@ -146,13 +146,12 @@
             "examen para",
             "diagnostic",
             "prescription produit",
-            "prescription service",
             "autre prescription",
             "rendez-vous",
             "tout"});
             this.cboCategorie.Location = new System.Drawing.Point(351, 52);
             this.cboCategorie.Name = "cboCategorie";
-            this.cboCategorie.Size = new System.Drawing.Size(302, 30);
+            this.cboCategorie.Size = new System.Drawing.Size(302, 26);
             this.cboCategorie.TabIndex = 672;
             this.cboCategorie.SelectedIndexChanged += new System.EventHandler(this.cboCategorie_SelectedIndexChanged);
             // 
@@ -163,7 +162,7 @@
             this.label14.Location = new System.Drawing.Point(348, 34);
             this.label14.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(179, 22);
+            this.label14.Size = new System.Drawing.Size(145, 18);
             this.label14.TabIndex = 673;
             this.label14.Text = "Afficher la catégorie :";
             // 
@@ -194,7 +193,7 @@
             this.label1.Location = new System.Drawing.Point(9, 140);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(138, 22);
+            this.label1.Size = new System.Drawing.Size(111, 18);
             this.label1.TabIndex = 673;
             this.label1.Text = "Fiche du patient";
             // 
@@ -205,7 +204,7 @@
             this.label2.Location = new System.Drawing.Point(9, 34);
             this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(152, 22);
+            this.label2.Size = new System.Drawing.Size(121, 18);
             this.label2.TabIndex = 673;
             this.label2.Text = "Identité du patient";
             // 
@@ -270,7 +269,7 @@
             // 
             // FormConsultationDossier
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Lavender;
             this.ClientSize = new System.Drawing.Size(703, 451);

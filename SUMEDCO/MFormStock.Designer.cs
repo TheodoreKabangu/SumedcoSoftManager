@@ -32,7 +32,6 @@
             this.pnlSide = new System.Windows.Forms.Panel();
             this.btnChat = new System.Windows.Forms.Button();
             this.btnRapport = new System.Windows.Forms.Button();
-            this.btnSortieStock = new System.Windows.Forms.Button();
             this.btnComPharma = new System.Windows.Forms.Button();
             this.btnHistoCommande = new System.Windows.Forms.Button();
             this.btnAlertes = new System.Windows.Forms.Button();
@@ -48,7 +47,6 @@
             this.pnlSide.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.pnlSide.Controls.Add(this.btnChat);
             this.pnlSide.Controls.Add(this.btnRapport);
-            this.pnlSide.Controls.Add(this.btnSortieStock);
             this.pnlSide.Controls.Add(this.btnComPharma);
             this.pnlSide.Controls.Add(this.btnHistoCommande);
             this.pnlSide.Controls.Add(this.btnAlertes);
@@ -70,7 +68,7 @@
             this.btnChat.ForeColor = System.Drawing.Color.Black;
             this.btnChat.Image = ((System.Drawing.Image)(resources.GetObject("btnChat.Image")));
             this.btnChat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnChat.Location = new System.Drawing.Point(0, 297);
+            this.btnChat.Location = new System.Drawing.Point(0, 252);
             this.btnChat.Name = "btnChat";
             this.btnChat.Size = new System.Drawing.Size(180, 45);
             this.btnChat.TabIndex = 590;
@@ -88,7 +86,7 @@
             this.btnRapport.ForeColor = System.Drawing.Color.Black;
             this.btnRapport.Image = ((System.Drawing.Image)(resources.GetObject("btnRapport.Image")));
             this.btnRapport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRapport.Location = new System.Drawing.Point(0, 252);
+            this.btnRapport.Location = new System.Drawing.Point(0, 207);
             this.btnRapport.Name = "btnRapport";
             this.btnRapport.Size = new System.Drawing.Size(180, 45);
             this.btnRapport.TabIndex = 586;
@@ -97,25 +95,6 @@
             this.btnRapport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRapport.UseVisualStyleBackColor = true;
             this.btnRapport.Click += new System.EventHandler(this.btnRapport_Click);
-            // 
-            // btnSortieStock
-            // 
-            this.btnSortieStock.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnSortieStock.FlatAppearance.BorderSize = 0;
-            this.btnSortieStock.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSlateGray;
-            this.btnSortieStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSortieStock.ForeColor = System.Drawing.Color.Black;
-            this.btnSortieStock.Image = ((System.Drawing.Image)(resources.GetObject("btnSortieStock.Image")));
-            this.btnSortieStock.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSortieStock.Location = new System.Drawing.Point(0, 207);
-            this.btnSortieStock.Name = "btnSortieStock";
-            this.btnSortieStock.Size = new System.Drawing.Size(180, 45);
-            this.btnSortieStock.TabIndex = 588;
-            this.btnSortieStock.Text = "Sorties des produits";
-            this.btnSortieStock.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSortieStock.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSortieStock.UseVisualStyleBackColor = true;
-            this.btnSortieStock.Click += new System.EventHandler(this.btnSortieStock_Click);
             // 
             // btnComPharma
             // 
@@ -265,7 +244,6 @@
         public System.Windows.Forms.Panel pnlChildForm;
         public System.Windows.Forms.Button btnRapport;
         public System.Windows.Forms.Button btnAlertes;
-        public System.Windows.Forms.Button btnSortieStock;
         public System.Windows.Forms.Button btnComPharma;
         public System.Windows.Forms.Button btnChat;
     }

@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MFormConsultation));
             this.pnlSide = new System.Windows.Forms.Panel();
             this.btnChat = new System.Windows.Forms.Button();
-            this.btnIntervention = new System.Windows.Forms.Button();
             this.btnRendezVous = new System.Windows.Forms.Button();
             this.btnDossier = new System.Windows.Forms.Button();
             this.btnQuitter = new System.Windows.Forms.Button();
@@ -45,7 +44,6 @@
             // 
             this.pnlSide.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.pnlSide.Controls.Add(this.btnChat);
-            this.pnlSide.Controls.Add(this.btnIntervention);
             this.pnlSide.Controls.Add(this.btnRendezVous);
             this.pnlSide.Controls.Add(this.btnDossier);
             this.pnlSide.Controls.Add(this.btnQuitter);
@@ -66,7 +64,7 @@
             this.btnChat.ForeColor = System.Drawing.Color.Black;
             this.btnChat.Image = ((System.Drawing.Image)(resources.GetObject("btnChat.Image")));
             this.btnChat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnChat.Location = new System.Drawing.Point(0, 207);
+            this.btnChat.Location = new System.Drawing.Point(0, 162);
             this.btnChat.Name = "btnChat";
             this.btnChat.Size = new System.Drawing.Size(180, 45);
             this.btnChat.TabIndex = 586;
@@ -75,25 +73,6 @@
             this.btnChat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnChat.UseVisualStyleBackColor = true;
             this.btnChat.Click += new System.EventHandler(this.btnChat_Click);
-            // 
-            // btnIntervention
-            // 
-            this.btnIntervention.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnIntervention.FlatAppearance.BorderSize = 0;
-            this.btnIntervention.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSlateGray;
-            this.btnIntervention.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnIntervention.ForeColor = System.Drawing.Color.Black;
-            this.btnIntervention.Image = ((System.Drawing.Image)(resources.GetObject("btnIntervention.Image")));
-            this.btnIntervention.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnIntervention.Location = new System.Drawing.Point(0, 162);
-            this.btnIntervention.Name = "btnIntervention";
-            this.btnIntervention.Size = new System.Drawing.Size(180, 45);
-            this.btnIntervention.TabIndex = 3;
-            this.btnIntervention.Text = "Hospitalisations";
-            this.btnIntervention.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnIntervention.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnIntervention.UseVisualStyleBackColor = true;
-            this.btnIntervention.Click += new System.EventHandler(this.btnIntervention_Click);
             // 
             // btnRendezVous
             // 
@@ -108,7 +87,7 @@
             this.btnRendezVous.Name = "btnRendezVous";
             this.btnRendezVous.Size = new System.Drawing.Size(180, 45);
             this.btnRendezVous.TabIndex = 587;
-            this.btnRendezVous.Text = "Mes cas et Rendez-vous";
+            this.btnRendezVous.Text = "Mes cas et RDV";
             this.btnRendezVous.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRendezVous.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRendezVous.UseVisualStyleBackColor = true;
@@ -219,7 +198,6 @@
         private System.Windows.Forms.Panel pnlLogo;
         public System.Windows.Forms.Panel pnlSide;
         public System.Windows.Forms.Button btnConsultation;
-        public System.Windows.Forms.Button btnIntervention;
         public System.Windows.Forms.Panel pnlChildForm;
         private System.Windows.Forms.Button btnQuitter;
         public System.Windows.Forms.Button btnChat;

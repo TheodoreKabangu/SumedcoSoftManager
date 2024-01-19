@@ -305,7 +305,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(456, 434);
+            this.ClientSize = new System.Drawing.Size(456, 448);
             this.ControlBox = false;
             this.Controls.Add(this.dtpDateDe);
             this.Controls.Add(this.dgvMedecin);
@@ -320,8 +320,8 @@
             this.Controls.Add(this.panel2);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(478, 490);
-            this.MinimumSize = new System.Drawing.Size(478, 490);
+            this.MaximumSize = new System.Drawing.Size(478, 504);
+            this.MinimumSize = new System.Drawing.Size(478, 504);
             this.Name = "FormPriseSigneVital";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

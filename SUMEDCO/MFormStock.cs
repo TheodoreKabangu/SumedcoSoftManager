@@ -43,12 +43,6 @@ namespace SUMEDCO
         {
             cs.AfficherSousForm(this, new FormApproCommande());
         }
-
-        private void btnSortieStock_Click(object sender, EventArgs e)
-        {
-            cs.AfficherSousForm(this, new FormFicheStock());
-        }
-
         private void btnRapport_Click(object sender, EventArgs e)
         {
             cs.AfficherSousForm(this, new FormStockInventaire());

@@ -63,9 +63,9 @@
             this.label2.Location = new System.Drawing.Point(14, 54);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(105, 22);
+            this.label2.Size = new System.Drawing.Size(68, 22);
             this.label2.TabIndex = 640;
-            this.label2.Text = "Pharmacie :";
+            this.label2.Text = "Dépôt :";
             // 
             // panel1
             // 

@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormStockProduit));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormStockProduit));
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnStockPha = new System.Windows.Forms.Button();
             this.btnNouveauStock = new System.Windows.Forms.Button();
@@ -64,6 +64,8 @@
             this.dgvProduit = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnVente = new System.Windows.Forms.Button();
+            this.btnRetour = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStock)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduit)).BeginInit();
@@ -72,10 +74,12 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panel2.Controls.Add(this.btnVente);
+            this.panel2.Controls.Add(this.btnRetour);
+            this.panel2.Controls.Add(this.btnDemande);
+            this.panel2.Controls.Add(this.btnPerte);
             this.panel2.Controls.Add(this.btnStockPha);
             this.panel2.Controls.Add(this.btnNouveauStock);
-            this.panel2.Controls.Add(this.btnPerte);
-            this.panel2.Controls.Add(this.btnDemande);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.btnSorties);
             this.panel2.Controls.Add(this.btnEntrees);
@@ -99,7 +103,7 @@
             this.btnStockPha.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStockPha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStockPha.Image = ((System.Drawing.Image)(resources.GetObject("btnStockPha.Image")));
-            this.btnStockPha.Location = new System.Drawing.Point(181, 0);
+            this.btnStockPha.Location = new System.Drawing.Point(121, 0);
             this.btnStockPha.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnStockPha.Name = "btnStockPha";
             this.btnStockPha.Size = new System.Drawing.Size(30, 30);
@@ -119,7 +123,7 @@
             this.btnNouveauStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNouveauStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNouveauStock.Image = ((System.Drawing.Image)(resources.GetObject("btnNouveauStock.Image")));
-            this.btnNouveauStock.Location = new System.Drawing.Point(151, 0);
+            this.btnNouveauStock.Location = new System.Drawing.Point(91, 0);
             this.btnNouveauStock.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnNouveauStock.Name = "btnNouveauStock";
             this.btnNouveauStock.Size = new System.Drawing.Size(30, 30);
@@ -140,12 +144,12 @@
             this.btnPerte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPerte.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPerte.Image = ((System.Drawing.Image)(resources.GetObject("btnPerte.Image")));
-            this.btnPerte.Location = new System.Drawing.Point(121, 0);
+            this.btnPerte.Location = new System.Drawing.Point(151, 0);
             this.btnPerte.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnPerte.Name = "btnPerte";
             this.btnPerte.Size = new System.Drawing.Size(30, 30);
             this.btnPerte.TabIndex = 726;
-            this.toolTip1.SetToolTip(this.btnPerte, "Servir une demande");
+            this.toolTip1.SetToolTip(this.btnPerte, "Signaler une perte");
             this.btnPerte.UseVisualStyleBackColor = false;
             this.btnPerte.Click += new System.EventHandler(this.btnPerte_Click);
             // 
@@ -161,7 +165,7 @@
             this.btnDemande.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDemande.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDemande.Image = ((System.Drawing.Image)(resources.GetObject("btnDemande.Image")));
-            this.btnDemande.Location = new System.Drawing.Point(91, 0);
+            this.btnDemande.Location = new System.Drawing.Point(181, 0);
             this.btnDemande.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnDemande.Name = "btnDemande";
             this.btnDemande.Size = new System.Drawing.Size(30, 30);
@@ -259,7 +263,7 @@
             this.btnFicheStock.Name = "btnFicheStock";
             this.btnFicheStock.Size = new System.Drawing.Size(30, 30);
             this.btnFicheStock.TabIndex = 655;
-            this.toolTip1.SetToolTip(this.btnFicheStock, "Afficher la fiche de stock");
+            this.toolTip1.SetToolTip(this.btnFicheStock, "Fiche de stock");
             this.btnFicheStock.UseVisualStyleBackColor = false;
             this.btnFicheStock.Click += new System.EventHandler(this.btnFicheStock_Click);
             // 
@@ -379,7 +383,7 @@
             // dataGridViewTextBoxColumn8
             // 
             this.dataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.Format = "N0";
             dataGridViewCellStyle2.NullValue = null;
             this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewTextBoxColumn8.HeaderText = "Qté stock";
@@ -510,6 +514,48 @@
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
+            // btnVente
+            // 
+            this.btnVente.BackColor = System.Drawing.Color.Transparent;
+            this.btnVente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnVente.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnVente.Enabled = false;
+            this.btnVente.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnVente.FlatAppearance.BorderSize = 0;
+            this.btnVente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnVente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVente.Image = ((System.Drawing.Image)(resources.GetObject("btnVente.Image")));
+            this.btnVente.Location = new System.Drawing.Point(241, 0);
+            this.btnVente.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnVente.Name = "btnVente";
+            this.btnVente.Size = new System.Drawing.Size(30, 30);
+            this.btnVente.TabIndex = 728;
+            this.toolTip1.SetToolTip(this.btnVente, "Vendre");
+            this.btnVente.UseVisualStyleBackColor = false;
+            this.btnVente.Click += new System.EventHandler(this.btnVente_Click);
+            // 
+            // btnRetour
+            // 
+            this.btnRetour.BackColor = System.Drawing.Color.Transparent;
+            this.btnRetour.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnRetour.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnRetour.Enabled = false;
+            this.btnRetour.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnRetour.FlatAppearance.BorderSize = 0;
+            this.btnRetour.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnRetour.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRetour.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRetour.Image = ((System.Drawing.Image)(resources.GetObject("btnRetour.Image")));
+            this.btnRetour.Location = new System.Drawing.Point(211, 0);
+            this.btnRetour.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnRetour.Name = "btnRetour";
+            this.btnRetour.Size = new System.Drawing.Size(30, 30);
+            this.btnRetour.TabIndex = 729;
+            this.toolTip1.SetToolTip(this.btnRetour, "Retour en stock");
+            this.btnRetour.UseVisualStyleBackColor = false;
+            this.btnRetour.Click += new System.EventHandler(this.btnRetour_Click);
+            // 
             // FormStockProduit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
@@ -553,13 +599,6 @@
         public System.Windows.Forms.DataGridView dgvProduit;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         public System.Windows.Forms.Button btnNouveauStock;
         public System.Windows.Forms.Button btnDemande;
         public System.Windows.Forms.Button btnSorties;
@@ -567,5 +606,14 @@
         public System.Windows.Forms.Button btnFicheStock;
         public System.Windows.Forms.Button btnPerte;
         public System.Windows.Forms.Button btnStockPha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        public System.Windows.Forms.Button btnVente;
+        public System.Windows.Forms.Button btnRetour;
     }
 }

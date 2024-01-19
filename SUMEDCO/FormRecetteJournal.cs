@@ -18,6 +18,7 @@ namespace SUMEDCO
         }
         ClassCompta cc = new ClassCompta();
         public string numcompte = "";
+        public int idutilisateur;
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -36,7 +37,7 @@ namespace SUMEDCO
 
         private void FormBonRecetteJournal_Shown(object sender, EventArgs e)
         {
-            cc.ChargerRubriquesRecette(this);
+            cc.RubriquesRecettes(this);
         }
 
         private void checkBox1_Click(object sender, EventArgs e)

@@ -27,5 +27,10 @@ namespace SUMEDCO
         {
             cm.AfficherSousForm(this, new FormAgendaEcho());
         }
+
+        private void btnRapport_Click(object sender, EventArgs e)
+        {
+            cm.AfficherSousForm(this, new FormAgendaLaboResult());
+        }
     }
 }

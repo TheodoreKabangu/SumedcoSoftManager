@@ -238,7 +238,6 @@
             this.dgvCompte.AllowUserToOrderColumns = true;
             this.dgvCompte.AllowUserToResizeColumns = false;
             this.dgvCompte.AllowUserToResizeRows = false;
-            this.dgvCompte.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvCompte.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.dgvCompte.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvCompte.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -265,13 +264,13 @@
             this.dgvCompte.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvCompte.EnableHeadersVisualStyles = false;
             this.dgvCompte.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            this.dgvCompte.Location = new System.Drawing.Point(113, 118);
+            this.dgvCompte.Location = new System.Drawing.Point(113, 122);
             this.dgvCompte.MultiSelect = false;
             this.dgvCompte.Name = "dgvCompte";
             this.dgvCompte.RowHeadersVisible = false;
             this.dgvCompte.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvCompte.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvCompte.Size = new System.Drawing.Size(356, 137);
+            this.dgvCompte.Size = new System.Drawing.Size(356, 131);
             this.dgvCompte.TabIndex = 685;
             // 
             // Column1
@@ -319,7 +318,8 @@
             this.Controls.Add(this.panel2);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(462, 240);
+            this.MaximumSize = new System.Drawing.Size(506, 439);
+            this.MinimumSize = new System.Drawing.Size(506, 439);
             this.Name = "FormPayement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SSM - Payement";

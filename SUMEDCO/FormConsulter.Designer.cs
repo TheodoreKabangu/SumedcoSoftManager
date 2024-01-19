@@ -50,6 +50,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -59,9 +62,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnRendezVous = new System.Windows.Forms.Button();
             this.btnPrescription = new System.Windows.Forms.Button();
@@ -76,6 +76,10 @@
             this.btnSignes = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnAjouterFiche = new System.Windows.Forms.Button();
+            this.btnOuvrir = new System.Windows.Forms.Button();
+            this.txtFiche = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.dgvPatient = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -160,6 +164,8 @@
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.txtTotal = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.dgv1 = new System.Windows.Forms.DataGridView();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -169,6 +175,13 @@
             this.btnRetirerLabo = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.dgvLabo = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage9 = new System.Windows.Forms.TabPage();
             this.btnAfficherDiagno = new System.Windows.Forms.Button();
             this.btnSupprimerDiagno = new System.Windows.Forms.Button();
@@ -183,6 +196,7 @@
             this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage10 = new System.Windows.Forms.TabPage();
+            this.btnPrint = new System.Windows.Forms.Button();
             this.btnEnregistrerAutrePrescS = new System.Windows.Forms.Button();
             this.btnAutrePrescS = new System.Windows.Forms.Button();
             this.btnAfficherAutrePresc = new System.Windows.Forms.Button();
@@ -213,14 +227,6 @@
             this.label17 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtTotal = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -266,7 +272,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 27);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(703, 27);
+            this.panel2.Size = new System.Drawing.Size(707, 27);
             this.panel2.TabIndex = 631;
             // 
             // btnRendezVous
@@ -506,35 +512,102 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 27);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(703, 424);
+            this.tabControl1.Size = new System.Drawing.Size(707, 433);
             this.tabControl1.TabIndex = 632;
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.tabPage1.Controls.Add(this.btnAjouterFiche);
+            this.tabPage1.Controls.Add(this.btnOuvrir);
+            this.tabPage1.Controls.Add(this.txtFiche);
+            this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.dgvPatient);
             this.tabPage1.Controls.Add(this.btnPlainte2);
             this.tabPage1.Controls.Add(this.dgvSigneVital);
             this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 34);
+            this.tabPage1.Location = new System.Drawing.Point(4, 30);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(695, 359);
+            this.tabPage1.Size = new System.Drawing.Size(699, 399);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
+            // 
+            // btnAjouterFiche
+            // 
+            this.btnAjouterFiche.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAjouterFiche.BackColor = System.Drawing.Color.Transparent;
+            this.btnAjouterFiche.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAjouterFiche.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnAjouterFiche.FlatAppearance.BorderSize = 0;
+            this.btnAjouterFiche.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnAjouterFiche.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAjouterFiche.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAjouterFiche.Image = ((System.Drawing.Image)(resources.GetObject("btnAjouterFiche.Image")));
+            this.btnAjouterFiche.Location = new System.Drawing.Point(545, 337);
+            this.btnAjouterFiche.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnAjouterFiche.Name = "btnAjouterFiche";
+            this.btnAjouterFiche.Size = new System.Drawing.Size(30, 26);
+            this.btnAjouterFiche.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.btnAjouterFiche, "Enregistrer");
+            this.btnAjouterFiche.UseVisualStyleBackColor = false;
+            this.btnAjouterFiche.Click += new System.EventHandler(this.btnAjouterFiche_Click);
+            // 
+            // btnOuvrir
+            // 
+            this.btnOuvrir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnOuvrir.BackColor = System.Drawing.Color.Transparent;
+            this.btnOuvrir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnOuvrir.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnOuvrir.FlatAppearance.BorderSize = 0;
+            this.btnOuvrir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnOuvrir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOuvrir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOuvrir.Image = ((System.Drawing.Image)(resources.GetObject("btnOuvrir.Image")));
+            this.btnOuvrir.Location = new System.Drawing.Point(505, 337);
+            this.btnOuvrir.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnOuvrir.Name = "btnOuvrir";
+            this.btnOuvrir.Size = new System.Drawing.Size(30, 26);
+            this.btnOuvrir.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.btnOuvrir, "Attacher un fichier");
+            this.btnOuvrir.UseVisualStyleBackColor = false;
+            this.btnOuvrir.Click += new System.EventHandler(this.btnOuvrir_Click);
+            // 
+            // txtFiche
+            // 
+            this.txtFiche.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtFiche.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtFiche.Enabled = false;
+            this.txtFiche.Location = new System.Drawing.Point(296, 365);
+            this.txtFiche.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.txtFiche.MaxLength = 75;
+            this.txtFiche.Name = "txtFiche";
+            this.txtFiche.Size = new System.Drawing.Size(389, 24);
+            this.txtFiche.TabIndex = 693;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(293, 340);
+            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(164, 18);
+            this.label4.TabIndex = 694;
+            this.label4.Text = "Fichiers de consultation";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.MediumBlue;
             this.label3.Location = new System.Drawing.Point(292, 17);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(283, 29);
+            this.label3.Size = new System.Drawing.Size(108, 20);
             this.label3.TabIndex = 674;
-            this.label3.Text = "Valeurs des signes vitaux";
+            this.label3.Text = "Signes vitaux";
             // 
             // dgvPatient
             // 
@@ -576,7 +649,7 @@
             this.dgvPatient.ReadOnly = true;
             this.dgvPatient.RowHeadersVisible = false;
             this.dgvPatient.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPatient.Size = new System.Drawing.Size(282, 318);
+            this.dgvPatient.Size = new System.Drawing.Size(282, 290);
             this.dgvPatient.TabIndex = 673;
             // 
             // dataGridViewTextBoxColumn24
@@ -609,7 +682,7 @@
             this.btnPlainte2.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnPlainte2.Name = "btnPlainte2";
             this.btnPlainte2.Size = new System.Drawing.Size(30, 26);
-            this.btnPlainte2.TabIndex = 655;
+            this.btnPlainte2.TabIndex = 1;
             this.toolTip1.SetToolTip(this.btnPlainte2, "Aller à la plainte");
             this.btnPlainte2.UseVisualStyleBackColor = false;
             this.btnPlainte2.Click += new System.EventHandler(this.btnPlainte_Click);
@@ -621,8 +694,9 @@
             this.dgvSigneVital.AllowUserToOrderColumns = true;
             this.dgvSigneVital.AllowUserToResizeColumns = false;
             this.dgvSigneVital.AllowUserToResizeRows = false;
-            this.dgvSigneVital.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dgvSigneVital.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvSigneVital.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.dgvSigneVital.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvSigneVital.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -656,7 +730,7 @@
             this.dgvSigneVital.ReadOnly = true;
             this.dgvSigneVital.RowHeadersVisible = false;
             this.dgvSigneVital.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSigneVital.Size = new System.Drawing.Size(389, 318);
+            this.dgvSigneVital.Size = new System.Drawing.Size(389, 290);
             this.dgvSigneVital.TabIndex = 653;
             // 
             // Column1
@@ -692,12 +766,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.MediumBlue;
             this.label1.Location = new System.Drawing.Point(4, 17);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(203, 29);
+            this.label1.Size = new System.Drawing.Size(141, 20);
             this.label1.TabIndex = 674;
             this.label1.Text = "Identité du patient";
             // 
@@ -713,10 +787,10 @@
             this.tabPage2.Controls.Add(this.btnRetirerPlainte);
             this.tabPage2.Controls.Add(this.dgvPlainte);
             this.tabPage2.Controls.Add(this.btnPlusPlainte);
-            this.tabPage2.Location = new System.Drawing.Point(4, 34);
+            this.tabPage2.Location = new System.Drawing.Point(4, 30);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(695, 359);
+            this.tabPage2.Size = new System.Drawing.Size(699, 372);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             // 
@@ -805,12 +879,12 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.MediumBlue;
             this.label2.Location = new System.Drawing.Point(5, 38);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(228, 26);
+            this.label2.Size = new System.Drawing.Size(179, 20);
             this.label2.TabIndex = 657;
             this.label2.Text = "Plainte(s) principale(s)";
             // 
@@ -889,14 +963,15 @@
             this.dgvPlainte.MultiSelect = false;
             this.dgvPlainte.Name = "dgvPlainte";
             this.dgvPlainte.RowHeadersVisible = false;
-            this.dgvPlainte.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPlainte.Size = new System.Drawing.Size(609, 299);
+            this.dgvPlainte.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvPlainte.Size = new System.Drawing.Size(609, 305);
             this.dgvPlainte.TabIndex = 653;
             // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.HeaderText = "N°";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             this.dataGridViewTextBoxColumn1.Width = 40;
             // 
             // Column3
@@ -939,10 +1014,10 @@
             this.tabPage3.Controls.Add(this.btnPlusHisto);
             this.tabPage3.Controls.Add(this.label6);
             this.tabPage3.Controls.Add(this.dgvHisto);
-            this.tabPage3.Location = new System.Drawing.Point(4, 34);
+            this.tabPage3.Location = new System.Drawing.Point(4, 30);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(695, 359);
+            this.tabPage3.Size = new System.Drawing.Size(699, 372);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "tabPage3";
             // 
@@ -1091,12 +1166,12 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.MediumBlue;
             this.label6.Location = new System.Drawing.Point(5, 41);
             this.label6.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(246, 26);
+            this.label6.Size = new System.Drawing.Size(190, 20);
             this.label6.TabIndex = 662;
             this.label6.Text = "Historique de la maladie";
             // 
@@ -1137,14 +1212,15 @@
             this.dgvHisto.MultiSelect = false;
             this.dgvHisto.Name = "dgvHisto";
             this.dgvHisto.RowHeadersVisible = false;
-            this.dgvHisto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvHisto.Size = new System.Drawing.Size(609, 296);
+            this.dgvHisto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvHisto.Size = new System.Drawing.Size(609, 302);
             this.dgvHisto.TabIndex = 658;
             // 
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.HeaderText = "N°";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
             this.dataGridViewTextBoxColumn2.Width = 40;
             // 
             // dataGridViewTextBoxColumn3
@@ -1166,10 +1242,10 @@
             this.tabPage4.Controls.Add(this.btnPlusAntecedent);
             this.tabPage4.Controls.Add(this.label7);
             this.tabPage4.Controls.Add(this.dgvAntecedent);
-            this.tabPage4.Location = new System.Drawing.Point(4, 34);
+            this.tabPage4.Location = new System.Drawing.Point(4, 30);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(695, 359);
+            this.tabPage4.Size = new System.Drawing.Size(699, 372);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "tabPage4";
             // 
@@ -1318,12 +1394,12 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.MediumBlue;
             this.label7.Location = new System.Drawing.Point(5, 39);
             this.label7.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(233, 26);
+            this.label7.Size = new System.Drawing.Size(178, 20);
             this.label7.TabIndex = 662;
             this.label7.Text = "Antécédents médicaux";
             // 
@@ -1364,14 +1440,15 @@
             this.dgvAntecedent.MultiSelect = false;
             this.dgvAntecedent.Name = "dgvAntecedent";
             this.dgvAntecedent.RowHeadersVisible = false;
-            this.dgvAntecedent.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAntecedent.Size = new System.Drawing.Size(609, 298);
+            this.dgvAntecedent.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvAntecedent.Size = new System.Drawing.Size(609, 304);
             this.dgvAntecedent.TabIndex = 658;
             // 
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.HeaderText = "N°";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
             this.dataGridViewTextBoxColumn4.Width = 40;
             // 
             // dataGridViewTextBoxColumn5
@@ -1393,10 +1470,10 @@
             this.tabPage5.Controls.Add(this.btnPlusComplement);
             this.tabPage5.Controls.Add(this.label8);
             this.tabPage5.Controls.Add(this.dgvComplement);
-            this.tabPage5.Location = new System.Drawing.Point(4, 34);
+            this.tabPage5.Location = new System.Drawing.Point(4, 30);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(695, 359);
+            this.tabPage5.Size = new System.Drawing.Size(699, 372);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "tabPage5";
             // 
@@ -1545,12 +1622,12 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.MediumBlue;
             this.label8.Location = new System.Drawing.Point(5, 39);
             this.label8.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(261, 26);
+            this.label8.Size = new System.Drawing.Size(198, 20);
             this.label8.TabIndex = 662;
             this.label8.Text = "Complément d\'anamnèse";
             // 
@@ -1591,14 +1668,15 @@
             this.dgvComplement.MultiSelect = false;
             this.dgvComplement.Name = "dgvComplement";
             this.dgvComplement.RowHeadersVisible = false;
-            this.dgvComplement.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvComplement.Size = new System.Drawing.Size(609, 298);
+            this.dgvComplement.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvComplement.Size = new System.Drawing.Size(609, 304);
             this.dgvComplement.TabIndex = 658;
             // 
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.HeaderText = "N°";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
             this.dataGridViewTextBoxColumn6.Width = 40;
             // 
             // dataGridViewTextBoxColumn7
@@ -1619,10 +1697,10 @@
             this.tabPage6.Controls.Add(this.btnRetirerExamPhys);
             this.tabPage6.Controls.Add(this.label9);
             this.tabPage6.Controls.Add(this.dgvExamPhys);
-            this.tabPage6.Location = new System.Drawing.Point(4, 34);
+            this.tabPage6.Location = new System.Drawing.Point(4, 30);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(695, 359);
+            this.tabPage6.Size = new System.Drawing.Size(699, 372);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "tabPage6";
             // 
@@ -1751,12 +1829,12 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.MediumBlue;
             this.label9.Location = new System.Drawing.Point(5, 39);
             this.label9.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(242, 26);
+            this.label9.Size = new System.Drawing.Size(187, 20);
             this.label9.TabIndex = 662;
             this.label9.Text = "Examen(s) physique(s) ";
             // 
@@ -1799,7 +1877,7 @@
             this.dgvExamPhys.Name = "dgvExamPhys";
             this.dgvExamPhys.RowHeadersVisible = false;
             this.dgvExamPhys.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvExamPhys.Size = new System.Drawing.Size(609, 298);
+            this.dgvExamPhys.Size = new System.Drawing.Size(609, 304);
             this.dgvExamPhys.TabIndex = 658;
             // 
             // dataGridViewTextBoxColumn8
@@ -1837,10 +1915,10 @@
             this.tabPage7.Controls.Add(this.btnPlusPrediagnostic);
             this.tabPage7.Controls.Add(this.label10);
             this.tabPage7.Controls.Add(this.dgvPrediagnostic);
-            this.tabPage7.Location = new System.Drawing.Point(4, 34);
+            this.tabPage7.Location = new System.Drawing.Point(4, 30);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(695, 359);
+            this.tabPage7.Size = new System.Drawing.Size(699, 372);
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "tabPage7";
             // 
@@ -1989,12 +2067,12 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.MediumBlue;
             this.label10.Location = new System.Drawing.Point(5, 39);
             this.label10.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(144, 26);
+            this.label10.Size = new System.Drawing.Size(111, 20);
             this.label10.TabIndex = 662;
             this.label10.Text = "Prédiagnostic";
             // 
@@ -2035,14 +2113,15 @@
             this.dgvPrediagnostic.MultiSelect = false;
             this.dgvPrediagnostic.Name = "dgvPrediagnostic";
             this.dgvPrediagnostic.RowHeadersVisible = false;
-            this.dgvPrediagnostic.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPrediagnostic.Size = new System.Drawing.Size(609, 298);
+            this.dgvPrediagnostic.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvPrediagnostic.Size = new System.Drawing.Size(609, 304);
             this.dgvPrediagnostic.TabIndex = 658;
             // 
             // dataGridViewTextBoxColumn10
             // 
             this.dataGridViewTextBoxColumn10.HeaderText = "N°";
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
             this.dataGridViewTextBoxColumn10.Width = 40;
             // 
             // dataGridViewTextBoxColumn11
@@ -2064,12 +2143,37 @@
             this.tabPage8.Controls.Add(this.btnRetirerLabo);
             this.tabPage8.Controls.Add(this.label11);
             this.tabPage8.Controls.Add(this.dgvLabo);
-            this.tabPage8.Location = new System.Drawing.Point(4, 34);
+            this.tabPage8.Location = new System.Drawing.Point(4, 30);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(695, 359);
+            this.tabPage8.Size = new System.Drawing.Size(699, 372);
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "tabPage8";
+            // 
+            // txtTotal
+            // 
+            this.txtTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.txtTotal.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtTotal.ForeColor = System.Drawing.Color.MediumBlue;
+            this.txtTotal.Location = new System.Drawing.Point(523, 345);
+            this.txtTotal.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Size = new System.Drawing.Size(128, 17);
+            this.txtTotal.TabIndex = 706;
+            this.txtTotal.Text = "0";
+            this.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label12
+            // 
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(442, 345);
+            this.label12.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(85, 18);
+            this.label12.TabIndex = 705;
+            this.label12.Text = "Total Gén. :";
             // 
             // dgv1
             // 
@@ -2109,17 +2213,17 @@
             this.dgv1.ReadOnly = true;
             this.dgv1.RowHeadersVisible = false;
             this.dgv1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv1.Size = new System.Drawing.Size(178, 259);
+            this.dgv1.Size = new System.Drawing.Size(178, 276);
             this.dgv1.TabIndex = 678;
             this.dgv1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv1_CellClick);
             // 
             // Column2
             // 
             this.Column2.HeaderText = "N°";
-            this.Column2.MinimumWidth = 30;
+            this.Column2.MinimumWidth = 100;
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
-            this.Column2.Width = 30;
+            this.Column2.Visible = false;
             // 
             // dataGridViewTextBoxColumn20
             // 
@@ -2140,7 +2244,7 @@
             this.btnResultat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnResultat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnResultat.Image = ((System.Drawing.Image)(resources.GetObject("btnResultat.Image")));
-            this.btnResultat.Location = new System.Drawing.Point(655, 163);
+            this.btnResultat.Location = new System.Drawing.Point(659, 163);
             this.btnResultat.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnResultat.Name = "btnResultat";
             this.btnResultat.Size = new System.Drawing.Size(30, 26);
@@ -2160,7 +2264,7 @@
             this.btnDiagnostic2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDiagnostic2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDiagnostic2.Image = ((System.Drawing.Image)(resources.GetObject("btnDiagnostic2.Image")));
-            this.btnDiagnostic2.Location = new System.Drawing.Point(655, 61);
+            this.btnDiagnostic2.Location = new System.Drawing.Point(659, 61);
             this.btnDiagnostic2.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnDiagnostic2.Name = "btnDiagnostic2";
             this.btnDiagnostic2.Size = new System.Drawing.Size(30, 26);
@@ -2180,7 +2284,7 @@
             this.btnEnregistrerLabo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEnregistrerLabo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEnregistrerLabo.Image = ((System.Drawing.Image)(resources.GetObject("btnEnregistrerLabo.Image")));
-            this.btnEnregistrerLabo.Location = new System.Drawing.Point(655, 129);
+            this.btnEnregistrerLabo.Location = new System.Drawing.Point(659, 129);
             this.btnEnregistrerLabo.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnEnregistrerLabo.Name = "btnEnregistrerLabo";
             this.btnEnregistrerLabo.Size = new System.Drawing.Size(30, 26);
@@ -2200,7 +2304,7 @@
             this.btnRetirerLabo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRetirerLabo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRetirerLabo.Image = ((System.Drawing.Image)(resources.GetObject("btnRetirerLabo.Image")));
-            this.btnRetirerLabo.Location = new System.Drawing.Point(655, 95);
+            this.btnRetirerLabo.Location = new System.Drawing.Point(659, 95);
             this.btnRetirerLabo.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnRetirerLabo.Name = "btnRetirerLabo";
             this.btnRetirerLabo.Size = new System.Drawing.Size(30, 26);
@@ -2212,12 +2316,12 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.MediumBlue;
             this.label11.Location = new System.Drawing.Point(5, 36);
             this.label11.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(252, 26);
+            this.label11.Size = new System.Drawing.Size(194, 20);
             this.label11.TabIndex = 667;
             this.label11.Text = "Examen(s) paracliniques";
             // 
@@ -2247,7 +2351,8 @@
             this.dataGridViewTextBoxColumn13,
             this.Column13,
             this.Column8,
-            this.Column10});
+            this.Column10,
+            this.Column15});
             dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle23.BackColor = System.Drawing.Color.Lavender;
             dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2262,10 +2367,70 @@
             this.dgvLabo.Name = "dgvLabo";
             this.dgvLabo.RowHeadersVisible = false;
             this.dgvLabo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvLabo.Size = new System.Drawing.Size(455, 259);
+            this.dgvLabo.Size = new System.Drawing.Size(459, 276);
             this.dgvLabo.TabIndex = 663;
             this.dgvLabo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLabo_CellClick);
             this.dgvLabo.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLabo_CellEndEdit);
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.HeaderText = "id";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            this.dataGridViewTextBoxColumn12.Visible = false;
+            this.dataGridViewTextBoxColumn12.Width = 40;
+            // 
+            // Column14
+            // 
+            this.Column14.HeaderText = "N°";
+            this.Column14.MinimumWidth = 40;
+            this.Column14.Name = "Column14";
+            this.Column14.ReadOnly = true;
+            this.Column14.Visible = false;
+            this.Column14.Width = 40;
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn13.HeaderText = "Examen";
+            this.dataGridViewTextBoxColumn13.MinimumWidth = 150;
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            this.dataGridViewTextBoxColumn13.ReadOnly = true;
+            // 
+            // Column13
+            // 
+            dataGridViewCellStyle20.Format = "N2";
+            dataGridViewCellStyle20.NullValue = null;
+            this.Column13.DefaultCellStyle = dataGridViewCellStyle20;
+            this.Column13.HeaderText = "Prix";
+            this.Column13.MinimumWidth = 100;
+            this.Column13.Name = "Column13";
+            this.Column13.ReadOnly = true;
+            // 
+            // Column8
+            // 
+            dataGridViewCellStyle21.Format = "N2";
+            dataGridViewCellStyle21.NullValue = null;
+            this.Column8.DefaultCellStyle = dataGridViewCellStyle21;
+            this.Column8.HeaderText = "Qté";
+            this.Column8.MinimumWidth = 70;
+            this.Column8.Name = "Column8";
+            this.Column8.Width = 70;
+            // 
+            // Column10
+            // 
+            dataGridViewCellStyle22.Format = "N2";
+            dataGridViewCellStyle22.NullValue = null;
+            this.Column10.DefaultCellStyle = dataGridViewCellStyle22;
+            this.Column10.HeaderText = "Total";
+            this.Column10.MinimumWidth = 100;
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            // 
+            // Column15
+            // 
+            this.Column15.HeaderText = "numcompte";
+            this.Column15.Name = "Column15";
+            this.Column15.Visible = false;
             // 
             // tabPage9
             // 
@@ -2279,10 +2444,10 @@
             this.tabPage9.Controls.Add(this.btnPlusDiagnostic);
             this.tabPage9.Controls.Add(this.label16);
             this.tabPage9.Controls.Add(this.dgvDiagnostic);
-            this.tabPage9.Location = new System.Drawing.Point(4, 34);
+            this.tabPage9.Location = new System.Drawing.Point(4, 30);
             this.tabPage9.Name = "tabPage9";
             this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage9.Size = new System.Drawing.Size(695, 359);
+            this.tabPage9.Size = new System.Drawing.Size(699, 372);
             this.tabPage9.TabIndex = 8;
             this.tabPage9.Text = "tabPage9";
             // 
@@ -2431,12 +2596,12 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.MediumBlue;
             this.label16.Location = new System.Drawing.Point(5, 39);
             this.label16.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(125, 26);
+            this.label16.Size = new System.Drawing.Size(98, 20);
             this.label16.TabIndex = 673;
             this.label16.Text = "Diagnostics";
             // 
@@ -2479,7 +2644,7 @@
             this.dgvDiagnostic.Name = "dgvDiagnostic";
             this.dgvDiagnostic.RowHeadersVisible = false;
             this.dgvDiagnostic.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvDiagnostic.Size = new System.Drawing.Size(609, 298);
+            this.dgvDiagnostic.Size = new System.Drawing.Size(609, 304);
             this.dgvDiagnostic.TabIndex = 669;
             // 
             // dataGridViewTextBoxColumn14
@@ -2508,6 +2673,7 @@
             // tabPage10
             // 
             this.tabPage10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.tabPage10.Controls.Add(this.btnPrint);
             this.tabPage10.Controls.Add(this.btnEnregistrerAutrePrescS);
             this.tabPage10.Controls.Add(this.btnAutrePrescS);
             this.tabPage10.Controls.Add(this.btnAfficherAutrePresc);
@@ -2528,12 +2694,32 @@
             this.tabPage10.Controls.Add(this.dgvAutrePresc);
             this.tabPage10.Controls.Add(this.dgvPresc);
             this.tabPage10.Controls.Add(this.label17);
-            this.tabPage10.Location = new System.Drawing.Point(4, 34);
+            this.tabPage10.Location = new System.Drawing.Point(4, 30);
             this.tabPage10.Name = "tabPage10";
             this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage10.Size = new System.Drawing.Size(695, 386);
+            this.tabPage10.Size = new System.Drawing.Size(699, 372);
             this.tabPage10.TabIndex = 9;
             this.tabPage10.Text = "tabPage10";
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPrint.BackColor = System.Drawing.Color.Transparent;
+            this.btnPrint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnPrint.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnPrint.FlatAppearance.BorderSize = 0;
+            this.btnPrint.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.Image")));
+            this.btnPrint.Location = new System.Drawing.Point(418, 16);
+            this.btnPrint.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(30, 26);
+            this.btnPrint.TabIndex = 769;
+            this.toolTip1.SetToolTip(this.btnPrint, "Ordonnance");
+            this.btnPrint.UseVisualStyleBackColor = false;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // btnEnregistrerAutrePrescS
             // 
@@ -2546,7 +2732,7 @@
             this.btnEnregistrerAutrePrescS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEnregistrerAutrePrescS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEnregistrerAutrePrescS.Image = ((System.Drawing.Image)(resources.GetObject("btnEnregistrerAutrePrescS.Image")));
-            this.btnEnregistrerAutrePrescS.Location = new System.Drawing.Point(330, 229);
+            this.btnEnregistrerAutrePrescS.Location = new System.Drawing.Point(330, 217);
             this.btnEnregistrerAutrePrescS.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnEnregistrerAutrePrescS.Name = "btnEnregistrerAutrePrescS";
             this.btnEnregistrerAutrePrescS.Size = new System.Drawing.Size(30, 26);
@@ -2566,7 +2752,7 @@
             this.btnAutrePrescS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAutrePrescS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAutrePrescS.Image = ((System.Drawing.Image)(resources.GetObject("btnAutrePrescS.Image")));
-            this.btnAutrePrescS.Location = new System.Drawing.Point(250, 229);
+            this.btnAutrePrescS.Location = new System.Drawing.Point(250, 217);
             this.btnAutrePrescS.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnAutrePrescS.Name = "btnAutrePrescS";
             this.btnAutrePrescS.Size = new System.Drawing.Size(30, 26);
@@ -2586,7 +2772,7 @@
             this.btnAfficherAutrePresc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAfficherAutrePresc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAfficherAutrePresc.Image = ((System.Drawing.Image)(resources.GetObject("btnAfficherAutrePresc.Image")));
-            this.btnAfficherAutrePresc.Location = new System.Drawing.Point(454, 229);
+            this.btnAfficherAutrePresc.Location = new System.Drawing.Point(458, 217);
             this.btnAfficherAutrePresc.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnAfficherAutrePresc.Name = "btnAfficherAutrePresc";
             this.btnAfficherAutrePresc.Size = new System.Drawing.Size(30, 26);
@@ -2606,7 +2792,7 @@
             this.btnAfficherPresc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAfficherPresc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAfficherPresc.Image = ((System.Drawing.Image)(resources.GetObject("btnAfficherPresc.Image")));
-            this.btnAfficherPresc.Location = new System.Drawing.Point(454, 16);
+            this.btnAfficherPresc.Location = new System.Drawing.Point(458, 16);
             this.btnAfficherPresc.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnAfficherPresc.Name = "btnAfficherPresc";
             this.btnAfficherPresc.Size = new System.Drawing.Size(30, 26);
@@ -2626,12 +2812,12 @@
             this.btnService.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnService.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnService.Image = ((System.Drawing.Image)(resources.GetObject("btnService.Image")));
-            this.btnService.Location = new System.Drawing.Point(290, 229);
+            this.btnService.Location = new System.Drawing.Point(290, 217);
             this.btnService.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnService.Name = "btnService";
             this.btnService.Size = new System.Drawing.Size(30, 26);
             this.btnService.TabIndex = 764;
-            this.toolTip1.SetToolTip(this.btnService, "Ajouter");
+            this.toolTip1.SetToolTip(this.btnService, "Ajouter un service");
             this.btnService.UseVisualStyleBackColor = false;
             this.btnService.Click += new System.EventHandler(this.btnService_Click);
             // 
@@ -2666,7 +2852,7 @@
             this.dgvAutrePrescS.DefaultCellStyle = dataGridViewCellStyle27;
             this.dgvAutrePrescS.EnableHeadersVisualStyles = false;
             this.dgvAutrePrescS.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            this.dgvAutrePrescS.Location = new System.Drawing.Point(13, 262);
+            this.dgvAutrePrescS.Location = new System.Drawing.Point(13, 250);
             this.dgvAutrePrescS.MultiSelect = false;
             this.dgvAutrePrescS.Name = "dgvAutrePrescS";
             this.dgvAutrePrescS.ReadOnly = true;
@@ -2702,7 +2888,7 @@
             this.btnSupprimerAutrePresc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSupprimerAutrePresc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSupprimerAutrePresc.Image = ((System.Drawing.Image)(resources.GetObject("btnSupprimerAutrePresc.Image")));
-            this.btnSupprimerAutrePresc.Location = new System.Drawing.Point(654, 229);
+            this.btnSupprimerAutrePresc.Location = new System.Drawing.Point(658, 217);
             this.btnSupprimerAutrePresc.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnSupprimerAutrePresc.Name = "btnSupprimerAutrePresc";
             this.btnSupprimerAutrePresc.Size = new System.Drawing.Size(30, 26);
@@ -2723,7 +2909,7 @@
             this.btnModifierAutrePresc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModifierAutrePresc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModifierAutrePresc.Image = ((System.Drawing.Image)(resources.GetObject("btnModifierAutrePresc.Image")));
-            this.btnModifierAutrePresc.Location = new System.Drawing.Point(614, 229);
+            this.btnModifierAutrePresc.Location = new System.Drawing.Point(618, 217);
             this.btnModifierAutrePresc.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnModifierAutrePresc.Name = "btnModifierAutrePresc";
             this.btnModifierAutrePresc.Size = new System.Drawing.Size(30, 26);
@@ -2744,7 +2930,7 @@
             this.btnSupprimerPresc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSupprimerPresc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSupprimerPresc.Image = ((System.Drawing.Image)(resources.GetObject("btnSupprimerPresc.Image")));
-            this.btnSupprimerPresc.Location = new System.Drawing.Point(654, 16);
+            this.btnSupprimerPresc.Location = new System.Drawing.Point(658, 16);
             this.btnSupprimerPresc.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnSupprimerPresc.Name = "btnSupprimerPresc";
             this.btnSupprimerPresc.Size = new System.Drawing.Size(30, 26);
@@ -2765,7 +2951,7 @@
             this.btnModifierPresc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModifierPresc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModifierPresc.Image = ((System.Drawing.Image)(resources.GetObject("btnModifierPresc.Image")));
-            this.btnModifierPresc.Location = new System.Drawing.Point(614, 16);
+            this.btnModifierPresc.Location = new System.Drawing.Point(618, 16);
             this.btnModifierPresc.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnModifierPresc.Name = "btnModifierPresc";
             this.btnModifierPresc.Size = new System.Drawing.Size(30, 26);
@@ -2785,7 +2971,7 @@
             this.btnEnregistrerPresc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEnregistrerPresc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEnregistrerPresc.Image = ((System.Drawing.Image)(resources.GetObject("btnEnregistrerPresc.Image")));
-            this.btnEnregistrerPresc.Location = new System.Drawing.Point(574, 16);
+            this.btnEnregistrerPresc.Location = new System.Drawing.Point(578, 16);
             this.btnEnregistrerPresc.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnEnregistrerPresc.Name = "btnEnregistrerPresc";
             this.btnEnregistrerPresc.Size = new System.Drawing.Size(30, 26);
@@ -2805,7 +2991,7 @@
             this.btnRetirerPrescription.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRetirerPrescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRetirerPrescription.Image = ((System.Drawing.Image)(resources.GetObject("btnRetirerPrescription.Image")));
-            this.btnRetirerPrescription.Location = new System.Drawing.Point(534, 16);
+            this.btnRetirerPrescription.Location = new System.Drawing.Point(538, 16);
             this.btnRetirerPrescription.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnRetirerPrescription.Name = "btnRetirerPrescription";
             this.btnRetirerPrescription.Size = new System.Drawing.Size(30, 26);
@@ -2825,7 +3011,7 @@
             this.btnProduit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProduit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProduit.Image = ((System.Drawing.Image)(resources.GetObject("btnProduit.Image")));
-            this.btnProduit.Location = new System.Drawing.Point(494, 16);
+            this.btnProduit.Location = new System.Drawing.Point(498, 16);
             this.btnProduit.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnProduit.Name = "btnProduit";
             this.btnProduit.Size = new System.Drawing.Size(30, 26);
@@ -2845,7 +3031,7 @@
             this.btnEnregistrerAutrePresc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEnregistrerAutrePresc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEnregistrerAutrePresc.Image = ((System.Drawing.Image)(resources.GetObject("btnEnregistrerAutrePresc.Image")));
-            this.btnEnregistrerAutrePresc.Location = new System.Drawing.Point(574, 229);
+            this.btnEnregistrerAutrePresc.Location = new System.Drawing.Point(578, 217);
             this.btnEnregistrerAutrePresc.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnEnregistrerAutrePresc.Name = "btnEnregistrerAutrePresc";
             this.btnEnregistrerAutrePresc.Size = new System.Drawing.Size(30, 26);
@@ -2865,7 +3051,7 @@
             this.btnRetirerAutrePresc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRetirerAutrePresc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRetirerAutrePresc.Image = ((System.Drawing.Image)(resources.GetObject("btnRetirerAutrePresc.Image")));
-            this.btnRetirerAutrePresc.Location = new System.Drawing.Point(534, 229);
+            this.btnRetirerAutrePresc.Location = new System.Drawing.Point(538, 217);
             this.btnRetirerAutrePresc.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnRetirerAutrePresc.Name = "btnRetirerAutrePresc";
             this.btnRetirerAutrePresc.Size = new System.Drawing.Size(30, 26);
@@ -2885,12 +3071,12 @@
             this.btnPlusAutrePresc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPlusAutrePresc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPlusAutrePresc.Image = ((System.Drawing.Image)(resources.GetObject("btnPlusAutrePresc.Image")));
-            this.btnPlusAutrePresc.Location = new System.Drawing.Point(494, 229);
+            this.btnPlusAutrePresc.Location = new System.Drawing.Point(498, 217);
             this.btnPlusAutrePresc.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnPlusAutrePresc.Name = "btnPlusAutrePresc";
             this.btnPlusAutrePresc.Size = new System.Drawing.Size(30, 26);
             this.btnPlusAutrePresc.TabIndex = 754;
-            this.toolTip1.SetToolTip(this.btnPlusAutrePresc, "Ajouter");
+            this.toolTip1.SetToolTip(this.btnPlusAutrePresc, "Ajouter hors service");
             this.btnPlusAutrePresc.UseVisualStyleBackColor = false;
             this.btnPlusAutrePresc.Click += new System.EventHandler(this.btnPlusAutrePresc_Click);
             // 
@@ -2898,12 +3084,12 @@
             // 
             this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.MediumBlue;
-            this.label13.Location = new System.Drawing.Point(10, 239);
+            this.label13.Location = new System.Drawing.Point(10, 227);
             this.label13.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(218, 26);
+            this.label13.Size = new System.Drawing.Size(172, 20);
             this.label13.TabIndex = 752;
             this.label13.Text = "Autres prescription(s)";
             // 
@@ -2939,12 +3125,12 @@
             this.dgvAutrePresc.DefaultCellStyle = dataGridViewCellStyle29;
             this.dgvAutrePresc.EnableHeadersVisualStyles = false;
             this.dgvAutrePresc.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            this.dgvAutrePresc.Location = new System.Drawing.Point(366, 262);
+            this.dgvAutrePresc.Location = new System.Drawing.Point(366, 250);
             this.dgvAutrePresc.MultiSelect = false;
             this.dgvAutrePresc.Name = "dgvAutrePresc";
             this.dgvAutrePresc.RowHeadersVisible = false;
             this.dgvAutrePresc.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvAutrePresc.Size = new System.Drawing.Size(318, 114);
+            this.dgvAutrePresc.Size = new System.Drawing.Size(322, 114);
             this.dgvAutrePresc.TabIndex = 747;
             // 
             // dataGridViewTextBoxColumn21
@@ -3001,7 +3187,7 @@
             this.dgvPresc.Name = "dgvPresc";
             this.dgvPresc.RowHeadersVisible = false;
             this.dgvPresc.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvPresc.Size = new System.Drawing.Size(671, 173);
+            this.dgvPresc.Size = new System.Drawing.Size(675, 161);
             this.dgvPresc.TabIndex = 744;
             // 
             // dataGridViewTextBoxColumn16
@@ -3042,12 +3228,12 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.MediumBlue;
             this.label17.Location = new System.Drawing.Point(10, 24);
             this.label17.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(194, 26);
+            this.label17.Size = new System.Drawing.Size(154, 20);
             this.label17.TabIndex = 698;
             this.label17.Text = "Produits prescrit(s)";
             // 
@@ -3057,94 +3243,15 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(703, 27);
+            this.panel1.Size = new System.Drawing.Size(707, 27);
             this.panel1.TabIndex = 633;
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.HeaderText = "id";
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            this.dataGridViewTextBoxColumn12.Visible = false;
-            this.dataGridViewTextBoxColumn12.Width = 40;
-            // 
-            // Column14
-            // 
-            this.Column14.HeaderText = "N°";
-            this.Column14.MinimumWidth = 40;
-            this.Column14.Name = "Column14";
-            this.Column14.ReadOnly = true;
-            this.Column14.Visible = false;
-            this.Column14.Width = 40;
-            // 
-            // dataGridViewTextBoxColumn13
-            // 
-            this.dataGridViewTextBoxColumn13.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn13.HeaderText = "Examen";
-            this.dataGridViewTextBoxColumn13.MinimumWidth = 150;
-            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            this.dataGridViewTextBoxColumn13.ReadOnly = true;
-            // 
-            // Column13
-            // 
-            dataGridViewCellStyle20.Format = "N2";
-            dataGridViewCellStyle20.NullValue = null;
-            this.Column13.DefaultCellStyle = dataGridViewCellStyle20;
-            this.Column13.HeaderText = "Prix";
-            this.Column13.MinimumWidth = 100;
-            this.Column13.Name = "Column13";
-            this.Column13.ReadOnly = true;
-            // 
-            // Column8
-            // 
-            dataGridViewCellStyle21.Format = "N2";
-            dataGridViewCellStyle21.NullValue = null;
-            this.Column8.DefaultCellStyle = dataGridViewCellStyle21;
-            this.Column8.HeaderText = "Qté";
-            this.Column8.MinimumWidth = 70;
-            this.Column8.Name = "Column8";
-            this.Column8.Width = 70;
-            // 
-            // Column10
-            // 
-            dataGridViewCellStyle22.Format = "N2";
-            dataGridViewCellStyle22.NullValue = null;
-            this.Column10.DefaultCellStyle = dataGridViewCellStyle22;
-            this.Column10.HeaderText = "Total";
-            this.Column10.MinimumWidth = 100;
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
-            // 
-            // txtTotal
-            // 
-            this.txtTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.txtTotal.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtTotal.ForeColor = System.Drawing.Color.MediumBlue;
-            this.txtTotal.Location = new System.Drawing.Point(519, 328);
-            this.txtTotal.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(128, 21);
-            this.txtTotal.TabIndex = 706;
-            this.txtTotal.Text = "0";
-            this.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label12
-            // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(438, 328);
-            this.label12.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(105, 22);
-            this.label12.TabIndex = 705;
-            this.label12.Text = "Total Gén. :";
             // 
             // FormConsulter
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(703, 451);
+            this.ClientSize = new System.Drawing.Size(707, 460);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.panel1);
@@ -3276,14 +3383,6 @@
         public System.Windows.Forms.Button btnPlusAutrePresc;
         public System.Windows.Forms.DataGridView dgvPatient;
         public System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         public System.Windows.Forms.Button btnRetirerPrescription;
         public System.Windows.Forms.Button btnEnregistrerPresc;
         public System.Windows.Forms.Button btnRendezVous;
@@ -3313,26 +3412,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn24;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         public System.Windows.Forms.DataGridView dgv1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         public System.Windows.Forms.DataGridView dgvAutrePrescS;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn23;
         public System.Windows.Forms.Button btnService;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn22;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
         public System.Windows.Forms.Button btnAfficherHisto;
         public System.Windows.Forms.Button btnAfficherPlainte;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
@@ -3347,13 +3437,36 @@
         public System.Windows.Forms.Button btnEnregistrerAutrePrescS;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.TextBox txtTotal;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn23;
+        public System.Windows.Forms.TextBox txtFiche;
+        private System.Windows.Forms.Label label4;
+        public System.Windows.Forms.Button btnAjouterFiche;
+        public System.Windows.Forms.Button btnOuvrir;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        public System.Windows.Forms.TextBox txtTotal;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
+        public System.Windows.Forms.Button btnPrint;
     }
 }

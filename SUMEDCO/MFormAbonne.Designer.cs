@@ -32,9 +32,6 @@
             this.pnlSide = new System.Windows.Forms.Panel();
             this.btnChat = new System.Windows.Forms.Button();
             this.btnRapport = new System.Windows.Forms.Button();
-            this.btnProduitConsomme = new System.Windows.Forms.Button();
-            this.btnVoirAbonne = new System.Windows.Forms.Button();
-            this.btnAncien = new System.Windows.Forms.Button();
             this.btnQuitter = new System.Windows.Forms.Button();
             this.btnAbonne = new System.Windows.Forms.Button();
             this.pnlLogo = new System.Windows.Forms.Panel();
@@ -47,9 +44,6 @@
             this.pnlSide.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.pnlSide.Controls.Add(this.btnChat);
             this.pnlSide.Controls.Add(this.btnRapport);
-            this.pnlSide.Controls.Add(this.btnProduitConsomme);
-            this.pnlSide.Controls.Add(this.btnVoirAbonne);
-            this.pnlSide.Controls.Add(this.btnAncien);
             this.pnlSide.Controls.Add(this.btnQuitter);
             this.pnlSide.Controls.Add(this.btnAbonne);
             this.pnlSide.Controls.Add(this.pnlLogo);
@@ -68,7 +62,7 @@
             this.btnChat.ForeColor = System.Drawing.Color.Black;
             this.btnChat.Image = ((System.Drawing.Image)(resources.GetObject("btnChat.Image")));
             this.btnChat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnChat.Location = new System.Drawing.Point(0, 252);
+            this.btnChat.Location = new System.Drawing.Point(0, 117);
             this.btnChat.Name = "btnChat";
             this.btnChat.Size = new System.Drawing.Size(180, 45);
             this.btnChat.TabIndex = 589;
@@ -86,7 +80,7 @@
             this.btnRapport.ForeColor = System.Drawing.Color.Black;
             this.btnRapport.Image = ((System.Drawing.Image)(resources.GetObject("btnRapport.Image")));
             this.btnRapport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRapport.Location = new System.Drawing.Point(0, 207);
+            this.btnRapport.Location = new System.Drawing.Point(0, 72);
             this.btnRapport.Name = "btnRapport";
             this.btnRapport.Size = new System.Drawing.Size(180, 45);
             this.btnRapport.TabIndex = 5;
@@ -95,63 +89,6 @@
             this.btnRapport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRapport.UseVisualStyleBackColor = true;
             this.btnRapport.Click += new System.EventHandler(this.btnRapport_Click);
-            // 
-            // btnProduitConsomme
-            // 
-            this.btnProduitConsomme.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnProduitConsomme.FlatAppearance.BorderSize = 0;
-            this.btnProduitConsomme.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSlateGray;
-            this.btnProduitConsomme.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProduitConsomme.ForeColor = System.Drawing.Color.Black;
-            this.btnProduitConsomme.Image = ((System.Drawing.Image)(resources.GetObject("btnProduitConsomme.Image")));
-            this.btnProduitConsomme.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProduitConsomme.Location = new System.Drawing.Point(0, 162);
-            this.btnProduitConsomme.Name = "btnProduitConsomme";
-            this.btnProduitConsomme.Size = new System.Drawing.Size(180, 45);
-            this.btnProduitConsomme.TabIndex = 588;
-            this.btnProduitConsomme.Text = "Produits consommés";
-            this.btnProduitConsomme.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProduitConsomme.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnProduitConsomme.UseVisualStyleBackColor = true;
-            this.btnProduitConsomme.Click += new System.EventHandler(this.btnProduitConsomme_Click);
-            // 
-            // btnVoirAbonne
-            // 
-            this.btnVoirAbonne.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnVoirAbonne.FlatAppearance.BorderSize = 0;
-            this.btnVoirAbonne.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSlateGray;
-            this.btnVoirAbonne.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVoirAbonne.ForeColor = System.Drawing.Color.Black;
-            this.btnVoirAbonne.Image = ((System.Drawing.Image)(resources.GetObject("btnVoirAbonne.Image")));
-            this.btnVoirAbonne.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVoirAbonne.Location = new System.Drawing.Point(0, 117);
-            this.btnVoirAbonne.Name = "btnVoirAbonne";
-            this.btnVoirAbonne.Size = new System.Drawing.Size(180, 45);
-            this.btnVoirAbonne.TabIndex = 586;
-            this.btnVoirAbonne.Text = "Services consommés";
-            this.btnVoirAbonne.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVoirAbonne.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnVoirAbonne.UseVisualStyleBackColor = true;
-            this.btnVoirAbonne.Click += new System.EventHandler(this.btnVoirAbonne_Click);
-            // 
-            // btnAncien
-            // 
-            this.btnAncien.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAncien.FlatAppearance.BorderSize = 0;
-            this.btnAncien.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSlateGray;
-            this.btnAncien.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAncien.ForeColor = System.Drawing.Color.Black;
-            this.btnAncien.Image = ((System.Drawing.Image)(resources.GetObject("btnAncien.Image")));
-            this.btnAncien.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAncien.Location = new System.Drawing.Point(0, 72);
-            this.btnAncien.Name = "btnAncien";
-            this.btnAncien.Size = new System.Drawing.Size(180, 45);
-            this.btnAncien.TabIndex = 587;
-            this.btnAncien.Text = "Ancien cas";
-            this.btnAncien.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAncien.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAncien.UseVisualStyleBackColor = true;
-            this.btnAncien.Click += new System.EventHandler(this.btnAncien_Click);
             // 
             // btnQuitter
             // 
@@ -190,7 +127,7 @@
             this.btnAbonne.Name = "btnAbonne";
             this.btnAbonne.Size = new System.Drawing.Size(180, 45);
             this.btnAbonne.TabIndex = 1;
-            this.btnAbonne.Text = "Nouveau cas";
+            this.btnAbonne.Text = "Patients";
             this.btnAbonne.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAbonne.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAbonne.UseVisualStyleBackColor = true;
@@ -242,9 +179,6 @@
         public System.Windows.Forms.Button btnRapport;
         private System.Windows.Forms.Panel pnlLogo;
         public System.Windows.Forms.Panel pnlChildForm;
-        public System.Windows.Forms.Button btnVoirAbonne;
-        public System.Windows.Forms.Button btnAncien;
-        public System.Windows.Forms.Button btnProduitConsomme;
         public System.Windows.Forms.Button btnChat;
     }
 }

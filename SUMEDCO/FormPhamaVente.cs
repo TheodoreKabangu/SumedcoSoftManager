@@ -18,6 +18,7 @@ namespace SUMEDCO
         }
         ClassCompta cc = new ClassCompta();
         public int idpharma = 0,
+            idpatient=0,
             idrecette = 0,
         idutilisateur = 0;
         
@@ -29,12 +30,12 @@ namespace SUMEDCO
 
         private void btnRecherche_Click(object sender, EventArgs e)
         {
-            cc.AfficherRecetteProduit(this, "recherche");
+            cc.TrouverPatientRecetteProduit(this, "recherche");
         }
 
         private void FormPhaVente_Shown(object sender, EventArgs e)
         {
-            cc.AfficherRecetteProduit(this, "");
+            cc.TrouverPatientRecetteProduit(this, "");
         }
         int progress = 0;
         private void checkBox1_Click(object sender, EventArgs e)
@@ -55,7 +56,7 @@ namespace SUMEDCO
             progress += 1;
             if (progress == 60)
             {
-                cc.AfficherRecetteProduit(this, "");
+                cc.TrouverPatientRecetteProduit(this, "");
                 progress = 0;
             }
         }
@@ -70,20 +71,20 @@ namespace SUMEDCO
             cc.ServirRecette(this, "");
         }
 
-        private void dgvRecette_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvPatient_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvRecette.RowCount != 0)
-            {               
+            if (dgvPatient.RowCount != 0)
+            {
                 btnAnnuler.Enabled = false;
                 btnValider.Enabled = false;
-                idrecette = int.Parse(dgvRecette.CurrentRow.Cells[0].Value.ToString());
+                idpatient = int.Parse(dgvPatient.CurrentRow.Cells[0].Value.ToString());
                 cc.RecetteProduit(this);
             }
         }
 
-        private void dgvStock_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvRecette_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvStock.RowCount != 0)
+            if (dgvRecette.RowCount != 0)
             {
                 btnValider.Enabled = true;
                 btnAnnuler.Enabled = true;

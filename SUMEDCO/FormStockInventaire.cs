@@ -39,7 +39,10 @@ namespace SUMEDCO
 
         private void btnRecherche_Click(object sender, EventArgs e)
         {
-            cs.TrouverQteStock(this);
+            if (dgvStock.RowCount != 0)
+                cs.TrouverQteStock(this);
+            else
+                MessageBox.Show("Aucune ligne n'a été trouvée", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void cboDepot_DropDown(object sender, EventArgs e)
@@ -51,23 +54,6 @@ namespace SUMEDCO
         {
             idpharma = cs.TrouverId("pharma", cboDepot.Text);
             cs.AfficherStockProduit(this);
-        }
-
-        private void checkBox2_Click(object sender, EventArgs e)
-        {
-            if (checkBox2.Checked)
-            {
-                cboDepot.DropDownStyle = ComboBoxStyle.DropDown;
-                cboDepot.SelectedText = "";
-                cboDepot.DropDownStyle = ComboBoxStyle.DropDownList;
-                cboDepot.Enabled = false;
-                cs.AfficherStockProduit(this);
-            }
-            else
-            {
-                cs.AfficherStockProduit(this);
-                cboDepot.Enabled = true;
-            }
         }
     }
 }

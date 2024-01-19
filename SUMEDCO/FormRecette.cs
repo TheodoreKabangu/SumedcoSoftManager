@@ -15,21 +15,13 @@ namespace SUMEDCO
         public FormRecette()
         {
             InitializeComponent();
+            for (int i = 0; i < dgvPatient.ColumnCount; i++)
+            {
+                dgvPatient.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
             for (int i = 0; i < dgvRecette.ColumnCount; i++)
             {
                 dgvRecette.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
-            }
-            for (int i = 0; i < dgvPayement.ColumnCount; i++)
-            {
-                dgvPayement.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
-            }
-            for (int i = 0; i < dgvTotaux.ColumnCount; i++)
-            {
-                dgvTotaux.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
-            }
-            for (int i = 0; i < dgvCompte.ColumnCount; i++)
-            {
-                dgvCompte.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
             }
         }
         ClassCompta cc = new ClassCompta();
@@ -39,7 +31,8 @@ namespace SUMEDCO
             payeur, 
             poste = "",
             numcompte = "";
-        public int tauxjour = 0,
+        public int idutilisateur,
+            tauxjour = 0,
             idpayement= 0,
             idrecette = 0, 
             idexercice = 0,
@@ -53,13 +46,13 @@ namespace SUMEDCO
             cc.AfficherRecette(this, "");
             if (cc.VerifierTaux(DateTime.Now.Date, "") == 0)
             {
-                taux = cc.ChangerDate(new DateTaux(), this, lblDateOperation, lblTaux);
+                taux = cc.ChangerDate(new DateTaux(), this, lblDateJour, lblTaux);
                 if(taux > 0)
                     cc.SoldesCaisse(lblCaisseCDF, lblCaisseUSD, "recette");
             }
             else
             {
-                lblDateOperation.Text = DateTime.Now.ToShortDateString();
+                lblDateJour.Text = DateTime.Now.ToShortDateString();
                 taux = cc.VerifierTaux(DateTime.Now.Date, "valeur");
                 lblTaux.Text = taux + " CDF";
                 cc.SoldesCaisse(lblCaisseCDF, lblCaisseUSD, "recette");
@@ -71,7 +64,7 @@ namespace SUMEDCO
         }
         private void btnDate_Click(object sender, EventArgs e)
         {
-            taux = cc.ChangerDate(new DateTaux(), this, lblDateOperation, lblTaux);
+            taux = cc.ChangerDate(new DateTaux(), this, lblDateJour, lblTaux);
         }
         private void btnRecherche_Click(object sender, EventArgs e)
         {
@@ -79,15 +72,18 @@ namespace SUMEDCO
         }
         private void btnValider_Click(object sender, EventArgs e)
         {
-            if (cboMonnaie.Text != "" && dgvRecette.RowCount != 0)
+            if (dgvRecette.CurrentRow.Index < dgvRecette.RowCount - 1)
             {
-                cc.ValiderPayement(this, new FormPayement());
+                if (cboMonnaie.Text != "")
+                    cc.ValiderPayement(this);
+                else
+                {
+                    MessageBox.Show("Précisez la monnaie pour l'encaissement", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    cboMonnaie.Select();
+                }
             }
             else
-            {
-                MessageBox.Show("Sélectionnez le bon à encaisser dans la liste et/ou précisez la monnaie pour l'encaissement", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                cboMonnaie.Select();
-            }
+                MessageBox.Show("Sélectionnez une ligne de recette valide", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
         int progress = 0;
         private void timer1_Tick(object sender, EventArgs e)
@@ -100,27 +96,6 @@ namespace SUMEDCO
             }
         }
 
-        private void dgvRecette_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dgvRecette.RowCount != 0)
-            {
-                idrecette = int.Parse(dgvRecette.CurrentRow.Cells[0].Value.ToString());
-                if (dgvRecette.CurrentRow.Cells[1].Value.ToString() == "immédiat")
-                {
-                    btnValider.Enabled = true;
-                    btnPayer.Enabled = false;
-                    btnAnnulerPayement.Enabled = false;
-                }
-                else
-                {
-                    btnValider.Enabled = false;
-                    btnPayer.Enabled = true;
-                    btnAnnulerPayement.Enabled = false;
-                }
-                cc.TrouverPayementRecette(this); 
-            }
-        }
-
         private void cboCaisseRecette_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboMonnaie.Text == "CDF")
@@ -129,13 +104,6 @@ namespace SUMEDCO
                 numcompte = "571201";
             caisse = cc.TrouverNom("compte", Convert.ToInt32(numcompte));
         }
-
-        private void checkBox1_MouseEnter(object sender, EventArgs e)
-        {
-            //if(checkBox1.Checked)
-            //    checkBox1
-        }
-
         private void checkBox1_Click(object sender, EventArgs e)
         {
             if(checkBox1.Checked)
@@ -148,40 +116,28 @@ namespace SUMEDCO
                 timer1.Stop();
             }
         }
-
-        private void dgvPayement_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if(dgvPayement.RowCount != 0)
-            {
-                btnValider.Enabled = false;
-                btnPayer.Enabled = false;
-                btnAnnulerPayement.Enabled = true;
-            }
-        }
-
-        private void btnPayer_Click(object sender, EventArgs e)
-        {
-            if (cboMonnaie.Text != "" && dgvRecette.RowCount != 0)
-            {
-                cc.PayerRecetteDiffere(this, new FormPayement());
-            }
-            else
-            {
-                MessageBox.Show("Sélectionnez le bon à encaisser dans la liste et/ou précisez la monnaie pour l'encaissement", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                cboMonnaie.Select();
-            }
-        }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnAnnulerPayement_Click(object sender, EventArgs e)
         {
-            if (dgvPayement.RowCount != 0) 
-                cc.AnnulerPayement(this, new FormPayement());
+            if (dgvRecette.RowCount != 0) 
+                cc.AnnulerPayement(this, new FormPayements());
             btnAnnulerPayement.Enabled = false;
+        }
+
+        private void dgvPatient_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvPatient.RowCount != 0)
+            {
+                cc.TrouverRecettePatient(this);
+            }
+        }
+
+        private void dgvRecette_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvRecette.RowCount != 0)
+            {
+                btnValider.Enabled = true;
+                btnAnnulerPayement.Enabled = true;
+            }
         }
     }
 }

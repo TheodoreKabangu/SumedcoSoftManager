@@ -29,14 +29,10 @@ namespace SUMEDCO
         {
             Application.Exit();
         }
-        private void btnIntervention_Click(object sender, EventArgs e)
-        {
-            
-        }
 
         private void btnChat_Click(object sender, EventArgs e)
         {
-            cm.AfficherSousForm(this, new FormMedecinHistoChat());
+            cm.AfficherSousForm(this, new FormMessageHisto());
         }
 
         private void btnRendezVous_Click(object sender, EventArgs e)

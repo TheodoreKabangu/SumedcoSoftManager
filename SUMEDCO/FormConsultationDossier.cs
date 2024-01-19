@@ -41,11 +41,10 @@ namespace SUMEDCO
                 case "complément": cm.RenseignementConsultation(this, "complément"); break;
                 case "examen physique": cm.ExamenPhysiqueConsultation(this); break;
                 case "prédiagnostic": cm.RenseignementConsultation(this, "prédiagnostic"); break;
-                case "examen para": cm.PrescriptionService(this, "examen para"); break;
+                case "examen para": cm.PrescriptionConsultation(this, "examen para"); break;
                 case "diagnostic": cm.MaladieConsultation(this); break;
-                case "prescription produit": cm.PrescriptionProduit(this); break;
-                case "prescription service": cm.PrescriptionService(this, "autre"); break;
-                case "autre prescription": cm.RenseignementConsultation(this, "autre"); break;
+                case "prescription produit": cm.PrescriptionConsultation(this, "produit"); break;
+                case "autre prescription": cm.PrescriptionConsultation(this, "autre"); break;
                 case "rendez-vous": cm.AfficherRDVConsultation(idconsultation, new FormConsulterRendezVous()); break;
                 case "tout": cm.DetailsConsultation(this); break;
             }

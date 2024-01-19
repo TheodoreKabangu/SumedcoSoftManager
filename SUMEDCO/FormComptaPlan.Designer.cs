@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormComptaPlan));
@@ -47,6 +48,7 @@
             this.cboClasse = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCompte)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv1)).BeginInit();
             this.SuspendLayout();
@@ -172,6 +174,7 @@
             this.btnRecherche.BackColor = System.Drawing.Color.Transparent;
             this.btnRecherche.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnRecherche.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnRecherche.FlatAppearance.BorderSize = 0;
             this.btnRecherche.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
             this.btnRecherche.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRecherche.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -181,6 +184,7 @@
             this.btnRecherche.Name = "btnRecherche";
             this.btnRecherche.Size = new System.Drawing.Size(30, 21);
             this.btnRecherche.TabIndex = 712;
+            this.toolTip1.SetToolTip(this.btnRecherche, "Rechercher");
             this.btnRecherche.UseVisualStyleBackColor = false;
             this.btnRecherche.Click += new System.EventHandler(this.btnRecherche_Click);
             // 
@@ -240,7 +244,7 @@
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.HeaderText = "Compte dépense";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Compte";
             this.dataGridViewTextBoxColumn2.MinimumWidth = 150;
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
@@ -299,7 +303,7 @@
             this.MinimizeBox = false;
             this.Name = "FormComptaPlan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SSM - Compte cible de dépense";
+            this.Text = "SSM - Recherche compte";
             ((System.ComponentModel.ISupportInitialize)(this.dgvCompte)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv1)).EndInit();
             this.ResumeLayout(false);
@@ -318,11 +322,12 @@
         public System.Windows.Forms.TextBox txtRecherche;
         public System.Windows.Forms.Button btnRecherche;
         public System.Windows.Forms.DataGridView dgv1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         public System.Windows.Forms.ComboBox cboClasse;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.ToolTip toolTip1;
 
 
     }

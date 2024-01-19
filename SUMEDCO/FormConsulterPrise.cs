@@ -15,6 +15,14 @@ namespace SUMEDCO
         public FormConsulterPrise()
         {
             InitializeComponent();
+            for (int i = 0; i < dgvPatient.ColumnCount; i++)
+            {
+                dgvPatient.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+            for (int i = 0; i < dgvPrise.ColumnCount; i++)
+            {
+                dgvPrise.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
         ClassMalade cm = new ClassMalade();
 
@@ -42,10 +50,9 @@ namespace SUMEDCO
         {
             if (dgvPrise.RowCount != 0)
             {
-                idprise = int.Parse(dgvPrise.CurrentRow.Cells[0].Value.ToString());
-                idpatient = cm.TrouverId("patient", dgvPrise.CurrentRow.Cells[1].Value.ToString());
-                idrecette = int.Parse(dgvPrise.CurrentRow.Cells[2].Value.ToString());
-                idservice = int.Parse(dgvPrise.CurrentRow.Cells[3].Value.ToString());
+                idprise = Convert.ToInt32(dgvPrise.CurrentRow.Cells[0].Value);
+                idpatient = Convert.ToInt32(dgvPrise.CurrentRow.Cells[1].Value);
+                idrecette = Convert.ToInt32(dgvPrise.CurrentRow.Cells[3].Value);
                 cm.PatientConsulte(dgvPatient, idpatient);
             }
         }
@@ -75,7 +82,7 @@ namespace SUMEDCO
 
         private void btnPlainte2_Click(object sender, EventArgs e)
         {
-            idconsultation = cm.IdConsultationPrise(int.Parse(dgvPrise.CurrentRow.Cells[0].Value.ToString()));
+            idconsultation = cm.IdConsultationPrise(Convert.ToInt32(dgvPrise.CurrentRow.Cells[0].Value));
             if (idconsultation == 0)
             {
                 if (txtRepondant.Text == "")

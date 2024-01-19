@@ -23,65 +23,14 @@ namespace SUMEDCO
         ClassCompta cc = new ClassCompta();
         public int idproduit;
         public string poste;
-        private void listProduit_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void btnNouveauAutreStock_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void txtProduit_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void btnStock_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void btnStockTout_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void btnDemande_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void dgvStock_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvRecette.RowCount != 0)
                 btnSupprimer.Enabled = true;
         }
-
-        private void btnEditerCommande_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void btnEditerRequisition_Click(object sender, EventArgs e)
         {
             
-        }
-
-        private void btnCommandes_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void btnAlertes_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnRecherche_Click(object sender, EventArgs e)
@@ -91,7 +40,23 @@ namespace SUMEDCO
 
         private void btnSupprimer_Click(object sender, EventArgs e)
         {
-            cc.SupprimerRecette(this);
+            if (dgvRecette.CurrentRow.Index < dgvRecette.RowCount-1) 
+                cc.SupprimerRecette(this);
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void cboStatut_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cc.AfficherRapportRecette(this);
+        }
+
+        private void cboCategorie_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cc.AfficherRapportRecette(this);
         }
     }
 }

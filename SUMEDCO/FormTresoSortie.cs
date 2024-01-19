@@ -144,7 +144,12 @@ namespace SUMEDCO
 
         private void btnValider_Click(object sender, EventArgs e)
         {
-            cc.Valider(this);
+            if (txtNumRequisition.Text != "" && cboCaisseDepense.Text != "" && txtBeneficiaire.Text != "" && txtMontant.Text != "" && cboMonnaie.Text != "" && txtCompte.Text != "" && txtMotif.Text != "")
+            {
+                cc.Valider(this);
+            }
+            else
+                MessageBox.Show("Désolé! Champ(s) obligatoire(s) vide(s)\nRemplissez-le(s).", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void btnCompte_Click(object sender, EventArgs e)

@@ -32,6 +32,7 @@
             this.pnlSide = new System.Windows.Forms.Panel();
             this.btnChat = new System.Windows.Forms.Button();
             this.pnlCompta = new System.Windows.Forms.Panel();
+            this.btnExercice = new System.Windows.Forms.Button();
             this.btnResultat = new System.Windows.Forms.Button();
             this.btnTabFluxT = new System.Windows.Forms.Button();
             this.btnBilan_ = new System.Windows.Forms.Button();
@@ -70,7 +71,7 @@
             this.pnlSide.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlSide.Location = new System.Drawing.Point(0, 0);
             this.pnlSide.Name = "pnlSide";
-            this.pnlSide.Size = new System.Drawing.Size(180, 474);
+            this.pnlSide.Size = new System.Drawing.Size(180, 483);
             this.pnlSide.TabIndex = 584;
             // 
             // btnChat
@@ -82,19 +83,21 @@
             this.btnChat.ForeColor = System.Drawing.Color.Black;
             this.btnChat.Image = ((System.Drawing.Image)(resources.GetObject("btnChat.Image")));
             this.btnChat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnChat.Location = new System.Drawing.Point(0, 668);
+            this.btnChat.Location = new System.Drawing.Point(0, 711);
             this.btnChat.Name = "btnChat";
-            this.btnChat.Size = new System.Drawing.Size(154, 45);
+            this.btnChat.Size = new System.Drawing.Size(159, 45);
             this.btnChat.TabIndex = 600;
             this.btnChat.Text = "Messagerie";
             this.btnChat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnChat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnChat.UseVisualStyleBackColor = true;
+            this.btnChat.Click += new System.EventHandler(this.btnChat_Click);
             // 
             // pnlCompta
             // 
             this.pnlCompta.AutoScroll = true;
             this.pnlCompta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            this.pnlCompta.Controls.Add(this.btnExercice);
             this.pnlCompta.Controls.Add(this.btnResultat);
             this.pnlCompta.Controls.Add(this.btnTabFluxT);
             this.pnlCompta.Controls.Add(this.btnBilan_);
@@ -104,8 +107,28 @@
             this.pnlCompta.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlCompta.Location = new System.Drawing.Point(0, 394);
             this.pnlCompta.Name = "pnlCompta";
-            this.pnlCompta.Size = new System.Drawing.Size(154, 274);
+            this.pnlCompta.Size = new System.Drawing.Size(159, 317);
             this.pnlCompta.TabIndex = 596;
+            // 
+            // btnExercice
+            // 
+            this.btnExercice.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnExercice.FlatAppearance.BorderSize = 0;
+            this.btnExercice.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnExercice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExercice.ForeColor = System.Drawing.Color.MediumBlue;
+            this.btnExercice.Image = ((System.Drawing.Image)(resources.GetObject("btnExercice.Image")));
+            this.btnExercice.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExercice.Location = new System.Drawing.Point(0, 270);
+            this.btnExercice.Name = "btnExercice";
+            this.btnExercice.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnExercice.Size = new System.Drawing.Size(159, 45);
+            this.btnExercice.TabIndex = 603;
+            this.btnExercice.Text = "Clôturer";
+            this.btnExercice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExercice.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnExercice.UseVisualStyleBackColor = true;
+            this.btnExercice.Click += new System.EventHandler(this.btnExercice_Click);
             // 
             // btnResultat
             // 
@@ -119,7 +142,7 @@
             this.btnResultat.Location = new System.Drawing.Point(0, 225);
             this.btnResultat.Name = "btnResultat";
             this.btnResultat.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnResultat.Size = new System.Drawing.Size(154, 45);
+            this.btnResultat.Size = new System.Drawing.Size(159, 45);
             this.btnResultat.TabIndex = 602;
             this.btnResultat.Text = "Compte de résultat";
             this.btnResultat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -139,7 +162,7 @@
             this.btnTabFluxT.Location = new System.Drawing.Point(0, 180);
             this.btnTabFluxT.Name = "btnTabFluxT";
             this.btnTabFluxT.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnTabFluxT.Size = new System.Drawing.Size(154, 45);
+            this.btnTabFluxT.Size = new System.Drawing.Size(159, 45);
             this.btnTabFluxT.TabIndex = 601;
             this.btnTabFluxT.Text = "TFT";
             this.btnTabFluxT.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -159,7 +182,7 @@
             this.btnBilan_.Location = new System.Drawing.Point(0, 135);
             this.btnBilan_.Name = "btnBilan_";
             this.btnBilan_.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnBilan_.Size = new System.Drawing.Size(154, 45);
+            this.btnBilan_.Size = new System.Drawing.Size(159, 45);
             this.btnBilan_.TabIndex = 599;
             this.btnBilan_.Text = "Bilan";
             this.btnBilan_.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -179,7 +202,7 @@
             this.btnGrandLivre.Location = new System.Drawing.Point(0, 90);
             this.btnGrandLivre.Name = "btnGrandLivre";
             this.btnGrandLivre.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnGrandLivre.Size = new System.Drawing.Size(154, 45);
+            this.btnGrandLivre.Size = new System.Drawing.Size(159, 45);
             this.btnGrandLivre.TabIndex = 598;
             this.btnGrandLivre.Text = "Grand livre";
             this.btnGrandLivre.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -199,7 +222,7 @@
             this.btnBalance_.Location = new System.Drawing.Point(0, 45);
             this.btnBalance_.Name = "btnBalance_";
             this.btnBalance_.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnBalance_.Size = new System.Drawing.Size(154, 45);
+            this.btnBalance_.Size = new System.Drawing.Size(159, 45);
             this.btnBalance_.TabIndex = 600;
             this.btnBalance_.Text = "Balance";
             this.btnBalance_.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -219,7 +242,7 @@
             this.btnVisualisation.Location = new System.Drawing.Point(0, 0);
             this.btnVisualisation.Name = "btnVisualisation";
             this.btnVisualisation.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnVisualisation.Size = new System.Drawing.Size(154, 45);
+            this.btnVisualisation.Size = new System.Drawing.Size(159, 45);
             this.btnVisualisation.TabIndex = 596;
             this.btnVisualisation.Text = "Opérations";
             this.btnVisualisation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -238,7 +261,7 @@
             this.btnCompta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCompta.Location = new System.Drawing.Point(0, 349);
             this.btnCompta.Name = "btnCompta";
-            this.btnCompta.Size = new System.Drawing.Size(154, 45);
+            this.btnCompta.Size = new System.Drawing.Size(159, 45);
             this.btnCompta.TabIndex = 597;
             this.btnCompta.Text = "Comptabilité";
             this.btnCompta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -258,7 +281,7 @@
             this.pnlRapport.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlRapport.Location = new System.Drawing.Point(0, 117);
             this.pnlRapport.Name = "pnlRapport";
-            this.pnlRapport.Size = new System.Drawing.Size(154, 232);
+            this.pnlRapport.Size = new System.Drawing.Size(159, 232);
             this.pnlRapport.TabIndex = 598;
             // 
             // btnInventaire
@@ -273,7 +296,7 @@
             this.btnInventaire.Location = new System.Drawing.Point(0, 180);
             this.btnInventaire.Name = "btnInventaire";
             this.btnInventaire.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnInventaire.Size = new System.Drawing.Size(154, 45);
+            this.btnInventaire.Size = new System.Drawing.Size(159, 45);
             this.btnInventaire.TabIndex = 604;
             this.btnInventaire.Text = "Inventaire";
             this.btnInventaire.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -293,7 +316,7 @@
             this.btnCasMedecin.Location = new System.Drawing.Point(0, 135);
             this.btnCasMedecin.Name = "btnCasMedecin";
             this.btnCasMedecin.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnCasMedecin.Size = new System.Drawing.Size(154, 45);
+            this.btnCasMedecin.Size = new System.Drawing.Size(159, 45);
             this.btnCasMedecin.TabIndex = 603;
             this.btnCasMedecin.Text = "Cas par médecin";
             this.btnCasMedecin.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -313,7 +336,7 @@
             this.btnRapportGlobal.Location = new System.Drawing.Point(0, 90);
             this.btnRapportGlobal.Name = "btnRapportGlobal";
             this.btnRapportGlobal.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnRapportGlobal.Size = new System.Drawing.Size(154, 45);
+            this.btnRapportGlobal.Size = new System.Drawing.Size(159, 45);
             this.btnRapportGlobal.TabIndex = 594;
             this.btnRapportGlobal.Text = "Rapport global";
             this.btnRapportGlobal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -333,7 +356,7 @@
             this.btnRapportDepense.Location = new System.Drawing.Point(0, 45);
             this.btnRapportDepense.Name = "btnRapportDepense";
             this.btnRapportDepense.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnRapportDepense.Size = new System.Drawing.Size(154, 45);
+            this.btnRapportDepense.Size = new System.Drawing.Size(159, 45);
             this.btnRapportDepense.TabIndex = 592;
             this.btnRapportDepense.Text = "Rapport dépenses";
             this.btnRapportDepense.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -353,7 +376,7 @@
             this.btnRapportRecette.Location = new System.Drawing.Point(0, 0);
             this.btnRapportRecette.Name = "btnRapportRecette";
             this.btnRapportRecette.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnRapportRecette.Size = new System.Drawing.Size(154, 45);
+            this.btnRapportRecette.Size = new System.Drawing.Size(159, 45);
             this.btnRapportRecette.TabIndex = 591;
             this.btnRapportRecette.Text = "Rapport recettes";
             this.btnRapportRecette.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -372,7 +395,7 @@
             this.btnRapport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRapport.Location = new System.Drawing.Point(0, 72);
             this.btnRapport.Name = "btnRapport";
-            this.btnRapport.Size = new System.Drawing.Size(154, 45);
+            this.btnRapport.Size = new System.Drawing.Size(159, 45);
             this.btnRapport.TabIndex = 599;
             this.btnRapport.Text = "Rapports";
             this.btnRapport.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -393,10 +416,10 @@
             this.btnQuitter.ForeColor = System.Drawing.Color.Black;
             this.btnQuitter.Image = ((System.Drawing.Image)(resources.GetObject("btnQuitter.Image")));
             this.btnQuitter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnQuitter.Location = new System.Drawing.Point(0, 713);
+            this.btnQuitter.Location = new System.Drawing.Point(0, 756);
             this.btnQuitter.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnQuitter.Name = "btnQuitter";
-            this.btnQuitter.Size = new System.Drawing.Size(154, 45);
+            this.btnQuitter.Size = new System.Drawing.Size(159, 45);
             this.btnQuitter.TabIndex = 585;
             this.btnQuitter.Text = "Quitter";
             this.btnQuitter.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -415,7 +438,7 @@
             this.btnAppro.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAppro.Location = new System.Drawing.Point(0, 27);
             this.btnAppro.Name = "btnAppro";
-            this.btnAppro.Size = new System.Drawing.Size(154, 45);
+            this.btnAppro.Size = new System.Drawing.Size(159, 45);
             this.btnAppro.TabIndex = 1;
             this.btnAppro.Text = "Approvisionner stocks";
             this.btnAppro.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -428,7 +451,7 @@
             this.pnlLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlLogo.Location = new System.Drawing.Point(0, 0);
             this.pnlLogo.Name = "pnlLogo";
-            this.pnlLogo.Size = new System.Drawing.Size(154, 27);
+            this.pnlLogo.Size = new System.Drawing.Size(159, 27);
             this.pnlLogo.TabIndex = 0;
             // 
             // pnlChildForm
@@ -438,15 +461,15 @@
             this.pnlChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlChildForm.Location = new System.Drawing.Point(180, 0);
             this.pnlChildForm.Name = "pnlChildForm";
-            this.pnlChildForm.Size = new System.Drawing.Size(708, 474);
+            this.pnlChildForm.Size = new System.Drawing.Size(712, 483);
             this.pnlChildForm.TabIndex = 585;
             // 
             // MFormComptabilite
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(888, 474);
+            this.ClientSize = new System.Drawing.Size(892, 483);
             this.Controls.Add(this.pnlChildForm);
             this.Controls.Add(this.pnlSide);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -486,5 +509,6 @@
         public System.Windows.Forms.Button btnChat;
         public System.Windows.Forms.Button btnCasMedecin;
         public System.Windows.Forms.Button btnInventaire;
+        public System.Windows.Forms.Button btnExercice;
     }
 }

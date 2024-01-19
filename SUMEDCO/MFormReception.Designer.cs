@@ -32,7 +32,6 @@
             this.pnlSide = new System.Windows.Forms.Panel();
             this.btnChat = new System.Windows.Forms.Button();
             this.btnRapport = new System.Windows.Forms.Button();
-            this.btnAncien = new System.Windows.Forms.Button();
             this.btnConsultation = new System.Windows.Forms.Button();
             this.btnFactureProduit = new System.Windows.Forms.Button();
             this.btnFactureService = new System.Windows.Forms.Button();
@@ -47,10 +46,9 @@
             this.pnlSide.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.pnlSide.Controls.Add(this.btnChat);
             this.pnlSide.Controls.Add(this.btnRapport);
-            this.pnlSide.Controls.Add(this.btnAncien);
-            this.pnlSide.Controls.Add(this.btnConsultation);
             this.pnlSide.Controls.Add(this.btnFactureProduit);
             this.pnlSide.Controls.Add(this.btnFactureService);
+            this.pnlSide.Controls.Add(this.btnConsultation);
             this.pnlSide.Controls.Add(this.btnQuitter);
             this.pnlSide.Controls.Add(this.pnlLogo);
             this.pnlSide.Dock = System.Windows.Forms.DockStyle.Left;
@@ -68,7 +66,7 @@
             this.btnChat.ForeColor = System.Drawing.Color.Black;
             this.btnChat.Image = ((System.Drawing.Image)(resources.GetObject("btnChat.Image")));
             this.btnChat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnChat.Location = new System.Drawing.Point(0, 252);
+            this.btnChat.Location = new System.Drawing.Point(0, 207);
             this.btnChat.Name = "btnChat";
             this.btnChat.Size = new System.Drawing.Size(180, 45);
             this.btnChat.TabIndex = 590;
@@ -87,7 +85,7 @@
             this.btnRapport.ForeColor = System.Drawing.Color.Black;
             this.btnRapport.Image = ((System.Drawing.Image)(resources.GetObject("btnRapport.Image")));
             this.btnRapport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRapport.Location = new System.Drawing.Point(0, 207);
+            this.btnRapport.Location = new System.Drawing.Point(0, 162);
             this.btnRapport.Name = "btnRapport";
             this.btnRapport.Size = new System.Drawing.Size(180, 45);
             this.btnRapport.TabIndex = 4;
@@ -96,25 +94,6 @@
             this.btnRapport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRapport.UseVisualStyleBackColor = true;
             this.btnRapport.Click += new System.EventHandler(this.btnRapport_Click);
-            // 
-            // btnAncien
-            // 
-            this.btnAncien.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAncien.FlatAppearance.BorderSize = 0;
-            this.btnAncien.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSlateGray;
-            this.btnAncien.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAncien.ForeColor = System.Drawing.Color.Black;
-            this.btnAncien.Image = ((System.Drawing.Image)(resources.GetObject("btnAncien.Image")));
-            this.btnAncien.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAncien.Location = new System.Drawing.Point(0, 162);
-            this.btnAncien.Name = "btnAncien";
-            this.btnAncien.Size = new System.Drawing.Size(180, 45);
-            this.btnAncien.TabIndex = 587;
-            this.btnAncien.Text = "Ancien cas";
-            this.btnAncien.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAncien.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAncien.UseVisualStyleBackColor = true;
-            this.btnAncien.Click += new System.EventHandler(this.btnAncien_Click);
             // 
             // btnConsultation
             // 
@@ -125,11 +104,11 @@
             this.btnConsultation.ForeColor = System.Drawing.Color.Black;
             this.btnConsultation.Image = ((System.Drawing.Image)(resources.GetObject("btnConsultation.Image")));
             this.btnConsultation.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnConsultation.Location = new System.Drawing.Point(0, 117);
+            this.btnConsultation.Location = new System.Drawing.Point(0, 27);
             this.btnConsultation.Name = "btnConsultation";
             this.btnConsultation.Size = new System.Drawing.Size(180, 45);
             this.btnConsultation.TabIndex = 1;
-            this.btnConsultation.Text = "Nouveau cas";
+            this.btnConsultation.Text = "Patients";
             this.btnConsultation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnConsultation.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnConsultation.UseVisualStyleBackColor = true;
@@ -144,7 +123,7 @@
             this.btnFactureProduit.ForeColor = System.Drawing.Color.Black;
             this.btnFactureProduit.Image = ((System.Drawing.Image)(resources.GetObject("btnFactureProduit.Image")));
             this.btnFactureProduit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFactureProduit.Location = new System.Drawing.Point(0, 72);
+            this.btnFactureProduit.Location = new System.Drawing.Point(0, 117);
             this.btnFactureProduit.Name = "btnFactureProduit";
             this.btnFactureProduit.Size = new System.Drawing.Size(180, 45);
             this.btnFactureProduit.TabIndex = 586;
@@ -163,7 +142,7 @@
             this.btnFactureService.ForeColor = System.Drawing.Color.Black;
             this.btnFactureService.Image = ((System.Drawing.Image)(resources.GetObject("btnFactureService.Image")));
             this.btnFactureService.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFactureService.Location = new System.Drawing.Point(0, 27);
+            this.btnFactureService.Location = new System.Drawing.Point(0, 72);
             this.btnFactureService.Name = "btnFactureService";
             this.btnFactureService.Size = new System.Drawing.Size(180, 45);
             this.btnFactureService.TabIndex = 3;
@@ -245,7 +224,6 @@
         public System.Windows.Forms.Panel pnlChildForm;
         public System.Windows.Forms.Button btnRapport;
         public System.Windows.Forms.Button btnFactureProduit;
-        public System.Windows.Forms.Button btnAncien;
         public System.Windows.Forms.Button btnChat;
     }
 }

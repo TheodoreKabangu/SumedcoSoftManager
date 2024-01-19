@@ -41,7 +41,6 @@
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.lblCaisseCDF = new System.Windows.Forms.Label();
             this.lblCaisseUSD = new System.Windows.Forms.Label();
@@ -49,10 +48,10 @@
             this.btnAnnuler = new System.Windows.Forms.Button();
             this.btnEnregistrer = new System.Windows.Forms.Button();
             this.btnDate = new System.Windows.Forms.Button();
-            this.cboCaisseDepense = new System.Windows.Forms.ComboBox();
+            this.cboMonnaie = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.lblTaux = new System.Windows.Forms.Label();
-            this.lblDateOperation = new System.Windows.Forms.Label();
+            this.lblDateJour = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtMontant = new System.Windows.Forms.TextBox();
@@ -158,7 +157,7 @@
             this.dgvBon.ReadOnly = true;
             this.dgvBon.RowHeadersVisible = false;
             this.dgvBon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvBon.Size = new System.Drawing.Size(467, 258);
+            this.dgvBon.Size = new System.Drawing.Size(675, 258);
             this.dgvBon.TabIndex = 702;
             this.dgvBon.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBon_CellClick);
             // 
@@ -189,18 +188,6 @@
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             this.dataGridViewTextBoxColumn10.ReadOnly = true;
             // 
-            // label13
-            // 
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.MediumBlue;
-            this.label13.Location = new System.Drawing.Point(280, 50);
-            this.label13.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(91, 15);
-            this.label13.TabIndex = 714;
-            this.label13.Text = "Caisse CDF :";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // label12
             // 
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -210,14 +197,14 @@
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(91, 15);
             this.label12.TabIndex = 715;
-            this.label12.Text = "Caisse USD :";
+            this.label12.Text = "Caisse :";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblCaisseCDF
             // 
             this.lblCaisseCDF.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCaisseCDF.ForeColor = System.Drawing.Color.MediumBlue;
-            this.lblCaisseCDF.Location = new System.Drawing.Point(383, 50);
+            this.lblCaisseCDF.Location = new System.Drawing.Point(280, 50);
             this.lblCaisseCDF.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblCaisseCDF.Name = "lblCaisseCDF";
             this.lblCaisseCDF.Size = new System.Drawing.Size(175, 15);
@@ -294,24 +281,24 @@
             this.btnDate.UseVisualStyleBackColor = false;
             this.btnDate.Click += new System.EventHandler(this.btnDate_Click);
             // 
-            // cboCaisseDepense
+            // cboMonnaie
             // 
-            this.cboCaisseDepense.DropDownHeight = 150;
-            this.cboCaisseDepense.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboCaisseDepense.Enabled = false;
-            this.cboCaisseDepense.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboCaisseDepense.FormattingEnabled = true;
-            this.cboCaisseDepense.IntegralHeight = false;
-            this.cboCaisseDepense.Items.AddRange(new object[] {
+            this.cboMonnaie.DropDownHeight = 150;
+            this.cboMonnaie.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboMonnaie.Enabled = false;
+            this.cboMonnaie.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboMonnaie.FormattingEnabled = true;
+            this.cboMonnaie.IntegralHeight = false;
+            this.cboMonnaie.Items.AddRange(new object[] {
             "CDF",
             "USD"});
-            this.cboCaisseDepense.Location = new System.Drawing.Point(410, 109);
-            this.cboCaisseDepense.MaxDropDownItems = 10;
-            this.cboCaisseDepense.Name = "cboCaisseDepense";
-            this.cboCaisseDepense.Size = new System.Drawing.Size(69, 30);
-            this.cboCaisseDepense.Sorted = true;
-            this.cboCaisseDepense.TabIndex = 716;
-            this.cboCaisseDepense.SelectedIndexChanged += new System.EventHandler(this.cboCaisseDepense_SelectedIndexChanged);
+            this.cboMonnaie.Location = new System.Drawing.Point(410, 109);
+            this.cboMonnaie.MaxDropDownItems = 10;
+            this.cboMonnaie.Name = "cboMonnaie";
+            this.cboMonnaie.Size = new System.Drawing.Size(69, 30);
+            this.cboMonnaie.Sorted = true;
+            this.cboMonnaie.TabIndex = 716;
+            this.cboMonnaie.SelectedIndexChanged += new System.EventHandler(this.cboMonnaie_SelectedIndexChanged);
             // 
             // label10
             // 
@@ -334,16 +321,16 @@
             this.lblTaux.Text = "0000";
             this.lblTaux.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // lblDateOperation
+            // lblDateJour
             // 
-            this.lblDateOperation.ForeColor = System.Drawing.Color.IndianRed;
-            this.lblDateOperation.Location = new System.Drawing.Point(89, 81);
-            this.lblDateOperation.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.lblDateOperation.Name = "lblDateOperation";
-            this.lblDateOperation.Size = new System.Drawing.Size(77, 15);
-            this.lblDateOperation.TabIndex = 719;
-            this.lblDateOperation.Text = "jj/mm/aaaa";
-            this.lblDateOperation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblDateJour.ForeColor = System.Drawing.Color.IndianRed;
+            this.lblDateJour.Location = new System.Drawing.Point(89, 81);
+            this.lblDateJour.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lblDateJour.Name = "lblDateJour";
+            this.lblDateJour.Size = new System.Drawing.Size(77, 15);
+            this.lblDateJour.TabIndex = 719;
+            this.lblDateJour.Text = "jj/mm/aaaa";
+            this.lblDateJour.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label4
             // 
@@ -375,6 +362,7 @@
             this.txtMontant.Size = new System.Drawing.Size(139, 28);
             this.txtMontant.TabIndex = 723;
             this.txtMontant.Enter += new System.EventHandler(this.txtMontant_Enter);
+            this.txtMontant.Leave += new System.EventHandler(this.txtMontant_Leave);
             // 
             // label1
             // 
@@ -395,15 +383,14 @@
             this.Controls.Add(this.txtMontant);
             this.Controls.Add(this.btnDate);
             this.Controls.Add(this.lblTaux);
-            this.Controls.Add(this.lblDateOperation);
+            this.Controls.Add(this.lblDateJour);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.cboCaisseDepense);
+            this.Controls.Add(this.cboMonnaie);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.btnEnregistrer);
-            this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.lblCaisseCDF);
             this.Controls.Add(this.lblCaisseUSD);
@@ -431,18 +418,17 @@
         public System.Windows.Forms.Label lblDateEntree;
         public System.Windows.Forms.ComboBox cboEncaisser;
         public System.Windows.Forms.DataGridView dgvBon;
-        public System.Windows.Forms.Label label13;
         public System.Windows.Forms.Label label12;
         public System.Windows.Forms.Label lblCaisseCDF;
         public System.Windows.Forms.Label lblCaisseUSD;
         private System.Windows.Forms.ToolTip toolTip1;
         public System.Windows.Forms.Button btnAnnuler;
         public System.Windows.Forms.Button btnEnregistrer;
-        public System.Windows.Forms.ComboBox cboCaisseDepense;
+        public System.Windows.Forms.ComboBox cboMonnaie;
         private System.Windows.Forms.Label label10;
         public System.Windows.Forms.Button btnDate;
         public System.Windows.Forms.Label lblTaux;
-        public System.Windows.Forms.Label lblDateOperation;
+        public System.Windows.Forms.Label lblDateJour;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.TextBox txtMontant;

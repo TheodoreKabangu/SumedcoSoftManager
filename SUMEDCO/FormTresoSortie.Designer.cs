@@ -67,12 +67,11 @@
             this.lblCaisseUSD = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.dgvEcriture = new System.Windows.Forms.DataGridView();
+            this.label12 = new System.Windows.Forms.Label();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEcriture)).BeginInit();
             this.SuspendLayout();
             // 
@@ -131,7 +130,7 @@
             this.label4.Location = new System.Drawing.Point(246, 83);
             this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(121, 22);
+            this.label4.Size = new System.Drawing.Size(97, 18);
             this.label4.TabIndex = 594;
             this.label4.Text = "Taux du jour :";
             // 
@@ -141,7 +140,7 @@
             this.label3.Location = new System.Drawing.Point(15, 83);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(118, 22);
+            this.label3.Size = new System.Drawing.Size(96, 18);
             this.label3.TabIndex = 595;
             this.label3.Text = "Date du jour :";
             // 
@@ -171,7 +170,7 @@
             this.txtBeneficiaire.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtBeneficiaire.MaxLength = 75;
             this.txtBeneficiaire.Name = "txtBeneficiaire";
-            this.txtBeneficiaire.Size = new System.Drawing.Size(319, 28);
+            this.txtBeneficiaire.Size = new System.Drawing.Size(319, 24);
             this.txtBeneficiaire.TabIndex = 3;
             this.txtBeneficiaire.Enter += new System.EventHandler(this.txtBeneficiaire_Enter);
             // 
@@ -181,7 +180,7 @@
             this.label1.Location = new System.Drawing.Point(15, 141);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 22);
+            this.label1.Size = new System.Drawing.Size(92, 18);
             this.label1.TabIndex = 620;
             this.label1.Text = "Bénéficiaire :";
             // 
@@ -191,7 +190,7 @@
             this.label2.Location = new System.Drawing.Point(15, 171);
             this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 22);
+            this.label2.Size = new System.Drawing.Size(70, 18);
             this.label2.TabIndex = 620;
             this.label2.Text = "Montant :";
             // 
@@ -199,9 +198,9 @@
             // 
             this.txtMontant.Location = new System.Drawing.Point(122, 169);
             this.txtMontant.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.txtMontant.MaxLength = 10;
+            this.txtMontant.MaxLength = 16;
             this.txtMontant.Name = "txtMontant";
-            this.txtMontant.Size = new System.Drawing.Size(148, 28);
+            this.txtMontant.Size = new System.Drawing.Size(148, 24);
             this.txtMontant.TabIndex = 4;
             this.txtMontant.Enter += new System.EventHandler(this.txtMontant_Enter);
             this.txtMontant.Leave += new System.EventHandler(this.txtMontant_Leave);
@@ -212,7 +211,7 @@
             this.label6.Location = new System.Drawing.Point(450, 110);
             this.label6.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(216, 22);
+            this.label6.Size = new System.Drawing.Size(177, 18);
             this.label6.TabIndex = 620;
             this.label6.Text = "Montant global en lettres :";
             // 
@@ -220,9 +219,9 @@
             // 
             this.txtMotif.Location = new System.Drawing.Point(122, 230);
             this.txtMotif.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.txtMotif.MaxLength = 25;
+            this.txtMotif.MaxLength = 50;
             this.txtMotif.Name = "txtMotif";
-            this.txtMotif.Size = new System.Drawing.Size(289, 28);
+            this.txtMotif.Size = new System.Drawing.Size(569, 24);
             this.txtMotif.TabIndex = 6;
             // 
             // label7
@@ -231,7 +230,7 @@
             this.label7.Location = new System.Drawing.Point(282, 171);
             this.label7.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(100, 22);
+            this.label7.Size = new System.Drawing.Size(83, 18);
             this.label7.TabIndex = 620;
             this.label7.Text = "CDF/USD :";
             // 
@@ -248,7 +247,7 @@
             this.cboMonnaie.Location = new System.Drawing.Point(372, 166);
             this.cboMonnaie.MaxDropDownItems = 10;
             this.cboMonnaie.Name = "cboMonnaie";
-            this.cboMonnaie.Size = new System.Drawing.Size(69, 30);
+            this.cboMonnaie.Size = new System.Drawing.Size(69, 26);
             this.cboMonnaie.Sorted = true;
             this.cboMonnaie.TabIndex = 4;
             this.cboMonnaie.SelectedIndexChanged += new System.EventHandler(this.cboMonnaie_SelectedIndexChanged);
@@ -266,7 +265,7 @@
             this.txtMontantLettre.MaxLength = 200;
             this.txtMontantLettre.Multiline = true;
             this.txtMontantLettre.Name = "txtMontantLettre";
-            this.txtMontantLettre.Size = new System.Drawing.Size(238, 121);
+            this.txtMontantLettre.Size = new System.Drawing.Size(238, 97);
             this.txtMontantLettre.TabIndex = 626;
             // 
             // btnCompte
@@ -292,14 +291,15 @@
             this.btnValider.BackColor = System.Drawing.Color.Transparent;
             this.btnValider.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnValider.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnValider.FlatAppearance.BorderSize = 0;
             this.btnValider.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
             this.btnValider.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnValider.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnValider.Image = ((System.Drawing.Image)(resources.GetObject("btnValider.Image")));
-            this.btnValider.Location = new System.Drawing.Point(411, 230);
+            this.btnValider.Location = new System.Drawing.Point(123, 259);
             this.btnValider.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnValider.Name = "btnValider";
-            this.btnValider.Size = new System.Drawing.Size(30, 21);
+            this.btnValider.Size = new System.Drawing.Size(30, 30);
             this.btnValider.TabIndex = 7;
             this.toolTip1.SetToolTip(this.btnValider, "Valider");
             this.btnValider.UseVisualStyleBackColor = false;
@@ -315,7 +315,7 @@
             this.btnAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAnnuler.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAnnuler.Image = ((System.Drawing.Image)(resources.GetObject("btnAnnuler.Image")));
-            this.btnAnnuler.Location = new System.Drawing.Point(122, 260);
+            this.btnAnnuler.Location = new System.Drawing.Point(164, 259);
             this.btnAnnuler.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(30, 30);
@@ -334,7 +334,7 @@
             this.btnEnregistrer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEnregistrer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEnregistrer.Image = ((System.Drawing.Image)(resources.GetObject("btnEnregistrer.Image")));
-            this.btnEnregistrer.Location = new System.Drawing.Point(164, 260);
+            this.btnEnregistrer.Location = new System.Drawing.Point(206, 259);
             this.btnEnregistrer.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnEnregistrer.Name = "btnEnregistrer";
             this.btnEnregistrer.Size = new System.Drawing.Size(30, 30);
@@ -354,7 +354,7 @@
             this.btnRetirer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRetirer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRetirer.Image = ((System.Drawing.Image)(resources.GetObject("btnRetirer.Image")));
-            this.btnRetirer.Location = new System.Drawing.Point(205, 261);
+            this.btnRetirer.Location = new System.Drawing.Point(247, 258);
             this.btnRetirer.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnRetirer.Name = "btnRetirer";
             this.btnRetirer.Size = new System.Drawing.Size(30, 30);
@@ -374,7 +374,7 @@
             this.btnRetirerTout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRetirerTout.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRetirerTout.Image = ((System.Drawing.Image)(resources.GetObject("btnRetirerTout.Image")));
-            this.btnRetirerTout.Location = new System.Drawing.Point(245, 261);
+            this.btnRetirerTout.Location = new System.Drawing.Point(287, 258);
             this.btnRetirerTout.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnRetirerTout.Name = "btnRetirerTout";
             this.btnRetirerTout.Size = new System.Drawing.Size(30, 30);
@@ -392,7 +392,7 @@
             this.txtCompte.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtCompte.MaxLength = 75;
             this.txtCompte.Name = "txtCompte";
-            this.txtCompte.Size = new System.Drawing.Size(118, 28);
+            this.txtCompte.Size = new System.Drawing.Size(118, 24);
             this.txtCompte.TabIndex = 11;
             // 
             // txtNumRequisition
@@ -401,7 +401,7 @@
             this.txtNumRequisition.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtNumRequisition.MaxLength = 75;
             this.txtNumRequisition.Name = "txtNumRequisition";
-            this.txtNumRequisition.Size = new System.Drawing.Size(148, 28);
+            this.txtNumRequisition.Size = new System.Drawing.Size(148, 24);
             this.txtNumRequisition.TabIndex = 1;
             // 
             // label8
@@ -410,7 +410,7 @@
             this.label8.Location = new System.Drawing.Point(15, 110);
             this.label8.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(140, 22);
+            this.label8.Size = new System.Drawing.Size(114, 18);
             this.label8.TabIndex = 671;
             this.label8.Text = "Réf. réquisition :";
             // 
@@ -420,7 +420,7 @@
             this.label9.Location = new System.Drawing.Point(15, 201);
             this.label9.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(156, 22);
+            this.label9.Size = new System.Drawing.Size(129, 18);
             this.label9.TabIndex = 621;
             this.label9.Text = "Compte dépense :";
             // 
@@ -437,7 +437,7 @@
             this.cboCaisseDepense.Location = new System.Drawing.Point(372, 107);
             this.cboCaisseDepense.MaxDropDownItems = 10;
             this.cboCaisseDepense.Name = "cboCaisseDepense";
-            this.cboCaisseDepense.Size = new System.Drawing.Size(69, 30);
+            this.cboCaisseDepense.Size = new System.Drawing.Size(69, 26);
             this.cboCaisseDepense.Sorted = true;
             this.cboCaisseDepense.TabIndex = 2;
             this.cboCaisseDepense.SelectedIndexChanged += new System.EventHandler(this.cboCaisseDepense_SelectedIndexChanged);
@@ -449,7 +449,7 @@
             this.label10.Location = new System.Drawing.Point(282, 110);
             this.label10.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(119, 22);
+            this.label10.Size = new System.Drawing.Size(98, 18);
             this.label10.TabIndex = 673;
             this.label10.Text = "Décaissé en :";
             // 
@@ -457,7 +457,7 @@
             // 
             this.lblCaisseCDF.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCaisseCDF.ForeColor = System.Drawing.Color.MediumBlue;
-            this.lblCaisseCDF.Location = new System.Drawing.Point(385, 62);
+            this.lblCaisseCDF.Location = new System.Drawing.Point(282, 62);
             this.lblCaisseCDF.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblCaisseCDF.Name = "lblCaisseCDF";
             this.lblCaisseCDF.Size = new System.Drawing.Size(175, 15);
@@ -483,7 +483,7 @@
             this.label11.Location = new System.Drawing.Point(15, 234);
             this.label11.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(132, 22);
+            this.label11.Size = new System.Drawing.Size(109, 18);
             this.label11.TabIndex = 679;
             this.label11.Text = "Motif dépense :";
             // 
@@ -535,6 +535,18 @@
             this.dgvEcriture.TabIndex = 710;
             this.dgvEcriture.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEcriture_CellClick);
             // 
+            // label12
+            // 
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.MediumBlue;
+            this.label12.Location = new System.Drawing.Point(15, 62);
+            this.label12.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(91, 15);
+            this.label12.TabIndex = 711;
+            this.label12.Text = "Caisse :";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.HeaderText = "Compte";
@@ -553,57 +565,36 @@
             // 
             // dataGridViewTextBoxColumn10
             // 
+            this.dataGridViewTextBoxColumn10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle2.Format = "N2";
             dataGridViewCellStyle2.NullValue = null;
             this.dataGridViewTextBoxColumn10.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewTextBoxColumn10.HeaderText = "Débit";
+            this.dataGridViewTextBoxColumn10.MaxInputLength = 16;
             this.dataGridViewTextBoxColumn10.MinimumWidth = 100;
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             this.dataGridViewTextBoxColumn10.ReadOnly = true;
             // 
             // Column3
             // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle3.Format = "N2";
             dataGridViewCellStyle3.NullValue = null;
             this.Column3.DefaultCellStyle = dataGridViewCellStyle3;
             this.Column3.HeaderText = "Crédit";
+            this.Column3.MaxInputLength = 16;
             this.Column3.MinimumWidth = 100;
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
             // 
-            // label12
-            // 
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.MediumBlue;
-            this.label12.Location = new System.Drawing.Point(15, 62);
-            this.label12.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(91, 15);
-            this.label12.TabIndex = 711;
-            this.label12.Text = "Caisse USD :";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label13
-            // 
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.MediumBlue;
-            this.label13.Location = new System.Drawing.Point(282, 62);
-            this.label13.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(91, 15);
-            this.label13.TabIndex = 711;
-            this.label13.Text = "Caisse CDF :";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // FormTresoSortie
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(703, 451);
-            this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.btnValider);
             this.Controls.Add(this.btnAnnuler);
@@ -684,7 +675,6 @@
         public System.Windows.Forms.Button btnRetirer;
         public System.Windows.Forms.Button btnRetirerTout;
         public System.Windows.Forms.Label label12;
-        public System.Windows.Forms.Label label13;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;

@@ -36,9 +36,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvPrise = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtpDateA = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.dtpDateDe = new System.Windows.Forms.DateTimePicker();
@@ -88,9 +88,9 @@
             this.dgvPrise.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPrise.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
+            this.Column3,
             this.Column5,
-            this.Column2,
-            this.Column4});
+            this.Column2});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Lavender;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -118,6 +118,13 @@
             this.Column1.ReadOnly = true;
             this.Column1.Width = 40;
             // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "idpatient";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Visible = false;
+            // 
             // Column5
             // 
             this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -133,19 +140,12 @@
             this.Column2.ReadOnly = true;
             this.Column2.Visible = false;
             // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "idservice";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Visible = false;
-            // 
             // dtpDateA
             // 
             this.dtpDateA.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDateA.Location = new System.Drawing.Point(162, 46);
             this.dtpDateA.Name = "dtpDateA";
-            this.dtpDateA.Size = new System.Drawing.Size(87, 28);
+            this.dtpDateA.Size = new System.Drawing.Size(87, 24);
             this.dtpDateA.TabIndex = 656;
             // 
             // label2
@@ -154,7 +154,7 @@
             this.label2.Location = new System.Drawing.Point(138, 49);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(30, 22);
+            this.label2.Size = new System.Drawing.Size(24, 18);
             this.label2.TabIndex = 658;
             this.label2.Text = "à :";
             // 
@@ -163,7 +163,7 @@
             this.dtpDateDe.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDateDe.Location = new System.Drawing.Point(46, 46);
             this.dtpDateDe.Name = "dtpDateDe";
-            this.dtpDateDe.Size = new System.Drawing.Size(87, 28);
+            this.dtpDateDe.Size = new System.Drawing.Size(87, 24);
             this.dtpDateDe.TabIndex = 657;
             // 
             // label1
@@ -172,7 +172,7 @@
             this.label1.Location = new System.Drawing.Point(9, 47);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 22);
+            this.label1.Size = new System.Drawing.Size(35, 18);
             this.label1.TabIndex = 659;
             this.label1.Text = "De :";
             // 
@@ -248,12 +248,12 @@
             this.btnPlainte2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPlainte2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPlainte2.Image = ((System.Drawing.Image)(resources.GetObject("btnPlainte2.Image")));
-            this.btnPlainte2.Location = new System.Drawing.Point(659, 129);
+            this.btnPlainte2.Location = new System.Drawing.Point(659, 132);
             this.btnPlainte2.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnPlainte2.Name = "btnPlainte2";
             this.btnPlainte2.Size = new System.Drawing.Size(30, 26);
             this.btnPlainte2.TabIndex = 684;
-            this.toolTip1.SetToolTip(this.btnPlainte2, "Aller à la plainte");
+            this.toolTip1.SetToolTip(this.btnPlainte2, "Aller à la consultation");
             this.btnPlainte2.UseVisualStyleBackColor = false;
             this.btnPlainte2.Click += new System.EventHandler(this.btnPlainte2_Click);
             // 
@@ -268,7 +268,7 @@
             this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDate.Location = new System.Drawing.Point(375, 74);
             this.dtpDate.Name = "dtpDate";
-            this.dtpDate.Size = new System.Drawing.Size(94, 28);
+            this.dtpDate.Size = new System.Drawing.Size(94, 24);
             this.dtpDate.TabIndex = 683;
             // 
             // label4
@@ -278,7 +278,7 @@
             this.label4.Location = new System.Drawing.Point(289, 79);
             this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(110, 22);
+            this.label4.Size = new System.Drawing.Size(90, 18);
             this.label4.TabIndex = 682;
             this.label4.Text = "Consulté le :";
             // 
@@ -287,9 +287,9 @@
             this.checkBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBox2.AutoSize = true;
             this.checkBox2.ForeColor = System.Drawing.Color.MediumBlue;
-            this.checkBox2.Location = new System.Drawing.Point(404, 74);
+            this.checkBox2.Location = new System.Drawing.Point(447, 74);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(233, 26);
+            this.checkBox2.Size = new System.Drawing.Size(190, 22);
             this.checkBox2.TabIndex = 681;
             this.checkBox2.Text = "Renseigner le répondant";
             this.checkBox2.UseVisualStyleBackColor = true;
@@ -303,7 +303,7 @@
             this.txtRepondant.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtRepondant.MaxLength = 75;
             this.txtRepondant.Name = "txtRepondant";
-            this.txtRepondant.Size = new System.Drawing.Size(314, 28);
+            this.txtRepondant.Size = new System.Drawing.Size(314, 24);
             this.txtRepondant.TabIndex = 679;
             // 
             // label3
@@ -313,7 +313,7 @@
             this.label3.Location = new System.Drawing.Point(289, 106);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(108, 22);
+            this.label3.Size = new System.Drawing.Size(88, 18);
             this.label3.TabIndex = 680;
             this.label3.Text = "Répondant :";
             // 
@@ -332,7 +332,7 @@
             "parenté"});
             this.cboLienRepondant.Location = new System.Drawing.Point(375, 132);
             this.cboLienRepondant.Name = "cboLienRepondant";
-            this.cboLienRepondant.Size = new System.Drawing.Size(276, 30);
+            this.cboLienRepondant.Size = new System.Drawing.Size(276, 26);
             this.cboLienRepondant.Sorted = true;
             this.cboLienRepondant.TabIndex = 685;
             // 
@@ -343,7 +343,7 @@
             this.label14.Location = new System.Drawing.Point(289, 135);
             this.label14.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(54, 22);
+            this.label14.Size = new System.Drawing.Size(43, 18);
             this.label14.TabIndex = 686;
             this.label14.Text = "Lien :";
             // 
@@ -408,7 +408,7 @@
             // 
             // FormConsulterPrise
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(703, 451);
@@ -467,8 +467,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn24;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
     }
 }

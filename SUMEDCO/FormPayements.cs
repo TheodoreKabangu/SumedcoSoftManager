@@ -22,7 +22,7 @@ namespace SUMEDCO
         }
         ClassCompta cc = new ClassCompta();
         public string poste, motif = "", statut_examen = "";
-        public int idproduit = 0, idcommande = 0;
+        public int idutilisateur = 0, idcommande = 0;
         private void btnQuitter_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -31,6 +31,42 @@ namespace SUMEDCO
         private void btnRecherche_Click(object sender, EventArgs e)
         {
             cc.AfficherPayement(this);
+        }
+
+        private void cboMonnaie_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cc.AfficherPayement(this);
+        }
+
+        private void dgvPayement_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (annuler_recette)
+            {
+                if (dgvPayement.RowCount != 0 && dgvPayement.CurrentRow.Index < dgvPayement.RowCount - 2)
+                    btnAnnuler.Enabled = true;
+                else
+                    btnAnnuler.Enabled = false;
+            }
+        }
+        public bool fermeture_succes, annuler_recette;
+        private void btnAnnuler_Click(object sender, EventArgs e)
+        {
+            if (cboAnnulation.Text == "")
+                cboAnnulation.Enabled = true;
+            else
+            {
+                cc.AnnulerPayement(this);
+                if(annuler_recette)
+                {
+                    fermeture_succes = true;
+                    this.Hide();
+                }
+            }
+        }
+
+        private void cboAnnulation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

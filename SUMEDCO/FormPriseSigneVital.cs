@@ -18,30 +18,16 @@ namespace SUMEDCO
         }
         ClassCompta cc = new ClassCompta();
         ClassMalade cm = new ClassMalade();
-        public int idlignedoublon = 0,
-            idpatient = 0,
+        public int idpatient = 0,
             idmedecin = 0,
             idprise = 0,
-            idrecette = 0,
-            nbligne_trouve=0;
+            idrecette = 0;
         public bool fermeture_succes, reaffecter;
         public string numcompte = "";
         private void cboCatService_DropDown(object sender, EventArgs e)
         {
             
         }
-
-        private void cboCatService_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void cboService_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cm.ValiderLigne(this);
-        }
-
-
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
             cm.AjouterPrise(this);           

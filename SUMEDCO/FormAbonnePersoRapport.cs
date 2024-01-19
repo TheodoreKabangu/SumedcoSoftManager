@@ -19,34 +19,25 @@ namespace SUMEDCO
         ClassMalade cm = new ClassMalade();
         ClassCompta cc = new ClassCompta();
         public int identreprise;
+        public string numcompte = "";
 
         //public DataGridView dgv = new DataGridView();
-        private void cboTypePatient_DropDown(object sender, EventArgs e)
-        {
-            cm.ChargerCombo(cboTypePatient, "typepatient");
-            cboTypePatient.Items.Remove("payant");
-        }
         public ComboBox cbonumcompte = new ComboBox();
-        private void cboTypePatient_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if(cboTypePatient.Text == "abonné")
-            {
-                dgvRapport.Columns[5].Visible = true;
-                cboEntreprise.Enabled = true;
-                txtTaux.Enabled = true;
-            }
-            else
-            {
-                dgvRapport.Columns[5].Visible = false;
-                cboEntreprise.Items.Clear();
-                cboEntreprise.Enabled = false;
-                txtTaux.Enabled = false;
-            }
-        }
 
         private void cboEntreprise_SelectedIndexChanged(object sender, EventArgs e)
         {
-            identreprise = cc.TrouverId("entreprise", cboEntreprise.Text);
+            if(dgvRapport.RowCount != 0)
+            {
+                dgvRapport.Rows.Clear();
+                for (int i = dgvRapport.ColumnCount-1; i >=6 ; i--)
+                {
+                    dgvRapport.Columns.RemoveAt(i);
+                }
+            }
+            identreprise = cc.TrouverId("entreprise", cboEntreprise.Text); 
+            cc.AfficherAbonnePerso(this);
+            if (dgvRapport.RowCount != 0) 
+                btnImprimer.Enabled = true;
         }
 
         private void cboEntreprise_DropDown(object sender, EventArgs e)
@@ -56,39 +47,14 @@ namespace SUMEDCO
         public int taux;
         private void FormAbonnePersoRapport_Shown(object sender, EventArgs e)
         {
-            taux = cc.VerifierTaux(DateTime.Now.Date, "valeur");
-            lblTaux.Text =  taux + " CDF";            
-        }
-
-        private void btnRecherche_Click(object sender, EventArgs e)
-        {
-            dgvRapport.Rows.Clear();
-            cc.RubriquesRapport(this);
-
-            if(cboTypePatient.Text == "abonné")
+            if (cc.VerifierTaux(DateTime.Now.Date, "") == 0)
             {
-                cc.AfficherAbonne(this);
-                cm.AfficherPatient(dgvRapport, 1, 2);
-
-                cc.CalculDepense(this);
-                cc.CalculTotalLigne2(this);
-                cc.CalculerTotaux(this);
-
-                lblTotalCDF.Text = (double.Parse(dgvRapport.Rows[dgvRapport.RowCount - 1].Cells[dgvRapport.ColumnCount - 1].Value.ToString()) + 0.1 * double.Parse(dgvRapport.Rows[dgvRapport.RowCount - 1].Cells[dgvRapport.ColumnCount - 1].Value.ToString())).ToString("0.00");
-                lblTotalUSD.Text = (double.Parse(lblTotalCDF.Text) / taux).ToString("0.00");
+                taux = cc.ChangerDate(this, new DateTaux());
             }
             else
-            {
-                cc.AfficherEmploye(this);
-                cm.AfficherPatient(dgvRapport, 1, 2);
-
-                cc.CalculTotalLigne(this);
-                cc.CalculerTotaux(this);
-
-                lblTotalUSD.Text = "0";
-                lblTotalCDF.Text = "0";
-            }
-            btnImprimer.Enabled = true;
+                taux = cc.VerifierTaux(DateTime.Now.Date, "valeur");
+            lblTaux.Text =  taux + " CDF";
+            cc.VerouillerColonne(this);
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -99,6 +65,35 @@ namespace SUMEDCO
         private void btnImprimer_Click(object sender, EventArgs e)
         {
             cc.ImprimerRapport(this);
+        }
+
+        private void checkBox1_Click(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                if (dgvRapport.RowCount != 0)
+                {
+                    dgvRapport.Rows.Clear();
+                    for (int i = dgvRapport.ColumnCount - 1; i >= 6; i--)
+                    {
+                        dgvRapport.Columns.RemoveAt(i);
+                    }
+                }
+                cc.AfficherAbonnePerso(this);
+                if (dgvRapport.RowCount != 0)
+                    btnImprimer.Enabled = true;
+            }
+            else
+            {
+                if (dgvRapport.RowCount != 0)
+                {
+                    dgvRapport.Rows.Clear();
+                    for (int i = dgvRapport.ColumnCount - 1; i >= 6; i--)
+                    {
+                        dgvRapport.Columns.RemoveAt(i);
+                    }
+                }
+            }
         }
     }
 }

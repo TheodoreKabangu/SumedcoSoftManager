@@ -30,7 +30,7 @@ namespace SUMEDCO
 
         private void btnService_Click(object sender, EventArgs e)
         {
-            cs.AfficherSousForm(this, new FormService());
+            new FormService().ShowDialog();
         }
 
         private void btnMedecin_Click(object sender, EventArgs e)

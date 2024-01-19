@@ -50,7 +50,6 @@ namespace SUMEDCO
                 if (poste == "abonné")
                 {
                     cboTypeFacture.Items.Remove("immédiat");
-                    cboPayeur.Items.Remove("passant");
                 }
                 cc.ChargerProduit(this, "");
             }
@@ -66,30 +65,16 @@ namespace SUMEDCO
             }
             if (cc.VerifierTaux(DateTime.Now.Date, "") == 0)
             {
-                cc.ChangerDate(new DateTaux(), this, lblDateOperation, lblTaux);
+                cc.ChangerDate(new DateTaux(), this, lblDate, lblTaux);
                 cboTypeFacture.Select();
             }
             else
             {
-                lblDateOperation.Text = DateTime.Now.ToShortDateString();
+                lblDate.Text = DateTime.Now.ToShortDateString();
                 lblTaux.Text = cc.VerifierTaux(DateTime.Now.Date, "valeur").ToString() + " CDF";
                 cboTypeFacture.Select();
             }
         }
-        private void txtPayeur_Enter(object sender, EventArgs e)
-        {
-            if (cboTypeFacture.Text == "")
-            {
-                MessageBox.Show("Aucun type de facture n'a été sélectionné", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                cboTypeFacture.Select();
-            }
-            else if(cboTypeFacture.Text=="différé" && cboPayeur.Text =="")
-            {
-                MessageBox.Show("Renseignez à qui est destinée la facture différée", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                cboPayeur.Select();
-            }
-        }
-        FormFacturePatient f = new FormFacturePatient();
         private void btnRecherche_Click(object sender, EventArgs e)
         {
             if(txtRecherche.Text != "")
@@ -105,30 +90,37 @@ namespace SUMEDCO
 
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
-            if (cboTypeFacture.Text != "" && cboPayeur.Text != "")
+            if (cboTypeFacture.Text != "" && txtPayeur.Text != "")
             {
-                if (cboPayeur.Text == "passant")
+                if (txtPayeur.Enabled)
                 {
-                    if (txtPayeur.Text != "" && txtContacts.Text != "")
+                    if (cboSexe.Text != "")
                         cc.Enregistrer(this);
                     else
-                        MessageBox.Show("Rassurez-vous que tous les champs ont des valeurs", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Désolé! Champ(s) obligatoire(s) vide(s)\nRemplissez-le(s).", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
+                {
                     cc.Enregistrer(this);
+                    if (recettePatientConsulte)
+                    {
+                        fermeture_succes = true;
+                        this.Hide();
+                    }
+                }
             }
             else
-				MessageBox.Show("Rassurez-vous que tous les champs ont des valeurs", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Désolé! Champ(s) obligatoire(s) vide(s)\nRemplissez-le(s).", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);                             
         }
         private void btnDate_Click(object sender, EventArgs e)
         {
-            cc.ChangerDate(new DateTaux(), this, lblDateOperation, lblTaux);
+            cc.ChangerDate(new DateTaux(), this, lblDate, lblTaux);
             cboTypeFacture.Select();
         }
 
         private void cboTypeFacture_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cboPayeur.Select();
+            
         }
         private void dgv1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -141,17 +133,7 @@ namespace SUMEDCO
 
         private void cboPayeur_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboPayeur.Text == "patient")
-            {
-                txtPayeur.Enabled = false;
-                txtContacts.Enabled = false;
-                cm.TrouverPatient(this, new FormFacturePatient());
-            }
-            else
-            {
-                txtPayeur.Enabled = true;
-                txtContacts.Enabled = true;
-            }
+            
         }
 
         private void btnRetirer_Click(object sender, EventArgs e)
@@ -170,6 +152,20 @@ namespace SUMEDCO
             btnRetirerTout.Enabled = false;
             dgvFacture.Rows.Clear();
             txtTotal.Text = "0";
+        }
+
+        private void txtPayeur_Enter(object sender, EventArgs e)
+        {
+            if (cboTypeFacture.Text == "")
+            {
+                MessageBox.Show("Aucun type de facture n'a été sélectionné", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cboTypeFacture.Select();
+            }
+        }
+
+        private void cboSexe_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtTel.Focus();
         }
     }
 }

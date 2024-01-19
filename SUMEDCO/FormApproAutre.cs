@@ -26,7 +26,8 @@ namespace SUMEDCO
 
         ClassCompta cc = new ClassCompta();
         ClassStock cs = new ClassStock();
-        public string categorie_produit = "";
+        public string compteFournis = "",
+            categorie_produit = "";
         private void chboxLot_Click(object sender, EventArgs e)
         {
             if (chboxLot.Checked)

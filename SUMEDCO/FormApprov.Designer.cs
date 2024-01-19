@@ -41,6 +41,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btnNewFournisseur = new System.Windows.Forms.Button();
             this.btnEnregistrer = new System.Windows.Forms.Button();
             this.btnRetirer = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -71,28 +72,44 @@
             this.txtTaux = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.btnNewFournisseur = new System.Windows.Forms.Button();
             this.txtValeurMin = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppro)).BeginInit();
             this.SuspendLayout();
+            // 
+            // btnNewFournisseur
+            // 
+            this.btnNewFournisseur.BackColor = System.Drawing.Color.Transparent;
+            this.btnNewFournisseur.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnNewFournisseur.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnNewFournisseur.FlatAppearance.BorderSize = 0;
+            this.btnNewFournisseur.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnNewFournisseur.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNewFournisseur.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewFournisseur.Image = ((System.Drawing.Image)(resources.GetObject("btnNewFournisseur.Image")));
+            this.btnNewFournisseur.Location = new System.Drawing.Point(320, 56);
+            this.btnNewFournisseur.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnNewFournisseur.Name = "btnNewFournisseur";
+            this.btnNewFournisseur.Size = new System.Drawing.Size(30, 23);
+            this.btnNewFournisseur.TabIndex = 779;
+            this.toolTip1.SetToolTip(this.btnNewFournisseur, "Nouveau fournisseur");
+            this.btnNewFournisseur.UseVisualStyleBackColor = false;
+            this.btnNewFournisseur.Click += new System.EventHandler(this.btnNewFournisseur_Click);
             // 
             // btnEnregistrer
             // 
             this.btnEnregistrer.BackColor = System.Drawing.Color.Transparent;
             this.btnEnregistrer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnEnregistrer.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnEnregistrer.FlatAppearance.BorderSize = 0;
             this.btnEnregistrer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
             this.btnEnregistrer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEnregistrer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEnregistrer.Image = ((System.Drawing.Image)(resources.GetObject("btnEnregistrer.Image")));
-            this.btnEnregistrer.Location = new System.Drawing.Point(578, 86);
+            this.btnEnregistrer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEnregistrer.Location = new System.Drawing.Point(521, 411);
             this.btnEnregistrer.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnEnregistrer.Name = "btnEnregistrer";
-            this.btnEnregistrer.Size = new System.Drawing.Size(30, 23);
+            this.btnEnregistrer.Size = new System.Drawing.Size(80, 27);
             this.btnEnregistrer.TabIndex = 780;
-            this.toolTip1.SetToolTip(this.btnEnregistrer, "Enregistrer");
+            this.btnEnregistrer.Text = "Enregistrer";
             this.btnEnregistrer.UseVisualStyleBackColor = false;
             this.btnEnregistrer.Click += new System.EventHandler(this.btnEnregistrer_Click);
             // 
@@ -101,17 +118,15 @@
             this.btnRetirer.BackColor = System.Drawing.Color.Transparent;
             this.btnRetirer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnRetirer.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnRetirer.FlatAppearance.BorderSize = 0;
             this.btnRetirer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
             this.btnRetirer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRetirer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRetirer.Image = ((System.Drawing.Image)(resources.GetObject("btnRetirer.Image")));
-            this.btnRetirer.Location = new System.Drawing.Point(618, 86);
+            this.btnRetirer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRetirer.Location = new System.Drawing.Point(611, 411);
             this.btnRetirer.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnRetirer.Name = "btnRetirer";
-            this.btnRetirer.Size = new System.Drawing.Size(30, 23);
+            this.btnRetirer.Size = new System.Drawing.Size(80, 27);
             this.btnRetirer.TabIndex = 780;
-            this.toolTip1.SetToolTip(this.btnRetirer, "Retirer");
+            this.btnRetirer.Text = "Retirer";
             this.btnRetirer.UseVisualStyleBackColor = false;
             this.btnRetirer.Click += new System.EventHandler(this.btnRetirer_Click);
             // 
@@ -332,10 +347,10 @@
             this.cboFournisseur.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cboFournisseur.FormattingEnabled = true;
             this.cboFournisseur.IntegralHeight = false;
-            this.cboFournisseur.Location = new System.Drawing.Point(106, 56);
+            this.cboFournisseur.Location = new System.Drawing.Point(92, 54);
             this.cboFournisseur.MaxDropDownItems = 10;
             this.cboFournisseur.Name = "cboFournisseur";
-            this.cboFournisseur.Size = new System.Drawing.Size(208, 30);
+            this.cboFournisseur.Size = new System.Drawing.Size(222, 30);
             this.cboFournisseur.TabIndex = 769;
             this.cboFournisseur.DropDown += new System.EventHandler(this.cboFournisseur_DropDown);
             this.cboFournisseur.SelectedIndexChanged += new System.EventHandler(this.cboFournisseur_SelectedIndexChanged);
@@ -343,7 +358,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(8, 56);
+            this.label3.Location = new System.Drawing.Point(8, 54);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(115, 22);
@@ -360,7 +375,7 @@
             this.cboMonnaie.Items.AddRange(new object[] {
             "CDF",
             "USD"});
-            this.cboMonnaie.Location = new System.Drawing.Point(449, 54);
+            this.cboMonnaie.Location = new System.Drawing.Point(449, 52);
             this.cboMonnaie.MaxDropDownItems = 10;
             this.cboMonnaie.Name = "cboMonnaie";
             this.cboMonnaie.Size = new System.Drawing.Size(69, 30);
@@ -370,7 +385,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(359, 59);
+            this.label7.Location = new System.Drawing.Point(359, 57);
             this.label7.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(100, 22);
@@ -420,6 +435,7 @@
             this.txtTaux.Size = new System.Drawing.Size(52, 28);
             this.txtTaux.TabIndex = 775;
             this.txtTaux.Text = "20";
+            this.txtTaux.TextChanged += new System.EventHandler(this.txtTaux_TextChanged);
             // 
             // label12
             // 
@@ -443,28 +459,11 @@
             this.checkBox2.UseVisualStyleBackColor = true;
             this.checkBox2.Click += new System.EventHandler(this.checkBox2_Click);
             // 
-            // btnNewFournisseur
-            // 
-            this.btnNewFournisseur.BackColor = System.Drawing.Color.Transparent;
-            this.btnNewFournisseur.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnNewFournisseur.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnNewFournisseur.FlatAppearance.BorderSize = 0;
-            this.btnNewFournisseur.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnNewFournisseur.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNewFournisseur.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNewFournisseur.Image = ((System.Drawing.Image)(resources.GetObject("btnNewFournisseur.Image")));
-            this.btnNewFournisseur.Location = new System.Drawing.Point(320, 58);
-            this.btnNewFournisseur.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.btnNewFournisseur.Name = "btnNewFournisseur";
-            this.btnNewFournisseur.Size = new System.Drawing.Size(30, 23);
-            this.btnNewFournisseur.TabIndex = 779;
-            this.btnNewFournisseur.UseVisualStyleBackColor = false;
-            // 
             // txtValeurMin
             // 
             this.txtValeurMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtValeurMin.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.txtValeurMin.Location = new System.Drawing.Point(639, 409);
+            this.txtValeurMin.Location = new System.Drawing.Point(625, 51);
             this.txtValeurMin.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtValeurMin.MaxLength = 3;
             this.txtValeurMin.Name = "txtValeurMin";
@@ -477,7 +476,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(541, 412);
+            this.label2.Location = new System.Drawing.Point(527, 54);
             this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(110, 22);

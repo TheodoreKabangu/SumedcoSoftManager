@@ -140,7 +140,7 @@
             this.txtUtilisateur.Location = new System.Drawing.Point(65, 81);
             this.txtUtilisateur.MaxLength = 10;
             this.txtUtilisateur.Name = "txtUtilisateur";
-            this.txtUtilisateur.Size = new System.Drawing.Size(201, 19);
+            this.txtUtilisateur.Size = new System.Drawing.Size(201, 28);
             this.txtUtilisateur.TabIndex = 1;
             this.txtUtilisateur.Text = "Utilisateur";
             this.txtUtilisateur.Click += new System.EventHandler(this.txtUtilisateur_Click);
@@ -172,7 +172,7 @@
             this.txtAncienMdPass.Location = new System.Drawing.Point(65, 120);
             this.txtAncienMdPass.MaxLength = 10;
             this.txtAncienMdPass.Name = "txtAncienMdPass";
-            this.txtAncienMdPass.Size = new System.Drawing.Size(201, 19);
+            this.txtAncienMdPass.Size = new System.Drawing.Size(201, 28);
             this.txtAncienMdPass.TabIndex = 2;
             this.txtAncienMdPass.Text = "Ancien mot de passe";
             this.txtAncienMdPass.Enter += new System.EventHandler(this.txtAncienMdPass_Enter);
@@ -186,9 +186,10 @@
             this.txtConfirmerMdPass.Location = new System.Drawing.Point(65, 202);
             this.txtConfirmerMdPass.MaxLength = 10;
             this.txtConfirmerMdPass.Name = "txtConfirmerMdPass";
-            this.txtConfirmerMdPass.Size = new System.Drawing.Size(201, 19);
+            this.txtConfirmerMdPass.Size = new System.Drawing.Size(201, 28);
             this.txtConfirmerMdPass.TabIndex = 4;
             this.txtConfirmerMdPass.Text = "Confirmer le mot de passe";
+            this.txtConfirmerMdPass.Click += new System.EventHandler(this.txtConfirmerMdPass_Click);
             this.txtConfirmerMdPass.Enter += new System.EventHandler(this.txtConfirmerMdPass_Enter);
             // 
             // panel5
@@ -219,9 +220,10 @@
             this.txtNouveauMdPass.Location = new System.Drawing.Point(65, 161);
             this.txtNouveauMdPass.MaxLength = 10;
             this.txtNouveauMdPass.Name = "txtNouveauMdPass";
-            this.txtNouveauMdPass.Size = new System.Drawing.Size(201, 19);
+            this.txtNouveauMdPass.Size = new System.Drawing.Size(201, 28);
             this.txtNouveauMdPass.TabIndex = 3;
             this.txtNouveauMdPass.Text = "Nouveau mot de passe";
+            this.txtNouveauMdPass.Click += new System.EventHandler(this.txtNouveauMdPass_Click);
             this.txtNouveauMdPass.Enter += new System.EventHandler(this.txtNouveauMdPass_Enter);
             // 
             // panel6
@@ -245,7 +247,7 @@
             // 
             // FormConnexionPass
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(289, 375);

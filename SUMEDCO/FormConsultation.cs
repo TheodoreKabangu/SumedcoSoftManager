@@ -19,13 +19,7 @@ namespace SUMEDCO
         ClassMalade cm = new ClassMalade();
         public bool fermeture_succes;
         public string poste;
-        public int idmedecin = 0, idconsultation = 0, idpatient = 0;
-
-        private void btnQuitter_Click(object sender, EventArgs e)
-        {
-            fermeture_succes = false;
-            this.Hide();
-        }
+        public int idmedecin = 0, idconsultation = 0, idpatient = 0, iddossier= 0;
         private void btnRecherche_Click(object sender, EventArgs e)
         {
             cm.Afficher(this, "recherche");
@@ -36,11 +30,10 @@ namespace SUMEDCO
             if (dgvPatient.RowCount != 0)
             {
                 idconsultation = int.Parse(dgvPatient.CurrentRow.Cells[0].Value.ToString());
-                idpatient = cm.TrouverId("patient", dgvPatient.CurrentRow.Cells[1].Value.ToString());
+                idpatient = Convert.ToInt32(dgvPatient.CurrentRow.Cells[5].Value);
                 btnDossier.Enabled = true;
                 btnConsultation.Enabled = true;
-                btnHospitaliser.Enabled = true;
-                btnDeces.Enabled = true;
+                cm.FichiersConsultation(this);
             }
         }
 
@@ -61,14 +54,18 @@ namespace SUMEDCO
             btnConsultation.Enabled = false;
         }
 
-        private void btnHospitaliser_Click(object sender, EventArgs e)
+        private void dgvDossier_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            btnHospitaliser.Enabled = false;
+            if (dgvDossier.RowCount != 0)
+            {
+                iddossier = Convert.ToInt32(dgvDossier.CurrentRow.Cells[0].Value);
+                btnFiche.Enabled = true;
+            }
         }
 
-        private void btnDeces_Click(object sender, EventArgs e)
+        private void btnFiche_Click(object sender, EventArgs e)
         {
-            btnDeces.Enabled = false;
+            cm.OuvrirFicheManuscrite(this);
         }
 
     }

@@ -37,18 +37,18 @@
             this.label10 = new System.Windows.Forms.Label();
             this.pnlMenu = new System.Windows.Forms.Panel();
             this.btnAdmin = new System.Windows.Forms.Button();
-            this.btnAbonne = new System.Windows.Forms.Button();
             this.btnStock = new System.Windows.Forms.Button();
             this.btnPharma = new System.Windows.Forms.Button();
             this.btnCompta = new System.Windows.Forms.Button();
             this.btnDepense = new System.Windows.Forms.Button();
+            this.btnLabo = new System.Windows.Forms.Button();
             this.btnMalade = new System.Windows.Forms.Button();
             this.btnInfirmerie = new System.Windows.Forms.Button();
+            this.btnImagerie = new System.Windows.Forms.Button();
             this.btnRecette = new System.Windows.Forms.Button();
             this.btnReception = new System.Windows.Forms.Button();
+            this.btnAbonne = new System.Windows.Forms.Button();
             this.bunifuElipse2 = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.btnImagerie = new System.Windows.Forms.Button();
-            this.btnLabo = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.pnlMenu.SuspendLayout();
             this.SuspendLayout();
@@ -160,30 +160,6 @@
             this.btnAdmin.UseVisualStyleBackColor = false;
             this.btnAdmin.Click += new System.EventHandler(this.btnAdmin_Click);
             // 
-            // btnAbonne
-            // 
-            this.btnAbonne.BackColor = System.Drawing.Color.Transparent;
-            this.btnAbonne.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAbonne.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnAbonne.FlatAppearance.BorderSize = 0;
-            this.btnAbonne.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnAbonne.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAbonne.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAbonne.ForeColor = System.Drawing.Color.Black;
-            this.btnAbonne.Image = ((System.Drawing.Image)(resources.GetObject("btnAbonne.Image")));
-            this.btnAbonne.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAbonne.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnAbonne.Location = new System.Drawing.Point(0, 0);
-            this.btnAbonne.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnAbonne.Name = "btnAbonne";
-            this.btnAbonne.Size = new System.Drawing.Size(362, 69);
-            this.btnAbonne.TabIndex = 562;
-            this.btnAbonne.Text = "Abonnés/Employés";
-            this.btnAbonne.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAbonne.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAbonne.UseVisualStyleBackColor = false;
-            this.btnAbonne.Click += new System.EventHandler(this.btnAbonne_Click);
-            // 
             // btnStock
             // 
             this.btnStock.BackColor = System.Drawing.Color.Transparent;
@@ -280,6 +256,28 @@
             this.btnDepense.UseVisualStyleBackColor = false;
             this.btnDepense.Click += new System.EventHandler(this.btnDepense_Click);
             // 
+            // btnLabo
+            // 
+            this.btnLabo.BackColor = System.Drawing.Color.Transparent;
+            this.btnLabo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnLabo.FlatAppearance.BorderSize = 0;
+            this.btnLabo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnLabo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLabo.Font = new System.Drawing.Font("Century Gothic", 12F);
+            this.btnLabo.ForeColor = System.Drawing.Color.Black;
+            this.btnLabo.Image = ((System.Drawing.Image)(resources.GetObject("btnLabo.Image")));
+            this.btnLabo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLabo.Location = new System.Drawing.Point(0, 414);
+            this.btnLabo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnLabo.Name = "btnLabo";
+            this.btnLabo.Size = new System.Drawing.Size(362, 69);
+            this.btnLabo.TabIndex = 567;
+            this.btnLabo.Text = "Laboratoire";
+            this.btnLabo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLabo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnLabo.UseVisualStyleBackColor = false;
+            this.btnLabo.Click += new System.EventHandler(this.btnLabo_Click);
+            // 
             // btnMalade
             // 
             this.btnMalade.BackColor = System.Drawing.Color.Transparent;
@@ -325,6 +323,28 @@
             this.btnInfirmerie.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnInfirmerie.UseVisualStyleBackColor = false;
             this.btnInfirmerie.Click += new System.EventHandler(this.btnInfirmerie_Click);
+            // 
+            // btnImagerie
+            // 
+            this.btnImagerie.BackColor = System.Drawing.Color.Transparent;
+            this.btnImagerie.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnImagerie.FlatAppearance.BorderSize = 0;
+            this.btnImagerie.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnImagerie.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImagerie.Font = new System.Drawing.Font("Century Gothic", 12F);
+            this.btnImagerie.ForeColor = System.Drawing.Color.Black;
+            this.btnImagerie.Image = ((System.Drawing.Image)(resources.GetObject("btnImagerie.Image")));
+            this.btnImagerie.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnImagerie.Location = new System.Drawing.Point(0, 207);
+            this.btnImagerie.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnImagerie.Name = "btnImagerie";
+            this.btnImagerie.Size = new System.Drawing.Size(362, 69);
+            this.btnImagerie.TabIndex = 566;
+            this.btnImagerie.Text = "Imagerie";
+            this.btnImagerie.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnImagerie.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnImagerie.UseVisualStyleBackColor = false;
+            this.btnImagerie.Click += new System.EventHandler(this.btnImagerie_Click);
             // 
             // btnRecette
             // 
@@ -372,53 +392,34 @@
             this.btnReception.UseVisualStyleBackColor = false;
             this.btnReception.Click += new System.EventHandler(this.btnReception_Click);
             // 
+            // btnAbonne
+            // 
+            this.btnAbonne.BackColor = System.Drawing.Color.Transparent;
+            this.btnAbonne.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAbonne.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnAbonne.FlatAppearance.BorderSize = 0;
+            this.btnAbonne.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnAbonne.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAbonne.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAbonne.ForeColor = System.Drawing.Color.Black;
+            this.btnAbonne.Image = ((System.Drawing.Image)(resources.GetObject("btnAbonne.Image")));
+            this.btnAbonne.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAbonne.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnAbonne.Location = new System.Drawing.Point(0, 0);
+            this.btnAbonne.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnAbonne.Name = "btnAbonne";
+            this.btnAbonne.Size = new System.Drawing.Size(362, 69);
+            this.btnAbonne.TabIndex = 562;
+            this.btnAbonne.Text = "Abonnés/Employés";
+            this.btnAbonne.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAbonne.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAbonne.UseVisualStyleBackColor = false;
+            this.btnAbonne.Click += new System.EventHandler(this.btnAbonne_Click);
+            // 
             // bunifuElipse2
             // 
             this.bunifuElipse2.ElipseRadius = 20;
             this.bunifuElipse2.TargetControl = this.btnExit;
-            // 
-            // btnImagerie
-            // 
-            this.btnImagerie.BackColor = System.Drawing.Color.Transparent;
-            this.btnImagerie.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnImagerie.FlatAppearance.BorderSize = 0;
-            this.btnImagerie.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnImagerie.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImagerie.Font = new System.Drawing.Font("Century Gothic", 12F);
-            this.btnImagerie.ForeColor = System.Drawing.Color.Black;
-            this.btnImagerie.Image = ((System.Drawing.Image)(resources.GetObject("btnImagerie.Image")));
-            this.btnImagerie.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImagerie.Location = new System.Drawing.Point(0, 207);
-            this.btnImagerie.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnImagerie.Name = "btnImagerie";
-            this.btnImagerie.Size = new System.Drawing.Size(362, 69);
-            this.btnImagerie.TabIndex = 566;
-            this.btnImagerie.Text = "Imagerie";
-            this.btnImagerie.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImagerie.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnImagerie.UseVisualStyleBackColor = false;
-            this.btnImagerie.Click += new System.EventHandler(this.btnImagerie_Click);
-            // 
-            // btnLabo
-            // 
-            this.btnLabo.BackColor = System.Drawing.Color.Transparent;
-            this.btnLabo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnLabo.FlatAppearance.BorderSize = 0;
-            this.btnLabo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnLabo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLabo.Font = new System.Drawing.Font("Century Gothic", 12F);
-            this.btnLabo.ForeColor = System.Drawing.Color.Black;
-            this.btnLabo.Image = ((System.Drawing.Image)(resources.GetObject("btnLabo.Image")));
-            this.btnLabo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLabo.Location = new System.Drawing.Point(0, 414);
-            this.btnLabo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnLabo.Name = "btnLabo";
-            this.btnLabo.Size = new System.Drawing.Size(362, 69);
-            this.btnLabo.TabIndex = 567;
-            this.btnLabo.Text = "Laboratoire";
-            this.btnLabo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLabo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnLabo.UseVisualStyleBackColor = false;
             // 
             // FormAccueil
             // 

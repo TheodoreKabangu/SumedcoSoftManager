@@ -40,7 +40,6 @@ namespace SUMEDCO
                 if (poste == "abonné")
                 {
                     cboTypeFacture.Items.Remove("immédiat");
-                    cboPayeur.Items.Remove("passant");
                 }
                 cc.ChargerCategorie(this, "");
             }
@@ -56,32 +55,32 @@ namespace SUMEDCO
             }
             if (cc.VerifierTaux(DateTime.Now.Date, "") == 0)
             {
-                cc.ChangerDate(new DateTaux(), this, lblDateOperation, lblTaux);
+                cc.ChangerDate(new DateTaux(), this, lblDate, lblTaux);
                 cboTypeFacture.Select();
             }
             else
             {
-                lblDateOperation.Text = DateTime.Now.ToShortDateString();
+                lblDate.Text = DateTime.Now.ToShortDateString();
                 lblTaux.Text = cc.VerifierTaux(DateTime.Now.Date, "valeur").ToString() + " CDF";
                 cboTypeFacture.Select();
             }
         }
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
-            if(cboTypeFacture.Text != "" && cboPayeur.Text != "")
+            if (cboTypeFacture.Text != "" && txtPayeur.Text != "")
             {
-                if (cboPayeur.Text == "passant")
+                if (txtPayeur.Enabled)
                 {
-                   if(txtPayeur.Text != "" && txtContacts.Text != "")
-                       cc.Enregistrer(this);
-                   else
-                       MessageBox.Show("Rassurez-vous que tous les champs ont des valeurs", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    if(cboSexe.Text != "")
+                        cc.Enregistrer(this);
+                    else 
+                        MessageBox.Show("Désolé! Champ(s) obligatoire(s) vide(s)\nRemplissez-le(s).", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                     cc.Enregistrer(this);
             }
             else
-                MessageBox.Show("Rassurez-vous que tous les champs ont des valeurs", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Désolé! Champ(s) obligatoire(s) vide(s)\nRemplissez-le(s).", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);                  
         }
 
         private void btnRetirer_Click(object sender, EventArgs e)
@@ -124,20 +123,20 @@ namespace SUMEDCO
 
         private void txtPayeur_Enter(object sender, EventArgs e)
         {
-            if (cboPayeur.Text == "")
+            if (cboTypeFacture.Text == "")
             {
-                MessageBox.Show("Aucun type de payeur n'a été sélectionné", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Aucun type de facture n'a été sélectionné", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 cboTypeFacture.Select();
             }
         }
 
         private void cboTypeFacture_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cboPayeur.Select();
+            
         }
         private void btnDate_Click(object sender, EventArgs e)
         {
-            cc.ChangerDate(new DateTaux(), this, lblDateOperation, lblTaux);
+            cc.ChangerDate(new DateTaux(), this, lblDate, lblTaux);
             cboTypeFacture.Select();
         }
         private void dgv1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -146,40 +145,6 @@ namespace SUMEDCO
             {
                 if (dgv1.CurrentRow.Cells[1].Selected)
                     cc.ChargerService(this, new FormFacture());
-            }
-        }
-
-        private void cboPayeur_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if(cboPayeur.Text == "patient")
-            {
-                txtPayeur.Enabled = false ;
-                txtContacts.Enabled = false;
-                cm.TrouverPatient(this, new FormFacturePatient()); 
-            }
-            else
-            {
-                txtPayeur.Text = txtContacts.Text = "";
-                txtPayeur.Enabled = true;
-                txtContacts.Enabled = true;
-            }
-        }
-
-        private void cboPayeur_Enter(object sender, EventArgs e)
-        {
-            if (cboTypeFacture.Text == "")
-            {
-                MessageBox.Show("Aucun type de facture n'a été sélectionné", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                cboTypeFacture.Select();
-            }
-        }
-
-        private void txtContacts_Enter(object sender, EventArgs e)
-        {
-            if (txtPayeur.Text == "")
-            {
-                MessageBox.Show("Aucun payeur n'a été fourni", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                cboTypeFacture.Select();
             }
         }
 
@@ -213,6 +178,11 @@ namespace SUMEDCO
                 dgvFacture.CurrentRow.Cells[4].Value = 1;
                 cc.CalculerTotal(dgvFacture, txtTotal);
             }            
+        }
+
+        private void cboSexe_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtTel.Focus();
         }
 
     }

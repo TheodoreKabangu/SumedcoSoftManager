@@ -25,9 +25,9 @@ namespace SUMEDCO
         public int idexercice = 0,
             idoperation = 0,
             idAppro = 0;
-        public string caisse = "",
-            compteFournis = "",
+        public string compteFournis = "",
             poste = "",
+            depot = "",
             categorie_produit = "";
         public double prixvente = 0, 
             prix_achat = 0,
@@ -35,7 +35,7 @@ namespace SUMEDCO
         public bool lotvalide;
         private void cboFournisseur_DropDown(object sender, EventArgs e)
         {
-            cc.ChargerFournisseur(this);
+            cc.ChargerFournisseur(cboFournisseur);
         }
 
         private void FormApprov_Shown(object sender, EventArgs e)
@@ -50,7 +50,15 @@ namespace SUMEDCO
 
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
-            cc.Approvisionner(this);
+            if (poste == "comptable")
+            {
+                if (cboFournisseur.Text != "" && txtTaux.Text != "")
+                    cc.Approvisionner(this);
+                else
+                    MessageBox.Show("Désolé! Champ(s) obligatoire(s) vide(s)\nRemplissez-le(s).", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+                cc.Approvisionner(this);
         }
 
         private void dgvAppro_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -100,6 +108,16 @@ namespace SUMEDCO
         private void txtValeurMin_TextChanged(object sender, EventArgs e)
         {
             cm.TestEntier(txtValeurMin);
+        }
+
+        private void btnNewFournisseur_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Ajouter nouveau founisseur à partir du plan comptable", "Founisseur", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void txtTaux_TextChanged(object sender, EventArgs e)
+        {
+            cm.TestEntier(txtTaux);
         }       
     }
 }

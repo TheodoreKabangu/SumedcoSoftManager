@@ -68,12 +68,6 @@ namespace SUMEDCO
         {
             cc.Recuperer(this);
         }
-
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void cboCatService_DropDown(object sender, EventArgs e)
         {
             cc.ChargerCombo("catservice", cboCatService, 0);
@@ -81,7 +75,12 @@ namespace SUMEDCO
 
         private void btnAfficher_Click(object sender, EventArgs e)
         {
-            cc.Afficher(this, "recherche");
+            cc.Afficher(this);
+        }
+
+        private void cboSpecification_DropDown(object sender, EventArgs e)
+        {
+            cc.ChargerCombo("specificationservice", cboCatService, 0);
         }
 
     }

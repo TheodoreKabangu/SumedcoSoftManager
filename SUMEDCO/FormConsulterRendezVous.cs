@@ -19,11 +19,6 @@ namespace SUMEDCO
         ClassMalade cm = new ClassMalade();
         public int idrdv, idconsultation = 0;
         public bool fermeture_succes;
-        private void btnAnnuler_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
             cm.Enregistrer(this);

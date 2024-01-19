@@ -23,8 +23,7 @@ namespace SUMEDCO
         public Form activeForm = null;
         private void btnConsultation_Click(object sender, EventArgs e)
         {
-            statut = "nouveau";
-            cc.AfficherSousForm(this, new FormPatient());
+            cc.AfficherSousForm(this, new FormPatientRecherche());
         }
 
         private void btnQuitter_Click(object sender, EventArgs e)
@@ -45,19 +44,6 @@ namespace SUMEDCO
         private void btnRapport_Click(object sender, EventArgs e)
         {
             cc.AfficherSousForm(this, new FormReceptionRapport());
-            /*
-             * Ici on aura:
-             * un form pour présenter tous les malades qui sont entrés à une date ou pour une période donnée
-             * un form pour les factures des services, le montant global (pour immédiat, pour différé et le tout)
-             * un form pour les factures des produits, le montant global (pour immédiat, pour différé et le tout)
-             * 
-             */
-        }
-
-        private void btnAncien_Click(object sender, EventArgs e)
-        {
-            statut = "ancien";
-            cc.AfficherSousForm(this, new FormPatient());
         }
 
         private void btnChat_Click(object sender, EventArgs e)

@@ -25,7 +25,6 @@ namespace SUMEDCO
             idtypeabonne = 0,
             idrecette = 0,
             idservice,
-            idpayeur,
             idoperation = 0;
         public string type_patient= "",
             numcompte= "",
@@ -37,22 +36,17 @@ namespace SUMEDCO
         {
             if (cc.VerifierTaux(DateTime.Now.Date, "") == 0)
             {
-                cc.ChangerDate(new DateTaux(), this, lblDateOperation, lblTaux);
+                cc.ChangerDate(new DateTaux(), this, lblDate, lblTaux);
                 cboTypePatient.Select();
             }
             else
             {
-                lblDateOperation.Text = DateTime.Now.ToShortDateString();
+                lblDate.Text = DateTime.Now.ToShortDateString();
                 cboTypePatient.Select();
             }
             if (poste == "abonné")
                 cboTypeFacture.Items.Remove("immédiat");
         }
-        private void btnQuitter_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
             if(statut == "nouveau") cm.Annuler(this);
@@ -61,7 +55,7 @@ namespace SUMEDCO
         {
             if (cboTypePatient.Text.Contains("abonné"))
             {
-                if (idtypepatient != 0 && identreprise != 0 && idtypeabonne != 0 && num_service != "")
+                if (cboTypePatient.Text != "" && cboEntreprise.Text != "" && cboTypeAbonne.Text != "" && txtNumService.Text != "")
                 {
                     cm.EnregistrerPatient(this);
                 }
@@ -80,43 +74,13 @@ namespace SUMEDCO
             {
                 try
                 {
-                    if (int.Parse(txtAnnee.Text) > DateTime.Now.Year)
-                    {
-                        MessageBox.Show("L'année de naissance doit être inférieure ou égale à l'année en cours", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        txtAnnee.Text = txtAnnee.Text.Substring(0, txtAnnee.Text.Length - 1);
-                        btnAnnuler.Select();
-                    }
-                    else if (int.Parse(txtAnnee.Text) == DateTime.Now.Year)
-                    {
-                        if (int.Parse(txtMois.Text) > DateTime.Now.Month)
-                        {
-                            MessageBox.Show("Le mois de naissance doit être inférieur ou égal au mois en cours", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            txtMois.Text = txtMois.Text.Substring(0, txtMois.Text.Length - 1);
-                            btnAnnuler.Select();
-                        }
-                        else
-                        {
-                            if (txtAnnee.Text.Length == 4)
-                            {
-                                age = cm.AgePatient(txtMois.Text + "/" + txtAnnee.Text);
-                                lblAge.Text = string.Format("Age : {0}", age);
-                            }
-                        }
-                    }
-                    else
-                    {
-                        if (txtAnnee.Text.Length == 4)
-                        {
-                            age = cm.AgePatient(txtMois.Text + "/" + txtAnnee.Text);
-                            lblAge.Text = string.Format("Age : {0}", age);
-                        }
-                    }
+                    if(Convert.ToInt32(txtAnnee.Text)>1900)
+                        cm.AgePatient(this);
                 }
                 catch (Exception)
                 {
                     MessageBox.Show("Caractère interdit! Saisissez seuls les nombres entiers", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtAnnee.Text = txtAnnee.Text.Substring(0, txtAnnee.Text.Length - 1);
-                    btnAnnuler.Select();
                 }
             }
         }
@@ -133,68 +97,27 @@ namespace SUMEDCO
         private void btnAffecter_Click(object sender, EventArgs e)
         {
             if (service != "" && cboTypeFacture.Text != "")
-            {
-                type_patient = dgvPatient.CurrentRow.Cells[10].Value.ToString();
+            {               
                 cm.AjouterRecetteCas(this);
+                MessageBox.Show("Ajouté avec succès", "Enregistrement", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
-            {
-                MessageBox.Show("Type de consultation et/ou type de facture non renseignés", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+				MessageBox.Show("Type de consultation et/ou type de facture non renseignés", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
-
-        private void dgvPatient_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if(dgvPatient.RowCount !=0)
-            {
-                if (statut == "ancien")
-                {
-                    btnAffecter.Enabled = true;
-                    btnModifier.Enabled = true;
-                    btnSupprimer.Enabled = true;
-                    idpatient = int.Parse(dgvPatient.CurrentRow.Cells[0].Value.ToString());
-                    idpayeur = int.Parse(dgvPatient.CurrentRow.Cells[1].Value.ToString());
-                }
-                if (poste == "abonné")
-                    identreprise = cc.TrouverId("entreprise", dgvPatient.CurrentRow.Cells[12].Value.ToString());
-            }
-        }
-
-        private void txtRecherche_Enter(object sender, EventArgs e)
-        {
-            if(txtRecherche.Text =="Nom du patient") txtRecherche.Text = "";
-            txtRecherche.Focus();
-        }
-
-        private void btnRecherche_Click(object sender, EventArgs e)
-        {
-            cm.AfficherPatient(dgvPatient, txtRecherche, "recherche", poste, idpatient);
-        }
-
         private void btnModifier_Click(object sender, EventArgs e)
         {
-            if (btnModifier.ForeColor == SystemColors.ControlText)
+            if (cboTypePatient.Text.Contains("abonné"))
             {
-                btnEnregistrer.Enabled = false;
-                btnModifier.ForeColor = Color.MediumBlue;
-                btnModifier.BackColor = Color.LightSteelBlue;
-                cm.Recuperer(this);
-            }
-            else
-            {
-                if (cboTypePatient.Text.Contains("abonné"))
-                {
-                    if (idtypepatient != 0 && identreprise != 0 && idtypeabonne != 0 && num_service != "")
-                    {
-                        cm.Modifier(this);
-                    }
-                    else
-                        MessageBox.Show("Renseignez la relation entre le patient et son entreprise abonnée", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else
+                if (cboTypePatient.Text != "" && cboEntreprise.Text != "" && cboTypeAbonne.Text != "" && txtNumService.Text != "")
                 {
                     cm.Modifier(this);
                 }
+                else
+                    MessageBox.Show("Renseignez la relation entre le patient et son entreprise abonnée", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                cm.Modifier(this);
             }
         }
 
@@ -208,9 +131,11 @@ namespace SUMEDCO
             idtypepatient = cm.TrouverId("typepatient", cboTypePatient.Text);
             if (cboTypePatient.Text.Contains("abonné"))
             {
-                cm.AjouterAbonne(this, new FormAbonne());
+                groupBox2.Enabled = true;
+                cboEntreprise.Select();
             }
-            if (cboTypePatient.Text != "") txtNom.Focus();
+            else
+                txtNom.Focus();
         }
 
         private void txtNom_Enter(object sender, EventArgs e)
@@ -242,29 +167,23 @@ namespace SUMEDCO
 
         private void txtTel_Enter(object sender, EventArgs e)
         {
-            if (txtAnnee.Text.Length < 4)
+            if (txtAnnee.Text.Length < 4 || int.Parse(txtAnnee.Text) <= 1900)
             {
-                MessageBox.Show("L'année de naissance doit avoir quatre chiffres", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("L'année de naissance doit être supérieure à 1900", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 cboTypePatient.Select();
             }
         }
 
-        private void btnSupprimer_Click(object sender, EventArgs e)
-        {
-            cm.Supprimer(this);
-        }
-        public string age;
         private void txtAge_Leave(object sender, EventArgs e)
         {
-            if (txtAnnee.Text.Length < 4)
+            if (txtAnnee.Text.Length < 4 || int.Parse(txtAnnee.Text) <= 1900)
             {
-                MessageBox.Show("L'année de naissance doit avoir quatre chiffres", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("L'année de naissance doit être supérieure à 1900", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtAnnee.Select();
             }
             else
             {
-                age = cm.AgePatient(txtMois.Text + "/" + txtAnnee.Text);
-                lblAge.Text = string.Format("Age : {0}", age);
+                cm.AgePatient(this);
             }
         }
 
@@ -279,6 +198,11 @@ namespace SUMEDCO
                         MessageBox.Show("La valeur doit être entre 1 et 12", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         txtMois.Text = txtMois.Text.Substring(0, txtMois.Text.Length - 1);
                         btnAnnuler.Select();
+                    }
+                    else
+                    {
+                        if (txtAnnee.Text.Length == 4 && int.Parse(txtAnnee.Text) > 1900)
+							cm.AgePatient(this);
                     }
                 }
                 catch (Exception)
@@ -331,6 +255,33 @@ namespace SUMEDCO
                 zonesante = "ZS";
             else
                 zonesante = "HZS";
+        }
+
+        private void cboEntreprise_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            identreprise = cc.TrouverId("entreprise", cboEntreprise.Text);
+            cc.ChargerCombo("typeabonne", cboTypeAbonne, identreprise);
+            cboTypeAbonne.Select();
+        }
+
+        private void cboTypeAbonne_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            idtypeabonne = cc.TrouverId("typeabonne", cboTypeAbonne.Text);
+            txtNumService.Focus();
+        }
+
+        private void cboEntreprise_DropDown(object sender, EventArgs e)
+        {
+            cc.ChargerCombo("entreprise", cboEntreprise, 0);
+        }
+
+        private void cboTypeAbonne_Enter(object sender, EventArgs e)
+        {
+            if (cboEntreprise.Text == "")
+            {
+                MessageBox.Show("Aucune entreprise n'a été sélectionnée", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cboEntreprise.Select();
+            }
         }
 
     }

@@ -22,21 +22,21 @@ namespace SUMEDCO
         }
         ClassMalade cm = new ClassMalade();
         public int idutilisateur = 0;
-
+        public string numcompte = "";
         private void btnQuitter_Click(object sender, EventArgs e)
         {
             this.Close();
         }
         private void btnRecherche_Click(object sender, EventArgs e)
         {
-            cm.AfficherAgendaEcho(this);
+            cm.AfficherAgendaEcho(this, "recherche");
         }
 
         private void dgvPatient_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if(dgvPatient.RowCount != 0)
             {
-                cm.AfficherServiceAgenda(this);
+                cm.TrouverRecettePatient(dgvRecette, Convert.ToInt32(dgvPatient.CurrentRow.Cells[0].Value), dtpDateDe, dtpDateA, "echo");
                 btnAppeler.Enabled = true;
             }
         }
@@ -59,23 +59,17 @@ namespace SUMEDCO
             progress += 1;
             if (progress == 60)
             {
-                cm.AfficherAgendaEcho(this);
+                cm.AfficherAgendaEcho(this, "");
                 progress = 0;
             }
         }
 
-        private void dgvService_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dgvService.RowCount != 0)
-                btnServir.Enabled = true;
-        }
-
         private void btnServir_Click(object sender, EventArgs e)
         {
-            cm.ServirCasEcho(this);
+            cm.ServirEchoRadio(this, new FormAgendaLaboRslt());
         }
         SpeechSynthesizer ss = new SpeechSynthesizer();
-        public void Prononcer(string texte)
+        private void Prononcer(string texte)
         {
             ss.Rate = 0;
             ss.Volume = 100;
@@ -84,13 +78,34 @@ namespace SUMEDCO
         private void btnAppeler_Click(object sender, EventArgs e)
         {
             btnAppeler.Enabled = false;
-            Prononcer("Numéro "+dgvPatient.CurrentRow.Cells[1].Value.ToString());
+            Prononcer("Numéro "+dgvPatient.CurrentRow.Cells[0].Value.ToString());
         }
 
         
         private void FormAgendaEcho_Shown(object sender, EventArgs e)
         {
-            
+            cm.AfficherAgendaEcho(this, "");
+        }
+        private void cboService_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboService.Text.ToLower() == "echographie")
+                numcompte = "706111";
+            else
+                numcompte = "706110";
+        }
+
+        private void dgvRecette_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvRecette.RowCount != 0)
+            {
+                btnServir.Enabled = true;
+                btnAnnuler.Enabled = true;
+            }
+        }
+
+        private void btnAnnuler_Click(object sender, EventArgs e)
+        {
+            cm.AnnulerCasEchoRadio(this);
         }
     }
 }

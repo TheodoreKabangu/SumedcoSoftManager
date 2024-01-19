@@ -21,8 +21,7 @@ namespace SUMEDCO
         public int idsortie = 0,
             idstock = 0,
             idposte = 0;
-        public string poste = "";
-        public bool ajout_perte;
+        public string poste = "", motif_ajout = "";
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
             cs.Annuler(this);
@@ -61,7 +60,7 @@ namespace SUMEDCO
 
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
-            cs.AjouterSortieStock(this);
+            cs.AjouterSortieStock(this, poste);
         }
 
         private void txtQteServie_TextChanged(object sender, EventArgs e)

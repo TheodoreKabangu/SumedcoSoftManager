@@ -13,6 +13,7 @@ namespace SUMEDCO
     public partial class MFormComptabilite : Form
     {
         ClassCompta cc = new ClassCompta();
+        ClassMalade cm = new ClassMalade();
         public MFormComptabilite()
         {
             InitializeComponent();
@@ -130,6 +131,16 @@ namespace SUMEDCO
         private void btnInventaire_Click(object sender, EventArgs e)
         {
             cc.AfficherSousForm(this, new FormStockInventaire());
+        }
+
+        private void btnExercice_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnChat_Click(object sender, EventArgs e)
+        {
+            cm.AfficherSousForm(this, new FormMessageHisto());
         }
     }
 }

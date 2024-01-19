@@ -15,11 +15,15 @@ namespace SUMEDCO
         public FormAgendaNursing()
         {
             InitializeComponent();
+            for (int i = 0; i < dgvAgenda.ColumnCount; i++)
+            {
+                dgvAgenda.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
         public string utilisateur = "";
         ClassMalade cm = new ClassMalade();
         ClassCompta cc = new ClassCompta();
-        public int idligne = 0, idmedecin = 0, idpatient = 0;
+        public int idmedecin = 0, idpatient = 0;
         private void FormAgenda_Shown(object sender, EventArgs e)
         {
             cm.ChargerAgenda(this, "");
@@ -39,7 +43,7 @@ namespace SUMEDCO
         {
             if (dgvAgenda.RowCount != 0)
             {
-                idligne = int.Parse(dgvAgenda.CurrentRow.Cells[0].Value.ToString());
+                idpatient = Convert.ToInt32(dgvAgenda.CurrentRow.Cells[6].Value);
                 btnAffecter.Enabled = true;
                 btnReaffecter.Enabled = true;
             }

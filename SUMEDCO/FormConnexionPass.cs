@@ -37,8 +37,11 @@ namespace SUMEDCO
 
         private void txtUtilisateur_Click(object sender, EventArgs e)
         {
-            txtUtilisateur.Text = "";
-            txtUtilisateur.ForeColor = Color.Black;
+            if (txtUtilisateur.Text == "Utilisateur")
+            {
+                txtUtilisateur.Text = "";
+                txtUtilisateur.ForeColor = Color.Black;
+            }
         }
 
         private void txtUtilisateur_TextChanged(object sender, EventArgs e)
@@ -48,8 +51,7 @@ namespace SUMEDCO
 
         private void txtAncienMdPass_Click(object sender, EventArgs e)
         {
-            txtAncienMdPass.Text = "";
-            txtAncienMdPass.Focus();
+            txtAncienMdPass_Enter(null, null);
         }
         private void txtAncienMdPass_Enter(object sender, EventArgs e)
         {
@@ -73,6 +75,16 @@ namespace SUMEDCO
                 txtConfirmerMdPass.Text = "";
             txtConfirmerMdPass.ForeColor = Color.Black;
             txtConfirmerMdPass.UseSystemPasswordChar = true;
+        }
+
+        private void txtNouveauMdPass_Click(object sender, EventArgs e)
+        {
+            txtNouveauMdPass_Enter(null, null);
+        }
+
+        private void txtConfirmerMdPass_Click(object sender, EventArgs e)
+        {
+            txtConfirmerMdPass_Enter(null, null);
         }
     }
 }
