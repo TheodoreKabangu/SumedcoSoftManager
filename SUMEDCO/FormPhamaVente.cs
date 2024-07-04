@@ -74,9 +74,7 @@ namespace SUMEDCO
         private void dgvPatient_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvPatient.RowCount != 0)
-            {
-                btnAnnuler.Enabled = false;
-                btnValider.Enabled = false;
+            {               
                 idpatient = int.Parse(dgvPatient.CurrentRow.Cells[0].Value.ToString());
                 cc.RecetteProduit(this);
             }
@@ -86,8 +84,16 @@ namespace SUMEDCO
         {
             if (dgvRecette.RowCount != 0)
             {
-                btnValider.Enabled = true;
-                btnAnnuler.Enabled = true;
+                if (dgvRecette.CurrentRow.Cells[5].Value.ToString() == "")
+                {
+                    btnValider.Enabled = true;
+                    btnAnnuler.Enabled = false;
+                }
+                else
+                {
+                    btnAnnuler.Enabled = true;
+                    btnValider.Enabled = false;
+                }
             }
         }
     }

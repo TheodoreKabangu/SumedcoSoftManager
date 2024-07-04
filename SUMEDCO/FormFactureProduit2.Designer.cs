@@ -171,12 +171,12 @@
             this.btnValider.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
             this.btnValider.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnValider.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnValider.Image = ((System.Drawing.Image)(resources.GetObject("btnValider.Image")));
-            this.btnValider.Location = new System.Drawing.Point(661, 273);
+            this.btnValider.Location = new System.Drawing.Point(611, 274);
             this.btnValider.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnValider.Name = "btnValider";
-            this.btnValider.Size = new System.Drawing.Size(30, 26);
+            this.btnValider.Size = new System.Drawing.Size(80, 26);
             this.btnValider.TabIndex = 758;
+            this.btnValider.Text = "Valider";
             this.toolTip1.SetToolTip(this.btnValider, "Valider la facture");
             this.btnValider.UseVisualStyleBackColor = false;
             this.btnValider.Click += new System.EventHandler(this.btnValider_Click);
@@ -192,12 +192,12 @@
             this.btnRetirer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
             this.btnRetirer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRetirer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRetirer.Image = ((System.Drawing.Image)(resources.GetObject("btnRetirer.Image")));
-            this.btnRetirer.Location = new System.Drawing.Point(621, 273);
+            this.btnRetirer.Location = new System.Drawing.Point(531, 274);
             this.btnRetirer.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnRetirer.Name = "btnRetirer";
-            this.btnRetirer.Size = new System.Drawing.Size(30, 26);
+            this.btnRetirer.Size = new System.Drawing.Size(80, 26);
             this.btnRetirer.TabIndex = 756;
+            this.btnRetirer.Text = "Retirer";
             this.toolTip1.SetToolTip(this.btnRetirer, "Retirer la ligne");
             this.btnRetirer.UseVisualStyleBackColor = false;
             this.btnRetirer.Click += new System.EventHandler(this.btnRetirer_Click);
@@ -212,13 +212,12 @@
             this.btnQuitter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
             this.btnQuitter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuitter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQuitter.Image = ((System.Drawing.Image)(resources.GetObject("btnQuitter.Image")));
-            this.btnQuitter.Location = new System.Drawing.Point(572, 273);
+            this.btnQuitter.Location = new System.Drawing.Point(451, 274);
             this.btnQuitter.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnQuitter.Name = "btnQuitter";
-            this.btnQuitter.Size = new System.Drawing.Size(30, 26);
+            this.btnQuitter.Size = new System.Drawing.Size(80, 26);
             this.btnQuitter.TabIndex = 758;
-            this.toolTip1.SetToolTip(this.btnQuitter, "Quitter");
+            this.btnQuitter.Text = "Quitter";
             this.btnQuitter.UseVisualStyleBackColor = false;
             this.btnQuitter.Click += new System.EventHandler(this.btnQuitter_Click);
             // 
@@ -236,7 +235,7 @@
             this.btnAffecter.Name = "btnAffecter";
             this.btnAffecter.Size = new System.Drawing.Size(30, 21);
             this.btnAffecter.TabIndex = 764;
-            this.toolTip1.SetToolTip(this.btnAffecter, "Attacher à un patient");
+            this.toolTip1.SetToolTip(this.btnAffecter, "Valider");
             this.btnAffecter.UseVisualStyleBackColor = false;
             this.btnAffecter.Click += new System.EventHandler(this.btnAffecter_Click);
             // 
@@ -251,7 +250,7 @@
             this.groupBox1.Controls.Add(this.btnAffecter);
             this.groupBox1.Location = new System.Drawing.Point(12, 256);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(474, 52);
+            this.groupBox1.Size = new System.Drawing.Size(391, 52);
             this.groupBox1.TabIndex = 759;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Posologie";

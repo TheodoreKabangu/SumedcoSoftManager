@@ -24,7 +24,7 @@ namespace SUMEDCO
         ClassCompta cc = new ClassCompta();
         public int idexercice = 0,
             idoperation = 0,
-            idAppro = 0;
+            idAppro = 0, idposte;
         public string compteFournis = "",
             poste = "",
             depot = "",

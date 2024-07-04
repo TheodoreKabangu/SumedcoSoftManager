@@ -13,7 +13,8 @@ syntaxe :
 exec sp_name 'Nom_table.Ancien_Nom_colonne', 'Nouveau_Nom_colonne'
 */
 exec sp_rename 'Patient.age', 'age2'
-
+--Pour renommer une table
+exec sp_rename 'StockProduit', 'ProduitStock'
 /*
 Modifier la structure d'une colonne: type, taille, null ou not null
 syntaxe: alter table Nom_table alter column nom_colonne type[taille] null/not null

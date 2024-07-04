@@ -31,23 +31,15 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormComptaBalance));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormComptaBalance));
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvBalance = new System.Windows.Forms.DataGridView();
-            this.btnImprimer = new System.Windows.Forms.Button();
-            this.btnQuitter = new System.Windows.Forms.Button();
-            this.dtpDateA = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dtpDateDe = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnRecherche = new System.Windows.Forms.Button();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.dataGridViewTextBoxColumn25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,6 +48,14 @@
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnImprimer = new System.Windows.Forms.Button();
+            this.btnQuitter = new System.Windows.Forms.Button();
+            this.dtpDateA = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dtpDateDe = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnRecherche = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBalance)).BeginInit();
             this.SuspendLayout();
             // 
@@ -117,102 +117,6 @@
             this.dgvBalance.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvBalance.Size = new System.Drawing.Size(679, 372);
             this.dgvBalance.TabIndex = 621;
-            // 
-            // btnImprimer
-            // 
-            this.btnImprimer.BackColor = System.Drawing.Color.Transparent;
-            this.btnImprimer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnImprimer.Enabled = false;
-            this.btnImprimer.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnImprimer.FlatAppearance.BorderSize = 0;
-            this.btnImprimer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnImprimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImprimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImprimer.ForeColor = System.Drawing.Color.MediumBlue;
-            this.btnImprimer.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimer.Image")));
-            this.btnImprimer.Location = new System.Drawing.Point(336, 33);
-            this.btnImprimer.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.btnImprimer.Name = "btnImprimer";
-            this.btnImprimer.Size = new System.Drawing.Size(30, 23);
-            this.btnImprimer.TabIndex = 667;
-            this.toolTip1.SetToolTip(this.btnImprimer, "Imprimer");
-            this.btnImprimer.UseVisualStyleBackColor = false;
-            this.btnImprimer.Click += new System.EventHandler(this.btnImprimer_Click);
-            // 
-            // btnQuitter
-            // 
-            this.btnQuitter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnQuitter.BackColor = System.Drawing.Color.Transparent;
-            this.btnQuitter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnQuitter.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnQuitter.FlatAppearance.BorderSize = 0;
-            this.btnQuitter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnQuitter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnQuitter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQuitter.Image = ((System.Drawing.Image)(resources.GetObject("btnQuitter.Image")));
-            this.btnQuitter.Location = new System.Drawing.Point(673, 28);
-            this.btnQuitter.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.btnQuitter.Name = "btnQuitter";
-            this.btnQuitter.Size = new System.Drawing.Size(30, 30);
-            this.btnQuitter.TabIndex = 673;
-            this.btnQuitter.UseVisualStyleBackColor = false;
-            this.btnQuitter.Click += new System.EventHandler(this.btnQuitter_Click);
-            // 
-            // dtpDateA
-            // 
-            this.dtpDateA.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDateA.Location = new System.Drawing.Point(176, 33);
-            this.dtpDateA.Name = "dtpDateA";
-            this.dtpDateA.Size = new System.Drawing.Size(113, 28);
-            this.dtpDateA.TabIndex = 677;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(157, 36);
-            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(30, 22);
-            this.label2.TabIndex = 679;
-            this.label2.Text = "à :";
-            // 
-            // dtpDateDe
-            // 
-            this.dtpDateDe.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDateDe.Location = new System.Drawing.Point(44, 33);
-            this.dtpDateDe.Name = "dtpDateDe";
-            this.dtpDateDe.Size = new System.Drawing.Size(113, 28);
-            this.dtpDateDe.TabIndex = 678;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 38);
-            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 22);
-            this.label1.TabIndex = 680;
-            this.label1.Text = "De :";
-            // 
-            // btnRecherche
-            // 
-            this.btnRecherche.BackColor = System.Drawing.Color.Transparent;
-            this.btnRecherche.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnRecherche.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnRecherche.FlatAppearance.BorderSize = 0;
-            this.btnRecherche.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnRecherche.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRecherche.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRecherche.ForeColor = System.Drawing.Color.MediumBlue;
-            this.btnRecherche.Image = ((System.Drawing.Image)(resources.GetObject("btnRecherche.Image")));
-            this.btnRecherche.Location = new System.Drawing.Point(296, 33);
-            this.btnRecherche.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.btnRecherche.Name = "btnRecherche";
-            this.btnRecherche.Size = new System.Drawing.Size(30, 23);
-            this.btnRecherche.TabIndex = 676;
-            this.toolTip1.SetToolTip(this.btnRecherche, "Calculer");
-            this.btnRecherche.UseVisualStyleBackColor = false;
-            this.btnRecherche.Click += new System.EventHandler(this.btnRecherche_Click);
             // 
             // dataGridViewTextBoxColumn25
             // 
@@ -290,9 +194,105 @@
             this.Column15.Name = "Column15";
             this.Column15.ReadOnly = true;
             // 
+            // btnImprimer
+            // 
+            this.btnImprimer.BackColor = System.Drawing.Color.Transparent;
+            this.btnImprimer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnImprimer.Enabled = false;
+            this.btnImprimer.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnImprimer.FlatAppearance.BorderSize = 0;
+            this.btnImprimer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnImprimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimer.ForeColor = System.Drawing.Color.MediumBlue;
+            this.btnImprimer.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimer.Image")));
+            this.btnImprimer.Location = new System.Drawing.Point(336, 33);
+            this.btnImprimer.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnImprimer.Name = "btnImprimer";
+            this.btnImprimer.Size = new System.Drawing.Size(30, 23);
+            this.btnImprimer.TabIndex = 667;
+            this.toolTip1.SetToolTip(this.btnImprimer, "Imprimer");
+            this.btnImprimer.UseVisualStyleBackColor = false;
+            this.btnImprimer.Click += new System.EventHandler(this.btnImprimer_Click);
+            // 
+            // btnQuitter
+            // 
+            this.btnQuitter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnQuitter.BackColor = System.Drawing.Color.Transparent;
+            this.btnQuitter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnQuitter.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnQuitter.FlatAppearance.BorderSize = 0;
+            this.btnQuitter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnQuitter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQuitter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuitter.Image = ((System.Drawing.Image)(resources.GetObject("btnQuitter.Image")));
+            this.btnQuitter.Location = new System.Drawing.Point(673, 28);
+            this.btnQuitter.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btnQuitter.Name = "btnQuitter";
+            this.btnQuitter.Size = new System.Drawing.Size(30, 30);
+            this.btnQuitter.TabIndex = 673;
+            this.btnQuitter.UseVisualStyleBackColor = false;
+            this.btnQuitter.Click += new System.EventHandler(this.btnQuitter_Click);
+            // 
+            // dtpDateA
+            // 
+            this.dtpDateA.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDateA.Location = new System.Drawing.Point(176, 33);
+            this.dtpDateA.Name = "dtpDateA";
+            this.dtpDateA.Size = new System.Drawing.Size(113, 24);
+            this.dtpDateA.TabIndex = 677;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(157, 36);
+            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(24, 18);
+            this.label2.TabIndex = 679;
+            this.label2.Text = "à :";
+            // 
+            // dtpDateDe
+            // 
+            this.dtpDateDe.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDateDe.Location = new System.Drawing.Point(44, 33);
+            this.dtpDateDe.Name = "dtpDateDe";
+            this.dtpDateDe.Size = new System.Drawing.Size(113, 24);
+            this.dtpDateDe.TabIndex = 678;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(8, 38);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 18);
+            this.label1.TabIndex = 680;
+            this.label1.Text = "De :";
+            // 
+            // btnRecherche
+            // 
+            this.btnRecherche.BackColor = System.Drawing.Color.Transparent;
+            this.btnRecherche.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnRecherche.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnRecherche.FlatAppearance.BorderSize = 0;
+            this.btnRecherche.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnRecherche.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRecherche.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRecherche.ForeColor = System.Drawing.Color.MediumBlue;
+            this.btnRecherche.Image = ((System.Drawing.Image)(resources.GetObject("btnRecherche.Image")));
+            this.btnRecherche.Location = new System.Drawing.Point(296, 33);
+            this.btnRecherche.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnRecherche.Name = "btnRecherche";
+            this.btnRecherche.Size = new System.Drawing.Size(30, 23);
+            this.btnRecherche.TabIndex = 676;
+            this.toolTip1.SetToolTip(this.btnRecherche, "Calculer");
+            this.btnRecherche.UseVisualStyleBackColor = false;
+            this.btnRecherche.Click += new System.EventHandler(this.btnRecherche_Click);
+            // 
             // FormComptaBalance
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(703, 451);

@@ -158,16 +158,6 @@
         X1EG/n/h3s6VCd6DyQtbNPO9vEs+0ohkmfnKUm6Cks1I6QXK1El0qMgFeQAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="btnModifier.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAARFJREFUOE/N
-        lDtrwlAYhgMOuRuSpmgFF8HRwVWhUKpOBS+b/XGCiD/Ey+KNrgWX/oJ269o+3/EILg7HZPCFl5zvO9/7
-        kBOSWDkosG27rtfZ5HleE3/jP9d157p9m4IgeBEgoJkAxY7j1PS2mXzf7wBYRVEUUxZYT/FPmqbhacJA
-        wLoXMCsMwwfqJv2GGjARoR7h9RnGsR+pt/Rf1YCJCPYJLpIkKeq6gg88t2c1YCKCg/uE8UoMgS1zhcVx
-        HEmtYR/0OmrARMBGV2BdNWAiYGPC6wvY033ACL3nBuPO2gR38hlJrT+nDX5TA6YCOMdfQMuZYSKBAZB/
-        2ifXfVZYFcAvPuIJdUtv3awCRy3pdUZZ1j8fmjq25MyvGwAAAABJRU5ErkJggg==
-</value>
-  </data>
   <metadata name="dataGridViewTextBoxColumn1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -190,6 +180,9 @@
     <value>True</value>
   </metadata>
   <metadata name="Column2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Column3.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
 </root>

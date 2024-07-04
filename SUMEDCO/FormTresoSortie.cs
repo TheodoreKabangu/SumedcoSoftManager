@@ -22,7 +22,7 @@ namespace SUMEDCO
         }
         ClassCompta cc = new ClassCompta();
         ClassMalade cm = new ClassMalade();
-        public int numbon = 0,
+        public int idutilisateur = 0,           
             idexercice =0,
             idcatdepense = 0,
             iddepense = 0,

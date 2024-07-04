@@ -40,6 +40,8 @@ namespace SUMEDCO
         {
             if(dgvCompte.RowCount != 0)
             {
+                btnImprimer.Enabled = true;
+                btnImprimerTout.Enabled = false;
                 cc.AfficherMouvement(this, dgvCompte.CurrentRow.Cells[0].Value.ToString());
             }
         }
@@ -49,11 +51,25 @@ namespace SUMEDCO
             txtRecherche.Text = "";
             cc.ChargerCompte(this);
             cc.AfficherMouvement(this, "");
+            btnImprimer.Enabled = false;
+            btnImprimerTout.Enabled = true;
         }
 
         private void btnRecherche_Click(object sender, EventArgs e)
         {
             cc.ChargerCompte(this);
+        }
+        public string concerne="";
+        private void btnImprimer_Click(object sender, EventArgs e)
+        {
+            concerne = string.Format("Compte: {0}", dgvCompte.CurrentRow.Cells[0].Value.ToString());
+            cc.ImprimerGdLivre(this, new FormImpression());
+        }
+
+        private void btnImprimerTout_Click(object sender, EventArgs e)
+        {          
+            concerne = "Tous les comptes";
+            cc.ImprimerGdLivre(this, new FormImpression());
         }
     }
 }

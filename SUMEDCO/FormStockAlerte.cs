@@ -15,6 +15,10 @@ namespace SUMEDCO
         public FormStockAlerte()
         {
             InitializeComponent();
+            for (int i = 0; i < dgvStock.ColumnCount; i++)
+            {
+                dgvStock.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
         ClassStock cs = new ClassStock();
         ClassCompta cc = new ClassCompta();
@@ -29,26 +33,6 @@ namespace SUMEDCO
         private void btnServir_Click(object sender, EventArgs e)
         {
             cs.AjouterCommande(this, poste);
-        }
-        private void FormCommandeRapport_Shown(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnRecherche_Click(object sender, EventArgs e)
-        {
-            cs.ChargerProduit(this, "recherche");
-        }
-
-        private void cboCategorie_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            idcat = cs.TrouverId("categorie", cboCategorie.Text);
-            cs.ChargerProduit(this, "");
-        }
-
-        private void cboCategorie_DropDown(object sender, EventArgs e)
-        {
-            cc.ChargerCombo("categorie", cboCategorie, 0);
         }
 
         private void dgvStock_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -65,18 +49,24 @@ namespace SUMEDCO
             dgvStock.Rows.RemoveAt(dgvStock.CurrentRow.Index);
         }
 
-        private void dgvProduit_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvStock_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvProduit.RowCount != 0)
+            for (int i = 0; i < dgvStock.RowCount; i++)
             {
-                idproduit = int.Parse(dgvProduit.CurrentRow.Cells[0].Value.ToString());
-                cs.ChargerStockProduit(this);
+                try
+                {
+                    if (Convert.ToInt32(dgvStock.CurrentRow.Cells[3].Value) < 0)
+                    {
+                        MessageBox.Show("Rassurez-vous de saisir un nombre entier", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        dgvStock.CurrentRow.Cells[3].Value = 0;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Rassurez-vous de saisir un nombre entier", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    dgvStock.CurrentRow.Cells[3].Value = 0;
+                }
             }
-        }
-
-        private void btnQuitter_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }

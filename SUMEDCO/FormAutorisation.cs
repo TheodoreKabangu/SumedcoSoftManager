@@ -29,13 +29,13 @@ namespace SUMEDCO
             {
                 if (poste == "infirmier")
                 {
-                    MFormInfirmerie inf = new MFormInfirmerie();
+                    InfirmerieMDI inf = new InfirmerieMDI();
                     inf.idutilisateur = idutilisateur;
                     inf.Show();
                 }
                 else if (poste == "pharmacie")
                 {
-                    MFormPharmacie ph = new MFormPharmacie();
+                    PharmacieMDI ph = new PharmacieMDI();
                     ph.idutilisateur = idutilisateur;
                     ph.idpharma = idpharma;
                     ph.Show();
@@ -50,7 +50,7 @@ namespace SUMEDCO
                     {
                         if (cboUtilisateur.Text != "")
                         {
-                            MFormConsultation cons = new MFormConsultation();
+                            ConsultationMDI cons = new ConsultationMDI();
                             cons.idmedecin = idmedecin;
                             cons.Show();
                             this.Close();
@@ -63,7 +63,7 @@ namespace SUMEDCO
                     }
                     else if (cboAutorisation.Text == "infirmier - réception")
                     {
-                        MFormReception r = new MFormReception();
+                        ReceptionMDI r = new ReceptionMDI();
                         r.infirmier_autorise = true;
                         r.idutilisateur = cs.TrouverId("utilisateur", "réception");
                         r.Show();
@@ -71,7 +71,7 @@ namespace SUMEDCO
                     }
                     else if (cboAutorisation.Text == "infirmier - abonné")
                     {
-                        MFormAbonne ab = new MFormAbonne();
+                        AbonneMDI ab = new AbonneMDI();
                         ab.infirmier_autorise = true;
                         ab.idutilisateur = cs.TrouverId("utilisateur", "abonné");
                         ab.Show();
@@ -79,7 +79,7 @@ namespace SUMEDCO
                     }
                     else if (cboAutorisation.Text == "pharmacie - caisse")
                     {
-                        MFormRecette rec = new MFormRecette();
+                        RecetteMDI rec = new RecetteMDI();
                         rec.idutilisateur = cs.TrouverId("utilisateur", "recette");
                         rec.Show();
                         this.Close();

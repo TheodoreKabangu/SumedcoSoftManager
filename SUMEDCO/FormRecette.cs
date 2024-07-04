@@ -133,10 +133,18 @@ namespace SUMEDCO
 
         private void dgvRecette_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvRecette.RowCount != 0)
+            if (dgvRecette.RowCount != 0 && dgvRecette.CurrentRow.Index < dgvRecette.RowCount-1)
             {
-                btnValider.Enabled = true;
-                btnAnnulerPayement.Enabled = true;
+                if (dgvRecette.CurrentRow.Cells[5].Value.ToString() == "")
+                {
+                    btnValider.Enabled = true;
+                    btnAnnulerPayement.Enabled = false;
+                }
+                else
+                {
+                    btnAnnulerPayement.Enabled = true;
+                    btnValider.Enabled = false;
+                }
             }
         }
     }

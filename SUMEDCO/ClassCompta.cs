@@ -21,7 +21,7 @@ namespace SUMEDCO
         SqlDataAdapter da;
         SqlDataReader dr;
         DataTable dt = new DataTable();
-        bool cmdStatut;
+
         string chaine= "", cmdtxt = "", nom = "";
         int id = 0;
         double valeur;
@@ -65,17 +65,17 @@ namespace SUMEDCO
                 case "poste": cmdtxt = "select poste from Utilisateur where id= @id"; break;
                 case "message": cmdtxt = "select max(idmessage) from Message"; break;
             }
+            con.Open();
             try
-            {
-                con.Open();
+            {                
                 cmd = new SqlCommand(cmdtxt, con);
                 cmd.Parameters.AddWithValue("@id", id);
                 dr = cmd.ExecuteReader();
                 dr.Read();
                 nom = dr[0].ToString();
-                con.Close();
             }
             catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            con.Close();
             return nom;
         }
         public int NouveauID(string concerne)
@@ -120,7 +120,7 @@ namespace SUMEDCO
             if (pnlSousMenu.Visible == true)
                 pnlSousMenu.Visible = false;
         }
-        public void AfficherSousForm(MFormRecette r, Form childForm)
+        public void AfficherSousForm(RecetteMDI r, Form childForm)
         {
             if (r.activeForm != null)
                 r.activeForm.Close();
@@ -133,7 +133,7 @@ namespace SUMEDCO
             childForm.BringToFront();
             childForm.Show();
         }
-        public void AfficherSousForm(MFormRecette r, FormPayements childForm)
+        public void AfficherSousForm(RecetteMDI r, FormPayements childForm)
         {
             if (r.activeForm != null)
                 r.activeForm.Close();
@@ -147,12 +147,13 @@ namespace SUMEDCO
             childForm.idutilisateur = r.idutilisateur;
             childForm.Show();
         }
-        public void AfficherSousForm(MFormRecette r, FormRecette childForm)
+        ExerciceClasse exer = new ExerciceClasse();
+        public void AfficherSousForm(RecetteMDI r, FormRecette childForm)
         {
-            id = NbExerciceEncours();
+            id = exer.NbExerciceEncours();
             if (id == 1)
             {
-                childForm.idexercice = ExerciceEncours();
+                childForm.idexercice = exer.ExerciceEncours();
                 if (r.activeForm != null)
                     r.activeForm.Close();
                 r.activeForm = childForm;
@@ -169,7 +170,7 @@ namespace SUMEDCO
             else
                 MessageBox.Show("Besoin d'un exercice comptable en cours. Contactez le comptable de l'entreprise", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);             
         }
-        public void AfficherSousForm(MFormRecette r, FormRecetteJournal childForm)
+        public void AfficherSousForm(RecetteMDI r, FormRecetteJournal childForm)
         {
             if (r.activeForm != null)
                 r.activeForm.Close();
@@ -185,7 +186,7 @@ namespace SUMEDCO
             childForm.Show();
         }
 
-        public void AfficherSousForm(MFormReception r, Form childForm)
+        public void AfficherSousForm(ReceptionMDI r, Form childForm)
         {
             if (r.activeForm != null)
                 r.activeForm.Close();
@@ -198,37 +199,13 @@ namespace SUMEDCO
             childForm.BringToFront();
             childForm.Show();
         }
-        public void AfficherSousForm(MFormReception r, FormFactureProduit childForm)
+        
+        public void AfficherSousForm(ReceptionMDI r, FormFactureService childForm)
         {
-            id = NbExerciceEncours();
+            id = exer.NbExerciceEncours();
             if (id == 1)
             {
-                childForm.idexercice = ExerciceEncours();
-                if (r.activeForm != null)
-                    r.activeForm.Close();
-                r.activeForm = childForm;
-                childForm.TopLevel = false;
-                childForm.FormBorderStyle = FormBorderStyle.None;
-                childForm.Dock = DockStyle.Fill;
-                r.pnlChildForm.Controls.Add(childForm);
-                r.pnlChildForm.Tag = childForm;
-                childForm.BringToFront();
-                childForm.idutilisateur = r.idutilisateur;
-                childForm.poste = "réception";
-                childForm.txtPayeur.Enabled = true;
-                childForm.cboSexe.Enabled = true;
-                childForm.txtTel.Enabled = true;
-                childForm.Show();
-            }
-            else
-                MessageBox.Show("Besoin d'un exercice comptable en cours. Contactez le comptable de l'entreprise", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);           
-        }
-        public void AfficherSousForm(MFormReception r, FormFactureService childForm)
-        {
-            id = NbExerciceEncours();
-            if (id == 1)
-            {
-                childForm.idexercice = ExerciceEncours();
+                childForm.idexercice = exer.ExerciceEncours();
                 if (r.activeForm != null)
                     r.activeForm.Close();
                 r.activeForm = childForm;
@@ -248,12 +225,12 @@ namespace SUMEDCO
             else
                 MessageBox.Show("Besoin d'un exercice comptable en cours. Contactez le comptable de l'entreprise", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);            
         }
-        public void AfficherSousForm(MFormReception r, FormPatientRecherche childForm)
+        public void AfficherSousForm(ReceptionMDI r, FormPatientRecherche childForm)
         {
-            id = NbExerciceEncours();
+            id = exer.NbExerciceEncours();
             if (id == 1)
             {
-                childForm.idexercice = ExerciceEncours();
+                childForm.idexercice = exer.ExerciceEncours();
                 if (r.activeForm != null)
                     r.activeForm.Close();
                 r.activeForm = childForm;
@@ -530,7 +507,7 @@ namespace SUMEDCO
             {
                 if (motif == "recherche")
                 {
-                    if(exa.type_patient.Contains("abonné"))
+                    if(exa.type_patient.Contains("abonné")) //un abonné paye le double pour les services
                         cmd = new SqlCommand("select idservice, nomservice, prixservice * 2 from Service where numcompte = '" + exa.numcompte + "' and nomservice like '" + exa.txtRecherche.Text + "%' and nomservice NOT IN ('consultation ancien cas', 'consultation nouveau cas', 'consultation urgence') order by nomservice", con);
                     else
                         cmd = new SqlCommand("select idservice, nomservice, prixservice from Service where numcompte = '" + exa.numcompte + "' and nomservice like '" + exa.txtRecherche.Text + "%' and nomservice NOT IN ('consultation ancien cas', 'consultation nouveau cas', 'consultation urgence') order by nomservice", con);
@@ -881,12 +858,13 @@ namespace SUMEDCO
             }
             con.Close();
         }
+        
         public void ChargerStockProduit(FormFactureProduit f, FormFactureProduit2 fp)
         {
             con.Open();
             try
             {
-                cmd = new SqlCommand("select idstock, forme, dosage, prixunitaire, qtestock from LigneStock where idproduit = @id and qtestock > 0", con);
+                cmd = new SqlCommand("SELECT idstock, forme, dosage, prixunitaire, qtestock FROM LigneStock WHERE idproduit = @id", con);
                 cmd.Parameters.AddWithValue("@id", f.dgv1.CurrentRow.Cells[0].Value.ToString());
                 dr = cmd.ExecuteReader();
                 while (dr.Read())
@@ -897,7 +875,7 @@ namespace SUMEDCO
                     fp.dgvStock.Rows[fp.dgvStock.RowCount - 1].Cells[2].Value = dr[2].ToString();
                     fp.dgvStock.Rows[fp.dgvStock.RowCount - 1].Cells[3].Value = dr[3].ToString();
                     fp.dgvStock.Rows[fp.dgvStock.RowCount - 1].Cells[4].Value = dr[4].ToString();
-                    fp.dgvStock.Rows[fp.dgvStock.RowCount - 1].Cells[5].Value = "";
+                    fp.dgvStock.Rows[fp.dgvStock.RowCount - 1].Cells[5].Value = 0;
                 }
             }
             catch (Exception ex)
@@ -905,6 +883,19 @@ namespace SUMEDCO
                 MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             con.Close();
+            if (fp.dgvStock.RowCount != 0)
+            {
+                //Ajout stock principal
+                for (int i = 0; i < fp.dgvStock.RowCount; i++)
+                {
+                    fp.dgvStock.Rows[i].Cells[4].Value = cs.QteStock(Convert.ToInt32(fp.dgvStock.Rows[i].Cells[0].Value), 0, "stock");
+                }
+                //Ajout stock pharma
+                for (int i = 0; i < fp.dgvStock.RowCount; i++)
+                {
+                    fp.dgvStock.Rows[i].Cells[4].Value = Convert.ToInt32(fp.dgvStock.Rows[i].Cells[4].Value) + cs.StockGlobalPharma(Convert.ToInt32(fp.dgvStock.Rows[i].Cells[0].Value));
+                }
+            }          
 
             fp.Text = "SSM - Produits à facturer";
             fp.ShowDialog();
@@ -934,18 +925,16 @@ namespace SUMEDCO
                                 f.dgvFacture.Rows.Add();
                                 f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[0].Value = fp.dgvStock.Rows[i].Cells[0].Value.ToString();
                                 f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[1].Value = f.dgvFacture.RowCount;
-                                f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[2].Value = string.Format("{0} {1} {2}", f.dgv1.CurrentRow.Cells[1].Value.ToString(), fp.dgvStock.Rows[i].Cells[1].Value.ToString(), fp.dgvStock.Rows[i].Cells[2].Value.ToString());
+                                f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[2].Value = string.Format("{0}, {1}, {2}", f.dgv1.CurrentRow.Cells[1].Value.ToString(), fp.dgvStock.Rows[i].Cells[1].Value.ToString(), fp.dgvStock.Rows[i].Cells[2].Value.ToString());
                                 f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[3].Value = fp.dgvStock.Rows[i].Cells[3].Value.ToString();
                                 f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[4].Value = fp.dgvStock.Rows[i].Cells[5].Value.ToString();
                                 f.dgvFacture.Rows[f.dgvFacture.RowCount - 1].Cells[5].Value = (Convert.ToDouble(fp.dgvStock.Rows[i].Cells[3].Value) * Convert.ToInt32(fp.dgvStock.Rows[i].Cells[5].Value)).ToString("0.00");
                             }
                         }
-                        else
-                            f.dgvFacture.Rows.RemoveAt(f.dgvFacture.Rows[i].Index);
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("La quantité doit être un entier supérieur à 0 et inférieur au stock disponible", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("La quantité doit être un entier supérieur à 0 et inférieur au stock disponible\n"+ex.Message, "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
             }
@@ -1398,6 +1387,8 @@ namespace SUMEDCO
                     b.dgvRecette.Rows[b.dgvRecette.RowCount - 1].Cells[2].Value = Convert.ToDouble(b.dgvRecette.Rows[b.dgvRecette.RowCount - 1].Cells[2].Value) + Convert.ToDouble(b.dgvRecette.Rows[i].Cells[2].Value);
                 }
             }
+            b.btnValider.Enabled = false;
+            b.btnAnnulerPayement.Enabled = false;
         }
         private void CalculerTotauxPayement(FormRecette b)
         {
@@ -1443,30 +1434,31 @@ namespace SUMEDCO
             }
             catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
             con.Close();
-            MessageAnnulerPayement(p);
-        }
-        private void MessageAnnulerPayement(FormPayements p)
-        {
-            id = NouveauID("message");
-
-            valeur = cs.TrouverId("utilisateur", "comptable");
-            chaine = string.Format("Annulation du payement {0} pour {1}\nDate:{2}\nMontant:{3} {4}\nCompte:{5}", 
-                p.dgvPayement.CurrentRow.Cells[0].Value.ToString(), 
+            //composer le message
+            chaine = string.Format("Annulation du payement {0} pour {1}\nDate:{2}\nMontant:{3} {4}\nCompte:{5}",
+                p.dgvPayement.CurrentRow.Cells[0].Value.ToString(),
                 p.cboAnnulation.Text,
                 p.dgvPayement.CurrentRow.Cells[1].Value.ToString(),
                 p.dgvPayement.CurrentRow.Cells[2].Value.ToString(),
                 p.dgvPayement.CurrentRow.Cells[3].Value.ToString(),
                 p.dgvPayement.CurrentRow.Cells[4].Value.ToString());
+            //Signaler au comptable
+            MessageAuComptable(p.idutilisateur, chaine, "payement");
+        }
+        private void MessageAuComptable(int idutilisateur, string message, string type_operation)
+        {
+            valeur = cs.TrouverId("utilisateur", "comptable");
+            id = NouveauID("message");
             con.Open();
             SqlTransaction tx = con.BeginTransaction();
             try
             {
                 cmd = new SqlCommand("INSERT INTO Message VALUES (@id, @exp, @dest, @objet, @msg, @date_jour, @heure, @statut)", con);
                 cmd.Parameters.AddWithValue("@id", id);
-                cmd.Parameters.AddWithValue("@exp", p.idutilisateur);
+                cmd.Parameters.AddWithValue("@exp", idutilisateur);
                 cmd.Parameters.AddWithValue("@dest", valeur);
-                cmd.Parameters.AddWithValue("@objet", "Annulation payement");
-                cmd.Parameters.AddWithValue("@msg", chaine);
+                cmd.Parameters.AddWithValue("@objet", "Annulation " + type_operation);
+                cmd.Parameters.AddWithValue("@msg", message);
                 cmd.Parameters.AddWithValue("@date_jour", DateTime.Now.ToShortDateString());
                 cmd.Parameters.AddWithValue("@heure", DateTime.Now.ToShortTimeString());
                 cmd.Parameters.AddWithValue("@statut", "Non lu");
@@ -1483,12 +1475,15 @@ namespace SUMEDCO
             p.dtpDateA.Text = b.dgvRecette.CurrentRow.Cells[1].Value.ToString();
             AfficherPayement(p);
             p.dgvPayement.Columns[4].Visible = false;
+            p.btnQuitter.Enabled = false;
             p.StartPosition = FormStartPosition.CenterParent;
+            p.annuler_recette = true;
             p.ShowDialog();
             if(p.fermeture_succes)
             {
                 StatutCaisseOK(Convert.ToInt32(b.dgvRecette.CurrentRow.Cells[0].Value), "");
             }
+
         }
 
         public void ImprimerBon(FormPayement p)
@@ -1863,7 +1858,7 @@ namespace SUMEDCO
         }
         public void RecetteProduit(FormPhamaVente p)
         {
-            cmd = new SqlCommand("SELECT idrecette, date_operation, libelle, statut_caisse, servi  FROM Recette_ WHERE idpatient = @idpatient AND categorie = 'produit' AND date_operation BETWEEN @dateDe AND @dateA", con);
+            cmd = new SqlCommand("SELECT idrecette, date_operation, libelle, qtedem, statut_caisse, servi  FROM Recette_ WHERE idpatient = @idpatient AND categorie = 'produit' AND date_operation BETWEEN @dateDe AND @dateA", con);
             cmd.Parameters.AddWithValue("@idpatient", Convert.ToInt32(p.dgvPatient.CurrentRow.Cells[0].Value));
             cmd.Parameters.AddWithValue("@dateDe", p.dtpDateDe.Text);
             cmd.Parameters.AddWithValue("@dateA", p.dtpDateA.Text);
@@ -1881,10 +1876,13 @@ namespace SUMEDCO
                     p.dgvRecette.Rows[p.dgvRecette.RowCount - 1].Cells[2].Value = dr[2].ToString();
                     p.dgvRecette.Rows[p.dgvRecette.RowCount - 1].Cells[3].Value = dr[3].ToString();
                     p.dgvRecette.Rows[p.dgvRecette.RowCount - 1].Cells[4].Value = dr[4].ToString();
+                    p.dgvRecette.Rows[p.dgvRecette.RowCount - 1].Cells[5].Value = dr[5].ToString();
                 }
             }
             catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-            con.Close();            
+            con.Close();
+            p.btnAnnuler.Enabled = false;
+            p.btnValider.Enabled = false;
         }
         private void ModifierStockPha(FormPhamaVente p, FormStockProduit s)
         {
@@ -1892,20 +1890,33 @@ namespace SUMEDCO
             s.idpharma = p.idpharma;
             s.btnNouveauStock.Visible = false;
             s.btnStockPha.Visible = false;
+            s.cboCategorie.Enabled = false;
+            s.txtRecherche.Enabled = false;
+            s.btnRecherche.Enabled = false;
+            s.valider_vente = true;
             s.StartPosition = FormStartPosition.CenterParent;
             s.btnExit.Visible = false;
+            s.qtedem = Convert.ToInt32(p.dgvRecette.CurrentRow.Cells[3].Value);
+            s.idproduit = cs.TrouverId("produit", p.dgvRecette.CurrentRow.Cells[2].Value.ToString().Substring(0, p.dgvRecette.CurrentRow.Cells[2].Value.ToString().IndexOf(",")));
+            s.nomproduit = p.dgvRecette.CurrentRow.Cells[2].Value.ToString().Substring(0, p.dgvRecette.CurrentRow.Cells[2].Value.ToString().IndexOf(","));
+            cs.ChargerStockProduit(s, "");           
             s.ShowDialog();
+            if(s.vente_effectue)
+            {
+                RecetteServiOK(Convert.ToInt32(p.dgvRecette.CurrentRow.Cells[0].Value), p.idutilisateur, "OK");
+            }
             s.Close();
         }
         public void ServirRecette(FormPhamaVente p, string motif)
         {
+            p.btnValider.Enabled = false;
+            p.btnAnnuler.Enabled = false;
             if(p.dgvRecette.RowCount != 0)
             {
                 
                 if (motif == "OK")
                 {
-                    //Sortie de stock Pharma
-                    RecetteServiOK(Convert.ToInt32(p.dgvRecette.CurrentRow.Cells[0].Value), p.idutilisateur, "OK");
+                    //Sortie de stock Pharma                   
                     ModifierStockPha(p, new FormStockProduit());
                     RecetteProduit(p);
                 }
@@ -2083,12 +2094,12 @@ namespace SUMEDCO
         ReportDataSource rs = new ReportDataSource();
 
         #region DEPENSE
-        public void AfficherSousForm(MFormTreso d, FormTresoSortie childForm)
+        public void AfficherSousForm(TresorerieMDI d, FormTresoSortie childForm)
         {
-            id = NbExerciceEncours();
+            id = exer.NbExerciceEncours();
             if (id == 1)
             {
-                childForm.idexercice = ExerciceEncours();
+                childForm.idexercice = exer.ExerciceEncours();
                 if (d.activeForm != null)
                     d.activeForm.Close();
                 d.activeForm = childForm;
@@ -2098,17 +2109,18 @@ namespace SUMEDCO
                 d.pnlChildForm.Controls.Add(childForm);
                 d.pnlChildForm.Tag = childForm;
                 childForm.BringToFront();
+                childForm.idutilisateur = d.idutilisateur;
                 childForm.Show();
             }
             else
                 MessageBox.Show("Besoin d'un exercice comptable en cours. Contactez le comptable de l'entreprise", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);            
         }
-        public void AfficherSousForm(MFormTreso d, FormTresoEntree childForm)
+        public void AfficherSousForm(TresorerieMDI d, FormTresoEntree childForm)
         {
-            id = NbExerciceEncours();
+            id = exer.NbExerciceEncours();
             if (id == 1)
             {
-                childForm.idexercice = ExerciceEncours();
+                childForm.idexercice = exer.ExerciceEncours();
                 if (d.activeForm != null)
                     d.activeForm.Close();
                 d.activeForm = childForm;
@@ -2118,12 +2130,13 @@ namespace SUMEDCO
                 d.pnlChildForm.Controls.Add(childForm);
                 d.pnlChildForm.Tag = childForm;
                 childForm.BringToFront();
+                childForm.idutilisateur = d.idutilisateur;
                 childForm.Show();
             }
             else
                 MessageBox.Show("Besoin d'un exercice comptable en cours. Contactez le comptable de l'entreprise", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning); 
         }
-        public void AfficherSousForm(MFormTreso d, FormTresoJournal childForm)
+        public void AfficherSousForm(TresorerieMDI d, FormTresoJournal childForm)
         {
             if (d.activeForm != null)
                 d.activeForm.Close();
@@ -2135,6 +2148,7 @@ namespace SUMEDCO
             d.pnlChildForm.Tag = childForm;
             childForm.BringToFront();
             childForm.btnDepenseCompte.Visible = false;
+            childForm.idutilisateur = d.idutilisateur;
             childForm.Show();
         }
         public void ChargerCompte(FormComptaPlan d)
@@ -2450,7 +2464,7 @@ namespace SUMEDCO
                     }
                     CrediterCompte(d.idoperation, d.numcompte, d.montantdecaisse, d.dgvEcriture.Rows[d.dgvEcriture.RowCount - 1].Cells[1].Value.ToString());
 
-                    ArchiverBon("dépense", d.numbon);
+                    ArchiverBon("dépense", d.iddepense);
                     ImprimerBon(d, new FormImpression());
                     Annuler(d);
                     SoldesCaisse(d.lblCaisseCDF, d.lblCaisseUSD, "dépense");
@@ -2461,10 +2475,40 @@ namespace SUMEDCO
             else
                 MessageBox.Show("Désolé! Champ(s) obligatoire(s) vide(s)\nRemplissez-le(s).", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
-        
+        public void AnnulerDepense(FormTresoJournal d, FormTresoDepense td)
+        {
+            td.ShowDialog();
+            if(td.fermeture_succes)
+            {
+                con.Open();
+                SqlTransaction tx = con.BeginTransaction();
+                try
+                {
+                    cmd = new SqlCommand("UPDATE Depense SET raison_retrait = @raison WHERE iddepense = " + d.dgvBon.CurrentRow.Cells[0].Value + "", con);
+                    cmd.Parameters.AddWithValue("@raison", string.Format("{0}, {1}", DateTime.Now.ToShortDateString(), td.txtRaison_retrait.Text));
+                    cmd.Transaction = tx;
+                    cmd.ExecuteNonQuery();
+                    tx.Commit();
+                    MessageBox.Show("Opération effectuée", "Mise à jour", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                con.Close();
+                //composer le message
+                chaine = string.Format("Annulation dépense {0} pour {1}\nDate:{2}\nMontant:{3} {4}\nCompte:{5}",
+                    d.dgvBon.CurrentRow.Cells[0].Value.ToString(),
+                    d.dgvBon.CurrentRow.Cells[7].Value.ToString(),
+                    d.dgvBon.CurrentRow.Cells[1].Value.ToString(),
+                    d.dgvBon.CurrentRow.Cells[2].Value.ToString(),
+                    d.dgvBon.CurrentRow.Cells[3].Value.ToString(),
+                    d.dgvBon.CurrentRow.Cells[8].Value.ToString());
+                //Signaler au comptable
+                MessageAuComptable(d.idutilisateur, chaine, "dépense");
+                AfficherTresoRapport(d);
+            }
+            td.Close();
+        }
         public void ImprimerBon(FormTresoSortie d, FormImpression imp)
         {
-            imp.numbon = d.numbon;
             imp.beneficiaire = d.txtBeneficiaire.Text;
             imp.montantlettre = d.txtMontantLettre.Text;
             imp.montantchiffre = d.montantdecaisse.ToString();
@@ -2475,7 +2519,7 @@ namespace SUMEDCO
 
             ReportParameter[] rparams = new ReportParameter[]
             {
-                new ReportParameter("numbon", imp.numbon.ToString()),
+                new ReportParameter("numbon", ""),
                 new ReportParameter("beneficiare", imp.beneficiaire),
                 new ReportParameter("montantlettre", imp.montantlettre),
                 new ReportParameter("montantchiffre", imp.montantchiffre),
@@ -2616,7 +2660,7 @@ namespace SUMEDCO
         {
             if (d.cboMonnaie.Text != "")
             {
-                cmdtxt = @"SELECT iddepense,date_operation,montant,monnaie,beneficiaire,motifdepense,refrequisition,raison_retrait 
+                cmdtxt = @"SELECT iddepense,date_operation,montant,monnaie,beneficiaire,motifdepense,refrequisition,raison_retrait, numcompte  
                 FROM Depense
                 WHERE date_operation BETWEEN @dateDe AND @dateA AND monnaie = @monnaie";
                 cmd = new SqlCommand(cmdtxt, con);
@@ -2624,7 +2668,7 @@ namespace SUMEDCO
             }
             else
             {
-                cmdtxt = @"SELECT iddepense,date_operation,montant,monnaie,beneficiaire,motifdepense,refrequisition,raison_retrait 
+                cmdtxt = @"SELECT iddepense,date_operation,montant,monnaie,beneficiaire,motifdepense,refrequisition,raison_retrait, numcompte 
                 FROM Depense
                 WHERE date_operation BETWEEN @dateDe AND @dateA";
                 cmd = new SqlCommand(cmdtxt, con);
@@ -2640,19 +2684,20 @@ namespace SUMEDCO
                 {
                     d.dgvBon.Rows.Add();
                     d.dgvBon.Rows[d.dgvBon.RowCount - 1].Cells[0].Value = dr[0].ToString();
-                    d.dgvBon.Rows[d.dgvBon.RowCount - 1].Cells[1].Value = dr[1].ToString();
+                    d.dgvBon.Rows[d.dgvBon.RowCount - 1].Cells[1].Value = dr[1].ToString().Substring(0, 10);
                     d.dgvBon.Rows[d.dgvBon.RowCount - 1].Cells[2].Value = dr[2].ToString();
                     d.dgvBon.Rows[d.dgvBon.RowCount - 1].Cells[3].Value = dr[3].ToString();
                     d.dgvBon.Rows[d.dgvBon.RowCount - 1].Cells[4].Value = dr[4].ToString();
                     d.dgvBon.Rows[d.dgvBon.RowCount - 1].Cells[5].Value = dr[5].ToString();
                     d.dgvBon.Rows[d.dgvBon.RowCount - 1].Cells[6].Value = dr[6].ToString();
                     d.dgvBon.Rows[d.dgvBon.RowCount - 1].Cells[7].Value = dr[7].ToString();
+                    d.dgvBon.Rows[d.dgvBon.RowCount - 1].Cells[8].Value = dr[8].ToString();
                 }
             }
             catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
             con.Close();
 
-            //Ajouter les colonnes totaux
+            //Ajouter les totaux
             if (d.cboMonnaie.Text != "")
             {
                 cmd = new SqlCommand("SELECT monnaie, SUM(montant) FROM Depense WHERE date_operation BETWEEN @dateDe AND @dateA AND monnaie = @monnaie GROUP BY monnaie", con);
@@ -2678,6 +2723,8 @@ namespace SUMEDCO
                     d.dgvBon.Rows[d.dgvBon.RowCount - 1].Cells[4].Value = "";
                     d.dgvBon.Rows[d.dgvBon.RowCount - 1].Cells[5].Value = "";
                     d.dgvBon.Rows[d.dgvBon.RowCount - 1].Cells[6].Value = "";
+                    d.dgvBon.Rows[d.dgvBon.RowCount - 1].Cells[7].Value = "";
+                    d.dgvBon.Rows[d.dgvBon.RowCount - 1].Cells[8].Value = "";
                 }
             }
             catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
@@ -2915,7 +2962,6 @@ namespace SUMEDCO
             }
             else
             {
-                cmdStatut = false;
                 MessageBox.Show("Désolé! Champ(s) obligatoire(s) vide(s)\nRemplissez-le(s).", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
@@ -3068,12 +3114,12 @@ namespace SUMEDCO
         #endregion
 
         #region ABONNE
-        public void AfficherSousForm(MFormAbonne a, FormPatientRecherche childForm)
+        public void AfficherSousForm(AbonneMDI a, FormPatientRecherche childForm)
         {
-            id = NbExerciceEncours();
+            id = exer.NbExerciceEncours();
             if (id == 1)
             {
-                childForm.idexercice = ExerciceEncours();
+                childForm.idexercice = exer.ExerciceEncours();
                 if (a.activeForm != null)
                     a.activeForm.Close();
                 a.activeForm = childForm;
@@ -3091,7 +3137,7 @@ namespace SUMEDCO
             else
                 MessageBox.Show("Besoin d'un exercice comptable en cours. Contactez le comptable de l'entreprise", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);            
         }
-        public void AfficherSousForm(MFormAbonne a, Form childForm)
+        public void AfficherSousForm(AbonneMDI a, Form childForm)
         {
             if (a.activeForm != null)
                 a.activeForm.Close();
@@ -3173,7 +3219,7 @@ namespace SUMEDCO
                         {
                             if (dr[0].ToString() != "")
                             {
-                                r.dgvRapport.Rows[j].Cells[i].Value = Convert.ToDouble(dr[0].ToString());
+                                r.dgvRapport.Rows[j].Cells[i].Value = Convert.ToDouble(dr[0].ToString());//Additionner à ce montant le % du taux service ou produit Juin/2024
                                 r.dgvRapport.Rows[j].Cells[r.dgvRapport.ColumnCount - 1].Value = Convert.ToDouble(r.dgvRapport.Rows[j].Cells[r.dgvRapport.ColumnCount - 1].Value) + Convert.ToDouble(dr[0].ToString());
                                 r.dgvRapport.Rows[r.dgvRapport.RowCount - 1].Cells[i].Value = Convert.ToDouble(r.dgvRapport.Rows[r.dgvRapport.RowCount - 1].Cells[i].Value) + Convert.ToDouble(dr[0].ToString());
                                 r.dgvRapport.Rows[r.dgvRapport.RowCount - 1].Cells[r.dgvRapport.ColumnCount - 1].Value = Convert.ToDouble(r.dgvRapport.Rows[r.dgvRapport.RowCount - 1].Cells[r.dgvRapport.ColumnCount - 1].Value) + Convert.ToDouble(dr[0].ToString());
@@ -3231,18 +3277,9 @@ namespace SUMEDCO
             con.Close();
             if(r.dgvRapport.RowCount != 0)
             {
-                AjouterRubriqueRapport(r);
-               
+                AjouterRubriqueRapport(r);               
                 TrouverConsommation(r);
-                VerouillerColonne(r);
                 TotalCDFUSD(r);
-            }
-        }
-        public void VerouillerColonne(FormAbonnePersoRapport r)
-        {
-            for (int i = 0; i < r.dgvRapport.ColumnCount; i++)
-            {
-                r.dgvRapport.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
             }
         }
         private void TotalCDFUSD(FormAbonnePersoRapport r)
@@ -3276,13 +3313,9 @@ namespace SUMEDCO
             }
             r.dgvRapport.Rows[r.dgvRapport.RowCount - 1].Cells[6].Value = Convert.ToDouble(r.dgvRapport.Rows[r.dgvRapport.RowCount - 2].Cells[6].Value)/r.taux;
         }
-        public void ImprimerRapport(FormAbonnePersoRapport r)
+        public void ImprimerRapport(FormAbonnePersoRapport r, FormImpression imp)
         {
-            r.btnImprimer.Enabled = false;
-            if(r.dgvRapport.RowCount != 0)
-            {
-                //
-            }
+            
         }
         #endregion
 
@@ -3290,9 +3323,9 @@ namespace SUMEDCO
 
         #region COMPTABILITE
 
-        public void AfficherSousForm(MFormComptabilite c, FormApproCommande childForm)
+        public void AfficherSousForm(ComptabiliteMDI c, FormApproCommande childForm)
         {
-            id = NbExerciceEncours();
+            id = exer.NbExerciceEncours();
             if (id == 1)
             {
                 con.Open();
@@ -3397,66 +3430,13 @@ namespace SUMEDCO
             else
                 MessageBox.Show("Impossible de supprimer un exercice impliqué dans les opérations", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
-        public int NbExerciceEncours()
+        
+        public void AfficherSousForm(ComptabiliteMDI c, FormComptaOperation childForm)
         {
-            id = 0;
-            con.Open();
-            try
-            {
-                
-                cmd = new SqlCommand("SELECT COUNT(exercice) from Exercice where statut IS NULL", con);
-                dr = cmd.ExecuteReader();
-                if (dr.Read())
-                    id = int.Parse(dr[0].ToString());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            con.Close();
-            return id;
-        }
-        public int ExerciceEncours()
-        {
-            id = 0;
-            con.Open();
-            try
-            {
-
-                cmd = new SqlCommand("SELECT idexercice from Exercice where statut IS NULL", con);
-                dr = cmd.ExecuteReader();
-                if(dr.Read())
-                    id = int.Parse(dr[0].ToString());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            con.Close();
-            return id;
-        }
-        public void LancerCompta(MFormComptabilite c)
-        {
-            id = NbExerciceEncours();
-            if (id == 0)
-            {
-                MessageBox.Show("Ajoutez un exercice comptable pour les opérations", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                new FormComptaExercice().ShowDialog();
-            }
-            else if (id > 1)
-            {
-                MessageBox.Show("Retenez un exercice comptable pour les opérations", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                FormComptaExercice exe = new FormComptaExercice();
-                exe.suppression = true;
-                exe.ShowDialog();
-            }
-        }
-        public void AfficherSousForm(MFormComptabilite c, FormComptaOperation childForm)
-        {
-            id = NbExerciceEncours();
+            id = exer.NbExerciceEncours();
             if (id == 1)
             {
-                childForm.idexercice = ExerciceEncours();
+                childForm.idexercice = exer.ExerciceEncours();
                 if (c.activeForm != null)
                     c.activeForm.Close();
                 c.activeForm = childForm;
@@ -3472,12 +3452,12 @@ namespace SUMEDCO
                 MessageBox.Show("Besoin d'un exercice comptable en cours. Contactez le comptable de l'entreprise", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             
         }
-        public void AfficherSousForm(MFormComptabilite c, FormComptaGdLivre childForm)
+        public void AfficherSousForm(ComptabiliteMDI c, FormComptaGdLivre childForm)
         {
-            id = NbExerciceEncours();
+            id = exer.NbExerciceEncours();
             if (id == 1)
             {
-                childForm.idexercice = ExerciceEncours();
+                childForm.idexercice = exer.ExerciceEncours();
                 if (c.activeForm != null)
                     c.activeForm.Close();
                 c.activeForm = childForm;
@@ -3492,12 +3472,12 @@ namespace SUMEDCO
             else
                 MessageBox.Show("Besoin d'un exercice comptable en cours. Contactez le comptable de l'entreprise", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);         
         }
-        public void AfficherSousForm(MFormComptabilite c, FormComptaBilan childForm)
+        public void AfficherSousForm(ComptabiliteMDI c, FormComptaBilan childForm)
         {
-            id = NbExerciceEncours();
+            id = exer.NbExerciceEncours();
             if (id == 1)
             {
-                childForm.idexercice = ExerciceEncours();
+                childForm.idexercice = exer.ExerciceEncours();
                 if (c.activeForm != null)
                     c.activeForm.Close();
                 c.activeForm = childForm;
@@ -3512,7 +3492,7 @@ namespace SUMEDCO
             else
                 MessageBox.Show("Besoin d'un exercice comptable en cours. Contactez le comptable de l'entreprise", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);         
         }
-        public void AfficherSousForm(MFormComptabilite c, Form childForm)
+        public void AfficherSousForm(ComptabiliteMDI c, Form childForm)
         {
             if (c.activeForm != null)
                 c.activeForm.Close();
@@ -3525,12 +3505,12 @@ namespace SUMEDCO
             childForm.BringToFront();
             childForm.Show();
         }
-        public void AfficherSousForm(MFormComptabilite c, FormComptaTableauFlux childForm)
+        public void AfficherSousForm(ComptabiliteMDI c, FormComptaTableauFlux childForm)
         {
-            id = NbExerciceEncours();
+            id = exer.NbExerciceEncours();
             if (id == 1)
             {
-                childForm.idexercice = ExerciceEncours();
+                childForm.idexercice = exer.ExerciceEncours();
                 if (c.activeForm != null)
                     c.activeForm.Close();
                 c.activeForm = childForm;
@@ -3545,9 +3525,9 @@ namespace SUMEDCO
             else
                 MessageBox.Show("Besoin d'un exercice comptable en cours. Contactez le comptable de l'entreprise", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
-        public void AfficherSousForm(MFormComptabilite c, FormComptaBalance childForm)
+        public void AfficherSousForm(ComptabiliteMDI c, FormComptaBalance childForm)
         {
-            id = NbExerciceEncours();
+            id = exer.NbExerciceEncours();
             if (id == 1)
             {
                 con.Open();
@@ -3571,12 +3551,12 @@ namespace SUMEDCO
             else
                 MessageBox.Show("Besoin d'un exercice comptable en cours. Contactez le comptable de l'entreprise", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
-        public void AfficherSousForm(MFormComptabilite c, FormComptaResultat childForm)
+        public void AfficherSousForm(ComptabiliteMDI c, FormComptaResultat childForm)
         {
-            id = NbExerciceEncours();
+            id = exer.NbExerciceEncours();
             if (id == 1)
             {
-                childForm.idexercice = ExerciceEncours();
+                childForm.idexercice = exer.ExerciceEncours();
                 if (c.activeForm != null)
                     c.activeForm.Close();
                 c.activeForm = childForm;
@@ -4038,6 +4018,7 @@ namespace SUMEDCO
             c.txtCompte2.Text = "";
             c.cboDebitCredit.Enabled = true;
             c.dgvEcriture.Rows.Clear();
+            AnnulerApresValid(c);
         }
         public int AjouterOperation(string date_jour, string numpiece, int idtypejournal, int idexercice)
         {
@@ -4143,6 +4124,7 @@ namespace SUMEDCO
                         DebiterCompte(c.idoperation, c.dgvEcriture.Rows[i].Cells[0].Value.ToString(), Convert.ToDouble(c.dgvEcriture.Rows[i].Cells[2].Value), c.dgvEcriture.Rows[i].Cells[1].Value.ToString());
                     }
                     CrediterCompte(c.idoperation, c.dgvEcriture.Rows[c.dgvEcriture.RowCount - 1].Cells[0].Value.ToString(), Convert.ToDouble(c.dgvEcriture.Rows[c.dgvEcriture.RowCount - 1].Cells[3].Value), c.dgvEcriture.Rows[c.dgvEcriture.RowCount - 1].Cells[1].Value.ToString());
+                    Annuler(c);
                 }
                 else if (c.cboDebitCredit.Text == "Débit")
                 {
@@ -4151,6 +4133,7 @@ namespace SUMEDCO
                         CrediterCompte(c.idoperation, c.dgvEcriture.Rows[i].Cells[0].Value.ToString(), Convert.ToDouble(c.dgvEcriture.Rows[i].Cells[3].Value), c.dgvEcriture.Rows[i].Cells[1].Value.ToString());
                     }
                     DebiterCompte(c.idoperation, c.dgvEcriture.Rows[c.dgvEcriture.RowCount - 1].Cells[0].Value.ToString(), Convert.ToDouble(c.dgvEcriture.Rows[c.dgvEcriture.RowCount - 1].Cells[2].Value), c.dgvEcriture.Rows[c.dgvEcriture.RowCount - 1].Cells[1].Value.ToString());
+                    Annuler(c);
                 }
             }
             else MessageBox.Show("Aucune ligne d'écriture n'a été trouvée", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -4437,9 +4420,19 @@ namespace SUMEDCO
                         ContrePartie(c.dgvEcriture, 3, 2);
                     }       
                 }
+                AnnulerApresValid(c);
             }
             else
                 MessageBox.Show("Le même numéro compte est au débit et au crédit", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+        private void AnnulerApresValid(FormComptabilite c)
+        {
+            c.txtCompte2.Clear();
+            c.txtMontant.Clear();
+            c.cboMonnaie.DropDownStyle = ComboBoxStyle.DropDown;
+            c.cboMonnaie.SelectedText = "";
+            c.cboMonnaie.DropDownStyle = ComboBoxStyle.DropDownList;
+            c.txtMotif.Clear();
         }
         public void Afficher(FormComptaOperation c)
         {           
@@ -4476,7 +4469,7 @@ namespace SUMEDCO
                 {
                     c.dgvOperation.Rows.Add();
                     c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[0].Value = dr[0].ToString();
-                    c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[1].Value = dr[1].ToString();
+                    c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[1].Value = dr[1].ToString().Substring(0, 10);
                     c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[2].Value = dr[2].ToString();
                     c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[3].Value = dr[3].ToString();
                     c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[4].Value = dr[4].ToString();
@@ -4564,8 +4557,14 @@ namespace SUMEDCO
                     c.dgvCompte.Rows.Add();
                     c.dgvCompte.Rows[c.dgvCompte.RowCount - 1].Cells[0].Value = dr[0].ToString();
                     c.dgvCompte.Rows[c.dgvCompte.RowCount - 1].Cells[1].Value = dr[1].ToString();
-                    c.dgvCompte.Rows[c.dgvCompte.RowCount - 1].Cells[2].Value = dr[2].ToString();
-                    c.dgvCompte.Rows[c.dgvCompte.RowCount - 1].Cells[3].Value = dr[3].ToString();
+                    if (dr[2].ToString().ToString() != "")
+                        c.dgvCompte.Rows[c.dgvCompte.RowCount - 1].Cells[2].Value = dr[2].ToString();
+                    else
+                        c.dgvCompte.Rows[c.dgvCompte.RowCount - 1].Cells[2].Value = 0;
+                    if (dr[3].ToString().ToString() != "")
+                        c.dgvCompte.Rows[c.dgvCompte.RowCount - 1].Cells[3].Value = dr[3].ToString();
+                    else
+                        c.dgvCompte.Rows[c.dgvCompte.RowCount - 1].Cells[3].Value = 0;
                 }
             }
             catch (Exception ex)
@@ -4576,73 +4575,9 @@ namespace SUMEDCO
         }
         public void AfficherMouvement(FormComptaGdLivre c, string numcompte)
         {
-            if (numcompte != "")
+            if (c.dtpDateDe.Value.Year == c.dtpDateA.Value.Year && c.dtpDateDe.Value.Date <= c.dtpDateA.Value.Date)
             {
-                con.Open();
-                try
-                {
-                    cmdtxt = @"SELECT o2.idoperation, date_operation, numpiece, libelle, montantdebit, montantcredit 
-                    FROM Operation o1 
-                    JOIN OperationCompte o2 ON o1.idoperation = o2.idoperation 
-                    WHERE idexercice = @idexercice AND numcompte = @numcompte AND montantdebit != 0 AND date_operation BETWEEN @dateDe AND @dateA 
-                    OR idexercice = @idexercice AND numcompte = @numcompte AND montantcredit != 0 AND date_operation BETWEEN @dateDe AND @dateA";
-                    cmd = new SqlCommand(cmdtxt, con);
-                    cmd.Parameters.AddWithValue("@idexercice", c.idexercice);
-                    cmd.Parameters.AddWithValue("@numcompte", c.dgvCompte.CurrentRow.Cells[0].Value.ToString());
-                    cmd.Parameters.AddWithValue("@dateDe", c.dtpDateDe.Text);
-                    cmd.Parameters.AddWithValue("@dateA", c.dtpDateA.Text);
-                    dr = cmd.ExecuteReader();
-                    c.dgvOperation.Rows.Clear();
-                    c.dgvOperation.Rows.Add();
-                    c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[0].Value = "";
-                    c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[1].Value = "Solde";
-                    c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[2].Value = "";
-                    c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[3].Value = "";
-                    c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[4].Value = Convert.ToDouble(c.dgvCompte.CurrentRow.Cells[2].Value);
-                    c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[5].Value = Convert.ToDouble(c.dgvCompte.CurrentRow.Cells[3].Value);
-                    c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[6].Value = Convert.ToDouble(c.dgvCompte.CurrentRow.Cells[2].Value) - Convert.ToDouble(c.dgvCompte.CurrentRow.Cells[3].Value);
-
-                    while (dr.Read())
-                    {
-                        c.dgvOperation.Rows.Add();
-                        c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[0].Value = dr[0].ToString();
-                        c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[1].Value = dr[1].ToString();
-                        c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[2].Value = dr[2].ToString();
-                        c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[3].Value = dr[3].ToString();
-                        c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[4].Value = dr[4].ToString();
-                        c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[5].Value = dr[5].ToString();
-                        c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[6].Value = 
-                            Convert.ToDouble(c.dgvOperation.Rows[c.dgvOperation.RowCount - 2].Cells[6].Value) + 
-                            Convert.ToDouble(c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[4].Value) -
-                            Convert.ToDouble(c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[5].Value);                                         
-                    }
-                    //Totaux
-                    c.dgvOperation.Rows.Add();
-                    c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].DefaultCellStyle.ForeColor = Color.MediumBlue;
-                    c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].DefaultCellStyle.SelectionForeColor = Color.MediumBlue;
-                    c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[0].Value = "";
-                    c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[1].Value = "Toaux";
-                    c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[2].Value = "";
-                    c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[3].Value = "";
-                    c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[4].Value = 0;
-                    c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[5].Value = 0;
-                    c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[6].Value = c.dgvOperation.Rows[c.dgvOperation.RowCount - 2].Cells[6].Value;
-                    for (int i = 0; i < c.dgvOperation.RowCount-1; i++)
-                    {
-                        c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[4].Value = Convert.ToDouble(c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[4].Value) + Convert.ToDouble(c.dgvOperation.Rows[i].Cells[4].Value);
-                        c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[5].Value = Convert.ToDouble(c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[5].Value) + Convert.ToDouble(c.dgvOperation.Rows[i].Cells[5].Value);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                con.Close();
-            }
-            else
-            {
-                c.dgvOperation.Rows.Clear();
-                for (int i = 0; i < c.dgvCompte.RowCount; i++)
+                if (numcompte != "")
                 {
                     con.Open();
                     try
@@ -4654,25 +4589,25 @@ namespace SUMEDCO
                         OR idexercice = @idexercice AND numcompte = @numcompte AND montantcredit != 0 AND date_operation BETWEEN @dateDe AND @dateA";
                         cmd = new SqlCommand(cmdtxt, con);
                         cmd.Parameters.AddWithValue("@idexercice", c.idexercice);
-                        cmd.Parameters.AddWithValue("@numcompte", c.dgvCompte.Rows[i].Cells[0].Value.ToString());
+                        cmd.Parameters.AddWithValue("@numcompte", c.dgvCompte.CurrentRow.Cells[0].Value.ToString());
                         cmd.Parameters.AddWithValue("@dateDe", c.dtpDateDe.Text);
                         cmd.Parameters.AddWithValue("@dateA", c.dtpDateA.Text);
                         dr = cmd.ExecuteReader();
-                        
+                        c.dgvOperation.Rows.Clear();
                         c.dgvOperation.Rows.Add();
                         c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[0].Value = "";
-                        c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[1].Value = "Solde : " + c.dgvCompte.Rows[i].Cells[0].Value.ToString();
+                        c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[1].Value = "Solde" + c.dgvCompte.CurrentRow.Cells[0].Value.ToString();
                         c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[2].Value = "";
                         c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[3].Value = "";
-                        c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[4].Value = Convert.ToDouble(c.dgvCompte.Rows[i].Cells[2].Value);
-                        c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[5].Value = Convert.ToDouble(c.dgvCompte.Rows[i].Cells[3].Value);
-                        c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[6].Value = Convert.ToDouble(c.dgvCompte.Rows[i].Cells[2].Value) - Convert.ToDouble(c.dgvCompte.Rows[i].Cells[3].Value);
-
+                        c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[4].Value = Convert.ToDouble(c.dgvCompte.CurrentRow.Cells[2].Value);
+                        c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[5].Value = Convert.ToDouble(c.dgvCompte.CurrentRow.Cells[3].Value);
+                        c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[6].Value = Convert.ToDouble(c.dgvCompte.CurrentRow.Cells[2].Value) - Convert.ToDouble(c.dgvCompte.CurrentRow.Cells[3].Value);
+                        
                         while (dr.Read())
                         {
                             c.dgvOperation.Rows.Add();
                             c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[0].Value = dr[0].ToString();
-                            c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[1].Value = dr[1].ToString();
+                            c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[1].Value = dr[1].ToString().Substring(0, 10);
                             c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[2].Value = dr[2].ToString();
                             c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[3].Value = dr[3].ToString();
                             c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[4].Value = dr[4].ToString();
@@ -4681,7 +4616,23 @@ namespace SUMEDCO
                                 Convert.ToDouble(c.dgvOperation.Rows[c.dgvOperation.RowCount - 2].Cells[6].Value) +
                                 Convert.ToDouble(c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[4].Value) -
                                 Convert.ToDouble(c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[5].Value);
-                        }               
+                        }
+                        //Totaux
+                        c.dgvOperation.Rows.Add();
+                        c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].DefaultCellStyle.ForeColor = Color.MediumBlue;
+                        c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].DefaultCellStyle.SelectionForeColor = Color.MediumBlue;
+                        c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[0].Value = "";
+                        c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[1].Value = "Totaux";
+                        c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[2].Value = "";
+                        c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[3].Value = "";
+                        c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[4].Value = 0;
+                        c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[5].Value = 0;
+                        c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[6].Value = c.dgvOperation.Rows[c.dgvOperation.RowCount - 2].Cells[6].Value;
+                        for (int i = 0; i < c.dgvOperation.RowCount - 1; i++)
+                        {
+                            c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[4].Value = Convert.ToDouble(c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[4].Value) + Convert.ToDouble(c.dgvOperation.Rows[i].Cells[4].Value);
+                            c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[5].Value = Convert.ToDouble(c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[5].Value) + Convert.ToDouble(c.dgvOperation.Rows[i].Cells[5].Value);
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -4689,24 +4640,77 @@ namespace SUMEDCO
                     }
                     con.Close();
                 }
-                //Totaux
-                c.dgvOperation.Rows.Add();
-                c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].DefaultCellStyle.ForeColor = Color.MediumBlue;
-                c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].DefaultCellStyle.SelectionForeColor = Color.MediumBlue;
-                c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[0].Value = "";
-                c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[1].Value = "Toaux";
-                c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[2].Value = "";
-                c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[3].Value = "";
-                c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[4].Value = 0;
-                c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[5].Value = 0;
-
-                for (int i = 0; i < c.dgvOperation.RowCount - 1; i++)
+                else
                 {
-                    c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[4].Value = Convert.ToDouble(c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[4].Value) + Convert.ToDouble(c.dgvOperation.Rows[i].Cells[4].Value);
-                    c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[5].Value = Convert.ToDouble(c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[5].Value) + Convert.ToDouble(c.dgvOperation.Rows[i].Cells[5].Value);
+                    c.dgvOperation.Rows.Clear();
+                    for (int i = 0; i < c.dgvCompte.RowCount; i++)
+                    {
+                        con.Open();
+                        try
+                        {
+                            cmdtxt = @"SELECT o2.idoperation, date_operation, numpiece, libelle, montantdebit, montantcredit 
+                        FROM Operation o1 
+                        JOIN OperationCompte o2 ON o1.idoperation = o2.idoperation 
+                        WHERE idexercice = @idexercice AND numcompte = @numcompte AND montantdebit != 0 AND date_operation BETWEEN @dateDe AND @dateA 
+                        OR idexercice = @idexercice AND numcompte = @numcompte AND montantcredit != 0 AND date_operation BETWEEN @dateDe AND @dateA";
+                            cmd = new SqlCommand(cmdtxt, con);
+                            cmd.Parameters.AddWithValue("@idexercice", c.idexercice);
+                            cmd.Parameters.AddWithValue("@numcompte", c.dgvCompte.Rows[i].Cells[0].Value.ToString());
+                            cmd.Parameters.AddWithValue("@dateDe", c.dtpDateDe.Text);
+                            cmd.Parameters.AddWithValue("@dateA", c.dtpDateA.Text);
+                            dr = cmd.ExecuteReader();
+
+                            c.dgvOperation.Rows.Add();
+                            c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[0].Value = "";
+                            c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[1].Value = "Solde : " + c.dgvCompte.Rows[i].Cells[0].Value.ToString();
+                            c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[2].Value = "";
+                            c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[3].Value = "";
+                            c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[4].Value = Convert.ToDouble(c.dgvCompte.Rows[i].Cells[2].Value);
+                            c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[5].Value = Convert.ToDouble(c.dgvCompte.Rows[i].Cells[3].Value);
+                            c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[6].Value = Convert.ToDouble(c.dgvCompte.Rows[i].Cells[2].Value) - Convert.ToDouble(c.dgvCompte.Rows[i].Cells[3].Value);
+
+                            while (dr.Read())
+                            {
+                                c.dgvOperation.Rows.Add();
+                                c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[0].Value = dr[0].ToString();
+                                c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[1].Value = dr[1].ToString().Substring(0, 10);
+                                c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[2].Value = dr[2].ToString();
+                                c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[3].Value = dr[3].ToString();
+                                c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[4].Value = dr[4].ToString();
+                                c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[5].Value = dr[5].ToString();
+                                c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[6].Value =
+                                    Convert.ToDouble(c.dgvOperation.Rows[c.dgvOperation.RowCount - 2].Cells[6].Value) +
+                                    Convert.ToDouble(c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[4].Value) -
+                                    Convert.ToDouble(c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[5].Value);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        con.Close();
+                    }
+                    //Totaux
+                    c.dgvOperation.Rows.Add();
+                    c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].DefaultCellStyle.ForeColor = Color.MediumBlue;
+                    c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].DefaultCellStyle.SelectionForeColor = Color.MediumBlue;
+                    c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[0].Value = "";
+                    c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[1].Value = "Toaux";
+                    c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[2].Value = "";
+                    c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[3].Value = "";
+                    c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[4].Value = 0;
+                    c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[5].Value = 0;
+
+                    for (int i = 0; i < c.dgvOperation.RowCount - 1; i++)
+                    {
+                        c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[4].Value = Convert.ToDouble(c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[4].Value) + Convert.ToDouble(c.dgvOperation.Rows[i].Cells[4].Value);
+                        c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[5].Value = Convert.ToDouble(c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[5].Value) + Convert.ToDouble(c.dgvOperation.Rows[i].Cells[5].Value);
+                    }
+                    c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[6].Value = Convert.ToDouble(c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[4].Value) - Convert.ToDouble(c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[5].Value);
                 }
-                c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[6].Value = Convert.ToDouble(c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[4].Value) - Convert.ToDouble(c.dgvOperation.Rows[c.dgvOperation.RowCount - 1].Cells[5].Value);
             }
+            else
+                MessageBox.Show("La première date doit être inférieure ou égale à la deuxième et l'année doit être la même", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         public void AfficherOuverture()
@@ -5634,7 +5638,12 @@ namespace SUMEDCO
         public void ImprimerActif(FormComptaBilan c, FormImpression imp)
         {
             imp.Text = "SSM - Actif du Bilan";
-
+            ReportParameter[] rparams = new ReportParameter[]
+            {
+                new ReportParameter("debutperiode", c.dtpDateDe.Text),
+                new ReportParameter("finperiode", c.dtpDateA.Text),
+                new ReportParameter("exepasse", (c.dtpDateA.Value.Year-1).ToString())
+            };
             List<Bilan_Actif> list = new List<Bilan_Actif>();
             list.Clear();
 
@@ -5646,10 +5655,10 @@ namespace SUMEDCO
                     rubriqueActif = c.dgvActif.Rows[i].Cells[1].Value.ToString(),
                     placement = c.dgvActif.Rows[i].Cells[2].Value.ToString(),
                     noteActif = c.dgvActif.Rows[i].Cells[3].Value.ToString(),
-                    brut = c.dgvActif.Rows[i].Cells[4].Value.ToString(),
-                    amortDeprec = c.dgvActif.Rows[i].Cells[5].Value.ToString(),
-                    net = c.dgvActif.Rows[i].Cells[6].Value.ToString(),
-                    exercicepasse = c.dgvActif.Rows[i].Cells[7].Value.ToString()
+                    brut = Convert.ToDouble(c.dgvActif.Rows[i].Cells[4].Value),
+                    amortDeprec = Convert.ToDouble(c.dgvActif.Rows[i].Cells[5].Value),
+                    net = Convert.ToDouble(c.dgvActif.Rows[i].Cells[6].Value),
+                    exercicepasse = Convert.ToDouble(c.dgvActif.Rows[i].Cells[7].Value)
                 };
                 list.Add(actif);
             }
@@ -5658,84 +5667,103 @@ namespace SUMEDCO
             imp.reportViewer1.LocalReport.DataSources.Clear();
             imp.reportViewer1.LocalReport.DataSources.Add(rs);
             imp.reportViewer1.LocalReport.ReportEmbeddedResource = "SUMEDCO.BilanActif.rdlc";
+            imp.reportViewer1.LocalReport.SetParameters(rparams);
             imp.ShowDialog();
         }
         public void ImprimerPassif(FormComptaBilan c, FormImpression imp)
         {
             imp.Text = "SSM - Passif du Bilan";
-
+            ReportParameter[] rparams = new ReportParameter[]
+            {
+                new ReportParameter("debutperiode", c.dtpDateDe.Text),
+                new ReportParameter("finperiode", c.dtpDateA.Text),
+                new ReportParameter("exepasse", (c.dtpDateA.Value.Year-1).ToString())
+            };
             List<Bilan_Passif> list = new List<Bilan_Passif>();
             list.Clear();
 
-            for (int i = 0; i < c.dgvActif.RowCount; i++)
+            for (int i = 0; i < c.dgvPassif.RowCount; i++)
             {
-                Bilan_Passif actif = new Bilan_Passif
+                Bilan_Passif passif = new Bilan_Passif
                 {
-                    refPassif = c.dgvActif.Rows[i].Cells[0].Value.ToString(),
-                    rubriquePassif = c.dgvActif.Rows[i].Cells[1].Value.ToString(),
-                    notePassif = c.dgvActif.Rows[i].Cells[2].Value.ToString(),
-                    netEncours = c.dgvActif.Rows[i].Cells[3].Value.ToString(),
-                    netPasse = c.dgvActif.Rows[i].Cells[4].Value.ToString()
+                    refPassif = c.dgvPassif.Rows[i].Cells[0].Value.ToString(),
+                    rubriquePassif = c.dgvPassif.Rows[i].Cells[1].Value.ToString(),
+                    notePassif = c.dgvPassif.Rows[i].Cells[2].Value.ToString(),
+                    netEncours = Convert.ToDouble(c.dgvPassif.Rows[i].Cells[3].Value),
+                    netPasse = Convert.ToDouble(c.dgvPassif.Rows[i].Cells[4].Value)
                 };
-                list.Add(actif);
+                list.Add(passif);
             }
             rs.Name = "DataSet3";
             rs.Value = list;
             imp.reportViewer1.LocalReport.DataSources.Clear();
             imp.reportViewer1.LocalReport.DataSources.Add(rs);
             imp.reportViewer1.LocalReport.ReportEmbeddedResource = "SUMEDCO.BilanPassif.rdlc";
+            imp.reportViewer1.LocalReport.SetParameters(rparams);
             imp.ShowDialog();
         }
         public void ImprimerToutBilan(FormComptaBilan c, FormImpression imp)
         {
             imp.Text = "SSM - Actif et Passif du Bilan";
+            ReportParameter[] rparams = new ReportParameter[]
+            {
+                new ReportParameter("debutperiode", c.dtpDateDe.Text),
+                new ReportParameter("finperiode", c.dtpDateA.Text),
+                new ReportParameter("exepasse", (c.dtpDateA.Value.Year-1).ToString())
+            };
 
-            //Actif
-            List<Bilan_Actif> list = new List<Bilan_Actif>();
+            List<Bilan_Tout> list = new List<Bilan_Tout>();
             list.Clear();
 
             for (int i = 0; i < c.dgvActif.RowCount; i++)
             {
-                Bilan_Actif actif = new Bilan_Actif
+                if(i==0)
                 {
-                    refActif = c.dgvActif.Rows[i].Cells[0].Value.ToString(),
-                    rubriqueActif = c.dgvActif.Rows[i].Cells[1].Value.ToString(),
-                    placement = c.dgvActif.Rows[i].Cells[2].Value.ToString(),
-                    noteActif = c.dgvActif.Rows[i].Cells[3].Value.ToString(),
-                    brut = c.dgvActif.Rows[i].Cells[4].Value.ToString(),
-                    amortDeprec = c.dgvActif.Rows[i].Cells[5].Value.ToString(),
-                    net = c.dgvActif.Rows[i].Cells[6].Value.ToString(),
-                    exercicepasse = c.dgvActif.Rows[i].Cells[7].Value.ToString()
-                };
-                list.Add(actif);
+                    Bilan_Tout bilan = new Bilan_Tout
+                    {
+                        refActif = c.dgvActif.Rows[i].Cells[0].Value.ToString(),
+                        rubriqueActif = c.dgvActif.Rows[i].Cells[1].Value.ToString(),
+                        placement = c.dgvActif.Rows[i].Cells[2].Value.ToString(),
+                        noteActif = c.dgvActif.Rows[i].Cells[3].Value.ToString(),
+                        brut = Convert.ToDouble(c.dgvActif.Rows[i].Cells[4].Value),
+                        amortDeprec = Convert.ToDouble(c.dgvActif.Rows[i].Cells[5].Value),
+                        net = Convert.ToDouble(c.dgvActif.Rows[i].Cells[6].Value),
+                        exercicepasse = Convert.ToDouble(c.dgvActif.Rows[i].Cells[7].Value),
+                        refPassif = "",
+                        rubriquePassif = "",
+                        notePassif = "",
+                        netEncours = Convert.ToDouble(0),
+                        netPasse = Convert.ToDouble(0)
+                    };
+                    list.Add(bilan);
+                }
+                else
+                {
+                    Bilan_Tout bilan = new Bilan_Tout
+                    {
+                        refActif = c.dgvActif.Rows[i].Cells[0].Value.ToString(),
+                        rubriqueActif = c.dgvActif.Rows[i].Cells[1].Value.ToString(),
+                        placement = c.dgvActif.Rows[i].Cells[2].Value.ToString(),
+                        noteActif = c.dgvActif.Rows[i].Cells[3].Value.ToString(),
+                        brut = Convert.ToDouble(c.dgvActif.Rows[i].Cells[4].Value),
+                        amortDeprec = Convert.ToDouble(c.dgvActif.Rows[i].Cells[5].Value),
+                        net = Convert.ToDouble(c.dgvActif.Rows[i].Cells[6].Value),
+                        exercicepasse = Convert.ToDouble(c.dgvActif.Rows[i].Cells[7].Value),
+                        refPassif = c.dgvPassif.Rows[i-1].Cells[0].Value.ToString(),
+                        rubriquePassif = c.dgvPassif.Rows[i-1].Cells[1].Value.ToString(),
+                        notePassif = c.dgvPassif.Rows[i-1].Cells[2].Value.ToString(),
+                        netEncours = Convert.ToDouble(c.dgvPassif.Rows[i-1].Cells[3].Value),
+                        netPasse = Convert.ToDouble(c.dgvPassif.Rows[i-1].Cells[4].Value)
+                    };
+                    list.Add(bilan);
+                }                              
             }
             rs.Name = "DataSet2";
             rs.Value = list;
             imp.reportViewer1.LocalReport.DataSources.Clear();
             imp.reportViewer1.LocalReport.DataSources.Add(rs);
             imp.reportViewer1.LocalReport.ReportEmbeddedResource = "SUMEDCO.Bilan.rdlc";
-
-            //Passif
-            List<Bilan_Passif> list2 = new List<Bilan_Passif>();
-            list2.Clear();
-
-            for (int i = 0; i < c.dgvActif.RowCount; i++)
-            {
-                Bilan_Passif actif = new Bilan_Passif
-                {
-                    refPassif = c.dgvActif.Rows[i].Cells[0].Value.ToString(),
-                    rubriquePassif = c.dgvActif.Rows[i].Cells[1].Value.ToString(),
-                    notePassif = c.dgvActif.Rows[i].Cells[2].Value.ToString(),
-                    netEncours = c.dgvActif.Rows[i].Cells[3].Value.ToString(),
-                    netPasse = c.dgvActif.Rows[i].Cells[4].Value.ToString()
-                };
-                list2.Add(actif);
-            }
-            rs2.Name = "DataSet3";
-            rs2.Value = list2;
-            //imp.reportViewer1.LocalReport.DataSources.Clear();
-            imp.reportViewer1.LocalReport.DataSources.Add(rs2);
-            imp.reportViewer1.LocalReport.ReportEmbeddedResource = "SUMEDCO.Bilan.rdlc";
+            imp.reportViewer1.LocalReport.SetParameters(rparams);
             imp.ShowDialog();
         }
         public void ImprimerBilan(FormComptaBilan c)
@@ -5757,6 +5785,45 @@ namespace SUMEDCO
             c.btnImprimer.Enabled = false;
         }
         #endregion
+
+        #region GRAND LIVRE
+        public void ImprimerGdLivre(FormComptaGdLivre c, FormImpression imp)
+        {
+            imp.Text = "SSM - Grand Livre";
+            ReportParameter[] rparams = new ReportParameter[]
+            {
+                new ReportParameter("debutperiode", c.dtpDateDe.Text),
+                new ReportParameter("finperiode", c.dtpDateA.Text),
+                new ReportParameter("concerne", c.concerne)
+            };
+            List<GrandLivre> list = new List<GrandLivre>();
+            list.Clear();
+
+            for (int i = 0; i < c.dgvOperation.RowCount; i++)
+            {
+                GrandLivre passif = new GrandLivre
+                {
+                    num = c.dgvOperation.Rows[i].Cells[0].Value.ToString(),
+                    date_jour = c.dgvOperation.Rows[i].Cells[1].Value.ToString(),
+                    numpiece = c.dgvOperation.Rows[i].Cells[2].Value.ToString(),
+                    libelle = c.dgvOperation.Rows[i].Cells[3].Value.ToString(),
+                    debit = Convert.ToDouble(c.dgvOperation.Rows[i].Cells[4].Value),
+                    credit = Convert.ToDouble(c.dgvOperation.Rows[i].Cells[5].Value),
+                    solde = Convert.ToDouble(c.dgvOperation.Rows[i].Cells[6].Value)
+                };
+                list.Add(passif);
+            }
+            rs.Name = "DataSet1";
+            rs.Value = list;
+            imp.reportViewer1.LocalReport.DataSources.Clear();
+            imp.reportViewer1.LocalReport.DataSources.Add(rs);
+            imp.reportViewer1.LocalReport.ReportEmbeddedResource = "SUMEDCO.GrandLivre.rdlc";
+            imp.reportViewer1.LocalReport.SetParameters(rparams);
+            imp.ShowDialog();
+            c.btnImprimerTout.Enabled = false;
+            c.btnImprimer.Enabled = false;
+        }
+        #endregion 
 
         #region BALANCE
         public void CalculerBalance(FormComptaBalance c)
@@ -5830,14 +5897,19 @@ namespace SUMEDCO
                 c.dgvBalance.Rows.Add();
                 c.dgvBalance.Rows[c.dgvBalance.RowCount - 1].DefaultCellStyle.ForeColor = Color.MediumBlue;
                 c.dgvBalance.Rows[c.dgvBalance.RowCount - 1].DefaultCellStyle.SelectionForeColor = Color.MediumBlue;
+                c.dgvBalance.Rows[c.dgvBalance.RowCount - 1].Cells[0].Value = "";
                 c.dgvBalance.Rows[c.dgvBalance.RowCount - 1].Cells[1].Value = "Totaux bilan";
+                
                 c.dgvBalance.Rows.Add();
                 c.dgvBalance.Rows[c.dgvBalance.RowCount - 1].DefaultCellStyle.ForeColor = Color.MediumBlue;
                 c.dgvBalance.Rows[c.dgvBalance.RowCount - 1].DefaultCellStyle.SelectionForeColor = Color.MediumBlue;
+                c.dgvBalance.Rows[c.dgvBalance.RowCount - 1].Cells[0].Value = "";
                 c.dgvBalance.Rows[c.dgvBalance.RowCount - 1].Cells[1].Value = "Totaux comptes gestion";
+                              
                 c.dgvBalance.Rows.Add();
                 c.dgvBalance.Rows[c.dgvBalance.RowCount - 1].DefaultCellStyle.ForeColor = Color.MediumBlue;
                 c.dgvBalance.Rows[c.dgvBalance.RowCount - 1].DefaultCellStyle.SelectionForeColor = Color.MediumBlue;
+                c.dgvBalance.Rows[c.dgvBalance.RowCount - 1].Cells[0].Value = "";
                 c.dgvBalance.Rows[c.dgvBalance.RowCount - 1].Cells[1].Value = "Totaux balance";
                 
                 CalculerTotalBalance(c.dgvBalance);
@@ -5890,33 +5962,44 @@ namespace SUMEDCO
         }
         public void ImprimerBalance(FormComptaBalance c, FormImpression imp)
         {
-            imp.Text = "SSM - Balance";
-
-            List<Balance> list = new List<Balance>();
-            list.Clear();
-
-            for (int i = 0; i < c.dgvBalance.RowCount; i++)
+            if (c.dgvBalance.RowCount != 0)
             {
-                Balance bal = new Balance
+                imp.Text = "SSM - Balance";
+                ReportParameter[] rparams = new ReportParameter[]
                 {
-                    numcompte = c.dgvBalance.Rows[i].Cells[0].Value.ToString(),
-                    libelle = c.dgvBalance.Rows[i].Cells[1].Value.ToString(),
-                    debit_ouv = c.dgvBalance.Rows[i].Cells[2].Value.ToString(),
-                    credit_ouv = c.dgvBalance.Rows[i].Cells[3].Value.ToString(),
-                    debit_mouv = c.dgvBalance.Rows[i].Cells[4].Value.ToString(),
-                    credit_mouv = c.dgvBalance.Rows[i].Cells[5].Value.ToString(),
-                    debit_fin = c.dgvBalance.Rows[i].Cells[6].Value.ToString(),
-                    credit_fin = c.dgvBalance.Rows[i].Cells[7].Value.ToString()
+                    new ReportParameter("debutperiode", c.dtpDateDe.Text),
+                    new ReportParameter("finperiode", c.dtpDateA.Text),
+                    new ReportParameter("exepasse", (c.dtpDateA.Value.Date.Year-1).ToString())
                 };
-                list.Add(bal);
+                List<Balance> list = new List<Balance>();
+                list.Clear();
+
+                for (int i = 0; i < c.dgvBalance.RowCount; i++)
+                {
+                    Balance bal = new Balance
+                    {
+                        numcompte = c.dgvBalance.Rows[i].Cells[0].Value.ToString(),
+                        libelle = c.dgvBalance.Rows[i].Cells[1].Value.ToString(),
+                        debit_ouv = Convert.ToDouble(c.dgvBalance.Rows[i].Cells[2].Value),
+                        credit_ouv = Convert.ToDouble(c.dgvBalance.Rows[i].Cells[3].Value),
+                        debit_mouv = Convert.ToDouble(c.dgvBalance.Rows[i].Cells[4].Value),
+                        credit_mouv = Convert.ToDouble(c.dgvBalance.Rows[i].Cells[5].Value),
+                        debit_fin = Convert.ToDouble(c.dgvBalance.Rows[i].Cells[6].Value),
+                        credit_fin = Convert.ToDouble(c.dgvBalance.Rows[i].Cells[7].Value)
+                    };
+                    list.Add(bal);
+                }
+                rs.Name = "DataSet2";
+                rs.Value = list;
+                imp.reportViewer1.LocalReport.DataSources.Clear();
+                imp.reportViewer1.LocalReport.DataSources.Add(rs);
+                imp.reportViewer1.LocalReport.ReportEmbeddedResource = "SUMEDCO.Balance.rdlc";
+                imp.reportViewer1.LocalReport.SetParameters(rparams);
+                imp.ShowDialog();
+                c.btnImprimer.Enabled = false;
             }
-            rs.Name = "DataSet2";
-            rs.Value = list;
-            imp.reportViewer1.LocalReport.DataSources.Clear();
-            imp.reportViewer1.LocalReport.DataSources.Add(rs);
-            imp.reportViewer1.LocalReport.ReportEmbeddedResource = "SUMEDCO.Balance.rdlc";
-            imp.ShowDialog();
-            c.btnImprimer.Enabled = false;
+            else
+                MessageBox.Show("Aucune n'a été trouvée", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
         private void SupprimerLigne(FormComptaBalance c, int nbligne)
         {
@@ -6148,7 +6231,7 @@ namespace SUMEDCO
                 new ReportParameter("NCC", "A 1206584 Z"),
                 new ReportParameter("datecloture", "31/12/20"),
                 new ReportParameter("duree", "12"),
-                new ReportParameter("NTD", "0854630801 / 0816096706")
+                new ReportParameter("NTD", "0854630801 / 0816110099")
             };
 
             rs.Name = "DataSet2";
@@ -6375,7 +6458,45 @@ namespace SUMEDCO
             }
             c.dgvTFT.Rows[0].Cells[4].Value = c.som_Treso_Actif + c.som_Treso_Passif;
         }
-        //private void 
+        public void ImprimerTFT(FormComptaTableauFlux c, FormImpression imp)
+        {
+            imp.Text = "SSM - Tableau de flux de trésorerie";
+
+            List<Tableau_Resultat> list = new List<Tableau_Resultat>();
+            list.Clear();
+
+            for (int i = 0; i < c.dgvTFT.RowCount; i++)
+            {
+                Tableau_Resultat tft = new Tableau_Resultat
+                {
+                    refe = c.dgvTFT.Rows[i].Cells[0].Value.ToString(),
+                    libelle = c.dgvTFT.Rows[i].Cells[1].Value.ToString(),
+                    signe = c.dgvTFT.Rows[i].Cells[2].Value.ToString(),
+                    note = c.dgvTFT.Rows[i].Cells[3].Value.ToString(),
+                    netEncours = c.dgvTFT.Rows[i].Cells[4].Value.ToString()
+                };
+                list.Add(tft);
+            }
+            ReportParameter[] rparams = new ReportParameter[]
+            {
+                new ReportParameter("entite", "POLYCLINIQUE SUMEDCO MBUJIMAYI"),
+                new ReportParameter("adresse", "345, Inga, Minkoka, Dibindi, MBM, K.OR, RDC"),
+                new ReportParameter("sigle", "NULL"),
+                new ReportParameter("NCC", "A 1206584 Z"),
+                new ReportParameter("datecloture", "31/12/20"),
+                new ReportParameter("duree", "12"),
+                new ReportParameter("NTD", "0854630801 / 0816110099")
+            };
+
+            rs.Name = "DataSet2";
+            rs.Value = list;
+            imp.reportViewer1.LocalReport.DataSources.Clear();
+            imp.reportViewer1.LocalReport.DataSources.Add(rs);
+            imp.reportViewer1.LocalReport.ReportEmbeddedResource = "SUMEDCO.TableauFlux.rdlc";
+            imp.reportViewer1.LocalReport.SetParameters(rparams);
+            imp.ShowDialog();
+            c.btnImprimer.Enabled = false;
+        }
         private void MontantResultatTFT(FormComptaTableauFlux c)
         {
             string[]  ref_resultat = { "TA", "TB", "TC", "TD", "TE", "TF", "TG", "TH", "TI", "TK", "RA", "RB", "RC", "RD", "RE", "RF", "RG", "RH", "RI", "RJ", "RK", "RM", "RS" };
@@ -7000,29 +7121,55 @@ namespace SUMEDCO
         public string rubriqueActif { get; set; }
         public string noteActif { get; set; }
         public string placement { get; set; }
-        public string brut { get; set; }
-        public string amortDeprec { get; set; }
-        public string net { get; set; }
-        public string exercicepasse { get; set; }
+        public double brut { get; set; }
+        public double amortDeprec { get; set; }
+        public double net { get; set; }
+        public double exercicepasse { get; set; }
+    }
+    public class GrandLivre
+    {
+        public string num { get; set; }
+        public string date_jour { get; set; }
+        public string numpiece { get; set; }
+        public string libelle { get; set; }
+        public double debit { get; set; }
+        public double credit { get; set; }
+        public double solde { get; set; }
     }
     public class Bilan_Passif
     {
         public string refPassif { get; set; }
         public string rubriquePassif { get; set; }
         public string notePassif { get; set; }
-        public string netEncours { get; set; }
-        public string netPasse { get; set; }
+        public double netEncours { get; set; }
+        public double netPasse { get; set; }
+    }
+    public class Bilan_Tout
+    {
+        public string refActif { get; set; }
+        public string rubriqueActif { get; set; }
+        public string noteActif { get; set; }
+        public string placement { get; set; }
+        public double brut { get; set; }
+        public double amortDeprec { get; set; }
+        public double net { get; set; }
+        public double exercicepasse { get; set; }
+        public string refPassif { get; set; }
+        public string rubriquePassif { get; set; }
+        public string notePassif { get; set; }
+        public double netEncours { get; set; }
+        public double netPasse { get; set; }
     }
     public class Balance
     {
         public string numcompte { get; set; }
         public string libelle { get; set; }
-        public string debit_ouv { get; set; }
-        public string credit_ouv { get; set; }
-        public string debit_mouv { get; set; }
-        public string credit_mouv { get; set; }
-        public string debit_fin { get; set; }
-        public string credit_fin { get; set; }
+        public double debit_ouv { get; set; }
+        public double credit_ouv { get; set; }
+        public double debit_mouv { get; set; }
+        public double credit_mouv { get; set; }
+        public double debit_fin { get; set; }
+        public double credit_fin { get; set; }
     }
     public class Tableau_Resultat
     {
@@ -7039,7 +7186,35 @@ namespace SUMEDCO
         public string libelle { get; set; }
         public string note { get; set; }
         public string netEncours { get; set; }
-        public string netPasse { get; set; }
     }
-
+    public class AbonnePersoRapport
+    {
+        public int id { get; set; }
+        public string patient { get; set; }
+        public string age { get; set; }
+        public string sexe { get; set; }
+        public string reference { get; set; }
+        public string produit { get; set; }
+        public string service1 { get; set; }
+        public string service2 { get; set; }
+        public string service3 { get; set; }
+        public string service4 { get; set; }
+        public string service5 { get; set; }
+        public string service6 { get; set; }
+        public string service7 { get; set; }
+        public string service8 { get; set; }
+        public string service9 { get; set; }
+        public string service10 { get; set; }
+        public string service11 { get; set; }
+        public string service12 { get; set; }
+        public string service13 { get; set; }
+        public string service14 { get; set; }
+        public string service15 { get; set; }
+        public string service16 { get; set; }
+        public string service17 { get; set; }
+        public string service18 { get; set; }
+        public string service19 { get; set; }
+        public string service20 { get; set; }
+        public string service21 { get; set; }
+    }
 }

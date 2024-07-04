@@ -30,7 +30,7 @@ namespace SUMEDCO
 
         private void btnImprimer_Click(object sender, EventArgs e)
         {
-            btnImprimer.Enabled = false;
+            cc.ImprimerTFT(this, new FormImpression());
         }
 
         private void FormComptaTableauFlux_Shown(object sender, EventArgs e)

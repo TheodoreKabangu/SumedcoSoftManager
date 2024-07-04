@@ -29,18 +29,22 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormStockProduit));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnCmdPrep = new System.Windows.Forms.Button();
+            this.btnVente = new System.Windows.Forms.Button();
+            this.btnRetour = new System.Windows.Forms.Button();
+            this.btnDemande = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnPerte = new System.Windows.Forms.Button();
             this.btnStockPha = new System.Windows.Forms.Button();
             this.btnNouveauStock = new System.Windows.Forms.Button();
-            this.btnPerte = new System.Windows.Forms.Button();
-            this.btnDemande = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSorties = new System.Windows.Forms.Button();
             this.btnEntrees = new System.Windows.Forms.Button();
@@ -48,10 +52,19 @@
             this.btnFicheStock = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnRecherche = new System.Windows.Forms.Button();
+            this.btnAlerteStock = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cboCategorie = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.dgvStock = new System.Windows.Forms.DataGridView();
+            this.txtRecherche = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dgvProduit = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtAlerteStock = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,13 +72,6 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtRecherche = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dgvProduit = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnVente = new System.Windows.Forms.Button();
-            this.btnRetour = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStock)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduit)).BeginInit();
@@ -74,9 +80,11 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panel2.Controls.Add(this.btnCmdPrep);
             this.panel2.Controls.Add(this.btnVente);
             this.panel2.Controls.Add(this.btnRetour);
             this.panel2.Controls.Add(this.btnDemande);
+            this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.btnPerte);
             this.panel2.Controls.Add(this.btnStockPha);
             this.panel2.Controls.Add(this.btnNouveauStock);
@@ -90,6 +98,121 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(703, 30);
             this.panel2.TabIndex = 625;
+            // 
+            // btnCmdPrep
+            // 
+            this.btnCmdPrep.BackColor = System.Drawing.Color.Transparent;
+            this.btnCmdPrep.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnCmdPrep.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnCmdPrep.Enabled = false;
+            this.btnCmdPrep.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnCmdPrep.FlatAppearance.BorderSize = 0;
+            this.btnCmdPrep.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnCmdPrep.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCmdPrep.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCmdPrep.Image = ((System.Drawing.Image)(resources.GetObject("btnCmdPrep.Image")));
+            this.btnCmdPrep.Location = new System.Drawing.Point(272, 0);
+            this.btnCmdPrep.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnCmdPrep.Name = "btnCmdPrep";
+            this.btnCmdPrep.Size = new System.Drawing.Size(30, 30);
+            this.btnCmdPrep.TabIndex = 730;
+            this.toolTip1.SetToolTip(this.btnCmdPrep, "Préparer la commande");
+            this.btnCmdPrep.UseVisualStyleBackColor = false;
+            this.btnCmdPrep.Click += new System.EventHandler(this.btnCmdPrep_Click);
+            // 
+            // btnVente
+            // 
+            this.btnVente.BackColor = System.Drawing.Color.Transparent;
+            this.btnVente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnVente.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnVente.Enabled = false;
+            this.btnVente.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnVente.FlatAppearance.BorderSize = 0;
+            this.btnVente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnVente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVente.Image = ((System.Drawing.Image)(resources.GetObject("btnVente.Image")));
+            this.btnVente.Location = new System.Drawing.Point(242, 0);
+            this.btnVente.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnVente.Name = "btnVente";
+            this.btnVente.Size = new System.Drawing.Size(30, 30);
+            this.btnVente.TabIndex = 728;
+            this.toolTip1.SetToolTip(this.btnVente, "Vendre");
+            this.btnVente.UseVisualStyleBackColor = false;
+            this.btnVente.Click += new System.EventHandler(this.btnVente_Click);
+            // 
+            // btnRetour
+            // 
+            this.btnRetour.BackColor = System.Drawing.Color.Transparent;
+            this.btnRetour.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnRetour.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnRetour.Enabled = false;
+            this.btnRetour.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnRetour.FlatAppearance.BorderSize = 0;
+            this.btnRetour.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnRetour.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRetour.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRetour.Image = ((System.Drawing.Image)(resources.GetObject("btnRetour.Image")));
+            this.btnRetour.Location = new System.Drawing.Point(212, 0);
+            this.btnRetour.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnRetour.Name = "btnRetour";
+            this.btnRetour.Size = new System.Drawing.Size(30, 30);
+            this.btnRetour.TabIndex = 729;
+            this.toolTip1.SetToolTip(this.btnRetour, "Retour en stock");
+            this.btnRetour.UseVisualStyleBackColor = false;
+            this.btnRetour.Click += new System.EventHandler(this.btnRetour_Click);
+            // 
+            // btnDemande
+            // 
+            this.btnDemande.BackColor = System.Drawing.Color.Transparent;
+            this.btnDemande.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnDemande.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnDemande.Enabled = false;
+            this.btnDemande.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnDemande.FlatAppearance.BorderSize = 0;
+            this.btnDemande.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnDemande.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDemande.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDemande.Image = ((System.Drawing.Image)(resources.GetObject("btnDemande.Image")));
+            this.btnDemande.Location = new System.Drawing.Point(182, 0);
+            this.btnDemande.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnDemande.Name = "btnDemande";
+            this.btnDemande.Size = new System.Drawing.Size(30, 30);
+            this.btnDemande.TabIndex = 715;
+            this.toolTip1.SetToolTip(this.btnDemande, "Servir une demande");
+            this.btnDemande.UseVisualStyleBackColor = false;
+            this.btnDemande.Click += new System.EventHandler(this.btnDemande_Click);
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.DimGray;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label2.Location = new System.Drawing.Point(181, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(1, 30);
+            this.label2.TabIndex = 731;
+            this.label2.Text = "label2";
+            // 
+            // btnPerte
+            // 
+            this.btnPerte.BackColor = System.Drawing.Color.Transparent;
+            this.btnPerte.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnPerte.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnPerte.Enabled = false;
+            this.btnPerte.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnPerte.FlatAppearance.BorderSize = 0;
+            this.btnPerte.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnPerte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPerte.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPerte.Image = ((System.Drawing.Image)(resources.GetObject("btnPerte.Image")));
+            this.btnPerte.Location = new System.Drawing.Point(151, 0);
+            this.btnPerte.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnPerte.Name = "btnPerte";
+            this.btnPerte.Size = new System.Drawing.Size(30, 30);
+            this.btnPerte.TabIndex = 726;
+            this.toolTip1.SetToolTip(this.btnPerte, "Signaler une perte");
+            this.btnPerte.UseVisualStyleBackColor = false;
+            this.btnPerte.Click += new System.EventHandler(this.btnPerte_Click);
             // 
             // btnStockPha
             // 
@@ -131,48 +254,6 @@
             this.toolTip1.SetToolTip(this.btnNouveauStock, "Ajouter un nouveau stock");
             this.btnNouveauStock.UseVisualStyleBackColor = false;
             this.btnNouveauStock.Click += new System.EventHandler(this.btnNouveauStock_Click);
-            // 
-            // btnPerte
-            // 
-            this.btnPerte.BackColor = System.Drawing.Color.Transparent;
-            this.btnPerte.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnPerte.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnPerte.Enabled = false;
-            this.btnPerte.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnPerte.FlatAppearance.BorderSize = 0;
-            this.btnPerte.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnPerte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPerte.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPerte.Image = ((System.Drawing.Image)(resources.GetObject("btnPerte.Image")));
-            this.btnPerte.Location = new System.Drawing.Point(151, 0);
-            this.btnPerte.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.btnPerte.Name = "btnPerte";
-            this.btnPerte.Size = new System.Drawing.Size(30, 30);
-            this.btnPerte.TabIndex = 726;
-            this.toolTip1.SetToolTip(this.btnPerte, "Signaler une perte");
-            this.btnPerte.UseVisualStyleBackColor = false;
-            this.btnPerte.Click += new System.EventHandler(this.btnPerte_Click);
-            // 
-            // btnDemande
-            // 
-            this.btnDemande.BackColor = System.Drawing.Color.Transparent;
-            this.btnDemande.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnDemande.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnDemande.Enabled = false;
-            this.btnDemande.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnDemande.FlatAppearance.BorderSize = 0;
-            this.btnDemande.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnDemande.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDemande.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDemande.Image = ((System.Drawing.Image)(resources.GetObject("btnDemande.Image")));
-            this.btnDemande.Location = new System.Drawing.Point(181, 0);
-            this.btnDemande.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.btnDemande.Name = "btnDemande";
-            this.btnDemande.Size = new System.Drawing.Size(30, 30);
-            this.btnDemande.TabIndex = 715;
-            this.toolTip1.SetToolTip(this.btnDemande, "Servir une demande");
-            this.btnDemande.UseVisualStyleBackColor = false;
-            this.btnDemande.Click += new System.EventHandler(this.btnDemande_Click);
             // 
             // label1
             // 
@@ -276,7 +357,7 @@
             this.btnRecherche.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRecherche.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRecherche.Image = ((System.Drawing.Image)(resources.GetObject("btnRecherche.Image")));
-            this.btnRecherche.Location = new System.Drawing.Point(416, 75);
+            this.btnRecherche.Location = new System.Drawing.Point(236, 103);
             this.btnRecherche.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnRecherche.Name = "btnRecherche";
             this.btnRecherche.Size = new System.Drawing.Size(30, 21);
@@ -284,6 +365,25 @@
             this.toolTip1.SetToolTip(this.btnRecherche, "Rechercher");
             this.btnRecherche.UseVisualStyleBackColor = false;
             this.btnRecherche.Click += new System.EventHandler(this.btnRecherche_Click);
+            // 
+            // btnAlerteStock
+            // 
+            this.btnAlerteStock.BackColor = System.Drawing.Color.Transparent;
+            this.btnAlerteStock.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAlerteStock.Enabled = false;
+            this.btnAlerteStock.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnAlerteStock.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnAlerteStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAlerteStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAlerteStock.Image = ((System.Drawing.Image)(resources.GetObject("btnAlerteStock.Image")));
+            this.btnAlerteStock.Location = new System.Drawing.Point(661, 77);
+            this.btnAlerteStock.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btnAlerteStock.Name = "btnAlerteStock";
+            this.btnAlerteStock.Size = new System.Drawing.Size(30, 21);
+            this.btnAlerteStock.TabIndex = 762;
+            this.toolTip1.SetToolTip(this.btnAlerteStock, "Alerte stock");
+            this.btnAlerteStock.UseVisualStyleBackColor = false;
+            this.btnAlerteStock.Click += new System.EventHandler(this.btnAlerteStock_Click);
             // 
             // panel1
             // 
@@ -307,7 +407,7 @@
             this.cboCategorie.Location = new System.Drawing.Point(78, 75);
             this.cboCategorie.MaxDropDownItems = 10;
             this.cboCategorie.Name = "cboCategorie";
-            this.cboCategorie.Size = new System.Drawing.Size(188, 30);
+            this.cboCategorie.Size = new System.Drawing.Size(188, 26);
             this.cboCategorie.TabIndex = 755;
             this.cboCategorie.DropDown += new System.EventHandler(this.cboCategorie_DropDown);
             this.cboCategorie.SelectedIndexChanged += new System.EventHandler(this.cboCategorie_SelectedIndexChanged);
@@ -318,7 +418,7 @@
             this.label4.Location = new System.Drawing.Point(9, 78);
             this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(98, 22);
+            this.label4.Size = new System.Drawing.Size(80, 18);
             this.label4.TabIndex = 754;
             this.label4.Text = "Catégorie :";
             // 
@@ -335,14 +435,14 @@
             this.dgvStock.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.dgvStock.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvStock.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvStock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvStock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStock.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -352,25 +452,138 @@
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn10});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Lavender;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvStock.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.Lavender;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvStock.DefaultCellStyle = dataGridViewCellStyle10;
             this.dgvStock.EnableHeadersVisualStyles = false;
             this.dgvStock.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            this.dgvStock.Location = new System.Drawing.Point(232, 104);
+            this.dgvStock.Location = new System.Drawing.Point(232, 137);
             this.dgvStock.Name = "dgvStock";
             this.dgvStock.ReadOnly = true;
             this.dgvStock.RowHeadersVisible = false;
             this.dgvStock.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvStock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvStock.Size = new System.Drawing.Size(459, 335);
+            this.dgvStock.Size = new System.Drawing.Size(459, 302);
             this.dgvStock.TabIndex = 626;
             this.dgvStock.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStock_CellClick);
+            // 
+            // txtRecherche
+            // 
+            this.txtRecherche.Location = new System.Drawing.Point(78, 103);
+            this.txtRecherche.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.txtRecherche.MaxLength = 75;
+            this.txtRecherche.Name = "txtRecherche";
+            this.txtRecherche.Size = new System.Drawing.Size(158, 24);
+            this.txtRecherche.TabIndex = 757;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(9, 103);
+            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(63, 18);
+            this.label3.TabIndex = 760;
+            this.label3.Text = "Produit :";
+            // 
+            // dgvProduit
+            // 
+            this.dgvProduit.AllowUserToAddRows = false;
+            this.dgvProduit.AllowUserToDeleteRows = false;
+            this.dgvProduit.AllowUserToOrderColumns = true;
+            this.dgvProduit.AllowUserToResizeColumns = false;
+            this.dgvProduit.AllowUserToResizeRows = false;
+            this.dgvProduit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dgvProduit.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.dgvProduit.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvProduit.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProduit.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            this.dgvProduit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProduit.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3});
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.Lavender;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProduit.DefaultCellStyle = dataGridViewCellStyle12;
+            this.dgvProduit.EnableHeadersVisualStyles = false;
+            this.dgvProduit.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            this.dgvProduit.Location = new System.Drawing.Point(12, 137);
+            this.dgvProduit.MultiSelect = false;
+            this.dgvProduit.Name = "dgvProduit";
+            this.dgvProduit.ReadOnly = true;
+            this.dgvProduit.RowHeadersVisible = false;
+            this.dgvProduit.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvProduit.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvProduit.Size = new System.Drawing.Size(214, 302);
+            this.dgvProduit.TabIndex = 761;
+            this.dgvProduit.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProduit_CellClick);
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 80;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Visible = false;
+            this.dataGridViewTextBoxColumn2.Width = 80;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn3.HeaderText = "Produit";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 150;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // txtAlerteStock
+            // 
+            this.txtAlerteStock.Enabled = false;
+            this.txtAlerteStock.Location = new System.Drawing.Point(557, 77);
+            this.txtAlerteStock.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.txtAlerteStock.MaxLength = 75;
+            this.txtAlerteStock.Name = "txtAlerteStock";
+            this.txtAlerteStock.Size = new System.Drawing.Size(104, 24);
+            this.txtAlerteStock.TabIndex = 763;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(405, 78);
+            this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(161, 18);
+            this.label5.TabIndex = 764;
+            this.label5.Text = "Recherche sur alertes :";
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.ForeColor = System.Drawing.Color.MediumBlue;
+            this.checkBox2.Location = new System.Drawing.Point(272, 79);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(124, 22);
+            this.checkBox2.TabIndex = 779;
+            this.checkBox2.Text = "Alertes stocks";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.Click += new System.EventHandler(this.checkBox2_Click);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -383,21 +596,21 @@
             // dataGridViewTextBoxColumn8
             // 
             this.dataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Format = "N0";
-            dataGridViewCellStyle2.NullValue = null;
-            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Format = "N0";
+            dataGridViewCellStyle8.NullValue = null;
+            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridViewTextBoxColumn8.HeaderText = "Qté stock";
-            this.dataGridViewTextBoxColumn8.MinimumWidth = 100;
+            this.dataGridViewTextBoxColumn8.MinimumWidth = 110;
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn9
             // 
             this.dataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "N2";
-            dataGridViewCellStyle3.NullValue = null;
-            this.dataGridViewTextBoxColumn9.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.Format = "N2";
+            dataGridViewCellStyle9.NullValue = null;
+            this.dataGridViewTextBoxColumn9.DefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridViewTextBoxColumn9.HeaderText = "CMM";
             this.dataGridViewTextBoxColumn9.MinimumWidth = 100;
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
@@ -433,135 +646,16 @@
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             this.dataGridViewTextBoxColumn10.ReadOnly = true;
             // 
-            // txtRecherche
-            // 
-            this.txtRecherche.Location = new System.Drawing.Point(331, 75);
-            this.txtRecherche.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.txtRecherche.MaxLength = 75;
-            this.txtRecherche.Name = "txtRecherche";
-            this.txtRecherche.Size = new System.Drawing.Size(85, 28);
-            this.txtRecherche.TabIndex = 757;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(275, 78);
-            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 22);
-            this.label3.TabIndex = 760;
-            this.label3.Text = "Produit :";
-            // 
-            // dgvProduit
-            // 
-            this.dgvProduit.AllowUserToAddRows = false;
-            this.dgvProduit.AllowUserToDeleteRows = false;
-            this.dgvProduit.AllowUserToOrderColumns = true;
-            this.dgvProduit.AllowUserToResizeColumns = false;
-            this.dgvProduit.AllowUserToResizeRows = false;
-            this.dgvProduit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.dgvProduit.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.dgvProduit.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvProduit.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProduit.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvProduit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProduit.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Lavender;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProduit.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvProduit.EnableHeadersVisualStyles = false;
-            this.dgvProduit.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            this.dgvProduit.Location = new System.Drawing.Point(12, 104);
-            this.dgvProduit.MultiSelect = false;
-            this.dgvProduit.Name = "dgvProduit";
-            this.dgvProduit.ReadOnly = true;
-            this.dgvProduit.RowHeadersVisible = false;
-            this.dgvProduit.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dgvProduit.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProduit.Size = new System.Drawing.Size(214, 335);
-            this.dgvProduit.TabIndex = 761;
-            this.dgvProduit.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProduit_CellClick);
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "ID";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 80;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Visible = false;
-            this.dataGridViewTextBoxColumn2.Width = 80;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn3.HeaderText = "Produit";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 150;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // btnVente
-            // 
-            this.btnVente.BackColor = System.Drawing.Color.Transparent;
-            this.btnVente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnVente.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnVente.Enabled = false;
-            this.btnVente.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnVente.FlatAppearance.BorderSize = 0;
-            this.btnVente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnVente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVente.Image = ((System.Drawing.Image)(resources.GetObject("btnVente.Image")));
-            this.btnVente.Location = new System.Drawing.Point(241, 0);
-            this.btnVente.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.btnVente.Name = "btnVente";
-            this.btnVente.Size = new System.Drawing.Size(30, 30);
-            this.btnVente.TabIndex = 728;
-            this.toolTip1.SetToolTip(this.btnVente, "Vendre");
-            this.btnVente.UseVisualStyleBackColor = false;
-            this.btnVente.Click += new System.EventHandler(this.btnVente_Click);
-            // 
-            // btnRetour
-            // 
-            this.btnRetour.BackColor = System.Drawing.Color.Transparent;
-            this.btnRetour.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnRetour.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnRetour.Enabled = false;
-            this.btnRetour.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnRetour.FlatAppearance.BorderSize = 0;
-            this.btnRetour.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnRetour.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRetour.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRetour.Image = ((System.Drawing.Image)(resources.GetObject("btnRetour.Image")));
-            this.btnRetour.Location = new System.Drawing.Point(211, 0);
-            this.btnRetour.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.btnRetour.Name = "btnRetour";
-            this.btnRetour.Size = new System.Drawing.Size(30, 30);
-            this.btnRetour.TabIndex = 729;
-            this.toolTip1.SetToolTip(this.btnRetour, "Retour en stock");
-            this.btnRetour.UseVisualStyleBackColor = false;
-            this.btnRetour.Click += new System.EventHandler(this.btnRetour_Click);
-            // 
             // FormStockProduit
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(703, 451);
+            this.Controls.Add(this.checkBox2);
+            this.Controls.Add(this.txtAlerteStock);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.btnAlerteStock);
             this.Controls.Add(this.dgvProduit);
             this.Controls.Add(this.txtRecherche);
             this.Controls.Add(this.btnRecherche);
@@ -606,6 +700,14 @@
         public System.Windows.Forms.Button btnFicheStock;
         public System.Windows.Forms.Button btnPerte;
         public System.Windows.Forms.Button btnStockPha;
+        public System.Windows.Forms.Button btnVente;
+        public System.Windows.Forms.Button btnRetour;
+        public System.Windows.Forms.Button btnCmdPrep;
+        private System.Windows.Forms.Label label2;
+        public System.Windows.Forms.Button btnAlerteStock;
+        public System.Windows.Forms.TextBox txtAlerteStock;
+        private System.Windows.Forms.Label label5;
+        public System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
@@ -613,7 +715,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        public System.Windows.Forms.Button btnVente;
-        public System.Windows.Forms.Button btnRetour;
     }
 }

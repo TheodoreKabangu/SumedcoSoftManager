@@ -21,7 +21,7 @@ namespace SUMEDCO
             }
         }
         ClassCompta cc = new ClassCompta();
-        public int numbon = 0;
+        public int idutilisateur = 0;
         public double sommeDepense = 0;
         public Form activForm = null;
         private void btnAfficher_Click(object sender, EventArgs e)
@@ -36,7 +36,6 @@ namespace SUMEDCO
 
         private void dgvBon_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            btnModifier.Enabled = true;
             btnAnnuler.Enabled = true;
         }
 
@@ -44,17 +43,9 @@ namespace SUMEDCO
         {
             new FormTresoRapport().ShowDialog();
         }
-
-        private void btnModifier_Click(object sender, EventArgs e)
-        {
-            btnModifier.Enabled = false;
-            new FormTresoDepense().ShowDialog();
-        }
-
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
-            btnAnnuler.Enabled = false;
-            new FormTresoDepense().ShowDialog();
+            cc.AnnulerDepense(this, new FormTresoDepense());
         }
     }
 }

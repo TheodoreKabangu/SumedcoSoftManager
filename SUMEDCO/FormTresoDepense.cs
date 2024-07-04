@@ -16,21 +16,12 @@ namespace SUMEDCO
         {
             InitializeComponent();
         }
-        ClassCompta cc = new ClassCompta();
-        public int numbon = 0, iddepense = 0;
-        private void FormFrequentation_Shown(object sender, EventArgs e)
+        public int iddepense = 0;
+        public bool fermeture_succes;
+        private void btnValider_Click(object sender, EventArgs e)
         {
-            
-        }
-
-        private void btnRecherche_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FormTresoDepense_Load(object sender, EventArgs e)
-        {
-
+            fermeture_succes = true;
+            this.Hide();
         }
     }
 }

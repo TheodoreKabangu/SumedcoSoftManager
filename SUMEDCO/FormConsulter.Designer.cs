@@ -509,10 +509,10 @@
             this.tabControl1.Controls.Add(this.tabPage9);
             this.tabControl1.Controls.Add(this.tabPage10);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 27);
+            this.tabControl1.Location = new System.Drawing.Point(0, 54);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(707, 433);
+            this.tabControl1.Size = new System.Drawing.Size(707, 406);
             this.tabControl1.TabIndex = 632;
             // 
             // tabPage1
@@ -530,7 +530,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 30);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(699, 399);
+            this.tabPage1.Size = new System.Drawing.Size(699, 372);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             // 
@@ -545,7 +545,7 @@
             this.btnAjouterFiche.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAjouterFiche.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAjouterFiche.Image = ((System.Drawing.Image)(resources.GetObject("btnAjouterFiche.Image")));
-            this.btnAjouterFiche.Location = new System.Drawing.Point(545, 337);
+            this.btnAjouterFiche.Location = new System.Drawing.Point(545, 310);
             this.btnAjouterFiche.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnAjouterFiche.Name = "btnAjouterFiche";
             this.btnAjouterFiche.Size = new System.Drawing.Size(30, 26);
@@ -565,7 +565,7 @@
             this.btnOuvrir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOuvrir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOuvrir.Image = ((System.Drawing.Image)(resources.GetObject("btnOuvrir.Image")));
-            this.btnOuvrir.Location = new System.Drawing.Point(505, 337);
+            this.btnOuvrir.Location = new System.Drawing.Point(505, 310);
             this.btnOuvrir.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnOuvrir.Name = "btnOuvrir";
             this.btnOuvrir.Size = new System.Drawing.Size(30, 26);
@@ -579,7 +579,7 @@
             this.txtFiche.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtFiche.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtFiche.Enabled = false;
-            this.txtFiche.Location = new System.Drawing.Point(296, 365);
+            this.txtFiche.Location = new System.Drawing.Point(296, 338);
             this.txtFiche.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtFiche.MaxLength = 75;
             this.txtFiche.Name = "txtFiche";
@@ -590,7 +590,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(293, 340);
+            this.label4.Location = new System.Drawing.Point(293, 313);
             this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(164, 18);
@@ -649,7 +649,7 @@
             this.dgvPatient.ReadOnly = true;
             this.dgvPatient.RowHeadersVisible = false;
             this.dgvPatient.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPatient.Size = new System.Drawing.Size(282, 290);
+            this.dgvPatient.Size = new System.Drawing.Size(282, 263);
             this.dgvPatient.TabIndex = 673;
             // 
             // dataGridViewTextBoxColumn24
@@ -730,7 +730,7 @@
             this.dgvSigneVital.ReadOnly = true;
             this.dgvSigneVital.RowHeadersVisible = false;
             this.dgvSigneVital.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSigneVital.Size = new System.Drawing.Size(389, 290);
+            this.dgvSigneVital.Size = new System.Drawing.Size(389, 263);
             this.dgvSigneVital.TabIndex = 653;
             // 
             // Column1
@@ -790,7 +790,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 30);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(699, 372);
+            this.tabPage2.Size = new System.Drawing.Size(699, 399);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             // 
@@ -1017,7 +1017,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 30);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(699, 372);
+            this.tabPage3.Size = new System.Drawing.Size(699, 399);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "tabPage3";
             // 
@@ -1245,7 +1245,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 30);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(699, 372);
+            this.tabPage4.Size = new System.Drawing.Size(699, 399);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "tabPage4";
             // 
@@ -1669,7 +1669,7 @@
             this.dgvComplement.Name = "dgvComplement";
             this.dgvComplement.RowHeadersVisible = false;
             this.dgvComplement.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvComplement.Size = new System.Drawing.Size(609, 304);
+            this.dgvComplement.Size = new System.Drawing.Size(609, 277);
             this.dgvComplement.TabIndex = 658;
             // 
             // dataGridViewTextBoxColumn6
@@ -1877,7 +1877,7 @@
             this.dgvExamPhys.Name = "dgvExamPhys";
             this.dgvExamPhys.RowHeadersVisible = false;
             this.dgvExamPhys.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvExamPhys.Size = new System.Drawing.Size(609, 304);
+            this.dgvExamPhys.Size = new System.Drawing.Size(609, 277);
             this.dgvExamPhys.TabIndex = 658;
             // 
             // dataGridViewTextBoxColumn8
@@ -2114,7 +2114,7 @@
             this.dgvPrediagnostic.Name = "dgvPrediagnostic";
             this.dgvPrediagnostic.RowHeadersVisible = false;
             this.dgvPrediagnostic.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvPrediagnostic.Size = new System.Drawing.Size(609, 304);
+            this.dgvPrediagnostic.Size = new System.Drawing.Size(609, 277);
             this.dgvPrediagnostic.TabIndex = 658;
             // 
             // dataGridViewTextBoxColumn10
@@ -2156,7 +2156,7 @@
             this.txtTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.txtTotal.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTotal.ForeColor = System.Drawing.Color.MediumBlue;
-            this.txtTotal.Location = new System.Drawing.Point(523, 345);
+            this.txtTotal.Location = new System.Drawing.Point(523, 318);
             this.txtTotal.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(128, 17);
@@ -2168,7 +2168,7 @@
             // 
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(442, 345);
+            this.label12.Location = new System.Drawing.Point(442, 318);
             this.label12.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(85, 18);
@@ -2213,7 +2213,7 @@
             this.dgv1.ReadOnly = true;
             this.dgv1.RowHeadersVisible = false;
             this.dgv1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv1.Size = new System.Drawing.Size(178, 276);
+            this.dgv1.Size = new System.Drawing.Size(178, 249);
             this.dgv1.TabIndex = 678;
             this.dgv1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv1_CellClick);
             // 
@@ -2367,7 +2367,7 @@
             this.dgvLabo.Name = "dgvLabo";
             this.dgvLabo.RowHeadersVisible = false;
             this.dgvLabo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvLabo.Size = new System.Drawing.Size(459, 276);
+            this.dgvLabo.Size = new System.Drawing.Size(459, 249);
             this.dgvLabo.TabIndex = 663;
             this.dgvLabo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLabo_CellClick);
             this.dgvLabo.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLabo_CellEndEdit);
@@ -2447,7 +2447,7 @@
             this.tabPage9.Location = new System.Drawing.Point(4, 30);
             this.tabPage9.Name = "tabPage9";
             this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage9.Size = new System.Drawing.Size(699, 372);
+            this.tabPage9.Size = new System.Drawing.Size(699, 399);
             this.tabPage9.TabIndex = 8;
             this.tabPage9.Text = "tabPage9";
             // 
@@ -2697,7 +2697,7 @@
             this.tabPage10.Location = new System.Drawing.Point(4, 30);
             this.tabPage10.Name = "tabPage10";
             this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage10.Size = new System.Drawing.Size(699, 372);
+            this.tabPage10.Size = new System.Drawing.Size(699, 399);
             this.tabPage10.TabIndex = 9;
             this.tabPage10.Text = "tabPage10";
             // 
@@ -3252,8 +3252,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(707, 460);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

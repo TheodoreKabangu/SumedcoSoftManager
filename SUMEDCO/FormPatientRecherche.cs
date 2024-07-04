@@ -12,15 +12,14 @@ namespace SUMEDCO
 {
     public partial class FormPatientRecherche : Form
     {
+        ClasseGeneraleDGV dg = new ClasseGeneraleDGV();
         public FormPatientRecherche()
         {
             InitializeComponent();
-            for (int i = 0; i < dgv.ColumnCount; i++)
-            {
-                dgv.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
-            }
+            dg.FigerColonne(dgv);
         }
         ClassMalade cm = new ClassMalade();
+        ExerciceClasse exer = new ExerciceClasse();
         public int idpatient = 0,
         identreprise,
         idexercice;
@@ -37,7 +36,7 @@ namespace SUMEDCO
             p = new FormPatient();
             p.statut = "nouveau";
             p.poste = poste;
-            p.idexercice = cc.ExerciceEncours();
+            p.idexercice = exer.ExerciceEncours();
             p.ShowDialog();
         }
 
@@ -101,7 +100,7 @@ namespace SUMEDCO
             fs.idpayeur = idpatient;
             fs.cboTypeFacture.Select();
             fs.btnExit.Visible = false;
-            fs.idexercice = cc.ExerciceEncours();
+            fs.idexercice = exer.ExerciceEncours();
             fs.poste = poste;
             fs.MinimizeBox = fs.MaximizeBox = false;
             fs.MaximumSize = fs.MinimumSize= fs.Size;
@@ -116,7 +115,7 @@ namespace SUMEDCO
             fp.idpayeur = idpatient;
             fp.cboTypeFacture.Select();
             fp.btnExit.Visible = false;
-            fp.idexercice = cc.ExerciceEncours();
+            fp.idexercice = exer.ExerciceEncours();
             fp.poste = poste;
             fp.MinimizeBox = fp.MaximizeBox = false;
             fp.MaximumSize = fp.MinimumSize = fp.Size;

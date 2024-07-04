@@ -12,9 +12,11 @@ namespace SUMEDCO
 {
     public partial class FormAbonnePersoRapport : Form
     {
+        ClasseGeneraleDGV dgv = new ClasseGeneraleDGV();
         public FormAbonnePersoRapport()
         {
             InitializeComponent();
+            dgv.FigerColonne(dgvRapport);
         }
         ClassMalade cm = new ClassMalade();
         ClassCompta cc = new ClassCompta();
@@ -54,7 +56,6 @@ namespace SUMEDCO
             else
                 taux = cc.VerifierTaux(DateTime.Now.Date, "valeur");
             lblTaux.Text =  taux + " CDF";
-            cc.VerouillerColonne(this);
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -64,7 +65,7 @@ namespace SUMEDCO
 
         private void btnImprimer_Click(object sender, EventArgs e)
         {
-            cc.ImprimerRapport(this);
+            cc.ImprimerRapport(this, new FormImpression());
         }
 
         private void checkBox1_Click(object sender, EventArgs e)

@@ -42,7 +42,7 @@ namespace SUMEDCO
         {
             if (annuler_recette)
             {
-                if (dgvPayement.RowCount != 0 && dgvPayement.CurrentRow.Index < dgvPayement.RowCount - 2)
+                if (dgvPayement.RowCount != 0 && dgvPayement.CurrentRow.Cells[6].Value.ToString() == "" && !dgvPayement.CurrentRow.Cells[1].Value.ToString().StartsWith("Total"))
                     btnAnnuler.Enabled = true;
                 else
                     btnAnnuler.Enabled = false;

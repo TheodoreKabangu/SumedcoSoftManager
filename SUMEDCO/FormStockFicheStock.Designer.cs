@@ -31,20 +31,25 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormStockFicheStock));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormStockFicheStock));
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvProduit = new System.Windows.Forms.DataGridView();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.lblProduit = new System.Windows.Forms.Label();
+            this.btnImprimer = new System.Windows.Forms.Button();
+            this.btnRecherche = new System.Windows.Forms.Button();
+            this.dtpDateA = new System.Windows.Forms.DateTimePicker();
+            this.dtpDateDe = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblDateEntree = new System.Windows.Forms.Label();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblProduit = new System.Windows.Forms.Label();
-            this.lblStockInit = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduit)).BeginInit();
             this.SuspendLayout();
             // 
@@ -95,14 +100,99 @@
             this.dgvProduit.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvProduit.EnableHeadersVisualStyles = false;
             this.dgvProduit.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            this.dgvProduit.Location = new System.Drawing.Point(12, 96);
+            this.dgvProduit.Location = new System.Drawing.Point(12, 104);
             this.dgvProduit.MultiSelect = false;
             this.dgvProduit.Name = "dgvProduit";
             this.dgvProduit.ReadOnly = true;
             this.dgvProduit.RowHeadersVisible = false;
             this.dgvProduit.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProduit.Size = new System.Drawing.Size(679, 343);
+            this.dgvProduit.Size = new System.Drawing.Size(679, 335);
             this.dgvProduit.TabIndex = 762;
+            // 
+            // lblProduit
+            // 
+            this.lblProduit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProduit.ForeColor = System.Drawing.Color.MediumBlue;
+            this.lblProduit.Location = new System.Drawing.Point(8, 39);
+            this.lblProduit.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lblProduit.Name = "lblProduit";
+            this.lblProduit.Size = new System.Drawing.Size(683, 22);
+            this.lblProduit.TabIndex = 774;
+            this.lblProduit.Text = "Produit";
+            // 
+            // btnImprimer
+            // 
+            this.btnImprimer.BackColor = System.Drawing.Color.Transparent;
+            this.btnImprimer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnImprimer.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnImprimer.FlatAppearance.BorderSize = 0;
+            this.btnImprimer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnImprimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimer.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimer.Image")));
+            this.btnImprimer.Location = new System.Drawing.Point(294, 73);
+            this.btnImprimer.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnImprimer.Name = "btnImprimer";
+            this.btnImprimer.Size = new System.Drawing.Size(30, 21);
+            this.btnImprimer.TabIndex = 780;
+            this.toolTip1.SetToolTip(this.btnImprimer, "Imprimer");
+            this.btnImprimer.UseVisualStyleBackColor = false;
+            this.btnImprimer.Click += new System.EventHandler(this.btnImprimer_Click);
+            // 
+            // btnRecherche
+            // 
+            this.btnRecherche.BackColor = System.Drawing.Color.Transparent;
+            this.btnRecherche.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnRecherche.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnRecherche.FlatAppearance.BorderSize = 0;
+            this.btnRecherche.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnRecherche.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRecherche.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRecherche.Image = ((System.Drawing.Image)(resources.GetObject("btnRecherche.Image")));
+            this.btnRecherche.Location = new System.Drawing.Point(254, 73);
+            this.btnRecherche.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnRecherche.Name = "btnRecherche";
+            this.btnRecherche.Size = new System.Drawing.Size(30, 21);
+            this.btnRecherche.TabIndex = 779;
+            this.toolTip1.SetToolTip(this.btnRecherche, "Afficher");
+            this.btnRecherche.UseVisualStyleBackColor = false;
+            this.btnRecherche.Click += new System.EventHandler(this.btnRecherche_Click);
+            // 
+            // dtpDateA
+            // 
+            this.dtpDateA.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDateA.Location = new System.Drawing.Point(163, 74);
+            this.dtpDateA.Name = "dtpDateA";
+            this.dtpDateA.Size = new System.Drawing.Size(86, 24);
+            this.dtpDateA.TabIndex = 775;
+            // 
+            // dtpDateDe
+            // 
+            this.dtpDateDe.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDateDe.Location = new System.Drawing.Point(41, 74);
+            this.dtpDateDe.Name = "dtpDateDe";
+            this.dtpDateDe.Size = new System.Drawing.Size(86, 24);
+            this.dtpDateDe.TabIndex = 776;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(135, 75);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(24, 18);
+            this.label1.TabIndex = 777;
+            this.label1.Text = "à :";
+            // 
+            // lblDateEntree
+            // 
+            this.lblDateEntree.AutoSize = true;
+            this.lblDateEntree.Location = new System.Drawing.Point(9, 75);
+            this.lblDateEntree.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.lblDateEntree.Name = "lblDateEntree";
+            this.lblDateEntree.Size = new System.Drawing.Size(35, 18);
+            this.lblDateEntree.TabIndex = 778;
+            this.lblDateEntree.Text = "De :";
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -153,36 +243,18 @@
             this.Column8.Name = "Column8";
             this.Column8.ReadOnly = true;
             // 
-            // lblProduit
-            // 
-            this.lblProduit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProduit.ForeColor = System.Drawing.Color.MediumBlue;
-            this.lblProduit.Location = new System.Drawing.Point(8, 39);
-            this.lblProduit.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.lblProduit.Name = "lblProduit";
-            this.lblProduit.Size = new System.Drawing.Size(683, 22);
-            this.lblProduit.TabIndex = 774;
-            this.lblProduit.Text = "Produit";
-            // 
-            // lblStockInit
-            // 
-            this.lblStockInit.AutoSize = true;
-            this.lblStockInit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStockInit.ForeColor = System.Drawing.Color.MediumBlue;
-            this.lblStockInit.Location = new System.Drawing.Point(8, 71);
-            this.lblStockInit.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.lblStockInit.Name = "lblStockInit";
-            this.lblStockInit.Size = new System.Drawing.Size(121, 22);
-            this.lblStockInit.TabIndex = 775;
-            this.lblStockInit.Text = "Stock initial: 0";
-            // 
             // FormStockFicheStock
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(703, 451);
-            this.Controls.Add(this.lblStockInit);
+            this.Controls.Add(this.btnImprimer);
+            this.Controls.Add(this.btnRecherche);
+            this.Controls.Add(this.dtpDateA);
+            this.Controls.Add(this.dtpDateDe);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblDateEntree);
             this.Controls.Add(this.lblProduit);
             this.Controls.Add(this.dgvProduit);
             this.Controls.Add(this.panel1);
@@ -205,12 +277,17 @@
         private System.Windows.Forms.Panel panel1;
         public System.Windows.Forms.DataGridView dgvProduit;
         private System.Windows.Forms.ToolTip toolTip1;
+        public System.Windows.Forms.Button btnImprimer;
+        public System.Windows.Forms.Button btnRecherche;
+        public System.Windows.Forms.DateTimePicker dtpDateA;
+        public System.Windows.Forms.DateTimePicker dtpDateDe;
+        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Label lblProduit;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.Label lblProduit;
-        private System.Windows.Forms.Label lblStockInit;
+        protected System.Windows.Forms.Label lblDateEntree;
     }
 }

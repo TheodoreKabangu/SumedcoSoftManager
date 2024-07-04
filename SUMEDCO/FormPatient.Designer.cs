@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPatient));
             this.panel2 = new System.Windows.Forms.Panel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnAffecter = new System.Windows.Forms.Button();
@@ -93,13 +92,12 @@
             this.btnAffecter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
             this.btnAffecter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAffecter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAffecter.Image = ((System.Drawing.Image)(resources.GetObject("btnAffecter.Image")));
-            this.btnAffecter.Location = new System.Drawing.Point(220, 408);
+            this.btnAffecter.Location = new System.Drawing.Point(370, 408);
             this.btnAffecter.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnAffecter.Name = "btnAffecter";
-            this.btnAffecter.Size = new System.Drawing.Size(30, 23);
+            this.btnAffecter.Size = new System.Drawing.Size(80, 27);
             this.btnAffecter.TabIndex = 642;
-            this.toolTip1.SetToolTip(this.btnAffecter, "Ajouter ce cas");
+            this.btnAffecter.Text = "Affecter";
             this.btnAffecter.UseVisualStyleBackColor = false;
             this.btnAffecter.Click += new System.EventHandler(this.btnAffecter_Click);
             // 
@@ -112,14 +110,13 @@
             this.btnAnnuler.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
             this.btnAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAnnuler.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAnnuler.Image = ((System.Drawing.Image)(resources.GetObject("btnAnnuler.Image")));
             this.btnAnnuler.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAnnuler.Location = new System.Drawing.Point(95, 408);
             this.btnAnnuler.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnAnnuler.Name = "btnAnnuler";
-            this.btnAnnuler.Size = new System.Drawing.Size(30, 23);
+            this.btnAnnuler.Size = new System.Drawing.Size(80, 27);
             this.btnAnnuler.TabIndex = 12;
-            this.toolTip1.SetToolTip(this.btnAnnuler, "Annuler");
+            this.btnAnnuler.Text = "Annuler";
             this.btnAnnuler.UseVisualStyleBackColor = false;
             this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
             // 
@@ -133,14 +130,13 @@
             this.btnModifier.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
             this.btnModifier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModifier.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModifier.Image = ((System.Drawing.Image)(resources.GetObject("btnModifier.Image")));
             this.btnModifier.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnModifier.Location = new System.Drawing.Point(179, 408);
+            this.btnModifier.Location = new System.Drawing.Point(279, 408);
             this.btnModifier.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnModifier.Name = "btnModifier";
-            this.btnModifier.Size = new System.Drawing.Size(30, 23);
+            this.btnModifier.Size = new System.Drawing.Size(80, 27);
             this.btnModifier.TabIndex = 14;
-            this.toolTip1.SetToolTip(this.btnModifier, "Modifier");
+            this.btnModifier.Text = "Modifier";
             this.btnModifier.UseVisualStyleBackColor = false;
             this.btnModifier.Click += new System.EventHandler(this.btnModifier_Click);
             // 
@@ -153,14 +149,13 @@
             this.btnEnregistrer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
             this.btnEnregistrer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEnregistrer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEnregistrer.Image = ((System.Drawing.Image)(resources.GetObject("btnEnregistrer.Image")));
             this.btnEnregistrer.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEnregistrer.Location = new System.Drawing.Point(137, 408);
+            this.btnEnregistrer.Location = new System.Drawing.Point(187, 408);
             this.btnEnregistrer.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnEnregistrer.Name = "btnEnregistrer";
-            this.btnEnregistrer.Size = new System.Drawing.Size(30, 23);
+            this.btnEnregistrer.Size = new System.Drawing.Size(80, 27);
             this.btnEnregistrer.TabIndex = 13;
-            this.toolTip1.SetToolTip(this.btnEnregistrer, "Enregistrer");
+            this.btnEnregistrer.Text = "Enregistrer";
             this.btnEnregistrer.UseVisualStyleBackColor = false;
             this.btnEnregistrer.Click += new System.EventHandler(this.btnEnregistrer_Click);
             // 

@@ -135,37 +135,10 @@
   <metadata name="Column5.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnValider.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAQJJREFUOE/t
-        1K9PQlEYxvFLVaCR3axGImxO/gIDBmgWk0UqhQAVG8OsGxsbRgywAcVi4y/wT/H7cM8LVy+eA0Oaz/YZ
-        Ly+HZ/y80bGSwSXunB6eA5o4xdZUMMQNGliiG/CJKU6Qir0ypYh+PKai/QfO3G0Vc+TwLbsWqkSP6Yxm
-        RaUzZFf3XA4pVFq4jcc4uxY+YgJ7y5bk81dJLgp4h+22ecAAFtuv83NxAX3jv7lGHpZg4b4JFtbwFKAz
-        Fm+hPvAxzgPeoLOKt9D3LSdjPx/lv3CzeMG+hXpOqlCXrxG07GDhZh+dabv5FVdYRxfYMvQvqOPezT46
-        o7OaS1DHXyeKvgBa0VoY9r5BPgAAAABJRU5ErkJggg==
-</value>
-  </data>
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="btnRetirer.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAKJJREFUOE/t
-        lDEKAjEQRQMewGZLsbCxXqxEz+NZLNYDeBIvYGfvefxPZiAmi5nFxmIfPDIMf4akSQqwlTuT+icu8irP
-        JvUgQyzkQR6l3+iZ1WM9sswwW9HJm+k3aul5Zkc5mVGa+TLAk2Btgvdg8sKHnXnfe1DmK8rAvPDNvPAj
-        X1EG/n/h3s6VCd6DyQtbNPO9vEs+0ohkmfnKUm6Cks1I6QXK1El0qMgFeQAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="btnQuitter.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAN9JREFUOE/t
-        lNEKgjAUhvcS1V1RPUGIC7x0IvT6RhBdhEZ0HSjYnZ1fzyLn0hTv6oOD286/72ab4o/IQ7nMfW/B048g
-        gyxP7TwCd5UpmVCd88CZ83ID9JChilul6W4zyZQbUbCgutx9Z82tF1hDr8q4EfZwy04p9eXeJq3JKNMp
-        06ShNzWlDRllOP4dhvTGNUymKaWBPLG0wHiwDODUU7W9aiHGWON2P3AdSIIrRCJ5pC8K4qTz/pm8y6gO
-        mdrOqsK4p9Qm45boLWVZzBtqMo0hbX8poz89gMBoP4dfQIgn0u7fZrNGux8AAAAASUVORK5CYII=
-</value>
-  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnAffecter.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAYVJREFUOE9j

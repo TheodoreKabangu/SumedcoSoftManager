@@ -16,5 +16,10 @@ namespace SUMEDCO
         {
             InitializeComponent();
         }
+
+        private void btnImprimer_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

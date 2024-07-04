@@ -117,32 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnAnnuler.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAXdJREFUOE+t
-        lT1Ow0AQhZ3GfxAMR6AgSNByihR0CIkCJAokDoCERAM3oYAGwRmIkIACJH5EhZS78L3dsRMTO7EhT5rM
-        vDez413vehM0QBbH8aqMeMlLLZFl2QoNLrBX7B67NBuYdk7Zsq+egSRJdqMoemPQPjT1agkpuQPVULtj
-        WjUoOKX4hnDRK1PRpektY06Ml0Fiz5p1vNIIHZreaVXGC2RaAn7B01bQTDV2tGHM7EzvxagDRdthGG4Y
-        LSBNOaMOjD3U6zLqhGdc4pkHAzcp+pQ3aVz7/SBt1KPFQRcysLgEZrJG7itN0y2ZYmmWLoHcAy7VoB7k
-        ysuTsKZDZjasayZQc+3y/KxPa2gz+5YpNnkC1rCnuHbJ48uUKa5rSk5L9qcE8oQrfadtNsU+1WJT1FDH
-        5sioAzPqV+xmfmz6Rh3gxzxodGxAhvCO/9PBZuwHvnwTIc7103PQtK3p/y+HHHoahfO5vnLMuGBfsOYX
-        bAVa/AUEwQ/ZjEX4CtwArQAAAABJRU5ErkJggg==
-</value>
-  </data>
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="btnEnregistrer.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAQJJREFUOE/t
-        1K9PQlEYxvFLVaCR3axGImxO/gIDBmgWk0UqhQAVG8OsGxsbRgywAcVi4y/wT/H7cM8LVy+eA0Oaz/YZ
-        Ly+HZ/y80bGSwSXunB6eA5o4xdZUMMQNGliiG/CJKU6Qir0ypYh+PKai/QfO3G0Vc+TwLbsWqkSP6Yxm
-        RaUzZFf3XA4pVFq4jcc4uxY+YgJ7y5bk81dJLgp4h+22ecAAFtuv83NxAX3jv7lGHpZg4b4JFtbwFKAz
-        Fm+hPvAxzgPeoLOKt9D3LSdjPx/lv3CzeMG+hXpOqlCXrxG07GDhZh+dabv5FVdYRxfYMvQvqOPezT46
-        o7OaS1DHXyeKvgBa0VoY9r5BPgAAAABJRU5ErkJggg==
-</value>
-  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnDate.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAUxJREFUOE+1
@@ -175,24 +153,6 @@
   <metadata name="Column6.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="btnRetirer.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAP5JREFUOE/l
-        VDsKwkAUDFjks0kEFdTWxtrkDnZ6DM9ioQfwJF4ggp2g4Hmc2bzIJiZs1lIHBmbfmzfsW0I8G3zfX0ZR
-        lJPUUv4OCDgGQXAC98ITagdpWzHALbLqNiQCnua5o5ZxtowwkCTJBOazsLqRjdrPWYmpA80dKUcrrP4/
-        D1RKzaCLNE1Hugng8ceoXdCb8mz6W9E04Jtbgzd8GnOSmjVpuwcSCNiidiWhN1LWaPPX0GaQNR9hGN7N
-        9QnnQHNNoV5f2s6BMXRtTWi9PmTMc8P/iYYhxm1y0W9ITVG7BlrxA4F4nxUMBcifah8WnJHxTgxhXPQh
-        veVIBc97AYXMTHFPZhlwAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="btnRetirerTout.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAKJJREFUOE/t
-        lDEKAjEQRQMewGZLsbCxXqxEz+NZLNYDeBIvYGfvefxPZiAmi5nFxmIfPDIMf4akSQqwlTuT+icu8irP
-        JvUgQyzkQR6l3+iZ1WM9sswwW9HJm+k3aul5Zkc5mVGa+TLAk2Btgvdg8sKHnXnfe1DmK8rAvPDNvPAj
-        X1EG/n/h3s6VCd6DyQtbNPO9vEs+0ohkmfnKUm6Cks1I6QXK1El0qMgFeQAAAABJRU5ErkJggg==
-</value>
-  </data>
   <data name="btnExit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAN9JREFUOE/t

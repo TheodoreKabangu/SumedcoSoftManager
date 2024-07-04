@@ -51,13 +51,14 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.dgvRecette = new System.Windows.Forms.DataGridView();
+            this.txtNom = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtNom = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatient)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecette)).BeginInit();
             this.SuspendLayout();
@@ -136,7 +137,7 @@
             this.dtpDateA.Location = new System.Drawing.Point(187, 66);
             this.dtpDateA.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.dtpDateA.Name = "dtpDateA";
-            this.dtpDateA.Size = new System.Drawing.Size(113, 28);
+            this.dtpDateA.Size = new System.Drawing.Size(113, 24);
             this.dtpDateA.TabIndex = 687;
             // 
             // label2
@@ -145,7 +146,7 @@
             this.label2.Location = new System.Drawing.Point(167, 66);
             this.label2.Margin = new System.Windows.Forms.Padding(9, 0, 9, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(20, 22);
+            this.label2.Size = new System.Drawing.Size(16, 18);
             this.label2.TabIndex = 689;
             this.label2.Text = "à";
             // 
@@ -155,7 +156,7 @@
             this.dtpDateDe.Location = new System.Drawing.Point(53, 66);
             this.dtpDateDe.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.dtpDateDe.Name = "dtpDateDe";
-            this.dtpDateDe.Size = new System.Drawing.Size(113, 28);
+            this.dtpDateDe.Size = new System.Drawing.Size(113, 24);
             this.dtpDateDe.TabIndex = 688;
             // 
             // label1
@@ -164,7 +165,7 @@
             this.label1.Location = new System.Drawing.Point(9, 66);
             this.label1.Margin = new System.Windows.Forms.Padding(9, 0, 9, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 22);
+            this.label1.Size = new System.Drawing.Size(35, 18);
             this.label1.TabIndex = 690;
             this.label1.Text = "De :";
             // 
@@ -300,6 +301,7 @@
             this.Column10,
             this.Column1,
             this.Column8,
+            this.Column2,
             this.Column7,
             this.Column9});
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -321,6 +323,26 @@
             this.dgvRecette.Size = new System.Drawing.Size(362, 343);
             this.dgvRecette.TabIndex = 696;
             this.dgvRecette.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRecette_CellClick);
+            // 
+            // txtNom
+            // 
+            this.txtNom.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtNom.Location = new System.Drawing.Point(53, 37);
+            this.txtNom.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.txtNom.MaxLength = 75;
+            this.txtNom.Name = "txtNom";
+            this.txtNom.Size = new System.Drawing.Size(247, 24);
+            this.txtNom.TabIndex = 715;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(9, 39);
+            this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(57, 18);
+            this.label3.TabIndex = 716;
+            this.label3.Text = "Noms :";
             // 
             // Column10
             // 
@@ -345,6 +367,13 @@
             this.Column8.Name = "Column8";
             this.Column8.ReadOnly = true;
             // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Qté";
+            this.Column2.MinimumWidth = 100;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
             // Column7
             // 
             this.Column7.HeaderText = "Caisse";
@@ -361,29 +390,9 @@
             this.Column9.ReadOnly = true;
             this.Column9.Width = 70;
             // 
-            // txtNom
-            // 
-            this.txtNom.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtNom.Location = new System.Drawing.Point(53, 37);
-            this.txtNom.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.txtNom.MaxLength = 75;
-            this.txtNom.Name = "txtNom";
-            this.txtNom.Size = new System.Drawing.Size(247, 28);
-            this.txtNom.TabIndex = 715;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 39);
-            this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 22);
-            this.label3.TabIndex = 716;
-            this.label3.Text = "Noms :";
-            // 
             // FormPhamaVente
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(703, 451);
@@ -433,13 +442,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         public System.Windows.Forms.DataGridView dgvRecette;
+        public System.Windows.Forms.TextBox txtNom;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        public System.Windows.Forms.TextBox txtNom;
-        private System.Windows.Forms.Label label3;
 
     }
 }

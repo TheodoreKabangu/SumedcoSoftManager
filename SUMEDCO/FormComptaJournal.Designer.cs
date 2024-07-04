@@ -143,7 +143,7 @@
             this.txtCategorie.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtCategorie.MaxLength = 75;
             this.txtCategorie.Name = "txtCategorie";
-            this.txtCategorie.Size = new System.Drawing.Size(430, 28);
+            this.txtCategorie.Size = new System.Drawing.Size(430, 24);
             this.txtCategorie.TabIndex = 624;
             // 
             // label3
@@ -152,7 +152,7 @@
             this.label3.Location = new System.Drawing.Point(15, 66);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(145, 22);
+            this.label3.Size = new System.Drawing.Size(116, 18);
             this.label3.TabIndex = 629;
             this.label3.Text = "Type de journal :";
             // 
@@ -246,7 +246,7 @@
             this.cboCompte.Location = new System.Drawing.Point(330, 94);
             this.cboCompte.MaxDropDownItems = 10;
             this.cboCompte.Name = "cboCompte";
-            this.cboCompte.Size = new System.Drawing.Size(165, 30);
+            this.cboCompte.Size = new System.Drawing.Size(165, 26);
             this.cboCompte.Sorted = true;
             this.cboCompte.TabIndex = 660;
             // 
@@ -257,7 +257,7 @@
             this.txtMotifCompte.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtMotifCompte.MaxLength = 10;
             this.txtMotifCompte.Name = "txtMotifCompte";
-            this.txtMotifCompte.Size = new System.Drawing.Size(67, 28);
+            this.txtMotifCompte.Size = new System.Drawing.Size(67, 24);
             this.txtMotifCompte.TabIndex = 659;
             // 
             // label13
@@ -266,7 +266,7 @@
             this.label13.Location = new System.Drawing.Point(233, 97);
             this.label13.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(128, 22);
+            this.label13.Size = new System.Drawing.Size(107, 18);
             this.label13.TabIndex = 658;
             this.label13.Text = "N° de compte :";
             // 
@@ -276,7 +276,7 @@
             this.label2.Location = new System.Drawing.Point(15, 97);
             this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 22);
+            this.label2.Size = new System.Drawing.Size(62, 18);
             this.label2.TabIndex = 657;
             this.label2.Text = "Classe :";
             // 
@@ -300,7 +300,7 @@
             // 
             // FormComptaJournal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(703, 451);

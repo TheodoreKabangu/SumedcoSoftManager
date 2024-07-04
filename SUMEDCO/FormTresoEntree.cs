@@ -23,7 +23,8 @@ namespace SUMEDCO
         ClassCompta cc = new ClassCompta();
         public string caisse= "", numcompte = "";
         public double taux = 0;
-        public int idexercice= 0, idoperation = 0;
+        public int idutilisateur, idexercice = 0, idoperation = 0;
+        
         private void btnQuitter_Click(object sender, EventArgs e)
         {
             this.Close();

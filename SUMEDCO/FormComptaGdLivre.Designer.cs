@@ -59,6 +59,8 @@
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvCompte = new System.Windows.Forms.DataGridView();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btnImprimer = new System.Windows.Forms.Button();
+            this.btnImprimerTout = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -124,7 +126,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 58);
+            this.label1.Location = new System.Drawing.Point(9, 55);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(43, 22);
@@ -180,7 +182,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(295, 52);
+            this.label3.Location = new System.Drawing.Point(294, 56);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(82, 22);
@@ -341,6 +343,48 @@
             this.dgvCompte.TabIndex = 761;
             this.dgvCompte.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCompte_CellClick);
             // 
+            // btnImprimer
+            // 
+            this.btnImprimer.BackColor = System.Drawing.Color.Transparent;
+            this.btnImprimer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnImprimer.Enabled = false;
+            this.btnImprimer.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnImprimer.FlatAppearance.BorderSize = 0;
+            this.btnImprimer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnImprimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimer.ForeColor = System.Drawing.Color.MediumBlue;
+            this.btnImprimer.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimer.Image")));
+            this.btnImprimer.Location = new System.Drawing.Point(572, 52);
+            this.btnImprimer.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnImprimer.Name = "btnImprimer";
+            this.btnImprimer.Size = new System.Drawing.Size(30, 23);
+            this.btnImprimer.TabIndex = 766;
+            this.toolTip1.SetToolTip(this.btnImprimer, "Imprimer");
+            this.btnImprimer.UseVisualStyleBackColor = false;
+            this.btnImprimer.Click += new System.EventHandler(this.btnImprimer_Click);
+            // 
+            // btnImprimerTout
+            // 
+            this.btnImprimerTout.BackColor = System.Drawing.Color.Transparent;
+            this.btnImprimerTout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnImprimerTout.Enabled = false;
+            this.btnImprimerTout.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnImprimerTout.FlatAppearance.BorderSize = 0;
+            this.btnImprimerTout.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnImprimerTout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprimerTout.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimerTout.ForeColor = System.Drawing.Color.MediumBlue;
+            this.btnImprimerTout.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimerTout.Image")));
+            this.btnImprimerTout.Location = new System.Drawing.Point(612, 52);
+            this.btnImprimerTout.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnImprimerTout.Name = "btnImprimerTout";
+            this.btnImprimerTout.Size = new System.Drawing.Size(30, 23);
+            this.btnImprimerTout.TabIndex = 767;
+            this.toolTip1.SetToolTip(this.btnImprimerTout, "Imprimer tout");
+            this.btnImprimerTout.UseVisualStyleBackColor = false;
+            this.btnImprimerTout.Click += new System.EventHandler(this.btnImprimerTout_Click);
+            // 
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.HeaderText = "N°";
@@ -384,6 +428,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(703, 451);
+            this.Controls.Add(this.btnImprimerTout);
+            this.Controls.Add(this.btnImprimer);
             this.Controls.Add(this.btnGdLivre);
             this.Controls.Add(this.txtRecherche);
             this.Controls.Add(this.btnRecherche);
@@ -429,6 +475,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        public System.Windows.Forms.Button btnImprimer;
+        public System.Windows.Forms.Button btnImprimerTout;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;

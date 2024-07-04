@@ -29,8 +29,8 @@ namespace SUMEDCO
         public int idcat = 0, 
             idproduit = 0,
             idstock = 0,
-            idpharma = 0;
-        public string poste = "";
+            idpharma = 0, qtedem;
+        public string poste = "", nomproduit="";
         public bool fermeture_succes;
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -52,17 +52,17 @@ namespace SUMEDCO
 
         private void btnFicheStock_Click(object sender, EventArgs e)
         {
-            cs.FicheStock(this, new FormStockFicheStock());
+            cs.FicheStock(this, new FormStockFicheStock(), "");
         }
 
         private void btnEntrees_Click(object sender, EventArgs e)
         {
-            cs.FicheStock(this, new FormStockFicheStock());
+            cs.FicheStock(this, new FormStockFicheStock(), "entrée");
         }
 
         private void btnSorties_Click(object sender, EventArgs e)
         {
-            cs.FicheStock(this, new FormStockFicheStock());
+            cs.FicheStock(this, new FormStockFicheStock(), "sortie");
         }
         private void btnCommandes_Click(object sender, EventArgs e)
         {
@@ -123,21 +123,24 @@ namespace SUMEDCO
             if (dgvProduit.RowCount != 0)
             {
                 idproduit = int.Parse(dgvProduit.CurrentRow.Cells[0].Value.ToString());
-                cs.ChargerStockProduit(this);
+                cs.ChargerStockProduit(this, "");
                 btnNouveauStock.Enabled = true;
             }
         }
-
+        public bool valider_vente, vente_effectue;
         private void dgvStock_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if(dgvStock.RowCount != 0)
             {               
-                btnDemande.Enabled = true;
-                btnFicheStock.Enabled = true;
-                btnEntrees.Enabled = true;
-                btnSorties.Enabled = true;
-                btnPerte.Enabled = true;
-                btnRetour.Enabled = true;
+                if(!valider_vente)
+                {
+                    btnDemande.Enabled = true;
+                    btnFicheStock.Enabled = true;
+                    btnEntrees.Enabled = true;
+                    btnSorties.Enabled = true;
+                    btnPerte.Enabled = true;
+                    btnRetour.Enabled = true;
+                }                
                 if (poste != "pharmacie")
                 {
                     btnStockPha.Enabled = true;
@@ -145,7 +148,7 @@ namespace SUMEDCO
                         btnDemande.Enabled = false;
                 }
                 else
-                    btnVente.Enabled = true;
+                    if (valider_vente) btnVente.Enabled = true;
                 idstock = int.Parse(dgvStock.CurrentRow.Cells[0].Value.ToString());
             }
         }
@@ -168,6 +171,47 @@ namespace SUMEDCO
         private void btnRetour_Click(object sender, EventArgs e)
         {
             cs.RetourEnStock(this, new FormStockRetour());
+        }
+        private void btnCmdPrep_Click(object sender, EventArgs e)
+        {
+            cs.PreparerCommandde(this, new FormStockAlerte());
+        }
+
+        private void checkBox2_Click(object sender, EventArgs e)
+        {
+            if (checkBox2.Checked)
+            {
+                if(cboCategorie.Text != "")
+                {
+                    cs.ChargerProduit(this, "");
+                    if (dgvProduit.RowCount != 0)
+                        cs.ChargerStockProduit(this, "alerte");
+                    btnRecherche.Enabled = false;
+                    btnAlerteStock.Enabled = true;
+                    btnCmdPrep.Enabled = true;
+                    txtAlerteStock.Enabled = true;
+                    txtAlerteStock.Focus();
+                }
+                else
+                {
+                    MessageBox.Show("Acucune catégorie n'est sélectionnez dans la liste","Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    checkBox2.Checked = false;
+                    cboCategorie.Select();
+                }
+            }
+            else
+            {
+                cs.ChargerProduit(this, "");
+                btnAlerteStock.Enabled = false;
+                btnCmdPrep.Enabled = false;
+                txtAlerteStock.Enabled = false;
+                btnRecherche.Enabled = true;
+            }
+        }
+
+        private void btnAlerteStock_Click(object sender, EventArgs e)
+        {
+            cs.ChargerStockProduit(this, "alerte_recherche");
         }
 
     }

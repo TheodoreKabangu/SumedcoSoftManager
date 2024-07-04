@@ -22,6 +22,7 @@ namespace SUMEDCO
             idstock = 0,
             idposte = 0;
         public string poste = "", motif_ajout = "";
+        public bool vente_effectue;
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
             cs.Annuler(this);
@@ -60,7 +61,7 @@ namespace SUMEDCO
 
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
-            cs.AjouterSortieStock(this, poste);
+            cs.AjouterSortieStock(this);
         }
 
         private void txtQteServie_TextChanged(object sender, EventArgs e)

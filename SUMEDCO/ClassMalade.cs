@@ -147,7 +147,7 @@ namespace SUMEDCO
         private Form activeForm = null;
 
         #region INFIRMERIE
-        public void AfficherSousForm(MFormInfirmerie i, FormAgendaNursing childForm)
+        public void AfficherSousForm(InfirmerieMDI i, FormAgendaNursing childForm)
         {
             if (activeForm != null)
                 activeForm.Close();
@@ -160,7 +160,7 @@ namespace SUMEDCO
             childForm.BringToFront();
             childForm.Show();
         }
-        public void AfficherSousForm(MFormInfirmerie i, FormPatientRecherche childForm)
+        public void AfficherSousForm(InfirmerieMDI i, FormPatientRecherche childForm)
         {
             if (i.activeForm != null)
                 i.activeForm.Close();
@@ -174,7 +174,7 @@ namespace SUMEDCO
             childForm.poste = "infirmerie";
             childForm.Show();
         }
-        public void AfficherSousForm(MFormInfirmerie r, FormRecette childForm)
+        public void AfficherSousForm(InfirmerieMDI r, FormRecette childForm)
         {
             if (r.activeForm != null)
                 r.activeForm.Close();
@@ -188,7 +188,7 @@ namespace SUMEDCO
             childForm.poste = "reception";
             childForm.Show();
         }
-        public void AfficherSousForm(MFormInfirmerie r, Form childForm)
+        public void AfficherSousForm(InfirmerieMDI r, Form childForm)
         {
             if (r.activeForm != null)
                 r.activeForm.Close();
@@ -322,7 +322,7 @@ namespace SUMEDCO
             c.Text = "SSM - Dossier " + cp.dgvPrise.CurrentRow.Cells[2].Value.ToString();
 
             c.Show();
-            c.Close();
+            //c.Close();
         }
         public void AjouterFichePatient(FormConsulter c)
         {
@@ -368,7 +368,7 @@ namespace SUMEDCO
                 MessageBox.Show("Désolé! Champs obligatoire(s) vide(s)", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        public void AfficherSousForm(MFormConsultation c, FormConsultationDossier childForm)
+        public void AfficherSousForm(ConsultationMDI c, FormConsultationDossier childForm)
         {
             if (activeForm != null)
                 activeForm.Close();
@@ -397,7 +397,7 @@ namespace SUMEDCO
                 c.Close();
             }
         }
-        public void AfficherSousForm(MFormConsultation c, FormConsulterPrise childForm)
+        public void AfficherSousForm(ConsultationMDI c, FormConsulterPrise childForm)
         {
             if (activeForm != null)
                 activeForm.Close();
@@ -412,7 +412,7 @@ namespace SUMEDCO
             childForm.idutilisateur = c.idutilisateur;
             childForm.Show();
         }
-        public void AfficherSousForm(MFormConsultation c, FormMessageHisto childForm)
+        public void AfficherSousForm(ConsultationMDI c, FormMessageHisto childForm)
         {
             if (activeForm != null)
                 activeForm.Close();
@@ -426,7 +426,7 @@ namespace SUMEDCO
             childForm.idutilisateur = c.idmedecin;
             childForm.Show();
         }
-        public void AfficherSousForm(MFormComptabilite c, FormMessageHisto childForm)
+        public void AfficherSousForm(ComptabiliteMDI c, FormMessageHisto childForm)
         {
             if (activeForm != null)
                 activeForm.Close();
@@ -440,7 +440,7 @@ namespace SUMEDCO
             childForm.idutilisateur = c.idutilisateur;
             childForm.Show();
         }
-        public void AfficherSousForm(MFormConsultation c, FormConsultationStat childForm)
+        public void AfficherSousForm(ConsultationMDI c, FormConsultationStat childForm)
         {
             if (activeForm != null)
                 activeForm.Close();
@@ -2773,7 +2773,7 @@ namespace SUMEDCO
         #endregion
 
         #region AGENDA_IMAGERIE
-        public void AfficherSousForm(MFormEchoRadio ec, FormAgendaEcho childForm)
+        public void AfficherSousForm(EchoRadioMDI ec, FormAgendaEcho childForm)
         {
             if (activeForm != null)
                 activeForm.Close();
@@ -2787,7 +2787,7 @@ namespace SUMEDCO
             childForm.idutilisateur = ec.idutilisateur;
             childForm.Show();
         }
-        public void AfficherSousForm(MFormEchoRadio ec, FormAgendaLaboResult childForm)
+        public void AfficherSousForm(EchoRadioMDI ec, FormAgendaLaboResult childForm)
         {
             if (activeForm != null)
                 activeForm.Close();
@@ -2892,7 +2892,7 @@ namespace SUMEDCO
         #endregion
 
         #region LABORATOIRE
-        public void AfficherSousForm(MFormLabo l, FormAgendaLabo childForm)
+        public void AfficherSousForm(LaboMDI l, FormAgendaLabo childForm)
         {
             if (activeForm != null)
                 activeForm.Close();
@@ -2906,7 +2906,7 @@ namespace SUMEDCO
             childForm.idutilisateur = l.idutilisateur;
             childForm.Show();
         }
-        public void AfficherSousForm(MFormLabo l, FormAgendaLaboResult childForm)
+        public void AfficherSousForm(LaboMDI l, FormAgendaLaboResult childForm)
         {
             if (activeForm != null)
                 activeForm.Close();

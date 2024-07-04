@@ -45,7 +45,6 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnDepenseCompte = new System.Windows.Forms.Button();
             this.btnAnnuler = new System.Windows.Forms.Button();
-            this.btnModifier = new System.Windows.Forms.Button();
             this.dgvBon = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,6 +54,7 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -99,7 +99,7 @@
             this.cboMonnaie.Location = new System.Drawing.Point(84, 52);
             this.cboMonnaie.MaxDropDownItems = 10;
             this.cboMonnaie.Name = "cboMonnaie";
-            this.cboMonnaie.Size = new System.Drawing.Size(69, 30);
+            this.cboMonnaie.Size = new System.Drawing.Size(69, 26);
             this.cboMonnaie.Sorted = true;
             this.cboMonnaie.TabIndex = 625;
             // 
@@ -109,7 +109,7 @@
             this.label7.Location = new System.Drawing.Point(9, 55);
             this.label7.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(100, 22);
+            this.label7.Size = new System.Drawing.Size(83, 18);
             this.label7.TabIndex = 626;
             this.label7.Text = "CDF/USD :";
             // 
@@ -118,7 +118,7 @@
             this.dtpDateA.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDateA.Location = new System.Drawing.Point(320, 50);
             this.dtpDateA.Name = "dtpDateA";
-            this.dtpDateA.Size = new System.Drawing.Size(100, 28);
+            this.dtpDateA.Size = new System.Drawing.Size(100, 24);
             this.dtpDateA.TabIndex = 649;
             // 
             // label2
@@ -127,7 +127,7 @@
             this.label2.Location = new System.Drawing.Point(296, 53);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(30, 22);
+            this.label2.Size = new System.Drawing.Size(24, 18);
             this.label2.TabIndex = 651;
             this.label2.Text = "à :";
             // 
@@ -136,7 +136,7 @@
             this.dtpDateDe.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDateDe.Location = new System.Drawing.Point(192, 50);
             this.dtpDateDe.Name = "dtpDateDe";
-            this.dtpDateDe.Size = new System.Drawing.Size(100, 28);
+            this.dtpDateDe.Size = new System.Drawing.Size(100, 24);
             this.dtpDateDe.TabIndex = 650;
             // 
             // label1
@@ -145,7 +145,7 @@
             this.label1.Location = new System.Drawing.Point(161, 55);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 22);
+            this.label1.Size = new System.Drawing.Size(35, 18);
             this.label1.TabIndex = 652;
             this.label1.Text = "De :";
             // 
@@ -178,7 +178,7 @@
             this.btnDepenseCompte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDepenseCompte.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDepenseCompte.Image = ((System.Drawing.Image)(resources.GetObject("btnDepenseCompte.Image")));
-            this.btnDepenseCompte.Location = new System.Drawing.Point(471, 51);
+            this.btnDepenseCompte.Location = new System.Drawing.Point(513, 49);
             this.btnDepenseCompte.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnDepenseCompte.Name = "btnDepenseCompte";
             this.btnDepenseCompte.Size = new System.Drawing.Size(30, 21);
@@ -198,7 +198,7 @@
             this.btnAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAnnuler.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAnnuler.Image = ((System.Drawing.Image)(resources.GetObject("btnAnnuler.Image")));
-            this.btnAnnuler.Location = new System.Drawing.Point(555, 51);
+            this.btnAnnuler.Location = new System.Drawing.Point(471, 50);
             this.btnAnnuler.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(30, 21);
@@ -206,26 +206,6 @@
             this.toolTip1.SetToolTip(this.btnAnnuler, "Annuler cette dépense");
             this.btnAnnuler.UseVisualStyleBackColor = false;
             this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
-            // 
-            // btnModifier
-            // 
-            this.btnModifier.BackColor = System.Drawing.Color.Transparent;
-            this.btnModifier.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnModifier.Enabled = false;
-            this.btnModifier.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnModifier.FlatAppearance.BorderSize = 0;
-            this.btnModifier.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnModifier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnModifier.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModifier.Image = ((System.Drawing.Image)(resources.GetObject("btnModifier.Image")));
-            this.btnModifier.Location = new System.Drawing.Point(513, 51);
-            this.btnModifier.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.btnModifier.Name = "btnModifier";
-            this.btnModifier.Size = new System.Drawing.Size(30, 21);
-            this.btnModifier.TabIndex = 658;
-            this.toolTip1.SetToolTip(this.btnModifier, "Modifier cette dépense");
-            this.btnModifier.UseVisualStyleBackColor = false;
-            this.btnModifier.Click += new System.EventHandler(this.btnModifier_Click);
             // 
             // dgvBon
             // 
@@ -257,7 +237,8 @@
             this.dataGridViewTextBoxColumn3,
             this.Column5,
             this.Column1,
-            this.Column2});
+            this.Column2,
+            this.Column3});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.Lavender;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -342,13 +323,19 @@
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "numcompte";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Visible = false;
+            // 
             // FormTresoJournal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(703, 451);
-            this.Controls.Add(this.btnModifier);
             this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.btnDepenseCompte);
             this.Controls.Add(this.dgvBon);
@@ -385,7 +372,6 @@
         public System.Windows.Forms.DataGridView dgvBon;
         public System.Windows.Forms.Button btnDepenseCompte;
         public System.Windows.Forms.Button btnAnnuler;
-        public System.Windows.Forms.Button btnModifier;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
@@ -394,5 +380,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
     }
 }

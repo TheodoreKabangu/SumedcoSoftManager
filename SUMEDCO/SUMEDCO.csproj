@@ -97,21 +97,50 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbonneTrace.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbonneTrace.Designer.cs">
+      <DependentUpon>AbonneTrace.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbonneTraceClasse.cs" />
+    <Compile Include="ClassConnexion.cs" />
+    <Compile Include="ClasseGeneraleDGV.cs" />
+    <Compile Include="ComptaEcriture.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ComptaEcriture.Designer.cs">
+      <DependentUpon>ComptaEcriture.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExerciceClasse.cs" />
     <Compile Include="FormComptaExercice.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormComptaExercice.Designer.cs">
       <DependentUpon>FormComptaExercice.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAbonne.cs">
+    <Compile Include="FormPharmaInventaire.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAbonne.Designer.cs">
-      <DependentUpon>FormAbonne.cs</DependentUpon>
+    <Compile Include="FormPharmaInventaire.Designer.cs">
+      <DependentUpon>FormPharmaInventaire.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormStockRetour.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStockRetour.Designer.cs">
+      <DependentUpon>FormStockRetour.cs</DependentUpon>
     </Compile>
     <Compile Include="ClassCompta.cs" />
     <Compile Include="ClassMalade.cs" />
-    <Compile Include="ClassMetier.cs" />
+    <Compile Include="PharmacieFacturation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PharmacieFacturation.Designer.cs">
+      <DependentUpon>PharmacieFacturation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PharmacieFacturationClasse.cs" />
+    <Compile Include="ReceptionFactureClasse.cs" />
     <Compile Include="ClassStock.cs" />
     <Compile Include="FormAbonnePersoRapport.cs">
       <SubType>Form</SubType>
@@ -131,11 +160,11 @@
     <Compile Include="FormAdminRapportCasMedecin.Designer.cs">
       <DependentUpon>FormAdminRapportCasMedecin.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAgendaCaisse.cs">
+    <Compile Include="FormAgendaLaboResult.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAgendaCaisse.Designer.cs">
-      <DependentUpon>FormAgendaCaisse.cs</DependentUpon>
+    <Compile Include="FormAgendaLaboResult.Designer.cs">
+      <DependentUpon>FormAgendaLaboResult.cs</DependentUpon>
     </Compile>
     <Compile Include="FormAutorisation.cs">
       <SubType>Form</SubType>
@@ -155,11 +184,11 @@
     <Compile Include="FormComptaGdLivre.Designer.cs">
       <DependentUpon>FormComptaGdLivre.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormHospitalisation.cs">
+    <Compile Include="FormPatientRecherche.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormHospitalisation.Designer.cs">
-      <DependentUpon>FormHospitalisation.cs</DependentUpon>
+    <Compile Include="FormPatientRecherche.Designer.cs">
+      <DependentUpon>FormPatientRecherche.cs</DependentUpon>
     </Compile>
     <Compile Include="FormStockServir.cs">
       <SubType>Form</SubType>
@@ -172,12 +201,6 @@
     </Compile>
     <Compile Include="FormComAutre.Designer.cs">
       <DependentUpon>FormComAutre.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormCommandePharma.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormCommandePharma.Designer.cs">
-      <DependentUpon>FormCommandePharma.cs</DependentUpon>
     </Compile>
     <Compile Include="FormStockAlerte.cs">
       <SubType>Form</SubType>
@@ -275,11 +298,11 @@
     <Compile Include="FormTresoJournal.Designer.cs">
       <DependentUpon>FormTresoJournal.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormFicheStock.cs">
+    <Compile Include="FormStockFicheStock.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormFicheStock.Designer.cs">
-      <DependentUpon>FormFicheStock.cs</DependentUpon>
+    <Compile Include="FormStockFicheStock.Designer.cs">
+      <DependentUpon>FormStockFicheStock.cs</DependentUpon>
     </Compile>
     <Compile Include="FormPriseSigneVital.cs">
       <SubType>Form</SubType>
@@ -329,17 +352,17 @@
     <Compile Include="FormMaladieDiagnostic.Designer.cs">
       <DependentUpon>FormMaladieDiagnostic.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMedecinHistoChat.cs">
+    <Compile Include="FormMessageHisto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMedecinHistoChat.Designer.cs">
-      <DependentUpon>FormMedecinHistoChat.cs</DependentUpon>
+    <Compile Include="FormMessageHisto.Designer.cs">
+      <DependentUpon>FormMessageHisto.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMedecinMessage.cs">
+    <Compile Include="FormMessage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMedecinMessage.Designer.cs">
-      <DependentUpon>FormMedecinMessage.cs</DependentUpon>
+    <Compile Include="FormMessage.Designer.cs">
+      <DependentUpon>FormMessage.cs</DependentUpon>
     </Compile>
     <Compile Include="FormTresoRapport.cs">
       <SubType>Form</SubType>
@@ -359,11 +382,11 @@
     <Compile Include="FormAdminStatService.Designer.cs">
       <DependentUpon>FormAdminStatService.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormResultatExamen.cs">
+    <Compile Include="FormConsulterPresc.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormResultatExamen.Designer.cs">
-      <DependentUpon>FormResultatExamen.cs</DependentUpon>
+    <Compile Include="FormConsulterPresc.Designer.cs">
+      <DependentUpon>FormConsulterPresc.cs</DependentUpon>
     </Compile>
     <Compile Include="FormConsultationStat.cs">
       <SubType>Form</SubType>
@@ -395,17 +418,17 @@
     <Compile Include="FormConsultation.Designer.cs">
       <DependentUpon>FormConsultation.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAbonneProduit.cs">
+    <Compile Include="LaboMDI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAbonneProduit.Designer.cs">
-      <DependentUpon>FormAbonneProduit.cs</DependentUpon>
+    <Compile Include="LaboMDI.Designer.cs">
+      <DependentUpon>LaboMDI.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAbonneService.cs">
+    <Compile Include="FormAgendaLabo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAbonneService.Designer.cs">
-      <DependentUpon>FormAbonneService.cs</DependentUpon>
+    <Compile Include="FormAgendaLabo.Designer.cs">
+      <DependentUpon>FormAgendaLabo.cs</DependentUpon>
     </Compile>
     <Compile Include="FormRecette.cs">
       <SubType>Form</SubType>
@@ -455,17 +478,17 @@
     <Compile Include="FormStockNouveau.Designer.cs">
       <DependentUpon>FormStockNouveau.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMouvementPharma.cs">
+    <Compile Include="FormComptes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMouvementPharma.Designer.cs">
-      <DependentUpon>FormMouvementPharma.cs</DependentUpon>
+    <Compile Include="FormComptes.Designer.cs">
+      <DependentUpon>FormComptes.cs</DependentUpon>
     </Compile>
-    <Compile Include="MFormAbonne.cs">
+    <Compile Include="AbonneMDI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MFormAbonne.Designer.cs">
-      <DependentUpon>MFormAbonne.cs</DependentUpon>
+    <Compile Include="AbonneMDI.Designer.cs">
+      <DependentUpon>AbonneMDI.cs</DependentUpon>
     </Compile>
     <Compile Include="FormPayements.cs">
       <SubType>Form</SubType>
@@ -473,17 +496,17 @@
     <Compile Include="FormPayements.Designer.cs">
       <DependentUpon>FormPayements.cs</DependentUpon>
     </Compile>
-    <Compile Include="MFormComptabilite.cs">
+    <Compile Include="ComptabiliteMDI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MFormComptabilite.Designer.cs">
-      <DependentUpon>MFormComptabilite.cs</DependentUpon>
+    <Compile Include="ComptabiliteMDI.Designer.cs">
+      <DependentUpon>ComptabiliteMDI.cs</DependentUpon>
     </Compile>
-    <Compile Include="MFormConsultation.cs">
+    <Compile Include="ConsultationMDI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MFormConsultation.Designer.cs">
-      <DependentUpon>MFormConsultation.cs</DependentUpon>
+    <Compile Include="ConsultationMDI.Designer.cs">
+      <DependentUpon>ConsultationMDI.cs</DependentUpon>
     </Compile>
     <Compile Include="DateTaux.cs">
       <SubType>Form</SubType>
@@ -509,11 +532,11 @@
     <Compile Include="Accueil.Designer.cs">
       <DependentUpon>Accueil.cs</DependentUpon>
     </Compile>
-    <Compile Include="MFormAdmin.cs">
+    <Compile Include="AdminMDI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MFormAdmin.Designer.cs">
-      <DependentUpon>MFormAdmin.cs</DependentUpon>
+    <Compile Include="AdminMDI.Designer.cs">
+      <DependentUpon>AdminMDI.cs</DependentUpon>
     </Compile>
     <Compile Include="FormAgendaNursing.cs">
       <SubType>Form</SubType>
@@ -545,12 +568,6 @@
     <Compile Include="FormFactureService.Designer.cs">
       <DependentUpon>FormFactureService.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormFacturePatient.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormFacturePatient.Designer.cs">
-      <DependentUpon>FormFacturePatient.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormTresoDepense.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -569,23 +586,36 @@
     <Compile Include="FormPatient.Designer.cs">
       <DependentUpon>FormPatient.cs</DependentUpon>
     </Compile>
-    <Compile Include="MFormEchoRadio.cs">
+    <Compile Include="EchoRadioMDI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MFormEchoRadio.Designer.cs">
-      <DependentUpon>MFormEchoRadio.cs</DependentUpon>
+    <Compile Include="EchoRadioMDI.Designer.cs">
+      <DependentUpon>EchoRadioMDI.cs</DependentUpon>
     </Compile>
-    <Compile Include="MFormTreso.cs">
+    <Compile Include="StockTrace.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MFormTreso.Designer.cs">
-      <DependentUpon>MFormTreso.cs</DependentUpon>
+    <Compile Include="StockTrace.Designer.cs">
+      <DependentUpon>StockTrace.cs</DependentUpon>
     </Compile>
-    <Compile Include="MFormPharmacie.cs">
+    <Compile Include="StockTraceClasse.cs" />
+    <Compile Include="TresorerieFlux.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MFormPharmacie.Designer.cs">
-      <DependentUpon>MFormPharmacie.cs</DependentUpon>
+    <Compile Include="TresorerieFlux.Designer.cs">
+      <DependentUpon>TresorerieFlux.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TresorerieMDI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TresorerieMDI.Designer.cs">
+      <DependentUpon>TresorerieMDI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PharmacieMDI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PharmacieMDI.Designer.cs">
+      <DependentUpon>PharmacieMDI.cs</DependentUpon>
     </Compile>
     <Compile Include="FormPhamaVente.cs">
       <SubType>Form</SubType>
@@ -593,17 +623,17 @@
     <Compile Include="FormPhamaVente.Designer.cs">
       <DependentUpon>FormPhamaVente.cs</DependentUpon>
     </Compile>
-    <Compile Include="MFormReception.cs">
+    <Compile Include="ReceptionMDI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MFormReception.Designer.cs">
-      <DependentUpon>MFormReception.cs</DependentUpon>
+    <Compile Include="ReceptionMDI.Designer.cs">
+      <DependentUpon>ReceptionMDI.cs</DependentUpon>
     </Compile>
-    <Compile Include="MFormRecette.cs">
+    <Compile Include="RecetteMDI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MFormRecette.Designer.cs">
-      <DependentUpon>MFormRecette.cs</DependentUpon>
+    <Compile Include="RecetteMDI.Designer.cs">
+      <DependentUpon>RecetteMDI.cs</DependentUpon>
     </Compile>
     <Compile Include="FormComptaRecetteDepense.cs">
       <SubType>Form</SubType>
@@ -611,11 +641,11 @@
     <Compile Include="FormComptaRecetteDepense.Designer.cs">
       <DependentUpon>FormComptaRecetteDepense.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormRenseignement.cs">
+    <Compile Include="FormAgendaLaboRslt.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormRenseignement.Designer.cs">
-      <DependentUpon>FormRenseignement.cs</DependentUpon>
+    <Compile Include="FormAgendaLaboRslt.Designer.cs">
+      <DependentUpon>FormAgendaLaboRslt.cs</DependentUpon>
     </Compile>
     <Compile Include="FormSigneVital.cs">
       <SubType>Form</SubType>
@@ -623,17 +653,17 @@
     <Compile Include="FormSigneVital.Designer.cs">
       <DependentUpon>FormSigneVital.cs</DependentUpon>
     </Compile>
-    <Compile Include="MFormInfirmerie.cs">
+    <Compile Include="InfirmerieMDI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MFormInfirmerie.Designer.cs">
-      <DependentUpon>MFormInfirmerie.cs</DependentUpon>
+    <Compile Include="InfirmerieMDI.Designer.cs">
+      <DependentUpon>InfirmerieMDI.cs</DependentUpon>
     </Compile>
-    <Compile Include="MFormStock.cs">
+    <Compile Include="StockMDI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MFormStock.Designer.cs">
-      <DependentUpon>MFormStock.cs</DependentUpon>
+    <Compile Include="StockMDI.Designer.cs">
+      <DependentUpon>StockMDI.cs</DependentUpon>
     </Compile>
     <Compile Include="FormMedecin.cs">
       <SubType>Form</SubType>
@@ -661,12 +691,6 @@
     <Compile Include="FormApprov.Designer.cs">
       <DependentUpon>FormApprov.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormRequisition.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormRequisition.Designer.cs">
-      <DependentUpon>FormRequisition.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormService.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -685,6 +709,22 @@
     <Compile Include="FormApproAutre.Designer.cs">
       <DependentUpon>FormApproAutre.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReceptionFacturation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReceptionFacturation.Designer.cs">
+      <DependentUpon>ReceptionFacturation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RecetteTrace.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RecetteTrace.Designer.cs">
+      <DependentUpon>RecetteTrace.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RecetteTraceClasse.cs" />
+    <EmbeddedResource Include="AbonneTrace.resx">
+      <DependentUpon>AbonneTrace.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AgendaPatient.rdlc" />
     <EmbeddedResource Include="Balance.rdlc" />
     <EmbeddedResource Include="Bilan.rdlc" />
@@ -696,13 +736,21 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="BonHistoCommande.rdlc" />
+    <EmbeddedResource Include="BonOrdonnace.rdlc" />
     <EmbeddedResource Include="BonRecette.rdlc" />
+    <EmbeddedResource Include="ComptaEcriture.resx">
+      <DependentUpon>ComptaEcriture.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DossierPatient.rdlc" />
+    <EmbeddedResource Include="FicheStock.rdlc" />
     <EmbeddedResource Include="FormComptaExercice.resx">
       <DependentUpon>FormComptaExercice.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAbonne.resx">
-      <DependentUpon>FormAbonne.cs</DependentUpon>
+    <EmbeddedResource Include="FormPharmaInventaire.resx">
+      <DependentUpon>FormPharmaInventaire.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStockRetour.resx">
+      <DependentUpon>FormStockRetour.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAbonnePersoRapport.resx">
       <DependentUpon>FormAbonnePersoRapport.cs</DependentUpon>
@@ -713,11 +761,11 @@
     <EmbeddedResource Include="FormAdminRapportCasMedecin.resx">
       <DependentUpon>FormAdminRapportCasMedecin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAgendaCaisse.fr.resx">
-      <DependentUpon>FormAgendaCaisse.cs</DependentUpon>
+    <EmbeddedResource Include="FormAgendaLaboResult.fr.resx">
+      <DependentUpon>FormAgendaLaboResult.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAgendaCaisse.resx">
-      <DependentUpon>FormAgendaCaisse.cs</DependentUpon>
+    <EmbeddedResource Include="FormAgendaLaboResult.resx">
+      <DependentUpon>FormAgendaLaboResult.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAutorisation.resx">
       <DependentUpon>FormAutorisation.cs</DependentUpon>
@@ -728,17 +776,14 @@
     <EmbeddedResource Include="FormComptaGdLivre.resx">
       <DependentUpon>FormComptaGdLivre.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormHospitalisation.resx">
-      <DependentUpon>FormHospitalisation.cs</DependentUpon>
+    <EmbeddedResource Include="FormPatientRecherche.resx">
+      <DependentUpon>FormPatientRecherche.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormStockServir.resx">
       <DependentUpon>FormStockServir.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormComAutre.resx">
       <DependentUpon>FormComAutre.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormCommandePharma.resx">
-      <DependentUpon>FormCommandePharma.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormStockAlerte.resx">
       <DependentUpon>FormStockAlerte.cs</DependentUpon>
@@ -791,8 +836,8 @@
     <EmbeddedResource Include="FormTresoJournal.resx">
       <DependentUpon>FormTresoJournal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormFicheStock.resx">
-      <DependentUpon>FormFicheStock.cs</DependentUpon>
+    <EmbeddedResource Include="FormStockFicheStock.resx">
+      <DependentUpon>FormStockFicheStock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPriseSigneVital.resx">
       <DependentUpon>FormPriseSigneVital.cs</DependentUpon>
@@ -821,11 +866,11 @@
     <EmbeddedResource Include="FormMaladieDiagnostic.resx">
       <DependentUpon>FormMaladieDiagnostic.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMedecinHistoChat.resx">
-      <DependentUpon>FormMedecinHistoChat.cs</DependentUpon>
+    <EmbeddedResource Include="FormMessageHisto.resx">
+      <DependentUpon>FormMessageHisto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMedecinMessage.resx">
-      <DependentUpon>FormMedecinMessage.cs</DependentUpon>
+    <EmbeddedResource Include="FormMessage.resx">
+      <DependentUpon>FormMessage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAdminStatService.resx">
       <DependentUpon>FormAdminStatService.cs</DependentUpon>
@@ -839,8 +884,8 @@
     <EmbeddedResource Include="FormRecetteJournal.resx">
       <DependentUpon>FormRecetteJournal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormResultatExamen.resx">
-      <DependentUpon>FormResultatExamen.cs</DependentUpon>
+    <EmbeddedResource Include="FormConsulterPresc.resx">
+      <DependentUpon>FormConsulterPresc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormConsultationStat.resx">
       <DependentUpon>FormConsultationStat.cs</DependentUpon>
@@ -857,11 +902,12 @@
     <EmbeddedResource Include="FormConsultation.resx">
       <DependentUpon>FormConsultation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAbonneProduit.resx">
-      <DependentUpon>FormAbonneProduit.cs</DependentUpon>
+    <EmbeddedResource Include="GrandLivre.rdlc" />
+    <EmbeddedResource Include="LaboMDI.resx">
+      <DependentUpon>LaboMDI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAbonneService.resx">
-      <DependentUpon>FormAbonneService.cs</DependentUpon>
+    <EmbeddedResource Include="FormAgendaLabo.resx">
+      <DependentUpon>FormAgendaLabo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormRecette.resx">
       <DependentUpon>FormRecette.cs</DependentUpon>
@@ -887,20 +933,20 @@
     <EmbeddedResource Include="FormStockNouveau.resx">
       <DependentUpon>FormStockNouveau.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMouvementPharma.resx">
-      <DependentUpon>FormMouvementPharma.cs</DependentUpon>
+    <EmbeddedResource Include="FormComptes.resx">
+      <DependentUpon>FormComptes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MFormAbonne.resx">
-      <DependentUpon>MFormAbonne.cs</DependentUpon>
+    <EmbeddedResource Include="AbonneMDI.resx">
+      <DependentUpon>AbonneMDI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPayements.resx">
       <DependentUpon>FormPayements.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MFormComptabilite.resx">
-      <DependentUpon>MFormComptabilite.cs</DependentUpon>
+    <EmbeddedResource Include="ComptabiliteMDI.resx">
+      <DependentUpon>ComptabiliteMDI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MFormConsultation.resx">
-      <DependentUpon>MFormConsultation.cs</DependentUpon>
+    <EmbeddedResource Include="ConsultationMDI.resx">
+      <DependentUpon>ConsultationMDI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DateTaux.resx">
       <DependentUpon>DateTaux.cs</DependentUpon>
@@ -914,8 +960,8 @@
     <EmbeddedResource Include="Accueil.resx">
       <DependentUpon>Accueil.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MFormAdmin.resx">
-      <DependentUpon>MFormAdmin.cs</DependentUpon>
+    <EmbeddedResource Include="AdminMDI.resx">
+      <DependentUpon>AdminMDI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAgendaNursing.resx">
       <DependentUpon>FormAgendaNursing.cs</DependentUpon>
@@ -932,41 +978,47 @@
     <EmbeddedResource Include="FormFactureService.resx">
       <DependentUpon>FormFactureService.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormFacturePatient.resx">
-      <DependentUpon>FormFacturePatient.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormPatient.resx">
       <DependentUpon>FormPatient.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MFormEchoRadio.resx">
-      <DependentUpon>MFormEchoRadio.cs</DependentUpon>
+    <EmbeddedResource Include="EchoRadioMDI.resx">
+      <DependentUpon>EchoRadioMDI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MFormTreso.resx">
-      <DependentUpon>MFormTreso.cs</DependentUpon>
+    <EmbeddedResource Include="StockTrace.resx">
+      <DependentUpon>StockTrace.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MFormPharmacie.resx">
-      <DependentUpon>MFormPharmacie.cs</DependentUpon>
+    <EmbeddedResource Include="TresorerieFlux.resx">
+      <DependentUpon>TresorerieFlux.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TresorerieMDI.resx">
+      <DependentUpon>TresorerieMDI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PharmacieFacturation.resx">
+      <DependentUpon>PharmacieFacturation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PharmacieMDI.resx">
+      <DependentUpon>PharmacieMDI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPhamaVente.resx">
       <DependentUpon>FormPhamaVente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MFormReception.resx">
-      <DependentUpon>MFormReception.cs</DependentUpon>
+    <EmbeddedResource Include="ReceptionMDI.resx">
+      <DependentUpon>ReceptionMDI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MFormRecette.resx">
-      <DependentUpon>MFormRecette.cs</DependentUpon>
+    <EmbeddedResource Include="RecetteMDI.resx">
+      <DependentUpon>RecetteMDI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormRenseignement.resx">
-      <DependentUpon>FormRenseignement.cs</DependentUpon>
+    <EmbeddedResource Include="FormAgendaLaboRslt.resx">
+      <DependentUpon>FormAgendaLaboRslt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormSigneVital.resx">
       <DependentUpon>FormSigneVital.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MFormInfirmerie.resx">
-      <DependentUpon>MFormInfirmerie.cs</DependentUpon>
+    <EmbeddedResource Include="InfirmerieMDI.resx">
+      <DependentUpon>InfirmerieMDI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MFormStock.resx">
-      <DependentUpon>MFormStock.cs</DependentUpon>
+    <EmbeddedResource Include="StockMDI.resx">
+      <DependentUpon>StockMDI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMedecin.resx">
       <DependentUpon>FormMedecin.cs</DependentUpon>
@@ -989,9 +1041,6 @@
     <EmbeddedResource Include="FormApprov.resx">
       <DependentUpon>FormApprov.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormRequisition.resx">
-      <DependentUpon>FormRequisition.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormService.resx">
       <DependentUpon>FormService.cs</DependentUpon>
     </EmbeddedResource>
@@ -1003,8 +1052,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RapportRecette.rdlc" />
     <EmbeddedResource Include="RapportCasMedecin.rdlc" />
+    <EmbeddedResource Include="ReceptionFacturation.resx">
+      <DependentUpon>ReceptionFacturation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RecetteTrace.resx">
+      <DependentUpon>RecetteTrace.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TableauFlux.rdlc" />
     <EmbeddedResource Include="TableauResultat.rdlc" />
+    <EmbeddedResource Include="T_RapportAbonnePerso.rdlc" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\DataSources\AgendaPatient.datasource" />
     <None Include="Properties\DataSources\Balance.datasource" />
@@ -1012,13 +1068,16 @@
     <None Include="Properties\DataSources\BilanPassif.datasource" />
     <None Include="Properties\DataSources\Bilan_Actif.datasource" />
     <None Include="Properties\DataSources\Bilan_Passif.datasource" />
+    <None Include="Properties\DataSources\Bilan_Tout.datasource" />
     <None Include="Properties\DataSources\BonCommandePharma.datasource" />
     <None Include="Properties\DataSources\BonHistoCommande.datasource" />
     <None Include="Properties\DataSources\DetailBonrecette.datasource" />
     <None Include="Properties\DataSources\DossierPatient.datasource" />
+    <None Include="Properties\DataSources\FicheStock.datasource" />
+    <None Include="Properties\DataSources\GrandLivre.datasource" />
+    <None Include="Properties\DataSources\Ordonnance.datasource" />
     <None Include="Properties\DataSources\Rapport_recette.datasource" />
     <None Include="Properties\DataSources\ResumeRapportCas.datasource" />
-    <None Include="Properties\DataSources\TableauFlux.datasource" />
     <None Include="Properties\DataSources\TableauResultat.datasource" />
     <None Include="Properties\DataSources\Tableau_Flux.datasource" />
     <None Include="Properties\DataSources\Tableau_Resultat.datasource" />

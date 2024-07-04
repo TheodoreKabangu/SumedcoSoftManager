@@ -39,6 +39,8 @@
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.label10 = new System.Windows.Forms.Label();
             this.btnActiver = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // cboUtilisateur
@@ -49,9 +51,9 @@
             this.cboUtilisateur.Enabled = false;
             this.cboUtilisateur.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cboUtilisateur.FormattingEnabled = true;
-            this.cboUtilisateur.Location = new System.Drawing.Point(23, 136);
+            this.cboUtilisateur.Location = new System.Drawing.Point(23, 168);
             this.cboUtilisateur.Name = "cboUtilisateur";
-            this.cboUtilisateur.Size = new System.Drawing.Size(233, 30);
+            this.cboUtilisateur.Size = new System.Drawing.Size(233, 26);
             this.cboUtilisateur.TabIndex = 653;
             this.cboUtilisateur.DropDown += new System.EventHandler(this.cboUtilisateur_DropDown);
             this.cboUtilisateur.SelectedIndexChanged += new System.EventHandler(this.cboUtilisateur_SelectedIndexChanged);
@@ -66,7 +68,7 @@
             this.btnConnexion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConnexion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConnexion.ForeColor = System.Drawing.Color.Navy;
-            this.btnConnexion.Location = new System.Drawing.Point(23, 187);
+            this.btnConnexion.Location = new System.Drawing.Point(23, 206);
             this.btnConnexion.Name = "btnConnexion";
             this.btnConnexion.Size = new System.Drawing.Size(233, 27);
             this.btnConnexion.TabIndex = 652;
@@ -82,9 +84,9 @@
             this.cboAutorisation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboAutorisation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cboAutorisation.FormattingEnabled = true;
-            this.cboAutorisation.Location = new System.Drawing.Point(23, 107);
+            this.cboAutorisation.Location = new System.Drawing.Point(23, 118);
             this.cboAutorisation.Name = "cboAutorisation";
-            this.cboAutorisation.Size = new System.Drawing.Size(233, 30);
+            this.cboAutorisation.Size = new System.Drawing.Size(233, 26);
             this.cboAutorisation.TabIndex = 653;
             this.cboAutorisation.DropDown += new System.EventHandler(this.cboAutorisation_DropDown);
             this.cboAutorisation.SelectedIndexChanged += new System.EventHandler(this.cboAutorisation_SelectedIndexChanged);
@@ -99,7 +101,7 @@
             this.btnQuitter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuitter.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuitter.ForeColor = System.Drawing.Color.Navy;
-            this.btnQuitter.Location = new System.Drawing.Point(23, 220);
+            this.btnQuitter.Location = new System.Drawing.Point(23, 239);
             this.btnQuitter.Name = "btnQuitter";
             this.btnQuitter.Size = new System.Drawing.Size(233, 27);
             this.btnQuitter.TabIndex = 654;
@@ -121,7 +123,7 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 292);
+            this.panel2.Location = new System.Drawing.Point(0, 309);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(274, 50);
             this.panel2.TabIndex = 656;
@@ -156,7 +158,7 @@
             this.btnActiver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnActiver.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnActiver.ForeColor = System.Drawing.Color.Navy;
-            this.btnActiver.Location = new System.Drawing.Point(23, 253);
+            this.btnActiver.Location = new System.Drawing.Point(23, 272);
             this.btnActiver.Name = "btnActiver";
             this.btnActiver.Size = new System.Drawing.Size(233, 27);
             this.btnActiver.TabIndex = 658;
@@ -166,12 +168,34 @@
             this.btnActiver.Visible = false;
             this.btnActiver.Click += new System.EventHandler(this.btnActiver_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(20, 97);
+            this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(55, 18);
+            this.label3.TabIndex = 717;
+            this.label3.Text = "Poste :";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(20, 147);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(81, 18);
+            this.label1.TabIndex = 717;
+            this.label1.Text = "Utilisateur :";
+            // 
             // FormAutorisation
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(274, 342);
+            this.ClientSize = new System.Drawing.Size(274, 359);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnActiver);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.panel2);
@@ -184,11 +208,14 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(274, 359);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(274, 359);
             this.Name = "FormAutorisation";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SSM - Selection compte";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -203,5 +230,7 @@
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
         private System.Windows.Forms.Label label10;
         public System.Windows.Forms.Button btnActiver;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
     }
 }

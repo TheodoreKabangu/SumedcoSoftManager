@@ -22,6 +22,7 @@ namespace SUMEDCO
         }
         ClassCompta cc = new ClassCompta();
         ClassMalade cm = new ClassMalade();
+        ExerciceClasse exer = new ExerciceClasse();
         public int idrecette = 0,
             idservice = 0,
             idpayeur = 0,
@@ -45,8 +46,8 @@ namespace SUMEDCO
             }
             else
             {
-                if (cc.NbExerciceEncours() == 1)
-                    idexercice = cc.ExerciceEncours();
+                if (exer.NbExerciceEncours() == 1)
+                    idexercice = exer.ExerciceEncours();
                 else
                 {
                     MessageBox.Show("Besoin d'un exercice comptable en cours. Contactez le comptable de l'entreprise", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);

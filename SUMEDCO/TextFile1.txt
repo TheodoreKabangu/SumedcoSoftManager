@@ -1,7 +1,0 @@
-﻿Data Source=(LocalDB)\v11.0;AttachDbFilename=D:\MesProjets\SUMEDCO\SUMEDCO\Data\SSM_Compta.mdf;Integrated Security=True;Connect Timeout=30
-Data Source=(LocalDB)\v11.0;AttachDbFilename=D:\MesProjets\SUMEDCO\SUMEDCO\Data\SSM_Malade.mdf;Integrated Security=True;Connect Timeout=30
-Data Source=(LocalDB)\v11.0;AttachDbFilename=D:\MesProjets\SUMEDCO\SUMEDCO\Data\SSM_Stock.mdf;Integrated Security=True;Connect Timeout=30
-
-Data Source=192.168.1.253,49170;initial catalog=SSM_Compta;user id=sa;password=FFLMbm123
-Data Source=192.168.1.253,49170;initial catalog=SSM_Malade;user id=sa;password=FFLMbm123
-Data Source=192.168.1.253,49170;initial catalog=SSM_Stock;user id=sa;password=FFLMbm123

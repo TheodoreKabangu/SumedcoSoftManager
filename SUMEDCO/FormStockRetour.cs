@@ -28,7 +28,7 @@ namespace SUMEDCO
 
         private void btnEnregistrer_Click_1(object sender, EventArgs e)
         {
-            cs.AjouterRetourEnStock(this, poste);
+            cs.AjouterRetourEnStock(this);
         }
 
     }

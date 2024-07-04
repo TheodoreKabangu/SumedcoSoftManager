@@ -53,7 +53,7 @@
             this.txtProduit.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtProduit.MaxLength = 50;
             this.txtProduit.Name = "txtProduit";
-            this.txtProduit.Size = new System.Drawing.Size(356, 21);
+            this.txtProduit.Size = new System.Drawing.Size(356, 24);
             this.txtProduit.TabIndex = 1;
             // 
             // label1
@@ -62,7 +62,7 @@
             this.label1.Location = new System.Drawing.Point(9, 49);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 15);
+            this.label1.Size = new System.Drawing.Size(118, 18);
             this.label1.TabIndex = 542;
             this.label1.Text = "Nom du produit :";
             // 
@@ -206,7 +206,7 @@
             this.label5.Location = new System.Drawing.Point(9, 78);
             this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(66, 15);
+            this.label5.Size = new System.Drawing.Size(80, 18);
             this.label5.TabIndex = 711;
             this.label5.Text = "Catégorie :";
             // 
@@ -223,14 +223,14 @@
             this.cboCategorie.Location = new System.Drawing.Point(110, 75);
             this.cboCategorie.MaxDropDownItems = 10;
             this.cboCategorie.Name = "cboCategorie";
-            this.cboCategorie.Size = new System.Drawing.Size(264, 23);
+            this.cboCategorie.Size = new System.Drawing.Size(264, 26);
             this.cboCategorie.TabIndex = 710;
             this.cboCategorie.DropDown += new System.EventHandler(this.cboCategorie_DropDown);
             this.cboCategorie.SelectedIndexChanged += new System.EventHandler(this.cboCategorie_SelectedIndexChanged);
             // 
             // FormProduitPharma
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(484, 355);

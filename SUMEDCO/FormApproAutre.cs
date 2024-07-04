@@ -101,6 +101,10 @@ namespace SUMEDCO
                 {
                     txtPrixVente.Text = (float.Parse(txtPrixAchat.Text) + float.Parse(txtPrixAchat.Text) * float.Parse(txtTaux.Text) / 100).ToString("0.00");
                     txtPrixVente.Text = (Convert.ToInt32(txtValeurMin.Text) * Math.Ceiling(Convert.ToDouble(txtPrixVente.Text) / 50)).ToString("0.00");
+                    if (chbxGratuit.Checked)
+                    {
+                        txtPrixVente.Text = 0.ToString("0.00");
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -199,6 +203,18 @@ namespace SUMEDCO
         private void txtValeurMin_TextChanged(object sender, EventArgs e)
         {
             cm.TestEntier(txtValeurMin);
+        }
+
+        private void chbxGratuit_Click(object sender, EventArgs e)
+        {
+            if (chbxGratuit.Checked)
+            {
+                txtPrixVente.Text = 0.ToString("0.00");
+            }
+            else
+            {
+                txtPrixAchat_TextChanged(null, null);
+            }
         }
     }
 }
