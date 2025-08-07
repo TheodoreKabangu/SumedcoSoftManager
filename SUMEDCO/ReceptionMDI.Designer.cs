@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReceptionMDI));
             this.pnlSide = new System.Windows.Forms.Panel();
-            this.btnChat = new System.Windows.Forms.Button();
             this.btnRapport = new System.Windows.Forms.Button();
             this.btnFactureService = new System.Windows.Forms.Button();
             this.btnConsultation = new System.Windows.Forms.Button();
@@ -43,7 +42,6 @@
             // pnlSide
             // 
             this.pnlSide.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            this.pnlSide.Controls.Add(this.btnChat);
             this.pnlSide.Controls.Add(this.btnRapport);
             this.pnlSide.Controls.Add(this.btnFactureService);
             this.pnlSide.Controls.Add(this.btnConsultation);
@@ -55,31 +53,13 @@
             this.pnlSide.Size = new System.Drawing.Size(180, 483);
             this.pnlSide.TabIndex = 585;
             // 
-            // btnChat
-            // 
-            this.btnChat.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnChat.FlatAppearance.BorderSize = 0;
-            this.btnChat.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSlateGray;
-            this.btnChat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnChat.ForeColor = System.Drawing.Color.Black;
-            this.btnChat.Image = ((System.Drawing.Image)(resources.GetObject("btnChat.Image")));
-            this.btnChat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnChat.Location = new System.Drawing.Point(0, 162);
-            this.btnChat.Name = "btnChat";
-            this.btnChat.Size = new System.Drawing.Size(180, 45);
-            this.btnChat.TabIndex = 590;
-            this.btnChat.Text = "Messagerie";
-            this.btnChat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnChat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnChat.UseVisualStyleBackColor = true;
-            this.btnChat.Click += new System.EventHandler(this.btnChat_Click);
-            // 
             // btnRapport
             // 
             this.btnRapport.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnRapport.FlatAppearance.BorderSize = 0;
             this.btnRapport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSlateGray;
             this.btnRapport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRapport.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRapport.ForeColor = System.Drawing.Color.Black;
             this.btnRapport.Image = ((System.Drawing.Image)(resources.GetObject("btnRapport.Image")));
             this.btnRapport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -99,6 +79,7 @@
             this.btnFactureService.FlatAppearance.BorderSize = 0;
             this.btnFactureService.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSlateGray;
             this.btnFactureService.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFactureService.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFactureService.ForeColor = System.Drawing.Color.Black;
             this.btnFactureService.Image = ((System.Drawing.Image)(resources.GetObject("btnFactureService.Image")));
             this.btnFactureService.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -106,7 +87,7 @@
             this.btnFactureService.Name = "btnFactureService";
             this.btnFactureService.Size = new System.Drawing.Size(180, 45);
             this.btnFactureService.TabIndex = 3;
-            this.btnFactureService.Text = "Facturer les services";
+            this.btnFactureService.Text = "Facturation";
             this.btnFactureService.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFactureService.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnFactureService.UseVisualStyleBackColor = true;
@@ -118,6 +99,7 @@
             this.btnConsultation.FlatAppearance.BorderSize = 0;
             this.btnConsultation.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSlateGray;
             this.btnConsultation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConsultation.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConsultation.ForeColor = System.Drawing.Color.Black;
             this.btnConsultation.Image = ((System.Drawing.Image)(resources.GetObject("btnConsultation.Image")));
             this.btnConsultation.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -140,7 +122,7 @@
             this.btnQuitter.FlatAppearance.BorderSize = 0;
             this.btnQuitter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSlateGray;
             this.btnQuitter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnQuitter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuitter.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuitter.ForeColor = System.Drawing.Color.Black;
             this.btnQuitter.Image = ((System.Drawing.Image)(resources.GetObject("btnQuitter.Image")));
             this.btnQuitter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -202,6 +184,5 @@
         private System.Windows.Forms.Panel pnlLogo;
         public System.Windows.Forms.Panel pnlChildForm;
         public System.Windows.Forms.Button btnRapport;
-        public System.Windows.Forms.Button btnChat;
     }
 }

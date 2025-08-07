@@ -25,12 +25,12 @@ namespace SUMEDCO
 
         private void btnAbonne_Click(object sender, EventArgs e)
         {
-            cm.AfficherSousForm(this, new FormAgendaEcho());
+            cm.AfficherSousForm(this, new EchoAgenda());
         }
 
         private void btnRapport_Click(object sender, EventArgs e)
         {
-            cm.AfficherSousForm(this, new FormAgendaLaboResult());
+            cm.AfficherSousForm(this, new LaboResult());
         }
     }
 }

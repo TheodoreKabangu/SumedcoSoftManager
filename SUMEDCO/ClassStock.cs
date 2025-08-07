@@ -114,7 +114,7 @@ namespace SUMEDCO
         #endregion
 
         #region CONNEXION
-        public bool TestMotdePass(FormConnexionPass c)
+        public bool TestMotdePass(ConnexionPass c)
         {
             cmdStatut = false;
             con.Open();
@@ -136,7 +136,7 @@ namespace SUMEDCO
             con.Close();
             return cmdStatut;
         }
-        public void Connexion(FormConnexion c)
+        public void Connexion(Connexion c)
         {
             con.Open();
             try
@@ -193,7 +193,7 @@ namespace SUMEDCO
                     }
                     else if (c.poste == "infirmier")
                     {
-                        FormAutorisation aut = new FormAutorisation();
+                        ConnexionAutorisation aut = new ConnexionAutorisation();
                         aut.idutilisateur = id;
                         aut.poste = "infirmier";
                         aut.Show();
@@ -203,7 +203,7 @@ namespace SUMEDCO
                     {
                         if (chaine == c.cboUtilisateur.Text)
                         {
-                            ConsultationMDI cons = new ConsultationMDI();
+                            MedMDI cons = new MedMDI();
                             cons.idmedecin = c.idmedecin;
                             cons.idutilisateur = id;
                             RefuserAutorisation("infirmier - médecin");
@@ -242,7 +242,7 @@ namespace SUMEDCO
                     {
                         if (chaine == c.cboUtilisateur.Text)
                         {
-                            FormAutorisation aut = new FormAutorisation();
+                            ConnexionAutorisation aut = new ConnexionAutorisation();
                             aut.idutilisateur = id;
                             aut.idpharma = c.idpharma;
                             aut.poste = "pharmacie";
@@ -330,7 +330,7 @@ namespace SUMEDCO
             catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
             con.Close();
         }
-        public void ModifierMotdePasse(FormConnexion c, FormConnexionPass cp)
+        public void ModifierMotdePasse(Connexion c, ConnexionPass cp)
         {
             cp.poste = c.poste;           
             cp.txtUtilisateur.Select();
@@ -362,7 +362,7 @@ namespace SUMEDCO
             childForm.BringToFront();
             childForm.Show();
         }
-        public void AfficherSousForm(FormAdmin a, Form childForm)
+        public void AfficherSousForm(Admin a, Form childForm)
         {
             if (a.activeForm != null)
                 a.activeForm.Close();
@@ -375,7 +375,7 @@ namespace SUMEDCO
             childForm.BringToFront();
             childForm.Show();
         }
-        public void AfficherSousForm(AdminMDI a, FormStockProduit childForm)
+        public void AfficherSousForm(AdminMDI a, StockProduit childForm)
         {
             if (a.activeForm != null)
                 a.activeForm.Close();
@@ -389,7 +389,7 @@ namespace SUMEDCO
             childForm.poste = "admin";
             childForm.Show();
         }
-        public void ChargerRubriques(FormAdminRapportCas r)
+        public void ChargerRubriques(AdminRapportCas r)
         {
             con.Open();
             try
@@ -411,7 +411,7 @@ namespace SUMEDCO
             }
             con.Close();
         }
-        public void AbonneTypePatient(FormAdminRapportCas r)
+        public void AbonneTypePatient(AdminRapportCas r)
         {
             r.btnRecherche.Enabled = true;
             for (int i = r.dgvRecette.ColumnCount-1; i > 2; i--)
@@ -459,7 +459,7 @@ namespace SUMEDCO
         }       
         
         int totalCas = 0;
-        public void AfficherCas(FormAdminRapportCas r)
+        public void AfficherCas(AdminRapportCas r)
         {
             r.btnRecherche.Enabled = false;
             if (r.cboMotif.Text.ToLower() == "abonné")
@@ -523,7 +523,7 @@ namespace SUMEDCO
             }
         }
 
-        public void AfficherResume(FormAdminRapportCasMedecin r)
+        public void AfficherResume(AdminCasMedecin r)
         {
             con.Open();
             try
@@ -551,7 +551,8 @@ namespace SUMEDCO
                     con.Open();
                     try
                     {
-                        cmd = new SqlCommand("SELECT COUNT(c.idconsultation) FROM Consultation c JOIN PriseSigneVitaux psv ON c.idprise = psv.idprise JOIN Recette_ r ON psv.idrecette = r.idrecette WHERE idmedecin = '" + r.dgvResume.Rows[i].Cells[0].Value.ToString() + "' AND categorie = 'service' AND libelle IN ('Consultation ancien cas', 'Consultation nouveau cas', 'Consultation urgence') AND c.date_consultation BETWEEN '" + r.dtpDateDe.Text + "' AND '" + r.dtpDateA.Text + "'", con);
+                        //cmd = new SqlCommand("SELECT COUNT(c.idconsultation) FROM Consultation c JOIN PriseSigneVitaux psv ON c.idprise = psv.idprise JOIN Recette_ r ON psv.idrecette = r.idrecette WHERE idmedecin = '" + r.dgvResume.Rows[i].Cells[0].Value.ToString() + "' AND categorie = 'service' AND libelle IN ('Consultation ancien cas', 'Consultation nouveau cas', 'Consultation urgence') AND c.date_consultation BETWEEN '" + r.dtpDateDe.Text + "' AND '" + r.dtpDateA.Text + "'", con);
+                        cmd = new SqlCommand("SELECT COUNT(idprise) FROM PriseSigneVitaux WHERE idmedecin = '" + r.dgvResume.Rows[i].Cells[0].Value.ToString() + "'", con);
                         dr = cmd.ExecuteReader();
                         while (dr.Read())
                         {
@@ -569,7 +570,7 @@ namespace SUMEDCO
 
 
         }
-        private void AfficherGraphique(FormAdminRapportCasMedecin a)
+        private void AfficherGraphique(AdminCasMedecin a)
         {
             List<ResumeRapportCas> list = new List<ResumeRapportCas>();
             list.Clear();
@@ -640,7 +641,7 @@ namespace SUMEDCO
             con.Close();
             return id; 
         }
-        public void Enregistrer(FormStockNouveau s)
+        public void Enregistrer(StockNouveau s)
         {
             if(s.txtProduit.Text !="" && s.cboCategorie.Text != "" && s.txtDosage.Text != "" && s.cboForme.Text != "" && s.txtCMM.Text != "")
             {
@@ -672,7 +673,7 @@ namespace SUMEDCO
             else
                 MessageBox.Show("Désolé! Champ(s) obligatoire(s) vide(s)\nRemplissez-le(s).", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
-        public void ModifierProduit(FormStockNouveau s)
+        public void ModifierProduit(StockNouveau s)
         {
             s.btnModifier.Enabled = false;
             if (s.txtProduit.Text != "" && s.cboCategorie.Text != "")
@@ -723,7 +724,7 @@ namespace SUMEDCO
             con.Close();
             return id;
         }
-        public void SupprimerProduit(FormStockNouveau s)
+        public void SupprimerProduit(StockNouveau s)
         {
             s.btnSupprimer.Enabled = false;
             if (CompterStockProduit(s.idproduit) == 0)
@@ -748,7 +749,7 @@ namespace SUMEDCO
                 con.Close();
             }
             else
-                MessageBox.Show("Ce produit est déjà impliqué dans les stocks,\npour raison de cohérence, il ne peut être supprimé","Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Il existe un stock de ce produit,\npour raison de cohérence, il ne peut être supprimé","Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
         public void Recuperer(FormProduitPharma p)
         {
@@ -823,7 +824,7 @@ namespace SUMEDCO
         #endregion
 
         #region STOCK_PRODUIT
-        public void Annuler(FormStockNouveau s)
+        public void Annuler(StockNouveau s)
         {
             s.btnModifier.Enabled = false;
             s.btnSupprimer.Enabled = false;
@@ -843,7 +844,7 @@ namespace SUMEDCO
             s.cboForme.DropDownStyle = ComboBoxStyle.DropDownList;
             s.txtCMM.Text = "0";
         }
-        public void Afficher(FormStockNouveau s, string motif)
+        public void Afficher(StockNouveau s, string motif)
         {
             
         }
@@ -853,18 +854,11 @@ namespace SUMEDCO
             con.Open();
             try
             {
-                cmd = new SqlCommand("select count(idconsultation) from PrescriptionProduit where idstock = @id", con);
-                cmd.Parameters.AddWithValue("@id", idstock);
-                dr = cmd.ExecuteReader();
-                dr.Read();
-                id = int.Parse(dr[0].ToString());
-            }
-            catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-            con.Close();
-            con.Open();
-            try
-            {
-                cmd = new SqlCommand("select count(idrecette) from RecetteProduit where idstock = @id", con);
+                cmdtxt = @"SELECT 
+                (SELECT COUNT(idsortie) FROM SortieStock WHERE idstock = @id) + 
+                (SELECT COUNT(idcom) FROM LigneCommande WHERE idstock = @id) + 
+                (SELECT COUNT(idstockph) FROM LigneStockPharma WHERE idstock = @id)";
+                cmd = new SqlCommand(cmdtxt, con);
                 cmd.Parameters.AddWithValue("@id", idstock);
                 dr = cmd.ExecuteReader();
                 dr.Read();
@@ -894,32 +888,77 @@ namespace SUMEDCO
             return id;
         }
         
-        public void AjouterStock(FormStockNouveau s)
+        private int AjouterLigneStock(int idproduit, int qtestock, string CMM, string forme, string dosage, string lot, string expiration, double prixachat, double prixvente)
         {
-            if (s.cboForme.Text != "")
+            id = NouveauID("stock");
+            if (CMM == "") CMM = "0";
+            if (dosage == "") dosage = "RAS";
+            if (lot == "") lot = "RAS";
+            con.Open();
+            SqlTransaction tx = con.BeginTransaction();
+            try
             {
-                s.idstock = NouveauID("stock");
-                if (s.txtCMM.Text == "") s.txtCMM.Text = "0";
-                if (s.txtDosage.Text == "") s.txtDosage.Text = "RAS";
+                cmd = new SqlCommand("insert into LigneStock values (@id, @idproduit, @qte, @CMM, @forme, @dosage, @numlot, @expiration, @prix_achat, @prix_vente)", con);
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@idproduit", idproduit);
+                cmd.Parameters.AddWithValue("@qte", qtestock); // stock initial = 0
+                cmd.Parameters.AddWithValue("@CMM", CMM);// CMM initial = 0
+                cmd.Parameters.AddWithValue("@forme",forme);
+                cmd.Parameters.AddWithValue("@dosage", dosage);
+                cmd.Parameters.AddWithValue("@numlot", lot);
+                cmd.Parameters.AddWithValue("@expiration", expiration);
+                cmd.Parameters.AddWithValue("@prix_achat", prixachat);
+                cmd.Parameters.AddWithValue("@prix_vente", prixvente);
+                cmd.Transaction = tx;
+                cmd.ExecuteNonQuery();
+                tx.Commit();
+                MessageBox.Show("Enregistré avec succès", "Enregistrement", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                tx.Rollback();
+                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            con.Close();
+            return id;
+        }
+        List<int> pharma;
+        public List<int> IdPharmacie()
+        {
+            pharma = new List<int>();
+            con.Open();
+            try
+            {
+                cmd = new SqlCommand("SELECT idpharma FROM Pharmacie", con);
+                dr = cmd.ExecuteReader();
+                pharma.Clear();
+                while (dr.Read())
+                {
+                    pharma.Add(Convert.ToInt32(dr[0].ToString()));
+                }                
+            }
+            catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            con.Close();
+            return pharma;
+        }
+        private void AjouterLigneStockPharma(int idstock, int qtestock)
+        {
+            IdPharmacie();
+            for (int i = 0; i < pharma.Count; i++)
+            {
+                id = NouveauID("stockpha");
                 con.Open();
                 SqlTransaction tx = con.BeginTransaction();
                 try
                 {
-                    cmd = new SqlCommand("insert into LigneStock values (@id, @idproduit, @qte, @CMM, @forme, @dosage, @numlot, @expiration, @prix_achat, @prix_vente)", con);
-                    cmd.Parameters.AddWithValue("@id", s.idstock);
-                    cmd.Parameters.AddWithValue("@idproduit", s.idproduit);
-                    cmd.Parameters.AddWithValue("@qte", "0"); // stock initial = 0
-                    cmd.Parameters.AddWithValue("@CMM", s.txtCMM.Text);// CMM initial = 0
-                    cmd.Parameters.AddWithValue("@forme", s.cboForme.Text);
-                    cmd.Parameters.AddWithValue("@dosage", s.txtDosage.Text);
-                    cmd.Parameters.AddWithValue("@numlot", "RAS");
-                    cmd.Parameters.AddWithValue("@expiration", "RAS");
-                    cmd.Parameters.AddWithValue("@prix_achat", "0");
-                    cmd.Parameters.AddWithValue("@prix_vente", "0");
+                    cmd = new SqlCommand("insert into LigneStockPharma values (@id, @idpharma, @idstock, @qte)", con);
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.Parameters.AddWithValue("@idpharma", pharma[i]);
+                    cmd.Parameters.AddWithValue("@idstock", idstock);
+                    cmd.Parameters.AddWithValue("@qte", qtestock);
                     cmd.Transaction = tx;
                     cmd.ExecuteNonQuery();
                     tx.Commit();
-                    MessageBox.Show("Enregistré avec succès", "Enregistrement", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
@@ -927,50 +966,45 @@ namespace SUMEDCO
                     MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 con.Close();
-                Annuler(s);
-            }
-            else
-                MessageBox.Show("Désolé! Champ(s) obligatoire(s) vide(s)\nRemplissez-le(s).", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }            
         }
-        private void AjouterStock(FormApproAutre s)
+        public void AjouterStock(StockNouveau s)
+        {
+            s.idstock = AjouterLigneStock(
+                s.idproduit,
+                0,
+                s.txtCMM.Text,
+                s.cboForme.Text,
+                s.txtDosage.Text,
+                "RAS",
+                "RAS",
+                0,
+                0
+                );
+            AjouterLigneStockPharma(s.idstock, 0);
+            Annuler(s);
+        }
+        private void AjouterStock(StockApproAutre s)
         {
             if (s.cboForme.Text != "")
-            {
-                s.idstock = NouveauID("stock");
-                if (s.txtCMM.Text == "") s.txtCMM.Text = "0";// CMM par défaut
-                if (s.txtDosage.Text == "") s.txtDosage.Text = "RAS";
-                if (s.txtNumLot.Text == "") s.txtNumLot.Text = "RAS";
-                con.Open();
-                SqlTransaction tx = con.BeginTransaction();
-                try
-                {
-                    cmd = new SqlCommand("insert into LigneStock values (@id, @idproduit, @qte, @CMM, @forme, @dosage, @numlot, @expiration, @prix_achat, @prix_vente)", con);
-                    cmd.Parameters.AddWithValue("@id", s.idstock);
-                    cmd.Parameters.AddWithValue("@idproduit", s.idproduit);
-                    cmd.Parameters.AddWithValue("@qte", s.txtQteAppro.Text); // stock initial
-                    cmd.Parameters.AddWithValue("@CMM", s.txtCMM.Text);
-                    cmd.Parameters.AddWithValue("@forme", s.cboForme.Text);
-                    cmd.Parameters.AddWithValue("@dosage", s.txtDosage.Text);
-                    cmd.Parameters.AddWithValue("@numlot", s.txtNumLot.Text);
-                    cmd.Parameters.AddWithValue("@expiration", s.expirationlot);
-                    cmd.Parameters.AddWithValue("@prix_achat", Convert.ToDouble(s.txtPrixAchat.Text));
-                    cmd.Parameters.AddWithValue("@prix_vente", Convert.ToDouble(s.txtPrixVente.Text));
-                    cmd.Transaction = tx;
-                    cmd.ExecuteNonQuery();
-                    tx.Commit();
-                    MessageBox.Show("Enregistré avec succès", "Enregistrement", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch (Exception ex)
-                {
-                    tx.Rollback();
-                    MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                con.Close();
+            {                
+                s.idstock = AjouterLigneStock(
+                s.idproduit,
+                Convert.ToInt32(s.txtQteAppro.Text),
+                s.txtCMM.Text,
+                s.cboForme.Text,
+                s.txtDosage.Text,
+                s.txtNumLot.Text,
+                s.expirationlot,
+                Convert.ToDouble(s.txtPrixAchat.Text),
+                Convert.ToDouble(s.txtPrixVente.Text)
+                );
+                AjouterLigneStockPharma(s.idstock, 0);
             }
             else
                 MessageBox.Show("Désolé! Champ(s) obligatoire(s) vide(s)\nRemplissez-le(s).", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
-        public void ModifierStock(FormStockNouveau s)
+        public void ModifierStock(StockNouveau s)
         {
             s.btnModifierStock.Enabled = false;
             if (s.txtDosage.Text != "" && s.cboForme.Text != "" && s.txtCMM.Text != "")
@@ -1001,7 +1035,7 @@ namespace SUMEDCO
             else
                 MessageBox.Show("Désolé! Champ(s) obligatoire(s) vide(s)\nRemplissez-le(s).", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
-        public void SupprimerStock(FormStockNouveau s)
+        public void SupprimerStock(StockNouveau s)
         {
             s.btnSupprimerStock.Enabled = false;
             if (CompterMvtStock(s.idstock) == 0)
@@ -1183,30 +1217,53 @@ namespace SUMEDCO
             con.Close();
             return id;
         }
-        public int QteStock(int idstock, int idpharma, string motif)
+        long entierlong;
+        public long QteStock(int idstock, int idpharma, string motif)
         {
-            id = 0;
+            entierlong = 0;
             con.Open();
             try
             {
                 if (motif == "pharma")
                 {
-                    cmd = new SqlCommand("SELECT qtestock from LigneStockPharma where idstockph = @id", con);
+                    cmdtxt = @"SELECT (SELECT qtestock FROM LigneStockPharma WHERE idstockph = @id) +
+                    (SELECT COALESCE(SUM(qteservie),0)
+                    FROM ApproPharma a
+                    JOIN CommandePharma c ON a.idcomph = c.idcomph
+                    JOIN LigneStockPharma sp ON c.idstockph = sp.idstockph
+                    WHERE sp.idpharma = @idpharma AND sp.idstockph = @id) -
+                    (SELECT COALESCE(SUM(qteservie), 0) 
+                    FROM SortiePharma s 
+                    JOIN LigneStockPharma sp ON s.idstockph = sp.idstockph 
+                    WHERE sp.idpharma = @idpharma AND sp.idstockph = @id)";
+                    cmd = new SqlCommand(cmdtxt, con);
+                    cmd.Parameters.AddWithValue("@idpharma", idpharma);
                 }
                 else
-                    cmd = new SqlCommand("SELECT qtestock from LigneStock where idstock = @id", con);
-                
+                {
+                    cmdtxt = @"SELECT (SELECT qtestock from LigneStock where idstock = @id) + 
+                    (SELECT COALESCE(SUM(qteajoute),0)
+                    FROM LigneAppro a
+                    JOIN LigneCommande c ON a.idcom = c.idcom
+                    JOIN LigneStock s ON c.idstock = s.idstock
+                    WHERE s.idstock = @id) -
+                    (SELECT COALESCE(SUM(qteservie), 0) 
+                    FROM SortieStock s 
+                    JOIN LigneStock sp ON s.idstock = sp.idstock 
+                    WHERE sp.idstock = @id)"; 
+                    cmd = new SqlCommand(cmdtxt, con);
+                }
                 cmd.Parameters.AddWithValue("@id", idstock);
                 dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
                     if (dr[0].ToString() != "")
-                        id = Convert.ToInt32(dr[0].ToString());
+                        entierlong = Convert.ToInt64(dr[0].ToString());
                 }
             }
             catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
             con.Close();
-            return id + TotalEntreeStock(idstock, idpharma, motif) - TotalSortieStock(idstock, idpharma, motif);
+            return entierlong;
         }
         public int StockGlobalPharma(int idstock)
         {
@@ -1274,36 +1331,11 @@ namespace SUMEDCO
             con.Close();
             return id;
         }
-        
-        //une méthode vers AbonneProduit
-        public void AfficherLigneStock(DataGridView dgv)
-        {
-            for (int i = 0; i < dgv.RowCount; i++)
-            {
-                dgv.Rows[i].Cells[5].Value = TrouverNom("produit", TrouverId("produitstock", dgv.Rows[i].Cells[3].Value.ToString()));
-                con.Open();
-                try
-                {
-                    cmd = new SqlCommand("select conditionnement, dosage, forme, numlot from LigneStock where idstock = @idstock", con);
-                    cmd.Parameters.AddWithValue("@idstock", dgv.Rows[i].Cells[3].Value.ToString());
-                    dr = cmd.ExecuteReader();
-                    dr.Read();
-                    dgv.Rows[i].Cells[6].Value = dr[0].ToString();
-                    dgv.Rows[i].Cells[7].Value = dr[1].ToString();
-                    dgv.Rows[i].Cells[8].Value = dr[2].ToString();
-                    dgv.Rows[i].Cells[9].Value = dr[3].ToString();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                con.Close();
-            }
-        }
+       
         #endregion
 
         #region PHARMACIE
-        public void AfficherSousForm(PharmacieMDI ph, FormRecette childForm)
+        public void AfficherSousForm(PharmacieMDI ph, Recette childForm)
         {
             if (ph.activeForm != null)
                 ph.activeForm.Close();
@@ -1317,7 +1349,7 @@ namespace SUMEDCO
             childForm.poste = "pharmacie";
             childForm.Show();
         }
-        public void AfficherSousForm(PharmacieMDI ph, FormPhamaVente childForm)
+        public void AfficherSousForm(PharmacieMDI ph, PharmacieVente childForm)
         {
             if (ph.activeForm != null)
                 ph.activeForm.Close();
@@ -1333,24 +1365,24 @@ namespace SUMEDCO
             childForm.Show();
         }
 
-        public void AfficherSousForm(PharmacieMDI ph, FormStockProduit childForm)
+        public void AfficherSousForm(PharmacieMDI ph, StockProduit child)
         {
             if (ph.activeForm != null)
                 ph.activeForm.Close();
-            ph.activeForm = childForm;
-            childForm.TopLevel = false;
-            childForm.FormBorderStyle = FormBorderStyle.None;
-            childForm.Dock = DockStyle.Fill;
-            ph.pnlChildForm.Controls.Add(childForm);
-            ph.pnlChildForm.Tag = childForm;
-            childForm.BringToFront();
-            childForm.poste = "pharmacie";
-            childForm.idpharma = ph.idpharma;//Trouver l'id de la pharma qui se connecte
-            childForm.btnNouveauStock.Visible = false;
-            childForm.btnStockPha.Visible = false;
-            childForm.Show();
+            ph.activeForm = child;
+            child.TopLevel = false;
+            child.FormBorderStyle = FormBorderStyle.None;
+            child.Dock = DockStyle.Fill;
+            ph.pnlChildForm.Controls.Add(child);
+            ph.pnlChildForm.Tag = child;
+            child.BringToFront();
+            child.poste = "pharmacie";
+            child.idpharma = ph.idpharma;//Trouver l'id de la pharma qui se connecte
+            child.btnNouveauStock.Visible = false;
+            child.btnPharmacie.Visible = false;
+            child.Show();
         }
-        public void AfficherSousForm(PharmacieMDI ph, FormStockAlerte childForm)
+        public void AfficherSousForm(PharmacieMDI ph, StockAlerte childForm)
         {
             if (activeForm != null)
                 activeForm.Close();
@@ -1380,7 +1412,7 @@ namespace SUMEDCO
             childForm.idpharma = ph.idpharma;//Trouver l'id de la pharma qui se connecte
             childForm.Show();
         }
-        public void AfficherSousForm(PharmacieMDI ph, FormHistoCommande childForm)
+        public void AfficherSousForm(PharmacieMDI ph, StockHistoCommande childForm)
         {
             if (ph.activeForm != null)
                 ph.activeForm.Close();
@@ -1395,7 +1427,7 @@ namespace SUMEDCO
             childForm.idpharma = ph.idpharma;//Trouver l'id de la pharma qui se connecte
             childForm.Show();
         }
-        public void AfficherSousForm(PharmacieMDI ph, FormStockInventaire childForm)
+        public void AfficherSousForm(PharmacieMDI ph, StockInventaire childForm)
         {
             if (ph.activeForm != null)
                 ph.activeForm.Close();
@@ -1414,22 +1446,7 @@ namespace SUMEDCO
         #endregion
 
         #region GESTION_STOCKS
-        public void AfficherSousForm(StockMDI s, FormStockProduit childForm)
-        {
-            if (activeForm != null)
-                activeForm.Close();
-            activeForm = childForm;
-            childForm.TopLevel = false;
-            childForm.FormBorderStyle = FormBorderStyle.None;
-            childForm.Dock = DockStyle.Fill;
-            s.pnlChildForm.Controls.Add(childForm);
-            s.pnlChildForm.Tag = childForm;
-            childForm.BringToFront();
-            childForm.poste = "stock";
-            childForm.btnVente.Visible = false;
-            childForm.Show();
-        }
-        public void AfficherSousForm(StockMDI s, FormHistoCommande childForm)
+        public void AfficherSousForm(StockMDI s, StockProduit childForm)
         {
             if (activeForm != null)
                 activeForm.Close();
@@ -1443,7 +1460,21 @@ namespace SUMEDCO
             childForm.poste = "stock";
             childForm.Show();
         }
-        public void AfficherSousForm(StockMDI s, FormApproCommande childForm)
+        public void AfficherSousForm(StockMDI s, StockHistoCommande childForm)
+        {
+            if (activeForm != null)
+                activeForm.Close();
+            activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            s.pnlChildForm.Controls.Add(childForm);
+            s.pnlChildForm.Tag = childForm;
+            childForm.BringToFront();
+            childForm.poste = "stock";
+            childForm.Show();
+        }
+        public void AfficherSousForm(StockMDI s, StockApproCom childForm)
         {
             if (activeForm != null)
                 activeForm.Close();
@@ -1473,7 +1504,7 @@ namespace SUMEDCO
             //childForm.poste = "stock";
             childForm.Show();
         }
-        public void AfficherSousForm(StockMDI s, FormStockInventaire childForm)
+        public void AfficherSousForm(StockMDI s, StockInventaire childForm)
         {
             if (activeForm != null)
                 activeForm.Close();
@@ -1488,73 +1519,56 @@ namespace SUMEDCO
             childForm.Show();
         }
 
-        public void ServirSortieStock(FormStockProduit s, FormStockServir com)
+        public void ServirSortieStock(StockProduit s, StockSortie com)
         {
             s.btnDemande.Enabled = false;
             com.poste = s.poste;
             com.idstock = int.Parse(s.dgvStock.CurrentRow.Cells[0].Value.ToString());
             com.txtLibelle.Text = string.Format("{0}, {1}, {2}",
-                s.dgvProduit.CurrentRow.Cells[1].Value.ToString(),
-                s.dgvStock.CurrentRow.Cells[3].Value.ToString(),
-                s.dgvStock.CurrentRow.Cells[4].Value.ToString());
+                s.dgvStock.CurrentRow.Cells[1].Value.ToString(),
+                s.dgvStock.CurrentRow.Cells[4].Value.ToString(),
+                s.dgvStock.CurrentRow.Cells[5].Value.ToString());
 
-            com.txtQteStock.Text = s.dgvStock.CurrentRow.Cells[1].Value.ToString();
+            com.txtQteStock.Text = s.dgvStock.CurrentRow.Cells[2].Value.ToString();
             com.motif_ajout = "demande";
             com.txtQteCom.Focus();
             com.ShowDialog();
             com.Close();
         }
-        public void PerteSortieStock(FormStockProduit s, FormStockServir com)
+        public void PerteSortieStock(StockProduit s, StockSortie ss)
         {
             s.btnPerte.Enabled = false;
-            com.poste = s.poste;
-            com.motif_ajout = "perte";
-            com.idstock = int.Parse(s.dgvStock.CurrentRow.Cells[0].Value.ToString());
-            com.txtLibelle.Text = string.Format("{0}, {1}, {2}",
-                s.dgvProduit.CurrentRow.Cells[1].Value.ToString(),
-                s.dgvStock.CurrentRow.Cells[3].Value.ToString(),
-                s.dgvStock.CurrentRow.Cells[4].Value.ToString());
+            ss.Text = "SSM - Perte";
+            ss.poste = s.poste;
+            ss.motif_ajout = "perte";
+            ss.idstock = int.Parse(s.dgvStock.CurrentRow.Cells[0].Value.ToString());
+            ss.txtLibelle.Text = string.Format("{0}, {1}, {2}",
+                s.dgvStock.CurrentRow.Cells[1].Value.ToString(),
+                s.dgvStock.CurrentRow.Cells[4].Value.ToString(),
+                s.dgvStock.CurrentRow.Cells[5].Value.ToString());
 
-            com.txtQteStock.Text = s.dgvStock.CurrentRow.Cells[1].Value.ToString();
-            com.txtQteCom.Focus();
-            com.ShowDialog();
-            com.Close();
+            ss.txtQteStock.Text = s.dgvStock.CurrentRow.Cells[2].Value.ToString();
+            ss.txtQteCom.Enabled = false;
+            ss.cboPoste.Enabled = false;
+            ss.txtQteCom.Focus();
+            ss.ShowDialog();
+            ss.Close();
         }
-        public void VenteStockPharma(FormStockProduit s, FormStockServir com)
-        {
-            s.btnVente.Enabled = false;
-            com.poste = s.poste;
-            com.txtQteCom.Text = s.qtedem.ToString();
-            com.txtQteCom.Enabled = false;
-            com.motif_ajout = "vente";
-            com.idstock = int.Parse(s.dgvStock.CurrentRow.Cells[0].Value.ToString());
-            com.txtLibelle.Text = string.Format("{0}, {1}, {2}",
-                s.nomproduit,
-                s.dgvStock.CurrentRow.Cells[3].Value.ToString(),
-                s.dgvStock.CurrentRow.Cells[4].Value.ToString());
-
-            com.txtQteStock.Text = s.dgvStock.CurrentRow.Cells[1].Value.ToString();
-            com.txtQteCom.Focus();
-            com.ShowDialog();
-            if (com.vente_effectue)
-                s.vente_effectue = true;
-            com.Close();
-        }
-        public void RetourEnStock(FormStockProduit s, FormStockRetour com)
+        public void RetourEnStock(StockProduit s, StockRetour com)
         {
             s.btnRetour.Enabled = false;
             com.poste = s.poste;
             com.idstock = int.Parse(s.dgvStock.CurrentRow.Cells[0].Value.ToString());
             com.txtLibelle.Text = string.Format("{0}, {1}, {2}",
-                s.dgvProduit.CurrentRow.Cells[1].Value.ToString(),
-                s.dgvStock.CurrentRow.Cells[3].Value.ToString(),
-                s.dgvStock.CurrentRow.Cells[4].Value.ToString());
+                s.dgvStock.CurrentRow.Cells[1].Value.ToString(),
+                s.dgvStock.CurrentRow.Cells[4].Value.ToString(),
+                s.dgvStock.CurrentRow.Cells[5].Value.ToString());
 
             com.txtQte.Focus();
             com.ShowDialog();
             com.Close();
         }
-        public void AjouterRetourEnStock(FormStockRetour c)
+        public void AjouterRetourEnStock(StockRetour c)
         {
             if (c.poste == "stock")
             {
@@ -1591,11 +1605,11 @@ namespace SUMEDCO
                 con.Close();
             }
         }
-        private void AjouterSortie(FormStockServir c)
+        private void AjouterSortie(StockSortie c)
         {
             if(c.poste == "stock")
             {
-                id = NouveauID("sortie");
+                id = ce.NouveauID("sortie");
                 con.Open();
                 SqlTransaction tx = con.BeginTransaction();
                 try
@@ -1627,12 +1641,12 @@ namespace SUMEDCO
             }
             else
             {
-                id = NouveauID("sortiepha");
+                id = ce.NouveauID("sortiepha");
                 con.Open();
                 SqlTransaction tx = con.BeginTransaction();
                 try
                 {
-                    if (c.motif_ajout == "perte" || c.motif_ajout == "vente")
+                    if (c.motif_ajout == "perte")
                     {
                         cmd = new SqlCommand("insert into SortiePharma (idsortie, date_jour, idstockph, qte_dem, qteservie, motif) values (@id, @date_jour, @idstock, @qte_dem, @qteservie, @motif)", con);
                         cmd.Parameters.AddWithValue("@motif", c.motif_ajout);
@@ -1651,8 +1665,6 @@ namespace SUMEDCO
                     cmd.Transaction = tx;
                     cmd.ExecuteNonQuery();
                     tx.Commit();
-                    if (c.motif_ajout == "vente") 
-                        c.vente_effectue = true;
                     MessageBox.Show("Enregistrée avec succès", "Enregistrement", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Annuler(c);
                 }
@@ -1660,26 +1672,31 @@ namespace SUMEDCO
                 con.Close();
             }
         }
-        public void AjouterSortieStock(FormStockServir c)
+        public void AjouterSortieStock(StockSortie ss)
         {
-            if (c.txtQteCom.Text != "" && c.txtQteServie.Text != "" && c.cboPoste.Text != "")
+            if (ss.motif_ajout == "perte")
             {
-                if (int.Parse(c.txtQteCom.Text) <= int.Parse(c.txtQteStock.Text))
+                ss.txtQteCom.Text = ss.txtQteServie.Text; //qtecom est toujours = qteservie en cas de perte
+                AjouterSortie(ss);
+            }
+            if (ss.txtQteCom.Text != "" && ss.txtQteServie.Text != "" && ss.cboPoste.Text != "")
+            {
+                if (int.Parse(ss.txtQteCom.Text) <= int.Parse(ss.txtQteStock.Text))
                 {
-                    if (int.Parse(c.txtQteCom.Text) == int.Parse(c.txtQteServie.Text))
+                    if (int.Parse(ss.txtQteCom.Text) == int.Parse(ss.txtQteServie.Text))
                     {
-                        AjouterSortie(c);                       
+                        AjouterSortie(ss);                       
                     }
                     else
-                        MessageBox.Show("Erreur! La quantité servie doit être égale à celle demandée", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Erreur! La quantité servie doit être égale à celle requise", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
-                    MessageBox.Show("Erreur! La quantité demandée dépasse le stock disponilbe", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Erreur! La quantité requise dépasse le stock disponilbe", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
                 MessageBox.Show("Erreur! Champ(s) obligatoire(s) vide(s)\nRemplissez-le(s)", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
-        public void Annuler(FormStockServir c)
+        public void Annuler(StockSortie c)
         {
             c.txtQteCom.Text = "";
             c.txtQteServie.Text = "";
@@ -1688,26 +1705,25 @@ namespace SUMEDCO
             c.cboPoste.DropDownStyle = ComboBoxStyle.DropDownList;
             c.txtQteCom.Focus();
         }
-        public void AjouterStockPha(FormStockProduit s, FormStockPha sp)
+        public void AjouterPharmacie(StockProduit s, StockPharmacie sp)
         {
-            s.btnStockPha.Enabled = false;
+            s.btnPharmacie.Enabled = false;
             sp.idstock = s.idstock;
             sp.ShowDialog();
             sp.Close();
         }
 
-        public void FicheStock(FormStockProduit s, FormStockFicheStock f, string motif)
+        public void FicheStock(StockProduit s, StockFicheStock f, string motif)
         {
             // le stock initial du stock sélectionné
             f.poste = s.poste;
-            f.idstock = s.idstock;
+            f.idstock = Convert.ToInt32(s.dgvStock.CurrentRow.Cells[0].Value);
             f.motif = motif;
             f.lblProduit.Text = string.Format("{0}, {1}, {2}",
-                s.dgvProduit.CurrentRow.Cells[1].Value,
-                s.dgvStock.CurrentRow.Cells[3].Value,
-                s.dgvStock.CurrentRow.Cells[4].Value);
+                s.dgvStock.CurrentRow.Cells[1].Value,
+                s.dgvStock.CurrentRow.Cells[4].Value,
+                s.dgvStock.CurrentRow.Cells[5].Value);
             con.Open();
-            
             try
             {
                 if (f.poste == "pharmacie")
@@ -1720,11 +1736,10 @@ namespace SUMEDCO
                 while (dr.Read())
                 {
                     f.dgvProduit.Rows.Add();
-                    f.dgvProduit.Rows[f.dgvProduit.RowCount - 1].Cells[0].Value = f.dgvProduit.RowCount;
-                    f.dgvProduit.Rows[f.dgvProduit.RowCount - 1].Cells[1].Value = "Initial";
-                    f.dgvProduit.Rows[f.dgvProduit.RowCount - 1].Cells[2].Value = dr[0].ToString();
-                    f.dgvProduit.Rows[f.dgvProduit.RowCount - 1].Cells[3].Value = 0;
-                    f.dgvProduit.Rows[f.dgvProduit.RowCount - 1].Cells[4].Value = dr[0].ToString();
+                    f.dgvProduit.Rows[f.dgvProduit.RowCount - 1].Cells[0].Value = "Initial";
+                    f.dgvProduit.Rows[f.dgvProduit.RowCount - 1].Cells[1].Value = dr[0].ToString();
+                    f.dgvProduit.Rows[f.dgvProduit.RowCount - 1].Cells[2].Value = 0;
+                    f.dgvProduit.Rows[f.dgvProduit.RowCount - 1].Cells[3].Value = dr[0].ToString();
                 }
             }
             catch (Exception ex)
@@ -1735,149 +1750,204 @@ namespace SUMEDCO
             f.ShowDialog();
             s.btnFicheStock.Enabled = false;
         }
-        public void NouveauStock(FormStockProduit s, FormStockNouveau n)
+        public void NouveauStock(StockProduit s, StockNouveau n)
         {
             n.poste = s.poste;
             n.ShowDialog();
-            ChargerProduit(s, "");
         }
-        public void EntreeSortieStock(FormStockFicheStock f, string motif)
+        public void HistoriqueStock(StockFicheStock f)
         {
-            if (motif == "entrée")
-                EntreeStock(f);
-            else if (motif == "sortie")
-                SortieStock(f);
-            else
+            //Entrées
+            con.Open();
+            if (f.poste == "pharmacie")
             {
-                EntreeStock(f);
-                SortieStock(f);
-            }
-            for (int i = 1; i < f.dgvProduit.RowCount; i++)
-            {
-                f.dgvProduit.Rows[i].Cells[4].Value = Convert.ToInt32(f.dgvProduit.Rows[i-1].Cells[4].Value) + Convert.ToInt32(f.dgvProduit.Rows[i].Cells[2].Value) - Convert.ToInt32(f.dgvProduit.Rows[i].Cells[3].Value);
-            }
-        }
-        private void SortieStock(FormStockFicheStock f)
-        {
-            if (f.dtpDateDe.Value.Date <= f.dtpDateA.Value.Date)
-            {
-                if(f.dgvProduit.RowCount == 1)
-                {
-                    DateTime date_value = f.dtpDateDe.Value.Date;
-                    id = 1;
-                    while (date_value <= f.dtpDateA.Value.Date)
-                    {
-                        f.dgvProduit.Rows.Add();
-                        f.dgvProduit.Rows[id].Cells[0].Value = f.dgvProduit.RowCount;
-                        f.dgvProduit.Rows[id].Cells[1].Value = date_value.ToShortDateString();
-                        f.dgvProduit.Rows[id].Cells[2].Value = 0;
-                        f.dgvProduit.Rows[id].Cells[3].Value = 0;
-                        f.dgvProduit.Rows[id].Cells[4].Value = 0;
-                        date_value = date_value.AddDays(1);
-                        id += 1;
-                    }
-                }
-                //Execute la commande pour chaque date
-                for (int i = 1; i < f.dgvProduit.RowCount; i++)
-                {
-                    con.Open();
-                    if (f.poste == "pharmacie")
-                    {
-                        cmdtxt = @"SELECT SUM(qteservie) 
-                        FROM SortiePharma s 
-                        JOIN LigneStockPharma sp ON sp.idstockph = s.idstockph 
-                        WHERE sp.idstockph= '" + f.idstock + "' AND date_jour= '" + f.dgvProduit.Rows[i].Cells[1].Value.ToString() + "'";
-
-                    }
-                    else
-                    {
-                        cmdtxt = @"SELECT SUM(qteservie) 
-                        FROM SortieStock ss 
-                        JOIN LigneStock s ON s.idstock = ss.idstock 
-                        WHERE s.idstock= '" + f.idstock + "' AND date_jour= '" + f.dgvProduit.Rows[i].Cells[1].Value.ToString() + "'";
-
-                    }
-                    cmd = new SqlCommand(cmdtxt, con);
-                    try
-                    {
-                        dr = cmd.ExecuteReader();
-                        while (dr.Read())
-                        {
-                            if (dr[0].ToString() != "")
-                                f.dgvProduit.Rows[i].Cells[3].Value = dr[0].ToString();
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    con.Close();
-                }
-            }
-            else MessageBox.Show("Vérifiez que les dates sont ordonnées du l'inférieur au supérieur", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-        }
-        private void EntreeStock(FormStockFicheStock f)
-        {
-            if (f.dtpDateDe.Value.Date <= f.dtpDateA.Value.Date)
-            {
-                DateTime date_value = f.dtpDateDe.Value.Date;
-                id = 1;
-                while (date_value <= f.dtpDateA.Value.Date)
-                {
-                    f.dgvProduit.Rows.Add();
-                    f.dgvProduit.Rows[id].Cells[0].Value = f.dgvProduit.RowCount;
-                    f.dgvProduit.Rows[id].Cells[1].Value = date_value.ToShortDateString();
-                    f.dgvProduit.Rows[id].Cells[2].Value = 0;
-                    f.dgvProduit.Rows[id].Cells[3].Value = 0;
-                    f.dgvProduit.Rows[id].Cells[4].Value = 0;
-                    date_value = date_value.AddDays(1);
-                    id+=1;
-                }
-               
-                //Execute la commande pour chaque date
-                for (int i = 1; i < f.dgvProduit.RowCount; i++)
-                {
-                    con.Open();
-                    if (f.poste == "pharmacie")
-                    {
-                        cmdtxt = @"SELECT SUM(qteservie) 
+                cmdtxt = @"SELECT date_appro, SUM(qteservie) 
                         FROM ApproPharma ap 
                         JOIN CommandePharma cp ON ap.idcomph = cp.idcomph
                         JOIN LigneStockPharma sp ON sp.idstockph = cp.idstockph 
-                        WHERE sp.idstockph= '" + f.idstock + "' AND date_appro= '" + f.dgvProduit.Rows[i].Cells[1].Value.ToString() + "'";
+                        WHERE sp.idstockph= @idstock GROUP BY date_appro";
 
-                    }
-                    else
-                    {
-                        cmdtxt = @"SELECT SUM(qteajoute) 
+            }
+            else
+            {
+                cmdtxt = @"SELECT date_appro, SUM(qteajoute) 
                         FROM LigneAppro ap 
                         JOIN LigneCommande c ON ap.idcom = c.idcom
                         JOIN LigneStock s ON s.idstock = c.idstock 
-                        WHERE s.idstock= '" + f.idstock + "' AND date_appro= '" + f.dgvProduit.Rows[i].Cells[1].Value.ToString() + "'";
+                        WHERE s.idstock= @idstock GROUP BY date_appro";
 
-                    }
-                    cmd = new SqlCommand(cmdtxt, con);
-                    try
-                    {
-                        dr = cmd.ExecuteReader();
-                        while (dr.Read())
-                        {
-                            if (dr[0].ToString()!="")
-                                f.dgvProduit.Rows[i].Cells[2].Value = dr[0].ToString();
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    con.Close();
-                }                
+            }
+            cmd = new SqlCommand(cmdtxt, con);
+            cmd.Parameters.AddWithValue("@idstock", f.idstock);
+            try
+            {
+                dr = cmd.ExecuteReader();
+                f.dgvProduit.Rows.Clear();
+                while (dr.Read())
+                {
+                    f.dgvProduit.Rows.Add();
+                    f.dgvProduit.Rows[f.dgvProduit.RowCount - 1].Cells[0].Value = dr[0].ToString().Substring(0, 10);
+                    f.dgvProduit.Rows[f.dgvProduit.RowCount - 1].Cells[1].Value = dr[1].ToString();
+                    f.dgvProduit.Rows[f.dgvProduit.RowCount - 1].Cells[2].Value = "";
+                    f.dgvProduit.Rows[f.dgvProduit.RowCount - 1].Cells[3].Value = Convert.ToInt32(f.dgvProduit.Rows[f.dgvProduit.RowCount - 2].Cells[3].Value) +
+                                                                                  Convert.ToInt32(dr[1].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            con.Close();
+
+            //Sorties
+            con.Open();
+            if (f.poste == "pharmacie")
+            {
+                cmdtxt = @"SELECT date_jour, SUM(qteservie) 
+                        FROM SortiePharma s 
+                        JOIN LigneStockPharma sp ON sp.idstockph = s.idstockph 
+                        WHERE sp.idstockph= @idstock GROUP BY date_jour";
+
+            }
+            else
+            {
+                cmdtxt = @"SELECT date_jour, SUM(qteservie) 
+                        FROM SortieStock ss 
+                        JOIN LigneStock s ON s.idstock = ss.idstock 
+                        WHERE s.idstock= @idstock GROUP BY date_jour";
+
+            }
+            cmd = new SqlCommand(cmdtxt, con);
+            cmd.Parameters.AddWithValue("@idstock", f.idstock);
+            try
+            {
+                dr = cmd.ExecuteReader();
+                f.dgvProduit.Rows.Clear();
+                while (dr.Read())
+                {
+                    f.dgvProduit.Rows.Add();
+                    f.dgvProduit.Rows[f.dgvProduit.RowCount - 1].Cells[0].Value = dr[0].ToString().Substring(0, 10);
+                    f.dgvProduit.Rows[f.dgvProduit.RowCount - 1].Cells[1].Value = "";
+                    f.dgvProduit.Rows[f.dgvProduit.RowCount - 1].Cells[2].Value = dr[1].ToString();
+                    f.dgvProduit.Rows[f.dgvProduit.RowCount - 1].Cells[3].Value = Convert.ToInt32(f.dgvProduit.Rows[f.dgvProduit.RowCount - 2].Cells[3].Value) -
+                                                                                  Convert.ToInt32(dr[1].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            con.Close();
+        }
+        public void EntreeSortieStock(StockFicheStock f, string motif)
+        {
+            if (f.dtpDateDe.Value.Date <= f.dtpDateA.Value.Date)
+            {
+                if (motif == "entrée")
+                {
+                    EntreeStock(f);
+                    f.dgvProduit.Columns[3].Visible = false;
+                }
+                else if (motif == "sortie")
+                {
+                    SortieStock(f);
+                    f.dgvProduit.Columns[3].Visible = false;
+                }
+                else
+                {
+                    EntreeStock(f);
+                    SortieStock(f);
+                }
             }
             else MessageBox.Show("Vérifiez que les dates sont ordonnées du l'inférieur au supérieur", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            
         }
-        public void ImprimerFicheStock(FormStockFicheStock f, FormImpression imp)
+        private void SortieStock(StockFicheStock f)
+        {
+            con.Open();
+            if (f.poste == "pharmacie")
+            {
+                cmdtxt = @"SELECT date_jour, SUM(qteservie) 
+                        FROM SortiePharma s 
+                        JOIN LigneStockPharma sp ON sp.idstockph = s.idstockph 
+                        WHERE sp.idstockph= @idstock AND date_jour BETWEEN @dateDe AND @dateA
+                        GROUP BY date_jour";
+
+            }
+            else
+            {
+                cmdtxt = @"SELECT date_jour, SUM(qteservie) 
+                        FROM SortieStock ss 
+                        JOIN LigneStock s ON s.idstock = ss.idstock 
+                        WHERE s.idstock= @idstock AND date_jour BETWEEN @dateDe AND @dateA
+                        GROUP BY date_jour";
+
+            }
+            cmd = new SqlCommand(cmdtxt, con);
+            cmd.Parameters.AddWithValue("@idstock", f.idstock);
+            cmd.Parameters.AddWithValue("@dateDe", f.dtpDateDe.Value.Date);
+            cmd.Parameters.AddWithValue("@dateA", f.dtpDateA.Value.Date);
+            try
+            {
+                dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    f.dgvProduit.Rows.Add();
+                    f.dgvProduit.Rows[f.dgvProduit.RowCount - 1].Cells[0].Value = dr[0].ToString().Substring(0, 10);
+                    f.dgvProduit.Rows[f.dgvProduit.RowCount - 1].Cells[1].Value = "";
+                    f.dgvProduit.Rows[f.dgvProduit.RowCount - 1].Cells[2].Value = dr[1].ToString();
+                    f.dgvProduit.Rows[f.dgvProduit.RowCount - 1].Cells[3].Value = Convert.ToInt32(f.dgvProduit.Rows[f.dgvProduit.RowCount - 2].Cells[3].Value) - Convert.ToInt32(dr[1].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            con.Close();
+        }
+        private void EntreeStock(StockFicheStock f)
+        {
+            con.Open();
+            if (f.poste == "pharmacie")
+            {
+                cmdtxt = @"SELECT date_appro, SUM(qteservie) 
+                        FROM ApproPharma ap 
+                        JOIN CommandePharma cp ON ap.idcomph = cp.idcomph
+                        JOIN LigneStockPharma sp ON sp.idstockph = cp.idstockph 
+                        WHERE sp.idstockph= @idstock AND date_appro BETWEEN @dateDe AND @dateA
+                        GROUP BY date_appro";
+            }
+            else
+            {
+                cmdtxt = @"SELECT date_appro, SUM(qteajoute) 
+                        FROM LigneAppro ap 
+                        JOIN LigneCommande c ON ap.idcom = c.idcom
+                        JOIN LigneStock s ON s.idstock = c.idstock 
+                        WHERE s.idstock= @idstock AND date_appro BETWEEN @dateDe AND @dateA
+                        GROUP BY date_appro";
+            }
+            cmd = new SqlCommand(cmdtxt, con);
+            cmd.Parameters.AddWithValue("@idstock", f.idstock);
+            cmd.Parameters.AddWithValue("@dateDe", f.dtpDateDe.Value.Date);
+            cmd.Parameters.AddWithValue("@dateA", f.dtpDateA.Value.Date);
+            try
+            {
+                dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    f.dgvProduit.Rows.Add();
+                    f.dgvProduit.Rows[f.dgvProduit.RowCount - 1].Cells[0].Value = dr[0].ToString().Substring(0, 10);
+                    f.dgvProduit.Rows[f.dgvProduit.RowCount - 1].Cells[1].Value = dr[1].ToString();
+                    f.dgvProduit.Rows[f.dgvProduit.RowCount - 1].Cells[2].Value = "";
+                    f.dgvProduit.Rows[f.dgvProduit.RowCount - 1].Cells[3].Value = Convert.ToInt32(f.dgvProduit.Rows[f.dgvProduit.RowCount - 2].Cells[3].Value) + Convert.ToInt32(dr[1].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            con.Close(); 
+        }
+        public void ImprimerFicheStock(StockFicheStock f, FormImpression imp)
         {
             imp.Text = "SSM - Fiche de stock";
             imp.beneficiaire = f.lblProduit.Text;
@@ -1894,11 +1964,11 @@ namespace SUMEDCO
             {
                 FicheStock ligne = new FicheStock
                 {
-                    num = Convert.ToInt32(f.dgvProduit.Rows[i].Cells[0].Value),
-                    date_jour = f.dgvProduit.Rows[i].Cells[1].Value.ToString(),
-                    entree = Convert.ToInt32(f.dgvProduit.Rows[i].Cells[2].Value),
-                    sortie = Convert.ToInt32(f.dgvProduit.Rows[i].Cells[3].Value),
-                    stock = Convert.ToInt32(f.dgvProduit.Rows[i].Cells[4].Value),
+                    num = (i+1).ToString(),
+                    date_jour = f.dgvProduit.Rows[i].Cells[0].Value.ToString(),
+                    entree = f.dgvProduit.Rows[i].Cells[1].Value.ToString(),
+                    sortie = f.dgvProduit.Rows[i].Cells[2].Value.ToString(),
+                    stock = f.dgvProduit.Rows[i].Cells[3].Value.ToString(),
                 };
                 list.Add(ligne);
             }
@@ -1911,7 +1981,7 @@ namespace SUMEDCO
             imp.ShowDialog();
             imp.Close();
         }
-        public void ChargerProduit(FormStockNouveau s, string motif)
+        public void ChargerProduit(StockNouveau s, string motif)
         {
             con.Open();
             if (motif == "recherche")
@@ -1935,7 +2005,7 @@ namespace SUMEDCO
             }
             con.Close();
         }
-        public void ChargerStock(FormStockNouveau s)
+        public void ChargerStock(StockNouveau s)
         {
             con.Open();
             try
@@ -1959,183 +2029,113 @@ namespace SUMEDCO
             }
             con.Close();
         }
-        public void ChargerProduit(FormStockProduit s, string motif)
+
+        ClasseElements ce = new ClasseElements();
+        public void Stocks(StockProduit s)
         {
             con.Open();
-            if (s.poste == "pharmacie")
-            {
-                if (motif == "recherche")
-                    cmd = new SqlCommand("select Produit.idproduit, nomproduit from Produit, LigneStock, LigneStockPharma where Produit.idproduit = LigneStock.idproduit and LigneStock.idstock = LigneStockPharma.idstock and idpharma = '" + s.idpharma + "' and idcat = '" + s.idcat + "' and nomproduit like '" + s.txtRecherche.Text + "%' order by nomproduit", con);
-                else
-                    cmd = new SqlCommand("select Produit.idproduit, nomproduit from Produit, LigneStock, LigneStockPharma where Produit.idproduit = LigneStock.idproduit and LigneStock.idstock = LigneStockPharma.idstock and idpharma = '" + s.idpharma + "' and idcat = '" + s.idcat + "' order by nomproduit", con);
-            }
-            else
-            {
-                if (motif == "recherche")
-                    cmd = new SqlCommand("select idproduit, nomproduit from Produit where idcat = '" + s.idcat + "' and nomproduit like '" + s.txtRecherche.Text + "%' order by nomproduit", con);
-                else
-                    cmd = new SqlCommand("select idproduit, nomproduit from Produit where idcat = '" + s.idcat + "' order by nomproduit", con);
-            }
             try
             {
-                dr = cmd.ExecuteReader();
-                s.dgvProduit.Rows.Clear();
-                s.dgvStock.Rows.Clear();
-                while (dr.Read())
+                if (s.poste == "pharmacie")
                 {
-                    s.dgvProduit.Rows.Add();
-                    s.dgvProduit.Rows[s.dgvProduit.RowCount - 1].Cells[0].Value = dr[0].ToString();
-                    s.dgvProduit.Rows[s.dgvProduit.RowCount - 1].Cells[1].Value = dr[1].ToString();
+                    if(s.txtRecherche.Text == "")
+                        cmdtxt = @"SELECT idstockph as ID, nomproduit AS Produit, sp.qtestock AS Qté, CMM, forme AS Forme, dosage AS Dosage, numlot AS Lot, expiration AS Expiration, prixunitaire AS [Prix U.] 
+                            FROM LigneStockPharma sp
+                            JOIN LigneStock s ON sp.idstock = s.idstock
+                            JOIN Produit p ON s.idproduit = p.idproduit
+                            JOIN CategorieProduit c ON p.idcat = c.idcat
+                            WHERE p.idcat = " + s.idcat + " AND sp.idpharma = '" + s.idpharma + "' ORDER BY nomproduit";
+                    else
+                        cmdtxt = @"SELECT idstockph as ID, nomproduit AS Produit, sp.qtestock AS Qté, CMM, forme AS Forme, dosage AS Dosage, numlot AS Lot, expiration AS Expiration, prixunitaire AS [Prix U.] 
+                            FROM LigneStockPharma sp
+                            JOIN LigneStock s ON sp.idstock = s.idstock
+                            JOIN Produit p ON s.idproduit = p.idproduit
+                            JOIN CategorieProduit c ON p.idcat = c.idcat
+                            WHERE p.idcat = " + s.idcat + " AND sp.idpharma = '" + s.idpharma + "' AND nomproduit LIKE '" + s.txtRecherche.Text.Replace("'", "") + "%' ORDER BY nomproduit";
                 }
+                else
+                {
+                    if(s.txtRecherche.Text == "")
+                        cmdtxt = @"SELECT idstock as ID, nomproduit AS Produit, qtestock AS Qté, CMM, forme AS Forme, dosage AS Dosage, numlot AS Lot, expiration AS Expiration, prixunitaire AS [Prix U.] 
+                            FROM LigneStock s
+                            JOIN Produit p ON s.idproduit = p.idproduit
+                            JOIN CategorieProduit c ON p.idcat = c.idcat
+                            WHERE p.idcat = " + s.idcat + " ORDER BY nomproduit";
+                    else
+                        cmdtxt = @"SELECT idstock as ID, nomproduit AS Produit, qtestock AS Qté, CMM, forme AS Forme, dosage AS Dosage, numlot AS Lot, expiration AS Expiration, prixunitaire AS [Prix U.] 
+                            FROM LigneStock s
+                            JOIN Produit p ON s.idproduit = p.idproduit
+                            JOIN CategorieProduit c ON p.idcat = c.idcat
+                            WHERE p.idcat = " + s.idcat + " AND nomproduit LIKE '" + s.txtRecherche.Text.Replace("'", "") + "%' ORDER BY nomproduit";
+                }
+                cmd = new SqlCommand(cmdtxt, con);
+                da = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                dt.Rows.Clear();
+                da.Fill(dt);
+                s.dgvStock.DataSource = dt;
+                ce.FigerColonne(s.dgvStock);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             con.Close();
+            TotalStock(s, "");
         }
-        public void ChargerStockProduit(FormStockProduit s, string motif)
+        public void AlerteStock(StockProduit s)
         {
-            if(motif == "alerte")
+            con.Open();
+            try
             {
-                for (int i = 0; i < s.dgvProduit.RowCount; i++)
+                if (s.poste == "pharmacie")
                 {
-                    con.Open();
-                    try
-                    {
-                        if (s.poste == "pharmacie")
-                        {
-                            s.dgvStock.Columns[2].Visible = false;
-                            cmdtxt = @"SELECT DISTINCT idstockph, sp.qtestock, CMM, forme, dosage, numlot, expiration, nomproduit 
+                    if (s.txtRecherche.Text == "")
+                        cmdtxt = @"SELECT idstockph as ID, nomproduit AS Produit, sp.qtestock AS Qté, CMM, forme AS Forme, dosage AS Dosage, numlot AS Lot, expiration AS Expiration, prixunitaire AS [Prix U.] 
                             FROM LigneStockPharma sp
                             JOIN LigneStock s ON sp.idstock = s.idstock
                             JOIN Produit p ON s.idproduit = p.idproduit
-                            WHERE sp.idpharma = '" + s.idpharma + "' AND p.idproduit = @id ORDER BY nomproduit";
-
-                        }
-                        else
-                        {
-                            cmdtxt = @"SELECT DISTINCT idstock, qtestock, CMM, forme, dosage, numlot, expiration, nomproduit 
-                            FROM LigneStock s
-                            JOIN Produit p ON s.idproduit = p.idproduit
-                            WHERE p.idproduit = @id ORDER BY nomproduit";
-                        }
-                        cmd = new SqlCommand(cmdtxt, con);
-                        cmd.Parameters.AddWithValue("@id", s.dgvProduit.Rows[i].Cells[0].Value);
-                        dr = cmd.ExecuteReader();
-                        if(i==0)
-                            s.dgvStock.Rows.Clear();
-                        while (dr.Read())
-                        {
-                            s.dgvStock.Rows.Add();
-                            s.dgvStock.Rows[s.dgvStock.RowCount - 1].Cells[0].Value = dr[0].ToString();
-                            s.dgvStock.Rows[s.dgvStock.RowCount - 1].Cells[1].Value = dr[1].ToString();
-                            s.dgvStock.Rows[s.dgvStock.RowCount - 1].Cells[2].Value = dr[2].ToString();
-                            s.dgvStock.Rows[s.dgvStock.RowCount - 1].Cells[3].Value = string.Format("{0}, {1}", dr[7].ToString(), dr[3].ToString());
-                            s.dgvStock.Rows[s.dgvStock.RowCount - 1].Cells[4].Value = dr[4].ToString();
-                            s.dgvStock.Rows[s.dgvStock.RowCount - 1].Cells[5].Value = dr[5].ToString();
-                            s.dgvStock.Rows[s.dgvStock.RowCount - 1].Cells[6].Value = dr[6].ToString();
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    con.Close();
-                }
-            }
-            else if(motif == "alerte_recherche")
-            {
-                for (int i = 0; i < s.dgvProduit.RowCount; i++)
-                {
-                    con.Open();
-                    try
-                    {
-                        if (s.poste == "pharmacie")
-                        {
-                            s.dgvStock.Columns[2].Visible = false;
-                            cmdtxt = @"SELECT DISTINCT idstockph, sp.qtestock, CMM, forme, dosage, numlot, expiration, nomproduit 
-                            FROM LigneStockPharma sp
-                            JOIN LigneStock s ON sp.idstock = s.idstock
-                            JOIN Produit p ON s.idproduit = p.idproduit
-                            WHERE sp.idpharma = '" + s.idpharma + "' AND p.idproduit = @id AND nomproduit LIKE '"+s.txtAlerteStock.Text.Replace("'","")+"%' ORDER BY nomproduit";
-
-                        }
-                        else
-                        {
-                            cmdtxt = @"SELECT DISTINCT idstock, qtestock, CMM, forme, dosage, numlot, expiration, nomproduit 
-                            FROM LigneStock s
-                            JOIN Produit p ON s.idproduit = p.idproduit
-                            WHERE p.idproduit = @id AND nomproduit LIKE '" + s.txtAlerteStock.Text.Replace("'", "") + "%' ORDER BY nomproduit";
-                        }
-                        cmd = new SqlCommand(cmdtxt, con);
-                        cmd.Parameters.AddWithValue("@id", s.dgvProduit.Rows[i].Cells[0].Value);
-                        dr = cmd.ExecuteReader();
-                        if(i==0)
-                            s.dgvStock.Rows.Clear();
-                        while (dr.Read())
-                        {
-                            s.dgvStock.Rows.Add();
-                            s.dgvStock.Rows[s.dgvStock.RowCount - 1].Cells[0].Value = dr[0].ToString();
-                            s.dgvStock.Rows[s.dgvStock.RowCount - 1].Cells[1].Value = dr[1].ToString();
-                            s.dgvStock.Rows[s.dgvStock.RowCount - 1].Cells[2].Value = dr[2].ToString();
-                            s.dgvStock.Rows[s.dgvStock.RowCount - 1].Cells[3].Value = string.Format("{0}, {1}", dr[7].ToString(), dr[3].ToString());
-                            s.dgvStock.Rows[s.dgvStock.RowCount - 1].Cells[4].Value = dr[4].ToString();
-                            s.dgvStock.Rows[s.dgvStock.RowCount - 1].Cells[5].Value = dr[5].ToString();
-                            s.dgvStock.Rows[s.dgvStock.RowCount - 1].Cells[6].Value = dr[6].ToString();
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    con.Close();
-                }
-            }           
-            else
-            {
-                con.Open();
-                try
-                {
-                    if (s.poste == "pharmacie")
-                    {
-                        s.dgvStock.Columns[2].Visible = false;
-                        cmdtxt = @"SELECT idstockph, sp.qtestock, CMM, forme, dosage, numlot, expiration 
-                    FROM LigneStockPharma sp 
-                    JOIN LigneStock s ON sp.idstock = s.idstock
-                    WHERE sp.idpharma = '" + s.idpharma + "' and idproduit = @id ORDER BY forme, dosage";
-                    }
+                            JOIN CategorieProduit c ON p.idcat = c.idcat
+                            WHERE p.idcat = " + s.idcat + " AND sp.idpharma = '" + s.idpharma + "' AND sp.qtestock < 200 ORDER BY nomproduit";
                     else
-                    {
-                        cmdtxt = @"SELECT idstock, qtestock, CMM, forme, dosage, numlot, expiration 
-                    FROM LigneStock 
-                    WHERE idproduit = @id ORDER BY forme, dosage";
-                    }
-                    cmd = new SqlCommand(cmdtxt, con);
-                    cmd.Parameters.AddWithValue("@id", s.idproduit);
-                    dr = cmd.ExecuteReader();
-                    s.dgvStock.Rows.Clear();
-                    while (dr.Read())
-                    {
-                        s.dgvStock.Rows.Add();
-                        s.dgvStock.Rows[s.dgvStock.RowCount - 1].Cells[0].Value = dr[0].ToString();
-                        s.dgvStock.Rows[s.dgvStock.RowCount - 1].Cells[1].Value = dr[1].ToString();
-                        s.dgvStock.Rows[s.dgvStock.RowCount - 1].Cells[2].Value = dr[2].ToString();
-                        s.dgvStock.Rows[s.dgvStock.RowCount - 1].Cells[3].Value = dr[3].ToString();
-                        s.dgvStock.Rows[s.dgvStock.RowCount - 1].Cells[4].Value = dr[4].ToString();
-                        s.dgvStock.Rows[s.dgvStock.RowCount - 1].Cells[5].Value = dr[5].ToString();
-                        s.dgvStock.Rows[s.dgvStock.RowCount - 1].Cells[6].Value = dr[6].ToString();
-                    }
+                        cmdtxt = @"SELECT idstockph as ID, nomproduit AS Produit, sp.qtestock AS Qté, CMM, forme AS Forme, dosage AS Dosage, numlot AS Lot, expiration AS Expiration, prixunitaire AS [Prix U.] 
+                            FROM LigneStockPharma sp
+                            JOIN LigneStock s ON sp.idstock = s.idstock
+                            JOIN Produit p ON s.idproduit = p.idproduit
+                            JOIN CategorieProduit c ON p.idcat = c.idcat
+                            WHERE p.idcat = " + s.idcat + " AND sp.idpharma = '" + s.idpharma + "' AND sp.qtestock < 200 AND nomproduit LIKE '" + s.txtRecherche.Text.Replace("'", "") + "%' ORDER BY nomproduit";
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (s.txtRecherche.Text == "")
+                        cmdtxt = @"SELECT idstock as ID, nomproduit AS Produit, qtestock AS Qté, CMM, forme AS Forme, dosage AS Dosage, numlot AS Lot, expiration AS Expiration, prixunitaire AS [Prix U.] 
+                            FROM LigneStock s
+                            JOIN Produit p ON s.idproduit = p.idproduit
+                            JOIN CategorieProduit c ON p.idcat = c.idcat
+                            WHERE p.idcat = " + s.idcat + " AND qtestock < 200 ORDER BY nomproduit";
+                    else
+                        cmdtxt = @"SELECT idstock as ID, nomproduit AS Produit, qtestock AS Qté, CMM, forme AS Forme, dosage AS Dosage, numlot AS Lot, expiration AS Expiration, prixunitaire AS [Prix U.] 
+                            FROM LigneStock s
+                            JOIN Produit p ON s.idproduit = p.idproduit
+                            JOIN CategorieProduit c ON p.idcat = c.idcat
+                            WHERE p.idcat = "+s.idcat+" AND qtestock < 200 AND nomproduit LIKE '" + s.txtRecherche.Text.Replace("'", "") + "%' ORDER BY nomproduit";
                 }
-                con.Close();
+                cmd = new SqlCommand(cmdtxt, con);
+                da = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                dt.Rows.Clear();
+                da.Fill(dt);
+                s.dgvStock.DataSource = dt;
+                ce.FigerColonne(s.dgvStock);
             }
-            AfficherTotauxStock(s, motif);
+            catch (Exception ex)
+            {
+                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            con.Close();
+            TotalStock(s, "alerte");
         }
-        private void AfficherTotauxStock(FormStockProduit s, string motif)
+        private void TotalStock(StockProduit s, string motif)
         {
             if (s.dgvStock.RowCount != 0)
             {
@@ -2143,33 +2143,33 @@ namespace SUMEDCO
                 {
                     if (s.poste == "pharmacie")
                     {
-                        s.dgvStock.Rows[i].Cells[1].Value = QteStock(Convert.ToInt32(s.dgvStock.Rows[i].Cells[0].Value), s.idpharma, "pharma");
+                        s.dgvStock.Rows[i].Cells[2].Value = QteStock(Convert.ToInt32(s.dgvStock.Rows[i].Cells[0].Value), s.idpharma, "pharma");
                     }
                     else
                     {
-                        s.dgvStock.Rows[i].Cells[1].Value = QteStock(Convert.ToInt32(s.dgvStock.Rows[i].Cells[0].Value), s.idpharma, "stock");
+                        s.dgvStock.Rows[i].Cells[2].Value = QteStock(Convert.ToInt32(s.dgvStock.Rows[i].Cells[0].Value), s.idpharma, "stock");
                     }
-                    if (motif != "" && Convert.ToInt32(s.dgvStock.Rows[i].Cells[1].Value) > 200)
+                    if (motif == "alerte" && Convert.ToInt32(s.dgvStock.Rows[i].Cells[2].Value) > 200)
                     {
                         s.dgvStock.Rows.RemoveAt(s.dgvStock.Rows[i].Index);
                     }
                 }
             }
         }
-        public void PreparerCommandde(FormStockProduit s, FormStockAlerte sa)
+        public void PreparerCommandde(StockProduit s, StockAlerte sa)
         {
             s.btnCmdPrep.Enabled = false;
             if (s.dgvStock.RowCount > 0)
             {
-                for (int i = 0; i < s.dgvStock.RowCount; i++)
+                foreach (DataGridViewRow row in s.dgvStock.SelectedRows)
                 {
                     sa.dgvStock.Rows.Add();
-                    sa.dgvStock.Rows[sa.dgvStock.RowCount - 1].Cells[0].Value = s.dgvStock.Rows[i].Cells[0].Value;
-                    sa.dgvStock.Rows[sa.dgvStock.RowCount - 1].Cells[1].Value = s.dgvStock.Rows[i].Cells[3].Value.ToString().Substring(0, s.dgvStock.Rows[i].Cells[3].Value.ToString().IndexOf(","));
-                    sa.dgvStock.Rows[sa.dgvStock.RowCount - 1].Cells[2].Value = s.dgvStock.Rows[i].Cells[1].Value;
-                    sa.dgvStock.Rows[sa.dgvStock.RowCount - 1].Cells[3].Value = 0;
-                    sa.dgvStock.Rows[sa.dgvStock.RowCount - 1].Cells[4].Value = s.dgvStock.Rows[i].Cells[3].Value.ToString().Substring(s.dgvStock.Rows[i].Cells[3].Value.ToString().IndexOf(",") + 2);
-                    sa.dgvStock.Rows[sa.dgvStock.RowCount - 1].Cells[5].Value = s.dgvStock.Rows[i].Cells[4].Value;
+                    sa.dgvStock.Rows[sa.dgvStock.RowCount - 1].Cells[0].Value = row.Cells[0].Value;
+                    sa.dgvStock.Rows[sa.dgvStock.RowCount - 1].Cells[1].Value = row.Cells[1].Value;
+                    sa.dgvStock.Rows[sa.dgvStock.RowCount - 1].Cells[2].Value = row.Cells[4].Value;
+                    sa.dgvStock.Rows[sa.dgvStock.RowCount - 1].Cells[3].Value = row.Cells[5].Value;
+                    sa.dgvStock.Rows[sa.dgvStock.RowCount - 1].Cells[4].Value = row.Cells[2].Value;
+                    sa.dgvStock.Rows[sa.dgvStock.RowCount - 1].Cells[5].Value = 0;
                 }
                 sa.poste = s.poste;
                 sa.ShowDialog();
@@ -2179,7 +2179,7 @@ namespace SUMEDCO
                 MessageBox.Show("Aucune ligne n'a été trouvée", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
-        public void AfficherCommande(FormHistoCommande c, string motif)
+        public void AfficherCommande(StockHistoCommande c, string motif)
         {
             if (c.dtpDateDe.Value.Date <= c.dtpDateA.Value.Date)
             {
@@ -2191,64 +2191,73 @@ namespace SUMEDCO
                         if (c.poste == "pharmacie")
                         {
                             if (motif == "recherche")
-                                cmd = new SqlCommand("select idcomph,date_com,nomproduit,forme,dosage,qtecom from CommandePharma, LigneStockPharma, LigneStock, Produit where date_com between @dateDe and @dateA and CommandePharma.idstockph = LigneStockPharma.idstockph and LigneStockPharma.idstock = LigneStock.idstock and LigneStockPharma.idpharma = '" + c.idpharma + "' and LigneStock.idproduit = Produit.idproduit and Produit.idcat = '" + c.idcat + "' and nomproduit LIKE '" + c.txtRecherche.Text + "%'", con);
+                                cmdtxt = @"SELECT c.idcomph, date_com, nomproduit, forme, dosage, qtecom, SUM(qteservie) AS qteservie  
+                                FROM CommandePharma c
+                                JOIN LigneStockPharma sp ON c.idstockph = sp.idstockph
+                                JOIN LigneStock s ON sp.idstock = s.idstock
+                                JOIN Produit p ON s.idproduit = p.idproduit
+                                LEFT JOIN ApproPharma a ON a.idcomph = c.idcomph
+                                WHERE date_com BETWEEN @dateDe AND @dateA AND 
+                                idpharma = '" + c.idpharma + "' AND idcat = '" + c.idcat + "' AND nomproduit LIKE '" + c.txtRecherche.Text + "%' GROUP BY c.idcomph, date_com, nomproduit, forme, dosage, qtecom";
                             else
-                                cmd = new SqlCommand("select idcomph,date_com,nomproduit,forme,dosage,qtecom from CommandePharma, LigneStockPharma, LigneStock, Produit where date_com between @dateDe and @dateA and CommandePharma.idstockph = LigneStockPharma.idstockph and LigneStockPharma.idstock = LigneStock.idstock and LigneStockPharma.idpharma = '" + c.idpharma + "' and LigneStock.idproduit = Produit.idproduit and Produit.idcat = '" + c.idcat + "'", con);
+                                cmdtxt = @"SELECT c.idcomph, date_com, nomproduit, forme, dosage, qtecom, SUM(qteservie) AS qteservie  
+                                FROM CommandePharma c
+                                JOIN LigneStockPharma sp ON c.idstockph = sp.idstockph
+                                JOIN LigneStock s ON sp.idstock = s.idstock
+                                JOIN Produit p ON s.idproduit = p.idproduit
+                                LEFT JOIN ApproPharma a ON a.idcomph = c.idcomph
+                                WHERE date_com BETWEEN @dateDe AND @dateA AND 
+                                idpharma = '" + c.idpharma + "' AND idcat = '" + c.idcat + "' GROUP BY c.idcomph, date_com, nomproduit, forme, dosage, qtecom ";
                         }
                         else
                         {
                             if (motif == "recherche")
-                                cmd = new SqlCommand("select idcom,date_com,nomproduit,forme,dosage,qtedem from LigneCommande, LigneStock, Produit where date_com between @dateDe and @dateA and LigneCommande.idstock = LigneStock.idstock and LigneStock.idproduit = Produit.idproduit and Produit.idcat = '" + c.idcat + "' and nomproduit LIKE '" + c.txtRecherche.Text + "%'", con);
+                                cmdtxt = @"SELECT c.idcom, date_com, nomproduit, forme, dosage, qtedem, SUM(qteajoute) AS qteservie 
+                                FROM LigneCommande c
+                                JOIN LigneStock s ON c.idstock = s.idstock
+                                JOIN Produit p ON s.idproduit = p.idproduit
+                                LEFT JOIN LigneAppro a ON a.idcom = c.idcom
+                                WHERE date_com BETWEEN @dateDe AND @dateA AND 
+                                idcat = '" + c.idcat + "' AND nomproduit LIKE '" + c.txtRecherche.Text + "%' GROUP BY c.idcom, date_com, nomproduit, forme, dosage, qtedem";
                             else
-                                cmd = new SqlCommand("select idcom,date_com,nomproduit,forme,dosage,qtedem from LigneCommande, LigneStock, Produit where date_com between @dateDe and @dateA and LigneCommande.idstock = LigneStock.idstock and LigneStock.idproduit = Produit.idproduit and Produit.idcat = '" + c.idcat + "'", con);
+                                cmdtxt = @"SELECT c.idcom, date_com, nomproduit, forme, dosage, qtedem, SUM(qteajoute) AS qteservie 
+                                FROM LigneCommande c
+                                JOIN LigneStock s ON c.idstock = s.idstock
+                                JOIN Produit p ON s.idproduit = p.idproduit
+                                LEFT JOIN LigneAppro a ON a.idcom = c.idcom
+                                WHERE date_com BETWEEN @dateDe AND @dateA AND 
+                                idcat = '" + c.idcat + "' GROUP BY c.idcom, date_com, nomproduit, forme, dosage, qtedem";
                         }
+                        cmd = new SqlCommand(cmdtxt, con);
                         cmd.Parameters.AddWithValue("@dateDe", c.dtpDateDe.Text);
                         cmd.Parameters.AddWithValue("@dateA", c.dtpDateA.Text);
                         dr = cmd.ExecuteReader();
-                        c.dgvCommande.Rows.Clear();
+                        c.dgv.Rows.Clear();
                         while (dr.Read())
                         {
-                            c.dgvCommande.Rows.Add();
-                            c.dgvCommande.Rows[c.dgvCommande.RowCount - 1].Cells[0].Value = dr[0].ToString();
-                            c.dgvCommande.Rows[c.dgvCommande.RowCount - 1].Cells[1].Value = dr[1].ToString().Substring(0, 10);
-                            c.dgvCommande.Rows[c.dgvCommande.RowCount - 1].Cells[2].Value = dr[2].ToString();
-                            c.dgvCommande.Rows[c.dgvCommande.RowCount - 1].Cells[3].Value = dr[3].ToString();
-                            c.dgvCommande.Rows[c.dgvCommande.RowCount - 1].Cells[4].Value = dr[4].ToString();
-                            c.dgvCommande.Rows[c.dgvCommande.RowCount - 1].Cells[5].Value = dr[5].ToString();
+                            c.dgv.Rows.Add();
+                            c.dgv.Rows[c.dgv.RowCount - 1].Cells[0].Value = dr[0].ToString();
+                            c.dgv.Rows[c.dgv.RowCount - 1].Cells[1].Value = dr[1].ToString().Substring(0, 10);
+                            c.dgv.Rows[c.dgv.RowCount - 1].Cells[2].Value = dr[2].ToString();
+                            c.dgv.Rows[c.dgv.RowCount - 1].Cells[3].Value = dr[3].ToString();
+                            c.dgv.Rows[c.dgv.RowCount - 1].Cells[4].Value = dr[4].ToString();
+                            c.dgv.Rows[c.dgv.RowCount - 1].Cells[5].Value = dr[5].ToString();
+
+                            if (dr[6].ToString() != "") 
+                                c.dgv.Rows[c.dgv.RowCount - 1].Cells[6].Value = dr[6].ToString();
+                            else
+                                c.dgv.Rows[c.dgv.RowCount - 1].Cells[6].Value = 0;
+                            c.dgv.Rows[c.dgv.RowCount - 1].Cells[7].Value = Convert.ToInt32(c.dgv.Rows[c.dgv.RowCount - 1].Cells[5].Value) - Convert.ToInt32(c.dgv.Rows[c.dgv.RowCount - 1].Cells[6].Value);
                         }
                     }
                     catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-                    con.Close();
-                    if (c.dgvCommande.RowCount != 0)
-                    {
-                        for (int i = 0; i < c.dgvCommande.RowCount; i++)
-                        {
-                            con.Open();
-                            try
-                            {
-                                c.idcommande = int.Parse(c.dgvCommande.Rows[i].Cells[0].Value.ToString());
-                                if (c.poste == "pharmacie")
-                                    cmd = new SqlCommand("SELECT COUNT(qteservie), SUM(qteservie) FROM ApproPharma, CommandePharma WHERE ApproPharma.idcomph = CommandePharma.idcomph AND CommandePharma.idcomph = '" + c.idcommande + "'", con);
-                                else
-                                    cmd = new SqlCommand("SELECT COUNT(qteajoute), SUM(qteajoute) FROM LigneAppro, LigneCommande WHERE LigneAppro.idcom = LigneCommande.idcom AND LigneCommande.idcom = '" + c.idcommande + "'", con);
-                                dr = cmd.ExecuteReader();
-                                dr.Read();
-                                if (dr[0].ToString() != "0")
-                                    c.dgvCommande.Rows[i].Cells[6].Value = dr[1].ToString();
-                                else
-                                    c.dgvCommande.Rows[i].Cells[6].Value = "0";
-                                c.dgvCommande.Rows[i].Cells[7].Value = int.Parse(c.dgvCommande.Rows[i].Cells[5].Value.ToString()) - int.Parse(c.dgvCommande.Rows[i].Cells[6].Value.ToString());
-                            }
-                            catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-                            con.Close();
-                        }
-                    }
+                    con.Close();                   
                 }
                 else MessageBox.Show("Aucune catégorie n'est sélectionnée", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else MessageBox.Show("Vérifiez que les dates sont ordonnées du l'inférieur au supérieur", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
-        private void TrouverStockPharma(FormStockInventaire s)
+        private void TrouverStockPharma(StockInventaire s)
         {
             con.Open();
             try
@@ -2268,7 +2277,7 @@ namespace SUMEDCO
             }
             con.Close();
         }
-        public void AfficherStockProduit(FormStockInventaire s)
+        public void AfficherStockProduit(StockInventaire s)
         {
             con.Open();
             try
@@ -2332,7 +2341,7 @@ namespace SUMEDCO
                 }                
             }            
         }
-        public void TrouverQteStock(FormStockInventaire s)
+        public void TrouverQteStock(StockInventaire s)
         {
             AfficherStockProduit(s);
             
@@ -2423,7 +2432,7 @@ namespace SUMEDCO
         #endregion
 
         #region COMMANDE_PRODUIT_PHARMA
-        public void AjouterCommande(FormStockAlerte s, string poste)
+        public void AjouterCommande(StockAlerte s, string poste)
         {
             s.ajout_effectue = false;
             for (int i = s.dgvStock.RowCount - 1; i >= 0; i--)
@@ -2431,7 +2440,7 @@ namespace SUMEDCO
                 s.idstock = Convert.ToInt32(s.dgvStock.Rows[i].Cells[0].Value);
                 try
                 {
-                    if (Convert.ToInt32(s.dgvStock.Rows[i].Cells[3].Value.ToString()) > 0)
+                    if (Convert.ToInt32(s.dgvStock.Rows[i].Cells[5].Value.ToString()) > 0)
                     {
                         if (VerifierCommande(s.idstock, s.dtpDateJour.Text, poste) == 0)
                         {
@@ -2446,7 +2455,7 @@ namespace SUMEDCO
                                     cmd.Parameters.AddWithValue("@id", s.idcom);
                                     cmd.Parameters.AddWithValue("@date_jour", s.dtpDateJour.Text);
                                     cmd.Parameters.AddWithValue("@idstock", s.dgvStock.Rows[i].Cells[0].Value.ToString());
-                                    cmd.Parameters.AddWithValue("@qtecom", s.dgvStock.Rows[i].Cells[3].Value.ToString());
+                                    cmd.Parameters.AddWithValue("@qtecom", s.dgvStock.Rows[i].Cells[5].Value.ToString());
                                     cmd.Transaction = tx;
                                     cmd.ExecuteNonQuery();
                                     tx.Commit();
@@ -2466,7 +2475,7 @@ namespace SUMEDCO
                                     cmd.Parameters.AddWithValue("@id", s.idcom);
                                     cmd.Parameters.AddWithValue("@idstock", s.dgvStock.Rows[i].Cells[0].Value.ToString());
                                     cmd.Parameters.AddWithValue("@date_jour", s.dtpDateJour.Text);
-                                    cmd.Parameters.AddWithValue("@qtecom", s.dgvStock.Rows[i].Cells[3].Value.ToString());
+                                    cmd.Parameters.AddWithValue("@qtecom", s.dgvStock.Rows[i].Cells[5].Value.ToString());
                                     cmd.Transaction = tx;
                                     cmd.ExecuteNonQuery();
                                     tx.Commit();
@@ -2493,7 +2502,7 @@ namespace SUMEDCO
                 s.dgvStock.Rows.Clear();
             }
         }
-        public int VerifierCommande(int idstock, string date_jour, string poste)
+        private int VerifierCommande(int idstock, string date_jour, string poste)
         {
             id = 0;
             con.Open();
@@ -2511,7 +2520,7 @@ namespace SUMEDCO
             con.Close();           
             return id;
         }
-        public void MiseAJourCommande(FormHistoCommande c, string poste)
+        public void MiseAJourCommande(StockHistoCommande c, string poste)
         {
             if (VerifierApproCommande(c.idcom, poste) == 0)
             {
@@ -2620,7 +2629,7 @@ namespace SUMEDCO
         }
 
         ReportDataSource rs = new ReportDataSource();
-        public void ImprimerBonCommande(FormApproCommande a, FormImpression imp)
+        public void ImprimerBonCommande(StockApproCom a, FormImpression imp)
         {
             if (a.dgvCommande.RowCount != 0)
             {
@@ -2651,27 +2660,27 @@ namespace SUMEDCO
             else
                 MessageBox.Show("Aucune ligne n'a été trouvée", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
-        public void ImprimerHistoCommande(FormHistoCommande a, FormImpression imp)
+        public void ImprimerHistoCommande(StockHistoCommande a, FormImpression imp)
         {
-            if (a.dgvCommande.RowCount != 0)
+            if (a.dgv.RowCount != 0)
             {
                 imp.Text = "SSM - Historique de Commande";
 
                 List<BonHistoCommande> list = new List<BonHistoCommande>();
                 list.Clear();
 
-                for (int i = 0; i < a.dgvCommande.RowCount; i++)
+                for (int i = 0; i < a.dgv.RowCount; i++)
                 {
                     BonHistoCommande bc = new BonHistoCommande
                     {
                         id = list.Count + 1,
-                        date_com = a.dgvCommande.Rows[i].Cells[1].Value.ToString(),
-                        produit = a.dgvCommande.Rows[i].Cells[2].Value.ToString(),
-                        forme = a.dgvCommande.Rows[i].Cells[3].Value.ToString(),
-                        dosage = a.dgvCommande.Rows[i].Cells[4].Value.ToString(),
-                        qtedem = a.dgvCommande.Rows[i].Cells[5].Value.ToString(),
-                        qteservie = a.dgvCommande.Rows[i].Cells[6].Value.ToString(),
-                        qtereste = a.dgvCommande.Rows[i].Cells[7].Value.ToString(),
+                        date_com = a.dgv.Rows[i].Cells[1].Value.ToString(),
+                        produit = a.dgv.Rows[i].Cells[2].Value.ToString(),
+                        forme = a.dgv.Rows[i].Cells[3].Value.ToString(),
+                        dosage = a.dgv.Rows[i].Cells[4].Value.ToString(),
+                        qtedem = a.dgv.Rows[i].Cells[5].Value.ToString(),
+                        qteservie = a.dgv.Rows[i].Cells[6].Value.ToString(),
+                        qtereste = a.dgv.Rows[i].Cells[7].Value.ToString(),
                     };
                     list.Add(bc);
                 }
@@ -2688,7 +2697,7 @@ namespace SUMEDCO
         #endregion
         
         #region GESTION_STOCKS_AUTRE
-        public void AfficherSousForm(StockMDI s, FormReceptionRapport childForm)
+        public void AfficherSousForm(StockMDI s, ReceptionRapport childForm)
         {
             if (activeForm != null)
                 activeForm.Close();
@@ -2702,7 +2711,7 @@ namespace SUMEDCO
             childForm.poste = "stock";
             childForm.Show();
         }
-        public void HistoriqueApproStockAutre(ComptabiliteMDI c, FormApprov childForm)
+        public void HistoriqueApproStockAutre(ComptabiliteMDI c, StockApprov childForm)
         {
             if (c.activeForm != null)
                 c.activeForm.Close();
@@ -2716,7 +2725,7 @@ namespace SUMEDCO
             childForm.poste = "admin";
             childForm.Show();
         }
-        public void AfficherToutStock(FormReceptionRapport s)
+        public void AfficherToutStock(ReceptionRapport s)
         {
             con.Open();
             try
@@ -2742,7 +2751,7 @@ namespace SUMEDCO
         #endregion
 
         #region MOUVEMENT_STOCK
-        public void DiminuerStock(FormStockAlerte c)
+        public void DiminuerStock(StockAlerte c)
         {
             con.Open();
             SqlTransaction tx = con.BeginTransaction();
@@ -2780,7 +2789,7 @@ namespace SUMEDCO
         #endregion
 
         #region STOCK_PHARMA
-        public int VerifierStockPharma(FormStockPha s)
+        public int VerifierStockPharma(StockPharmacie s)
         {
             id =0;
             cmd = new SqlCommand("select count(idstockph) from LigneStockPharma where idpharma = '" + s.idpharma + "' and idstock = '"+s.idstock+"'", con);
@@ -2799,7 +2808,7 @@ namespace SUMEDCO
             return id;
         }
         
-        public void Enregistrer(FormStockPha s)
+        public void Enregistrer(StockPharmacie s)
         {
             if (s.cboPharma.Text !="")
             {
@@ -2832,7 +2841,7 @@ namespace SUMEDCO
             else
                 MessageBox.Show("Désolé! Champ(s) obligatoire(s) vide(s)\nRemplissez-le(s).", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
-        public void AjouterNouvellePharma(FormStockPha p)
+        public void AjouterNouvellePharma(StockPharmacie p)
         {
             if(p.txtPharmacie.Text != "")
             {
@@ -2938,7 +2947,7 @@ namespace SUMEDCO
         #endregion
 
         #region APPRO_STOCK_PRINCIPAL
-        public void ApprovisionnerStock2(FormApproCommande a, FormApproAutre ap)
+        public void ApprovisionnerStock2(StockApproCom a, StockApproAutre ap)
         {
             if (a.cboCategorie.Text != "")
             {
@@ -2958,13 +2967,13 @@ namespace SUMEDCO
             else
                 MessageBox.Show("Aucune catégorie de produits n'est sélectionnée","Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
-        public void EnregistrerAppro(FormApprov a)
+        public void EnregistrerAppro(StockApprov a)
         {
             if(a.poste == "comptable")
             {
-                for (int i = 0; i < a.dgvAppro.RowCount-1; i++)
+                for (int i = 0; i < a.dgvAppro.RowCount; i++)
                 {
-                    a.idAppro = NouveauID("appro");
+                    a.idAppro = ce.NouveauID("appro");
                     con.Open();
                     SqlTransaction tx = con.BeginTransaction();
                     try
@@ -2986,9 +2995,9 @@ namespace SUMEDCO
             }
             else
             {
-                for (int i = 0; i < a.dgvAppro.RowCount-1; i++)
+                for (int i = 0; i < a.dgvAppro.RowCount; i++)
                 {
-                    a.idAppro = NouveauID("appropharma");
+                    a.idAppro = ce.NouveauID("appropharma");
                     con.Open();
                     SqlTransaction tx = con.BeginTransaction();
                     try
@@ -3007,7 +3016,7 @@ namespace SUMEDCO
                 }
             }
         }
-        public void AjouterProduit(FormApproAutre a)
+        public void AjouterProduit(StockApproAutre a)
         {
             if (VerifierNomProduit(a.txtProduit.Text) == 0)
             {
@@ -3034,7 +3043,7 @@ namespace SUMEDCO
             }
             else MessageBox.Show("Le nom du produit fourni est déjà utilisé", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
-        public void Annuler(FormApproAutre a)
+        public void Annuler(StockApproAutre a)
         {
             a.txtProduit.Enabled = true;
             a.txtProduit.Text = "";
@@ -3049,7 +3058,7 @@ namespace SUMEDCO
             a.chboxLot.Checked = false;            
             a.txtQteAppro.Text = "";
         }
-        public void AjouterApproAutre(FormApproAutre a)
+        public void AjouterApproAutre(StockApproAutre a)
         {
             if(a.txtProduit.Enabled)
             {
@@ -3060,7 +3069,7 @@ namespace SUMEDCO
                 AjouterStock(a);//Nouveau stock initial pour le produit sélectionné
             Annuler(a);
         }
-        public void ChargerProduit(FormApproAutre s, string motif)
+        public void ChargerProduit(StockApproAutre s, string motif)
         {
             con.Open();
             if (motif == "recherche")
@@ -3084,8 +3093,241 @@ namespace SUMEDCO
             }
             con.Close();
         }
+        private int TotalApproAjoute(int idcom, string motif)
+        {
+            id = 0;
+            con.Open();
+            try
+            {
+                if (motif == "appro")
+                    cmd = new SqlCommand("SELECT COUNT(qteajoute), SUM(qteajoute) FROM LigneAppro WHERE idcom = '" + idcom + "'", con);
+                else
+                    cmd = new SqlCommand("SELECT COUNT(qteservie), SUM(qteservie) FROM ApproPharma WHERE idcomph = '" + idcom + "'", con);
+                dr = cmd.ExecuteReader();
+                dr.Read();
+                if (dr[0].ToString() != "0")
+                    id = Convert.ToInt32(dr[1].ToString());
+            }
+            catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            con.Close();
+            return id;
+        }
+        public void ApprovisionnerStock(StockApproCom a, StockApprov ap)
+        {
+            if (a.dgvCommande.RowCount != 0)
+            {
+                ap.poste = a.poste;
+                ap.categorie_produit = a.cboCategorie.Text;
+                ap.idexercice = a.idexercice;
+                for (int i = 0; i < a.dgvCommande.RowCount; i++)
+                {
+                    if (ap.poste == "comptable")
+                    {
+                        if (Convert.ToInt32(a.dgvCommande.Rows[i].Cells[5].Value) - TotalApproAjoute(Convert.ToInt32(a.dgvCommande.Rows[i].Cells[0].Value), "appro") > 0)
+                        {
+                            ap.dgvAppro.Rows.Add();
+                            ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[0].Value = a.dgvCommande.Rows[i].Cells[0].Value;
+                            ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[1].Value = string.Format("{0}, {1}, {2}",
+                            a.dgvCommande.Rows[i].Cells[2].Value.ToString(),
+                            a.dgvCommande.Rows[i].Cells[3].Value.ToString(),
+                            a.dgvCommande.Rows[i].Cells[4].Value.ToString());
 
-        public void AfficherCommande(FormApproCommande a, string motif)
+                            ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[2].Value = "";
+                            ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[3].Value = "";
+                            ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[4].Value = a.dgvCommande.Rows[i].Cells[5].Value;
+                            ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[5].Value = Convert.ToInt32(a.dgvCommande.Rows[i].Cells[5].Value) - TotalApproAjoute(Convert.ToInt32(a.dgvCommande.Rows[i].Cells[0].Value), "appro");
+                            ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[6].Value = 0;
+                            ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[7].Value = 0;
+                            ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[8].Value = 0;
+                            ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[9].Value = 0;
+                            ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[11].Value = 0;
+                            ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[12].Value = "RAS";
+                            ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[13].Value = a.dgvCommande.Rows[i].Cells[6].Value;
+                            ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[10].Value = PrixStock(Convert.ToInt32(a.dgvCommande.Rows[i].Cells[6].Value), "vente");
+                            if (ap.categorie_produit.ToLower() == "pharmaceutique")
+                                ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[14].Value = "OUI";
+                            else
+                                ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[14].Value = "NON";
+                            ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[15].Value = a.dgvCommande.Rows[i].Cells[7].Value;
+                        }
+                    }
+                    else
+                    {
+                        if (Convert.ToInt32(a.dgvCommande.Rows[i].Cells[5].Value) - TotalApproAjoute(Convert.ToInt32(a.dgvCommande.Rows[i].Cells[0].Value), "") > 0)
+                        {
+                            ap.dgvAppro.Rows.Add();
+                            ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[0].Value = a.dgvCommande.Rows[i].Cells[0].Value;
+                            ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[1].Value = string.Format("{0}, {1}, {2}",
+                            a.dgvCommande.Rows[i].Cells[2].Value.ToString(),
+                            a.dgvCommande.Rows[i].Cells[3].Value.ToString(),
+                            a.dgvCommande.Rows[i].Cells[4].Value.ToString());
+
+                            ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[2].Value = "";
+                            ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[3].Value = "";
+                            ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[4].Value = a.dgvCommande.Rows[i].Cells[5].Value;
+                            ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[5].Value = Convert.ToInt32(a.dgvCommande.Rows[i].Cells[5].Value) - TotalApproAjoute(Convert.ToInt32(a.dgvCommande.Rows[i].Cells[0].Value), "");
+                            ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[6].Value = 0;
+                            ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[7].Value = 0;
+                            ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[8].Value = 0;
+                            ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[9].Value = 0;
+                            ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[11].Value = 0;
+                            ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[12].Value = "RAS";
+                            ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[13].Value = a.dgvCommande.Rows[i].Cells[6].Value;
+                            ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[10].Value = PrixStock(Convert.ToInt32(a.dgvCommande.Rows[i].Cells[6].Value), "vente");
+                        }
+                    }
+                }
+                if (ap.dgvAppro.RowCount != 0)
+                {
+                    ////Ligne total
+                    //ap.dgvAppro.Rows.Add();
+                    //ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].DefaultCellStyle.ForeColor = Color.MediumBlue;
+                    //ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].DefaultCellStyle.SelectionForeColor = Color.MediumBlue;
+                    //ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[0].Value = "";
+                    //ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[1].Value = "Total appro.";
+                    //ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Cells[11].Value = 0;
+                    //ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].ReadOnly = true;
+
+                    if (ap.poste == "comptable" && ap.categorie_produit.ToLower() == "pharmaceutique")
+                    {
+                        ap.dgvAppro.Columns[2].ReadOnly = false;
+                        ap.dgvAppro.Columns[3].ReadOnly = false;
+                        ap.checkBox2.Enabled = false;
+                    }
+                    else if (ap.poste != "comptable")
+                    {
+                        ap.depot = a.cboDepot.Text;//Le dépôt à approvisionner
+                        ap.txtTaux.Enabled = false;
+                        ap.checkBox2.Enabled = false;
+                        ap.txtValeurMin.Enabled = false;
+                        ap.dgvAppro.Columns[2].Visible = false;
+                        ap.dgvAppro.Columns[3].Visible = false;
+                        for (int i = 7; i < ap.dgvAppro.ColumnCount; i++)
+                        {
+                            ap.dgvAppro.Columns[i].Visible = false;
+                        }
+                        //ap.dgvAppro.Rows[ap.dgvAppro.RowCount - 1].Visible = false;
+                    }
+                    ap.ShowDialog();
+                    ap.Close();
+                }
+                else
+                    MessageBox.Show("Aucune ligne à approvisionner n'a été trouvée", "Approvisionnement", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+                MessageBox.Show("Aucune commande n'a été trouvée", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+        public void Approvisionner(StockApprov ap)
+        {
+            for (int i = ap.dgvAppro.RowCount-1; i >= 0; i--)
+            {
+                if (ap.poste == "comptable")
+                {
+                    if (Convert.ToInt32(ap.dgvAppro.Rows[i].Cells[11].Value) == 0)
+                    {
+                        ap.dgvAppro.Rows.RemoveAt(ap.dgvAppro.Rows[i].Index);
+                    }
+                }
+                else
+                {
+                    if (Convert.ToInt32(ap.dgvAppro.Rows[i].Cells[6].Value) == 0)
+                    {
+                        ap.dgvAppro.Rows.RemoveAt(ap.dgvAppro.Rows[i].Index);
+                    }
+                }
+            }
+            if (ap.dgvAppro.RowCount != 0)
+            {
+                if (ap.poste == "comptable")
+                {
+                    ap.lotvalide = true;
+                    for (int i = 0; i < ap.dgvAppro.RowCount; i++)
+                    {
+                        if (ap.dgvAppro.Rows[i].Cells[14].Value.ToString() == "OUI")
+                        {
+                            if (ap.dgvAppro.Rows[i].Cells[2].Value.ToString() == "" || ap.dgvAppro.Rows[i].Cells[3].Value.ToString() == "")
+                                ap.lotvalide = false;
+                        }
+                    }
+                    if (ap.lotvalide)
+                    {
+                        EnregistrerAppro(ap);
+                        MiseAJourLigneStock(ap);
+                    }
+                    else
+                        MessageBox.Show("Fournissez le numéro lot et la date d'expiration pour tout produit expirable", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    EnregistrerAppro(ap);
+                    MiseAJourLigneStock(ap);
+                }
+            }
+            else MessageBox.Show("Aucune ligne n'a été trouvée", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+        public void CalculLigne(StockApprov a)
+        {
+            for (int i = 3; i < a.dgvAppro.ColumnCount; i++)
+            {
+                if (i == 3)
+                {
+                    if (a.dgvAppro.CurrentRow.Cells[2].Value.ToString() != "")
+                    {
+                        a.dgvAppro.CurrentRow.Cells[2].Style.BackColor = Color.Lavender;
+                        a.dgvAppro.CurrentRow.Cells[2].Style.SelectionBackColor = Color.LightSteelBlue;
+                    }
+                    else
+                    {
+                        a.dgvAppro.CurrentRow.Cells[2].Style.BackColor = Color.IndianRed;
+                        a.dgvAppro.CurrentRow.Cells[2].Style.SelectionBackColor = Color.IndianRed;
+                    }
+                }
+                else if (i >= 6 && i < 9)
+                {
+                    try
+                    {
+                        if (Convert.ToDouble(a.dgvAppro.CurrentRow.Cells[i].Value) >= 0)
+                        {
+                            if (Convert.ToDouble(a.dgvAppro.CurrentRow.Cells[6].Value) <= Convert.ToDouble(a.dgvAppro.CurrentRow.Cells[5].Value))
+                            {
+                                if (Convert.ToDouble(a.dgvAppro.CurrentRow.Cells[7].Value) > 0)
+                                {
+                                    if (a.txtTaux.Text == "")
+                                        a.txtTaux.Text = "20";
+                                    a.dgvAppro.CurrentRow.Cells[9].Value = Convert.ToDouble(a.dgvAppro.CurrentRow.Cells[8].Value) + Convert.ToDouble(a.dgvAppro.CurrentRow.Cells[8].Value) * Convert.ToDouble(a.txtTaux.Text) / 100;
+                                    if (a.txtValeurMin.Text != "")
+                                        a.dgvAppro.CurrentRow.Cells[9].Value = Convert.ToInt32(a.txtValeurMin.Text) * Math.Ceiling(Convert.ToDouble(a.dgvAppro.CurrentRow.Cells[9].Value) / Convert.ToInt32(a.txtValeurMin.Text));
+                                    a.dgvAppro.CurrentRow.Cells[11].Value = Convert.ToDouble(a.dgvAppro.CurrentRow.Cells[6].Value) * Convert.ToDouble(a.dgvAppro.CurrentRow.Cells[8].Value);
+                                    a.dgvAppro.Rows[a.dgvAppro.RowCount - 1].Cells[11].Value = 0;
+                                    for (int j = 0; j < a.dgvAppro.RowCount - 1; j++)
+                                    {
+                                        a.dgvAppro.Rows[a.dgvAppro.RowCount - 1].Cells[11].Value = Convert.ToDouble(a.dgvAppro.Rows[a.dgvAppro.RowCount - 1].Cells[11].Value) + Convert.ToDouble(a.dgvAppro.Rows[j].Cells[11].Value);
+                                    }
+                                }
+                                else
+                                    a.dgvAppro.Rows[a.dgvAppro.RowCount - 1].Cells[11].Value = 0;
+                            }
+                            else
+                            {
+                                MessageBox.Show("La quantité approvisionnée ne doit pas dépasser le reste à approvisionner", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                a.dgvAppro.CurrentRow.Cells[6].Value = 0;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Valeur négative non autorisée", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            a.dgvAppro.CurrentCell.Value = 0;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("La valeur saisie est invalide", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        a.dgvAppro.CurrentCell.Value = 0;
+                    }
+                }
+            }
+        }
+        public void AfficherCommande(StockApproCom a, string motif)
         {
             if (a.cboCategorie.Text != "")
             {
@@ -3105,10 +3347,9 @@ namespace SUMEDCO
                         from LigneCommande c
                         JOIN LigneStock s ON c.idstock = s.idstock
                         JOIN Produit p ON s.idproduit = p.idproduit
-                        JOIN CategorieProduit cp ON p.idcat = cp.idcat 
-                        where date_com BETWEEN @dateDe AND @dateA AND categorie = @categ";
+                        where date_com BETWEEN @dateDe AND @dateA AND idcat = @idcat";
                     cmd = new SqlCommand(cmdtxt, con);
-                    cmd.Parameters.AddWithValue("@categ", a.cboCategorie.Text);
+                    cmd.Parameters.AddWithValue("@idcat", a.idcat);
                     cmd.Parameters.AddWithValue("@dateDe", a.dtpDateDe.Text);
                     cmd.Parameters.AddWithValue("@dateA", a.dtpDateA.Text);
                     dr = cmd.ExecuteReader();
@@ -3131,7 +3372,7 @@ namespace SUMEDCO
             }
             else MessageBox.Show("Aucune catégorie n'est sélectionnée", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
-        public void TrouverApproCommande(FormApproCommande a)
+        public void TrouverApproCommande(StockApproCom a)
         {
             con.Open();
             try
@@ -3153,7 +3394,7 @@ namespace SUMEDCO
             con.Close();
         }
 
-        public void MiseAJourAppro(FormApproCommande a)
+        public void MiseAJourAppro(StockApproCom a)
         {
             con.Open();
             SqlTransaction tx = con.BeginTransaction();
@@ -3171,11 +3412,11 @@ namespace SUMEDCO
             con.Close();
         }
 
-        public void MiseAJourLigneStock(FormApprov ap)
+        public void MiseAJourLigneStock(StockApprov ap)
         {
             if(ap.poste == "comptable")
             {
-                for (int i = 0; i < ap.dgvAppro.RowCount-1; i++)
+                for (int i = 0; i < ap.dgvAppro.RowCount; i++)
                 {
                     con.Open();
                     SqlTransaction tx = con.BeginTransaction();
@@ -3219,7 +3460,7 @@ namespace SUMEDCO
             }
             else //Ajouter une sortie stock par ligne Appro
             {
-                for (int i = 0; i < ap.dgvAppro.RowCount - 1; i++)
+                for (int i = 0; i < ap.dgvAppro.RowCount; i++)
                 {
                     ap.idposte = TrouverId("poste", ap.depot);
                     id = NouveauID("sortie");
@@ -3249,7 +3490,7 @@ namespace SUMEDCO
         #endregion
 
         #region APPRO_STOCK_SECONDAIRES
-        public void AfficherCommandePha(FormApproCommande a, string motif)
+        public void AfficherCommandePha(StockApproCom a, string motif)
         {
             if (a.cboCategorie.Text != "" && a.cboDepot.Text != "")
             {
@@ -3303,7 +3544,7 @@ namespace SUMEDCO
             }
             else MessageBox.Show("Vérifiez qu'une catégorie et un dépôt sont sélectionnés", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
-        public void TrouverApproCommandePha(FormApproCommande a)
+        public void TrouverApproCommandePha(StockApproCom a)
         {
             con.Open();
             try
@@ -3327,7 +3568,7 @@ namespace SUMEDCO
         #endregion
 
         #region UTILISATEUR
-        public void Enregistrer(FormUtilisateur u)
+        public void Enregistrer(AdminUtilisateur u)
         {
             if (u.cboPoste.Text != "" && u.txtUtilisateur.Text != "" && u.txtSpecification.Text != "")
             {
@@ -3377,7 +3618,7 @@ namespace SUMEDCO
                 MessageBox.Show("Désolé! Champ(s) obligatoire(s) vide(s)\nRemplissez-le(s).", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        public void Annuler(FormUtilisateur c)
+        public void Annuler(AdminUtilisateur c)
         {
             c.cboPoste.DropDownStyle = ComboBoxStyle.DropDown;
             c.cboPoste.SelectedText = "";
@@ -3390,7 +3631,7 @@ namespace SUMEDCO
             c.txtSpecification.Enabled = false;
             c.cboPoste.Select();
         }
-        public void Modifier(FormUtilisateur u)
+        public void Modifier(AdminUtilisateur u)
         {
             if (u.cboPoste.Text != "" && u.txtUtilisateur.Text != "" && u.txtSpecification.Text != "")
             {
@@ -3422,7 +3663,7 @@ namespace SUMEDCO
                 MessageBox.Show("Désolé! Champ(s) obligatoire(s) vide(s)\nRemplissez-le(s).", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        public void Modifier(FormConnexionPass c)
+        public void Modifier(ConnexionPass c)
         {
             if(TestMotdePass(c))
             {
@@ -3468,7 +3709,7 @@ namespace SUMEDCO
                     MessageBox.Show("Confirmation du nouveau mot de passe invalide! \n\nLe mot de passe ne doit pas être si facile que 111111 ou 123456", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public void Supprimer(FormUtilisateur c)
+        public void Supprimer(AdminUtilisateur c)
         {
             con.Open();
             SqlTransaction tx = con.BeginTransaction();
@@ -3490,7 +3731,7 @@ namespace SUMEDCO
             Afficher(c);
             Annuler(c);
         }
-        public void Afficher(FormUtilisateur c)
+        public void Afficher(AdminUtilisateur c)
         {
             //Modifier cette méthode pour permettre la recherche
             con.Open();
@@ -3512,7 +3753,7 @@ namespace SUMEDCO
             catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
             con.Close();
         }
-        public void Recuperer(FormUtilisateur c)
+        public void Recuperer(AdminUtilisateur c)
         {
             c.btnSupprimer.Enabled = true;
             c.btnEnregistrer.Enabled = false;
@@ -3526,11 +3767,11 @@ namespace SUMEDCO
     }
     public class FicheStock
     {
-        public int num { get; set; }
+        public string num { get; set; }
         public string date_jour { get; set; }
-        public int entree { get; set; }
-        public int sortie { get; set; }
-        public int stock { get; set; }
+        public string entree { get; set; }
+        public string sortie { get; set; }
+        public string stock { get; set; }
     }
     public class ResumeRapportCas
     {

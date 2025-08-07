@@ -12,7 +12,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\AUDIO-VISUEL\Desktop\TaxCollector v1.0\</PublishUrl>
+    <PublishUrl>G:\SSM\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -24,7 +24,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <TargetCulture>fr</TargetCulture>
     <PublisherName>MTM Foundation</PublisherName>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -66,17 +66,14 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>65CB36ADEC7DEAA790A57AFBCE4AC3F667786A1D</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>F3F7C304DBF9432F3A13090F0F4EB07D9705632B</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>SUMEDCO_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>SUMEDCO_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bunifu_UI_v1.5.3">
       <HintPath>..\..\RMS\Nouveau dossier\Bunifu_UI_v1.5.3.dll</HintPath>
-    </Reference>
-    <Reference Include="itextsharp">
-      <HintPath>..\..\SUMEDCORepo\dll\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
@@ -104,32 +101,33 @@
       <DependentUpon>AbonneTrace.cs</DependentUpon>
     </Compile>
     <Compile Include="AbonneTraceClasse.cs" />
+    <Compile Include="AttenteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AttenteForm.Designer.cs">
+      <DependentUpon>AttenteForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ClassConnexion.cs" />
-    <Compile Include="ClasseGeneraleDGV.cs" />
+    <Compile Include="ClasseElements.cs" />
+    <Compile Include="DataLoader.cs" />
     <Compile Include="ComptaEcriture.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ComptaEcriture.Designer.cs">
       <DependentUpon>ComptaEcriture.cs</DependentUpon>
     </Compile>
-    <Compile Include="ExerciceClasse.cs" />
-    <Compile Include="FormComptaExercice.cs">
+    <Compile Include="ClasseExercice.cs" />
+    <Compile Include="ComptaExercice.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormComptaExercice.Designer.cs">
-      <DependentUpon>FormComptaExercice.cs</DependentUpon>
+    <Compile Include="ComptaExercice.Designer.cs">
+      <DependentUpon>ComptaExercice.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormPharmaInventaire.cs">
+    <Compile Include="StockRetour.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormPharmaInventaire.Designer.cs">
-      <DependentUpon>FormPharmaInventaire.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormStockRetour.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormStockRetour.Designer.cs">
-      <DependentUpon>FormStockRetour.cs</DependentUpon>
+    <Compile Include="StockRetour.Designer.cs">
+      <DependentUpon>StockRetour.cs</DependentUpon>
     </Compile>
     <Compile Include="ClassCompta.cs" />
     <Compile Include="ClassMalade.cs" />
@@ -139,62 +137,62 @@
     <Compile Include="PharmacieFacturation.Designer.cs">
       <DependentUpon>PharmacieFacturation.cs</DependentUpon>
     </Compile>
-    <Compile Include="PharmacieFacturationClasse.cs" />
+    <Compile Include="ConnexionClasse.cs" />
     <Compile Include="ReceptionFactureClasse.cs" />
     <Compile Include="ClassStock.cs" />
-    <Compile Include="FormAbonnePersoRapport.cs">
+    <Compile Include="AbonneRapport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAbonnePersoRapport.Designer.cs">
-      <DependentUpon>FormAbonnePersoRapport.cs</DependentUpon>
+    <Compile Include="AbonneRapport.Designer.cs">
+      <DependentUpon>AbonneRapport.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAdminRapportCas.cs">
+    <Compile Include="AdminRapportCas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAdminRapportCas.Designer.cs">
-      <DependentUpon>FormAdminRapportCas.cs</DependentUpon>
+    <Compile Include="AdminRapportCas.Designer.cs">
+      <DependentUpon>AdminRapportCas.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAdminRapportCasMedecin.cs">
+    <Compile Include="AdminCasMedecin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAdminRapportCasMedecin.Designer.cs">
-      <DependentUpon>FormAdminRapportCasMedecin.cs</DependentUpon>
+    <Compile Include="AdminCasMedecin.Designer.cs">
+      <DependentUpon>AdminCasMedecin.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAgendaLaboResult.cs">
+    <Compile Include="LaboResult.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAgendaLaboResult.Designer.cs">
-      <DependentUpon>FormAgendaLaboResult.cs</DependentUpon>
+    <Compile Include="LaboResult.Designer.cs">
+      <DependentUpon>LaboResult.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAutorisation.cs">
+    <Compile Include="ConnexionAutorisation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAutorisation.Designer.cs">
-      <DependentUpon>FormAutorisation.cs</DependentUpon>
+    <Compile Include="ConnexionAutorisation.Designer.cs">
+      <DependentUpon>ConnexionAutorisation.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormRecetteRapport.cs">
+    <Compile Include="RecetteRapport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormRecetteRapport.Designer.cs">
-      <DependentUpon>FormRecetteRapport.cs</DependentUpon>
+    <Compile Include="RecetteRapport.Designer.cs">
+      <DependentUpon>RecetteRapport.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormComptaGdLivre.cs">
+    <Compile Include="ComptaGdLivre.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormComptaGdLivre.Designer.cs">
-      <DependentUpon>FormComptaGdLivre.cs</DependentUpon>
+    <Compile Include="ComptaGdLivre.Designer.cs">
+      <DependentUpon>ComptaGdLivre.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormPatientRecherche.cs">
+    <Compile Include="ReceptionPatient.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormPatientRecherche.Designer.cs">
-      <DependentUpon>FormPatientRecherche.cs</DependentUpon>
+    <Compile Include="ReceptionPatient.Designer.cs">
+      <DependentUpon>ReceptionPatient.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormStockServir.cs">
+    <Compile Include="StockSortie.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormStockServir.Designer.cs">
-      <DependentUpon>FormStockServir.cs</DependentUpon>
+    <Compile Include="StockSortie.Designer.cs">
+      <DependentUpon>StockSortie.cs</DependentUpon>
     </Compile>
     <Compile Include="FormComAutre.cs">
       <SubType>Form</SubType>
@@ -202,125 +200,101 @@
     <Compile Include="FormComAutre.Designer.cs">
       <DependentUpon>FormComAutre.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormStockAlerte.cs">
+    <Compile Include="StockAlerte.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormStockAlerte.Designer.cs">
-      <DependentUpon>FormStockAlerte.cs</DependentUpon>
+    <Compile Include="StockAlerte.Designer.cs">
+      <DependentUpon>StockAlerte.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormComptaBalance.cs">
+    <Compile Include="ComptaBalance.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormComptaBalance.Designer.cs">
-      <DependentUpon>FormComptaBalance.cs</DependentUpon>
+    <Compile Include="ComptaBalance.Designer.cs">
+      <DependentUpon>ComptaBalance.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormComptabilite.cs">
+    <Compile Include="StockData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StockData.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="StockInventaire.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormComptabilite.Designer.cs">
-      <DependentUpon>FormComptabilite.cs</DependentUpon>
+    <Compile Include="StockInventaire.Designer.cs">
+      <DependentUpon>StockInventaire.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormComptabilite2.cs">
+    <Compile Include="ComptaJournal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormComptabilite2.Designer.cs">
-      <DependentUpon>FormComptabilite2.cs</DependentUpon>
+    <Compile Include="ComptaJournal.Designer.cs">
+      <DependentUpon>ComptaJournal.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAbonneRapport.cs">
+    <Compile Include="ComptaOperation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAbonneRapport.Designer.cs">
-      <DependentUpon>FormAbonneRapport.cs</DependentUpon>
+    <Compile Include="ComptaOperation.Designer.cs">
+      <DependentUpon>ComptaOperation.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormStockInventaire.cs">
+    <Compile Include="ComptaResultat.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormStockInventaire.Designer.cs">
-      <DependentUpon>FormStockInventaire.cs</DependentUpon>
+    <Compile Include="ComptaResultat.Designer.cs">
+      <DependentUpon>ComptaResultat.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormComptaJournal.cs">
+    <Compile Include="ComptaTableauFlux.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormComptaJournal.Designer.cs">
-      <DependentUpon>FormComptaJournal.cs</DependentUpon>
+    <Compile Include="ComptaTableauFlux.Designer.cs">
+      <DependentUpon>ComptaTableauFlux.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormComptaOperation.cs">
+    <Compile Include="MedConsulter.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormComptaOperation.Designer.cs">
-      <DependentUpon>FormComptaOperation.cs</DependentUpon>
+    <Compile Include="MedConsulter.Designer.cs">
+      <DependentUpon>MedConsulter.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormComptaResultat.cs">
+    <Compile Include="MedPatientList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormComptaResultat.Designer.cs">
-      <DependentUpon>FormComptaResultat.cs</DependentUpon>
+    <Compile Include="MedPatientList.Designer.cs">
+      <DependentUpon>MedPatientList.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormComptaTableauFlux.cs">
+    <Compile Include="MedRendezVous.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormComptaTableauFlux.Designer.cs">
-      <DependentUpon>FormComptaTableauFlux.cs</DependentUpon>
+    <Compile Include="MedRendezVous.Designer.cs">
+      <DependentUpon>MedRendezVous.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormCompte.cs">
+    <Compile Include="TresorerieClasse.cs" />
+    <Compile Include="TresoSortie.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormCompte.Designer.cs">
-      <DependentUpon>FormCompte.cs</DependentUpon>
+    <Compile Include="TresoSortie.Designer.cs">
+      <DependentUpon>TresoSortie.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormConsulter.cs">
+    <Compile Include="TresoFlux.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormConsulter.Designer.cs">
-      <DependentUpon>FormConsulter.cs</DependentUpon>
+    <Compile Include="TresoFlux.Designer.cs">
+      <DependentUpon>TresoFlux.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormConsulterPrise.cs">
+    <Compile Include="StockFicheStock.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormConsulterPrise.Designer.cs">
-      <DependentUpon>FormConsulterPrise.cs</DependentUpon>
+    <Compile Include="StockFicheStock.Designer.cs">
+      <DependentUpon>StockFicheStock.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormConsulterRendezVous.cs">
+    <Compile Include="InfPriseSigneVital.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormConsulterRendezVous.Designer.cs">
-      <DependentUpon>FormConsulterRendezVous.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormTresoSortie.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormTresoSortie.Designer.cs">
-      <DependentUpon>FormTresoSortie.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormTresoJournal.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormTresoJournal.Designer.cs">
-      <DependentUpon>FormTresoJournal.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormStockFicheStock.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormStockFicheStock.Designer.cs">
-      <DependentUpon>FormStockFicheStock.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormPriseSigneVital.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormPriseSigneVital.Designer.cs">
-      <DependentUpon>FormPriseSigneVital.cs</DependentUpon>
+    <Compile Include="InfPriseSigneVital.Designer.cs">
+      <DependentUpon>InfPriseSigneVital.cs</DependentUpon>
     </Compile>
     <Compile Include="FormFacture.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormFacture.Designer.cs">
       <DependentUpon>FormFacture.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormFactureProduit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormFactureProduit.Designer.cs">
-      <DependentUpon>FormFactureProduit.cs</DependentUpon>
     </Compile>
     <Compile Include="FormFactureProduit2.cs">
       <SubType>Form</SubType>
@@ -340,53 +314,53 @@
     <Compile Include="FormImpression.Designer.cs">
       <DependentUpon>FormImpression.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMaladie.cs">
+    <Compile Include="MedMaladie.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMaladie.Designer.cs">
-      <DependentUpon>FormMaladie.cs</DependentUpon>
+    <Compile Include="MedMaladie.Designer.cs">
+      <DependentUpon>MedMaladie.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMaladieDiagnostic.cs">
+    <Compile Include="MedMaladieDiagno.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMaladieDiagnostic.Designer.cs">
-      <DependentUpon>FormMaladieDiagnostic.cs</DependentUpon>
+    <Compile Include="MedMaladieDiagno.Designer.cs">
+      <DependentUpon>MedMaladieDiagno.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMessageHisto.cs">
+    <Compile Include="MedMessageHisto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMessageHisto.Designer.cs">
-      <DependentUpon>FormMessageHisto.cs</DependentUpon>
+    <Compile Include="MedMessageHisto.Designer.cs">
+      <DependentUpon>MedMessageHisto.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMessage.cs">
+    <Compile Include="MedMessage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMessage.Designer.cs">
-      <DependentUpon>FormMessage.cs</DependentUpon>
+    <Compile Include="MedMessage.Designer.cs">
+      <DependentUpon>MedMessage.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormTresoRapport.cs">
+    <Compile Include="TresoRapport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormTresoRapport.Designer.cs">
-      <DependentUpon>FormTresoRapport.cs</DependentUpon>
+    <Compile Include="TresoRapport.Designer.cs">
+      <DependentUpon>TresoRapport.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormRecetteJournal.cs">
+    <Compile Include="RecetteJournal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormRecetteJournal.Designer.cs">
-      <DependentUpon>FormRecetteJournal.cs</DependentUpon>
+    <Compile Include="RecetteJournal.Designer.cs">
+      <DependentUpon>RecetteJournal.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAdminStatService.cs">
+    <Compile Include="AdminStatService.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAdminStatService.Designer.cs">
-      <DependentUpon>FormAdminStatService.cs</DependentUpon>
+    <Compile Include="AdminStatService.Designer.cs">
+      <DependentUpon>AdminStatService.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormConsulterPresc.cs">
+    <Compile Include="MedConsulterPresc.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormConsulterPresc.Designer.cs">
-      <DependentUpon>FormConsulterPresc.cs</DependentUpon>
+    <Compile Include="MedConsulterPresc.Designer.cs">
+      <DependentUpon>MedConsulterPresc.cs</DependentUpon>
     </Compile>
     <Compile Include="FormConsultationStat.cs">
       <SubType>Form</SubType>
@@ -394,17 +368,11 @@
     <Compile Include="FormConsultationStat.Designer.cs">
       <DependentUpon>FormConsultationStat.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormStockProduit.cs">
+    <Compile Include="StockProduit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormStockProduit.Designer.cs">
-      <DependentUpon>FormStockProduit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormTraitement.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormTraitement.Designer.cs">
-      <DependentUpon>FormTraitement.cs</DependentUpon>
+    <Compile Include="StockProduit.Designer.cs">
+      <DependentUpon>StockProduit.cs</DependentUpon>
     </Compile>
     <Compile Include="FormUtilisation.cs">
       <SubType>Form</SubType>
@@ -412,11 +380,11 @@
     <Compile Include="FormUtilisation.Designer.cs">
       <DependentUpon>FormUtilisation.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormConsultation.cs">
+    <Compile Include="MedConsultation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormConsultation.Designer.cs">
-      <DependentUpon>FormConsultation.cs</DependentUpon>
+    <Compile Include="MedConsultation.Designer.cs">
+      <DependentUpon>MedConsultation.cs</DependentUpon>
     </Compile>
     <Compile Include="LaboMDI.cs">
       <SubType>Form</SubType>
@@ -424,41 +392,41 @@
     <Compile Include="LaboMDI.Designer.cs">
       <DependentUpon>LaboMDI.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAgendaLabo.cs">
+    <Compile Include="LaboAgenda.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAgendaLabo.Designer.cs">
-      <DependentUpon>FormAgendaLabo.cs</DependentUpon>
+    <Compile Include="LaboAgenda.Designer.cs">
+      <DependentUpon>LaboAgenda.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormRecette.cs">
+    <Compile Include="Recette.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormRecette.Designer.cs">
-      <DependentUpon>FormRecette.cs</DependentUpon>
+    <Compile Include="Recette.Designer.cs">
+      <DependentUpon>Recette.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormHistoCommande.cs">
+    <Compile Include="StockHistoCommande.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormHistoCommande.Designer.cs">
-      <DependentUpon>FormHistoCommande.cs</DependentUpon>
+    <Compile Include="StockHistoCommande.Designer.cs">
+      <DependentUpon>StockHistoCommande.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAgendaEcho.cs">
+    <Compile Include="EchoAgenda.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAgendaEcho.Designer.cs">
-      <DependentUpon>FormAgendaEcho.cs</DependentUpon>
+    <Compile Include="EchoAgenda.Designer.cs">
+      <DependentUpon>EchoAgenda.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormStockPha.cs">
+    <Compile Include="StockPharmacie.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormStockPha.Designer.cs">
-      <DependentUpon>FormStockPha.cs</DependentUpon>
+    <Compile Include="StockPharmacie.Designer.cs">
+      <DependentUpon>StockPharmacie.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormTresoEntree.cs">
+    <Compile Include="TresoEntree.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormTresoEntree.Designer.cs">
-      <DependentUpon>FormTresoEntree.cs</DependentUpon>
+    <Compile Include="TresoEntree.Designer.cs">
+      <DependentUpon>TresoEntree.cs</DependentUpon>
     </Compile>
     <Compile Include="FormProduitPharma.cs">
       <SubType>Form</SubType>
@@ -466,23 +434,23 @@
     <Compile Include="FormProduitPharma.Designer.cs">
       <DependentUpon>FormProduitPharma.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormApproCommande.cs">
+    <Compile Include="StockApproCom.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormApproCommande.Designer.cs">
-      <DependentUpon>FormApproCommande.cs</DependentUpon>
+    <Compile Include="StockApproCom.Designer.cs">
+      <DependentUpon>StockApproCom.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormStockNouveau.cs">
+    <Compile Include="StockNouveau.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormStockNouveau.Designer.cs">
-      <DependentUpon>FormStockNouveau.cs</DependentUpon>
+    <Compile Include="StockNouveau.Designer.cs">
+      <DependentUpon>StockNouveau.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormComptes.cs">
+    <Compile Include="ComptaComptes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormComptes.Designer.cs">
-      <DependentUpon>FormComptes.cs</DependentUpon>
+    <Compile Include="ComptaComptes.Designer.cs">
+      <DependentUpon>ComptaComptes.cs</DependentUpon>
     </Compile>
     <Compile Include="AbonneMDI.cs">
       <SubType>Form</SubType>
@@ -502,11 +470,11 @@
     <Compile Include="ComptabiliteMDI.Designer.cs">
       <DependentUpon>ComptabiliteMDI.cs</DependentUpon>
     </Compile>
-    <Compile Include="ConsultationMDI.cs">
+    <Compile Include="MedMDI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ConsultationMDI.Designer.cs">
-      <DependentUpon>ConsultationMDI.cs</DependentUpon>
+    <Compile Include="MedMDI.Designer.cs">
+      <DependentUpon>MedMDI.cs</DependentUpon>
     </Compile>
     <Compile Include="DateTaux.cs">
       <SubType>Form</SubType>
@@ -514,17 +482,17 @@
     <Compile Include="DateTaux.Designer.cs">
       <DependentUpon>DateTaux.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormComptaPlan.cs">
+    <Compile Include="ComptaPlan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormComptaPlan.Designer.cs">
-      <DependentUpon>FormComptaPlan.cs</DependentUpon>
+    <Compile Include="ComptaPlan.Designer.cs">
+      <DependentUpon>ComptaPlan.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormConsultationDossier.cs">
+    <Compile Include="MedDossierPatient.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormConsultationDossier.Designer.cs">
-      <DependentUpon>FormConsultationDossier.cs</DependentUpon>
+    <Compile Include="MedDossierPatient.Designer.cs">
+      <DependentUpon>MedDossierPatient.cs</DependentUpon>
     </Compile>
     <Compile Include="Accueil.cs">
       <SubType>Form</SubType>
@@ -538,29 +506,29 @@
     <Compile Include="AdminMDI.Designer.cs">
       <DependentUpon>AdminMDI.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAgendaNursing.cs">
+    <Compile Include="InfPatientList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAgendaNursing.Designer.cs">
-      <DependentUpon>FormAgendaNursing.cs</DependentUpon>
+    <Compile Include="InfPatientList.Designer.cs">
+      <DependentUpon>InfPatientList.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormConnexion.cs">
+    <Compile Include="Connexion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormConnexion.Designer.cs">
-      <DependentUpon>FormConnexion.cs</DependentUpon>
+    <Compile Include="Connexion.Designer.cs">
+      <DependentUpon>Connexion.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormComptaBilan.cs">
+    <Compile Include="ComptaBilan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormComptaBilan.Designer.cs">
-      <DependentUpon>FormComptaBilan.cs</DependentUpon>
+    <Compile Include="ComptaBilan.Designer.cs">
+      <DependentUpon>ComptaBilan.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormUtilisateur.cs">
+    <Compile Include="AdminUtilisateur.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormUtilisateur.Designer.cs">
-      <DependentUpon>FormUtilisateur.cs</DependentUpon>
+    <Compile Include="AdminUtilisateur.Designer.cs">
+      <DependentUpon>AdminUtilisateur.cs</DependentUpon>
     </Compile>
     <Compile Include="FormFactureService.cs">
       <SubType>Form</SubType>
@@ -568,23 +536,23 @@
     <Compile Include="FormFactureService.Designer.cs">
       <DependentUpon>FormFactureService.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormTresoDepense.cs">
+    <Compile Include="TresoAnnuler.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormTresoDepense.Designer.cs">
-      <DependentUpon>FormTresoDepense.cs</DependentUpon>
+    <Compile Include="TresoAnnuler.Designer.cs">
+      <DependentUpon>TresoAnnuler.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormConnexionPass.cs">
+    <Compile Include="ConnexionPass.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormConnexionPass.Designer.cs">
-      <DependentUpon>FormConnexionPass.cs</DependentUpon>
+    <Compile Include="ConnexionPass.Designer.cs">
+      <DependentUpon>ConnexionPass.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormPatient.cs">
+    <Compile Include="ReceptionPatientNew.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormPatient.Designer.cs">
-      <DependentUpon>FormPatient.cs</DependentUpon>
+    <Compile Include="ReceptionPatientNew.Designer.cs">
+      <DependentUpon>ReceptionPatientNew.cs</DependentUpon>
     </Compile>
     <Compile Include="EchoRadioMDI.cs">
       <SubType>Form</SubType>
@@ -592,6 +560,7 @@
     <Compile Include="EchoRadioMDI.Designer.cs">
       <DependentUpon>EchoRadioMDI.cs</DependentUpon>
     </Compile>
+    <Compile Include="RecetteClasse.cs" />
     <Compile Include="StockTrace.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -599,11 +568,11 @@
       <DependentUpon>StockTrace.cs</DependentUpon>
     </Compile>
     <Compile Include="StockTraceClasse.cs" />
-    <Compile Include="TresorerieFlux.cs">
+    <Compile Include="TresoFluxNew.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TresorerieFlux.Designer.cs">
-      <DependentUpon>TresorerieFlux.cs</DependentUpon>
+    <Compile Include="TresoFluxNew.Designer.cs">
+      <DependentUpon>TresoFluxNew.cs</DependentUpon>
     </Compile>
     <Compile Include="TresorerieMDI.cs">
       <SubType>Form</SubType>
@@ -617,11 +586,11 @@
     <Compile Include="PharmacieMDI.Designer.cs">
       <DependentUpon>PharmacieMDI.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormPhamaVente.cs">
+    <Compile Include="PharmacieVente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormPhamaVente.Designer.cs">
-      <DependentUpon>FormPhamaVente.cs</DependentUpon>
+    <Compile Include="PharmacieVente.Designer.cs">
+      <DependentUpon>PharmacieVente.cs</DependentUpon>
     </Compile>
     <Compile Include="ReceptionMDI.cs">
       <SubType>Form</SubType>
@@ -635,23 +604,23 @@
     <Compile Include="RecetteMDI.Designer.cs">
       <DependentUpon>RecetteMDI.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormComptaRecetteDepense.cs">
+    <Compile Include="ComptaRecetteDepense.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormComptaRecetteDepense.Designer.cs">
-      <DependentUpon>FormComptaRecetteDepense.cs</DependentUpon>
+    <Compile Include="ComptaRecetteDepense.Designer.cs">
+      <DependentUpon>ComptaRecetteDepense.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAgendaLaboRslt.cs">
+    <Compile Include="LaboResultNew.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAgendaLaboRslt.Designer.cs">
-      <DependentUpon>FormAgendaLaboRslt.cs</DependentUpon>
+    <Compile Include="LaboResultNew.Designer.cs">
+      <DependentUpon>LaboResultNew.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormSigneVital.cs">
+    <Compile Include="SigneVital.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormSigneVital.Designer.cs">
-      <DependentUpon>FormSigneVital.cs</DependentUpon>
+    <Compile Include="SigneVital.Designer.cs">
+      <DependentUpon>SigneVital.cs</DependentUpon>
     </Compile>
     <Compile Include="InfirmerieMDI.cs">
       <SubType>Form</SubType>
@@ -665,11 +634,11 @@
     <Compile Include="StockMDI.Designer.cs">
       <DependentUpon>StockMDI.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMedecin.cs">
+    <Compile Include="MedMedecin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMedecin.Designer.cs">
-      <DependentUpon>FormMedecin.cs</DependentUpon>
+    <Compile Include="MedMedecin.Designer.cs">
+      <DependentUpon>MedMedecin.cs</DependentUpon>
     </Compile>
     <Compile Include="FormAccueil.cs">
       <SubType>Form</SubType>
@@ -677,37 +646,37 @@
     <Compile Include="FormAccueil.Designer.cs">
       <DependentUpon>FormAccueil.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAdmin.cs">
+    <Compile Include="Admin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAdmin.Designer.cs">
-      <DependentUpon>FormAdmin.cs</DependentUpon>
+    <Compile Include="Admin.Designer.cs">
+      <DependentUpon>Admin.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="FormApprov.cs">
+    <Compile Include="StockApprov.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormApprov.Designer.cs">
-      <DependentUpon>FormApprov.cs</DependentUpon>
+    <Compile Include="StockApprov.Designer.cs">
+      <DependentUpon>StockApprov.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormService.cs">
+    <Compile Include="Service.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormService.Designer.cs">
-      <DependentUpon>FormService.cs</DependentUpon>
+    <Compile Include="Service.Designer.cs">
+      <DependentUpon>Service.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormReceptionRapport.cs">
+    <Compile Include="ReceptionRapport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormReceptionRapport.Designer.cs">
-      <DependentUpon>FormReceptionRapport.cs</DependentUpon>
+    <Compile Include="ReceptionRapport.Designer.cs">
+      <DependentUpon>ReceptionRapport.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormApproAutre.cs">
+    <Compile Include="StockApproAutre.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormApproAutre.Designer.cs">
-      <DependentUpon>FormApproAutre.cs</DependentUpon>
+    <Compile Include="StockApproAutre.Designer.cs">
+      <DependentUpon>StockApproAutre.cs</DependentUpon>
     </Compile>
     <Compile Include="ReceptionFacturation.cs">
       <SubType>Form</SubType>
@@ -726,6 +695,9 @@
       <DependentUpon>AbonneTrace.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AgendaPatient.rdlc" />
+    <EmbeddedResource Include="AttenteForm.resx">
+      <DependentUpon>AttenteForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Balance.rdlc" />
     <EmbeddedResource Include="Bilan.rdlc" />
     <EmbeddedResource Include="BilanActif.rdlc" />
@@ -743,110 +715,92 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DossierPatient.rdlc" />
     <EmbeddedResource Include="FicheStock.rdlc" />
-    <EmbeddedResource Include="FormComptaExercice.resx">
-      <DependentUpon>FormComptaExercice.cs</DependentUpon>
+    <EmbeddedResource Include="ComptaExercice.resx">
+      <DependentUpon>ComptaExercice.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormPharmaInventaire.resx">
-      <DependentUpon>FormPharmaInventaire.cs</DependentUpon>
+    <EmbeddedResource Include="StockRetour.resx">
+      <DependentUpon>StockRetour.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormStockRetour.resx">
-      <DependentUpon>FormStockRetour.cs</DependentUpon>
+    <EmbeddedResource Include="AbonneRapport.resx">
+      <DependentUpon>AbonneRapport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAbonnePersoRapport.resx">
-      <DependentUpon>FormAbonnePersoRapport.cs</DependentUpon>
+    <EmbeddedResource Include="AdminRapportCas.resx">
+      <DependentUpon>AdminRapportCas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAdminRapportCas.resx">
-      <DependentUpon>FormAdminRapportCas.cs</DependentUpon>
+    <EmbeddedResource Include="AdminCasMedecin.resx">
+      <DependentUpon>AdminCasMedecin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAdminRapportCasMedecin.resx">
-      <DependentUpon>FormAdminRapportCasMedecin.cs</DependentUpon>
+    <EmbeddedResource Include="LaboResult.fr.resx">
+      <DependentUpon>LaboResult.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAgendaLaboResult.fr.resx">
-      <DependentUpon>FormAgendaLaboResult.cs</DependentUpon>
+    <EmbeddedResource Include="LaboResult.resx">
+      <DependentUpon>LaboResult.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAgendaLaboResult.resx">
-      <DependentUpon>FormAgendaLaboResult.cs</DependentUpon>
+    <EmbeddedResource Include="ConnexionAutorisation.resx">
+      <DependentUpon>ConnexionAutorisation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAutorisation.resx">
-      <DependentUpon>FormAutorisation.cs</DependentUpon>
+    <EmbeddedResource Include="RecetteRapport.resx">
+      <DependentUpon>RecetteRapport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormRecetteRapport.resx">
-      <DependentUpon>FormRecetteRapport.cs</DependentUpon>
+    <EmbeddedResource Include="ComptaGdLivre.resx">
+      <DependentUpon>ComptaGdLivre.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormComptaGdLivre.resx">
-      <DependentUpon>FormComptaGdLivre.cs</DependentUpon>
+    <EmbeddedResource Include="ReceptionPatient.resx">
+      <DependentUpon>ReceptionPatient.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormPatientRecherche.resx">
-      <DependentUpon>FormPatientRecherche.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormStockServir.resx">
-      <DependentUpon>FormStockServir.cs</DependentUpon>
+    <EmbeddedResource Include="StockSortie.resx">
+      <DependentUpon>StockSortie.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormComAutre.resx">
       <DependentUpon>FormComAutre.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormStockAlerte.resx">
-      <DependentUpon>FormStockAlerte.cs</DependentUpon>
+    <EmbeddedResource Include="StockAlerte.resx">
+      <DependentUpon>StockAlerte.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormComptaBalance.resx">
-      <DependentUpon>FormComptaBalance.cs</DependentUpon>
+    <EmbeddedResource Include="ComptaBalance.resx">
+      <DependentUpon>ComptaBalance.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormComptabilite.resx">
-      <DependentUpon>FormComptabilite.cs</DependentUpon>
+    <EmbeddedResource Include="StockInventaire.resx">
+      <DependentUpon>StockInventaire.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormComptabilite2.resx">
-      <DependentUpon>FormComptabilite2.cs</DependentUpon>
+    <EmbeddedResource Include="ComptaJournal.resx">
+      <DependentUpon>ComptaJournal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAbonneRapport.resx">
-      <DependentUpon>FormAbonneRapport.cs</DependentUpon>
+    <EmbeddedResource Include="ComptaOperation.resx">
+      <DependentUpon>ComptaOperation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormStockInventaire.resx">
-      <DependentUpon>FormStockInventaire.cs</DependentUpon>
+    <EmbeddedResource Include="ComptaResultat.resx">
+      <DependentUpon>ComptaResultat.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormComptaJournal.resx">
-      <DependentUpon>FormComptaJournal.cs</DependentUpon>
+    <EmbeddedResource Include="ComptaTableauFlux.resx">
+      <DependentUpon>ComptaTableauFlux.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormComptaOperation.resx">
-      <DependentUpon>FormComptaOperation.cs</DependentUpon>
+    <EmbeddedResource Include="ConnexionPass.resx">
+      <DependentUpon>ConnexionPass.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormComptaResultat.resx">
-      <DependentUpon>FormComptaResultat.cs</DependentUpon>
+    <EmbeddedResource Include="MedConsulter.resx">
+      <DependentUpon>MedConsulter.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormComptaTableauFlux.resx">
-      <DependentUpon>FormComptaTableauFlux.cs</DependentUpon>
+    <EmbeddedResource Include="MedPatientList.resx">
+      <DependentUpon>MedPatientList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormCompte.resx">
-      <DependentUpon>FormCompte.cs</DependentUpon>
+    <EmbeddedResource Include="MedRendezVous.resx">
+      <DependentUpon>MedRendezVous.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormConnexionPass.resx">
-      <DependentUpon>FormConnexionPass.cs</DependentUpon>
+    <EmbeddedResource Include="TresoSortie.resx">
+      <DependentUpon>TresoSortie.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormConsulter.resx">
-      <DependentUpon>FormConsulter.cs</DependentUpon>
+    <EmbeddedResource Include="TresoFlux.resx">
+      <DependentUpon>TresoFlux.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormConsulterPrise.resx">
-      <DependentUpon>FormConsulterPrise.cs</DependentUpon>
+    <EmbeddedResource Include="StockFicheStock.resx">
+      <DependentUpon>StockFicheStock.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormConsulterRendezVous.resx">
-      <DependentUpon>FormConsulterRendezVous.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormTresoSortie.resx">
-      <DependentUpon>FormTresoSortie.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormTresoJournal.resx">
-      <DependentUpon>FormTresoJournal.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormStockFicheStock.resx">
-      <DependentUpon>FormStockFicheStock.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormPriseSigneVital.resx">
-      <DependentUpon>FormPriseSigneVital.cs</DependentUpon>
+    <EmbeddedResource Include="InfPriseSigneVital.resx">
+      <DependentUpon>InfPriseSigneVital.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormFacture.resx">
       <DependentUpon>FormFacture.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormFactureProduit.resx">
-      <DependentUpon>FormFactureProduit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormFactureProduit2.resx">
       <DependentUpon>FormFactureProduit2.cs</DependentUpon>
@@ -854,87 +808,84 @@
     <EmbeddedResource Include="FormPayement.resx">
       <DependentUpon>FormPayement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormTresoDepense.resx">
-      <DependentUpon>FormTresoDepense.cs</DependentUpon>
+    <EmbeddedResource Include="TresoAnnuler.resx">
+      <DependentUpon>TresoAnnuler.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormImpression.resx">
       <DependentUpon>FormImpression.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMaladie.resx">
-      <DependentUpon>FormMaladie.cs</DependentUpon>
+    <EmbeddedResource Include="MedMaladie.resx">
+      <DependentUpon>MedMaladie.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMaladieDiagnostic.resx">
-      <DependentUpon>FormMaladieDiagnostic.cs</DependentUpon>
+    <EmbeddedResource Include="MedMaladieDiagno.resx">
+      <DependentUpon>MedMaladieDiagno.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMessageHisto.resx">
-      <DependentUpon>FormMessageHisto.cs</DependentUpon>
+    <EmbeddedResource Include="MedMessageHisto.resx">
+      <DependentUpon>MedMessageHisto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMessage.resx">
-      <DependentUpon>FormMessage.cs</DependentUpon>
+    <EmbeddedResource Include="MedMessage.resx">
+      <DependentUpon>MedMessage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAdminStatService.resx">
-      <DependentUpon>FormAdminStatService.cs</DependentUpon>
+    <EmbeddedResource Include="AdminStatService.resx">
+      <DependentUpon>AdminStatService.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormComptaRecetteDepense.resx">
-      <DependentUpon>FormComptaRecetteDepense.cs</DependentUpon>
+    <EmbeddedResource Include="ComptaRecetteDepense.resx">
+      <DependentUpon>ComptaRecetteDepense.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormTresoRapport.resx">
-      <DependentUpon>FormTresoRapport.cs</DependentUpon>
+    <EmbeddedResource Include="TresoRapport.resx">
+      <DependentUpon>TresoRapport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormRecetteJournal.resx">
-      <DependentUpon>FormRecetteJournal.cs</DependentUpon>
+    <EmbeddedResource Include="RecetteJournal.resx">
+      <DependentUpon>RecetteJournal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormConsulterPresc.resx">
-      <DependentUpon>FormConsulterPresc.cs</DependentUpon>
+    <EmbeddedResource Include="MedConsulterPresc.resx">
+      <DependentUpon>MedConsulterPresc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormConsultationStat.resx">
       <DependentUpon>FormConsultationStat.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormStockProduit.resx">
-      <DependentUpon>FormStockProduit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormTraitement.resx">
-      <DependentUpon>FormTraitement.cs</DependentUpon>
+    <EmbeddedResource Include="StockProduit.resx">
+      <DependentUpon>StockProduit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormUtilisation.resx">
       <DependentUpon>FormUtilisation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormConsultation.resx">
-      <DependentUpon>FormConsultation.cs</DependentUpon>
+    <EmbeddedResource Include="MedConsultation.resx">
+      <DependentUpon>MedConsultation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GrandLivre.rdlc" />
     <EmbeddedResource Include="LaboMDI.resx">
       <DependentUpon>LaboMDI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAgendaLabo.resx">
-      <DependentUpon>FormAgendaLabo.cs</DependentUpon>
+    <EmbeddedResource Include="LaboAgenda.resx">
+      <DependentUpon>LaboAgenda.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormRecette.resx">
-      <DependentUpon>FormRecette.cs</DependentUpon>
+    <EmbeddedResource Include="Recette.resx">
+      <DependentUpon>Recette.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormHistoCommande.resx">
-      <DependentUpon>FormHistoCommande.cs</DependentUpon>
+    <EmbeddedResource Include="StockHistoCommande.resx">
+      <DependentUpon>StockHistoCommande.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAgendaEcho.resx">
-      <DependentUpon>FormAgendaEcho.cs</DependentUpon>
+    <EmbeddedResource Include="EchoAgenda.resx">
+      <DependentUpon>EchoAgenda.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormStockPha.resx">
-      <DependentUpon>FormStockPha.cs</DependentUpon>
+    <EmbeddedResource Include="StockPharmacie.resx">
+      <DependentUpon>StockPharmacie.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormTresoEntree.resx">
-      <DependentUpon>FormTresoEntree.cs</DependentUpon>
+    <EmbeddedResource Include="TresoEntree.resx">
+      <DependentUpon>TresoEntree.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormProduitPharma.resx">
       <DependentUpon>FormProduitPharma.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormApproCommande.resx">
-      <DependentUpon>FormApproCommande.cs</DependentUpon>
+    <EmbeddedResource Include="StockApproCom.resx">
+      <DependentUpon>StockApproCom.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormStockNouveau.resx">
-      <DependentUpon>FormStockNouveau.cs</DependentUpon>
+    <EmbeddedResource Include="StockNouveau.resx">
+      <DependentUpon>StockNouveau.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormComptes.resx">
-      <DependentUpon>FormComptes.cs</DependentUpon>
+    <EmbeddedResource Include="ComptaComptes.resx">
+      <DependentUpon>ComptaComptes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AbonneMDI.resx">
       <DependentUpon>AbonneMDI.cs</DependentUpon>
@@ -945,17 +896,17 @@
     <EmbeddedResource Include="ComptabiliteMDI.resx">
       <DependentUpon>ComptabiliteMDI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ConsultationMDI.resx">
-      <DependentUpon>ConsultationMDI.cs</DependentUpon>
+    <EmbeddedResource Include="MedMDI.resx">
+      <DependentUpon>MedMDI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DateTaux.resx">
       <DependentUpon>DateTaux.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormComptaPlan.resx">
-      <DependentUpon>FormComptaPlan.cs</DependentUpon>
+    <EmbeddedResource Include="ComptaPlan.resx">
+      <DependentUpon>ComptaPlan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormConsultationDossier.resx">
-      <DependentUpon>FormConsultationDossier.cs</DependentUpon>
+    <EmbeddedResource Include="MedDossierPatient.resx">
+      <DependentUpon>MedDossierPatient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Accueil.resx">
       <DependentUpon>Accueil.cs</DependentUpon>
@@ -963,23 +914,23 @@
     <EmbeddedResource Include="AdminMDI.resx">
       <DependentUpon>AdminMDI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAgendaNursing.resx">
-      <DependentUpon>FormAgendaNursing.cs</DependentUpon>
+    <EmbeddedResource Include="InfPatientList.resx">
+      <DependentUpon>InfPatientList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormConnexion.resx">
-      <DependentUpon>FormConnexion.cs</DependentUpon>
+    <EmbeddedResource Include="Connexion.resx">
+      <DependentUpon>Connexion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormComptaBilan.resx">
-      <DependentUpon>FormComptaBilan.cs</DependentUpon>
+    <EmbeddedResource Include="ComptaBilan.resx">
+      <DependentUpon>ComptaBilan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormUtilisateur.resx">
-      <DependentUpon>FormUtilisateur.cs</DependentUpon>
+    <EmbeddedResource Include="AdminUtilisateur.resx">
+      <DependentUpon>AdminUtilisateur.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormFactureService.resx">
       <DependentUpon>FormFactureService.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormPatient.resx">
-      <DependentUpon>FormPatient.cs</DependentUpon>
+    <EmbeddedResource Include="ReceptionPatientNew.resx">
+      <DependentUpon>ReceptionPatientNew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EchoRadioMDI.resx">
       <DependentUpon>EchoRadioMDI.cs</DependentUpon>
@@ -987,8 +938,8 @@
     <EmbeddedResource Include="StockTrace.resx">
       <DependentUpon>StockTrace.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TresorerieFlux.resx">
-      <DependentUpon>TresorerieFlux.cs</DependentUpon>
+    <EmbeddedResource Include="TresoFluxNew.resx">
+      <DependentUpon>TresoFluxNew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TresorerieMDI.resx">
       <DependentUpon>TresorerieMDI.cs</DependentUpon>
@@ -999,8 +950,8 @@
     <EmbeddedResource Include="PharmacieMDI.resx">
       <DependentUpon>PharmacieMDI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormPhamaVente.resx">
-      <DependentUpon>FormPhamaVente.cs</DependentUpon>
+    <EmbeddedResource Include="PharmacieVente.resx">
+      <DependentUpon>PharmacieVente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReceptionMDI.resx">
       <DependentUpon>ReceptionMDI.cs</DependentUpon>
@@ -1008,11 +959,11 @@
     <EmbeddedResource Include="RecetteMDI.resx">
       <DependentUpon>RecetteMDI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAgendaLaboRslt.resx">
-      <DependentUpon>FormAgendaLaboRslt.cs</DependentUpon>
+    <EmbeddedResource Include="LaboResultNew.resx">
+      <DependentUpon>LaboResultNew.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormSigneVital.resx">
-      <DependentUpon>FormSigneVital.cs</DependentUpon>
+    <EmbeddedResource Include="SigneVital.resx">
+      <DependentUpon>SigneVital.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InfirmerieMDI.resx">
       <DependentUpon>InfirmerieMDI.cs</DependentUpon>
@@ -1020,14 +971,14 @@
     <EmbeddedResource Include="StockMDI.resx">
       <DependentUpon>StockMDI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMedecin.resx">
-      <DependentUpon>FormMedecin.cs</DependentUpon>
+    <EmbeddedResource Include="MedMedecin.resx">
+      <DependentUpon>MedMedecin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAccueil.resx">
       <DependentUpon>FormAccueil.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAdmin.resx">
-      <DependentUpon>FormAdmin.cs</DependentUpon>
+    <EmbeddedResource Include="Admin.resx">
+      <DependentUpon>Admin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -1038,17 +989,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FormApprov.resx">
-      <DependentUpon>FormApprov.cs</DependentUpon>
+    <EmbeddedResource Include="StockApprov.resx">
+      <DependentUpon>StockApprov.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormService.resx">
-      <DependentUpon>FormService.cs</DependentUpon>
+    <EmbeddedResource Include="Service.resx">
+      <DependentUpon>Service.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormReceptionRapport.resx">
-      <DependentUpon>FormReceptionRapport.cs</DependentUpon>
+    <EmbeddedResource Include="ReceptionRapport.resx">
+      <DependentUpon>ReceptionRapport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormApproAutre.resx">
-      <DependentUpon>FormApproAutre.cs</DependentUpon>
+    <EmbeddedResource Include="StockApproAutre.resx">
+      <DependentUpon>StockApproAutre.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RapportRecette.rdlc" />
     <EmbeddedResource Include="RapportCasMedecin.rdlc" />
@@ -1090,7 +1041,18 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="SUMEDCO_TemporaryKey.pfx" />
+    <None Include="StockData.xsc">
+      <DependentUpon>StockData.xsd</DependentUpon>
+    </None>
+    <None Include="StockData.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>StockData.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="StockData.xss">
+      <DependentUpon>StockData.xsd</DependentUpon>
+    </None>
+    <None Include="SUMEDCO_1_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -1107,12 +1069,12 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 et x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
@@ -1120,6 +1082,35 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

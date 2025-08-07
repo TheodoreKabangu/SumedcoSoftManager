@@ -14,7 +14,7 @@ namespace SUMEDCO
     {
         ClassCompta cc = new ClassCompta();
         ClassMalade cm = new ClassMalade();
-        ExerciceClasse exer = new ExerciceClasse();
+        ClasseExercice exer = new ClasseExercice();
         public ComptabiliteMDI()
         {
             InitializeComponent();
@@ -34,7 +34,7 @@ namespace SUMEDCO
         }
         private void btnAppro_Click(object sender, EventArgs e)
         {
-            cc.AfficherSousForm(this, new FormApproCommande());
+            cc.AfficherSousForm(this, new StockApproCom());
             if (btnAppro.BackColor != Color.LightSlateGray)
             {
                 btnAppro.BackColor = Color.LightSlateGray;
@@ -73,75 +73,73 @@ namespace SUMEDCO
             exer.LancerCompta(this);
             cc.SousMenu(pnlCompta);
         }
-
-        private void btnRapportRecette_Click(object sender, EventArgs e)
-        {
-            cc.AfficherSousForm(this, new FormRecetteJournal());
-        }
-
-        private void btnRapportDepense_Click(object sender, EventArgs e)
-        {
-            cc.AfficherSousForm(this, new FormTresoJournal());
-        }
-
-        private void btnEcriture_Click(object sender, EventArgs e)
-        {
-            
-        }
-
+        public string affectation;
         private void btnVisualisation_Click(object sender, EventArgs e)
         {
-            cc.AfficherSousForm(this, new FormComptaOperation());
+            if (rbRoutine.Checked) type_comptabilite = rbRoutine.Text.ToLower();
+            else type_comptabilite = rbProjet.Text.ToLower();
+            cc.AfficherOperations(this, new ComptaOperation());
         }
 
         private void btnGrandLivre_Click(object sender, EventArgs e)
         {
-            cc.AfficherSousForm(this, new FormComptaGdLivre());
+            if (rbRoutine.Checked) type_comptabilite = rbRoutine.Text.ToLower();
+            else type_comptabilite = rbProjet.Text.ToLower();
+            cc.AfficherGrandLivre(this, new ComptaGdLivre());
         }
 
         private void btnBilan__Click(object sender, EventArgs e)
         {
-            cc.AfficherSousForm(this, new FormComptaBilan());
+            if (rbRoutine.Checked) type_comptabilite = rbRoutine.Text.ToLower();
+            else type_comptabilite = rbProjet.Text.ToLower();
+            cc.AfficherBilan(this, new ComptaBilan());
         }
 
         private void btnBalance__Click(object sender, EventArgs e)
         {
-            cc.AfficherSousForm(this, new FormComptaBalance());
+            if (rbRoutine.Checked) type_comptabilite = rbRoutine.Text.ToLower();
+            else type_comptabilite = rbProjet.Text.ToLower();
+            cc.AfficherBalance(this, new ComptaBalance());
         }
 
         private void btnTabFluxT_Click(object sender, EventArgs e)
         {
-            cc.AfficherSousForm(this, new FormComptaTableauFlux());
+            if (rbRoutine.Checked) type_comptabilite = rbRoutine.Text.ToLower();
+            else type_comptabilite = rbProjet.Text.ToLower();
+            cc.AfficherTableauFluxT(this, new ComptaTableauFlux());
         }
 
         private void btnResultat_Click(object sender, EventArgs e)
         {
-            cc.AfficherSousForm(this, new FormComptaResultat());
+            if (rbRoutine.Checked) type_comptabilite = rbRoutine.Text.ToLower();
+            else type_comptabilite = rbProjet.Text.ToLower();
+            cc.AfficherResultat(this, new ComptaResultat());
         }
 
         private void btnCasMedecin_Click(object sender, EventArgs e)
         {
-            cc.AfficherSousForm(this, new FormAdminRapportCasMedecin());
+            cc.AfficherSousForm(this, new AdminCasMedecin());
         }
 
         private void btnRapportGlobal_Click(object sender, EventArgs e)
         {
-            cc.AfficherSousForm(this, new FormComptaRecetteDepense());
+            //cc.AfficherSousForm(this, new ComptaRecetteDepense());
         }
 
         private void btnInventaire_Click(object sender, EventArgs e)
         {
-            cc.AfficherSousForm(this, new FormStockInventaire());
+            cc.AfficherSousForm(this, new StockInventaire());
         }
 
         private void btnExercice_Click(object sender, EventArgs e)
         {
-
+            //Cloturer l'exercice dans la table.
+            //Passer l'écriture d'ouverture
         }
 
         private void btnChat_Click(object sender, EventArgs e)
         {
-            cm.AfficherSousForm(this, new FormMessageHisto());
+            cm.AfficherSousForm(this, new MedMessageHisto());
             if (btnChat.BackColor != Color.LightSlateGray)
             {
                 btnChat.BackColor = Color.LightSlateGray;
@@ -151,6 +149,30 @@ namespace SUMEDCO
             }
             else
                 btnChat.BackColor = System.Drawing.Color.FromArgb(180, 200, 255);
+        }
+        public string type_comptabilite = "";
+        private void btnPlancompte_Click(object sender, EventArgs e)
+        {
+            if(rbRoutine.Checked) type_comptabilite = rbRoutine.Text.ToLower();
+            else type_comptabilite = rbProjet.Text.ToLower();
+            cc.PlanComptes(this, new ComptaComptes());
+        }
+
+        private void btnFluxJour_Click(object sender, EventArgs e)
+        {
+            affectation = "routine";
+            cc.AfficherFluxTresorerie(this, new TresoFlux());
+        }
+
+        private void btnFluxFFL_Click(object sender, EventArgs e)
+        {
+            affectation = "FFL";
+            cc.AfficherFluxTresorerie(this, new TresoFlux());
+        }
+
+        private void ComptabiliteMDI_Shown(object sender, EventArgs e)
+        {
+            rbRoutine.Checked = true;
         }
     }
 }

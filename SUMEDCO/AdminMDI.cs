@@ -27,7 +27,7 @@ namespace SUMEDCO
         }
         private void btnMiseAJour_Click(object sender, EventArgs e)
         {
-            cs.AfficherSousForm(this, new FormAdmin());
+            cs.AfficherSousForm(this, new Admin());
             if (btnMiseAJour.BackColor != Color.LightSlateGray)
             {
                 btnMiseAJour.BackColor = Color.LightSlateGray;
@@ -55,17 +55,17 @@ namespace SUMEDCO
 
         private void btnStock_Click(object sender, EventArgs e)
         {
-            cs.AfficherSousForm(this, new FormStockInventaire());           
+            cs.AfficherSousForm(this, new StockInventaire());           
         }
 
         private void btnMaladeMedecin_Click(object sender, EventArgs e)
         {
-            cs.AfficherSousForm(this, new FormAdminRapportCasMedecin());            
+            cs.AfficherSousForm(this, new AdminCasMedecin());            
         }
 
         private void btnRecetteDepense_Click(object sender, EventArgs e)
         {
-            cs.AfficherSousForm(this, new FormComptaRecetteDepense());
+            cs.AfficherSousForm(this, new ComptaRecetteDepense());
         }
         private void MFormAdmin_Shown(object sender, EventArgs e)
         {
@@ -85,7 +85,7 @@ namespace SUMEDCO
 
         private void btnRapportStat_Click(object sender, EventArgs e)
         {
-            cs.AfficherSousForm(this, new FormAdminRapportCas());
+            cs.AfficherSousForm(this, new AdminRapportCas());
             if (btnRapportStat.BackColor != Color.LightSlateGray)
             {
                 btnRapportStat.BackColor = Color.LightSlateGray; 

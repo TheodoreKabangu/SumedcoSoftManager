@@ -1,4 +1,4 @@
-﻿Data Source=(LocalDB)\v11.0;AttachDbFilename=D:\MesProjets\SUMEDCO\SUMEDCO\Data\SSMDB.mdf;Integrated Security=True;Connect Timeout=30
+﻿Data Source=(LocalDB)\v11.0;AttachDbFilename=G:\MesProjets\SUMEDCO\SUMEDCO\Data\SSMDB.mdf;Integrated Security=True;Connect Timeout=30
 
 Data Source=192.168.1.253,49170;initial catalog=SSMDB;user id=sa;password=FFLMbm123
 

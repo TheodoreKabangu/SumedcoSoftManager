@@ -18,7 +18,7 @@ namespace SUMEDCO
         {
             InitializeComponent();
         }
-        FormConnexion cn = new FormConnexion();
+        Connexion cn = new Connexion();
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();

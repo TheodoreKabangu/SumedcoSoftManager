@@ -36,10 +36,10 @@
             this.btnCommande = new System.Windows.Forms.Button();
             this.btnVente = new System.Windows.Forms.Button();
             this.btnStockPh = new System.Windows.Forms.Button();
+            this.btnFacturePorduit = new System.Windows.Forms.Button();
             this.btnQuitter = new System.Windows.Forms.Button();
             this.pnlLogo = new System.Windows.Forms.Panel();
             this.pnlChildForm = new System.Windows.Forms.Panel();
-            this.btnFacturePorduit = new System.Windows.Forms.Button();
             this.pnlSide.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,8 +50,8 @@
             this.pnlSide.Controls.Add(this.btnRapport);
             this.pnlSide.Controls.Add(this.btnUtilisation);
             this.pnlSide.Controls.Add(this.btnCommande);
-            this.pnlSide.Controls.Add(this.btnVente);
             this.pnlSide.Controls.Add(this.btnStockPh);
+            this.pnlSide.Controls.Add(this.btnVente);
             this.pnlSide.Controls.Add(this.btnFacturePorduit);
             this.pnlSide.Controls.Add(this.btnQuitter);
             this.pnlSide.Controls.Add(this.pnlLogo);
@@ -145,7 +145,7 @@
             this.btnVente.ForeColor = System.Drawing.Color.Black;
             this.btnVente.Image = ((System.Drawing.Image)(resources.GetObject("btnVente.Image")));
             this.btnVente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVente.Location = new System.Drawing.Point(0, 117);
+            this.btnVente.Location = new System.Drawing.Point(0, 72);
             this.btnVente.Name = "btnVente";
             this.btnVente.Size = new System.Drawing.Size(180, 45);
             this.btnVente.TabIndex = 586;
@@ -164,7 +164,7 @@
             this.btnStockPh.ForeColor = System.Drawing.Color.Black;
             this.btnStockPh.Image = ((System.Drawing.Image)(resources.GetObject("btnStockPh.Image")));
             this.btnStockPh.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStockPh.Location = new System.Drawing.Point(0, 72);
+            this.btnStockPh.Location = new System.Drawing.Point(0, 117);
             this.btnStockPh.Name = "btnStockPh";
             this.btnStockPh.Size = new System.Drawing.Size(180, 45);
             this.btnStockPh.TabIndex = 587;
@@ -173,6 +173,25 @@
             this.btnStockPh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnStockPh.UseVisualStyleBackColor = true;
             this.btnStockPh.Click += new System.EventHandler(this.btnStockPh_Click);
+            // 
+            // btnFacturePorduit
+            // 
+            this.btnFacturePorduit.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnFacturePorduit.FlatAppearance.BorderSize = 0;
+            this.btnFacturePorduit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSlateGray;
+            this.btnFacturePorduit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFacturePorduit.ForeColor = System.Drawing.Color.Black;
+            this.btnFacturePorduit.Image = ((System.Drawing.Image)(resources.GetObject("btnFacturePorduit.Image")));
+            this.btnFacturePorduit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFacturePorduit.Location = new System.Drawing.Point(0, 27);
+            this.btnFacturePorduit.Name = "btnFacturePorduit";
+            this.btnFacturePorduit.Size = new System.Drawing.Size(180, 45);
+            this.btnFacturePorduit.TabIndex = 591;
+            this.btnFacturePorduit.Text = "Facturation";
+            this.btnFacturePorduit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFacturePorduit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnFacturePorduit.UseVisualStyleBackColor = true;
+            this.btnFacturePorduit.Click += new System.EventHandler(this.btnFacturePorduit_Click);
             // 
             // btnQuitter
             // 
@@ -215,25 +234,6 @@
             this.pnlChildForm.Name = "pnlChildForm";
             this.pnlChildForm.Size = new System.Drawing.Size(712, 483);
             this.pnlChildForm.TabIndex = 585;
-            // 
-            // btnFacturePorduit
-            // 
-            this.btnFacturePorduit.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnFacturePorduit.FlatAppearance.BorderSize = 0;
-            this.btnFacturePorduit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSlateGray;
-            this.btnFacturePorduit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFacturePorduit.ForeColor = System.Drawing.Color.Black;
-            this.btnFacturePorduit.Image = ((System.Drawing.Image)(resources.GetObject("btnFacturePorduit.Image")));
-            this.btnFacturePorduit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFacturePorduit.Location = new System.Drawing.Point(0, 27);
-            this.btnFacturePorduit.Name = "btnFacturePorduit";
-            this.btnFacturePorduit.Size = new System.Drawing.Size(180, 45);
-            this.btnFacturePorduit.TabIndex = 591;
-            this.btnFacturePorduit.Text = "Facturation";
-            this.btnFacturePorduit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFacturePorduit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnFacturePorduit.UseVisualStyleBackColor = true;
-            this.btnFacturePorduit.Click += new System.EventHandler(this.btnFacturePorduit_Click);
             // 
             // PharmacieMDI
             // 

@@ -12,13 +12,13 @@ namespace SUMEDCO
 {
     public partial class AbonneTrace : Form
     {
-        ClasseGeneraleDGV dgv = new ClasseGeneraleDGV();
+        ClasseElements ce = new ClasseElements();
         AbonneTraceClasse atc = new AbonneTraceClasse();
         public AbonneTrace()
         {
             InitializeComponent();
-            dgv.FigerColonne(dgvRapport);
-            dgv.AjouterCategorieRecette(dgvRapport);
+            ce.FigerColonne(dgvRapport);
+            ce.AjouterCategorieRecette(dgvRapport);
         }
 
         public int idpatient = 0,
@@ -26,9 +26,22 @@ namespace SUMEDCO
         idexercice;
         public string poste = "";
         public bool infirmier_autorise;
+              
         private void AbonneTrace_Shown(object sender, EventArgs e)
         {
-            //atc.AjouterRubriques(this);
+            atc.ConsommationTrace(dgvRapport);
+            dgvRapport.Rows.Add(10);
+        }
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            //this.Close();
+
+            dataGridView1 = dgvRapport;
+            dataGridView1.SelectAll();
+            DataObject copydata = dgvRapport.GetClipboardContent();
+            if (copydata != null) Clipboard.SetDataObject(copydata);
+            atc.ExporterVersExcel(@"C:\Users\Public\Documents\AbonneTraces__.xlsx");
+            //MessageBox.Show(dataGridView1.Rows[0].Cells[6].Value.ToString());
         }
     }
 }

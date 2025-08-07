@@ -12,35 +12,37 @@ namespace SUMEDCO
 {
     public partial class TresorerieMDI : Form
     {
-        ClassCompta cc = new ClassCompta();
+        TresorerieClasse tc = new TresorerieClasse();
         public Form activeForm = null;
         public int idutilisateur;
         public TresorerieMDI()
         {
             InitializeComponent();
         }
-
-        private void btnDepense_Click(object sender, EventArgs e)
-        {
-            cc.AfficherSousForm(this, new FormTresoSortie());
-            //TresorerieFlux avec operation = "sortie"
-        }
-
         private void btnQuitter_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-
+        public string affectation;
         private void btnRapport_Click(object sender, EventArgs e)
         {
-            cc.AfficherSousForm(this, new FormTresoJournal());
-            //TresorerieFlux avec operation = "rapport"
+            //tc.AfficherSousForm(this, new TresoRapport());
+            ///
+            /// Build the report form sop that it shows a summary of input,
+            /// output, cancelled operations, and balance in USD and CDF 
+            /// over a selected period
+            ///
+        }
+        private void btnFlux_Click(object sender, EventArgs e)
+        {
+            affectation = "routine";
+            tc.AfficherSousForm(this, new TresoFlux());
         }
 
-        private void btnPayement_Click(object sender, EventArgs e)
+        private void btnFluxFFL_Click(object sender, EventArgs e)
         {
-            cc.AfficherSousForm(this, new FormTresoEntree());
-            //TresorerieFlux avec operation = "entrée"
+            affectation = "FFL";
+            tc.AfficherSousForm(this, new TresoFlux());
         }
     }
 }

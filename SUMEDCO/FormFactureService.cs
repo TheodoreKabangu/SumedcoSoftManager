@@ -22,7 +22,7 @@ namespace SUMEDCO
         }
         ClassCompta cc = new ClassCompta();
         ClassMalade cm = new ClassMalade();
-        ExerciceClasse exer = new ExerciceClasse();
+        ClasseExercice exer = new ClasseExercice();
         public int idrecette = 0,
             idservice = 0,
             idpayeur = 0,

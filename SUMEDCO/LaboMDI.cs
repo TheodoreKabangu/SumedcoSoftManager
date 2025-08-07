@@ -21,7 +21,7 @@ namespace SUMEDCO
 
         private void btnPatient_Click(object sender, EventArgs e)
         {
-            cm.AfficherSousForm(this, new FormAgendaLabo());
+            cm.AfficherSousForm(this, new LaboAgenda());
         }
 
         private void btnQuitter_Click(object sender, EventArgs e)
@@ -31,7 +31,7 @@ namespace SUMEDCO
 
         private void btnRapport_Click(object sender, EventArgs e)
         {
-            cm.AfficherSousForm(this, new FormAgendaLaboResult());
+            cm.AfficherSousForm(this, new LaboResult());
         }
         
     }

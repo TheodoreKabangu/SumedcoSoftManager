@@ -45,7 +45,7 @@
             this.dtpTaux.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpTaux.Location = new System.Drawing.Point(148, 57);
             this.dtpTaux.Name = "dtpTaux";
-            this.dtpTaux.Size = new System.Drawing.Size(182, 28);
+            this.dtpTaux.Size = new System.Drawing.Size(182, 24);
             this.dtpTaux.TabIndex = 558;
             // 
             // txtTaux
@@ -55,7 +55,7 @@
             this.txtTaux.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtTaux.MaxLength = 75;
             this.txtTaux.Name = "txtTaux";
-            this.txtTaux.Size = new System.Drawing.Size(145, 28);
+            this.txtTaux.Size = new System.Drawing.Size(145, 24);
             this.txtTaux.TabIndex = 556;
             this.txtTaux.TextChanged += new System.EventHandler(this.txtTaux_TextChanged);
             // 
@@ -65,7 +65,7 @@
             this.label19.Location = new System.Drawing.Point(48, 89);
             this.label19.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(111, 22);
+            this.label19.Size = new System.Drawing.Size(88, 18);
             this.label19.TabIndex = 557;
             this.label19.Text = "Valeur taux :";
             // 
@@ -75,7 +75,7 @@
             this.label1.Location = new System.Drawing.Point(48, 62);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(138, 22);
+            this.label1.Size = new System.Drawing.Size(113, 18);
             this.label1.TabIndex = 557;
             this.label1.Text = "Date opération :";
             // 
@@ -132,7 +132,7 @@
             this.textBox1.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.textBox1.MaxLength = 75;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(37, 28);
+            this.textBox1.Size = new System.Drawing.Size(37, 24);
             this.textBox1.TabIndex = 585;
             this.textBox1.Text = "CDF";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -156,7 +156,7 @@
             // 
             // DateTaux
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(380, 185);
@@ -176,7 +176,7 @@
             this.MinimumSize = new System.Drawing.Size(380, 207);
             this.Name = "DateTaux";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Date et Taux du jour";
+            this.Text = "SSM - Date et Taux du jour";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -22,7 +22,7 @@ namespace SUMEDCO
 
         private void btnStocks_Click(object sender, EventArgs e)
         {
-            cs.AfficherSousForm(this, new FormStockProduit());
+            cs.AfficherSousForm(this, new StockProduit());
         }
         private void btnQuitter_Click(object sender, EventArgs e)
         {
@@ -30,16 +30,16 @@ namespace SUMEDCO
         }
         private void btnHistoCommande_Click(object sender, EventArgs e)
         {
-            cs.AfficherSousForm(this, new FormHistoCommande());
+            cs.AfficherSousForm(this, new StockHistoCommande());
         }
 
         private void btnComPharma_Click(object sender, EventArgs e)
         {
-            cs.AfficherSousForm(this, new FormApproCommande());
+            cs.AfficherSousForm(this, new StockApproCom());
         }
         private void btnRapport_Click(object sender, EventArgs e)
         {
-            cs.AfficherSousForm(this, new FormStockInventaire());
+            cs.AfficherSousForm(this, new StockInventaire());
         }
     }
 }

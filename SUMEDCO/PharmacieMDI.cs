@@ -19,7 +19,7 @@ namespace SUMEDCO
         public Form activeForm = null;
         ClassCompta cc = new ClassCompta();
         ClassStock cs = new ClassStock();
-        PharmacieFacturationClasse ph = new PharmacieFacturationClasse();
+        ReceptionFactureClasse rfc = new ReceptionFactureClasse();
         public int idutilisateur, idpharma;
         private void btnQuitter_Click(object sender, EventArgs e)
         {
@@ -27,17 +27,17 @@ namespace SUMEDCO
         }
         private void btnEncaisser_Click(object sender, EventArgs e)
         {
-            cs.AfficherSousForm(this, new FormPhamaVente());
+            cs.AfficherSousForm(this, new PharmacieVente());
         }
 
         private void btnStockPh_Click(object sender, EventArgs e)
         {
-            cs.AfficherSousForm(this, new FormStockProduit());
+            cs.AfficherSousForm(this, new StockProduit());
         }
 
         private void btnCommande_Click(object sender, EventArgs e)
         {
-            cs.AfficherSousForm(this, new FormHistoCommande());
+            cs.AfficherSousForm(this, new StockHistoCommande());
         }
         private void btnUtilisation_Click(object sender, EventArgs e)
         {
@@ -46,12 +46,12 @@ namespace SUMEDCO
 
         private void btnRapport_Click(object sender, EventArgs e)
         {
-            cs.AfficherSousForm(this, new FormStockInventaire());
+            cs.AfficherSousForm(this, new StockInventaire());
         }
 
         private void btnFacturePorduit_Click(object sender, EventArgs e)
         {
-            ph.FactureProduit(this, new PharmacieFacturation());
+            rfc.FactureProduit(this, new PharmacieFacturation());
         }
 
     }

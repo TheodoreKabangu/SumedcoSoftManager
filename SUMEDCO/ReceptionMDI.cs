@@ -24,7 +24,7 @@ namespace SUMEDCO
         public Form activeForm = null;
         private void btnConsultation_Click(object sender, EventArgs e)
         {
-            cc.AfficherSousForm(this, new FormPatientRecherche());
+            cc.AfficherSousForm(this, new ReceptionPatient());
         }
 
         private void btnQuitter_Click(object sender, EventArgs e)
@@ -38,12 +38,7 @@ namespace SUMEDCO
         }
         private void btnRapport_Click(object sender, EventArgs e)
         {
-            cc.AfficherSousForm(this, new FormReceptionRapport());
-        }
-
-        private void btnChat_Click(object sender, EventArgs e)
-        {
-
+            cc.AfficherSousForm(this, new ReceptionRapport());
         }
     }
 }

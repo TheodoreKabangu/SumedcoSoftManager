@@ -12,8 +12,7 @@ namespace SUMEDCO
 {
     public partial class RecetteTrace : Form
     {
-        ClasseGeneraleDGV dgv = new ClasseGeneraleDGV();
-        RecetteTraceClasse rtc = new RecetteTraceClasse();
+        
         public int idpatient = 0,
             idutilisateur,
             identreprise,
@@ -23,8 +22,17 @@ namespace SUMEDCO
         public RecetteTrace()
         {
             InitializeComponent();
-            dgv.FigerColonne(dgvRapport);
-            dgv.AjouterCategorieRecette(dgvRapport);
+            
+        }
+
+        private void btnRecherche_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RecetteTrace_Shown(object sender, EventArgs e)
+        {
+            
         }
     }
 }

@@ -22,7 +22,7 @@ namespace SUMEDCO
 
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
-            cs.Enregistrer(new FormStockNouveau());
+            cs.Enregistrer(new StockNouveau());
         }
 
         private void dgvProduit_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -32,12 +32,12 @@ namespace SUMEDCO
 
         private void btnModifier_Click(object sender, EventArgs e)
         {
-            cs.ModifierProduit(new FormStockNouveau());
+            cs.ModifierProduit(new StockNouveau());
         }
 
         private void btnSupprimer_Click(object sender, EventArgs e)
         {
-            cs.SupprimerProduit(new FormStockNouveau());
+            cs.SupprimerProduit(new StockNouveau());
         }
 
         private void btnRechercher_Click(object sender, EventArgs e)

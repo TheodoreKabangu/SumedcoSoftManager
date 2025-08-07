@@ -18,6 +18,7 @@ namespace SUMEDCO
         }
         ClassCompta cc = new ClassCompta();
         ClassMalade cm = new ClassMalade();
+        ClasseElements ce = new ClasseElements();
         public bool fermeture_succes;
 
         private void btnAnnuler_Click(object sender, EventArgs e)
@@ -43,7 +44,7 @@ namespace SUMEDCO
         }
         private void txtTaux_TextChanged(object sender, EventArgs e)
         {
-            cm.TestEntier(txtTaux);
+            ce.TestEntier(txtTaux);
         }
     }
 }

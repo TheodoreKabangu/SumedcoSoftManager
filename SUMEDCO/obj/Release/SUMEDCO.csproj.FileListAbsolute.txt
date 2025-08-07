@@ -115,3 +115,8 @@ D:\MesProjets\SUMEDCO\SUMEDCO\obj\Release\SUMEDCO.exe.manifest
 D:\MesProjets\SUMEDCO\SUMEDCO\obj\Release\SUMEDCO.application
 D:\MesProjets\SUMEDCO\SUMEDCO\obj\Release\SUMEDCO.exe
 D:\MesProjets\SUMEDCO\SUMEDCO\obj\Release\SUMEDCO.pdb
+D:\MesProjets\SUMEDCO\SUMEDCO\obj\Release\SUMEDCO.csproj.ResolveComReference.cache
+G:\MesProjets\SUMEDCO\SUMEDCO\bin\Release\SUMEDCO.exe.config
+G:\MesProjets\SUMEDCO\SUMEDCO\obj\Release\SUMEDCO.csproj.ResolveComReference.cache
+G:\MesProjets\SUMEDCO\SUMEDCO\obj\Release\SUMEDCO.exe
+G:\MesProjets\SUMEDCO\SUMEDCO\obj\Release\SUMEDCO.pdb

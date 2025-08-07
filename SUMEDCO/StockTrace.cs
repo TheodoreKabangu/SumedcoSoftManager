@@ -12,7 +12,7 @@ namespace SUMEDCO
 {
     public partial class StockTrace : Form
     {
-        ClasseGeneraleDGV dgv = new ClasseGeneraleDGV();
+        ClasseElements dgv = new ClasseElements();
         public StockTrace()
         {
             InitializeComponent();

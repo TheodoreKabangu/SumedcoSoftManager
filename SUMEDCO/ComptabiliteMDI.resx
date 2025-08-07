@@ -223,6 +223,18 @@
         DYbb0YwHZbS3AAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="btnPlancompte.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAZVJREFUSEvt
+        1ssqRWEYxvHFwGGGCMWQKJLTWGHKDThehEuQKTlFUiiimDkPmEgmygWIGDhMjSin/8P3rZZlnbYkg/XU
+        r9b+9vreZyuD1/kv2cIxtrGMYfSgDklTj17o7go0SzM3EZo3TGAEo9jBJV5xhTHUwJ9ajOMaeld3VKgZ
+        mqWZmh0afdny+fgl5RjEPl4wjwIUYcGc7WIAZfBHM78VZ6ERnQgr9kbvnuEcFzhFA6Jii9Wh++p05qBD
+        K65YyceRkaeDmNhiawbOE9r1QJIWK7NGkthipQOPevCW/UWx+5wWp8VhSYujkhanxWlxZH69WItaFSqR
+        g7DEFeuuZmiWZkYW30GfLS1utzjBFPpQDMVbXIJ+TEPv6o53juhMCSzORaGhpa0JXRjCGnT5Ges4wCE2
+        oGXvBqvQu7qj3aoUdp5mK4HFcdGS1goV6AeIduek9xW32LtzZRJtlnHbZVDcnUsbn35BUvprs2GjZ50F
+        vRtmEh+pRnMCbbjHHroNPetM3wXd8dN/+Y9SgSU8GIvmLIM4zjtHAeEMjGV1egAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="btnCompta.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAkJJREFUSEvV
@@ -274,7 +286,7 @@
         Cxs+Z3p1Quvps4665iZu5hFFv9KZuBCedJGYAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="btnRapportDepense.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnFluxFFL.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAA6FJREFUSEvd
         lmtozXEYx2fsnJ1zds7cksu8IeUSCi8s90tuLyS8QvNmNryQjRQvKBJymeYWcytJRqEstVyyvFBuS6jZ
@@ -295,25 +307,13 @@
         tc8ZeIDhs3E3/x2jB33kTY0yYmK+AyAqvpFFxI0tAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="btnRapportRecette.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnFluxJour.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAA31JREFUSEut
-        l9WrVFEYR8duxQYDRRELRUFMBLtQX8TA/AfEAhO7QRALsbBBUVEQ9c0O7MYO9MXEwBZrrTN39Mw4dzxz
-        vT9Y3LP3zJlv7/3VvjG0EF7DKVjvRIoqwkNYBSWcCKkRvIRh4PunoRxE1gL4CdODUbKWwjEoFIz+1mw4
-        AGVB4+JzZM2Hz9ArGMVVANxR32CUXv3hXvwxMHgyhzJORNU80HjPYBQ/Zk+iZjBKr1FwIf4YSIPn4QSU
-        diKq5sIn6AH69Bu0gtx0FIyTsKaAC9ZFkYw3hiIwBzTeHXx5HaTTWHgD1YLRH+2F1eDOXVgpyKiiMBMK
-        g0Gj8Wng8W+CeuDCmsJG8PM+UAnKQ0KPwVipDn5nDfxT7WELGMWz4GPO38vg8SU4DM1gJOiOrzAE1G5Y
-        CwfhOlSBSPKlDfHH4AQ03hncQUcIB9t9mAxT4ZwTaBC4uGsQ2aiqAE9haDCKxWbAB+gUjJK1HS6CO9sK
-        umknXIXKkLUGwwvQf8rionF3HJaLNBNEQy7kSs5znmV0bos/BhoHBlrvYJSsYrAfsi6b6VQX3KXppB+N
-        aH35HvSjp6IbuoELvAQWnXyRBg0Ud28T0XiiQNg8zFOf9XO+GVUaMjoti+bkRFAu6C0YyX6mr/NdLeAB
-        WCzCGgNZd6MoKghWKStWai9OyKAKywrmOw2huBNR1Q8s+uPBCqb/5BYMhNxk60ytbj/gCAwA8ztJtcHE
-        NxVWwhcwis+ALy8Cm4A12wj3e7UgLJvKOzDia4B93DxuAr7vDcdAHA2/+/Qh2AcGyx1wlYmK5UuWS4uC
-        EVsHvG2YTpPAE7Au+8NtIDfZGu3blle/a7GJnQXrsbIx+IP+8B6oCg3AovAEVsAOuA2ehrtcDvUhivx9
-        XRnc7Ux+08Tjsi0qC4f56bXHQrEZNGwN1tAEsGnkFnCR1Q5MF2tscyeQEa1P9KvH3xUyyZTyhLKWoW80
-        21e9PSRuDaaSuWq32gUedRij1sved9A9eVZruAEGQgcnkLk6HJaBiwpjfIwALwWe0n/J3XqfNrW8eaYW
-        iUzSuHFxHJ6DqZporZHlNcgUs8m3dOIfsogYJ14ADVbbp256Bpnu5mlVEhaDuzcG0kVyFzDlTEP/Kwk3
-        DFPI22jqFTiy2sJNeARGuwXDy51pZzougTxFdRTpa2u4gfcK7oIBZ5nMQrHYLzq+2kefQ2F+AAAAAElF
-        TkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAOBJREFUSEvt
+        17+qwWEcx/HHZENOEW7BdkadzQXY3IFbsGI5irJSBrmD0zG5AOVPSSHUGa0WZeX9feQCDL/Prw7vetXv
+        eUqfRfRzAdZH4/6o7QtnfPuTuE+c0EHELpQ9xrt4zfEe/HgZVZEfXNGCG2EhsoUNLyErhgmmiNuFolBH
+        Z0jYhaJQR+eQjVpDrJHyJ2F5fNwfnysJ+7C0NDYY+JOoHA74RdQuFGURyuge/380gx2ko9YK9ld1xJ/I
+        GK4NG7ZfmopICb46Lij6k7ga3uPymrDXj4I/ibMvnL14BZBzN3O6dT6rDDNKAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="btnRapport.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

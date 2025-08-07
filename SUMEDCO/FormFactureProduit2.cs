@@ -46,20 +46,20 @@ namespace SUMEDCO
             if(dgvStock.RowCount != 0)
                 btnRetirer.Enabled = true;
         }
-
+        ClasseElements ce = new ClasseElements();
         private void txtNbfois_TextChanged(object sender, EventArgs e)
         {
-            cm.TestEntier(txtNbfois);
+            ce.TestEntier(txtNbfois);
         }
 
         private void txtQte_TextChanged(object sender, EventArgs e)
         {
-            cm.TestEntier(txtQte);
+            ce.TestEntier(txtQte);
         }
 
         private void txtNbjour_TextChanged(object sender, EventArgs e)
         {
-            cm.TestEntier(txtNbjour);
+            ce.TestEntier(txtNbjour);
         }
 
         private void btnAffecter_Click(object sender, EventArgs e)
