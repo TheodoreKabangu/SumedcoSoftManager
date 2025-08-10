@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TresoFlux));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnExit = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.cboMonnaie = new System.Windows.Forms.ComboBox();
@@ -182,23 +182,23 @@
             this.dgvFlux.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.dgvFlux.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvFlux.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFlux.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFlux.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvFlux.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Lavender;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvFlux.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Lavender;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvFlux.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvFlux.EnableHeadersVisualStyles = false;
             this.dgvFlux.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.dgvFlux.Location = new System.Drawing.Point(12, 174);
@@ -347,29 +347,31 @@
             // 
             // lblCDF
             // 
-            this.lblCDF.ForeColor = System.Drawing.Color.IndianRed;
+            this.lblCDF.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCDF.ForeColor = System.Drawing.Color.RoyalBlue;
             this.lblCDF.Location = new System.Drawing.Point(110, 39);
             this.lblCDF.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblCDF.Name = "lblCDF";
             this.lblCDF.Size = new System.Drawing.Size(180, 15);
             this.lblCDF.TabIndex = 771;
-            this.lblCDF.Text = "0000";
+            this.lblCDF.Text = "00,00";
             this.lblCDF.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblUSD
             // 
-            this.lblUSD.ForeColor = System.Drawing.Color.IndianRed;
+            this.lblUSD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUSD.ForeColor = System.Drawing.Color.RoyalBlue;
             this.lblUSD.Location = new System.Drawing.Point(403, 39);
             this.lblUSD.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblUSD.Name = "lblUSD";
             this.lblUSD.Size = new System.Drawing.Size(180, 15);
             this.lblUSD.TabIndex = 771;
-            this.lblUSD.Text = "0000";
+            this.lblUSD.Text = "00,00";
             this.lblUSD.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblSolde
             // 
-            this.lblSolde.ForeColor = System.Drawing.Color.IndianRed;
+            this.lblSolde.ForeColor = System.Drawing.Color.RoyalBlue;
             this.lblSolde.Location = new System.Drawing.Point(9, 39);
             this.lblSolde.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblSolde.Name = "lblSolde";
@@ -380,7 +382,7 @@
             // 
             // label1
             // 
-            this.label1.ForeColor = System.Drawing.Color.IndianRed;
+            this.label1.ForeColor = System.Drawing.Color.RoyalBlue;
             this.label1.Location = new System.Drawing.Point(302, 39);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
@@ -392,7 +394,7 @@
             // chbSolde
             // 
             this.chbSolde.AutoSize = true;
-            this.chbSolde.ForeColor = System.Drawing.Color.MediumBlue;
+            this.chbSolde.ForeColor = System.Drawing.Color.RoyalBlue;
             this.chbSolde.Location = new System.Drawing.Point(592, 36);
             this.chbSolde.Name = "chbSolde";
             this.chbSolde.Size = new System.Drawing.Size(68, 22);

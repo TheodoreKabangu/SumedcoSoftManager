@@ -52,6 +52,7 @@ namespace SUMEDCO
             c.idexercice = idexercice;
             c.ShowDialog();
             c.Close();
+            btnRecherche_Click(null, null);
         }
 
         private void ComptaOperation_Shown(object sender, EventArgs e)

@@ -751,51 +751,6 @@ namespace SUMEDCO
             else
                 MessageBox.Show("Il existe un stock de ce produit,\npour raison de cohérence, il ne peut être supprimé","Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
-        public void Recuperer(FormProduitPharma p)
-        {
-            if(p.dgvProduit.RowCount != 0)
-            {
-                p.idproduit = int.Parse(p.dgvProduit.CurrentRow.Cells[0].Value.ToString());
-                p.txtProduit.Text = p.dgvProduit.CurrentRow.Cells[1].Value.ToString();
-                p.btnModifier.Enabled = true;
-                p.btnSupprimer.Enabled = true;
-                p.btnEnregistrer.Enabled = false;
-            }
-        }
-        public void Afficher(FormProduitPharma p, string motif)
-        {
-            con.Open();
-            try
-            {
-                if (motif == "recherche")
-                {
-                    if(p.txtProduit.Text != "")
-                        cmd = new SqlCommand("select * from Produit where nomproduit like '" + p.txtProduit.Text + "%'", con);
-                    else
-                        cmd = new SqlCommand("select * from Produit", con);
-                }
-                else
-                {
-                    cmd = new SqlCommand("select * from Produit where idproduit= @idproduit", con);
-                    cmd.Parameters.AddWithValue("@idproduit", p.idproduit);
-                }
-                dr = cmd.ExecuteReader();
-                p.dgvProduit.Rows.Clear();
-                while(dr.Read())
-                {
-                    p.dgvProduit.Rows.Add();
-                    p.dgvProduit.Rows[p.dgvProduit.RowCount - 1].Cells[0].Value = dr[0].ToString();
-                    p.dgvProduit.Rows[p.dgvProduit.RowCount - 1].Cells[1].Value = dr[1].ToString();
-                }
-            }
-            catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-            con.Close();
-        }
-        public void Annuler(FormProduitPharma p)
-        {
-            p.txtProduit.Text = "";
-            p.dgvProduit.Rows.Clear();
-        }
         public void ChargerCompte(TextBox txt, ListBox list, string motif)
         {
             if (txt.Text != "")

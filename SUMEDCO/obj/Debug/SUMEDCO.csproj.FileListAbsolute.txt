@@ -168,13 +168,11 @@ G:\MesProjets\SUMEDCO\SUMEDCO\obj\Debug\SUMEDCO.ComptaTableauFlux.resources
 G:\MesProjets\SUMEDCO\SUMEDCO\obj\Debug\SUMEDCO.MedConsulter.resources
 G:\MesProjets\SUMEDCO\SUMEDCO\obj\Debug\SUMEDCO.MedPatientList.resources
 G:\MesProjets\SUMEDCO\SUMEDCO\obj\Debug\SUMEDCO.MedRendezVous.resources
-G:\MesProjets\SUMEDCO\SUMEDCO\obj\Debug\SUMEDCO.TresoSortie.resources
 G:\MesProjets\SUMEDCO\SUMEDCO\obj\Debug\SUMEDCO.TresoFlux.resources
 G:\MesProjets\SUMEDCO\SUMEDCO\obj\Debug\SUMEDCO.StockFicheStock.resources
 G:\MesProjets\SUMEDCO\SUMEDCO\obj\Debug\SUMEDCO.InfPriseSigneVital.resources
 G:\MesProjets\SUMEDCO\SUMEDCO\obj\Debug\SUMEDCO.FormFacture.resources
 G:\MesProjets\SUMEDCO\SUMEDCO\obj\Debug\SUMEDCO.FormFactureProduit2.resources
-G:\MesProjets\SUMEDCO\SUMEDCO\obj\Debug\SUMEDCO.FormPayement.resources
 G:\MesProjets\SUMEDCO\SUMEDCO\obj\Debug\SUMEDCO.TresoAnnuler.resources
 G:\MesProjets\SUMEDCO\SUMEDCO\obj\Debug\SUMEDCO.FormImpression.resources
 G:\MesProjets\SUMEDCO\SUMEDCO\obj\Debug\SUMEDCO.MedMaladie.resources
@@ -193,13 +191,10 @@ G:\MesProjets\SUMEDCO\SUMEDCO\obj\Debug\SUMEDCO.LaboMDI.resources
 G:\MesProjets\SUMEDCO\SUMEDCO\obj\Debug\SUMEDCO.Recette.resources
 G:\MesProjets\SUMEDCO\SUMEDCO\obj\Debug\SUMEDCO.StockHistoCommande.resources
 G:\MesProjets\SUMEDCO\SUMEDCO\obj\Debug\SUMEDCO.StockPharmacie.resources
-G:\MesProjets\SUMEDCO\SUMEDCO\obj\Debug\SUMEDCO.TresoEntree.resources
-G:\MesProjets\SUMEDCO\SUMEDCO\obj\Debug\SUMEDCO.FormProduitPharma.resources
 G:\MesProjets\SUMEDCO\SUMEDCO\obj\Debug\SUMEDCO.StockApproCom.resources
 G:\MesProjets\SUMEDCO\SUMEDCO\obj\Debug\SUMEDCO.StockNouveau.resources
 G:\MesProjets\SUMEDCO\SUMEDCO\obj\Debug\SUMEDCO.ComptaComptes.resources
 G:\MesProjets\SUMEDCO\SUMEDCO\obj\Debug\SUMEDCO.AbonneMDI.resources
-G:\MesProjets\SUMEDCO\SUMEDCO\obj\Debug\SUMEDCO.FormPayements.resources
 G:\MesProjets\SUMEDCO\SUMEDCO\obj\Debug\SUMEDCO.ComptabiliteMDI.resources
 G:\MesProjets\SUMEDCO\SUMEDCO\obj\Debug\SUMEDCO.MedMDI.resources
 G:\MesProjets\SUMEDCO\SUMEDCO\obj\Debug\SUMEDCO.DateTaux.resources

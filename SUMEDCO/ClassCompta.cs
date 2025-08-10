@@ -26,88 +26,6 @@ namespace SUMEDCO
         string chaine= "", cmdtxt = "", nom = "";
         int id = 0;
         double valeur;
-        #region METHODES GENERALES
-        public int TrouverId(string motif, string nom)
-        {
-            id = 0;
-            switch (motif)
-            {
-                case "service": cmdtxt = "select idservice from Service where nomservice = @nom"; break;
-                case "numcompte": cmdtxt = "select numcompte from Compte where libellecompte = @nom"; break;
-                case "entreprise": cmdtxt = "select identreprise from Entreprise where nomentreprise = @nom"; break;
-                case "typeabonne": cmdtxt = "select idtypeabonne from Typeabonne where typeabonne = @nom"; break;
-                case "typejournal": cmdtxt = "select idtypejournal from TypeJournal where typejournal = @nom"; break;
-                case "numcompteAchat": cmdtxt = "select numcompte from Compte Where numcompte like '601%' and libellecompte like '%" + nom.ToLower() + "'"; break;
-                case "numcompteVariation": cmdtxt = "select numcompte from Compte Where numcompte like '603%' and libellecompte like '%" + nom.ToLower() + "'"; break;
-            }
-            con.Open();
-            try
-            {
-                cmd = new SqlCommand(cmdtxt, con);
-                cmd.Parameters.AddWithValue("@nom", nom);
-                dr = cmd.ExecuteReader();
-                if(dr.Read())
-                    id = int.Parse(dr[0].ToString());
-            }
-            catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-            con.Close();
-            return id;
-        }
-        public string TrouverNom(string motif, int id)
-        {
-            nom = "";
-            switch (motif)
-            {
-                case "numcompte_service": cmdtxt = "select numcompte from Service where idservice = @id"; break;
-                case "service": cmdtxt = "select nomservice from Service where idservice = @id"; break;
-                case "entreprise": cmdtxt = "select nomentreprise from Entreprise where identreprise = @id"; break;
-                case "typeabonne": cmdtxt = "select typeabonne from TypeAbonne where idtypeabonne = @id"; break;
-                case "compte": cmdtxt = "select libellecompte from Compte where numcompte = @id"; break;
-                case "poste": cmdtxt = "select poste from Utilisateur where id= @id"; break;
-                case "message": cmdtxt = "select max(idmessage) from Message"; break;
-            }
-            con.Open();
-            try
-            {                
-                cmd = new SqlCommand(cmdtxt, con);
-                cmd.Parameters.AddWithValue("@id", id);
-                dr = cmd.ExecuteReader();
-                dr.Read();
-                nom = dr[0].ToString();
-            }
-            catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-            con.Close();
-            return nom;
-        }
-        public int NouveauID(string concerne)
-        {
-            id = 0;
-            switch (concerne)
-            {
-                case "payement": cmdtxt = "select max(idpayement) from Payement"; break;
-                case "service": cmdtxt = "select max(idservice) from Service"; break;
-                case "recette": cmdtxt = "select max(idrecette) from Recette_"; break;
-                case "depense": cmdtxt = "select max(iddepense) from Depense"; break;
-                case "payeur": cmdtxt = "select max(idpatient) from Patient"; break;
-                case "exercice": cmdtxt = "select max(idexercice) from Exercice"; break;
-                case "message": cmdtxt = "select max(idmessage) from Message"; break;
-            }
-            cmd = new SqlCommand(cmdtxt, con);
-            con.Open();
-            try
-            {
-                dr = cmd.ExecuteReader();
-                dr.Read();
-                if (dr[0].ToString() == "")
-                    id = 1;
-                else
-                    id = int.Parse(dr[0].ToString()) + 1;// +1 pour un nouveau id
-            }
-            catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-            con.Close();
-            return id;
-        }
-        #endregion
 
         #region RECETTE
         public void ActualiserDesign(Panel pnlSousMenu)
@@ -130,20 +48,6 @@ namespace SUMEDCO
             r.pnlChildForm.Controls.Add(childForm);
             r.pnlChildForm.Tag = childForm;
             childForm.BringToFront();
-            childForm.Show();
-        }
-        public void AfficherSousForm(RecetteMDI r, FormPayements childForm)
-        {
-            if (r.activeForm != null)
-                r.activeForm.Close();
-            r.activeForm = childForm;
-            childForm.TopLevel = false;
-            childForm.FormBorderStyle = FormBorderStyle.None;
-            childForm.Dock = DockStyle.Fill;
-            r.pnlChildForm.Controls.Add(childForm);
-            r.pnlChildForm.Tag = childForm;
-            childForm.BringToFront();
-            childForm.idutilisateur = r.idutilisateur;
             childForm.Show();
         }
         ClasseExercice exer = new ClasseExercice();
@@ -710,49 +614,6 @@ namespace SUMEDCO
         #endregion
 
         #region CAISSE_RECETTE
-        public string CompteService(int idservice)
-        {
-            chaine = "";
-            con.Open();
-            try
-            {
-                cmd = new SqlCommand("select numcompte from Service where idservice = @id", con);
-                cmd.Parameters.AddWithValue("@id", idservice);
-                dr = cmd.ExecuteReader();
-                dr.Read();
-                chaine = dr[0].ToString();
-            }
-            catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-            con.Close();
-            return chaine;
-        }
-        public void AjouterPayement(string date_jour, double montant, string monnaie, string numcompte, string libelle)
-        {
-            id = NouveauID("payement");
-            con.Open();
-            SqlTransaction tx = con.BeginTransaction();
-            try
-            {
-                cmd = new SqlCommand("INSERT INTO Payement(idpayement, date_operation, montant, monnaie, numcompte, libelle) VALUES (@idpayement, @date_operation, @montant, @monnaie, @numcompte, @libelle)", con);
-                cmd.Parameters.AddWithValue("@idpayement", id);
-                cmd.Parameters.AddWithValue("@date_operation", date_jour);
-                cmd.Parameters.AddWithValue("@montant", montant);
-                cmd.Parameters.AddWithValue("@monnaie", monnaie);
-                cmd.Parameters.AddWithValue("@numcompte", numcompte);
-                cmd.Parameters.AddWithValue("@libelle", libelle);
-
-                cmd.Transaction = tx;
-                cmd.ExecuteNonQuery();
-                tx.Commit();
-                MessageBox.Show("Ajouté avec succès", "Enregistrement", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                tx.Rollback();
-                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            con.Close();
-        }
         public void StatutCaisseOK(int idrecette, string motif)
         {
             con.Open();
@@ -786,80 +647,7 @@ namespace SUMEDCO
             catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
             con.Close();
         }
-        private void PayementAbonne(TresoEntree t)
-        {
-            AjouterPayement(
-                t.lblDateJour.Text,
-                Convert.ToDouble(t.txtMontant.Text),
-                t.cboMonnaie.Text,
-                t.dgvBon.CurrentRow.Cells[0].Value.ToString(),
-                string.Format("Payement abonnés par {0}", t.dgvBon.CurrentRow.Cells[1].Value.ToString())
-                            );
-        }
 
-        public void PayerRecette(FormPayement p)
-        {
-            p.txtMontant.Text = "0";
-            for (int i = p.dgvCompte.RowCount-1; i >=0 ; i--)
-            {
-                if (Convert.ToDouble(p.dgvCompte.Rows[i].Cells[2].Value) == 0)
-                    p.dgvCompte.Rows.RemoveAt(i);
-                else
-                    p.txtMontant.Text = (Convert.ToDouble(p.txtMontant.Text) + Convert.ToDouble(p.dgvCompte.Rows[i].Cells[2].Value)).ToString("0.00");
-            }
-            if(p.dgvCompte.RowCount != 0)
-            {
-                if (p.txtMontant.Text != "" && p.cboMonnaie.Text != "")
-                {
-                    //Montant en lettres
-                    p.montantLettre = TestMontant(p.txtMontant);
-                    if (p.montantLettre != "")
-                    {
-                        if (p.cboMonnaie.Text == "CDF")
-                            p.txtMontantLettre.Text = p.montantLettre.Substring(0, 1).ToUpper() + p.montantLettre.Substring(1) + " francs congolais";
-                        else
-                            p.txtMontantLettre.Text = p.montantLettre.Substring(0, 1).ToUpper() + p.montantLettre.Substring(1) + " dollars américains";
-                    }
-
-                    if (p.montant_recette >= double.Parse(p.txtMontant.Text))
-                    {
-                        //AjouterPayement(p);
-                    }
-                    else
-                        MessageBox.Show("Le montant perçu doit être inférieur ou égal aux " + p.montant_recette + " à payer", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else
-                    MessageBox.Show("Champs obligatoires vides(s)\nRemplissez-les", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-                MessageBox.Show("Le montant ne peut être 0", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        }
-        public void AnnulerPayement(FormPayements p)
-        {
-            con.Open();
-            SqlTransaction tx = con.BeginTransaction();
-            try
-            {
-                cmd = new SqlCommand("UPDATE Payement SET raison_retrait = @raison WHERE idpayement = " + p.dgvPayement.CurrentRow.Cells[0].Value + "", con);
-                cmd.Parameters.AddWithValue("@raison", string.Format("{0}, {1}", DateTime.Now.ToShortDateString(), p.cboAnnulation.Text));
-                cmd.Transaction = tx;
-                cmd.ExecuteNonQuery();
-                tx.Commit();
-                MessageBox.Show("Opération effectuée", "Mise à jour", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-            con.Close();
-            //composer le message
-            chaine = string.Format("Annulation du payement {0} pour {1}\nDate:{2}\nMontant:{3} {4}\nCompte:{5}",
-                p.dgvPayement.CurrentRow.Cells[0].Value.ToString(),
-                p.cboAnnulation.Text,
-                p.dgvPayement.CurrentRow.Cells[1].Value.ToString(),
-                p.dgvPayement.CurrentRow.Cells[2].Value.ToString(),
-                p.dgvPayement.CurrentRow.Cells[3].Value.ToString(),
-                p.dgvPayement.CurrentRow.Cells[4].Value.ToString());
-            //Signaler au comptable
-            MessageAuComptable(p.idutilisateur, chaine, "payement");
-        }
         private void MessageAuComptable(int idutilisateur, string message, string type_operation)
         {
             valeur = cs.TrouverId("utilisateur", "comptable");
@@ -884,200 +672,60 @@ namespace SUMEDCO
             catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
             con.Close();
         }
-        public void AnnulerPayement(Recette b, FormPayements p)
+
+        public void ImprimerBon()
         {
-            p.dtpDateDe.Text = b.dgvRecette.CurrentRow.Cells[1].Value.ToString();
-            p.dtpDateA.Text = b.dgvRecette.CurrentRow.Cells[1].Value.ToString();
-            AfficherPayement(p);
-            p.dgvPayement.Columns[4].Visible = false;
-            p.btnQuitter.Enabled = false;
-            p.StartPosition = FormStartPosition.CenterParent;
-            p.annuler_recette = true;
-            p.ShowDialog();
-            if(p.fermeture_succes)
-            {
-                StatutCaisseOK(Convert.ToInt32(b.dgvRecette.CurrentRow.Cells[0].Value), "");
-            }
-
-        }
-
-        public void ImprimerBon(FormPayement p)
-        {
-            //A revoir
-            FormImpression imp = new FormImpression();
-            imp.numbon = p.idrecette;
-            imp.payeur = p.txtPayeur.Text;
-            imp.montantchiffre = p.txtMontant.Text;
-            imp.montantlettre = p.txtMontantLettre.Text;
-            imp.monnaie = p.cboMonnaie.Text;
-            imp.motif = p.categorie_recette;
+            ////A revoir
+            //FormImpression imp = new FormImpression();
+            //imp.numbon = p.idrecette;
+            //imp.payeur = p.txtPayeur.Text;
+            //imp.montantchiffre = p.txtMontant.Text;
+            //imp.montantlettre = p.txtMontantLettre.Text;
+            //imp.monnaie = p.cboMonnaie.Text;
+            //imp.motif = p.categorie_recette;
             
-            imp.date_jour = p.lblDateOperation.Text;
-            imp.Text = "SSM - Reçu de payement";
-            ReportParameter[] rparams = new ReportParameter[]
-            {
-                new ReportParameter("numbon", imp.numbon.ToString()),
-                new ReportParameter("payeur", imp.payeur),
-                new ReportParameter("montantlettre", imp.montantlettre),
-                new ReportParameter("montantchiffre", imp.montantchiffre),
-                new ReportParameter("monnaie", imp.monnaie),
-                new ReportParameter("motif", imp.motif),
-                new ReportParameter("date_jour", imp.date_jour)
-            };
+            //imp.date_jour = p.lblDateOperation.Text;
+            //imp.Text = "SSM - Reçu de payement";
+            //ReportParameter[] rparams = new ReportParameter[]
+            //{
+            //    new ReportParameter("numbon", imp.numbon.ToString()),
+            //    new ReportParameter("payeur", imp.payeur),
+            //    new ReportParameter("montantlettre", imp.montantlettre),
+            //    new ReportParameter("montantchiffre", imp.montantchiffre),
+            //    new ReportParameter("monnaie", imp.monnaie),
+            //    new ReportParameter("motif", imp.motif),
+            //    new ReportParameter("date_jour", imp.date_jour)
+            //};
 
-            List<DetailBonrecette> list = new List<DetailBonrecette>();
-            list.Clear();
+            //List<DetailBonrecette> list = new List<DetailBonrecette>();
+            //list.Clear();
 
-            for (int i = 0; i < p.dgvCompte.RowCount; i++)
-            {
-                DetailBonrecette actif = new DetailBonrecette
-                {
-                    id = (i+1).ToString(),
-                    libelle = p.dgvCompte.Rows[i].Cells[1].Value.ToString(),
-                    montant = p.dgvCompte.Rows[i].Cells[2].Value.ToString()
-                };
-                list.Add(actif);
-            }
+            //for (int i = 0; i < p.dgvCompte.RowCount; i++)
+            //{
+            //    DetailBonrecette actif = new DetailBonrecette
+            //    {
+            //        id = (i+1).ToString(),
+            //        libelle = p.dgvCompte.Rows[i].Cells[1].Value.ToString(),
+            //        montant = p.dgvCompte.Rows[i].Cells[2].Value.ToString()
+            //    };
+            //    list.Add(actif);
+            //}
 
-            rs.Name = "DataSet1";
-            rs.Value = list;
-            imp.reportViewer1.LocalReport.DataSources.Clear();
-            imp.reportViewer1.LocalReport.DataSources.Add(rs);
-            imp.reportViewer1.LocalReport.ReportEmbeddedResource = "SUMEDCO.BonRecette.rdlc";
-            imp.reportViewer1.LocalReport.SetParameters(rparams);
-            imp.MaximumSize = imp.Size;
-            imp.MaximizeBox = false;
-            imp.MinimizeBox = false;
+            //rs.Name = "DataSet1";
+            //rs.Value = list;
+            //imp.reportViewer1.LocalReport.DataSources.Clear();
+            //imp.reportViewer1.LocalReport.DataSources.Add(rs);
+            //imp.reportViewer1.LocalReport.ReportEmbeddedResource = "SUMEDCO.BonRecette.rdlc";
+            //imp.reportViewer1.LocalReport.SetParameters(rparams);
+            //imp.MaximumSize = imp.Size;
+            //imp.MaximizeBox = false;
+            //imp.MinimizeBox = false;
             
-            ArchiverBon("recette", p.idpayement);
-            imp.ShowDialog();
-            imp.Close();
+            //ArchiverBon("recette", p.idpayement);
+            //imp.ShowDialog();
+            //imp.Close();
         }
                 
-        public void AfficherPayement(FormPayements r)
-        {
-            if (r.cboMonnaie.Text != "")
-            {
-                if (r.cboCatPaye.Text == "")
-                {
-                    cmdtxt = @"SELECT idpayement,date_operation,montant,monnaie, libellecompte, libelle, raison_retrait 
-                    FROM Payement p
-                    JOIN Compte c ON p.numcompte = c.numcompte
-                    WHERE date_operation BETWEEN @dateDe AND @dateA AND monnaie = @monnaie";
-                    cmd = new SqlCommand(cmdtxt, con);
-                }
-                else if (r.cboCatPaye.Text == "Annulé")
-                {
-                    cmdtxt = @"SELECT idpayement,date_operation,montant,monnaie, libellecompte, libelle, raison_retrait 
-                    FROM Payement p
-                    JOIN Compte c ON p.numcompte = c.numcompte
-                    WHERE raison_retrait IS NOT NULL AND date_operation BETWEEN @dateDe AND @dateA AND monnaie = @monnaie";
-                    cmd = new SqlCommand(cmdtxt, con);
-                }
-                else
-                {
-                    cmdtxt = @"SELECT idpayement,date_operation,montant,monnaie, libellecompte, libelle, raison_retrait 
-                    FROM Payement p
-                    JOIN Compte c ON p.numcompte = c.numcompte
-                    WHERE raison_retrait IS NULL AND date_operation BETWEEN @dateDe AND @dateA AND monnaie = @monnaie";
-                    cmd = new SqlCommand(cmdtxt, con);
-                }
-                cmd.Parameters.AddWithValue("@monnaie", r.cboMonnaie.Text);
-            }
-            else
-            {
-                if (r.cboCatPaye.Text == "")
-                {
-                    cmdtxt = @"SELECT idpayement,date_operation,montant,monnaie, libellecompte, libelle, raison_retrait 
-                    FROM Payement p
-                    JOIN Compte c ON p.numcompte = c.numcompte
-                    WHERE date_operation BETWEEN @dateDe AND @dateA";
-                    cmd = new SqlCommand(cmdtxt, con);
-                }
-                else if (r.cboCatPaye.Text == "Annulé")
-                {
-                    cmdtxt = @"SELECT idpayement,date_operation,montant,monnaie, libellecompte, libelle, raison_retrait 
-                    FROM Payement p
-                    JOIN Compte c ON p.numcompte = c.numcompte
-                    WHERE raison_retrait IS NOT NULL AND date_operation BETWEEN @dateDe AND @dateA";
-                    cmd = new SqlCommand(cmdtxt, con);
-                }
-                else
-                {
-                    cmdtxt = @"SELECT idpayement,date_operation,montant,monnaie, libellecompte, libelle, raison_retrait 
-                    FROM Payement p
-                    JOIN Compte c ON p.numcompte = c.numcompte
-                    WHERE raison_retrait IS NULL AND date_operation BETWEEN @dateDe AND @dateA";
-                    cmd = new SqlCommand(cmdtxt, con);
-                }
-            }
-            cmd.Parameters.AddWithValue("@dateDe", r.dtpDateDe.Value.Date);
-            cmd.Parameters.AddWithValue("@dateA", r.dtpDateA.Value.Date);
-            con.Open();
-            try
-            {
-                dr = cmd.ExecuteReader();
-                r.dgvPayement.Rows.Clear();
-                while (dr.Read())
-                {
-                    r.dgvPayement.Rows.Add();
-                    r.dgvPayement.Rows[r.dgvPayement.RowCount - 1].Cells[0].Value = dr[0].ToString();
-                    r.dgvPayement.Rows[r.dgvPayement.RowCount - 1].Cells[1].Value = dr[1].ToString().Substring(0,10);
-                    r.dgvPayement.Rows[r.dgvPayement.RowCount - 1].Cells[2].Value = dr[2].ToString();
-                    r.dgvPayement.Rows[r.dgvPayement.RowCount - 1].Cells[3].Value = dr[3].ToString();
-                    r.dgvPayement.Rows[r.dgvPayement.RowCount - 1].Cells[4].Value = dr[4].ToString();
-                    r.dgvPayement.Rows[r.dgvPayement.RowCount - 1].Cells[5].Value = dr[5].ToString();
-                    r.dgvPayement.Rows[r.dgvPayement.RowCount - 1].Cells[6].Value = dr[6].ToString();
-                }
-            }
-            catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-            con.Close();
-            if(r.dgvPayement.RowCount != 0)
-            {
-                //Ajouter les colonnes totaux
-                if (r.cboMonnaie.Text != "")
-                {
-                    if (r.cboCatPaye.Text == "")
-                        cmd = new SqlCommand("SELECT monnaie, SUM(montant) FROM Payement WHERE date_operation BETWEEN @dateDe AND @dateA AND monnaie = @monnaie GROUP BY monnaie", con);
-                    else if (r.cboCatPaye.Text == "Annulé")
-                        cmd = new SqlCommand("SELECT monnaie, SUM(montant) FROM Payement WHERE raison_retrait IS NOT NULL AND date_operation BETWEEN @dateDe AND @dateA AND monnaie = @monnaie GROUP BY monnaie", con);
-                    else
-                        cmd = new SqlCommand("SELECT monnaie, SUM(montant) FROM Payement WHERE raison_retrait IS NULL AND date_operation BETWEEN @dateDe AND @dateA AND monnaie = @monnaie GROUP BY monnaie", con);
-                    cmd.Parameters.AddWithValue("@monnaie", r.cboMonnaie.Text);
-                }
-                else
-                {
-                    if (r.cboCatPaye.Text == "") 
-                        cmd = new SqlCommand("SELECT monnaie, SUM(montant) FROM Payement WHERE date_operation BETWEEN @dateDe AND @dateA GROUP BY monnaie", con);
-                    else if (r.cboCatPaye.Text == "Annulé")
-                        cmd = new SqlCommand("SELECT monnaie, SUM(montant) FROM Payement WHERE raison_retrait IS NOT NULL AND date_operation BETWEEN @dateDe AND @dateA GROUP BY monnaie", con);
-                    else
-                        cmd = new SqlCommand("SELECT monnaie, SUM(montant) FROM Payement WHERE raison_retrait IS NULL AND date_operation BETWEEN @dateDe AND @dateA GROUP BY monnaie", con);
-                }
-                cmd.Parameters.AddWithValue("@dateDe", r.dtpDateDe.Value.Date);
-                cmd.Parameters.AddWithValue("@dateA", r.dtpDateA.Value.Date);
-                con.Open();
-                try
-                {
-                    dr = cmd.ExecuteReader();
-                    while (dr.Read())
-                    {
-                        r.dgvPayement.Rows.Add();
-                        r.dgvPayement.Rows[r.dgvPayement.RowCount - 1].DefaultCellStyle.ForeColor = Color.MediumBlue;
-                        r.dgvPayement.Rows[r.dgvPayement.RowCount - 1].DefaultCellStyle.SelectionForeColor = Color.MediumBlue;
-                        r.dgvPayement.Rows[r.dgvPayement.RowCount - 1].Cells[0].Value = "";
-                        r.dgvPayement.Rows[r.dgvPayement.RowCount - 1].Cells[1].Value = "Total " + dr[0].ToString();
-                        r.dgvPayement.Rows[r.dgvPayement.RowCount - 1].Cells[2].Value = dr[1].ToString();
-                        r.dgvPayement.Rows[r.dgvPayement.RowCount - 1].Cells[3].Value = "";
-                        r.dgvPayement.Rows[r.dgvPayement.RowCount - 1].Cells[4].Value = "";
-                        r.dgvPayement.Rows[r.dgvPayement.RowCount - 1].Cells[5].Value = "";
-                        r.dgvPayement.Rows[r.dgvPayement.RowCount - 1].Cells[6].Value = "";
-                    }
-                }
-                catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-                con.Close();
-            }
-        }
         #endregion
 
 
@@ -1242,49 +890,6 @@ namespace SUMEDCO
         ReportDataSource rs = new ReportDataSource();
 
         #region DEPENSE
-        public void AfficherSousForm(TresorerieMDI d, TresoSortie childForm)
-        {
-            id = exer.NbExerciceEncours();
-            if (id == 1)
-            {
-                childForm.idexercice = exer.ExerciceEncours();
-                if (d.activeForm != null)
-                    d.activeForm.Close();
-                d.activeForm = childForm;
-                childForm.TopLevel = false;
-                childForm.FormBorderStyle = FormBorderStyle.None;
-                childForm.Dock = DockStyle.Fill;
-                d.pnlChildForm.Controls.Add(childForm);
-                d.pnlChildForm.Tag = childForm;
-                childForm.BringToFront();
-                childForm.idutilisateur = d.idutilisateur;
-                childForm.Show();
-            }
-            else
-                MessageBox.Show("Besoin d'un exercice comptable en cours. Contactez le comptable de l'entreprise", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);            
-        }
-        public void AfficherSousForm(TresorerieMDI d, TresoEntree childForm)
-        {
-            id = exer.NbExerciceEncours();
-            if (id == 1)
-            {
-                childForm.idexercice = exer.ExerciceEncours();
-                if (d.activeForm != null)
-                    d.activeForm.Close();
-                d.activeForm = childForm;
-                childForm.TopLevel = false;
-                childForm.FormBorderStyle = FormBorderStyle.None;
-                childForm.Dock = DockStyle.Fill;
-                d.pnlChildForm.Controls.Add(childForm);
-                d.pnlChildForm.Tag = childForm;
-                childForm.BringToFront();
-                childForm.idutilisateur = d.idutilisateur;
-                childForm.Show();
-            }
-            else
-                MessageBox.Show("Besoin d'un exercice comptable en cours. Contactez le comptable de l'entreprise", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning); 
-        }
-        
         public void ChargerCompte(ComptaPlan d)
         {
             con.Open();
@@ -1342,85 +947,6 @@ namespace SUMEDCO
         public void ContrePartie(DataGridView dgv, int col_debit, int col_credit)
         {
             
-        }
-        public void Valider(TresoSortie d)
-        {
-            if (d.dgvEcriture.RowCount != 0)
-            {
-                d.dgvEcriture.Rows.RemoveAt(d.dgvEcriture.RowCount - 1);
-
-                d.dgvEcriture.Rows.Add();
-                d.dgvEcriture.Rows[d.dgvEcriture.RowCount - 1].Cells[0].Value = d.txtCompte.Text;
-                d.dgvEcriture.Rows[d.dgvEcriture.RowCount - 1].Cells[1].Value = d.txtMotif.Text;
-                if (d.cboCaisseDepense.Text == d.cboMonnaie.Text)
-                    d.dgvEcriture.Rows[d.dgvEcriture.RowCount - 1].Cells[2].Value = d.txtMontant.Text;
-                else if (d.cboCaisseDepense.Text == "CDF" && d.cboMonnaie.Text == "USD")
-                    d.dgvEcriture.Rows[d.dgvEcriture.RowCount - 1].Cells[2].Value = Convert.ToDouble(d.txtMontant.Text) * d.taux;
-                else if (d.cboCaisseDepense.Text == "USD" && d.cboMonnaie.Text == "CDF")
-                {
-                    if ((Convert.ToDouble(d.txtMontant.Text) / d.taux) >= 5)
-                    {
-                        d.txtMontant.Text = ((int)(Convert.ToDouble(d.txtMontant.Text) / d.taux) * d.taux).ToString();
-                        d.dgvEcriture.Rows[d.dgvEcriture.RowCount - 1].Cells[2].Value = (int)(Convert.ToDouble(d.txtMontant.Text) / d.taux);                        
-                    }
-                    else
-                    {
-                        MessageBox.Show("Impossible de sortir moins de 5 USD", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        d.dgvEcriture.Rows[d.dgvEcriture.RowCount - 1].Cells[2].Value = "0";
-                    }
-                }
-                d.dgvEcriture.Rows[d.dgvEcriture.RowCount - 1].Cells[3].Value = "0";
-
-                d.dgvEcriture.Rows.Add();
-                d.dgvEcriture.Rows[d.dgvEcriture.RowCount - 1].Cells[0].Value = d.numcompte;
-                d.dgvEcriture.Rows[d.dgvEcriture.RowCount - 1].Cells[1].Value = "";
-                for (int i = 0; i < d.dgvEcriture.RowCount-1; i++)
-                {
-                    if (d.dgvEcriture.Rows[d.dgvEcriture.RowCount - 1].Cells[1].Value == "") 
-                        d.dgvEcriture.Rows[d.dgvEcriture.RowCount - 1].Cells[1].Value = d.dgvEcriture.Rows[i].Cells[1].Value.ToString();
-                    else
-                        d.dgvEcriture.Rows[d.dgvEcriture.RowCount - 1].Cells[1].Value = string.Format("{0}, {1}", d.dgvEcriture.Rows[d.dgvEcriture.RowCount - 1].Cells[1].Value.ToString(), d.dgvEcriture.Rows[i].Cells[1].Value.ToString());
-                }
-                d.dgvEcriture.Rows[d.dgvEcriture.RowCount - 1].Cells[2].Value = "0";
-
-                ContrePartie(d.dgvEcriture, 2, 3);
-            }
-            else
-            {
-                d.dgvEcriture.Rows.Add();
-                d.dgvEcriture.Rows[d.dgvEcriture.RowCount - 1].Cells[0].Value = d.txtCompte.Text;
-                d.dgvEcriture.Rows[d.dgvEcriture.RowCount - 1].Cells[1].Value = d.txtMotif.Text;
-                if (d.cboCaisseDepense.Text == d.cboMonnaie.Text)
-                    d.dgvEcriture.Rows[d.dgvEcriture.RowCount - 1].Cells[2].Value = d.txtMontant.Text;
-                else if (d.cboCaisseDepense.Text == "CDF" && d.cboMonnaie.Text == "USD")
-                    d.dgvEcriture.Rows[d.dgvEcriture.RowCount - 1].Cells[2].Value = Convert.ToDouble(d.txtMontant.Text) * d.taux;
-                else if (d.cboCaisseDepense.Text == "USD" && d.cboMonnaie.Text == "CDF")
-                {
-                    if ((Convert.ToDouble(d.txtMontant.Text) / d.taux) >= 5)
-                    {
-                        d.txtMontant.Text = ((int)(Convert.ToDouble(d.txtMontant.Text) / d.taux) * d.taux).ToString();
-                        d.dgvEcriture.Rows[d.dgvEcriture.RowCount - 1].Cells[2].Value = (int)(Convert.ToDouble(d.txtMontant.Text) / d.taux);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Impossible de sortir moins de 5 USD", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        d.dgvEcriture.Rows[d.dgvEcriture.RowCount - 1].Cells[2].Value = "0";
-                    }
-                }
-                d.dgvEcriture.Rows[d.dgvEcriture.RowCount - 1].Cells[3].Value = "0";
-
-                d.dgvEcriture.Rows.Add();
-                d.dgvEcriture.Rows[d.dgvEcriture.RowCount - 1].Cells[0].Value = d.numcompte;
-                d.dgvEcriture.Rows[d.dgvEcriture.RowCount - 1].Cells[1].Value = "";
-                d.dgvEcriture.Rows[d.dgvEcriture.RowCount - 1].Cells[1].Value = d.dgvEcriture.Rows[d.dgvEcriture.RowCount - 2].Cells[1].Value.ToString();
-                d.dgvEcriture.Rows[d.dgvEcriture.RowCount - 1].Cells[2].Value = "0";
-
-                ContrePartie(d.dgvEcriture, 2, 3);
-            }
-            d.txtMontant.Text = "";
-            d.txtCompte.Text = "";
-            d.txtMotif.Text = "";
-            d.txtMontant.Focus();
         }
         public string TestMontant(TextBox txt)
         {
@@ -1512,131 +1038,6 @@ namespace SUMEDCO
             }
             return words;
         }
-        public void Annuler(TresoSortie d)
-        {
-            d.txtNumRequisition.Text = "";
-            d.cboCaisseDepense.DropDownStyle = ComboBoxStyle.DropDown;
-            d.cboCaisseDepense.SelectedText = "";
-            d.cboCaisseDepense.DropDownStyle = ComboBoxStyle.DropDownList;            
-            d.txtBeneficiaire.Text = "";
-            d.txtMontant.Text = "";
-            d.cboMonnaie.DropDownStyle = ComboBoxStyle.DropDown;
-            d.cboMonnaie.SelectedText = "";
-            d.cboMonnaie.DropDownStyle = ComboBoxStyle.DropDownList;
-            d.txtCompte.Text = "";
-            d.txtMotif.Text = "";
-            d.cboCaisseDepense.Enabled = true;
-            d.txtMontantLettre.Text = "";
-            d.dgvEcriture.Rows.Clear();
-            d.txtNumRequisition.Focus();
-        }
-        private void AjouterDepense(TresoSortie d)
-        {
-
-        }
-
-        public void Enregistrer(TresoSortie d)
-        {
-            //if (d.dgvEcriture.RowCount != 0 && d.txtBeneficiaire.Text != "" && d.cboCaisseDepense.Text != "" && d.txtNumRequisition.Text != "")
-            //{
-            //    //Montant en lettres
-            //    d.montantdecaisse = Convert.ToDouble(d.dgvEcriture.Rows[d.dgvEcriture.RowCount-1].Cells[3].Value);
-            //    if (d.montantdecaisse.ToString().Contains(","))
-            //    {
-            //        chaine = NumbersToWords(long.Parse(d.montantdecaisse.ToString().Substring(0, d.montantdecaisse.ToString().IndexOf(","))));
-            //        chaine = string.Format("{0} virgule {1}", chaine, NumbersToWords(long.Parse(d.montantdecaisse.ToString().Substring(d.montantdecaisse.ToString().IndexOf(",") + 1))));
-            //    }
-            //    else chaine = NumbersToWords(long.Parse(d.montantdecaisse.ToString()));
-            //    if (d.cboCaisseDepense.Text == "CDF")
-            //        d.txtMontantLettre.Text = chaine.Substring(0, 1).ToUpper() + chaine.Substring(1) + " francs congolais";
-            //    else if (d.cboCaisseDepense.Text == "USD")
-            //        d.txtMontantLettre.Text = chaine.Substring(0, 1).ToUpper() + chaine.Substring(1) + " dollars américains";
-
-            //    if (d.soldeCaisse >= d.montantdecaisse)
-            //    {                   
-            //        //Dépenses
-            //        AjouterDepense(d);
-
-            //        //Ecriture comptables
-            //        d.idoperation = AjouterOperation(d.lblDateOperation.Text, "DEP", TrouverId("typejournal", d.caisse), d.idexercice);
-            //        for (int i = 0; i < d.dgvEcriture.RowCount - 1; i++)
-            //        {
-            //            if (d.cboCaisseDepense.Text == "CDF")
-            //                DebiterCompte(d.idoperation, d.dgvEcriture.Rows[i].Cells[0].Value.ToString(), Convert.ToDouble(d.dgvEcriture.Rows[i].Cells[2].Value), d.dgvEcriture.Rows[i].Cells[1].Value.ToString());
-            //            else
-            //                DebiterCompte(d.idoperation, d.dgvEcriture.Rows[i].Cells[0].Value.ToString(), Convert.ToDouble(d.dgvEcriture.Rows[i].Cells[2].Value) * d.taux, d.dgvEcriture.Rows[i].Cells[1].Value.ToString());
-            //        }
-            //        CrediterCompte(d.idoperation, d.numcompte, d.montantdecaisse, d.dgvEcriture.Rows[d.dgvEcriture.RowCount - 1].Cells[1].Value.ToString());
-
-            //        ArchiverBon("dépense", d.iddepense);
-            //        ImprimerBon(d, new FormImpression());
-            //        Annuler(d);
-            //    }
-            //    else
-            //        MessageBox.Show("Solde caisse insuffisant", "Valeur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //}
-            //else
-            //    MessageBox.Show("Désolé! Champ(s) obligatoire(s) vide(s)\nRemplissez-le(s).", "Attention !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        }
-
-        public void AjouterEncaissement(TresoEntree d)
-        {
-
-        }
-        public void Annuler(TresoEntree t)
-        {
-            t.txtMontant.Text = "";
-            t.cboEncaisser.DropDownStyle = ComboBoxStyle.DropDown;
-            t.cboEncaisser.SelectedText = "";
-            t.cboEncaisser.DropDownStyle = ComboBoxStyle.DropDownList;
-            t.dgvBon.Rows.Clear();
-        }
-        public void Encaisser(TresoEntree d)
-        {
-            if(d.cboEncaisser.Text != "")
-            {
-                if (d.cboEncaisser.Text == "payement par les abonnés")
-                {
-                    cmd = new SqlCommand("SELECT numcompte, libellecompte FROM Compte WHERE numcompte LIKE '41110%' and numcompte != '411100'", con);
-                    d.cboMonnaie.Enabled = true;
-                    d.dgvBon.Columns[2].Visible = false;
-                }
-                else if (d.cboEncaisser.Text == "rapport de recettes")
-                {
-                    cmd = new SqlCommand("SELECT numcompte, libellecompte FROM Compte WHERE numcompte IN ('571101','571201')", con);
-                    d.cboMonnaie.Enabled = false;
-                    d.dgvBon.Columns[2].Visible = true;
-                }
-                else
-                {
-                    cmd = new SqlCommand("SELECT numcompte, libellecompte FROM Compte WHERE numcompte LIKE '521%' AND categorie IN ('U', 'UU')", con);
-                    d.cboMonnaie.Enabled = false;
-                    d.dgvBon.Columns[2].Visible = false;
-                }
-                con.Open();
-                try
-                {
-                    dr = cmd.ExecuteReader();
-                    d.dgvBon.Rows.Clear();
-                    while (dr.Read())
-                    {
-                        d.dgvBon.Rows.Add();
-                        d.dgvBon.Rows[d.dgvBon.RowCount - 1].Cells[0].Value = dr[0].ToString();
-                        d.dgvBon.Rows[d.dgvBon.RowCount - 1].Cells[1].Value = dr[1].ToString();                       
-                    }
-                }
-                catch (Exception ex) { MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-                con.Close();
-                if(d.dgvBon.RowCount != 0)
-                {
-                    for (int i = 0; i < d.dgvBon.RowCount; i++)
-                    {
-                        d.dgvBon.Rows[i].Cells[2].Value = SoldeCompte(d.dgvBon.Rows[i].Cells[0].Value.ToString());
-                    }
-                }                
-            }
-        }
-
         #endregion
 
         #region SERVICE
@@ -2577,8 +1978,6 @@ namespace SUMEDCO
             SqlTransaction tx = con.BeginTransaction();
             try
             {
-
-                MessageBox.Show("" + date_jour.Length);
                 cmd.Parameters.AddWithValue("@id", id);
                 cmd.Parameters.AddWithValue("@date_jour", date_jour);
                 cmd.Parameters.AddWithValue("@idtypejournal", idtypejournal);
@@ -2672,7 +2071,7 @@ namespace SUMEDCO
         }
         public void InitialiserCompteExercice()
         {
-            
+            //
         }
         public void Enregistrer(ComptaEcriture c)
         {
@@ -2738,6 +2137,7 @@ namespace SUMEDCO
                 }
             }
         }
+        
         //Faire que le solde se calcule par exercice comptable trouvé en cours dans le système
         //au lieu deux dates prises dans SoldeCompte()
         public double SoldeCompte(string numcompte)
@@ -2915,21 +2315,42 @@ namespace SUMEDCO
         }
         public void ChargerCompte(ComptaGdLivre c)
         {
-            if (c.txtRecherche.Text == "")
+            if (c.type_comptabilite == "routine")
             {
-                cmdtxt = @"SELECT c.numcompte, libellecompte, soldeouvedebit, soldeouvecredit  
+                if (c.txtRecherche.Text == "")
+                {
+                    cmdtxt = @"SELECT c.numcompte, libellecompte, soldeouvedebit, soldeouvecredit  
                 FROM Compte c
                 JOIN OperationCompte o ON c.numcompte = o.numcompte
                 JOIN Operation op ON o.idoperation = op.idoperation
                 WHERE idexercice = @idexercice AND montantdebit = 0 AND montantcredit = 0";
-            }
-            else
-                cmdtxt = @"SELECT c.numcompte, libellecompte, soldeouvedebit, soldeouvecredit
+                }
+                else
+                    cmdtxt = @"SELECT c.numcompte, libellecompte, soldeouvedebit, soldeouvecredit
                 FROM Compte c
                 JOIN OperationCompte o ON c.numcompte = o.numcompte
                 JOIN Operation op ON o.idoperation = op.idoperation
                 WHERE idexercice = @idexercice AND montantdebit = 0 AND montantcredit = 0 AND libellecompte LIKE '" + c.txtRecherche.Text.Replace("'", "") + "%'";
-            cmd = new SqlCommand(cmdtxt, con);
+                cmd = new SqlCommand(cmdtxt, con);
+            }
+            else
+            {
+                if (c.txtRecherche.Text == "")
+                {
+                    cmdtxt = @"SELECT c.numcompte, libellecompte, soldeouvedebit, soldeouvecredit  
+                FROM Compteprojet c
+                JOIN OperationCompteprojet o ON c.numcompte = o.numcompte
+                JOIN Operationprojet op ON o.idoperation = op.idoperation
+                WHERE idexercice = @idexercice AND montantdebit = 0 AND montantcredit = 0";
+                }
+                else
+                    cmdtxt = @"SELECT c.numcompte, libellecompte, soldeouvedebit, soldeouvecredit
+                FROM Compteprojet c
+                JOIN OperationCompteprojet o ON c.numcompte = o.numcompte
+                JOIN Operationprojet op ON o.idoperation = op.idoperation
+                WHERE idexercice = @idexercice AND montantdebit = 0 AND montantcredit = 0 AND libellecompte LIKE '" + c.txtRecherche.Text.Replace("'", "") + "%'";
+                cmd = new SqlCommand(cmdtxt, con);
+            }
             cmd.Parameters.AddWithValue("@idexercice", c.idexercice);
             con.Open();
             try
@@ -2966,11 +2387,22 @@ namespace SUMEDCO
                     con.Open();
                     try
                     {
-                        cmdtxt = @"SELECT o2.idoperation, date_operation, numpiece, libelle, montantdebit, montantcredit 
+                        if (c.type_comptabilite == "routine")
+                        {
+                            cmdtxt = @"SELECT o2.idoperation, date_operation, numpiece, libelle, montantdebit, montantcredit 
                         FROM Operation o1 
                         JOIN OperationCompte o2 ON o1.idoperation = o2.idoperation 
                         WHERE idexercice = @idexercice AND numcompte = @numcompte AND montantdebit != 0 AND date_operation BETWEEN @dateDe AND @dateA 
                         OR idexercice = @idexercice AND numcompte = @numcompte AND montantcredit != 0 AND date_operation BETWEEN @dateDe AND @dateA";
+                        }
+                        else
+                        {
+                            cmdtxt = @"SELECT o2.idoperation, date_operation, numpiece, libelle, montantdebit, montantcredit 
+                        FROM Operationprojet o1 
+                        JOIN OperationCompteprojet o2 ON o1.idoperation = o2.idoperation 
+                        WHERE idexercice = @idexercice AND numcompte = @numcompte AND montantdebit != 0 AND date_operation BETWEEN @dateDe AND @dateA 
+                        OR idexercice = @idexercice AND numcompte = @numcompte AND montantcredit != 0 AND date_operation BETWEEN @dateDe AND @dateA";
+                        }
                         cmd = new SqlCommand(cmdtxt, con);
                         cmd.Parameters.AddWithValue("@idexercice", c.idexercice);
                         cmd.Parameters.AddWithValue("@numcompte", c.dgvCompte.CurrentRow.Cells[0].Value.ToString());
@@ -3330,15 +2762,17 @@ namespace SUMEDCO
             return list_solde;
         }
         List<double> list_solde = new List<double>();
-        private List<double> SoldeRef(string ref_code, string motif, int exercice, DateTimePicker dateDe, DateTimePicker dateA)
+        private List<double> SoldeRef(string ref_code, string motif, int exercice, DateTimePicker dateDe, DateTimePicker dateA, string type_comptabilite)
         {
             list_solde.Clear(); list_solde.Add(0); list_solde.Add(0);
 
             con.Open();
             try
             {
-                if(motif == "debit")
-                    cmdtxt = @"SELECT 
+                if (type_comptabilite == "routine")
+                {
+                    if (motif == "debit")
+                        cmdtxt = @"SELECT 
                         ((SUM(montantdebit)-SUM(montantcredit)) +
                         (SUM(soldeouvedebit)-SUM(soldeouvecredit))) AS SoldeActuel,
                         (SUM(soldeouvedebit)-SUM(soldeouvecredit)) AS  SoldePasse
@@ -3348,8 +2782,8 @@ namespace SUMEDCO
                         WHERE o.idexercice = @idexercice AND c.numcompte NOT LIKE '28%' AND c.numcompte NOT LIKE '29%' 
                         AND ref_debit = @ref AND ref_credit IS NULL AND o.date_operation BETWEEN @dateDe AND @dateA
                         GROUP BY ref_debit";
-                else if (motif == "credit")
-                    cmdtxt = @"SELECT 
+                    else if (motif == "credit")
+                        cmdtxt = @"SELECT 
                         ((SUM(montantcredit)-SUM(montantdebit)) +
                         (SUM(soldeouvecredit)-SUM(soldeouvedebit))) AS SoldeActuel,
                         (SUM(soldeouvecredit)-SUM(soldeouvedebit)) AS  SoldePasse
@@ -3359,8 +2793,8 @@ namespace SUMEDCO
                         WHERE o.idexercice = @idexercice AND c.numcompte NOT LIKE '28%' AND c.numcompte NOT LIKE '29%' 
                         AND ref_credit = @ref AND ref_debit IS NULL AND o.date_operation BETWEEN @dateDe AND @dateA
                         GROUP BY ref_credit";
-                else if (motif == "debit_credit")
-                    cmdtxt = @"SELECT 
+                    else if (motif == "debit_credit")
+                        cmdtxt = @"SELECT 
                         ((SUM(montantdebit)-SUM(montantcredit)) +
                         (SUM(soldeouvedebit)-SUM(soldeouvecredit))) AS SoldeActuel,
                         (SUM(soldeouvedebit)-SUM(soldeouvecredit)) AS  SoldePasse
@@ -3370,8 +2804,8 @@ namespace SUMEDCO
                         WHERE o.idexercice = @idexercice AND c.numcompte NOT LIKE '28%' AND c.numcompte NOT LIKE '29%' 
                         AND ref_debit = @ref AND ref_credit IS NOT NULL AND o.date_operation BETWEEN @dateDe AND @dateA
                         GROUP BY ref_debit";
-                else if (motif == "credit_debit")
-                    cmdtxt = @"SELECT 
+                    else if (motif == "credit_debit")
+                        cmdtxt = @"SELECT 
                         ((SUM(montantcredit)-SUM(montantdebit)) +
                         (SUM(soldeouvecredit)-SUM(soldeouvedebit))) AS SoldeActuel,
                         (SUM(soldeouvecredit)-SUM(soldeouvedebit)) AS  SoldePasse
@@ -3381,55 +2815,57 @@ namespace SUMEDCO
                         WHERE o.idexercice = @idexercice AND c.numcompte NOT LIKE '28%' AND c.numcompte NOT LIKE '29%' 
                         AND ref_credit = @ref AND ref_debit IS NOT NULL AND o.date_operation BETWEEN @dateDe AND @dateA
                         GROUP BY ref_credit";
-                cmd = new SqlCommand(cmdtxt, con);
-                cmd.Parameters.AddWithValue("@idexercice", exercice);
-                cmd.Parameters.AddWithValue("@ref", ref_code);
-                cmd.Parameters.AddWithValue("@dateDe", dateDe.Text);
-                cmd.Parameters.AddWithValue("@dateA", dateA.Text);
-
-                dr = cmd.ExecuteReader();
-                while (dr.Read())
-                {
-                    list_solde.Add(Convert.ToDouble(dr[0].ToString()));
-                    list_solde.Add(Convert.ToDouble(dr[1].ToString()));
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            con.Close();
-            return list_solde;
-        }
-        private List<double> SoldeCompte(string numcompte, string motif, int exercice, DateTimePicker dateDe, DateTimePicker dateA)
-        {
-            list_solde.Clear();
-            con.Open();
-            try
-            {
-                if (motif == "debit")
-                    cmdtxt = @"SELECT 
+                else
+                {
+                    if (motif == "debit")
+                        cmdtxt = @"SELECT 
                         ((SUM(montantdebit)-SUM(montantcredit)) +
                         (SUM(soldeouvedebit)-SUM(soldeouvecredit))) AS SoldeActuel,
                         (SUM(soldeouvedebit)-SUM(soldeouvecredit)) AS  SoldePasse
-                        FROM OperationCompte oc 
-                        JOIN Operation o ON oc.idoperation = o.idoperation
-                        JOIN Compte c ON oc.numcompte = c.numcompte
-                        WHERE o.idexercice = @idexercice AND c.numcompte LIKE '"+numcompte+
-                        "%' AND o.date_operation BETWEEN @dateDe AND @dateA GROUP BY ref_debit";
-                else if (motif == "credit")
-                    cmdtxt = @"SELECT 
+                        FROM OperationCompteprojet oc 
+                        JOIN Operationprojet o ON oc.idoperation = o.idoperation
+                        JOIN Compteprojet c ON oc.numcompte = c.numcompte
+                        WHERE o.idexercice = @idexercice AND c.numcompte NOT LIKE '28%' AND c.numcompte NOT LIKE '29%' 
+                        AND ref_debit = @ref AND ref_credit IS NULL AND o.date_operation BETWEEN @dateDe AND @dateA
+                        GROUP BY ref_debit";
+                    else if (motif == "credit")
+                        cmdtxt = @"SELECT 
                         ((SUM(montantcredit)-SUM(montantdebit)) +
                         (SUM(soldeouvecredit)-SUM(soldeouvedebit))) AS SoldeActuel,
                         (SUM(soldeouvecredit)-SUM(soldeouvedebit)) AS  SoldePasse
-                        FROM OperationCompte oc 
-                        JOIN Operation o ON oc.idoperation = o.idoperation
-                        JOIN Compte c ON oc.numcompte = c.numcompte
-                        WHERE o.idexercice = @idexercice AND c.numcompte LIKE '"+numcompte+
-                        "%' AND o.date_operation BETWEEN @dateDe AND @dateA GROUP BY ref_credit";
-
+                        FROM OperationCompteprojet oc 
+                        JOIN Operationprojet o ON oc.idoperation = o.idoperation
+                        JOIN Compteprojet c ON oc.numcompte = c.numcompte
+                        WHERE o.idexercice = @idexercice AND c.numcompte NOT LIKE '28%' AND c.numcompte NOT LIKE '29%' 
+                        AND ref_credit = @ref AND ref_debit IS NULL AND o.date_operation BETWEEN @dateDe AND @dateA
+                        GROUP BY ref_credit";
+                    else if (motif == "debit_credit")
+                        cmdtxt = @"SELECT 
+                        ((SUM(montantdebit)-SUM(montantcredit)) +
+                        (SUM(soldeouvedebit)-SUM(soldeouvecredit))) AS SoldeActuel,
+                        (SUM(soldeouvedebit)-SUM(soldeouvecredit)) AS  SoldePasse
+                        FROM OperationCompteprojet oc 
+                        JOIN Operationprojet o ON oc.idoperation = o.idoperation
+                        JOIN Compteprojet c ON oc.numcompte = c.numcompte
+                        WHERE o.idexercice = @idexercice AND c.numcompte NOT LIKE '28%' AND c.numcompte NOT LIKE '29%' 
+                        AND ref_debit = @ref AND ref_credit IS NOT NULL AND o.date_operation BETWEEN @dateDe AND @dateA
+                        GROUP BY ref_debit";
+                    else if (motif == "credit_debit")
+                        cmdtxt = @"SELECT 
+                        ((SUM(montantcredit)-SUM(montantdebit)) +
+                        (SUM(soldeouvecredit)-SUM(soldeouvedebit))) AS SoldeActuel,
+                        (SUM(soldeouvecredit)-SUM(soldeouvedebit)) AS  SoldePasse
+                        FROM OperationCompteprojet oc 
+                        JOIN Operationprojet o ON oc.idoperation = o.idoperation
+                        JOIN Compteprojet c ON oc.numcompte = c.numcompte
+                        WHERE o.idexercice = @idexercice AND c.numcompte NOT LIKE '28%' AND c.numcompte NOT LIKE '29%' 
+                        AND ref_credit = @ref AND ref_debit IS NOT NULL AND o.date_operation BETWEEN @dateDe AND @dateA
+                        GROUP BY ref_credit";
+                }
                 cmd = new SqlCommand(cmdtxt, con);
                 cmd.Parameters.AddWithValue("@idexercice", exercice);
+                cmd.Parameters.AddWithValue("@ref", ref_code);
                 cmd.Parameters.AddWithValue("@dateDe", dateDe.Text);
                 cmd.Parameters.AddWithValue("@dateA", dateA.Text);
 
@@ -3451,13 +2887,13 @@ namespace SUMEDCO
         {
             for (int i = 0; i < c.dgvActif.RowCount; i++)
             {
-                list_solde = SoldeRef(c.dgvActif.Rows[i].Cells[0].Value.ToString(), "debit", c.idexercice, c.dtpDateDe, c.dtpDateA);
+                list_solde = SoldeRef(c.dgvActif.Rows[i].Cells[0].Value.ToString(), "debit", c.idexercice, c.dtpDateDe, c.dtpDateA, c.type_comptabilite);
                 c.dgvActif.Rows[i].Cells[3].Value = list_solde[0];
                 c.dgvActif.Rows[i].Cells[6].Value = list_solde[1];
                 //Le cas de solde débiteur ou créditeur
                 if (c.dgvActif.Rows[i].Cells[0].Value.ToString() == "BE" || c.dgvActif.Rows[i].Cells[0].Value.ToString() == "BW")
                 {
-                    list_solde = SoldeRef(c.dgvActif.Rows[i].Cells[0].Value.ToString(), "debit_credit", c.idexercice, c.dtpDateDe, c.dtpDateA);
+                    list_solde = SoldeRef(c.dgvActif.Rows[i].Cells[0].Value.ToString(), "debit_credit", c.idexercice, c.dtpDateDe, c.dtpDateA, c.type_comptabilite);
                     if (list_solde[0] > 0)
                     {
                         c.dgvActif.Rows[i].Cells[3].Value = Convert.ToDouble(c.dgvActif.Rows[i].Cells[3].Value) + list_solde[0];
@@ -3470,16 +2906,30 @@ namespace SUMEDCO
                     con.Open();
                     try
                     {
-                        cmdtxt = @"SELECT 
-                    ((SUM(montantdebit)-SUM(montantcredit)) +
-                    (SUM(soldeouvedebit)-SUM(soldeouvecredit))) AS Solde 
-                    FROM OperationCompte oc 
-                    JOIN Operation o ON oc.idoperation = o.idoperation
-                    JOIN Compte c ON oc.numcompte = c.numcompte
-                    WHERE o.idexercice = @idexercice AND c.numcompte LIKE '28%' AND ref_debit = @ref AND o.date_operation BETWEEN @dateDe AND @dateA 
-                    OR o.idexercice = @idexercice AND c.numcompte LIKE '29%' AND ref_debit = @ref AND o.date_operation BETWEEN @dateDe AND @dateA 
-                    GROUP BY ref_debit";
-
+                        if (c.type_comptabilite == "routine")
+                        {
+                            cmdtxt = @"SELECT 
+                        ((SUM(montantdebit)-SUM(montantcredit)) +
+                        (SUM(soldeouvedebit)-SUM(soldeouvecredit))) AS Solde 
+                        FROM OperationCompte oc 
+                        JOIN Operation o ON oc.idoperation = o.idoperation
+                        JOIN Compte c ON oc.numcompte = c.numcompte
+                        WHERE o.idexercice = @idexercice AND c.numcompte LIKE '28%' AND ref_debit = @ref AND o.date_operation BETWEEN @dateDe AND @dateA 
+                        OR o.idexercice = @idexercice AND c.numcompte LIKE '29%' AND ref_debit = @ref AND o.date_operation BETWEEN @dateDe AND @dateA 
+                        GROUP BY ref_debit";
+                        }
+                        else
+                        {
+                            cmdtxt = @"SELECT 
+                        ((SUM(montantdebit)-SUM(montantcredit)) +
+                        (SUM(soldeouvedebit)-SUM(soldeouvecredit))) AS Solde 
+                        FROM OperationCompteprojet oc 
+                        JOIN Operationprojet o ON oc.idoperation = o.idoperation
+                        JOIN Compteprojet c ON oc.numcompte = c.numcompte
+                        WHERE o.idexercice = @idexercice AND c.numcompte LIKE '28%' AND ref_debit = @ref AND o.date_operation BETWEEN @dateDe AND @dateA 
+                        OR o.idexercice = @idexercice AND c.numcompte LIKE '29%' AND ref_debit = @ref AND o.date_operation BETWEEN @dateDe AND @dateA 
+                        GROUP BY ref_debit";
+                        }
                         cmd = new SqlCommand(cmdtxt, con);
                         cmd.Parameters.AddWithValue("@idexercice", c.idexercice);
                         cmd.Parameters.AddWithValue("@ref", c.dgvActif.Rows[i].Cells[0].Value.ToString());
@@ -3510,17 +2960,17 @@ namespace SUMEDCO
             {
                 if (c.dgvActif.Rows[i].Cells[0].Value.ToString() == "DH" || c.dgvActif.Rows[i].Cells[0].Value.ToString() == "DY")
                 {
-                    list_solde = SoldeRef(c.dgvPassif.Rows[i].Cells[0].Value.ToString(), "credit", c.idexercice, c.dtpDateDe, c.dtpDateA);
+                    list_solde = SoldeRef(c.dgvPassif.Rows[i].Cells[0].Value.ToString(), "credit", c.idexercice, c.dtpDateDe, c.dtpDateA, c.type_comptabilite);
                     c.dgvActif.Rows[i].Cells[3].Value = list_solde[0];
                     c.dgvActif.Rows[i].Cells[4].Value = list_solde[1];                   
                 }               
                 //Le cas de solde débiteur ou créditeur
                 else if (c.dgvActif.Rows[i].Cells[0].Value.ToString() == "DI" || c.dgvActif.Rows[i].Cells[0].Value.ToString() == "DW")
                 {
-                    list_solde = SoldeRef(c.dgvPassif.Rows[i].Cells[0].Value.ToString(), "credit", c.idexercice, c.dtpDateDe, c.dtpDateA);
+                    list_solde = SoldeRef(c.dgvPassif.Rows[i].Cells[0].Value.ToString(), "credit", c.idexercice, c.dtpDateDe, c.dtpDateA, c.type_comptabilite);
                     c.dgvActif.Rows[i].Cells[3].Value = list_solde[0];
                     c.dgvActif.Rows[i].Cells[4].Value = list_solde[1];
-                    list_solde = SoldeRef(c.dgvPassif.Rows[i].Cells[0].Value.ToString(), "credit_debit", c.idexercice, c.dtpDateDe, c.dtpDateA);
+                    list_solde = SoldeRef(c.dgvPassif.Rows[i].Cells[0].Value.ToString(), "credit_debit", c.idexercice, c.dtpDateDe, c.dtpDateA, c.type_comptabilite);
                     if (list_solde[0] > 0)
                     {
                         c.dgvActif.Rows[i].Cells[3].Value = Convert.ToDouble(c.dgvPassif.Rows[i].Cells[3].Value) + list_solde[0];
@@ -3529,7 +2979,7 @@ namespace SUMEDCO
                 }
                 else
                 {
-                    list_solde = SoldeRef(c.dgvPassif.Rows[i].Cells[0].Value.ToString(), "debit", c.idexercice, c.dtpDateDe, c.dtpDateA);
+                    list_solde = SoldeRef(c.dgvPassif.Rows[i].Cells[0].Value.ToString(), "debit", c.idexercice, c.dtpDateDe, c.dtpDateA, c.type_comptabilite);
                     c.dgvActif.Rows[i].Cells[3].Value = list_solde[0];
                     c.dgvActif.Rows[i].Cells[4].Value = list_solde[1];
                 }
@@ -3880,13 +3330,26 @@ namespace SUMEDCO
             con.Open();
             try
             {
-               cmdtxt = @"SELECT oc.numcompte, libellecompte, SUM(soldeouvedebit), 
+                if (c.type_comptabilite == "routine")
+                {
+                    cmdtxt = @"SELECT oc.numcompte, libellecompte, SUM(soldeouvedebit), 
                 SUM(soldeouvecredit), SUM(montantdebit), SUM(montantcredit) 
                 FROM OperationCompte oc
                 JOIN Operation o ON oc.idoperation = o.idoperation
                 JOIN Compte c ON oc.numcompte = c.numcompte
                 WHERE idexercice = @idexercice AND date_operation BETWEEN @dateDe AND @dateA
                 GROUP BY oc.numcompte, libellecompte";
+                }
+                else
+                {
+                    cmdtxt = @"SELECT oc.numcompte, libellecompte, SUM(soldeouvedebit), 
+                SUM(soldeouvecredit), SUM(montantdebit), SUM(montantcredit) 
+                FROM OperationCompteprojet oc
+                JOIN Operationprojet o ON oc.idoperation = o.idoperation
+                JOIN Compteprojet c ON oc.numcompte = c.numcompte
+                WHERE idexercice = @idexercice AND date_operation BETWEEN @dateDe AND @dateA
+                GROUP BY oc.numcompte, libellecompte";
+                }
                cmd = new SqlCommand(cmdtxt, con);
                cmd.Parameters.AddWithValue("@idexercice", c.idexercice);
                cmd.Parameters.AddWithValue("@dateDe", c.dtpDateDe.Text);
@@ -4081,8 +3544,10 @@ namespace SUMEDCO
                 con.Open();
                 try
                 {
-                    if (c.dgvResultat.Rows[i].Cells[0].Value.ToString().StartsWith("T") && c.dgvResultat.Rows[i].Cells[0].Value.ToString() !="TM")
-                        cmdtxt = @"SELECT 
+                    if (c.type_comptabilite == "routine")
+                    {
+                        if (c.dgvResultat.Rows[i].Cells[0].Value.ToString().StartsWith("T") && c.dgvResultat.Rows[i].Cells[0].Value.ToString() != "TM")
+                            cmdtxt = @"SELECT 
                         ((SUM(montantdebit)-SUM(montantcredit)) +
                         (SUM(soldeouvedebit)-SUM(soldeouvecredit))) AS SoldeActuel,
                         (SUM(soldeouvedebit)-SUM(soldeouvecredit)) AS  SoldePasse
@@ -4091,8 +3556,8 @@ namespace SUMEDCO
                         JOIN Compte c ON oc.numcompte = c.numcompte
                         WHERE o.idexercice = @idexercice AND ref_debit = @ref AND o.date_operation BETWEEN @dateDe AND @dateA
                         GROUP BY ref_debit";
-                    else
-                        cmdtxt = @"SELECT 
+                        else
+                            cmdtxt = @"SELECT 
                         ((SUM(montantcredit)-SUM(montantdebit)) +
                         (SUM(soldeouvecredit)-SUM(soldeouvedebit))) AS SoldeActuel,
                         (SUM(soldeouvecredit)-SUM(soldeouvedebit)) AS  SoldePasse
@@ -4101,6 +3566,30 @@ namespace SUMEDCO
                         JOIN Compte c ON oc.numcompte = c.numcompte
                         WHERE o.idexercice = @idexercice AND ref_credit = @ref AND o.date_operation BETWEEN @dateDe AND @dateA
                         GROUP BY ref_credit";
+                    }
+                    else
+                    {
+                        if (c.dgvResultat.Rows[i].Cells[0].Value.ToString().StartsWith("T") && c.dgvResultat.Rows[i].Cells[0].Value.ToString() != "TM")
+                            cmdtxt = @"SELECT 
+                        ((SUM(montantdebit)-SUM(montantcredit)) +
+                        (SUM(soldeouvedebit)-SUM(soldeouvecredit))) AS SoldeActuel,
+                        (SUM(soldeouvedebit)-SUM(soldeouvecredit)) AS  SoldePasse
+                        FROM OperationCompteprojet oc 
+                        JOIN Operationprojet o ON oc.idoperation = o.idoperation
+                        JOIN Compteprojet c ON oc.numcompte = c.numcompte
+                        WHERE o.idexercice = @idexercice AND ref_debit = @ref AND o.date_operation BETWEEN @dateDe AND @dateA
+                        GROUP BY ref_debit";
+                        else
+                            cmdtxt = @"SELECT 
+                        ((SUM(montantcredit)-SUM(montantdebit)) +
+                        (SUM(soldeouvecredit)-SUM(soldeouvedebit))) AS SoldeActuel,
+                        (SUM(soldeouvecredit)-SUM(soldeouvedebit)) AS  SoldePasse
+                        FROM OperationCompteprojet oc 
+                        JOIN Operationprojet o ON oc.idoperation = o.idoperation
+                        JOIN Compteprojet c ON oc.numcompte = c.numcompte
+                        WHERE o.idexercice = @idexercice AND ref_credit = @ref AND o.date_operation BETWEEN @dateDe AND @dateA
+                        GROUP BY ref_credit";
+                    }
 
                     cmd = new SqlCommand(cmdtxt, con);
                     cmd.Parameters.AddWithValue("@idexercice", c.idexercice);

@@ -266,12 +266,6 @@
       <DependentUpon>MedRendezVous.cs</DependentUpon>
     </Compile>
     <Compile Include="TresorerieClasse.cs" />
-    <Compile Include="TresoSortie.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TresoSortie.Designer.cs">
-      <DependentUpon>TresoSortie.cs</DependentUpon>
-    </Compile>
     <Compile Include="TresoFlux.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -301,12 +295,6 @@
     </Compile>
     <Compile Include="FormFactureProduit2.Designer.cs">
       <DependentUpon>FormFactureProduit2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormPayement.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormPayement.Designer.cs">
-      <DependentUpon>FormPayement.cs</DependentUpon>
     </Compile>
     <Compile Include="FormImpression.cs">
       <SubType>Form</SubType>
@@ -422,18 +410,6 @@
     <Compile Include="StockPharmacie.Designer.cs">
       <DependentUpon>StockPharmacie.cs</DependentUpon>
     </Compile>
-    <Compile Include="TresoEntree.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TresoEntree.Designer.cs">
-      <DependentUpon>TresoEntree.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormProduitPharma.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormProduitPharma.Designer.cs">
-      <DependentUpon>FormProduitPharma.cs</DependentUpon>
-    </Compile>
     <Compile Include="StockApproCom.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -457,12 +433,6 @@
     </Compile>
     <Compile Include="AbonneMDI.Designer.cs">
       <DependentUpon>AbonneMDI.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormPayements.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormPayements.Designer.cs">
-      <DependentUpon>FormPayements.cs</DependentUpon>
     </Compile>
     <Compile Include="ComptabiliteMDI.cs">
       <SubType>Form</SubType>
@@ -787,9 +757,6 @@
     <EmbeddedResource Include="MedRendezVous.resx">
       <DependentUpon>MedRendezVous.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TresoSortie.resx">
-      <DependentUpon>TresoSortie.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="TresoFlux.resx">
       <DependentUpon>TresoFlux.cs</DependentUpon>
     </EmbeddedResource>
@@ -804,9 +771,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormFactureProduit2.resx">
       <DependentUpon>FormFactureProduit2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormPayement.resx">
-      <DependentUpon>FormPayement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TresoAnnuler.resx">
       <DependentUpon>TresoAnnuler.cs</DependentUpon>
@@ -872,12 +836,6 @@
     <EmbeddedResource Include="StockPharmacie.resx">
       <DependentUpon>StockPharmacie.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TresoEntree.resx">
-      <DependentUpon>TresoEntree.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormProduitPharma.resx">
-      <DependentUpon>FormProduitPharma.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="StockApproCom.resx">
       <DependentUpon>StockApproCom.cs</DependentUpon>
     </EmbeddedResource>
@@ -889,9 +847,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AbonneMDI.resx">
       <DependentUpon>AbonneMDI.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormPayements.resx">
-      <DependentUpon>FormPayements.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ComptabiliteMDI.resx">
       <DependentUpon>ComptabiliteMDI.cs</DependentUpon>

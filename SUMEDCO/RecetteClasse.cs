@@ -80,8 +80,8 @@ namespace SUMEDCO
                 dr.Read();
                 if (dr[0].ToString() != "")
                 {
-                    lblCDF.Text = string.Format("{0} CDF", Convert.ToDouble(dr[0].ToString()));
-                    lblUSD.Text = string.Format("{0} USD", Convert.ToDouble(dr[0].ToString()) / taux);
+                    lblCDF.Text = string.Format("{0} CDF", Convert.ToDouble(dr[0].ToString()).ToString("0.00"));
+                    lblUSD.Text = string.Format("{0} USD", (Convert.ToDouble(dr[0].ToString()) / taux).ToString("0.00"));
                 }
             }
             catch (Exception ex)
@@ -89,7 +89,6 @@ namespace SUMEDCO
                 MessageBox.Show("" + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             con.Close();
-            //A programmer pour la trésorerie: sommer les flux entrants - les dépenses
         }
         public void StatutCaisseOK(int idrecette, string motif)
         {

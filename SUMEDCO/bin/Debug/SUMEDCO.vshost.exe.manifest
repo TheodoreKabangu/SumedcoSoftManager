@@ -92,14 +92,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SUMEDCO.exe" size="24890368">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SUMEDCO.exe" size="23809024">
       <assemblyIdentity name="SUMEDCO" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>SkoQVHUWCibe5Q5tmonSJppmdx6El5jlNK6Ryb+G3no=</dsig:DigestValue>
+        <dsig:DigestValue>4yVBmzRI4IiEyO5AH62U430r1DMVAjitgUCTaO2xX7I=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -111,7 +111,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>2+a5fm9Rk7uHTPw6oKBUwuh82Dgx584VS8YyNVSdnHI=</dsig:DigestValue>
+        <dsig:DigestValue>inbIeQfjGCn9gW/8O7ZpSf8bw27c1vP0eoCxXH63KGs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -133,13 +133,13 @@
       <dsig:DigestValue>ebZZxemE2fLwjFf/zW2s52urzxaO1VXEud+Gn/GQXYc=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SUMEDCO.exe.config" size="529">
+  <file name="SUMEDCO.exe.config" size="479">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>Uz0OEDNtqkIuEJ8ASAEbIzTEJB9+zNicS2SThdTIO30=</dsig:DigestValue>
+      <dsig:DigestValue>IURJ0U/ZMLe/iFn35xvj2ckxy5YnHyypyUeBZ59DQ+U=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">

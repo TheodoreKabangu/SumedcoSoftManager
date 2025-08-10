@@ -146,7 +146,7 @@
             this.dgvRapport.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvRapport.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvRapport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvRapport.Size = new System.Drawing.Size(365, 230);
+            this.dgvRapport.Size = new System.Drawing.Size(679, 230);
             this.dgvRapport.TabIndex = 749;
             // 
             // Column1

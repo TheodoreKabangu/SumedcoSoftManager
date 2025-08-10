@@ -92,14 +92,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SUMEDCO.exe" size="24890368">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SUMEDCO.exe" size="23809024">
       <assemblyIdentity name="SUMEDCO" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>SkoQVHUWCibe5Q5tmonSJppmdx6El5jlNK6Ryb+G3no=</dsig:DigestValue>
+        <dsig:DigestValue>qVLI0opGHBFn37diz+LKdceRC55cti5lUct17rnqNx0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -111,7 +111,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>2+a5fm9Rk7uHTPw6oKBUwuh82Dgx584VS8YyNVSdnHI=</dsig:DigestValue>
+        <dsig:DigestValue>NM+02i2E4dXIRQEjABnT+9nwrXfbKq5soNTn60Sar/o=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

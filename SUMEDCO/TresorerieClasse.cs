@@ -214,35 +214,6 @@ namespace SUMEDCO
             }
             td.Close();
         }
-        public void ImprimerBon(TresoSortie f, FormImpression imp)
-        {
-            //imp.beneficiaire = f.txtBeneficiaire.Text;
-            //imp.montantlettre = f.txtMontantLettre.Text;
-            //imp.montantchiffre = f.montantdecaisse.ToString();
-            //imp.monnaie = f.cboCaisseDepense.Text;
-            //imp.motif = f.dgvEcriture.Rows[f.dgvEcriture.RowCount - 1].Cells[1].Value.ToString();
-            //imp.date_jour = f.lblDateOperation.Text;
-            //imp.bonrequisition = f.txtNumRequisition.Text;
-
-            //ReportParameter[] rparams = new ReportParameter[]
-            //{
-            //    new ReportParameter("numbon", ""),
-            //    new ReportParameter("beneficiare", imp.beneficiaire),
-            //    new ReportParameter("montantlettre", imp.montantlettre),
-            //    new ReportParameter("montantchiffre", imp.montantchiffre),
-            //    new ReportParameter("monnaie", imp.monnaie),
-            //    new ReportParameter("motif", imp.motif),
-            //    new ReportParameter("requisition", imp.bonrequisition),
-            //    new ReportParameter("date_jour", imp.date_jour)
-            //};
-            //imp.reportViewer1.LocalReport.ReportEmbeddedResource = "SUMEDCO.BonDepense.rdlc";
-            //imp.reportViewer1.LocalReport.SetParameters(rparams);
-            //imp.MaximumSize = imp.Size;
-            //imp.MaximizeBox = false;
-            //imp.MinimizeBox = false;
-            //imp.Text = "Bon de sortie de caisse";
-            //imp.ShowDialog();
-        }
         public void AfficherFlux(TresoFlux f)
         {
             if (f.cboMonnaie.Text != "")

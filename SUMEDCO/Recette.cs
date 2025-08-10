@@ -15,15 +15,9 @@ namespace SUMEDCO
         public Recette()
         {
             InitializeComponent();
-            for (int i = 0; i < dgvPatient.ColumnCount; i++)
-            {
-                dgvPatient.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
-            }
-            for (int i = 0; i < dgvRecette.ColumnCount; i++)
-            {
-                dgvRecette.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
-            }
+            ce.FigerColonne(dgvPatient); ce.FigerColonne(dgvRecette);
         }
+        ClasseElements ce = new ClasseElements();
         ClassCompta cc = new ClassCompta();
         ClassStock cs = new ClassStock();
         RecetteClasse rc = new RecetteClasse();
@@ -53,8 +47,7 @@ namespace SUMEDCO
             {
                 lblDateJour.Text = DateTime.Now.ToShortDateString();
                 taux = cc.VerifierTaux(DateTime.Now.Date, "valeur");
-                lblTaux.Text = taux + " CDF";
-                rc.SoldeCaisse(lblCaisseCDF, lblCaisseUSD, taux);
+                lblTaux.Text = taux + " CDF";               
             }
         }
         private void btnExit_Click(object sender, EventArgs e)
@@ -123,6 +116,17 @@ namespace SUMEDCO
         {
             btnRetirer.Enabled = false;
             rc.SupprimerRecette(dgvRecette);
+        }
+
+        private void chbSolde_Click(object sender, EventArgs e)
+        {
+            if (chbSolde.Checked)
+                rc.SoldeCaisse(lblCaisseCDF, lblCaisseUSD, taux);
+            else
+            {
+                lblCaisseCDF.Text = "00,00";
+                lblCaisseUSD.Text = "00,00";
+            }
         }
     }
 }

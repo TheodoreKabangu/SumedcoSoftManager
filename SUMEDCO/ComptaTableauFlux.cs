@@ -39,6 +39,8 @@ namespace SUMEDCO
 
         private void btnCalculer_Click(object sender, EventArgs e)
         {
+            //A revoir avec Papa Faustin 2025
+
             //if (dtpDateDe.Value.Year == dtpDateA.Value.Year && dtpDateDe.Value.Date <= dtpDateA.Value.Date)
             //{
             //    cc.CalculerTFT(this);

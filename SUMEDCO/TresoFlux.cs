@@ -72,8 +72,8 @@ namespace SUMEDCO
                 tc.SoldeTreso(this);
             else
             {
-                lblCDF.Text = "0000";
-                lblUSD.Text = "0000";
+                lblCDF.Text = "00,00";
+                lblUSD.Text = "00,00";
             }
         }
 
